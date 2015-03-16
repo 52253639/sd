@@ -1,0 +1,10 @@
+alter table T_SHE_FDCCustomer add FFr NVARCHAR(80);
+alter table T_SHE_FDCCustomer add FClrq DATETIME;
+alter table T_SHE_FDCCustomer add FZczj NUMERIC(28,10);
+alter table T_SHE_FDCCustomer add FBb VARCHAR(100);
+alter table T_SHE_FDCCustomer add FGyzs INT;
+alter table T_SHE_FDCCustomer add FYYzz NVARCHAR(80);
+alter table T_SHE_FDCCustomer add FTaxNO NVARCHAR(80);
+alter table T_SHE_FDCCustomer add FGsNo NVARCHAR(80);
+alter table T_SHE_FDCCustomer add FYYzz NVARCHAR(80);
+Create Table T_SHE_XQEntry ( FHeadID VARCHAR(44),FProductTypeId VARCHAR(44),FArea NUMERIC(28,10),FHigh NUMERIC(28,10),FFz NUMERIC(28,10),FYdl NUMERIC(28,10),FIsEnabled INT,FName_l1 NVARCHAR(255),FName_l2 NVARCHAR(255),FName_l3 NVARCHAR(255),FNumber VARCHAR(80),FDescription_l1 NVARCHAR(255),FDescription_l2 NVARCHAR(255),FDescription_l3 NVARCHAR(255),FSimpleName VARCHAR(80),FCreatorID VARCHAR(44),FCreateTime DateTime,FLastUpdateUserID VARCHAR(44),FLastUpdateTime DateTime,FControlUnitID VARCHAR(44),FID VARCHAR(44) DEFAULT '' NOT NULL ,CONSTRAINT PK_XQEntry PRIMARY KEY (FID));
