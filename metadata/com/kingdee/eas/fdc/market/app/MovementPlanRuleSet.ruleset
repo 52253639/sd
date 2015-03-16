@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.market.app</package>
+    <name>MovementPlanRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>a9181449-1409-43f2-8131-38ccddad6abb</id>
+            <parentID />
+            <source>entrys.movementType=entrys.movementDetail.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>ca02bec4-1d1d-4844-8a9a-a87c1ee72170</id>
+            <parentID>a9181449-1409-43f2-8131-38ccddad6abb</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>2bb59d8d-db21-4cc9-9e85-8c8c9aefd154</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2bb59d8d-db21-4cc9-9e85-8c8c9aefd154</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"movementType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5c9ff99f-639a-4b51-9277-8376617a6fca</id>
+            <parentID>a9181449-1409-43f2-8131-38ccddad6abb</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>5761e5d0-a360-4191-bb5e-8aa99ecaeb7d</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>ec769a3f-cb24-45b2-8b5b-6c008fce8986</id>
+                        <expressionID>50186cda-20da-480d-b20c-82c1a67bbf65</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>82c764c1-dd66-476a-841a-be8f26fe0ea1</id>
+                        <expressionID>01d26e63-4fd7-4eb9-adc4-6ff340ba2c8f</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5761e5d0-a360-4191-bb5e-8aa99ecaeb7d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>50186cda-20da-480d-b20c-82c1a67bbf65</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>b66dd79a-c0d4-48b3-910b-152e9321ea62</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b66dd79a-c0d4-48b3-910b-152e9321ea62</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"movementDetail")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>01d26e63-4fd7-4eb9-adc4-6ff340ba2c8f</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8bdc1137-7a6c-427e-8f8a-0f0de4203f86</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("编号不能为空!")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>da9f6322-e7e4-4c26-9d8f-a547008a8567</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>e61e9294-f68b-404f-b5e1-8d7f6910bd89</id>
+                        <expressionID>b84f00bb-d7a0-4200-9ff1-8035f0fafead</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>da9f6322-e7e4-4c26-9d8f-a547008a8567</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b84f00bb-d7a0-4200-9ff1-8035f0fafead</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>编号不能为空!</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d8fca7d2-0f78-49e5-9c74-0bb9862308cf</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("计划类型不能为空!")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>c3ff080f-eb28-4dc5-bda8-7ece2c167893</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>61edc5c7-b9ed-4d9e-a904-1c2556abd4aa</id>
+                        <expressionID>262fefaa-b845-45f6-a0a0-af7c15e2f3fc</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c3ff080f-eb28-4dc5-bda8-7ece2c167893</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>262fefaa-b845-45f6-a0a0-af7c15e2f3fc</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>计划类型不能为空!</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>3b7f415e-9d0b-47fe-8127-b1180f1780ff</id>
+            <parentID />
+            <source>entrys.movementType=entrys.movementDetail.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>376235d2-1797-4460-9130-270e27f92acc</id>
+            <parentID>3b7f415e-9d0b-47fe-8127-b1180f1780ff</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>7b89bfce-8d39-4176-9f8e-f76db96458e8</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7b89bfce-8d39-4176-9f8e-f76db96458e8</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"movementType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>eb419a51-4b68-47f1-8f9c-cc7b40c34083</id>
+            <parentID>3b7f415e-9d0b-47fe-8127-b1180f1780ff</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>2dae0e1c-c4ea-44b3-bc6d-d0626885d2ba</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>4533c490-65c5-4869-a845-fa099e493fdb</id>
+                        <expressionID>3c0e018f-f39f-446c-8257-803d52153b8c</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>10674e21-ec42-4dbb-a4e8-66e98d71a861</id>
+                        <expressionID>a596ec29-8a95-4de9-b054-78e9940f1c14</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2dae0e1c-c4ea-44b3-bc6d-d0626885d2ba</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3c0e018f-f39f-446c-8257-803d52153b8c</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>e7c6d6a3-510e-4cc0-810f-e5662bb4c331</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e7c6d6a3-510e-4cc0-810f-e5662bb4c331</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"movementDetail")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a596ec29-8a95-4de9-b054-78e9940f1c14</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>a38b66c3-ed77-4f9d-8a99-ed31702161fd</id>
+            <parentID />
+            <source>entrys.mmParent=entrys.mmDetail.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>1136e076-36b9-4672-aaeb-249b391fb7eb</id>
+            <parentID>a38b66c3-ed77-4f9d-8a99-ed31702161fd</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>983c42be-3c98-4962-8a30-abd49defe153</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>983c42be-3c98-4962-8a30-abd49defe153</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"mmParent")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f6043452-5a0d-40d5-8972-8300291c9b5a</id>
+            <parentID>a38b66c3-ed77-4f9d-8a99-ed31702161fd</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>e8503aff-8e23-4958-9c26-0d09ee88c2c1</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>9914683b-1402-4301-8d50-7dfe6a5a834b</id>
+                        <expressionID>3c0d9f79-cb12-432e-8a2b-d9be16741836</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>e13a0b82-ea54-40f2-8632-a8ddfc024184</id>
+                        <expressionID>8ba5840c-ea05-49ff-a138-c68a15bb0a2e</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e8503aff-8e23-4958-9c26-0d09ee88c2c1</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3c0d9f79-cb12-432e-8a2b-d9be16741836</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>4a7100a2-b599-4233-9933-e05ce03e46de</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4a7100a2-b599-4233-9933-e05ce03e46de</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"mmDetail")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8ba5840c-ea05-49ff-a138-c68a15bb0a2e</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>6cb9345b-a2fa-4bff-9917-8d1643f649f5</id>
+            <parentID />
+            <source>entrys.mmParent=entrys.mmType.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>bee72911-c048-4cd4-b252-42d052e4aea0</id>
+            <parentID>6cb9345b-a2fa-4bff-9917-8d1643f649f5</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>8150f3a9-e3f6-4192-8fe9-d31b7c01b393</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8150f3a9-e3f6-4192-8fe9-d31b7c01b393</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"mmParent")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7aff6ce4-6088-45fc-a942-e2eb38d5b26f</id>
+            <parentID>6cb9345b-a2fa-4bff-9917-8d1643f649f5</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>e84ed261-798b-474e-800f-fbac3d15b67e</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>aa05cbd2-2bb0-4589-bbf3-2884c8121419</id>
+                        <expressionID>e44db181-9179-4dcd-9e7e-1346633a64d5</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>a364559a-81e0-41f0-b5a1-b9ac983e1bff</id>
+                        <expressionID>8bf0702d-6e86-4cab-8f35-872f0807ad1e</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e84ed261-798b-474e-800f-fbac3d15b67e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e44db181-9179-4dcd-9e7e-1346633a64d5</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>f59fab84-0c09-4946-a001-9ba824ad7d75</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f59fab84-0c09-4946-a001-9ba824ad7d75</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"mmType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8bf0702d-6e86-4cab-8f35-872f0807ad1e</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>4cec86ee-57e0-47da-a844-48b6a2f424b8</id>
+            <parentID />
+            <source>entrys.mmParent=entrys.mmType.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>1e0ea58d-6c21-4b50-94c9-d72c17b64ae2</id>
+            <parentID>4cec86ee-57e0-47da-a844-48b6a2f424b8</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>ab17fafb-8232-46c0-b32e-7891318d1e70</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ab17fafb-8232-46c0-b32e-7891318d1e70</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"mmParent")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>549baf74-c9ff-4f47-a714-fbd03f093067</id>
+            <parentID>4cec86ee-57e0-47da-a844-48b6a2f424b8</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>9e1d08a7-c5c1-4e1d-b81b-ec5fddcfc818</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>0e57cfda-5e4d-4272-b428-28dfac6615c2</id>
+                        <expressionID>5e5f1618-1343-4fd8-9de5-ee5af29bd99e</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>a6de2984-c191-486b-af50-c1228b798cce</id>
+                        <expressionID>22b72fd7-c751-4318-a0c9-d99eec295c3d</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>9e1d08a7-c5c1-4e1d-b81b-ec5fddcfc818</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5e5f1618-1343-4fd8-9de5-ee5af29bd99e</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>e3b71567-7922-4442-a8a4-788aee45f0b3</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e3b71567-7922-4442-a8a4-788aee45f0b3</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"mmType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>22b72fd7-c751-4318-a0c9-d99eec295c3d</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>77f97b23-eca4-4379-a1fb-584c3c98f918</id>
+            <parentID />
+            <source>E2.chargeParent=E2.chargeType.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>f7d945df-44a5-46ae-9f69-e303d9bb02a1</id>
+            <parentID>77f97b23-eca4-4379-a1fb-584c3c98f918</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>fa05aa92-5eba-4383-921f-b1502597f9d9</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>fa05aa92-5eba-4383-921f-b1502597f9d9</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtE2.getCell(rowIndex,"chargeParent")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>6845f9c9-b3e4-4998-bdcb-c167116fdf7d</id>
+            <parentID>77f97b23-eca4-4379-a1fb-584c3c98f918</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>3be1985c-c16d-4d88-b0bd-bd2639ed7df6</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>b1bf0969-a914-4727-a0a7-a856c4077901</id>
+                        <expressionID>ce62a06d-9d38-493b-bcb3-5467bd9e4e42</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>91ea4fde-6c42-46e5-a0b1-4a739e0f813d</id>
+                        <expressionID>91c87298-f086-4a7a-89e1-18f4d752b5c3</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3be1985c-c16d-4d88-b0bd-bd2639ed7df6</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ce62a06d-9d38-493b-bcb3-5467bd9e4e42</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>8334e657-19d5-4e88-959b-cb5a9a927758</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8334e657-19d5-4e88-959b-cb5a9a927758</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtE2.getCell(rowIndex,"chargeType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>91c87298-f086-4a7a-89e1-18f4d752b5c3</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>61581527-4421-4c1d-948b-1330ebfbef18</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("活动名称不能为空!")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>8ce16cb6-72f5-4f20-8aab-aa60be06dc64</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>c707b1af-38fb-4eca-bad3-621127d56bea</id>
+                        <expressionID>85a32471-488f-42e3-aa13-4981acc05df1</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8ce16cb6-72f5-4f20-8aab-aa60be06dc64</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>85a32471-488f-42e3-aa13-4981acc05df1</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>活动名称不能为空!</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3ec6dd07-ff0b-484d-808c-93776c47cac2</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("推广计划不能为空!")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>bde1f04a-9fa9-4a46-8bd8-33a59c4d892e</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>aab28f5d-8fe5-49de-9501-95ab61f1a7e6</id>
+                        <expressionID>a7bdd4fa-1c4a-4351-bf36-68a73cc1d2d5</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>bde1f04a-9fa9-4a46-8bd8-33a59c4d892e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a7bdd4fa-1c4a-4351-bf36-68a73cc1d2d5</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>推广计划不能为空!</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>716f2dd4-98d1-4ef4-958a-36de8dd403b8</id>
+            <parentID />
+            <source>ISNULL( [number] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>8529fc4c-6213-4a1f-a510-0702c81f09e1</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>d0403705-049d-44b5-985f-f4748bbb52b5</id>
+                        <expressionID>c02b1707-832f-4f9d-9492-e385b062d53a</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8529fc4c-6213-4a1f-a510-0702c81f09e1</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c02b1707-832f-4f9d-9492-e385b062d53a</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>444aaa10-c3fa-4df5-aee4-8a263f4626f4</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>444aaa10-c3fa-4df5-aee4-8a263f4626f4</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtNumber</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>654d480e-2e81-4d99-b1c8-c37eb6583156</id>
+            <parentID />
+            <source>ISNULL( [planType.name] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>15a8f416-20e4-4f17-ac7e-5a2bc5059fff</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>dde27b4e-bb36-4ceb-bd08-ec3086285b87</id>
+                        <expressionID>a4f09d3c-9544-4e46-a29d-6b4277add2b6</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>15a8f416-20e4-4f17-ac7e-5a2bc5059fff</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a4f09d3c-9544-4e46-a29d-6b4277add2b6</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>f818cae7-9b52-47ee-a74e-49d69e52d511</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>f6da9076-6b34-4905-8589-a50466978c1d</id>
+                        <expressionID>33bc0618-f753-4353-ad4e-bc51ab78f0f7</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>4a7bb41c-6cfe-44f6-8ca6-853ea0452d57</id>
+                        <expressionID>44d0ddc3-cd92-49cd-a974-645350048fc0</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f818cae7-9b52-47ee-a74e-49d69e52d511</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>33bc0618-f753-4353-ad4e-bc51ab78f0f7</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>09f0d1a3-8313-4058-8bd7-6f19bd6cc26d</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>09f0d1a3-8313-4058-8bd7-6f19bd6cc26d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtplanType</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>44d0ddc3-cd92-49cd-a974-645350048fc0</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e053e06a-9860-4b70-bcd8-5fd146fefd13</id>
+            <parentID />
+            <source>ISNULL( [name] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>e258a4b2-5951-4e22-8a22-6bcb3dc9fe66</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>8976b8c7-7c31-4d50-b522-50a6c691d44e</id>
+                        <expressionID>5f41386c-aa5c-4a6a-be32-715bc0ee29a5</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e258a4b2-5951-4e22-8a22-6bcb3dc9fe66</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5f41386c-aa5c-4a6a-be32-715bc0ee29a5</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>3f98b23c-2e8e-416e-a6ea-e44544509092</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3f98b23c-2e8e-416e-a6ea-e44544509092</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtName</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e0827544-d36e-40d3-b717-bbcdb8270552</id>
+            <parentID />
+            <source>ISNULL( [planId] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>07948f47-371f-40b2-8b36-059cb0836d5b</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>bc59507b-3947-49f9-8378-e979c5260f3a</id>
+                        <expressionID>f0c79507-0938-47af-81d2-e429b8a5e46c</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>07948f47-371f-40b2-8b36-059cb0836d5b</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f0c79507-0938-47af-81d2-e429b8a5e46c</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>cad12008-6d52-492b-b16e-466eaaa297c2</ownerID>
+                <name>data</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>cad12008-6d52-492b-b16e-466eaaa297c2</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kDPlanPromptBox</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>b6f9153c-e54f-461c-bc41-7b24266de8cb</id>
+            <name>entrys_movementType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_movementType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_movementType_ActionInfo].description</description>
+            <expressionID>a9181449-1409-43f2-8131-38ccddad6abb</expressionID>
+        </action>
+        <action>
+            <id>8eff9c2f-7a32-4e99-96f4-912c2aa27057</id>
+            <name>ASQ97440</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ97440].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ97440].description</description>
+            <expressionID>8bdc1137-7a6c-427e-8f8a-0f0de4203f86</expressionID>
+        </action>
+        <action>
+            <id>4e507d15-16c1-4a48-94a8-e015e48f855d</id>
+            <name>ASQ98IE1</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ98IE1].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ98IE1].description</description>
+            <expressionID>d8fca7d2-0f78-49e5-9c74-0bb9862308cf</expressionID>
+        </action>
+        <action>
+            <id>829d7042-9332-4ce1-bb65-0bc5d0b75ffc</id>
+            <name>entrys_movementType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_movementType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_movementType_ActionInfo].description</description>
+            <expressionID>3b7f415e-9d0b-47fe-8127-b1180f1780ff</expressionID>
+        </action>
+        <action>
+            <id>40ebb594-3b50-4fc6-ae0a-c9e0c07eb725</id>
+            <name>entrys_mmParent_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].description</description>
+            <expressionID>a38b66c3-ed77-4f9d-8a99-ed31702161fd</expressionID>
+        </action>
+        <action>
+            <id>ef44ebfa-aaf1-4efa-b10f-338da23049f1</id>
+            <name>entrys_mmParent_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].description</description>
+            <expressionID>6cb9345b-a2fa-4bff-9917-8d1643f649f5</expressionID>
+        </action>
+        <action>
+            <id>fb4c1ec8-694b-4ab1-ad73-00f642ce51cc</id>
+            <name>entrys_mmParent_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].description</description>
+            <expressionID>4cec86ee-57e0-47da-a844-48b6a2f424b8</expressionID>
+        </action>
+        <action>
+            <id>556394e8-5039-4508-82cf-5693aba4e99b</id>
+            <name>E2_chargeParent_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[E2_chargeParent_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[E2_chargeParent_ActionInfo].description</description>
+            <expressionID>77f97b23-eca4-4379-a1fb-584c3c98f918</expressionID>
+        </action>
+        <action>
+            <id>279ab0fe-5e12-4b3f-a259-076f6bd59b8b</id>
+            <name>AT$6XV$S</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6XV$S].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6XV$S].description</description>
+            <expressionID>61581527-4421-4c1d-948b-1330ebfbef18</expressionID>
+        </action>
+        <action>
+            <id>2fba19dc-b927-4e05-8680-afcf99ee984d</id>
+            <name>AT$6_KTM</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6_KTM].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6_KTM].description</description>
+            <expressionID>3ec6dd07-ff0b-484d-808c-93776c47cac2</expressionID>
+        </action>
+    </actions>
+    <conditions>
+        <baseCondition>
+            <id>dee4cda3-32b6-49ea-b2bb-abcb132283b3</id>
+            <name>ASQ983FT</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ983FT].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ983FT].description</description>
+            <expressionID>716f2dd4-98d1-4ef4-958a-36de8dd403b8</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>0fff07a4-978a-4862-b682-55df5aeaab04</id>
+            <name>ASQ991$M</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ991$M].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ991$M].description</description>
+            <expressionID>654d480e-2e81-4d99-b1c8-c37eb6583156</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>4df55045-8f78-4eb9-89a3-ca234e344eb7</id>
+            <name>AT$6ZBWQ</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6ZBWQ].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6ZBWQ].description</description>
+            <expressionID>e053e06a-9860-4b70-bcd8-5fd146fefd13</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>1be621db-8928-411e-81b2-c6c4c3385348</id>
+            <name>AT$6_USB</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6_USB].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6_USB].description</description>
+            <expressionID>e0827544-d36e-40d3-b717-bbcdb8270552</expressionID>
+        </baseCondition>
+    </conditions>
+    <rules>
+        <conditionRule>
+            <name>E2_chargeParent_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[E2_chargeParent_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[E2_chargeParent_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="556394e8-5039-4508-82cf-5693aba4e99b" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>MovementPlanAT$6ZDPD</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[MovementPlanAT$6ZDPD].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[MovementPlanAT$6ZDPD].description</description>
+            <ruleType>validate</ruleType>
+            <eventObjectName />
+            <eventType>SUBMIT</eventType>
+            <eventName>SUBMIT</eventName>
+            <condition>
+                <key name="id" value="4df55045-8f78-4eb9-89a3-ca234e344eb7" />
+            </condition>
+            <actions>
+                <action>
+                    <key name="id" value="279ab0fe-5e12-4b3f-a259-076f6bd59b8b" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ASQ983FT</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[ASQ983FT].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[ASQ983FT].description</description>
+            <ruleType>validate</ruleType>
+            <eventObjectName />
+            <eventType>SUBMIT</eventType>
+            <eventName>SUBMIT</eventName>
+            <condition>
+                <key name="id" value="dee4cda3-32b6-49ea-b2bb-abcb132283b3" />
+            </condition>
+            <actions>
+                <action>
+                    <key name="id" value="8eff9c2f-7a32-4e99-96f4-912c2aa27057" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ97440].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ97440].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ98IE1].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[ASQ98IE1].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6XV$S].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6XV$S].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6_KTM].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[AT$6_KTM].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[E2_chargeParent_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[E2_chargeParent_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_mmParent_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_movementType_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].actions.action[entrys_movementType_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ983FT].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ983FT].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ991$M].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[ASQ991$M].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6ZBWQ].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6ZBWQ].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6_USB].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].conditions.baseCondition[AT$6_USB].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[ASQ983FT].alias">
+            <lang locale="zh_CN" value="ValidateEvent0001" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ValidateEvent0001" />
+            <lang locale="zh_TW" value="ValidateEvent0001" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[ASQ983FT].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[ASQ983FT].extendedProperty.columnName">
+            <lang locale="zh_CN" value="number" />
+            <lang locale="zh_TW" value="number" />
+            <lang locale="en_US" value="number" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[E2_chargeParent_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[E2_chargeParent_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[E2_chargeParent_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="chargeType" />
+            <lang locale="zh_TW" value="chargeType" />
+            <lang locale="en_US" value="chargeType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[E2_chargeParent_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[MovementPlanAT$6ZDPD].alias">
+            <lang locale="zh_CN" value="ValidateEvent0003" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ValidateEvent0003" />
+            <lang locale="zh_TW" value="ValidateEvent0003" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[MovementPlanAT$6ZDPD].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MovementPlanRuleSet].rules.conditionRule[MovementPlanAT$6ZDPD].extendedProperty.columnName">
+            <lang locale="zh_CN" value="name" />
+            <lang locale="zh_TW" value="name" />
+            <lang locale="en_US" value="name" />
+        </rs>
+    </resource>
+</ruleSet>
+

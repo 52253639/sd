@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.invite.supplier.app</package>
+    <name>FDCSplAuditBillEntry</name>
+    <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].description</description>
+    <userDefined>false</userDefined>
+    <bosType>7F7113F2</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.invite.supplier.FDCSplAuditBillEntry</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntryController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.framework.app" />
+        <key name="name" value="CoreBase" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.invite.supplier.app" />
+        <key name="name" value="T_SPL_FDCSplAuditBillEntry" />
+    </table>
+    <properties>
+        <linkProperty>
+            <name>auditBill</name>
+            <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[auditBill].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[auditBill].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FAuditBillID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.invite.supplier.app" />
+                <key name="name" value="R_FDCSplAuditBaseBill_FDCSplAuditBillEntry_entry" />
+            </relationship>
+        </linkProperty>
+        <linkProperty>
+            <name>supplierType</name>
+            <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[supplierType].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[supplierType].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FSupplierTypeID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.invite.supplier.app" />
+                <key name="name" value="R_FDCSplAuditBillEntry_CSSPGroup_trype" />
+            </relationship>
+        </linkProperty>
+        <ownProperty>
+            <name>beforeState</name>
+            <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[beforeState].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[beforeState].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>80</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[beforeState].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FBeforeState" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>isAudit</name>
+            <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[isAudit].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[isAudit].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>Boolean</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[isAudit].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FIsAudit" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>score</name>
+            <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[score].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[score].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>BigDecimal</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>21</precision>
+            <decimalDigits>8</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[score].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FScore" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>grade</name>
+            <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[grade].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[grade].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>80</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[grade].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FGrade" />
+            </mappingField>
+        </ownProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>false</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="评审单分录" />
+            <lang locale="zh_TW" value="評審單分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="评审单分录" />
+            <lang locale="zh_TW" value="評審單分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].logicalKey[id].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].logicalKey[id].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[auditBill].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="评审单" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[auditBill].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[supplierType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="供应商类型" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.linkProperty[supplierType].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[beforeState].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="评估前状态" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[beforeState].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[beforeState].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[grade].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="等级" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[grade].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[grade].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[isAudit].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否参与评审" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[isAudit].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[isAudit].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[score].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="评审分数" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[score].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.invite.supplier.app.FDCSplAuditBillEntry].properties.ownProperty[score].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</entityObject>
+

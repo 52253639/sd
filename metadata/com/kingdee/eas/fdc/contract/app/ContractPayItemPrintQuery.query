@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.contract.app</package>
+    <name>ContractPayItemPrintQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>ContractPayItem</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].subObjects.subEntity[ContractPayItem].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItem" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>paymentType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].subObjects.subEntity[paymentType].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="PaymentType" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>contractBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].subObjects.subEntity[contractBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBill" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>contractBill.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[contractBill.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>446dd5e3-be34-41bb-a52e-e7fc50b97f93</key>
+                    <parentUnit>
+                        <key name="name" value="contractBill.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5c18561e-22e3-4a95-a96c-0e0486738d6f</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ContractPayItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>amount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[amount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d5891fd3-49b9-458f-ac40-638ea8816b01</key>
+                    <parentUnit>
+                        <key name="name" value="amount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ContractPayItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="amount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>payCondition</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[payCondition].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>78afdcde-9add-4d96-a7ea-68523fe40899</key>
+                    <parentUnit>
+                        <key name="name" value="payCondition" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ContractPayItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="payCondition" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>5cb0dca4-2cc5-44d5-8f5c-cd036d549df6</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[5cb0dca4-2cc5-44d5-8f5c-cd036d549df6].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e0b22a2f-bd3e-42c7-8165-d5adf820a3ab</key>
+                    <parentUnit>
+                        <key name="name" value="5cb0dca4-2cc5-44d5-8f5c-cd036d549df6" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ContractPayItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="paymentType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>744b5cc5-2573-48ba-8925-bc91aaba4059</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[744b5cc5-2573-48ba-8925-bc91aaba4059].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>178a5292-48ae-482b-bf07-b9b2b05d57a2</key>
+                    <parentUnit>
+                        <key name="name" value="744b5cc5-2573-48ba-8925-bc91aaba4059" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="paymentType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>paymentType.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[paymentType.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>56f9c94d-6551-4764-aa10-068f6fd86e21</key>
+                    <parentUnit>
+                        <key name="name" value="paymentType.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="paymentType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>b7755402-e52b-4975-9739-310c34e22f9c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[b7755402-e52b-4975-9739-310c34e22f9c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7add89ad-40c3-4bbb-8322-4f6642ee3b43</key>
+                    <parentUnit>
+                        <key name="name" value="b7755402-e52b-4975-9739-310c34e22f9c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ContractPayItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contractbill" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1ebad0fc-7c80-475d-bc98-42f06f6d8b04</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[1ebad0fc-7c80-475d-bc98-42f06f6d8b04].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5d6d2683-abe5-4be3-a1ed-766a79b56d5f</key>
+                    <parentUnit>
+                        <key name="name" value="1ebad0fc-7c80-475d-bc98-42f06f6d8b04" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </propertyUnit>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+            <key name="name" value="ContractPayItemPrintQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="contractBill.id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>6afd73fa-2973-4961-9835-3dc8381e17c5</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ContractPayItem" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="paymentType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>099eb306-3078-471c-bfdf-2dac12f0999c</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="5cb0dca4-2cc5-44d5-8f5c-cd036d549df6" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="744b5cc5-2573-48ba-8925-bc91aaba4059" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="6afd73fa-2973-4961-9835-3dc8381e17c5" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </join>
+        <join>
+            <name>d6ec3cd7-7a96-4312-b306-d0b5aaa7fa1f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ContractPayItem" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="contractBill" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>688bee9a-eab4-4026-88af-ce8310567128</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="b7755402-e52b-4975-9739-310c34e22f9c" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="1ebad0fc-7c80-475d-bc98-42f06f6d8b04" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="d6ec3cd7-7a96-4312-b306-d0b5aaa7fa1f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractPayItemPrintQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].alias">
+            <lang locale="zh_CN" value="合同付款事项查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同付款事項查詢" />
+            <lang locale="zh_TW" value="合同付款事項查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].subObjects.subEntity[ContractPayItem].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].subObjects.subEntity[contractBill].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].subObjects.subEntity[paymentType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[1ebad0fc-7c80-475d-bc98-42f06f6d8b04].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[5cb0dca4-2cc5-44d5-8f5c-cd036d549df6].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[744b5cc5-2573-48ba-8925-bc91aaba4059].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.propertyUnit[b7755402-e52b-4975-9739-310c34e22f9c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[amount].displayName">
+            <lang locale="zh_CN" value="付款(原币)金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款(原幣)金額" />
+            <lang locale="zh_TW" value="付款(原幣)金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[contractBill.id].displayName">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[payCondition].displayName">
+            <lang locale="zh_CN" value="付款条件" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款條件" />
+            <lang locale="zh_TW" value="付款條件" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractPayItemPrintQuery].units.queryField[paymentType.name].displayName">
+            <lang locale="zh_CN" value="付款类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款類型" />
+            <lang locale="zh_TW" value="付款類型" />
+        </rs>
+    </resource>
+</joinQuery>
+

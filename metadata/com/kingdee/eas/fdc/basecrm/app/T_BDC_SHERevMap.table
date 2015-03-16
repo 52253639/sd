@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.basecrm.app</package>
+    <name>T_BDC_SHERevMap</name>
+    <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FPayListEntryId</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FPayListEntryId].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FPayListEntryId].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue>N''</defaultValue>
+            <sqlType>NVARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+        <column>
+            <name>FRevBillEntryId</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRevBillEntryId].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRevBillEntryId].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue>''</defaultValue>
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+        <column>
+            <name>FAmount</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FAmount].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FAmount].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue>0</defaultValue>
+            <sqlType>NUMERIC</sqlType>
+            <length>28</length>
+            <scale>10</scale>
+            <precision>28</precision>
+        </column>
+        <column>
+            <name>FSeq</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FSeq].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FSeq].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FRelatBizType</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRelatBizType].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRelatBizType].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_BDC_SHERevMap</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType>ASC</sortType>
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>FK_BDC_SHERMEvBEI</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.basecrm.app" />
+                <key name="name" value="T_BDC_SHERevBillEntry" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FRevBillEntryId" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].alias">
+            <lang locale="zh_CN" value="收款对冲关系" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="收款對沖關係" />
+            <lang locale="zh_TW" value="收款對沖關係" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FAmount].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FAmount].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FID].alias">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FID].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FPayListEntryId].alias">
+            <lang locale="zh_CN" value="应收明细Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="應收明細Id" />
+            <lang locale="zh_TW" value="應收明細Id" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FPayListEntryId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRelatBizType].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRelatBizType].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRevBillEntryId].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FRevBillEntryId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FSeq].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].columns.column[FSeq].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basecrm.app.T_BDC_SHERevMap].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+    </resource>
+</dataTable>
+

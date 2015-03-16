@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facade xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.finance.app</package>
+    <name>TraceOldSplitVoucherFacade</name>
+    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].alias</alias>
+    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].description</description>
+    <userDefined>false</userDefined>
+    <bosType>3D68BA7F</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.finance.TraceOldSplitVoucherFacade</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacadeController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <methods>
+        <method>
+            <name>traceSplitVoucher</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].description</description>
+            <innerID>84f6aa49-0116-1000-e000-0073c0a812cd</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>contractID</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].parameters.parameter[contractID].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].parameters.parameter[contractID].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>splitContract</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].description</description>
+            <innerID>84f6aa49-0116-1000-e000-0075c0a812cd</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>com.kingdee.bos.dao.IObjectPK[]</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>contractID</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[contractID].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[contractID].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>paymentBill</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[paymentBill].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[paymentBill].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectCollection</dataType>
+                    <metadataRef>com.kingdee.eas.fi.cas.app.PaymentBill</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>splitPayment</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].description</description>
+            <innerID>84f6aa49-0116-1000-e000-0076c0a812cd</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>ObjectPK</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>model</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].parameters.parameter[model].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].parameters.parameter[model].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectValue</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.app.PaymentSplit</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>splitNoCostPayment</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].description</description>
+            <innerID>84f6aa49-0116-1000-e000-007bc0a812cd</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>ObjectPK</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>model</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].parameters.parameter[model].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].parameters.parameter[model].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectValue</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.app.PaymentNoCostSplit</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>traceContracts</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].description</description>
+            <innerID>9fce6515-0116-1000-e000-0074c0a812cd</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>idList</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].parameters.parameter[idList].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].parameters.parameter[idList].description</description>
+                    <direction>in</direction>
+                    <dataType>java.util.List</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>traceContractNoText</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].description</description>
+            <innerID>af87d44d-0117-1000-e000-0028c0a812cd</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>idList</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].parameters.parameter[idList].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].parameters.parameter[idList].description</description>
+                    <direction>in</direction>
+                    <dataType>java.util.List</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>traceAdjustContracts</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].description</description>
+            <innerID>106d3fe2-011e-1000-e000-014e7f000001</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>idList</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[idList].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[idList].description</description>
+                    <direction>in</direction>
+                    <dataType>java.util.List</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>isNoText</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[isNoText].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[isNoText].description</description>
+                    <direction>in</direction>
+                    <dataType>Boolean</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>voucherAdjustReasonEnum</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[voucherAdjustReasonEnum].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[voucherAdjustReasonEnum].description</description>
+                    <direction>in</direction>
+                    <dataType>Enum</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.VoucherAdjustReasonEnum</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+    </methods>
+    <resource>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].alias">
+            <lang locale="zh_CN" value="处理已作废待处理的付款拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理已作廢待處理的付款拆分" />
+            <lang locale="zh_TW" value="處理已作廢待處理的付款拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].description">
+            <lang locale="zh_CN" value="处理已作废待处理的付款拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理已作廢待處理的付款拆分" />
+            <lang locale="zh_TW" value="處理已作廢待處理的付款拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].alias">
+            <lang locale="zh_CN" value="拆分合同下付款单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="拆分合同下付款單" />
+            <lang locale="zh_TW" value="拆分合同下付款單" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].description">
+            <lang locale="zh_CN" value="拆分合同下付款单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="拆分合同下付款單" />
+            <lang locale="zh_TW" value="拆分合同下付款單" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[contractID].alias">
+            <lang locale="zh_CN" value="合同id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同id" />
+            <lang locale="zh_TW" value="合同id" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[contractID].description">
+            <lang locale="zh_CN" value="合同id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同id" />
+            <lang locale="zh_TW" value="合同id" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[paymentBill].alias">
+            <lang locale="zh_CN" value="付款单集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款單集合" />
+            <lang locale="zh_TW" value="付款單集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitContract].parameters.parameter[paymentBill].description">
+            <lang locale="zh_CN" value="付款单集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款單集合" />
+            <lang locale="zh_TW" value="付款單集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].alias">
+            <lang locale="zh_CN" value="拆分财务类付款" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="拆分財務類付款" />
+            <lang locale="zh_TW" value="拆分財務類付款" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].description">
+            <lang locale="zh_CN" value="拆分财务类付款 " />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="拆分財務類付款 " />
+            <lang locale="zh_TW" value="拆分財務類付款 " />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].parameters.parameter[model].alias">
+            <lang locale="zh_CN" value="财务类付款拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="財務類付款拆分" />
+            <lang locale="zh_TW" value="財務類付款拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitNoCostPayment].parameters.parameter[model].description">
+            <lang locale="zh_CN" value="财务类付款拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="財務類付款拆分" />
+            <lang locale="zh_TW" value="財務類付款拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].alias">
+            <lang locale="zh_CN" value="拆分付款" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="拆分付款" />
+            <lang locale="zh_TW" value="拆分付款" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].description">
+            <lang locale="zh_CN" value="拆分付款" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="拆分付款" />
+            <lang locale="zh_TW" value="拆分付款" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].parameters.parameter[model].alias">
+            <lang locale="zh_CN" value="成本付款拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="成本付款拆分" />
+            <lang locale="zh_TW" value="成本付款拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[splitPayment].parameters.parameter[model].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].alias">
+            <lang locale="zh_CN" value="合同出调整凭证" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同出調整憑證" />
+            <lang locale="zh_TW" value="合同出調整憑證" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].description">
+            <lang locale="zh_CN" value="合同出调整凭证" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同出調整憑證" />
+            <lang locale="zh_TW" value="合同出調整憑證" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[idList].alias">
+            <lang locale="zh_CN" value="合同IDS" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同IDS" />
+            <lang locale="zh_TW" value="合同IDS" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[idList].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[isNoText].alias">
+            <lang locale="zh_CN" value="是否无文本合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否無文本合同" />
+            <lang locale="zh_TW" value="是否無文本合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[isNoText].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[voucherAdjustReasonEnum].alias">
+            <lang locale="zh_CN" value="调整凭证类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="調整憑證類型" />
+            <lang locale="zh_TW" value="調整憑證類型" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceAdjustContracts].parameters.parameter[voucherAdjustReasonEnum].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].alias">
+            <lang locale="zh_CN" value="无文本合同Id集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="無文本合同Id集合" />
+            <lang locale="zh_TW" value="無文本合同Id集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].description">
+            <lang locale="zh_CN" value="无文本合同Id集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="無文本合同Id集合" />
+            <lang locale="zh_TW" value="無文本合同Id集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].parameters.parameter[idList].alias">
+            <lang locale="zh_CN" value="id集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="id集合" />
+            <lang locale="zh_TW" value="id集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContractNoText].parameters.parameter[idList].description">
+            <lang locale="zh_CN" value="id集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="id集合" />
+            <lang locale="zh_TW" value="id集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].alias">
+            <lang locale="zh_CN" value="处理多个合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理多個合同" />
+            <lang locale="zh_TW" value="處理多個合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].description">
+            <lang locale="zh_CN" value="处理多个合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理多個合同" />
+            <lang locale="zh_TW" value="處理多個合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].parameters.parameter[idList].alias">
+            <lang locale="zh_CN" value="合同id集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同id集合" />
+            <lang locale="zh_TW" value="合同id集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceContracts].parameters.parameter[idList].description">
+            <lang locale="zh_CN" value="合同id集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同id集合" />
+            <lang locale="zh_TW" value="合同id集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].alias">
+            <lang locale="zh_CN" value="待处理合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="待處理合同" />
+            <lang locale="zh_TW" value="待處理合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].description">
+            <lang locale="zh_CN" value="待处理合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="待處理合同" />
+            <lang locale="zh_TW" value="待處理合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].parameters.parameter[contractID].alias">
+            <lang locale="zh_CN" value="合同id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同id" />
+            <lang locale="zh_TW" value="合同id" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.TraceOldSplitVoucherFacade].methods.method[traceSplitVoucher].parameters.parameter[contractID].description">
+            <lang locale="zh_CN" value="合同id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同id" />
+            <lang locale="zh_TW" value="合同id" />
+        </rs>
+    </resource>
+</facade>
+

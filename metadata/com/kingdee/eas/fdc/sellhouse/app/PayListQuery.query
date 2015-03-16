@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.sellhouse.app</package>
+    <name>PayListQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>PurchasePayListEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].subObjects.subEntity[PurchasePayListEntry].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PurchasePayListEntry" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>moneyDefine</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].subObjects.subEntity[moneyDefine].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="MoneyDefine" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>head</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].subObjects.subEntity[head].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Purchase" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <propertyUnit>
+            <name>a6c89c2b-f5bf-4965-a723-d99ff67d371f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[a6c89c2b-f5bf-4965-a723-d99ff67d371f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2773c59f-7998-4947-a018-07a31f4e6343</key>
+                    <parentUnit>
+                        <key name="name" value="a6c89c2b-f5bf-4965-a723-d99ff67d371f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="moneyDefine" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>7c169229-c429-4bc1-9400-2fb6d120ba21</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[7c169229-c429-4bc1-9400-2fb6d120ba21].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8b38e77d-6e3e-4bf5-8db4-391162e7537b</key>
+                    <parentUnit>
+                        <key name="name" value="7c169229-c429-4bc1-9400-2fb6d120ba21" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>term</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[term].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b56bee00-fb84-477e-97b7-d04e4f13e105</key>
+                    <parentUnit>
+                        <key name="name" value="term" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="term" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>monthInterval</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[monthInterval].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>49e37d49-17d6-4848-b60e-7ae9ef4fa7ea</key>
+                    <parentUnit>
+                        <key name="name" value="monthInterval" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="monthInterval" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>payDateByMonth</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[payDateByMonth].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b66ad667-065f-49e1-ac51-33cd6e44b565</key>
+                    <parentUnit>
+                        <key name="name" value="payDateByMonth" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="payDateByMonth" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>description</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[description].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9583b316-12c1-48ed-8592-723fb652b08f</key>
+                    <parentUnit>
+                        <key name="name" value="description" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="description" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>99535feb-b88f-4e64-84ae-945812b46245</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>moneyDefine.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b3652b71-8119-4472-bdb5-eb37dc90b927</key>
+                    <parentUnit>
+                        <key name="name" value="moneyDefine.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>moneyDefine.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a0fc058-df6d-41c2-a28d-c84e11cc711b</key>
+                    <parentUnit>
+                        <key name="name" value="moneyDefine.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>moneyDefine.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6a953784-1b46-4ab2-a8ff-17f8c7a635a9</key>
+                    <parentUnit>
+                        <key name="name" value="moneyDefine.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>cf9527ab-e9c0-47e8-b3a7-6518e3804251</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[cf9527ab-e9c0-47e8-b3a7-6518e3804251].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2e51ba22-0815-426f-95d9-10704ab36b54</key>
+                    <parentUnit>
+                        <key name="name" value="cf9527ab-e9c0-47e8-b3a7-6518e3804251" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="head" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>3e83158b-0053-44ed-9e3e-4c7528288da6</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[3e83158b-0053-44ed-9e3e-4c7528288da6].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>cc54a551-d718-495f-8db9-598417912d08</key>
+                    <parentUnit>
+                        <key name="name" value="3e83158b-0053-44ed-9e3e-4c7528288da6" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="head" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>head.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[head.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3532e718-a050-45d9-9044-ea8e45fc4ffd</key>
+                    <parentUnit>
+                        <key name="name" value="head.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="head" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>seq</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[seq].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ff5ef544-ee75-4723-a889-a6ef549e1cc4</key>
+                    <parentUnit>
+                        <key name="name" value="seq" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="seq" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>upperApAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>''</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[upperApAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>appAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[appAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>96ea08b3-2c27-46e9-adbe-76fbb4e562a3</key>
+                    <parentUnit>
+                        <key name="name" value="appAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="appAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>appDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[appDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c7247f23-ebc6-436f-893e-2097a7a15329</key>
+                    <parentUnit>
+                        <key name="name" value="appDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="appDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>actRevAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[actRevAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>98d5bb4c-351b-4da9-b9d5-5b98745f97fb</key>
+                    <parentUnit>
+                        <key name="name" value="actRevAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actRevAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>actRevDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[actRevDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5fc6e002-ba49-4ded-8cf9-d4d57c4c2f7b</key>
+                    <parentUnit>
+                        <key name="name" value="actRevDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PurchasePayListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actRevDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+            <key name="name" value="PayListQuery" />
+        </query>
+    </defaultFilter>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>47de3e8c-f068-48b1-ba13-a2aa8bd4a533</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PurchasePayListEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="moneyDefine" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>155f8c30-a091-4a65-8dc9-bf473501414a</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="a6c89c2b-f5bf-4965-a723-d99ff67d371f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="7c169229-c429-4bc1-9400-2fb6d120ba21" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="47de3e8c-f068-48b1-ba13-a2aa8bd4a533" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </join>
+        <join>
+            <name>92bc7084-01aa-417b-90c9-bd4fb6baa5c7</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PurchasePayListEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="head" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>e6a68152-7c19-45e2-9a8b-293c37954d95</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="cf9527ab-e9c0-47e8-b3a7-6518e3804251" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="3e83158b-0053-44ed-9e3e-4c7528288da6" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="92bc7084-01aa-417b-90c9-bd4fb6baa5c7" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PayListQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="(已禁用)認購單應收明細" />
+            <lang locale="zh_HK" value="(已禁用)認購單應收明細" />
+            <lang locale="zh_CN" value="(已禁用)认购单应收明细" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].description">
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].subObjects.subEntity[PurchasePayListEntry].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].subObjects.subEntity[head].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].subObjects.subEntity[moneyDefine].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[3e83158b-0053-44ed-9e3e-4c7528288da6].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[7c169229-c429-4bc1-9400-2fb6d120ba21].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[a6c89c2b-f5bf-4965-a723-d99ff67d371f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.propertyUnit[cf9527ab-e9c0-47e8-b3a7-6518e3804251].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[actRevAmount].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="實收金額" />
+            <lang locale="zh_HK" value="實收金額" />
+            <lang locale="zh_CN" value="实收金额" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[actRevDate].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="實收日期" />
+            <lang locale="zh_HK" value="實收日期" />
+            <lang locale="zh_CN" value="实收日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[appAmount].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="應收金額" />
+            <lang locale="zh_HK" value="應收金額" />
+            <lang locale="zh_CN" value="应收金额" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[appDate].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="應收日期" />
+            <lang locale="zh_HK" value="應收日期" />
+            <lang locale="zh_CN" value="应收日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[description].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="描述" />
+            <lang locale="zh_HK" value="描述" />
+            <lang locale="zh_CN" value="描述" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[description].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[description].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[head.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="明細表中的認購單ID" />
+            <lang locale="zh_HK" value="明細表中的認購單ID" />
+            <lang locale="zh_CN" value="明细表中的认购单ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[head.id].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[head.id].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="付款明細分錄ID" />
+            <lang locale="zh_HK" value="付款明細分錄ID" />
+            <lang locale="zh_CN" value="付款明细分录ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="款項類型ID" />
+            <lang locale="zh_HK" value="款項類型ID" />
+            <lang locale="zh_CN" value="款项类型ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.id].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.id].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="款項名稱" />
+            <lang locale="zh_HK" value="款項名稱" />
+            <lang locale="zh_CN" value="款项名称" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.number].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="款項編碼" />
+            <lang locale="zh_HK" value="款項編碼" />
+            <lang locale="zh_CN" value="款项编码" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[moneyDefine.number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[monthInterval].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="間隔月數" />
+            <lang locale="zh_HK" value="間隔月數" />
+            <lang locale="zh_CN" value="间隔月数" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[monthInterval].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[monthInterval].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[payDateByMonth].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="每月付款日" />
+            <lang locale="zh_HK" value="每月付款日" />
+            <lang locale="zh_CN" value="每月付款日" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[payDateByMonth].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[payDateByMonth].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[seq].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="序號" />
+            <lang locale="zh_HK" value="序號" />
+            <lang locale="zh_CN" value="序号" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[term].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="分期" />
+            <lang locale="zh_HK" value="分期" />
+            <lang locale="zh_CN" value="分期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[term].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[term].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[upperApAmount].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="大寫應付金額" />
+            <lang locale="zh_HK" value="大寫應付金額" />
+            <lang locale="zh_CN" value="大写应付金额" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[upperApAmount].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.PayListQuery].units.queryField[upperApAmount].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+    </resource>
+</joinQuery>
+

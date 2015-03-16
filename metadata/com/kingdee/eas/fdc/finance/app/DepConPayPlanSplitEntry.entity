@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.finance.app</package>
+    <name>DepConPayPlanSplitEntry</name>
+    <alias>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].description</description>
+    <userDefined>false</userDefined>
+    <bosType>339A63A7</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.finance.DepConPayPlanSplitEntry</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntryController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+        <key name="name" value="FDCSplitBillEntry" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+        <key name="name" value="T_FNC_DepConPayPlanSplitEntry" />
+    </table>
+    <properties>
+        <linkProperty>
+            <name>parent</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[parent].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[parent].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FParentID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="R_DepConPayPlanSplitBill_Entry_X" />
+            </relationship>
+        </linkProperty>
+        <linkProperty>
+            <name>items</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[items].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[items].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="R_DepConPayPlanSplitEntry_Item_Y" />
+            </relationship>
+        </linkProperty>
+        <linkProperty>
+            <name>payPlanEntry</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[payPlanEntry].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[payPlanEntry].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FPayPlanEntryID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="R_PayPlanSplitEntry_PayPlanEntry_W" />
+            </relationship>
+        </linkProperty>
+        <ownProperty>
+            <name>isUnsettledCon</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.ownProperty[isUnsettledCon].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.ownProperty[isUnsettledCon].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>Boolean</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.ownProperty[isUnsettledCon].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FIsUnsettledCon" />
+            </mappingField>
+        </ownProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>false</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].alias">
+            <lang locale="zh_CN" value="部门合同付款计划拆分分录" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="部門合同付款計畫拆分分錄" />
+            <lang locale="zh_TW" value="部門合同付款計畫拆分分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].description">
+            <lang locale="zh_CN" value="部门合同付款计划拆分分录" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="部門合同付款計畫拆分分錄" />
+            <lang locale="zh_TW" value="部門合同付款計畫拆分分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].logicalKey[id].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].logicalKey[id].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[items].alias">
+            <lang locale="zh_CN" value="条目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="條目" />
+            <lang locale="zh_TW" value="條目" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[items].description">
+            <lang locale="zh_CN" value="条目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="條目" />
+            <lang locale="zh_TW" value="條目" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[parent].alias">
+            <lang locale="zh_CN" value="头" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="頭" />
+            <lang locale="zh_TW" value="頭" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[parent].description">
+            <lang locale="zh_CN" value="头" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="頭" />
+            <lang locale="zh_TW" value="頭" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[payPlanEntry].alias">
+            <lang locale="zh_CN" value="对应付款计划分录" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="對應付款計畫分錄" />
+            <lang locale="zh_TW" value="對應付款計畫分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.linkProperty[payPlanEntry].description">
+            <lang locale="zh_CN" value="对应付款计划分录" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="對應付款計畫分錄" />
+            <lang locale="zh_TW" value="對應付款計畫分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.ownProperty[isUnsettledCon].alias">
+            <lang locale="zh_CN" value="是否是待签订合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否是待簽訂合同" />
+            <lang locale="zh_TW" value="是否是待簽訂合同" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.ownProperty[isUnsettledCon].defaultValue">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.DepConPayPlanSplitEntry].properties.ownProperty[isUnsettledCon].description">
+            <lang locale="zh_CN" value="是否是待签订合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否是待簽訂合同" />
+            <lang locale="zh_TW" value="是否是待簽訂合同" />
+        </rs>
+    </resource>
+</entityObject>
+

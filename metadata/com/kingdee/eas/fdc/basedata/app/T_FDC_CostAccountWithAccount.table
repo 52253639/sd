@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.basedata.app</package>
+    <name>T_FDC_CostAccountWithAccount</name>
+    <alias>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+        <column>
+            <name>FCostAccountID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FCostAccountID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FCostAccountID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FAccountID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FAccountID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FAccountID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FDescription</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FDescription].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FDescription].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>true</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>NVARCHAR</sqlType>
+            <length>255</length>
+            <scale>0</scale>
+            <precision>255</precision>
+        </column>
+        <column>
+            <name>FInvoiceAccountID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FInvoiceAccountID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FInvoiceAccountID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_FDC_CostAWithA</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType>ASC</sortType>
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>FK_FDC_CostAWCostA</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="T_FDC_CostAccount" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FCostAccountID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+        <foreignKey>
+            <name>FK_FDC_CostAWAccou</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.basedata.master.account" />
+                <key name="name" value="T_BD_AccountView" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FAccountID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].alias">
+            <lang locale="zh_CN" value="成本科目与会计科目关系表" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="成本科目與會計科目關係表" />
+            <lang locale="zh_TW" value="成本科目與會計科目關係表" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FAccountID].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FAccountID].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FCostAccountID].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FCostAccountID].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FDescription].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FDescription].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FID].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FID].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FInvoiceAccountID].alias">
+            <lang locale="zh_CN" value="发票科目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="發票科目" />
+            <lang locale="zh_TW" value="發票科目" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].columns.column[FInvoiceAccountID].description">
+            <lang locale="zh_CN" value="发票科目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="發票科目" />
+            <lang locale="zh_TW" value="發票科目" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.basedata.app.T_FDC_CostAccountWithAccount].description">
+            <lang locale="zh_CN" value="成本科目与会计科目关系表" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="成本科目與會計科目關係表" />
+            <lang locale="zh_TW" value="成本科目與會計科目關係表" />
+        </rs>
+    </resource>
+</dataTable>
+

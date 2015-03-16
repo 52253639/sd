@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.contract.app</package>
+    <name>GuerdonBilQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>GuerdonBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[GuerdonBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBill" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>currency</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[currency].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.assistant.app" />
+                <key name="name" value="Currency" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>contract</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[contract].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBill" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>contractType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[contractType].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="ContractType" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>orgUnit</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[orgUnit].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-008bc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contract.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-027fc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="contract.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contract.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0280c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="contract.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-007cc0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-007cc0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0084c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-007cc0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="currency" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-007dc0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-007dc0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0085c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-007dc0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="currency" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0080c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0080c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0086c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0080c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0081c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0081c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0087c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0081c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0090c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0089c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>amount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[amount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-008ac0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="amount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="amount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isGuerdoned</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[isGuerdoned].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-008cc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="isGuerdoned" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isGuerdoned" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>putOutType</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[putOutType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-008dc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="putOutType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="putOutType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>guerdonThings</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[guerdonThings].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-008ec0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="guerdonThings" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="guerdonThings" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>guerdonDes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[guerdonDes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-008fc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="guerdonDes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="guerdonDes" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0088c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0091c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0092c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0093c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0093c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0097c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0093c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contract" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0094c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0094c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0098c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0094c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>contract.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0099c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="contract.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>currency.name</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-009ac0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="currency.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="currency" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-027bc0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-027bc0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-027dc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-027bc0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-027cc0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-027cc0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-027ec0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-027cc0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0281c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0282c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-0562c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0562c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0564c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0562c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contractType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-0563c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0563c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0565c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0563c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>contractType.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contractType.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0566c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="contractType.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-0736c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0736c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0738c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0736c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GuerdonBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="orgUnit" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-0737c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0737c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0739c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0737c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="orgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>orgUnit.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[orgUnit.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-073ac0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="orgUnit.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="orgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+            <key name="name" value="GuerdonBilQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>2f044fc7-0117-1000-e000-007fc0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="GuerdonBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="currency" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-007ec0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-007cc0a81297" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-007dc0a81297" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-007fc0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </join>
+        <join>
+            <name>2f044fc7-0117-1000-e000-0083c0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="GuerdonBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-0082c0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0080c0a81297" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0081c0a81297" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0083c0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </join>
+        <join>
+            <name>2f044fc7-0117-1000-e000-0096c0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="GuerdonBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="contract" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-0095c0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0093c0a81297" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0094c0a81297" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0096c0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-0214c0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="GuerdonBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-0213c0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-027bc0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-027cc0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0214c0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-0474c0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="contract" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="contractType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-0473c0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0562c0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0563c0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0474c0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-069fc0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="GuerdonBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="orgUnit" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-069ec0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0736c0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0737c0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-069fc0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="GuerdonBilQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="奖励单" />
+            <lang locale="zh_TW" value="獎勵單" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].queryPK[QueryPK].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].queryPK[QueryPK].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[GuerdonBill].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[contractType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[contract].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[creator].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[currency].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].subObjects.subEntity[orgUnit].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-007cc0a81297].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-007dc0a81297].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0080c0a81297].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0081c0a81297].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0093c0a81297].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0094c0a81297].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-027bc0a8129f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-027cc0a8129f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0562c0a8129f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0563c0a8129f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0736c0a8129f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0737c0a8129f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[amount].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="金额" />
+            <lang locale="zh_TW" value="金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[amount].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[amount].extendedProperty.isSumField">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[auditTime].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="审批时间" />
+            <lang locale="zh_TW" value="審批時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[auditor.name].displayName">
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同名称" />
+            <lang locale="zh_TW" value="合同名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.number].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同编号" />
+            <lang locale="zh_TW" value="合同編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.number].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contract.number].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[contractType.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同类型" />
+            <lang locale="zh_TW" value="合同類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[createTime].displayName">
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_CN" value="制单时间" />
+            <lang locale="zh_TW" value="制單時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[creator.name].displayName">
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="制单人" />
+            <lang locale="zh_TW" value="制單人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[creator.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[creator.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[creator.name].extendedProperty.isUsingF7">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="币别" />
+            <lang locale="zh_TW" value="幣別" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].extendedProperty.defaultF7Query">
+            <lang locale="en_US" value="com.kingdee.eas.basedata.assistant.app.CurrencyQuery" />
+            <lang locale="zh_CN" value="com.kingdee.eas.basedata.assistant.app.CurrencyQuery" />
+            <lang locale="zh_TW" value="com.kingdee.eas.basedata.assistant.app.CurrencyQuery" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].extendedProperty.displayFormat">
+            <lang locale="en_US" value="$name$" />
+            <lang locale="zh_CN" value="$name$" />
+            <lang locale="zh_TW" value="$name$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].extendedProperty.editFormat">
+            <lang locale="en_US" value="$name$" />
+            <lang locale="zh_CN" value="$name$" />
+            <lang locale="zh_TW" value="$name$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[currency.name].extendedProperty.isUsingF7">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[guerdonDes].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="奖励事由描述" />
+            <lang locale="zh_TW" value="獎勵事由描述" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[guerdonDes].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[guerdonThings].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="奖励事项" />
+            <lang locale="zh_TW" value="獎勵事項" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[guerdonThings].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[isGuerdoned].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否已奖励" />
+            <lang locale="zh_TW" value="是否已獎勵" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[isGuerdoned].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="奖励单名称" />
+            <lang locale="zh_TW" value="獎勵單名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[number].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="奖励单编号" />
+            <lang locale="zh_TW" value="獎勵單編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[orgUnit.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="组织名称" />
+            <lang locale="zh_TW" value="組織名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[putOutType].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="发放方式" />
+            <lang locale="zh_TW" value="發放方式" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[state].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[state].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.GuerdonBilQuery].units.queryField[state].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+    </resource>
+</joinQuery>
+

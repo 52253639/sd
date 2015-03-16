@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facade xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.basedata.app</package>
+    <name>FDCBillFacade</name>
+    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].alias</alias>
+    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].description</description>
+    <userDefined>false</userDefined>
+    <bosType>5138CB14</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.basedata.FDCBillFacade</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.basedata.app.FDCBillFacadeController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <methods>
+        <method>
+            <name>autoChangeSettle</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].description</description>
+            <innerID>436bd8c0-0117-1000-e000-0003c0a81296</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>abstract</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>settleId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[settleId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[settleId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>isAll</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[isAll].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[isAll].description</description>
+                    <direction>in</direction>
+                    <dataType>Boolean</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>execAction</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].description</description>
+            <innerID>3a8908a5-0118-1000-e000-0002c0a81296</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>java.lang.Object</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>param</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].parameters.parameter[param].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].parameters.parameter[param].description</description>
+                    <direction>in</direction>
+                    <dataType>java.util.Map</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+        </method>
+        <method>
+            <name>autoPropSplit</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].description</description>
+            <innerID>9405bd5f-0119-1000-e000-0058c0a812a0</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>ObjectValue</returnValueType>
+            <metadataRef>com.kingdee.eas.fdc.basedata.app.FDCSplitBill</metadataRef>
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>type</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[type].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[type].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>dataMap</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[dataMap].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[dataMap].description</description>
+                    <direction>in</direction>
+                    <dataType>java.util.Map</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>setBillAudited4wf</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].description</description>
+            <innerID>e889b1d8-2494-4863-a521-71973f4cb05a</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>billId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].parameters.parameter[billId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].parameters.parameter[billId].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>setBillAudited4wf2</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].description</description>
+            <innerID>ccc0bfc5-71be-4498-af52-d96f4f1d9f3f</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>billId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[billId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[billId].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>auditorId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[auditorId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[auditorId].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>setBillAuditing4wf2</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].description</description>
+            <innerID>a35cbf29-fcfa-42f4-9f1f-9e5fce6b520b</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>billId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[billId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[billId].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>auditorId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[auditorId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[auditorId].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>dealSaveAboutConChange</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].description</description>
+            <innerID>0389cb9f-4d25-4bff-aff4-f9ea80082081</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>settleId</name>
+                    <alias>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].parameters.parameter[settleId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].parameters.parameter[settleId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+    </methods>
+    <resource>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].alias">
+            <lang locale="zh_CN" value="房地产单据门面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房地產單據門面" />
+            <lang locale="zh_TW" value="房地產單據門面" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].description">
+            <lang locale="zh_CN" value="房地产单据门面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房地產單據門面" />
+            <lang locale="zh_TW" value="房地產單據門面" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].alias">
+            <lang locale="zh_CN" value="自动变更结算" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="自動變更結算" />
+            <lang locale="zh_TW" value="自動變更結算" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].description">
+            <lang locale="zh_CN" value="自动变更结算" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="自動變更結算" />
+            <lang locale="zh_TW" value="自動變更結算" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[isAll].alias">
+            <lang locale="zh_CN" value="是否包含已变更结算的更单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否包含已變更結算的更單" />
+            <lang locale="zh_TW" value="是否包含已變更結算的更單" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[isAll].description">
+            <lang locale="zh_CN" value="是否包含已变更结算的更单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否包含已變更結算的更單" />
+            <lang locale="zh_TW" value="是否包含已變更結算的更單" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[settleId].alias">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoChangeSettle].parameters.parameter[settleId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].alias">
+            <lang locale="zh_CN" value="自动比例拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="自動比例拆分" />
+            <lang locale="zh_TW" value="自動比例拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].description">
+            <lang locale="zh_CN" value="自动比例拆分" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="自動比例拆分" />
+            <lang locale="zh_TW" value="自動比例拆分" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[dataMap].alias">
+            <lang locale="zh_CN" value="数据集合" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="數據集合" />
+            <lang locale="zh_TW" value="數據集合" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[dataMap].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[type].alias">
+            <lang locale="zh_CN" value="类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="類型" />
+            <lang locale="zh_TW" value="類型" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[autoPropSplit].parameters.parameter[type].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].parameters.parameter[settleId].alias">
+            <lang locale="zh_CN" value="结算单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="結算單ID" />
+            <lang locale="zh_TW" value="結算單ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[dealSaveAboutConChange].parameters.parameter[settleId].description">
+            <lang locale="zh_CN" value="结算单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="結算單ID" />
+            <lang locale="zh_TW" value="結算單ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].alias">
+            <lang locale="zh_CN" value="执行操作" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="執行操作" />
+            <lang locale="zh_TW" value="執行操作" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].description">
+            <lang locale="zh_CN" value="通用执行操作程序" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="通用執行操作程式" />
+            <lang locale="zh_TW" value="通用執行操作程式" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].parameters.parameter[param].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[execAction].parameters.parameter[param].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].alias">
+            <lang locale="zh_CN" value="设置单据已审批指定审批人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="設置單據已審批指定審批人" />
+            <lang locale="zh_TW" value="設置單據已審批指定審批人" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].description">
+            <lang locale="zh_CN" value="设置单据已审批指定审批人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="設置單據已審批指定審批人" />
+            <lang locale="zh_TW" value="設置單據已審批指定審批人" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[auditorId].alias">
+            <lang locale="zh_CN" value="审批人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[auditorId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[billId].alias">
+            <lang locale="zh_CN" value="单据ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據ID" />
+            <lang locale="zh_TW" value="單據ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf2].parameters.parameter[billId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].alias">
+            <lang locale="zh_CN" value="设置单据已审批" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="設置單據已審批" />
+            <lang locale="zh_TW" value="設置單據已審批" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].description">
+            <lang locale="zh_CN" value="设置单据已审批" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="設置單據已審批" />
+            <lang locale="zh_TW" value="設置單據已審批" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].parameters.parameter[billId].alias">
+            <lang locale="zh_CN" value="单据Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據Id" />
+            <lang locale="zh_TW" value="單據Id" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAudited4wf].parameters.parameter[billId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].alias">
+            <lang locale="zh_CN" value="设置单据审批中指定审批人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="設置單據審批中指定審批人" />
+            <lang locale="zh_TW" value="設置單據審批中指定審批人" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].description">
+            <lang locale="zh_CN" value="设置单据审批中指定审批人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="設置單據審批中指定審批人" />
+            <lang locale="zh_TW" value="設置單據審批中指定審批人" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[auditorId].alias">
+            <lang locale="zh_CN" value="审批人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[auditorId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[billId].alias">
+            <lang locale="zh_CN" value="单据Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據Id" />
+            <lang locale="zh_TW" value="單據Id" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.basedata.app.FDCBillFacade].methods.method[setBillAuditing4wf2].parameters.parameter[billId].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+    </resource>
+</facade>
+

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.finance.app</package>
+    <name>MonthEntry</name>
+    <alias>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].description</description>
+    <userDefined>false</userDefined>
+    <bosType>D66B4421</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.finance.MonthEntry</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.finance.app.MonthEntryController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.framework.app" />
+        <key name="name" value="CoreBillEntryBase" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+        <key name="name" value="T_FNC_MonthEntry" />
+    </table>
+    <properties>
+        <ownProperty>
+            <name>month</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[month].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[month].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>Date</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[month].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FMonth" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>investValue</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[investValue].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[investValue].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>BigDecimal</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>28</length>
+            <precision>28</precision>
+            <decimalDigits>13</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[investValue].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FInvestValue" />
+            </mappingField>
+        </ownProperty>
+        <linkProperty>
+            <name>parent</name>
+            <alias>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.linkProperty[parent].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.linkProperty[parent].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FParentID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="R_ProjectInvestPlanEntry_MonthEntry_mothEntry" />
+            </relationship>
+        </linkProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>false</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].alias">
+            <lang locale="zh_CN" value="投资计划月份表" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="投資計畫月份表" />
+            <lang locale="zh_TW" value="投資計畫月份表" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].logicalKey[id].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].logicalKey[id].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.linkProperty[parent].alias">
+            <lang locale="zh_CN" value="所属分录" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="所屬分錄" />
+            <lang locale="zh_TW" value="所屬分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.linkProperty[parent].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[investValue].alias">
+            <lang locale="zh_CN" value="投资额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="投資額" />
+            <lang locale="zh_TW" value="投資額" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[investValue].defaultValue">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[investValue].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[month].alias">
+            <lang locale="zh_CN" value="月份" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="月份" />
+            <lang locale="zh_TW" value="月份" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[month].defaultValue">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.finance.app.MonthEntry].properties.ownProperty[month].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+    </resource>
+</entityObject>
+

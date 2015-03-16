@@ -1,0 +1,2257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.contract.app</package>
+    <name>CompensationBillQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>CompensationBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[CompensationBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBill" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>compensationType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[compensationType].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CounterclaimType" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>currency</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[currency].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.assistant.app" />
+                <key name="name" value="Currency" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>contract</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[contract].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBill" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>period</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[period].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.assistant.app" />
+                <key name="name" value="Period" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>contractType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[contractType].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="ContractType" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>orgUnit</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[orgUnit].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-004cc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0048c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contract.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-012ec0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="contract.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contract.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-012dc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="contract.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0025c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0025c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0033c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0025c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="currency" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0026c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0026c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0034c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0026c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="currency" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-0029c0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0029c0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0035c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0029c0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contract" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-002ac0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-002ac0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0036c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002ac0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-002dc0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-002dc0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0037c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002dc0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2f044fc7-0117-1000-e000-002ec0a81297</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-002ec0a81297].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0038c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002ec0a81297" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0049c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0047c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isCompensated</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[isCompensated].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-004dc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="isCompensated" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isCompensated" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>currency.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0045c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="currency.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="currency" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>amount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[amount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-004bc0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="amount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="amount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>deductMode</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[deductMode].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0063c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="deductMode" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="deductMode" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>compensationType.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0046c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="compensationType.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="compensationType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contract.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0044c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="contract.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>hasEffected</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[hasEffected].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-004ac0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="hasEffected" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="hasEffected" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0064c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="bizDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>compensationAccording</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationAccording].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0131c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="compensationAccording" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="compensationAccording" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0043c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0065c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bookedDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[bookedDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-012fc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="bookedDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bookedDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0202c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0130c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-01a0c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01a0c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-01fec0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01a0c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-01a1c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01a1c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-01ffc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01a1c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-01fcc0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01fcc0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0200c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01fcc0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="period" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-01fdc0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01fdc0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0201c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01fdc0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="period" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-046cc0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-046cc0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-046ec0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-046cc0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contract" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contractType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-046dc0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-046dc0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-046fc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-046dc0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>contractType.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contractType.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0470c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="contractType.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-0697c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0697c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-0699c0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0697c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="orgUnit" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4a8cdfe0-0118-1000-e000-0698c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0698c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-069ac0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0698c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="orgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>orgUnit.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[orgUnit.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a8cdfe0-0118-1000-e000-069bc0a8129f</key>
+                    <parentUnit>
+                        <key name="name" value="orgUnit.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="orgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>9cc3c5b0-0118-1000-e000-0164c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[9cc3c5b0-0118-1000-e000-0164c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0031c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="9cc3c5b0-0118-1000-e000-0164c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="compensationType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9cc3c5b0-0118-1000-e000-0165c0a8129f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[9cc3c5b0-0118-1000-e000-0165c0a8129f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f044fc7-0117-1000-e000-0032c0a81297</key>
+                    <parentUnit>
+                        <key name="name" value="9cc3c5b0-0118-1000-e000-0165c0a8129f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="compensationType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>exRate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[exRate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>97428862-5c92-4786-831d-469b693232da</key>
+                    <parentUnit>
+                        <key name="name" value="exRate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="exRate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>fiVouchered</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[fiVouchered].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1f1a7620-637f-4bf9-b701-c494910d12ec</key>
+                    <parentUnit>
+                        <key name="name" value="fiVouchered" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="fiVouchered" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>originalAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[originalAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>952d95a7-32f0-4287-8e92-489ce18ba8fd</key>
+                    <parentUnit>
+                        <key name="name" value="originalAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="originalAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>moneyDes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[moneyDes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>697e427a-6f93-4823-bb6c-52443cacbf88</key>
+                    <parentUnit>
+                        <key name="name" value="moneyDes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="moneyDes" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>breachFaichDes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[breachFaichDes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>60b23679-e57e-464c-962a-24e1300617a9</key>
+                    <parentUnit>
+                        <key name="name" value="breachFaichDes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="breachFaichDes" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>otherDes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[otherDes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>82bda6e7-e075-48a8-857e-6e57405e6617</key>
+                    <parentUnit>
+                        <key name="name" value="otherDes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="CompensationBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="otherDes" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+            <key name="name" value="CompensationBillQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>2f044fc7-0117-1000-e000-0024c0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="compensationType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-0023c0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9cc3c5b0-0118-1000-e000-0164c0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="9cc3c5b0-0118-1000-e000-0165c0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0024c0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>2f044fc7-0117-1000-e000-0028c0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="currency" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-0027c0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0025c0a81297" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0026c0a81297" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0028c0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>2f044fc7-0117-1000-e000-002cc0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="contract" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-002bc0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0029c0a81297" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002ac0a81297" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002cc0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>2f044fc7-0117-1000-e000-0030c0a81297</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2f044fc7-0117-1000-e000-002fc0a81297</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002dc0a81297" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2f044fc7-0117-1000-e000-002ec0a81297" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2f044fc7-0117-1000-e000-0030c0a81297" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-0135c0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-0134c0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01a0c0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01a1c0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0135c0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-0139c0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="period" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-0138c0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01fcc0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-01fdc0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0139c0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-037ec0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="contract" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="contractType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-037dc0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-046cc0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-046dc0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-037ec0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4a8cdfe0-0118-1000-e000-0600c0a8129f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="CompensationBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="orgUnit" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4a8cdfe0-0118-1000-e000-05ffc0a8129f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0697c0a8129f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0698c0a8129f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4a8cdfe0-0118-1000-e000-0600c0a8129f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="CompensationBillQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].alias">
+            <lang locale="zh_CN" value="违约金信息" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約金信息" />
+            <lang locale="zh_TW" value="違約金信息" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].description">
+            <lang locale="zh_CN" value="违约金信息" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約金信息" />
+            <lang locale="zh_TW" value="違約金信息" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[CompensationBill].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[compensationType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[contractType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[contract].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[currency].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[orgUnit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].subObjects.subEntity[period].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0025c0a81297].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0026c0a81297].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-0029c0a81297].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-002ac0a81297].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-002dc0a81297].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[2f044fc7-0117-1000-e000-002ec0a81297].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01a0c0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01a1c0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01fcc0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-01fdc0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-046cc0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-046dc0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0697c0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[4a8cdfe0-0118-1000-e000-0698c0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[9cc3c5b0-0118-1000-e000-0164c0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.propertyUnit[9cc3c5b0-0118-1000-e000-0165c0a8129f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[amount].displayName">
+            <lang locale="zh_CN" value="本位币金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="本位幣金額" />
+            <lang locale="zh_TW" value="本位幣金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[amount].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[amount].extendedProperty.isSumField">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批時間" />
+            <lang locale="zh_TW" value="審批時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="审核人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="審核人" />
+            <lang locale="zh_TW" value="審核人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[bizDate].displayName">
+            <lang locale="zh_CN" value="业务日期" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="業務日期" />
+            <lang locale="zh_TW" value="業務日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[bookedDate].displayName">
+            <lang locale="zh_CN" value="业务记录日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="業務記錄日期" />
+            <lang locale="zh_TW" value="業務記錄日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[breachFaichDes].displayName">
+            <lang locale="zh_CN" value="违约描述" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約描述" />
+            <lang locale="zh_TW" value="違約描述" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationAccording].displayName">
+            <lang locale="zh_CN" value="违约依据" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約依據" />
+            <lang locale="zh_TW" value="違約依據" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationAccording].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].displayName">
+            <lang locale="zh_CN" value="违约类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約類型" />
+            <lang locale="zh_TW" value="違約類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.defaultF7Query">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.basedata.app.CounterclaimTypeQuery" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.basedata.app.CounterclaimTypeQuery" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.basedata.app.CounterclaimTypeQuery" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.displayFormat">
+            <lang locale="zh_CN" value="$name$" />
+            <lang locale="zh_TW" value="$name$" />
+            <lang locale="en_US" value="$name$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.editFormat">
+            <lang locale="zh_CN" value="$name$" />
+            <lang locale="zh_TW" value="$name$" />
+            <lang locale="en_US" value="$name$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.isSumField">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[compensationType.name].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.id].displayName">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.name].displayName">
+            <lang locale="zh_CN" value="合同名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同名稱" />
+            <lang locale="zh_TW" value="合同名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].displayName">
+            <lang locale="zh_CN" value="合同编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同編號" />
+            <lang locale="zh_TW" value="合同編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].extendedProperty.defaultF7Query">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.contract.app.ContractBillF7SimpleQuery" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.contract.app.ContractBillF7SimpleQuery" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.contract.app.ContractBillF7SimpleQuery" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].extendedProperty.displayFormat">
+            <lang locale="zh_CN" value="$number$" />
+            <lang locale="zh_TW" value="$number$" />
+            <lang locale="en_US" value="$number$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].extendedProperty.editFormat">
+            <lang locale="zh_CN" value="$number$" />
+            <lang locale="zh_TW" value="$number$" />
+            <lang locale="en_US" value="$number$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contract.number].extendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[contractType.name].displayName">
+            <lang locale="zh_CN" value="合同类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同類型" />
+            <lang locale="zh_TW" value="合同類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[createTime].displayName">
+            <lang locale="zh_CN" value="制单时间" />
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_HK" value="制單時間" />
+            <lang locale="zh_TW" value="制單時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="制单人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="制單人" />
+            <lang locale="zh_TW" value="制單人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].displayName">
+            <lang locale="zh_CN" value="币别" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="幣別" />
+            <lang locale="zh_TW" value="幣別" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].extendedProperty.defaultF7Query">
+            <lang locale="zh_CN" value="com.kingdee.eas.basedata.assistant.app.CurrencyQuery" />
+            <lang locale="zh_TW" value="com.kingdee.eas.basedata.assistant.app.CurrencyQuery" />
+            <lang locale="en_US" value="com.kingdee.eas.basedata.assistant.app.CurrencyQuery" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].extendedProperty.displayFormat">
+            <lang locale="zh_CN" value="$name$" />
+            <lang locale="zh_TW" value="$name$" />
+            <lang locale="en_US" value="$name$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].extendedProperty.editFormat">
+            <lang locale="zh_CN" value="$name$" />
+            <lang locale="zh_TW" value="$name$" />
+            <lang locale="en_US" value="$name$" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[currency.name].extendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[deductMode].displayName">
+            <lang locale="zh_CN" value="扣款方式" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="扣款方式" />
+            <lang locale="zh_TW" value="扣款方式" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[deductMode].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[exRate].displayName">
+            <lang locale="zh_CN" value="汇率" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="匯率" />
+            <lang locale="zh_TW" value="匯率" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[fiVouchered].displayName">
+            <lang locale="zh_CN" value="是否已生成凭证" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否已生成憑證" />
+            <lang locale="zh_TW" value="是否已生成憑證" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[hasEffected].displayName">
+            <lang locale="zh_CN" value="是否曾经生效" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否曾經生效" />
+            <lang locale="zh_TW" value="是否曾經生效" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[isCompensated].displayName">
+            <lang locale="zh_CN" value="是否已违约" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否已違約" />
+            <lang locale="zh_TW" value="是否已違約" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[isCompensated].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[moneyDes].displayName">
+            <lang locale="zh_CN" value="款项说明" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="款項說明" />
+            <lang locale="zh_TW" value="款項說明" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="违约金名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約金名稱" />
+            <lang locale="zh_TW" value="違約金名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="违约金编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="違約金編號" />
+            <lang locale="zh_TW" value="違約金編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[orgUnit.name].displayName">
+            <lang locale="zh_CN" value="组织名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="組織名稱" />
+            <lang locale="zh_TW" value="組織名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[originalAmount].displayName">
+            <lang locale="zh_CN" value="原币金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="原幣金額" />
+            <lang locale="zh_TW" value="原幣金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[otherDes].displayName">
+            <lang locale="zh_CN" value="其他说明" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="其他說明" />
+            <lang locale="zh_TW" value="其他說明" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[state].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.CompensationBillQuery].units.queryField[state].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+    </resource>
+</joinQuery>
+

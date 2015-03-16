@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.sellhouse.app</package>
+    <name>SHEPriceHistoryQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>SHEPriceHistoryEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[SHEPriceHistoryEntry].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryEntry" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>head</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[head].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Room" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>priceAdjustBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[priceAdjustBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PriceAdjust" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>roomPriceBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[roomPriceBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomPriceBill" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ae1ac88c-fa9a-4e58-94e0-d5c30f33327c</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomPrice</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPrice].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0f48830e-5928-4acd-ab83-d2ecdb5a6312</key>
+                    <parentUnit>
+                        <key name="name" value="roomPrice" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="roomPrice" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>buildPrice</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildPrice].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9246ff46-623e-4c8e-98f4-0f1ff1bdf8b3</key>
+                    <parentUnit>
+                        <key name="name" value="buildPrice" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="buildPrice" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isCalByRoomArea</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[isCalByRoomArea].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6d6b9b37-280e-4e29-ae0e-fe9a96a34c01</key>
+                    <parentUnit>
+                        <key name="name" value="isCalByRoomArea" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isCalByRoomArea" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>buildingArea</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildingArea].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e3ed057c-3314-4b74-bb1f-14f699869405</key>
+                    <parentUnit>
+                        <key name="name" value="buildingArea" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="buildingArea" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomArea</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomArea].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>38cceab7-e1af-4ea3-a57c-f66e037d07fa</key>
+                    <parentUnit>
+                        <key name="name" value="roomArea" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="roomArea" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>50423478-a9c3-4c4e-a62f-ff545a69383a</key>
+                    <parentUnit>
+                        <key name="name" value="bizDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>2d355428-2570-49fa-9197-6df5fffbdf3f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[2d355428-2570-49fa-9197-6df5fffbdf3f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>1399ab98-dce5-4cbd-a430-c95efaa73fe8</key>
+                    <parentUnit>
+                        <key name="name" value="2d355428-2570-49fa-9197-6df5fffbdf3f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="head" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8ae5e4f5-7893-45e2-b53a-a28e546eb461</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[8ae5e4f5-7893-45e2-b53a-a28e546eb461].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>17612820-6915-4d5c-98f3-6b9792749bbe</key>
+                    <parentUnit>
+                        <key name="name" value="8ae5e4f5-7893-45e2-b53a-a28e546eb461" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="head" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>head.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[head.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>93ec9cf7-28a3-4522-9cc5-ab3a7712de35</key>
+                    <parentUnit>
+                        <key name="name" value="head.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="head" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>priceType</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f45a8f27-dc78-482c-8937-b2803124f897</key>
+                    <parentUnit>
+                        <key name="name" value="priceType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="priceType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomPriceBill.id</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPriceBill.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>968da235-b680-474f-9439-8e1aaac27105</key>
+                    <parentUnit>
+                        <key name="name" value="roomPriceBill.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="roomPriceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>priceAdjustBill.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceAdjustBill.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b9517afe-b923-4efd-9f6c-d53dc2668a89</key>
+                    <parentUnit>
+                        <key name="name" value="priceAdjustBill.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="priceAdjustBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>4ddfaa8e-1bb8-46d6-a39f-155c8c12bb07</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[4ddfaa8e-1bb8-46d6-a39f-155c8c12bb07].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a36aa5c2-1217-40fb-baf8-68f425ff6518</key>
+                    <parentUnit>
+                        <key name="name" value="4ddfaa8e-1bb8-46d6-a39f-155c8c12bb07" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="priceAdjustBill" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>25f7a844-8d8a-4dbd-a8dd-303b941b2db1</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[25f7a844-8d8a-4dbd-a8dd-303b941b2db1].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8c32bd19-aa82-49fc-9291-a2bef74eb74a</key>
+                    <parentUnit>
+                        <key name="name" value="25f7a844-8d8a-4dbd-a8dd-303b941b2db1" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="priceAdjustBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8b954e06-1ff1-45dd-8b68-67338968442b</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[8b954e06-1ff1-45dd-8b68-67338968442b].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8b5a3e06-73d6-4f50-b0ba-8e0def4beb71</key>
+                    <parentUnit>
+                        <key name="name" value="8b954e06-1ff1-45dd-8b68-67338968442b" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="roomPriceBill" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>52378dc4-40a1-4a04-8eac-35909e3ce042</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[52378dc4-40a1-4a04-8eac-35909e3ce042].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f77e3845-b88a-40c8-b56b-ca01087afaf8</key>
+                    <parentUnit>
+                        <key name="name" value="52378dc4-40a1-4a04-8eac-35909e3ce042" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="roomPriceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>standardTotalPrice</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[standardTotalPrice].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>457b5fe4-8d68-4961-86d6-0e5b885b9a16</key>
+                    <parentUnit>
+                        <key name="name" value="standardTotalPrice" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHEPriceHistoryEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="standardTotalPrice" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+            <key name="name" value="SHEPriceHistoryQuery" />
+        </query>
+    </defaultFilter>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>579125b8-0287-4db1-9ad5-49d118a1315e</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="SHEPriceHistoryEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="head" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>caa95780-baeb-4983-875b-b9e0305a4709</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2d355428-2570-49fa-9197-6df5fffbdf3f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="8ae5e4f5-7893-45e2-b53a-a28e546eb461" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="579125b8-0287-4db1-9ad5-49d118a1315e" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </join>
+        <join>
+            <name>35adf0e7-c892-4d3d-b1bc-e91233d3f481</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="SHEPriceHistoryEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="priceAdjustBill" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>a8d13b5c-1b0e-4db4-bc71-fc3945ffd411</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4ddfaa8e-1bb8-46d6-a39f-155c8c12bb07" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="25f7a844-8d8a-4dbd-a8dd-303b941b2db1" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="35adf0e7-c892-4d3d-b1bc-e91233d3f481" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </join>
+        <join>
+            <name>ac9c417e-2cc7-497a-a857-1d608d6a8573</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="SHEPriceHistoryEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="roomPriceBill" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>611f0ae7-9c84-4bce-82ba-494f0c384214</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="8b954e06-1ff1-45dd-8b68-67338968442b" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="52378dc4-40a1-4a04-8eac-35909e3ce042" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="ac9c417e-2cc7-497a-a857-1d608d6a8573" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHEPriceHistoryQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="售樓歷史定價明細" />
+            <lang locale="zh_HK" value="售樓歷史定價明細" />
+            <lang locale="zh_CN" value="售楼历史定价明细" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].description">
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[SHEPriceHistoryEntry].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[head].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[priceAdjustBill].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].subObjects.subEntity[roomPriceBill].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[25f7a844-8d8a-4dbd-a8dd-303b941b2db1].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[2d355428-2570-49fa-9197-6df5fffbdf3f].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[4ddfaa8e-1bb8-46d6-a39f-155c8c12bb07].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[52378dc4-40a1-4a04-8eac-35909e3ce042].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[8ae5e4f5-7893-45e2-b53a-a28e546eb461].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.propertyUnit[8b954e06-1ff1-45dd-8b68-67338968442b].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[bizDate].displayName">
+            <lang locale="en_US" value="" />
+            <lang locale="zh_TW" value="業務日期" />
+            <lang locale="zh_HK" value="業務日期" />
+            <lang locale="zh_CN" value="业务日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[bizDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[bizDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildPrice].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="建築單價" />
+            <lang locale="zh_HK" value="建築單價" />
+            <lang locale="zh_CN" value="建筑单价" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildPrice].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildPrice].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildingArea].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="建築面積" />
+            <lang locale="zh_HK" value="建築面積" />
+            <lang locale="zh_CN" value="建筑面积" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildingArea].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[buildingArea].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[head.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_CN" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[head.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_CN" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[isCalByRoomArea].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="是否按套內面積計算" />
+            <lang locale="zh_HK" value="是否按套內面積計算" />
+            <lang locale="zh_CN" value="是否按套内面积计算" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[isCalByRoomArea].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[isCalByRoomArea].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceAdjustBill.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_CN" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceAdjustBill.id].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceAdjustBill.id].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceType].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="單據類型" />
+            <lang locale="zh_HK" value="單據類型" />
+            <lang locale="zh_CN" value="单据类型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceType].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[priceType].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomArea].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="套內面積" />
+            <lang locale="zh_HK" value="套內面積" />
+            <lang locale="zh_CN" value="套内面积" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomArea].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomArea].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPriceBill.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_CN" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPriceBill.id].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPriceBill.id].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPrice].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="套內單價" />
+            <lang locale="zh_HK" value="套內單價" />
+            <lang locale="zh_CN" value="套内单价" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPrice].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[roomPrice].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHEPriceHistoryQuery].units.queryField[standardTotalPrice].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_TW" value="標準總價" />
+            <lang locale="zh_HK" value="標準總價" />
+            <lang locale="zh_CN" value="标准总价" />
+        </rs>
+    </resource>
+</joinQuery>
+

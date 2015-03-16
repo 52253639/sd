@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.basedata.app</package>
+    <name>BanInformationRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>5392d5db-e31b-492a-b920-8cd5648372f9</id>
+            <parentID />
+            <source>E3.ApartmentName=E3.ApartmentNumber.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>ddad8613-60f4-4033-985a-a6c6f5c0a92d</id>
+            <parentID>5392d5db-e31b-492a-b920-8cd5648372f9</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>8c72f9b4-8cea-4d8f-a1ec-2d94d0a0b09a</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8c72f9b4-8cea-4d8f-a1ec-2d94d0a0b09a</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtE3.getCell(rowIndex,"ApartmentName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>0c64ceea-1957-485d-afb5-469e1032470b</id>
+            <parentID>5392d5db-e31b-492a-b920-8cd5648372f9</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>13602730-6230-4340-a4c3-e3131ef55111</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>cee98928-5335-4c07-bee7-de2c6a30fe76</id>
+                        <expressionID>2b7373b0-8822-47d2-8271-4948684e39fc</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>dd28c7fa-29ac-45da-8343-b507a2c956b1</id>
+                        <expressionID>1d64cd69-4799-4b2d-89df-51462b7c8bb8</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>13602730-6230-4340-a4c3-e3131ef55111</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2b7373b0-8822-47d2-8271-4948684e39fc</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>8108c390-42e9-485c-9161-8a3f3c7d781b</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8108c390-42e9-485c-9161-8a3f3c7d781b</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtE3.getCell(rowIndex,"ApartmentNumber")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1d64cd69-4799-4b2d-89df-51462b7c8bb8</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>e32aa87a-b7f6-4a62-a2e3-a9c6399c1809</id>
+            <name>E3_ApartmentName_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].actions.action[E3_ApartmentName_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].actions.action[E3_ApartmentName_ActionInfo].description</description>
+            <expressionID>5392d5db-e31b-492a-b920-8cd5648372f9</expressionID>
+        </action>
+    </actions>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].actions.action[E3_ApartmentName_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].actions.action[E3_ApartmentName_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.BanInformationRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</ruleSet>
+

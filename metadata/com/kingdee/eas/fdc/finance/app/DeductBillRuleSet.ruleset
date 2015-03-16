@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.finance.app</package>
+    <name>DeductBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>af09cf42-010d-1000-e000-0073c0a813bc</id>
+            <parentID />
+            <source>entrys.contractName=entrys.contractNumber.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0071c0a813bc</id>
+            <parentID>af09cf42-010d-1000-e000-0073c0a813bc</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>af09cf42-010d-1000-e000-0072c0a813bc</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0072c0a813bc</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"contractName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0074c0a813bc</id>
+            <parentID>af09cf42-010d-1000-e000-0073c0a813bc</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>af09cf42-010d-1000-e000-0075c0a813bc</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>af09cf42-010d-1000-e000-0078c0a813bc</id>
+                        <expressionID>af09cf42-010d-1000-e000-0076c0a813bc</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>af09cf42-010d-1000-e000-007ac0a813bc</id>
+                        <expressionID>af09cf42-010d-1000-e000-0079c0a813bc</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0075c0a813bc</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0076c0a813bc</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>af09cf42-010d-1000-e000-0077c0a813bc</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0077c0a813bc</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(IObjectValue)kdtEntrys.getCell(rowIndex,"contractNumber")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>af09cf42-010d-1000-e000-0079c0a813bc</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>af09cf42-010d-1000-e000-0070c0a813bc</id>
+            <name>entrys_contractName_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].actions.action[entrys_contractName_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].actions.action[entrys_contractName_ActionInfo].description</description>
+            <expressionID>af09cf42-010d-1000-e000-0073c0a813bc</expressionID>
+        </action>
+    </actions>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].actions.action[entrys_contractName_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性" />
+            <lang locale="zh_TW" value="攜帶字段屬性" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].actions.action[entrys_contractName_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.finance.app.DeductBillRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</ruleSet>
+

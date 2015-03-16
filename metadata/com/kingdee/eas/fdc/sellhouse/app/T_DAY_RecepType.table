@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.sellhouse.app</package>
+    <name>T_DAY_RecepType</name>
+    <alias>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FDayMainId</name>
+            <alias>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FDayMainId].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FDayMainId].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FRecptTypeId</name>
+            <alias>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FRecptTypeId].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FRecptTypeId].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FrecptCount</name>
+            <alias>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FrecptCount].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FrecptCount].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>4</precision>
+        </column>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_DayRecepType</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType>ASC</sortType>
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>FK_SHE_RecepTypeAM</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="T_DAY_MainTable" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FDayMainId" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+        <foreignKey>
+            <name>FK_SHE_RecepTEcptT</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="T_SHE_ReceptionType" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FRecptTypeId" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="接待方式每日数据表" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FDayMainId].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FDayMainId].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="主表" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FRecptTypeId].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FRecptTypeId].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FrecptCount].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="接待数量" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].columns.column[FrecptCount].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="接待数量" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.sellhouse.app.T_DAY_RecepType].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="接待方式每日数据表" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</dataTable>
+

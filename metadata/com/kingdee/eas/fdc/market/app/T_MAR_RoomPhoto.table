@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.market.app</package>
+    <name>T_MAR_RoomPhoto</name>
+    <alias>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FHeadID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FHeadID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FHeadID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FRoomTypePicData</name>
+            <alias>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FRoomTypePicData].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FRoomTypePicData].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>BLOB</sqlType>
+            <length>2097152</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FFlatTypePicData</name>
+            <alias>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FFlatTypePicData].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FFlatTypePicData].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>BLOB</sqlType>
+            <length>2097152</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_MAR_RoomPhoto</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType>ASC</sortType>
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>照片和户型对应</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.market.app" />
+                <key name="name" value="T_MAR_BoutiqueRoomType" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FHeadID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].alias">
+            <lang locale="zh_CN" value="房屋照片" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房屋照片" />
+            <lang locale="zh_TW" value="房屋照片" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FFlatTypePicData].alias">
+            <lang locale="zh_CN" value="平层类型图片数据" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="平層類型圖片數據" />
+            <lang locale="zh_TW" value="平層類型圖片數據" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FFlatTypePicData].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FHeadID].alias">
+            <lang locale="zh_CN" value="户型ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="戶型ID" />
+            <lang locale="zh_TW" value="戶型ID" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FHeadID].description">
+            <lang locale="zh_CN" value="精品户型ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="精品戶型ID" />
+            <lang locale="zh_TW" value="精品戶型ID" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FID].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FID].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FRoomTypePicData].alias">
+            <lang locale="zh_CN" value="户型图片数据" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="戶型圖片數據" />
+            <lang locale="zh_TW" value="戶型圖片數據" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].columns.column[FRoomTypePicData].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.market.app.T_MAR_RoomPhoto].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+    </resource>
+</dataTable>
+

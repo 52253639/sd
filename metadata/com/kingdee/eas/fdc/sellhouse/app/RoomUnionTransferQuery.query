@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unionQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.sellhouse.app</package>
+    <name>RoomUnionTransferQuery</name>
+    <alias>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].alias</alias>
+    <description>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subQuery>
+            <name>RoomTransferQuery</name>
+            <alias>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].subObjects.subQuery[RoomTransferQuery].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomUnionTransferQuery" />
+            </query>
+            <unionType>main</unionType>
+            <queryRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </queryRef>
+        </subQuery>
+        <subQuery>
+            <name>CompensateRoomListQuery</name>
+            <alias>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].subObjects.subQuery[CompensateRoomListQuery].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomUnionTransferQuery" />
+            </query>
+            <unionType />
+            <queryRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="CompensateRoomListQuery" />
+            </queryRef>
+        </subQuery>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>04c3ac46-1f8e-4c80-8271-8cc26e4323a5</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomTransfer.bizState</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizState].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>71c01d23-05b7-4f96-afb2-212f061b5c09</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="roomTransfer.bizState" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>41bfb763-1ec3-4e40-bbe6-78ddacd8ec27</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="room.name" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>customer.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[customer.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f21cb81-6b00-4157-b526-882c61747908</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="customer.name" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>productType.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[productType.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c612df6d-0f75-4535-8792-deb647610214</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="productType.name" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contractTotalAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[contractTotalAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>02d149d6-4011-4a5c-9fa5-da2e2bbc4a5a</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="contractTotalAmount" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>buildArea</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[buildArea].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4971c049-03d7-40a5-844f-213e88c3655b</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="buildArea" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>type</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[type].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b16889f5-d82c-486d-bb0e-35ec580a53b8</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="type" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomTransfer.fiVouchered</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.fiVouchered].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c82d5834-180c-4f74-911a-338bf7e68ee7</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="roomTransfer.fiVouchered" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomTransfer.bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ecfc70fc-e64d-4550-b730-1b6ca8b2015e</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="roomTransfer.bizDate" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>signCustomerEntry.isMain</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[signCustomerEntry.isMain].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8c29e751-eea5-4c89-85d2-d074798473c5</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="signCustomerEntry.isMain" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1396351d-68dd-4964-a758-02eb73d28928</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="room.number" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>sysCustomer.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[sysCustomer.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1fe13ace-376d-4391-a8c1-991f75174011</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="sysCustomer.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>productType.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[productType.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>60be08fe-5240-49f8-add4-815aaba39716</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="productType.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bill.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[bill.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1dd3270e-9ddb-4bf8-8e7e-b3eac75c229c</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="bill.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5482ff29-5b4a-409c-9caf-4d726e8b8103</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="room.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizState</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[bizState].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2822dd5a-466f-4e9a-9488-d8c108e155c9</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="bizState" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>sellProject.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[sellProject.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1e319cce-d66f-44b2-9354-c3f729ce7ced</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="sellProject.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>buildUnit.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[buildUnit.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e2a9eab9-e123-48d1-9d43-8d35fa239053</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="buildUnit.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>building.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[building.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>644ae2b5-36f0-41d3-90d9-a4859eddd976</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="building.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.unit</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.unit].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>cbf15e5b-fa5e-4eb3-bc00-ef8ee870b6a4</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="room.unit" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.floor</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.floor].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>77d374fb-6acc-47bd-baee-6cf1685de763</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="room.floor" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>building.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[building.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>819c9f7f-3188-4d75-a513-71b4e30dad96</key>
+                    <subQuery>
+                        <key name="name" value="RoomTransferQuery" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="building.number" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="RoomTransferQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+            <key name="name" value="RoomUnionTransferQuery" />
+        </query>
+    </defaultFilter>
+    <formulaString>#0 union #1</formulaString>
+    <resource>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].alias">
+            <lang locale="zh_CN" value="房间结转查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房間結轉查詢" />
+            <lang locale="zh_TW" value="房間結轉查詢" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].description">
+            <lang locale="zh_CN" value="房间结转查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房間結轉查詢" />
+            <lang locale="zh_TW" value="房間結轉查詢" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].subObjects.subQuery[CompensateRoomListQuery].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].subObjects.subQuery[RoomTransferQuery].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[bill.id].displayName">
+            <lang locale="zh_CN" value="业务Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="業務Id" />
+            <lang locale="zh_TW" value="業務Id" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[bizState].displayName">
+            <lang locale="zh_CN" value="业务状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="業務狀態" />
+            <lang locale="zh_TW" value="業務狀態" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[buildArea].displayName">
+            <lang locale="zh_CN" value="面积" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="面積" />
+            <lang locale="zh_TW" value="面積" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[buildArea].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[buildArea].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[buildUnit.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[building.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[building.number].displayName">
+            <lang locale="zh_CN" value="编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="編碼" />
+            <lang locale="zh_TW" value="編碼" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[contractTotalAmount].displayName">
+            <lang locale="zh_CN" value="总价" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="總價" />
+            <lang locale="zh_TW" value="總價" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[contractTotalAmount].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[contractTotalAmount].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[customer.name].displayName">
+            <lang locale="zh_CN" value="客户" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="客戶" />
+            <lang locale="zh_TW" value="客戶" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[customer.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[customer.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[productType.id].displayName">
+            <lang locale="zh_CN" value="产品类型Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="產品類型Id" />
+            <lang locale="zh_TW" value="產品類型Id" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[productType.name].displayName">
+            <lang locale="zh_CN" value="产品类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="產品類型" />
+            <lang locale="zh_TW" value="產品類型" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[productType.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[productType.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.floor].displayName">
+            <lang locale="zh_CN" value="楼层" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="樓層" />
+            <lang locale="zh_TW" value="樓層" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.id].displayName">
+            <lang locale="zh_CN" value="房间Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房間Id" />
+            <lang locale="zh_TW" value="房間Id" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.name].displayName">
+            <lang locale="zh_CN" value="房间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房間" />
+            <lang locale="zh_TW" value="房間" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.number].displayName">
+            <lang locale="zh_CN" value="房间编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房間編碼" />
+            <lang locale="zh_TW" value="房間編碼" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[room.unit].displayName">
+            <lang locale="zh_CN" value="单元" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單元" />
+            <lang locale="zh_TW" value="單元" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizDate].displayName">
+            <lang locale="zh_CN" value="结转日期" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="結轉日期" />
+            <lang locale="zh_TW" value="結轉日期" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizState].displayName">
+            <lang locale="zh_CN" value="结转状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="結轉狀態" />
+            <lang locale="zh_TW" value="結轉狀態" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizState].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.bizState].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.fiVouchered].displayName">
+            <lang locale="zh_CN" value="是否生成凭证" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否生成憑證" />
+            <lang locale="zh_TW" value="是否生成憑證" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.fiVouchered].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[roomTransfer.fiVouchered].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[sellProject.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[signCustomerEntry.isMain].displayName">
+            <lang locale="zh_CN" value="是否主客户" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否主客戶" />
+            <lang locale="zh_TW" value="是否主客戶" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[sysCustomer.id].displayName">
+            <lang locale="zh_CN" value="客户Id" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="客戶Id" />
+            <lang locale="zh_TW" value="客戶Id" />
+        </rs>
+        <rs key="unionQuery[com.kingdee.eas.fdc.sellhouse.app.RoomUnionTransferQuery].units.queryField[type].displayName">
+            <lang locale="zh_CN" value="类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="類型" />
+            <lang locale="zh_TW" value="類型" />
+        </rs>
+    </resource>
+</unionQuery>
+

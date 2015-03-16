@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.basedata.app</package>
+    <name>PayPlanCycle</name>
+    <alias>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].description</description>
+    <userDefined>false</userDefined>
+    <bosType>39599767</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.basedata.PayPlanCycle</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.basedata.app.PayPlanCycleController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+        <key name="name" value="FDCDataBase" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+        <key name="name" value="T_FDC_PayPlanCycle" />
+    </table>
+    <properties>
+        <ownProperty>
+            <name>cycle</name>
+            <alias>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.ownProperty[cycle].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.ownProperty[cycle].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>Enum</dataType>
+            <metadataRef>com.kingdee.eas.fdc.basedata.PayPlanCycleEnum</metadataRef>
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.ownProperty[cycle].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FCycle" />
+            </mappingField>
+        </ownProperty>
+        <linkProperty>
+            <name>org</name>
+            <alias>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.linkProperty[org].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.linkProperty[org].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FOrgId" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="R_PayPlaCycle_FullOrgUnit_relation" />
+            </relationship>
+        </linkProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>false</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].alias">
+            <lang locale="zh_CN" value="付款计划周期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款計畫週期" />
+            <lang locale="zh_TW" value="付款計畫週期" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].description">
+            <lang locale="zh_CN" value="付款计划周期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款計畫週期" />
+            <lang locale="zh_TW" value="付款計畫週期" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].extendedProperty.OrgType">
+            <lang locale="zh_CN" value="CostCenter" />
+            <lang locale="zh_TW" value="CostCenter" />
+            <lang locale="en_US" value="CostCenter" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].extendedProperty.codingRuleEnabled">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].extendedProperty.controlType">
+            <lang locale="zh_CN" value="S3" />
+            <lang locale="zh_TW" value="S3" />
+            <lang locale="en_US" value="S3" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].extendedProperty.editUI">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.basedata.client.PayPlanCycleEditUI" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.basedata.client.PayPlanCycleEditUI" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.basedata.client.PayPlanCycleEditUI" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].extendedProperty.listUI">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.basedata.client.PayPlanCycleListUI" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.basedata.client.PayPlanCycleListUI" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.basedata.client.PayPlanCycleListUI" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].logicalKey[id].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].logicalKey[id].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.linkProperty[org].alias">
+            <lang locale="zh_CN" value="所属组织" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="所屬組織" />
+            <lang locale="zh_TW" value="所屬組織" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.linkProperty[org].description">
+            <lang locale="zh_CN" value="所属组织" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="所屬組織" />
+            <lang locale="zh_TW" value="所屬組織" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.ownProperty[cycle].alias">
+            <lang locale="zh_CN" value="付款计划周期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款計畫週期" />
+            <lang locale="zh_TW" value="付款計畫週期" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.ownProperty[cycle].defaultValue">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.basedata.app.PayPlanCycle].properties.ownProperty[cycle].description">
+            <lang locale="zh_CN" value="付款计划周期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款計畫週期" />
+            <lang locale="zh_TW" value="付款計畫週期" />
+        </rs>
+    </resource>
+</entityObject>
+

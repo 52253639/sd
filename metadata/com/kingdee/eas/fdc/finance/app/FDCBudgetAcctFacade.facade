@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facade xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.finance.app</package>
+    <name>FDCBudgetAcctFacade</name>
+    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].alias</alias>
+    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].description</description>
+    <userDefined>false</userDefined>
+    <bosType>94DADFC8</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.finance.FDCBudgetAcctFacade</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacadeController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <methods>
+        <method>
+            <name>autoUpdateContractPayPlan</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].description</description>
+            <innerID>790cfbee-011c-1000-e000-0038c0a810e4</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>budgetId</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].parameters.parameter[budgetId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].parameters.parameter[budgetId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>getContractInfos</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].description</description>
+            <innerID>30f470c4-011c-1000-e000-0023c0a810e4</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>java.util.Map</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>idSet</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].parameters.parameter[idSet].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].parameters.parameter[idSet].description</description>
+                    <direction>in</direction>
+                    <dataType>java.util.Set</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>bindToContract</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].description</description>
+            <innerID>790cfbee-011c-1000-e000-0039c0a810e4</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>contractId</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[contractId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[contractId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>budgetAcctEntrys</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[budgetAcctEntrys].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[budgetAcctEntrys].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectCollection</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.app.FDCBudgetAcctEntry</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+        </method>
+        <method>
+            <name>getAssociateAcctPlan</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].description</description>
+            <innerID>790cfbee-011c-1000-e000-003ac0a810e4</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>java.util.Map</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>prjId</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[prjId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[prjId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>contractId</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[contractId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[contractId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>period</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[period].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[period].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectValue</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.app.FDCBudgetPeriod</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>getAssociateAcctPay</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].description</description>
+            <innerID>790cfbee-011c-1000-e000-003dc0a810e4</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>java.util.Map</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>payReqId</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[payReqId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[payReqId].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>period</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[period].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[period].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectValue</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.app.FDCBudgetPeriod</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>getAssociateBudget</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].description</description>
+            <innerID>601f0c95-43c8-4f26-9a25-48cf2e92fb38</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>java.util.Map</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>payReqID</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[payReqID].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[payReqID].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>period</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[period].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[period].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectValue</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.finance.app.FDCBudgetPeriod</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>invokeBudgetCtrl</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].description</description>
+            <innerID>8e603784-011c-1000-e000-0003c0a810e4</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType>java.util.Map</returnValueType>
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>payReqInfo</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[payReqInfo].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[payReqInfo].description</description>
+                    <direction>in</direction>
+                    <dataType>ObjectValue</dataType>
+                    <metadataRef>com.kingdee.eas.fdc.contract.app.PayRequestBill</metadataRef>
+                    <userDefined>false</userDefined>
+                </parameter>
+                <parameter>
+                    <name>state</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[state].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[state].description</description>
+                    <direction>in</direction>
+                    <dataType>String</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+        <method>
+            <name>updateMonthBudget</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].alias</alias>
+            <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].description</description>
+            <innerID>22b12fe6-3b80-4461-a969-1b2a9739ef88</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Supports</transactionAttribute>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>billId</name>
+                    <alias>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].parameters.parameter[billId].alias</alias>
+                    <description>facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].parameters.parameter[billId].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>false</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+        </method>
+    </methods>
+    <resource>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].alias">
+            <lang locale="zh_CN" value="科目预算Facade" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="科目預算Facade" />
+            <lang locale="zh_TW" value="科目預算Facade" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].description">
+            <lang locale="zh_CN" value="科目预算Facade" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="科目預算Facade" />
+            <lang locale="zh_TW" value="科目預算Facade" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].alias">
+            <lang locale="zh_CN" value="同步合同付款" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="同步合同付款" />
+            <lang locale="zh_TW" value="同步合同付款" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].description">
+            <lang locale="zh_CN" value="同步合同付款" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="同步合同付款" />
+            <lang locale="zh_TW" value="同步合同付款" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].parameters.parameter[budgetId].alias">
+            <lang locale="zh_CN" value="月度申报表" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="月度申報表" />
+            <lang locale="zh_TW" value="月度申報表" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[autoUpdateContractPayPlan].parameters.parameter[budgetId].description">
+            <lang locale="zh_CN" value="月度申报表" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="月度申報表" />
+            <lang locale="zh_TW" value="月度申報表" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].alias">
+            <lang locale="zh_CN" value="预算条目绑定到合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預算條目綁定到合同" />
+            <lang locale="zh_TW" value="預算條目綁定到合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].description">
+            <lang locale="zh_CN" value="预算条目绑定到合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預算條目綁定到合同" />
+            <lang locale="zh_TW" value="預算條目綁定到合同" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[budgetAcctEntrys].alias">
+            <lang locale="zh_CN" value="预算条目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預算條目" />
+            <lang locale="zh_TW" value="預算條目" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[budgetAcctEntrys].description">
+            <lang locale="zh_CN" value="预算条目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預算條目" />
+            <lang locale="zh_TW" value="預算條目" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[contractId].alias">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[bindToContract].parameters.parameter[contractId].description">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].alias">
+            <lang locale="zh_CN" value="付款申请单关联科目取数方法" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單關聯科目取數方法" />
+            <lang locale="zh_TW" value="付款申請單關聯科目取數方法" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].description">
+            <lang locale="zh_CN" value="付款申请单关联科目取数方法" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單關聯科目取數方法" />
+            <lang locale="zh_TW" value="付款申請單關聯科目取數方法" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[payReqId].alias">
+            <lang locale="zh_CN" value="付款申请单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單ID" />
+            <lang locale="zh_TW" value="付款申請單ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[payReqId].description">
+            <lang locale="zh_CN" value="付款申请单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單ID" />
+            <lang locale="zh_TW" value="付款申請單ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[period].alias">
+            <lang locale="zh_CN" value="期间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="期間" />
+            <lang locale="zh_TW" value="期間" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPay].parameters.parameter[period].description">
+            <lang locale="zh_CN" value="期间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="期間" />
+            <lang locale="zh_TW" value="期間" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].alias">
+            <lang locale="zh_CN" value="与合同拆分关联的预算条目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="與合同拆分關聯的預算條目" />
+            <lang locale="zh_TW" value="與合同拆分關聯的預算條目" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].description">
+            <lang locale="zh_CN" value="与合同拆分关联的预算条目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="與合同拆分關聯的預算條目" />
+            <lang locale="zh_TW" value="與合同拆分關聯的預算條目" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[contractId].alias">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[contractId].description">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[period].alias">
+            <lang locale="zh_CN" value="房地产预算期间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房地產預算期間" />
+            <lang locale="zh_TW" value="房地產預算期間" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[period].description">
+            <lang locale="zh_CN" value="房地产预算期间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房地產預算期間" />
+            <lang locale="zh_TW" value="房地產預算期間" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[prjId].alias">
+            <lang locale="zh_CN" value="项目ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目ID" />
+            <lang locale="zh_TW" value="項目ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateAcctPlan].parameters.parameter[prjId].description">
+            <lang locale="zh_CN" value="项目ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目ID" />
+            <lang locale="zh_TW" value="項目ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].alias">
+            <lang locale="zh_CN" value="关联签定与待签定计划" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="關聯簽定與待簽定計畫" />
+            <lang locale="zh_TW" value="關聯簽定與待簽定計畫" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].description">
+            <lang locale="zh_CN" value="关联签定与待签定计划" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="關聯簽定與待簽定計畫" />
+            <lang locale="zh_TW" value="關聯簽定與待簽定計畫" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[payReqID].alias">
+            <lang locale="zh_CN" value="付款申请单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單ID" />
+            <lang locale="zh_TW" value="付款申請單ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[payReqID].description">
+            <lang locale="zh_CN" value="付款申请单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單ID" />
+            <lang locale="zh_TW" value="付款申請單ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[period].alias">
+            <lang locale="zh_CN" value="预算期间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預算期間" />
+            <lang locale="zh_TW" value="預算期間" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getAssociateBudget].parameters.parameter[period].description">
+            <lang locale="zh_CN" value="预算期间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預算期間" />
+            <lang locale="zh_TW" value="預算期間" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].alias">
+            <lang locale="zh_CN" value="合同信息" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同信息" />
+            <lang locale="zh_TW" value="合同信息" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].description">
+            <lang locale="zh_CN" value="合同信息" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同信息" />
+            <lang locale="zh_TW" value="合同信息" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].parameters.parameter[idSet].alias">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[getContractInfos].parameters.parameter[idSet].description">
+            <lang locale="zh_CN" value="合同ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="合同ID" />
+            <lang locale="zh_TW" value="合同ID" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].alias">
+            <lang locale="zh_CN" value="进行预算控制" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="進行預算控制" />
+            <lang locale="zh_TW" value="進行預算控制" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].description">
+            <lang locale="zh_CN" value="进行预算控制" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="進行預算控制" />
+            <lang locale="zh_TW" value="進行預算控制" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[payReqInfo].alias">
+            <lang locale="zh_CN" value="付款申请单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單" />
+            <lang locale="zh_TW" value="付款申請單" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[payReqInfo].description">
+            <lang locale="zh_CN" value="付款申请单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="付款申請單" />
+            <lang locale="zh_TW" value="付款申請單" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[state].alias">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[invokeBudgetCtrl].parameters.parameter[state].description">
+            <lang locale="zh_CN" value="新增/提交/审批/反审批/删除等状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="新增/提交/審批/反審批/刪除等狀態" />
+            <lang locale="zh_TW" value="新增/提交/審批/反審批/刪除等狀態" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].alias">
+            <lang locale="zh_CN" value="更新项目月度申报" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="更新項目月度申報" />
+            <lang locale="zh_TW" value="更新項目月度申報" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].description">
+            <lang locale="zh_CN" value="更新项目月度申报" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="更新項目月度申報" />
+            <lang locale="zh_TW" value="更新項目月度申報" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].parameters.parameter[billId].alias">
+            <lang locale="zh_CN" value="billId" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="billId" />
+            <lang locale="zh_TW" value="billId" />
+        </rs>
+        <rs key="facade[com.kingdee.eas.fdc.finance.app.FDCBudgetAcctFacade].methods.method[updateMonthBudget].parameters.parameter[billId].description">
+            <lang locale="zh_CN" value="billId" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="billId" />
+            <lang locale="zh_TW" value="billId" />
+        </rs>
+    </resource>
+</facade>
+

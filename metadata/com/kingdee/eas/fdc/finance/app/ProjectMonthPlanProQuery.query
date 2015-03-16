@@ -1,0 +1,1567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.finance.app</package>
+    <name>ProjectMonthPlanProQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>ProjectMonthPlanPro</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[ProjectMonthPlanPro].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanPro" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>curProject</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[curProject].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>cycle</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[cycle].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="PayPlanCycle" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>respPerson</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[respPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>respDept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[respDept].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="AdminOrgUnit" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <propertyUnit>
+            <name>9d3127dd-5b09-41ea-91e5-15d8fa717e62</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[9d3127dd-5b09-41ea-91e5-15d8fa717e62].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2df9475d-7f62-4966-a945-39939999ef38</key>
+                    <parentUnit>
+                        <key name="name" value="9d3127dd-5b09-41ea-91e5-15d8fa717e62" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>96fce1d2-052c-4061-b3c2-36a962479d0c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[96fce1d2-052c-4061-b3c2-36a962479d0c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>7b7b97c7-b8e5-4c8b-bd64-2f63b47b43a8</key>
+                    <parentUnit>
+                        <key name="name" value="96fce1d2-052c-4061-b3c2-36a962479d0c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>42c4e67b-5f54-4b73-a040-30a3fd642690</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[42c4e67b-5f54-4b73-a040-30a3fd642690].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>e943f72d-322c-44fa-8869-03da2944860c</key>
+                    <parentUnit>
+                        <key name="name" value="42c4e67b-5f54-4b73-a040-30a3fd642690" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>66809711-4c7a-423e-8fc7-f4f83fbb357e</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[66809711-4c7a-423e-8fc7-f4f83fbb357e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>47ec5ab9-0492-40d2-b2d3-eef3ad1a29da</key>
+                    <parentUnit>
+                        <key name="name" value="66809711-4c7a-423e-8fc7-f4f83fbb357e" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>09b1d61b-dcd5-40ff-8ce5-f5b9ca49171d</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>af904120-8941-4eca-a72a-8136ac15a2f7</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>043fa848-8d08-4313-a7e4-8ca2bef6aea2</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>curProject.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[curProject.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>98bc9184-657d-467c-a6ff-824d5f4f1840</key>
+                    <parentUnit>
+                        <key name="name" value="curProject.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="curProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isLatest</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[isLatest].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ffe246bc-cf42-4a0b-aba1-88811566e26c</key>
+                    <parentUnit>
+                        <key name="name" value="isLatest" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isLatest" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>version</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[version].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2f72f0be-43a5-465c-9495-9b0aade7ebea</key>
+                    <parentUnit>
+                        <key name="name" value="version" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="version" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6e567544-49df-4cf1-85d1-c3a65d7c099c</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>cycle.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[cycle.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6f7dd179-b9e2-414b-a4c8-8e45ffe3b7d5</key>
+                    <parentUnit>
+                        <key name="name" value="cycle.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="cycle" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="cycle" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>dca0f0f4-ae36-4f80-8c83-cd413f3854f9</key>
+                    <parentUnit>
+                        <key name="name" value="bizDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>description</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[description].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8b29b96c-b635-4de2-bacf-3bf0a585e906</key>
+                    <parentUnit>
+                        <key name="name" value="description" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="description" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>respPerson.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respPerson.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b75f5dff-49d2-4771-b90d-f993341011bc</key>
+                    <parentUnit>
+                        <key name="name" value="respPerson.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="respPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>respDept.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respDept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b697d4b7-3bdc-4807-8cf3-066399e1376e</key>
+                    <parentUnit>
+                        <key name="name" value="respDept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="respDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c8b8eaf5-edb1-4605-a970-927e01048b75</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6dd62dbc-c87a-4a3a-b5f7-9b8554699af1</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>43b4a11f-5dcd-4b73-bbdf-326dadee543d</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>dad93619-fcfa-42f6-8344-bb596d9caaac</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>751e9b0f-6f5f-4720-be14-215fec4ffc50</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[751e9b0f-6f5f-4720-be14-215fec4ffc50].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>1923466f-bf45-47a8-ab6a-3d2cfefcb839</key>
+                    <parentUnit>
+                        <key name="name" value="751e9b0f-6f5f-4720-be14-215fec4ffc50" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="respPerson" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>92e64632-c033-4ea3-944d-9399017c7469</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[92e64632-c033-4ea3-944d-9399017c7469].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>a5ec3999-0f90-465b-8bd8-0f34b323070b</key>
+                    <parentUnit>
+                        <key name="name" value="92e64632-c033-4ea3-944d-9399017c7469" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="respPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>3126780a-36f7-42a6-b7c0-bd06abd940f8</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[3126780a-36f7-42a6-b7c0-bd06abd940f8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>620b2161-438a-4fd7-81ac-8b6448193fa3</key>
+                    <parentUnit>
+                        <key name="name" value="3126780a-36f7-42a6-b7c0-bd06abd940f8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="respDept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>63c5299a-6276-4452-8dab-c1a9f8f7afa2</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[63c5299a-6276-4452-8dab-c1a9f8f7afa2].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>499015e8-ae3c-41f3-97e8-6ee62962e353</key>
+                    <parentUnit>
+                        <key name="name" value="63c5299a-6276-4452-8dab-c1a9f8f7afa2" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="respDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2c2522bf-f69a-4576-806c-d3c88797cf10</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[2c2522bf-f69a-4576-806c-d3c88797cf10].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3e9ce5a3-716a-4dfd-8645-df8343d6be3c</key>
+                    <parentUnit>
+                        <key name="name" value="2c2522bf-f69a-4576-806c-d3c88797cf10" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="curProject" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>86225518-3829-4a40-8b9a-aa730caa3b59</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[86225518-3829-4a40-8b9a-aa730caa3b59].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a25bce43-85f3-42d6-9ec9-dc6b67c236fb</key>
+                    <parentUnit>
+                        <key name="name" value="86225518-3829-4a40-8b9a-aa730caa3b59" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="curProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>41a3f4e5-b7e2-4ae1-95fc-924bc8344bbf</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[41a3f4e5-b7e2-4ae1-95fc-924bc8344bbf].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>91a0d10e-55bc-4f07-bb64-bd8e262e0e62</key>
+                    <parentUnit>
+                        <key name="name" value="41a3f4e5-b7e2-4ae1-95fc-924bc8344bbf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ProjectMonthPlanPro" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="cycle" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>0a741db5-d5db-49e7-9ce3-ee68c7e0b77f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[0a741db5-d5db-49e7-9ce3-ee68c7e0b77f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>21ace212-ebd3-47c9-8b77-277c04b5afe7</key>
+                    <parentUnit>
+                        <key name="name" value="0a741db5-d5db-49e7-9ce3-ee68c7e0b77f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="cycle" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </propertyUnit>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+            <key name="name" value="ProjectMonthPlanProQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>d1d69b55-7bba-441e-8a2b-e8214c0d5e69</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ProjectMonthPlanPro" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="curProject" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>149e5b9a-c7cc-4b34-a979-a688711f56e3</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2c2522bf-f69a-4576-806c-d3c88797cf10" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="86225518-3829-4a40-8b9a-aa730caa3b59" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="d1d69b55-7bba-441e-8a2b-e8214c0d5e69" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </join>
+        <join>
+            <name>663c93cd-5d1d-4a7f-a29f-e841fc83e894</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ProjectMonthPlanPro" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>954229c4-a661-490f-9544-615cc22bcb27</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9d3127dd-5b09-41ea-91e5-15d8fa717e62" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="96fce1d2-052c-4061-b3c2-36a962479d0c" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="663c93cd-5d1d-4a7f-a29f-e841fc83e894" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </join>
+        <join>
+            <name>22f3f076-221f-4b5f-8f97-08e295511314</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ProjectMonthPlanPro" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>e2da6c27-4586-40e2-8545-49e61953477b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="42c4e67b-5f54-4b73-a040-30a3fd642690" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="66809711-4c7a-423e-8fc7-f4f83fbb357e" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="22f3f076-221f-4b5f-8f97-08e295511314" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </join>
+        <join>
+            <name>75bb804c-5e4d-46ac-a802-74daafa41e95</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ProjectMonthPlanPro" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="cycle" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>74bca32a-be61-4ba0-8226-ff08a41d80db</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="41a3f4e5-b7e2-4ae1-95fc-924bc8344bbf" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="0a741db5-d5db-49e7-9ce3-ee68c7e0b77f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="75bb804c-5e4d-46ac-a802-74daafa41e95" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </join>
+        <join>
+            <name>c507a5e4-b417-4abd-8f78-c849a2802c75</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ProjectMonthPlanPro" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="respPerson" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4b409872-3838-4589-a065-c8ae59c237bb</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="751e9b0f-6f5f-4720-be14-215fec4ffc50" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="92e64632-c033-4ea3-944d-9399017c7469" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="c507a5e4-b417-4abd-8f78-c849a2802c75" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </join>
+        <join>
+            <name>bf1b1290-7e22-4263-bff6-a36b06a0e581</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ProjectMonthPlanPro" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="respDept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>9e6daa7d-9f3f-4fae-bb95-7507c28d9aaf</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="3126780a-36f7-42a6-b7c0-bd06abd940f8" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="63c5299a-6276-4452-8dab-c1a9f8f7afa2" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="bf1b1290-7e22-4263-bff6-a36b06a0e581" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="ProjectMonthPlanProQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].alias">
+            <lang locale="zh_CN" value="待签合同&amp;&amp;无合同费用付款计划查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="待簽合同&amp;&amp;無合同費用付款計畫查詢" />
+            <lang locale="zh_TW" value="待簽合同&amp;&amp;無合同費用付款計畫查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].description">
+            <lang locale="zh_CN" value="待签合同&amp;&amp;无合同费用付款计划查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="待簽合同&amp;&amp;無合同費用付款計畫查詢" />
+            <lang locale="zh_TW" value="待簽合同&amp;&amp;無合同費用付款計畫查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[ProjectMonthPlanPro].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[curProject].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[cycle].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[respDept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].subObjects.subEntity[respPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[0a741db5-d5db-49e7-9ce3-ee68c7e0b77f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[2c2522bf-f69a-4576-806c-d3c88797cf10].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[3126780a-36f7-42a6-b7c0-bd06abd940f8].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[41a3f4e5-b7e2-4ae1-95fc-924bc8344bbf].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[42c4e67b-5f54-4b73-a040-30a3fd642690].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[63c5299a-6276-4452-8dab-c1a9f8f7afa2].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[66809711-4c7a-423e-8fc7-f4f83fbb357e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[751e9b0f-6f5f-4720-be14-215fec4ffc50].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[86225518-3829-4a40-8b9a-aa730caa3b59].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[92e64632-c033-4ea3-944d-9399017c7469].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[96fce1d2-052c-4061-b3c2-36a962479d0c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.propertyUnit[9d3127dd-5b09-41ea-91e5-15d8fa717e62].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批日期" />
+            <lang locale="zh_TW" value="審批日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="审批人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditor.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[auditor.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[bizDate].displayName">
+            <lang locale="zh_CN" value="编制月份" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="編制月份" />
+            <lang locale="zh_TW" value="編制月份" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[bizDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[bizDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[createTime].displayName">
+            <lang locale="zh_CN" value="编制日期" />
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_HK" value="編制日期" />
+            <lang locale="zh_TW" value="編制日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[createTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[createTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="编制人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="編制人" />
+            <lang locale="zh_TW" value="編制人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[creator.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[creator.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[curProject.name].displayName">
+            <lang locale="zh_CN" value="工程项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目" />
+            <lang locale="zh_TW" value="工程項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[curProject.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[curProject.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[cycle.name].displayName">
+            <lang locale="zh_CN" value="计划周期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫週期" />
+            <lang locale="zh_TW" value="計畫週期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[cycle.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[cycle.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[description].displayName">
+            <lang locale="zh_CN" value="编制说明" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="編制說明" />
+            <lang locale="zh_TW" value="編制說明" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[description].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[description].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[isLatest].displayName">
+            <lang locale="zh_CN" value="是否最新" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否最新" />
+            <lang locale="zh_TW" value="是否最新" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[isLatest].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[isLatest].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="单据名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據名稱" />
+            <lang locale="zh_TW" value="單據名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編碼" />
+            <lang locale="zh_TW" value="單據編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respDept.name].displayName">
+            <lang locale="zh_CN" value="责任部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="責任部門" />
+            <lang locale="zh_TW" value="責任部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respDept.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respDept.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respPerson.name].displayName">
+            <lang locale="zh_CN" value="责任人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="責任人" />
+            <lang locale="zh_TW" value="責任人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respPerson.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[respPerson.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[state].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[state].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[version].displayName">
+            <lang locale="zh_CN" value="版本号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="版本號" />
+            <lang locale="zh_TW" value="版本號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[version].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.ProjectMonthPlanProQuery].units.queryField[version].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+    </resource>
+</joinQuery>
+

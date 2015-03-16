@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.invite.designsupplier.app</package>
+    <name>T_DES_DesignSSP</name>
+    <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FSeq</name>
+            <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FSeq].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FSeq].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>4</precision>
+        </column>
+        <column>
+            <name>FParentID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FParentID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FParentID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FFSeq0</name>
+            <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FFSeq0].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FFSeq0].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>INT</sqlType>
+            <length>0</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FProjectName</name>
+            <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FProjectName].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FProjectName].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>NVARCHAR</sqlType>
+            <length>500</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FAwardsID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FAwardsID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FAwardsID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_DES_DesignSSPcf</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType />
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>FK_DES_DesignSSPpj</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.invite.designsupplier.designbase.app" />
+                <key name="name" value="T_DES_Award" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FAwardsID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].alias">
+            <lang locale="zh_CN" value="代表项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="代表項目" />
+            <lang locale="zh_TW" value="代表項目" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FAwardsID].alias">
+            <lang locale="zh_CN" value="所获奖项" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="所獲獎項" />
+            <lang locale="zh_TW" value="所獲獎項" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FAwardsID].description">
+            <lang locale="zh_CN" value="所获奖项" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="所獲獎項" />
+            <lang locale="zh_TW" value="所獲獎項" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FFSeq0].alias">
+            <lang locale="zh_CN" value="单据分录序列号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據分錄序列號" />
+            <lang locale="zh_TW" value="單據分錄序列號" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FFSeq0].description">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FID].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FID].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FParentID].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FParentID].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FProjectName].alias">
+            <lang locale="zh_CN" value="代表项目（简介）" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="代表項目（簡介）" />
+            <lang locale="zh_TW" value="代表項目（簡介）" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FProjectName].description">
+            <lang locale="zh_CN" value="项目（简介）" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目（簡介）" />
+            <lang locale="zh_TW" value="項目（簡介）" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FSeq].alias">
+            <lang locale="zh_CN" value="单据分录序列号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據分錄序列號" />
+            <lang locale="zh_TW" value="單據分錄序列號" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].columns.column[FSeq].description">
+            <lang locale="zh_CN" value="单据分录序列号（定义为序列属性即使用{seq}）" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據分錄序列號（定義為序列屬性即使用{seq}）" />
+            <lang locale="zh_TW" value="單據分錄序列號（定義為序列屬性即使用{seq}）" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.invite.designsupplier.app.T_DES_DesignSSP].description">
+            <lang locale="zh_CN" value="代表项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="代表項目" />
+            <lang locale="zh_TW" value="代表項目" />
+        </rs>
+    </resource>
+</dataTable>
+

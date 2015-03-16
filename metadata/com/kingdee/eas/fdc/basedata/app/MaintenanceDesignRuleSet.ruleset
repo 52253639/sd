@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.basedata.app</package>
+    <name>MaintenanceDesignRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>563e8ac8-b3f4-43b8-acee-e7bcddf45e18</id>
+            <parentID />
+            <source>entrys.puname=entrys.punameNumber.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>a847d464-097c-4ea3-a165-21675567943a</id>
+            <parentID>563e8ac8-b3f4-43b8-acee-e7bcddf45e18</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>a267b154-9077-4dc4-8039-58fb69b5c516</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a267b154-9077-4dc4-8039-58fb69b5c516</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"puname")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>9a043329-1a86-4a7e-bbf4-92a7ebbbb0cb</id>
+            <parentID>563e8ac8-b3f4-43b8-acee-e7bcddf45e18</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>b4efc4be-9199-4428-a7c1-162160752a9c</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>47840704-f715-45fc-8584-1c018f88384b</id>
+                        <expressionID>91b1e577-3d8c-4bd0-9791-23a0536c3620</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>d599e49b-3087-4038-9a8a-b99f8fd19301</id>
+                        <expressionID>030b7072-9689-498d-91ce-fa48a2c3d89a</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b4efc4be-9199-4428-a7c1-162160752a9c</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>91b1e577-3d8c-4bd0-9791-23a0536c3620</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>faa1f594-3e60-4103-9270-b50b3ea3b808</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>faa1f594-3e60-4103-9270-b50b3ea3b808</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"punameNumber")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>030b7072-9689-498d-91ce-fa48a2c3d89a</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>12b311d8-c3fb-498c-90d8-9c24013fcb92</id>
+            <name>entrys_puname_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].actions.action[entrys_puname_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].actions.action[entrys_puname_ActionInfo].description</description>
+            <expressionID>563e8ac8-b3f4-43b8-acee-e7bcddf45e18</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>entrys_puname_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].rules.conditionRule[entrys_puname_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].rules.conditionRule[entrys_puname_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="12b311d8-c3fb-498c-90d8-9c24013fcb92" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].actions.action[entrys_puname_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].actions.action[entrys_puname_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].rules.conditionRule[entrys_puname_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].rules.conditionRule[entrys_puname_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].rules.conditionRule[entrys_puname_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="punameNumber" />
+            <lang locale="zh_TW" value="punameNumber" />
+            <lang locale="en_US" value="punameNumber" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.basedata.app.MaintenanceDesignRuleSet].rules.conditionRule[entrys_puname_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

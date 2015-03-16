@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.market.app</package>
+    <name>MarketManageRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>decc460c-7d18-4187-8ad8-d4aad8d59e95</id>
+            <parentID />
+            <source>entrys.costName=entrys.costNumber.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>e2949877-e84a-4d17-8bc9-f171347b3772</id>
+            <parentID>decc460c-7d18-4187-8ad8-d4aad8d59e95</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>efd445b4-c137-45ae-97c0-bde8742cf5f7</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>efd445b4-c137-45ae-97c0-bde8742cf5f7</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"costName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>bba776db-7a99-4a38-80a9-ae968d8aa01b</id>
+            <parentID>decc460c-7d18-4187-8ad8-d4aad8d59e95</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>c9b4973f-0381-4274-a637-0cc7b899e62e</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>5aefa04d-a5cf-496d-a09d-0a7a70df3486</id>
+                        <expressionID>86d6125b-5654-4643-b464-70c81ec2970f</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>4223cc54-536e-471f-b997-0f2bc559fa16</id>
+                        <expressionID>ff80990b-c4b4-45aa-b85c-7e59810b3c27</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c9b4973f-0381-4274-a637-0cc7b899e62e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>86d6125b-5654-4643-b464-70c81ec2970f</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>2c38a100-2fff-414a-9d9e-99f380a42278</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2c38a100-2fff-414a-9d9e-99f380a42278</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"costNumber")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ff80990b-c4b4-45aa-b85c-7e59810b3c27</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>82550a87-5c13-479d-bcb2-50d4a90a8f55</id>
+            <name>entrys_name_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].description</description>
+            <expressionID />
+        </action>
+        <action>
+            <id>7008bd1d-39a3-4f81-9063-fb4878125378</id>
+            <name>entrys_name_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].description</description>
+            <expressionID />
+        </action>
+        <action>
+            <id>d45643d7-af1d-4f04-a8b1-5339986bf81c</id>
+            <name>entrys_name_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].description</description>
+            <expressionID />
+        </action>
+        <action>
+            <id>9b4e50d4-d2ec-4244-9be4-f6befa7adf1b</id>
+            <name>entrys_costName_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_costName_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_costName_ActionInfo].description</description>
+            <expressionID>decc460c-7d18-4187-8ad8-d4aad8d59e95</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>entrys_costName_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].rules.conditionRule[entrys_costName_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].rules.conditionRule[entrys_costName_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="9b4e50d4-d2ec-4244-9be4-f6befa7adf1b" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_costName_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_costName_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].actions.action[entrys_name_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].rules.conditionRule[entrys_costName_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].rules.conditionRule[entrys_costName_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].rules.conditionRule[entrys_costName_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="costNumber" />
+            <lang locale="zh_TW" value="costNumber" />
+            <lang locale="en_US" value="costNumber" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.market.app.MarketManageRuleSet].rules.conditionRule[entrys_costName_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+
