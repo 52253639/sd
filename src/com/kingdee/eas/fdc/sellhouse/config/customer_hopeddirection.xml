@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="HopedDirection" type="table" />
+	<Dimension name="HopedDirection" caption="意向朝向" table="HopedDirection" primaryKey="FID">
+		<Hierarchy>
+			<Level name="HopedDirection" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="HopedDirection" foreignKey="FHopedDirectionID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

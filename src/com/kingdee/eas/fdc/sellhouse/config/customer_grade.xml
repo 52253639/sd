@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="CustomerGrade" type="table" />
+	<Dimension name="CustomerGrade" caption="客户分级" table="CustomerGrade" primaryKey="FID">
+		<Hierarchy>
+			<Level name="CustomerGrade" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="CustomerGrade" foreignKey="FCustomerGradeID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

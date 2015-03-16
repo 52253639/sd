@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="room">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="Face" type="table" />
+	<Dimension name="Face" caption="房屋类别" table="Face" primaryKey="FID">
+		<Hierarchy>
+			<Level name="Face" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="Face" foreignKey="FFaceID" />
+		<Measure name="FplateArea" caption="放盘面积" column="FplateArea" aggregator="sum" formatString="#,##0.00" visible="true" />
+		<Measure name="FSalesArea" caption="销售面积" column="FSalesArea" aggregator="sum" formatString="#,##0.00" visible="true" />
+		<Measure name="FSalesNum" caption="销售套数" column="FSalesNum" aggregator="sum" formatString="#,##0.00" visible="true" />
+		<Measure name="FSalesMoney" caption="销售金额" column="FSalesMoney" aggregator="sum" formatString="#,##0.00" visible="true" />
+	</Cube>
+</Schema>

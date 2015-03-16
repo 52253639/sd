@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="room">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="UnitPrice" type="table" />
+	<Dimension name="UnitPrice" caption="产品描述" table="UnitPrice" primaryKey="FID">
+		<Hierarchy>
+			<Level name="UnitPrice" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="UnitPrice" foreignKey="FHopedUnitPriceID" />
+		<Measure name="FCounter" caption="套数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

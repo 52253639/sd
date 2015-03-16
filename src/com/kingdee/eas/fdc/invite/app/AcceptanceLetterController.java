@@ -1,0 +1,56 @@
+package com.kingdee.eas.fdc.invite.app;
+
+import com.kingdee.bos.BOSException;
+//import com.kingdee.bos.metadata.*;
+import com.kingdee.bos.framework.*;
+import com.kingdee.bos.util.*;
+import com.kingdee.bos.Context;
+
+import java.lang.String;
+import com.kingdee.bos.metadata.entity.EntityViewInfo;
+import com.kingdee.eas.common.EASBizException;
+import com.kingdee.bos.dao.IObjectPK;
+import com.kingdee.eas.fdc.invite.AcceptanceLetterInfo;
+import com.kingdee.eas.fdc.basedata.app.FDCBillController;
+import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.eas.framework.CoreBaseCollection;
+import com.kingdee.bos.metadata.entity.SorterItemCollection;
+import com.kingdee.eas.fdc.invite.AcceptanceLetterCollection;
+import com.kingdee.bos.util.*;
+import com.kingdee.bos.metadata.entity.FilterInfo;
+import com.kingdee.bos.BOSException;
+import com.kingdee.bos.Context;
+import com.kingdee.eas.framework.CoreBaseInfo;
+import com.kingdee.bos.framework.*;
+import com.kingdee.bos.util.BOSUuid;
+import com.kingdee.eas.fdc.invite.FDCInviteException;
+
+import java.rmi.RemoteException;
+import com.kingdee.bos.framework.ejb.BizController;
+
+public interface AcceptanceLetterController extends FDCBillController
+{
+    public boolean exists(Context ctx, IObjectPK pk) throws BOSException, EASBizException, RemoteException;
+    public boolean exists(Context ctx, FilterInfo filter) throws BOSException, EASBizException, RemoteException;
+    public boolean exists(Context ctx, String oql) throws BOSException, EASBizException, RemoteException;
+    public AcceptanceLetterInfo getAcceptanceLetterInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException, RemoteException;
+    public AcceptanceLetterInfo getAcceptanceLetterInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException, RemoteException;
+    public AcceptanceLetterInfo getAcceptanceLetterInfo(Context ctx, String oql) throws BOSException, EASBizException, RemoteException;
+    public IObjectPK addnew(Context ctx, AcceptanceLetterInfo model) throws BOSException, EASBizException, RemoteException;
+    public void addnew(Context ctx, IObjectPK pk, AcceptanceLetterInfo model) throws BOSException, EASBizException, RemoteException;
+    public void update(Context ctx, IObjectPK pk, AcceptanceLetterInfo model) throws BOSException, EASBizException, RemoteException;
+    public void updatePartial(Context ctx, AcceptanceLetterInfo model, SelectorItemCollection selector) throws BOSException, EASBizException, RemoteException;
+    public void updateBigObject(Context ctx, IObjectPK pk, AcceptanceLetterInfo model) throws BOSException, RemoteException;
+    public void delete(Context ctx, IObjectPK pk) throws BOSException, EASBizException, RemoteException;
+    public IObjectPK[] getPKList(Context ctx) throws BOSException, EASBizException, RemoteException;
+    public IObjectPK[] getPKList(Context ctx, String oql) throws BOSException, EASBizException, RemoteException;
+    public IObjectPK[] getPKList(Context ctx, FilterInfo filter, SorterItemCollection sorter) throws BOSException, EASBizException, RemoteException;
+    public AcceptanceLetterCollection getAcceptanceLetterCollection(Context ctx) throws BOSException, RemoteException;
+    public AcceptanceLetterCollection getAcceptanceLetterCollection(Context ctx, EntityViewInfo view) throws BOSException, RemoteException;
+    public AcceptanceLetterCollection getAcceptanceLetterCollection(Context ctx, String oql) throws BOSException, RemoteException;
+    public IObjectPK[] delete(Context ctx, FilterInfo filter) throws BOSException, EASBizException, RemoteException;
+    public IObjectPK[] delete(Context ctx, String oql) throws BOSException, EASBizException, RemoteException;
+    public void delete(Context ctx, IObjectPK[] arrayPK) throws BOSException, EASBizException, RemoteException;
+    public void setCreateContract(Context ctx, String billId, boolean paramIsCreate) throws BOSException, EASBizException, RemoteException;
+    public AcceptanceLetterInfo revise(Context ctx, BOSUuid billId) throws BOSException, FDCInviteException, RemoteException;
+}

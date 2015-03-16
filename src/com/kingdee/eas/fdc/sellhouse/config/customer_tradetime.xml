@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="TradeTime" type="table" />
+	<Dimension name="TradeTime" caption="交易次数" table="TradeTime" primaryKey="FID">
+		<Hierarchy>
+			<Level name="TradeTime" column="FID">
+				<Property name="caption" column="FTradeTime" caption="FTradeTime" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="TradeTime" foreignKey="FTradeTimeID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

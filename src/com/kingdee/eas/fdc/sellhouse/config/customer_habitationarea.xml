@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="HabitationArea" type="table" />
+	<Dimension name="HabitationArea" caption="所在区域" table="HabitationArea" primaryKey="FID">
+		<Hierarchy>
+			<Level name="HabitationArea" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="HabitationArea" foreignKey="FHabitationAreaID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

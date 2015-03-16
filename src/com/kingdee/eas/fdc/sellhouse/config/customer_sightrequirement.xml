@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="SightRequirement" type="table" />
+	<Dimension name="SightRequirement" caption="景观需求" table="SightRequirement" primaryKey="FID">
+		<Hierarchy>
+			<Level name="SightRequirement" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="SightRequirement" foreignKey="FSightRequirementID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

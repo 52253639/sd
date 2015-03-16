@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Schema name="AccountBalance">
+
+    <Parameter name="T_SHE_Building" type="Table"/>
+    <Parameter name="T_SHE_RoomModelType" type="Table"/>
+    <Parameter name="T_SHE_RoomModel" type="Table"/>
+    <Parameter name="T_SHE_ProductDetial" type="Table"/>
+    <Parameter name="T_FDC_ProductType" type="Table"/>
+	<Parameter name="T_SHE_BuildingProperty" type="Table"/>
+ 	<Parameter name="T_SHE_RoomForm" type="Table"/>
+ 	<Parameter name="T_SHE_SightRequirement" type="Table"/>
+ 	<Parameter name="T_SHE_HopedDirection" type="Table"/>
+ 	
+ 	<Parameter name="T_SHE_CustomerGrade" type="Table"/>
+ 	<Parameter name="T_SHE_CustomerOrigin" type="Table"/>
+ 	<Parameter name="T_SHE_CustomerOriginGroup" type="Table"/> 	
+ 	<Parameter name="T_PM_User" type="Table"/>
+ 	<Parameter name="T_BD_Province" type="Table"/>
+ 	<Parameter name="T_SHE_HabitationArea" type="Table"/>
+ 	<Parameter name="T_SHE_FamillyEarning" type="Table"/>
+ 	<Parameter name="T_SHE_ReceptionType" type="Table"/>
+ 	<Parameter name="T_BD_Industry" type="Table"/>
+ 	
+ 	<Parameter name="T_CubeTable" type="Table"/> 	
+ 	
+ 	<Parameter name="T_Temp_Floor" type="Table"/>
+ 	<Parameter name="T_Temp_HouseProperty" type="Table"/>
+ 	<Parameter name="T_Temp_CustomerType" type="Table"/>
+ 	<Parameter name="T_Temp_TradeTime" type="Table"/>
+ 	<Parameter name="T_Temp_Sex" type="Table"/>
+ 	<Parameter name="T_Temp_EnterpriceSize" type="Table"/> 	
+ 		
+
+    <Dimension name="Building" caption="楼栋" table="T_SHE_Building" primaryKey="FID">
+        <Hierarchy>
+			<Level name="Building" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="RoomModelType" caption="户型类别" table="T_SHE_RoomModelType" primaryKey="FID">
+        <Hierarchy>
+			<Level name="RoomModelType" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="RoomModel" caption="户型" table="T_SHE_RoomModel" primaryKey="FID">
+        <Hierarchy>
+            <Level name="RoomModel" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="ProductDetial" caption="产品描述" table="T_SHE_ProductDetial" primaryKey="FID">
+        <Hierarchy>
+            <Level name="ProductDetial" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="ProductType" caption="产品类型" table="T_FDC_ProductType" primaryKey="FID">
+        <Hierarchy>
+            <Level name="ProductType" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+
+
+	<Dimension name="BuildingProperty" caption="建筑性质" table="T_SHE_BuildingProperty" primaryKey="FID" >
+		<Hierarchy hasAll="false">
+			<Level name="BuildingProperty" column="FlongNumber" childColumn="FID" parentColumn="FParentID">
+				<Property name="name" column="FName_L2"/>
+				<Property name="caption" column="FName_L2"/>
+				<Property name="skipLevel" column="FLevel"/>
+			</Level>
+		</Hierarchy>
+	</Dimension>
+
+<!--
+	<Dimension name="BuildingProperty" caption="建筑性质" table="T_SHE_BuildingProperty" primaryKey="FID" >
+        <Hierarchy>
+            <Level name="BuildingProperty" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+	</Dimension> 
+-->
+	       
+    <Dimension name="RoomForm" caption="房屋形式" table="T_SHE_RoomForm" primaryKey="FID">
+        <Hierarchy>
+            <Level name="RoomForm" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="SightRequirement" caption="景观" table="T_SHE_SightRequirement" primaryKey="FID">
+        <Hierarchy>
+            <Level name="SightRequirement" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="HopedDirection" caption="朝向" table="T_SHE_HopedDirection" primaryKey="FID">
+        <Hierarchy>
+            <Level name="HopedDirection" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+
+    <Dimension name="CustomerGrade" caption="客户分级" table="T_SHE_CustomerGrade" primaryKey="FID">
+        <Hierarchy>
+            <Level name="CustomerGrade" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="CustomerOrigin" caption="客户来源" table="T_SHE_CustomerOrigin" primaryKey="FID">
+        <Hierarchy>
+            <Level name="CustomerOrigin" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="CustOriType" caption="客户来源分类" table="T_SHE_CustomerOriginGroup" primaryKey="FID">
+        <Hierarchy>
+            <Level name="CustOriType" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="Creator" caption="登记人" table="T_PM_User" primaryKey="FID">
+        <Hierarchy>
+            <Level name="User" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="Salesman" caption="所属顾问" table="T_PM_User" primaryKey="FID">
+        <Hierarchy>
+            <Level name="User" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="Province" caption="省市" table="T_BD_Province" primaryKey="FID">
+        <Hierarchy>
+            <Level name="Province" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    
+<!--
+    <Dimension name="HabitationArea" caption="区域" table="T_SHE_HabitationArea" primaryKey="FID">
+        <Hierarchy>
+            <Level name="HabitationArea" column="FID">
+                <Property name="caption" column="FName_L2"/>
+            </Level>
+        </Hierarchy>
+    </Dimension>
+-->   
+	<Dimension name="HabitationArea" caption="区域" table="T_SHE_HabitationArea" primaryKey="FID" >
+		<Hierarchy hasAll="false">
+			<Level name="HabitationArea" column="FlongNumber" childColumn="FID" parentColumn="FParentID">
+				<Property name="name" column="FName_L2"/>
+				<Property name="caption" column="FName_L2"/>
+				<Property name="skipLevel" column="FLevel"/>
+			</Level>
+		</Hierarchy>
+	</Dimension>
+  
+    <Dimension name="FamillyEarning" caption="家庭收入" table="T_SHE_FamillyEarning" primaryKey="FID">
+        <Hierarchy>
+            <Level name="FamillyEarning" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="ReceptionType" caption="首次接待方式" table="T_SHE_ReceptionType" primaryKey="FID">
+        <Hierarchy>
+            <Level name="ReceptionType" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="Industry" caption="行业" table="T_BD_Industry" primaryKey="FID">
+        <Hierarchy>
+            <Level name="Industry" column="FID" >
+				<Property name="caption" column="FName_L2" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    
+
+    <Dimension name="Floor" caption="楼层" table="T_Temp_Floor" primaryKey="FFloor">
+        <Hierarchy>
+            <Level name="Floor" column="FFloor" />
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="HouseProperty" caption="房产性质" table="T_Temp_HouseProperty" primaryKey="FID">
+        <Hierarchy>
+            <Level name="HouseProperty" column="FID" >
+				<Property name="caption" column="FName" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    
+    <Dimension name="CustomerType" caption="客户类型" table="T_Temp_CustomerType" primaryKey="FID">
+        <Hierarchy>
+            <Level name="CustomerType" column="FID" >
+				<Property name="caption" column="FName" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="TradeTime" caption="交易次数" table="T_Temp_TradeTime" primaryKey="FTradeTime">
+        <Hierarchy>
+            <Level name="TradeTime" column="FTradeTime" />
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="Sex" caption="性别" table="T_Temp_Sex" primaryKey="FID">
+        <Hierarchy>
+              <Level name="Sex" column="FID" >
+				<Property name="caption" column="FName" />
+			</Level>
+        </Hierarchy>
+    </Dimension> 
+    <Dimension name="EnterpriceSize" caption="企业规模" table="T_Temp_EnterpriceSize" primaryKey="FEnterpriceSize">
+        <Hierarchy>
+            <Level name="EnterpriceSize" column="FEnterpriceSize" />
+        </Hierarchy>
+    </Dimension>     
+ 
+    <Cube name="CubeTable" table="T_CubeTable">    
+        <DimensionUsage name="Building" foreignKey="FBuildingID"/>
+        <DimensionUsage name="RoomModelType" foreignKey="roomModelTypeID"/>
+        <DimensionUsage name="RoomModel" foreignKey="FRoomModelID"/>
+        <DimensionUsage name="ProductDetial" foreignKey="FProductDetailID"/>
+        <DimensionUsage name="ProductType" foreignKey="FProductTypeID"/>
+        <DimensionUsage name="BuildingProperty" foreignKey="FBuildingPropertyID"/>
+        <DimensionUsage name="RoomForm" foreignKey="FRoomFormID"/>
+        <DimensionUsage name="SightRequirement" foreignKey="FSightID"/>
+        <DimensionUsage name="HopedDirection" foreignKey="FDirectionID"/>
+        
+        <DimensionUsage name="CustomerGrade" foreignKey="FCustomerGradeID"/>
+        <DimensionUsage name="CustomerOrigin" foreignKey="FCustomerOriginID"/>
+        <DimensionUsage name="CustOriType" foreignKey="custOriTypeID"/>
+        <DimensionUsage name="Creator" foreignKey="FCreatorID"/>
+        <DimensionUsage name="Salesman" foreignKey="FSalesmanID"/>
+        <DimensionUsage name="Province" foreignKey="FProvinceID"/>
+        <DimensionUsage name="HabitationArea" foreignKey="FHabitationAreaID"/>
+        <DimensionUsage name="FamillyEarning" foreignKey="FFamillyEarningID"/>
+        <DimensionUsage name="ReceptionType" foreignKey="FReceptionTypeID"/>
+        <DimensionUsage name="Industry" foreignKey="FIndustryID"/>
+        
+        <DimensionUsage name="Floor"  foreignKey="FFloor"/>
+        <DimensionUsage name="HouseProperty" foreignKey="FHouseProperty"/>
+        <DimensionUsage name="CustomerType" foreignKey="FCustomerType"/>
+        <DimensionUsage name="TradeTime" foreignKey="FTradeTime"/>
+        <DimensionUsage name="Sex" foreignKey="FSex"/>
+		<DimensionUsage name="EnterpriceSize" foreignKey="FEnterpriceSize"/>
+        
+	
+		<Measure name="PurchaseCount" caption="认购单数量" column="CountNum"  aggregator="sum" formatString="#,###"/>
+
+
+
+    </Cube>
+
+</Schema>

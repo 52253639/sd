@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="room">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="Level" type="table" />
+	<Dimension name="Level" caption="商机级别" table="Level" primaryKey="FID">
+		<Hierarchy>
+			<Level name="Level" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="Level" foreignKey="FLevelID" />
+		<Measure name="FCounter" caption="套数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

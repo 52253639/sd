@@ -1,0 +1,2571 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Allen (king) -->
+<formulas_declaration>
+	<formulas>
+	<!--##############################成本取数动态成本取数函数#######################-->
+	<formula name="fdc_acct_dyncost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">动态成本取数函数</local_name>
+				<local_name lansguage="zh_TW">動態成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_dyncost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctDyncostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">动态成本取数函数</comment>
+				<comment language="zh_TW">動態成本取數函數</comment>
+				<comment language="en_US">fdc_acct_dyncost</comment>
+			</comments>
+		</formula>
+	<!--###########################成本取数动态成本取数函数结束######################-->
+	
+	<!--##############################成本取数目标成本取数函数#######################-->
+	<formula name="fdc_acct_aimcost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">目标成本取数函数</local_name>
+				<local_name language="zh_TW">目標成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_aimcost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctAimcostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">目标成本取数函数</comment>
+				<comment language="zh_TW">目標成本取數函數</comment>
+				<comment language="en_US">fdc_acct_aimcost</comment>
+			</comments>
+		</formula>
+	<!--###########################成本取数目标成本取数函数结束#####################-->
+	
+	<!--###########################资金计划取数预算付款取数函数#######################-->
+	<formula name="fdc_acct_budget_pay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算付款取数函数</local_name>
+				<local_name language="zh_TW">預算付款取數函數</local_name>
+				<local_name language="en_US">fdc_acct_budget_pay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctBudgetPayCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算付款取数函数</comment>
+				<comment language="zh_TW">預算付款取數函數</comment>
+				<comment language="en_US">fdc_acct_budget_pay</comment>
+			</comments>
+		</formula>
+	<!--###########################资金计划取数预算付款取数函数#####################-->
+	
+	<!--###########################资金计划取数计划付款取数函数#######################-->
+	<formula name="fdc_acct_plan_pay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">计划付款取数函数</local_name>
+				<local_name language="zh_TW">計劃付款取數函數</local_name>
+				<local_name language="en_US">fdc_acct_plan_pay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctPlanPayCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">计划付款取数函数</comment>
+				<comment language="zh_TW">計劃付款取數函數</comment>
+				<comment language="en_US">fdc_acct_plan_pay</comment>
+			</comments>
+		</formula>
+	<!--###########################资金计划取数计划付款取数函数#####################-->
+	
+	<!--###########################资金计划取数实际付款取数函数#######################-->
+	<formula name="fdc_acct_actual_pay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">实际付款取数函数</local_name>
+				<local_name language="zh_TW">實際付款取數函數</local_name>
+				<local_name language="en_US">fdc_acct_actual_pay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctActualPayCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">实际付款取数函数</comment>
+				<comment language="zh_TW">實際付款取數函數</comment>
+				<comment language="en_US">fdc_acct_actual_pay</comment>
+			</comments>
+		</formula>
+	<!--###########################资金计划取数实际付款取数函数#####################-->
+	
+	<!--###########################资金计划取数预算成本取数函数#######################-->
+	<formula name="fdc_acct_budget_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算成本取数函数</local_name>
+				<local_name language="zh_TW">預算成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_budget_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctBudgetCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算成本取数函数</comment>
+				<comment language="zh_TW">預算成本取數函數</comment>
+				<comment language="en_US">fdc_acct_budget_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################资金计划取数预算成本取数函数#####################-->
+	
+	<!--###########################资金计划取数计划成本取数函数#######################-->
+	<formula name="fdc_acct_plan_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">计划成本取数函数</local_name>
+				<local_name language="zh_TW">計劃成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_plan_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctPlanCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">计划成本取数函数</comment>
+				<comment language="zh_TW">計劃成本取數函數</comment>
+				<comment language="en_US">fdc_acct_plan_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################资金计划取数计划成本取数函数#####################-->
+	
+	<!--###########################资金计划取数实际成本取数函数#######################-->
+	<formula name="fdc_acct_actual_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">实际成本取数函数</local_name>
+				<local_name language="zh_TW">實際成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_actual_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctActualCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">实际成本取数函数</comment>
+				<comment language="zh_TW">實際成本取數函數</comment>
+				<comment language="en_US">fdc_acct_actual_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################资金计划取数实际成本取数函数#####################-->
+	
+	<formula name="fdc_plan" type="amount" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">房地产资金计划取数公式_计划数</local_name>
+				<local_name language="zh_TW">房地产资金计划取数公式_计划数</local_name>
+				<local_name language="en_US">fdc_plan</local_name>
+			</alias>
+			<implClass/>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcPlanCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="costCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">组织</local_name>
+						<local_name language="zh_TW">组织</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">组织</comment>
+						<comment language="zh_TW">组织</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">项目</local_name>
+						<local_name language="en_US">project</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">项目</comment>
+						<comment language="en_US">project</comment>
+					</comments>
+				</param>	
+				<param name="planPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">计划期间</local_name>
+						<local_name language="zh_TW">计划期间</local_name>
+						<local_name language="en_US">planPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">计划期间</comment>
+						<comment language="zh_TW">计划期间</comment>
+						<comment language="en_US">planPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">房地产资金计划取数公式_计划数</comment>
+				<comment language="zh_TW">房地产资金计划取数公式_计划数</comment>
+				<comment language="en_US">fdc_plan</comment>
+			</comments>
+		</formula>
+		
+		<formula name="fdc_real" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">房地产资金计划取数公式_实际数</local_name>
+				<local_name language="zh_TW">房地产资金计划取数公式_实际数</local_name>
+				<local_name language="en_US">fdc_real</local_name>
+			</alias>
+			<implClass/>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcRealCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="costCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">组织</local_name>
+						<local_name language="zh_TW">组织</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">组织</comment>
+						<comment language="zh_TW">组织</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>		
+			    <param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">项目</local_name>
+						<local_name language="en_US">project</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">项目</comment>
+						<comment language="en_US">project</comment>
+					</comments>
+				</param>				
+				<param name="paymentType" type="paymentTypeF7" required="true">
+					<alias>
+						<local_name language="zh_CN">付款类别</local_name>
+						<local_name language="zh_TW">付款类别</local_name>
+						<local_name language="en_US">paymentType</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">付款类别</comment>
+						<comment language="zh_TW">付款类别</comment>
+						<comment language="en_US">paymentType</comment>
+					</comments>
+				</param>				
+				<param name="periodBegin" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">开始期间</local_name>
+						<local_name language="zh_TW">开始期间</local_name>
+						<local_name language="en_US">periodBegin</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">开始期间</comment>
+						<comment language="zh_TW">开始期间</comment>
+						<comment language="en_US">periodBegin</comment>
+					</comments>
+				</param>
+				<param name="periodEnd" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">结束期间</local_name>
+						<local_name language="zh_TW">结束期间</local_name>
+						<local_name language="en_US">periodEnd</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束期间</comment>
+						<comment language="zh_TW">结束期间</comment>
+						<comment language="en_US">periodEnd</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">房地产资金计划取数公式_实际数</comment>
+				<comment language="zh_TW">房地产资金计划取数公式_实际数</comment>
+				<comment language="en_US">fdc_real</comment>
+			</comments>
+		</formula>
+	
+	<!--###########################房地产可研测算成本取数函数#######################-->
+	<formula name="fdc_measure_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">可研测算成本取数函数</local_name>
+				<local_name language="zh_TW">可研測算成本取數函數</local_name>
+				<local_name language="en_US">fdc_measure_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcMeasureCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="false">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="verNo" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">可研测算版本号</local_name>
+						<local_name language="zh_TW">可研測算版本號</local_name>
+						<local_name language="en_US">verNo</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">可研测算版本号</comment>
+						<comment language="zh_TW">可研測算版本號</comment>
+						<comment language="en_US">verNo</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">可研测算成本取数函数</comment>
+				<comment language="zh_TW">可研測算成本取數函數</comment>
+				<comment language="en_US">fdc_measure_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产可研测算成本取数函数#####################-->
+	
+	<!--###########################房地产目标成本测算成本取数函数#######################-->
+	<formula name="fdc_aim_measure_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">目标成本测算成本取数函数</local_name>
+				<local_name language="zh_TW">目標成本測算成本取數函數</local_name>
+				<local_name language="en_US">fdc_aim_measure_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAimMeasureCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="false">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="verNo" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">目标成本测算版本号</local_name>
+						<local_name language="zh_TW">目標成本測算版本號</local_name>
+						<local_name language="en_US">verNo</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">目标成本测算版本号</comment>
+						<comment language="zh_TW">目標成本測算版本號</comment>
+						<comment language="en_US">verNo</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">目标成本测算成本取数函数</comment>
+				<comment language="zh_TW">目標成本測算成本取數函數</comment>
+				<comment language="en_US">fdc_aim_measure_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产目标成本测算成本取数函数#####################-->
+	
+	<!--###########################房地产工程项目目标成本取数函数#######################-->
+	<formula name="fdc_aim_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">工程项目目标成本取数函数</local_name>
+				<local_name language="zh_TW">工程項目目標成本取數函數</local_name>
+				<local_name language="en_US">fdc_aim_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAimCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="false">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="verNo" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">目标成本版本号</local_name>
+						<local_name language="zh_TW">目標成本版本號</local_name>
+						<local_name language="en_US">verNo</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">目标成本版本号</comment>
+						<comment language="zh_TW">目標成本版本號</comment>
+						<comment language="en_US">verNo</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">工程项目目标成本取数函数</comment>
+				<comment language="zh_TW">工程項目目標成本取數函數</comment>
+				<comment language="en_US">fdc_aim_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产工程项目目标成本取数函数#####################-->
+	
+	<!--###########################房地产合同成本拆分取数函数#######################-->
+	<formula name="fdc_acct_conCost_split" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">合同成本拆分取数函数</local_name>
+				<local_name language="zh_TW">合同成本拆分取數函數</local_name>
+				<local_name language="en_US">fdc_acct_conCost_split</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcConCostSplitCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="fdcContract" type="fdcContractF7" required="false">
+					<alias>
+						<local_name language="zh_CN">合同</local_name>
+						<local_name language="zh_TW">合同</local_name>
+						<local_name language="en_US">fdcContract</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">合同</comment>
+						<comment language="zh_TW">合同</comment>
+						<comment language="en_US">fdcContract</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">合同成本拆分取数函数</comment>
+				<comment language="zh_TW">合同成本拆分取數函數</comment>
+				<comment language="en_US">fdc_acct_conCost_split</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产合同成本拆分取数函数#####################-->
+	
+	<!--###########################房地产合同变更拆分取数函数#######################-->
+	<formula name="fdc_acct_conChange_split" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">合同变更拆分取数函数</local_name>
+				<local_name language="zh_TW">合同變更拆分取數函數</local_name>
+				<local_name language="en_US">fdc_acct_conChange_split</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcConChangeSplitCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				<param name="month" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>	
+				<param name="fdcContract" type="fdcContractF7" required="false">
+					<alias>
+						<local_name language="zh_CN">合同</local_name>
+						<local_name language="zh_TW">合同</local_name>
+						<local_name language="en_US">fdcContract</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">合同</comment>
+						<comment language="zh_TW">合同</comment>
+						<comment language="en_US">fdcContract</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">合同变更拆分取数函数</comment>
+				<comment language="zh_TW">合同變更拆分取數函數</comment>
+				<comment language="en_US">fdc_acct_conChange_split</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产合同變更拆分取数函数#####################-->
+	<!--###########################房地产合同结算拆分取数函数#######################-->
+	<formula name="fdc_acct_conSettle_split" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">合同结算拆分取数函数</local_name>
+				<local_name language="zh_TW">合同結算拆分取數函數</local_name>
+				<local_name language="en_US">fdc_acct_conSettle_split</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcConSettleSplitCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="fdcContract" type="fdcContractF7" required="false">
+					<alias>
+						<local_name language="zh_CN">合同</local_name>
+						<local_name language="zh_TW">合同</local_name>
+						<local_name language="en_US">fdcContract</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">合同</comment>
+						<comment language="zh_TW">合同</comment>
+						<comment language="en_US">fdcContract</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">合同结算拆分取数函数</comment>
+				<comment language="zh_TW">合同結算拆分取數函數</comment>
+				<comment language="en_US">fdc_acct_conSettle_split</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产合同结算拆分取数函数#####################-->
+	<!--###########################房地产待发生成本调整取数函数#######################-->
+	<formula name="fdc_acct_intending_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">待发生成本调整取数函数</local_name>
+				<local_name language="zh_TW">待發生成本調整取數函數</local_name>
+				<local_name language="en_US">fdc_acct_intending_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcIntendingCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="false">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="fdcAdjustReason" type="adjustReasonF7" required="false">
+					<alias>
+						<local_name language="zh_CN">调整原因</local_name>
+						<local_name language="zh_TW">調整原因</local_name>
+						<local_name language="en_US">fdcAdjustReason</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">调整原因</comment>
+						<comment language="zh_TW">調整原因</comment>
+						<comment language="en_US">fdcAdjustReason</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">待发生成本调整取数函数</comment>
+				<comment language="zh_TW">待發生成本調整取數函數</comment>
+				<comment language="en_US">fdc_acct_intending_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产待发生成本调整取数函数#####################-->
+	<!--###########################房地产工程项目动态成本取数函数#######################-->
+	<formula name="fdc_acct_dynamic_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">工程项目动态成本取数函数</local_name>
+				<local_name language="zh_TW">工程項目動態成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_dynamic_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctDynamicCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="false">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+			</params>
+			<comments>
+				<comment language="zh_CN">工程项目动态成本取数函数</comment>
+				<comment language="zh_TW">工程項目動態成本取數函數</comment>
+				<comment language="en_US">fdc_acct_dynamic_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产工程项目动态成本取数函数#####################-->
+	
+	<!--###########################房地产付款拆分已实现成本取数函数#######################-->
+	<formula name="fdc_acct_hasPay_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">付款拆分已实现成本取数函数</local_name>
+				<local_name language="zh_TW">付款拆分已實現成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_hasPay_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctHasPayCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				<param name="month" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+				<param name="fdcContract" type="fdcContractF7" required="false">
+					<alias>
+						<local_name language="zh_CN">合同</local_name>
+						<local_name language="zh_TW">合同</local_name>
+						<local_name language="en_US">fdcContract</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">合同</comment>
+						<comment language="zh_TW">合同</comment>
+						<comment language="en_US">fdcContract</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">付款拆分已实现成本取数函数</comment>
+				<comment language="zh_TW">付款拆分已實現成本取數函數</comment>
+				<comment language="en_US">fdc_acct_hasPay_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产付款拆分已实现成本取数函数#####################-->
+	<!--###########################房地产付款拆分付款金额取数函数#######################-->
+	<formula name="fdc_acct_hasPaid_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">付款拆分付款金额取数函数</local_name>
+				<local_name language="zh_TW">付款拆分付款金額取數函數</local_name>
+				<local_name language="en_US">fdc_acct_hasPaid_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctHasPaidCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				<param name="month" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">月度</local_name>
+						<local_name language="zh_TW">月度</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月度</comment>
+						<comment language="zh_TW">月度</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+				<param name="fdcContract" type="fdcContractF7" required="false">
+					<alias>
+						<local_name language="zh_CN">合同</local_name>
+						<local_name language="zh_TW">合同</local_name>
+						<local_name language="en_US">fdcContract</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">合同</comment>
+						<comment language="zh_TW">合同</comment>
+						<comment language="en_US">fdcContract</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">付款拆分付款金额取数函数</comment>
+				<comment language="zh_TW">付款拆分付款金額取數函數</comment>
+				<comment language="en_US">fdc_acct_hasPaid_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产付款拆分付款金额取数函数#####################-->
+	<!--###########################房地产无文本合同付款拆分已实现成本取数函数#######################-->
+	<formula name="fdc_noText_pay_split" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">无文本合同付款拆分已实现成本取数函数</local_name>
+				<local_name language="zh_TW">無文本合同付款拆分已實現成本取數函數</local_name>
+				<local_name language="en_US">fdc_noText_pay_split</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcConNoTextPaySplitCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				<param name="fdcConWithoutText" type="fdcConNoTextF7" required="false">
+					<alias>
+						<local_name language="zh_CN">无文本合同</local_name>
+						<local_name language="zh_TW">無文本合同</local_name>
+						<local_name language="en_US">fdcConWithoutText</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">无文本合同</comment>
+						<comment language="zh_TW">無文本合同</comment>
+						<comment language="en_US">fdcConWithoutText</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">无文本合同付款拆分已实现成本取数函数</comment>
+				<comment language="zh_TW">無文本合同付款拆分已實現成本取數函數</comment>
+				<comment language="en_US">fdc_noText_pay_split</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产无文本合同付款拆分已实现成本取数函数#####################-->
+	<!--###########################房地产工程项目已发生成本取数函数#######################-->
+	<formula name="fdc_acct_hasHappen_cost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">工程项目已发生成本取数函数</local_name>
+				<local_name language="zh_TW">工程項目已發生成本取數函數</local_name>
+				<local_name language="en_US">fdc_acct_hasHappen_cost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctHasHappenCostCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<param name="longNumber" type="String" required="false">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+			</params>
+			<comments>
+				<comment language="zh_CN">工程项目已发生成本取数函数</comment>
+				<comment language="zh_TW">工程項目已發生成本取數函數</comment>
+				<comment language="en_US">fdc_acct_hasHappen_cost</comment>
+			</comments>
+		</formula>
+	<!--###########################房地产工程项目已发生成本取数函数#####################-->	
+	
+	<!--###########################预算系统实际付款取数函数#####################-->	
+	<formula name="fdc_budget_acct_actualPay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统实际付款取数函数</local_name>
+				<local_name language="zh_TW">預算系統實際付款取數函數</local_name>
+				<local_name language="en_US">fdc_budget_acct_actualPay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctActualPayCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+				<param name="periodStep" type="Integer" required="false">
+					<alias>
+						<local_name language="zh_CN">期间偏移量</local_name>
+						<local_name language="zh_TW">期间偏移量</local_name>
+						<local_name language="en_US">periodStep</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">期间偏移量</comment>
+						<comment language="zh_TW">期间偏移量</comment>
+						<comment language="en_US">periodStep</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统实际付款取数函数</comment>
+				<comment language="zh_TW">預算系統實際付款取數函數</comment>
+				<comment language="en_US">fdc_budget_acct_actualPay</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统实际付款取数函数#####################-->
+	
+	<!--###########################预算系统实际成本取数函数#####################-->	
+	<formula name="fdc_budget_acct_actualCost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统实际成本取数函数</local_name>
+				<local_name language="zh_TW">預算系統實際成本取數函數</local_name>
+				<local_name language="en_US">fdc_budget_acct_actualCost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctActualCostCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统实际成本取数函数</comment>
+				<comment language="zh_TW">預算系統實際成本取數函數</comment>
+				<comment language="en_US">fdc_budget_acct_actualCost</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统实际成本取数函数#####################-->
+	
+	<!--###########################预算系统年度预算预算付款取数函数#######################-->
+	<formula name="fdc_budget_acct_annualBudgetPay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统年度预算预算付款取数函数</local_name>
+				<local_name language="zh_TW">預算系統年度預算預算付款取數函數</local_name>
+				<local_name language="en_US">fdc_budget_acct_annualBudgetPay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctAnnualBudgetPayCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统年度预算预算付款取数函数</comment>
+				<comment language="zh_TW">預算系統年度預算預算付款取數函數</comment>
+				<comment language="en_US">fdc_budget_acct_annualBudgetPay</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统年度预算预算付款取数函数#####################-->
+	
+	<!--###########################预算系统年度预算预算成本取数函数#######################-->
+	<formula name="fdc_budget_acct_annualBudgetCost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统年度预算预算成本取数函数</local_name>
+				<local_name language="zh_TW">預算系統年度預算預算成本取數函數</local_name>
+				<local_name language="en_US">fdc_budget_acct_annualBudgetCost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctAnnualBudgetCostCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统年度预算预算成本取数函数</comment>
+				<comment language="zh_TW">預算系統年度預算預算成本取數函數</comment>
+				<comment language="en_US">fdc_budget_acct_annualBudgetCost</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统年度预算预算成本取数函数#####################-->
+	
+	<!--###########################预算系统月度预算计划成本取数函数#######################-->
+	<formula name="fdc_budget_acct_monthlyBudgetCost" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统月度预算计划成本取数函数</local_name>
+				<local_name language="zh_TW">預算系統月度預算計劃成本取數函數</local_name>
+				<local_name language="en_US">fdc_budget_acct_monthlyBudgetCost</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctMonthlyBudgetCostCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统月度预算计划成本取数函数</comment>
+				<comment language="zh_TW">預算系統月度預算計劃成本取數函數</comment>
+				<comment language="en_US">fdc_budget_acct_monthlyBudgetCost</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统月度预算计划成本取数函数#####################-->
+	
+	<!--###########################预算系统月度预算计划付款取数函数#####################-->
+	<formula name="fdc_budget_acct_monthlyBudgetPay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCMonthlyBudgetPayWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统月度预算计划付款取数函数</local_name>
+				<local_name language="zh_TW">预算系统月度预算计划付款取数函数</local_name>
+				<local_name language="en_US">fdc_budget_acct_monthlyBudgetPay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctMonthlyBudgetPayCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+				<param name="periodStep" type="Integer" required="false">
+					<alias>
+						<local_name language="zh_CN">期间偏移量</local_name>
+						<local_name language="zh_TW">期间偏移量</local_name>
+						<local_name language="en_US">periodStep</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">期间偏移量</comment>
+						<comment language="zh_TW">期间偏移量</comment>
+						<comment language="en_US">periodStep</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统月度预算计划付款取数函数</comment>
+				<comment language="zh_TW">预算系统月度预算计划付款取数函数</comment>
+				<comment language="en_US">fdc_budget_acct_monthlyBudgetPay</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统月度预算计划付款取数函数#####################-->
+	
+	<!--###########################预算系统年初截至截止期间实际付款取数函数#####################-->
+	<formula name="fdc_budget_acct_upToActualPay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统年初截至截止期间实际付款取数函数</local_name>
+				<local_name language="zh_TW">预算系统年初截至截止期间实际付款取数函数</local_name>
+				<local_name language="en_US">fdc_budget_acct_upToActualPay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctUpToActualPayCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">截至期间</local_name>
+						<local_name language="zh_TW">截至期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">截至期间</comment>
+						<comment language="zh_TW">截至期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统年初截至截止期间实际付款取数函数</comment>
+				<comment language="zh_TW">预算系统年初截至截止期间实际付款取数函数</comment>
+				<comment language="en_US">fdc_budget_acct_upToActualPay</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统年初截至截止期间实际付款取数函数#####################-->
+	
+	<!--###########################预算系统年初截至截止期间计划付款取数函数#####################-->
+	<formula name="fdc_budget_acct_upToBudgetPay" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统年初截至截止期间计划付款取数函数</local_name>
+				<local_name language="zh_TW">预算系统年初截至截止期间计划付款取数函数</local_name>
+				<local_name language="en_US">fdc_budget_acct_upToBudgetPay</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetAcctUpToBudgetPayCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="longNumber" type="String" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">截至期间</local_name>
+						<local_name language="zh_TW">截至期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">截至期间</comment>
+						<comment language="zh_TW">截至期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统年初截至截止期间计划付款取数函数</comment>
+				<comment language="zh_TW">预算系统年初截至截止期间计划付款取数函数</comment>
+				<comment language="en_US">fdc_budget_acct_upToBudgetPay</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统年初截至截止期间计划付款取数函数#####################-->
+	
+	<!--###########################预算系统合同付款计划取数函数#####################-->
+	<formula name="fdc_budget_plan" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统合同付款计划取数函数</local_name>
+				<local_name language="zh_TW">预算系统合同付款计划取数函数</local_name>
+				<local_name language="en_US">fdc_budget_plan</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetPlanCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>			
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">计划期间</local_name>
+						<local_name language="zh_TW">计划期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">计划期间</comment>
+						<comment language="zh_TW">计划期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统合同付款计划取数函数</comment>
+				<comment language="zh_TW">预算系统合同付款计划取数函数</comment>
+				<comment language="en_US">fdc_budget_plan</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统合同付款计划取数函数#####################-->
+	
+	<!--###########################预算系统合同实际付款取数函数#####################-->
+	<formula name="fdc_budget_real" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCBudgetFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">预算系统合同实际付款取数函数</local_name>
+				<local_name language="zh_TW">预算系统合同实际付款取数函数</local_name>
+				<local_name language="en_US">fdc_budget_real</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcBudgetRealCaculator</batchImplClass>
+			<params>
+				<param name="orgUnit" type="CostCenterF7" required="false">
+					<alias>
+						<local_name language="zh_CN">实体成本中心</local_name>
+						<local_name language="zh_TW">实体成本中心</local_name>
+						<local_name language="en_US">Unit</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">实体成本中心</comment>
+						<comment language="zh_TW">实体成本中心</comment>
+						<comment language="en_US">Unit</comment>
+					</comments>
+				</param>
+				<param name="paymentType" type="paymentTypeF7" required="false">
+					<alias>
+						<local_name language="zh_CN">付款类别</local_name>
+						<local_name language="zh_TW">付款类别</local_name>
+						<local_name language="en_US">paymentType</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">付款类别</comment>
+						<comment language="zh_TW">付款类别</comment>
+						<comment language="en_US">paymentType</comment>
+					</comments>
+				</param>			
+				<param name="periodBegin" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">开始期间</local_name>
+						<local_name language="zh_TW">开始期间</local_name>
+						<local_name language="en_US">periodBegin</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">开始期间</comment>
+						<comment language="zh_TW">开始期间</comment>
+						<comment language="en_US">periodBegin</comment>
+					</comments>
+				</param>
+				<param name="periodEnd" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">结束期间</local_name>
+						<local_name language="zh_TW">结束期间</local_name>
+						<local_name language="en_US">periodEnd</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束期间</comment>
+						<comment language="zh_TW">结束期间</comment>
+						<comment language="en_US">periodEnd</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统合同实际付款取数函数</comment>
+				<comment language="zh_TW">预算系统合同实际付款取数函数</comment>
+				<comment language="en_US">fdc_budget_real</comment>
+			</comments>
+		</formula>
+	<!--###########################预算系统合同实际付款取数函数#####################-->
+	
+	<!--by Cassiel_peng 2009-10-21-->
+	<!--###############长城提单R090921-057：成本取数目标成本取数函数需改进为能按期间过滤取数#################-->
+	<formula name="fdc_acct_aimcost_filterByDate" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizardForR090921_057">
+			<alias>
+				<local_name language="zh_CN">目标成本取数函数(按期间过滤)</local_name>
+				<local_name language="zh_TW">目標成本取數函數(按期間過濾)</local_name>
+				<local_name language="en_US">fdc_acct_aimcost_filterByDate</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctAimcostCaculatorFor090921_057</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>
+			<!--长城提单R090921-057:需求要求该值若为true,则支持选择其他公司项目,并更新公司参数;若为false,则为选择的公司下的项目.默认为false-->			
+				<param name="displayAllCompany" type="Boolean" required="false">
+					<alias>
+						<local_name language="zh_CN">显示全部组织</local_name>
+						<local_name language="zh_TW">显示全部组织</local_name>
+						<local_name language="en_US">displayAllCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">显示全部组织</comment>
+						<comment language="zh_TW">顯示全部組織</comment>
+						<comment language="en_US">displayAllCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<!--长城提单R090921-057:需求要求成本科目应支持F7选择-->
+				<param name="longNumber" type="costAccountF7" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="beginPeriod" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">开始期间</local_name>
+						<local_name language="zh_TW">開始期間</local_name>
+						<local_name language="en_US">beginPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">开始期间</comment>
+						<comment language="zh_TW">開始期間</comment>
+						<comment language="en_US">beginPeriod</comment>
+					</comments>
+				</param>
+				<param name="endPeriod" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">结束期间</local_name>
+						<local_name language="zh_TW">結束期間</local_name>
+						<local_name language="en_US">endPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束期间</comment>
+						<comment language="zh_TW">結束期間</comment>
+						<comment language="en_US">endPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">目标成本取数函数</comment>
+				<comment language="zh_TW">目標成本取數函數</comment>
+				<comment language="en_US">fdc_acct_aimcost_filterByDate</comment>
+			</comments>
+		</formula>
+
+<!--##############长城提单R090921-057：房地产合同成本拆分取数函数需改进为能按期间过滤取数############-->
+	<formula name="fdc_acct_conCost_split_filterByDate" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizardForR090921_057">
+			<alias>
+				<local_name language="zh_CN">合同成本拆分取数函数(按期间过滤)</local_name>
+				<local_name language="zh_TW">合同成本拆分取數函數(按期間過濾)</local_name>
+				<local_name language="en_US">fdc_acct_conCost_split_filterByDate</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcConCostSplitCaculatorFor090921_057</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>
+			<!--长城提单R090921-057:需求要求该值若为true,则支持选择其他公司项目,并更新公司参数;若为false,则为选择的公司下的项目.默认为false-->			
+				<param name="displayAllCompany" type="Boolean" required="false">
+					<alias>
+						<local_name language="zh_CN">显示全部组织</local_name>
+						<local_name language="zh_TW">显示全部组织</local_name>
+						<local_name language="en_US">displayAllCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">显示全部组织</comment>
+						<comment language="zh_TW">顯示全部組織</comment>
+						<comment language="en_US">displayAllCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<!--长城提单R090921-057:需求要求成本科目应支持F7选择-->
+				<param name="longNumber" type="costAccountF7" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				<param name="fdcConAndNoTextConF7" type="fdcConAndNoTextConF7" required="false">
+					<alias>
+						<local_name language="zh_CN">合同</local_name>
+						<local_name language="zh_TW">合同</local_name>
+						<local_name language="en_US">fdcContract</local_name>
+					</alias>
+				<comments>
+					<comment language="zh_CN">合同</comment>
+					<comment language="zh_TW">合同</comment>
+					<comment language="en_US">fdcContract</comment>
+				</comments>
+				</param>
+				<param name="beginPeriod" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">开始期间</local_name>
+						<local_name language="zh_TW">開始期間</local_name>
+						<local_name language="en_US">beginPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">开始期间</comment>
+						<comment language="zh_TW">開始期間</comment>
+						<comment language="en_US">beginPeriod</comment>
+					</comments>
+				</param>
+				<param name="endPeriod" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">结束期间</local_name>
+						<local_name language="zh_TW">結束期間</local_name>
+						<local_name language="en_US">endPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束期间</comment>
+						<comment language="zh_TW">結束期間</comment>
+						<comment language="en_US">endPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">合同成本拆分取数函数</comment>
+				<comment language="zh_TW">合同成本拆分取數函數</comment>
+				<comment language="en_US">fdc_acct_conCost_split_filterByDate</comment>
+			</comments>
+		</formula>
+<!--###########长城提单R090921-057：资金计划取数实际付款取数函数需改进为能按期间过滤取数###########-->
+	<formula name="fdc_acct_actual_pay_filterByDate" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizardForR090921_057">
+			<alias>
+				<local_name language="zh_CN">实际付款取数函数(按期间过滤)</local_name>
+				<local_name language="zh_TW">實際付款取數函數(按期間過濾)</local_name>
+				<local_name language="en_US">fdc_acct_actual_pay_filterByDate</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FdcAcctActualPayCaculatorForR090921_057</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>
+			<!--长城提单R090921-057:需求要求该值若为true,则支持选择其他公司项目,并更新公司参数;若为false,则为选择的公司下的项目.默认为false-->			
+				<param name="displayAllCompany" type="Boolean" required="false">
+					<alias>
+						<local_name language="zh_CN">显示全部组织</local_name>
+						<local_name language="zh_TW">显示全部组织</local_name>
+						<local_name language="en_US">displayAllCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">显示全部组织</comment>
+						<comment language="zh_TW">顯示全部組織</comment>
+						<comment language="en_US">displayAllCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				<!--长城提单R090921-057:需求要求成本科目应支持F7选择-->
+				<param name="longNumber" type="costAccountF7" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目编码</local_name>
+						<local_name language="zh_TW">成本科目編碼</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目编码</comment>
+						<comment language="zh_TW">成本科目編碼</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+					
+				<param name="beginPeriod" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">开始期间</local_name>
+						<local_name language="zh_TW">開始期間</local_name>
+						<local_name language="en_US">beginPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">开始期间</comment>
+						<comment language="zh_TW">開始期間</comment>
+						<comment language="en_US">beginPeriod</comment>
+					</comments>
+				</param>
+				<param name="endPeriod" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">结束期间</local_name>
+						<local_name language="zh_TW">結束期間</local_name>
+						<local_name language="en_US">endPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束期间</comment>
+						<comment language="zh_TW">結束期間</comment>
+						<comment language="en_US">endPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">实际付款取数函数</comment>
+				<comment language="zh_TW">實際付款取數函數</comment>
+				<comment language="en_US">fdc_acct_actual_pay_filterByDate</comment>
+			</comments>
+		</formula>
+	<!--by Cassiel_peng 2009-10-21-->
+		<!--测算数（从投资计划表取数）、计划数、实际数  by cassiel_peng  2010-03-05-->
+		<formula name="fdc_budget_cost_about" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizardForNewPayPlan">
+			<alias>
+				<local_name language="zh_CN">预算系统成本测算数取数函数</local_name>
+				<local_name language="zh_TW">預算系統成本測算數取數函數</local_name>
+				<local_name language="en_US">fdc_budget_cost_about</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FDCNewPayPlanAboutCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">工程项目</local_name>
+						<local_name language="zh_TW">工程項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">工程項目</comment>
+						<comment language="zh_TW">工程項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				
+				<param name="longNumber" type="costAccountF7" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目</local_name>
+						<local_name language="zh_TW">成本科目</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目</comment>
+						<comment language="zh_TW">成本科目</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月份</local_name>
+						<local_name language="zh_TW">月份</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月份</comment>
+						<comment language="zh_TW">月份</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统成本测算数取数函数</comment>
+				<comment language="zh_TW">預算系統成本測算數取數函數</comment>
+				<comment language="en_US">fdc_budget_cost_about</comment>
+			</comments>
+		</formula>
+		<formula name="fdc_budget_cost_plan" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.FDCAcctFormulaWizardForNewPayPlan">
+			<alias>
+				<local_name language="zh_CN">预算系统成本计划数取数函数</local_name>
+				<local_name language="zh_TW">預算系統成本計畫數取數函數</local_name>
+				<local_name language="en_US">fdc_budget_cost_about</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FDCNewPayPlanPlanCaculator</batchImplClass>
+			<params>
+				<param name="fdcCompany" type="fdcCompanyF7DisplayByLNum" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">fdcCompany</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">fdcCompany</comment>
+					</comments>
+				</param>			
+				<param name="fdcProject" type="fdcProjectF7" required="true">
+					<alias>
+						<local_name language="zh_CN">工程项目</local_name>
+						<local_name language="zh_TW">工程項目</local_name>
+						<local_name language="en_US">fdcProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">工程項目</comment>
+						<comment language="zh_TW">工程項目</comment>
+						<comment language="en_US">fdcProject</comment>
+					</comments>
+				</param>
+				
+				<param name="longNumber" type="costAccountF7" required="true">
+					<alias>
+						<local_name language="zh_CN">成本科目</local_name>
+						<local_name language="zh_TW">成本科目</local_name>
+						<local_name language="en_US">longNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">成本科目</comment>
+						<comment language="zh_TW">成本科目</comment>
+						<comment language="en_US">longNumber</comment>
+					</comments>
+				</param>	
+				
+				<param name="month" type="date" required="true">
+					<alias>
+						<local_name language="zh_CN">月份</local_name>
+						<local_name language="zh_TW">月份</local_name>
+						<local_name language="en_US">month</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">月份</comment>
+						<comment language="zh_TW">月份</comment>
+						<comment language="en_US">month</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">预算系统成本计划数取数函数</comment>
+				<comment language="zh_TW">預算系統成本計畫數取數函數</comment>
+				<comment language="en_US">fdc_budget_cost_plan</comment>
+			</comments>
+		</formula>
+		<!--测算数（从投资计划表取数）、计划数、实际数  by cassiel_peng  2010-03-05-->
+		<!--公式合法性验证全局验证定义，用于公式的验证-->
+		<global-validators>
+			<!--定义验证器的名称(name),
+    	        是否严格验证(strict),
+    	        提供者(provider,如果实现了IFormulaValidate接口,则可以得到要验证的公式的所有信息),
+    	        方法名称(method,可以是静态方法)-->
+			<!--validator name="compareYearMonthLessEquals" 
+    	               strict="true"
+    	               provider="com.kingdee.eas.fi.rpt.client.DefaultValidator"
+    	               method="compareYearMonthLessEquals">
+    	    </validator-->
+		</global-validators>
+	</formulas>
+	
+	<datatypes>
+		<!-- 房地产取数 -->
+		<!--为了不影响以前的使用，都重新再做一个吧 by Cassiel_peng 2009-10-25-->
+		<type name="fdcCompanyF7DisplayByLNum" origin="string">
+		    <selector>com.kingdee.eas.basedata.org.client.f7.CompanyF7</selector>
+			<display_fm>$longNumber$</display_fm>
+			<edit_fm>$longNumber$</edit_fm>
+			<commit_fm>$longNumber$</commit_fm>
+		</type>	
+		<type name="fdcProjectF7DisplayByLNum" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.F7ProjectQuery</query> 
+			<display_fm>$longNumber$</display_fm>
+			<edit_fm>$longNumber$</edit_fm>
+			<commit_fm>$longNumber$</commit_fm>
+		</type>
+		<!--长城提单R090921-057:需求要求成本科目应支持F7选择.(以前都是手工填写的)-->
+		<type name="costAccountF7" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.F7CostAccountQuery</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$longNumber$</edit_fm>
+			<commit_fm>$longNumber$</commit_fm>
+		</type>
+		<type name="fdcConAndNoTextConF7" origin="string">
+			<query>com.kingdee.eas.fdc.contract.app.ContractF7Query</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<!--为了不影响以前的使用，都重新再做一个吧 by Cassiel_peng 2009-10-25-->
+		<type name="costCenterF7" origin="string">
+			<selector>com.kingdee.eas.basedata.org.client.f7.CostCenterF7</selector>
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<type name="fdcProjectF7" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.F7ProjectQuery</query> 
+			<display_fm>$name$</display_fm>
+			<edit_fm>$longNumber$</edit_fm>
+			<commit_fm>$longNumber$</commit_fm>
+		</type>
+		<type name="paymentTypeF7" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.F7PaymentTypeQuery</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<type name="fdcContractF7" origin="string">
+			<query>com.kingdee.eas.fdc.contract.app.ContractBillF7Query</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<type name="fdcConNoTextF7" origin="string">
+			<query>com.kingdee.eas.fdc.contract.app.ContractWithoutTextF7Query</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<type name="adjustReasonF7" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.AdjustReasonQuery</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<!-- 房地产取数 end -->
+		
+		<!--成本取数函数 begin-->
+		<type name="fdcCompanyF7" origin="string">
+		    <selector>com.kingdee.eas.basedata.org.client.f7.CompanyF7</selector>
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>	
+		<!--成本取数函数 end-->	
+		
+	</datatypes>
+	<formulatypes>
+		<formulatype name="default" kind="cell_value"/>
+	</formulatypes>
+	<formulacategory>	
+		<category name="fdc">
+			<alias>
+				<local_name language="zh_CN">房地产取数公式</local_name>
+				<local_name language="zh_TW">房地产取数公式</local_name>
+				<local_name language="en_US">fdc</local_name>
+			</alias>
+		</category>
+
+	</formulacategory>
+</formulas_declaration>

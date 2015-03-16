@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="Owner" type="table" />
+	<Dimension name="Owner" caption="营销顾问" table="Owner" primaryKey="FID">
+		<Hierarchy>
+			<Level name="Owner" column="FID">
+				<Property name="caption" column="FOwner" caption="FOwner" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="Owner" foreignKey="FOwnerID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="room">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="Form" type="table" />
+	<Dimension name="Form" caption="房屋形式" table="Form" primaryKey="FID">
+		<Hierarchy>
+			<Level name="Form" column="FID">
+				<Property name="caption" column="FName" caption="FName" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="Form" foreignKey="FRoomFormID" />
+		<Measure name="FCounter" caption="套数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

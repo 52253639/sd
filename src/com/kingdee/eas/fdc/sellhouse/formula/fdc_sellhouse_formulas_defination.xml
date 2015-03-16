@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Allen (king) -->
+<formulas_declaration>
+	<formulas>
+	<!--###################################售楼统计函数#######################################-->
+	<formula name="fdc_statistic" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.sellhouse.client.StatisticRoomFormulaWizardUI">
+			<alias>
+				<local_name language="zh_CN">售楼系统销售取数函数</local_name>
+				<local_name language="zh_TW">售樓系統銷售取數函數</local_name>
+				<local_name language="en_US">fdc_statistic</local_name>
+			</alias>
+			<implClass/>
+			<batchImplClass>com.kingdee.eas.fdc.sellhouse.formula.FdcStatisticsCaculator</batchImplClass>
+			<params>
+				<param name="type" type="statisticRoomTypeEnum" required="true">
+					<alias>
+						<local_name language="zh_CN">统计维度</local_name>
+						<local_name language="zh_TW">統計維度</local_name>
+						<local_name language="en_US">type</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">统计维度</comment>
+						<comment language="zh_TW">統計維度</comment>
+						<comment language="en_US">type</comment>
+					</comments>
+				</param>			
+				<param name="sellProject" type="F7SellProject" required="true">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">項目</local_name>
+						<local_name language="en_US">sellProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">項目</comment>
+						<comment language="en_US">sellProject</comment>
+					</comments>
+				</param>	
+				
+				<param name="building" type="buildingF7" required="false">
+					<alias>
+						<local_name language="zh_CN">楼栋</local_name>
+						<local_name language="zh_TW">樓棟</local_name>
+						<local_name language="en_US">building</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">楼栋</comment>
+						<comment language="zh_TW">樓棟</comment>
+						<comment language="en_US">building</comment>
+					</comments>
+				</param>	
+				<param name="buildingProperty" type="buildingPropertyF7" required="false">
+					<alias>
+						<local_name language="zh_CN">建筑性质</local_name>
+						<local_name language="zh_TW">建築性質</local_name>
+						<local_name language="en_US">project</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">建筑性质</comment>
+						<comment language="zh_TW">建築性質</comment>
+						<comment language="en_US">project</comment>
+					</comments>
+				</param>
+				
+				<param name="productType" type="f7ProductType" required="false">
+					<alias>
+						<local_name language="zh_CN">产品类型</local_name>
+						<local_name language="zh_TW">產品類型</local_name>
+						<local_name language="en_US">productType</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">产品类型</comment>
+						<comment language="zh_TW">產品類型</comment>
+						<comment language="en_US">productType</comment>
+					</comments>
+				</param>
+				
+				<param name="orderState" type="orderStateEnum" required="false">
+					<alias>
+						<local_name language="zh_CN">推盘状态</local_name>
+						<local_name language="zh_TW">推盤狀態</local_name>
+						<local_name language="en_US">orderState</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">推盘状态</comment>
+						<comment language="zh_TW">推盤狀態</comment>
+						<comment language="en_US">orderState</comment>
+					</comments>
+				</param>	
+				
+				<param name="accessorialProperty" type="boolean" required="false">
+					<alias>
+						<local_name language="zh_CN">附属房产计入统计</local_name>
+						<local_name language="zh_TW">附屬房產計入統計</local_name>
+						<local_name language="en_US">accessorialProperty</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">附属房产计入统计</comment>
+						<comment language="zh_TW">附屬房產計入統計</comment>
+						<comment language="en_US">accessorialProperty</comment>
+					</comments>
+				</param>
+				
+				<param name="preBiz" type="boolean" required="false">
+					<alias>
+						<local_name language="zh_CN">预定业务计入统计</local_name>
+						<local_name language="zh_TW">預定業務計入統計</local_name>
+						<local_name language="en_US">preBiz</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预定业务计入统计</comment>
+						<comment language="zh_TW">預定業務計入統計</comment>
+						<comment language="en_US">preBiz</comment>
+					</comments>
+				</param>	
+				
+				<param name="begingDate" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">起始时间</local_name>
+						<local_name language="zh_TW">起始時間</local_name>
+						<local_name language="en_US">begingDate</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">起始时间</comment>
+						<comment language="zh_TW">起始時間</comment>
+						<comment language="en_US">begingDate</comment>
+					</comments>
+				</param>
+				<param name="endDate" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">结束时间</local_name>
+						<local_name language="zh_TW">結束時間</local_name>
+						<local_name language="en_US">endDate</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束时间</comment>
+						<comment language="zh_TW">結束時間</comment>
+						<comment language="en_US">endDate</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">售楼系统销售取数函数</comment>
+				<comment language="zh_TW">售樓系統銷售取數函數</comment>
+				<comment language="en_US">fdc_statistic</comment>
+			</comments>
+		</formula>
+	<!--###########################结束############################################-->
+		<!--公式合法性验证全局验证定义，用于公式的验证-->
+		<global-validators>
+			<!--定义验证器的名称(name),
+    	        是否严格验证(strict),
+    	        提供者(provider,如果实现了IFormulaValidate接口,则可以得到要验证的公式的所有信息),
+    	        方法名称(method,可以是静态方法)-->
+			<!--validator name="compareYearMonthLessEquals" 
+    	               strict="true"
+    	               provider="com.kingdee.eas.fi.rpt.client.DefaultValidator"
+    	               method="compareYearMonthLessEquals">
+    	    </validator-->
+		</global-validators>
+	</formulas>
+	
+	<datatypes>
+		
+		<!-- 房地产取数 -->
+		<type name="costCenterF7" origin="string">
+			<selector>com.kingdee.eas.basedata.org.client.f7.CostCenterF7</selector>
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<type name="fdcProjectF7" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.F7ProjectQuery</query> 
+			<display_fm>$name$</display_fm>
+			<edit_fm>$longNumber$</edit_fm>
+			<commit_fm>$longNumber$</commit_fm>
+		</type>
+		<type name="paymentTypeF7" origin="string">
+			<query>com.kingdee.eas.fdc.basedata.app.F7PaymentTypeQuery</query>			          
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		
+		
+		<!--售楼统计函数 begin-->
+		<type name="f7SellProject" origin="string">
+		    <query>com.kingdee.eas.fdc.sellhouse.app.SellProjectQuery</query>
+		    <display_fm>$name$</display_fm>
+		    <edit_fm>$number$</edit_fm>
+		    <commit_fm>$number$</commit_fm>
+		</type>
+		<type name="buildingF7" origin="string">
+		    <query>com.kingdee.eas.fdc.sellhouse.app.BuildingQuery</query>
+		    <display_fm>$name$</display_fm>
+		    <edit_fm>$simpleName$</edit_fm>
+		    <commit_fm>$simpleName$</commit_fm>
+		</type>
+		<type name="buildingPropertyF7" origin="string">
+		    <query>com.kingdee.eas.fdc.sellhouse.app.BuildingPropertyQuery</query>
+		    <display_fm>$name$</display_fm>
+		    <edit_fm>$longNumber$</edit_fm>
+		    <commit_fm>$longNumber$</commit_fm>
+		</type>
+		
+		<type name="f7ProductType" origin="string">
+		    <query>com.kingdee.eas.fdc.basedata.app.ProductTypeQuery</query>
+		    <display_fm>$name$</display_fm>
+		    <edit_fm>$number$</edit_fm>
+		    <commit_fm>$number$</commit_fm>
+		</type>
+		
+		<enum name="statisticRoomTypeEnum">
+			<source>com.kingdee.eas.fdc.sellhouse.StatisticRoomTypeEnum</source>
+		</enum>
+		<enum name="orderStateEnum">
+			<source>com.kingdee.eas.fdc.sellhouse.OrderStateEnum</source>
+		</enum>
+		<type name="datePicker" origin="date"/>
+		<!--售楼统计函数 end-->
+		
+		<!-- 房地产取数 end -->	
+		
+	</datatypes>
+	<formulatypes>
+		<formulatype name="default" kind="cell_value"/>
+	</formulatypes>
+	<formulacategory>	
+		<category name="fdc">
+			<alias>
+				<local_name language="zh_CN">房地产取数公式</local_name>
+				<local_name language="zh_TW">房地产取数公式</local_name>
+				<local_name language="en_US">fdc</local_name>
+			</alias>
+		</category>
+
+	</formulacategory>
+</formulas_declaration>

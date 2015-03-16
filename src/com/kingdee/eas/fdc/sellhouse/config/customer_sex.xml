@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="">
+	<Parameter name="Fact" type="table" />
+	<Parameter name="Sex" type="table" />
+	<Dimension name="Sex" caption="性别" table="Sex" primaryKey="FID">
+		<Hierarchy>
+			<Level name="Sex" column="FID">
+				<Property name="caption" column="FSex" caption="FSex" />
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Fact" caption="Fact" table="Fact">
+		<DimensionUsage name="Sex" foreignKey="FSexID" />
+		<Measure name="FCounter" caption="客户数" column="FCounter" aggregator="sum" formatString="#,###" visible="true" />
+	</Cube>
+</Schema>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Allen (king) -->
+<formulas_declaration>
+	<formulas>
+	<!--##############################售楼KPI公式取数函数#######################-->
+	
+		<formula name="fdc_market" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.market.formula.MarketFormulaWizardUI">
+			<alias>
+				<local_name language="zh_CN">房地产营销统计函数</local_name>
+				<local_name language="zh_TW">房地产营销统计函数</local_name>
+				<local_name language="en_US">fdc_market</local_name>
+			</alias>
+			<implClass/>
+			<batchImplClass>com.kingdee.eas.fdc.market.formula.FdcMarketCaculator</batchImplClass>
+			<params>
+				<param name="type" type="MarketTypeEnum" required="true">
+					<alias>
+						<local_name language="zh_CN">统计维度</local_name>
+						<local_name language="zh_TW">統計維度</local_name>
+						<local_name language="en_US">type</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">统计维度</comment>
+						<comment language="zh_TW">統計維度</comment>
+						<comment language="en_US">type</comment>
+					</comments>
+				</param>		
+			    <param name="fdcProject" type="sellProject" required="true">
+					<alias>
+						<local_name language="zh_CN">销售项目</local_name>
+						<local_name language="zh_TW">销售项目</local_name>
+						<local_name language="en_US">project</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">销售项目</comment>
+						<comment language="zh_TW">销售项目</comment>
+						<comment language="en_US">project</comment>
+					</comments>
+				</param>						
+				<param name="periodBegin" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">开始期间</local_name>
+						<local_name language="zh_TW">开始期间</local_name>
+						<local_name language="en_US">periodBegin</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">开始期间</comment>
+						<comment language="zh_TW">开始期间</comment>
+						<comment language="en_US">periodBegin</comment>
+					</comments>
+				</param>
+				<param name="periodEnd" type="date" required="false">
+					<alias>
+						<local_name language="zh_CN">结束期间</local_name>
+						<local_name language="zh_TW">结束期间</local_name>
+						<local_name language="en_US">periodEnd</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">结束期间</comment>
+						<comment language="zh_TW">结束期间</comment>
+						<comment language="en_US">periodEnd</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">房地产营销统计函数</comment>
+				<comment language="zh_TW">房地产营销统计函数</comment>
+				<comment language="en_US">fdc_market</comment>
+			</comments>
+		</formula>
+
+		<!--公式合法性验证全局验证定义，用于公式的验证-->
+		<global-validators>
+			<!--定义验证器的名称(name),
+    	        是否严格验证(strict),
+    	        提供者(provider,如果实现了IFormulaValidate接口,则可以得到要验证的公式的所有信息),
+    	        方法名称(method,可以是静态方法)-->
+			<!--validator name="compareYearMonthLessEquals" 
+    	               strict="true"
+    	               provider="com.kingdee.eas.fi.rpt.client.DefaultValidator"
+    	               method="compareYearMonthLessEquals">
+    	    </validator-->
+		</global-validators>
+	</formulas>
+	
+	<datatypes>
+		
+		<!-- 房地产取数 -->
+		<type name="costCenterF7" origin="string">
+			<selector>com.kingdee.eas.basedata.org.client.f7.CostCenterF7</selector>
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<type name="sellProject" origin="string">
+			<query>com.kingdee.eas.fdc.sellhouse.app.SellProjectQuery</query> 
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>
+		<enum name="MarketTypeEnum">
+			<source>com.kingdee.eas.fdc.market.MarketTypeEnum</source>
+		</enum>
+		<type name="datePicker" origin="date"/>
+		
+	</datatypes>
+	<formulatypes>
+		<formulatype name="default" kind="cell_value"/>
+	</formulatypes>
+	<formulacategory>	
+		<category name="fdc">
+			<alias>
+				<local_name language="zh_CN">房地产取数公式</local_name>
+				<local_name language="zh_TW">房地产取数公式</local_name>
+				<local_name language="en_US">fdc</local_name>
+			</alias>
+		</category>
+
+	</formulacategory>
+</formulas_declaration>
