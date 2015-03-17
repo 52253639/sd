@@ -234,7 +234,11 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 	
 	private String isFrom = "";
 	
-	
+	protected boolean isShowAttachmentAction() {
+		return true;
+	}
+
+
 	/**
 	 * output class constructor
 	 */
@@ -324,15 +328,15 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 		initCooperateModeF7(this, f7CooperateMode, null);
 		lcCountry.setBoundLabelText("¹ú¼Ò/ÇøÓò");
 		//this.f7HabitationArea.setEnabledMultiSelection(true);
-		if(STATUS_ADDNEW.equals(this.getOprtState())){
-			this.f7CustomerManager.setValue(this.f7salesman.getValue());
-			if(!"".equals(ect)&&ect!=null&&ect.equalsIgnoreCase("EC")){
-				boxCustomerType.setSelectedItem(com.kingdee.eas.fdc.sellhouse.CustomerTypeEnum.EnterpriceCustomer);
-			}else{
-				boxCustomerType.setSelectedItem(com.kingdee.eas.fdc.sellhouse.CustomerTypeEnum.PersonalCustomer);
-		        
-			}
-		}
+//		if(STATUS_ADDNEW.equals(this.getOprtState())){
+//			this.f7CustomerManager.setValue(this.f7salesman.getValue());
+//			if(!"".equals(ect)&&ect!=null&&ect.equalsIgnoreCase("EC")){
+//				boxCustomerType.setSelectedItem(com.kingdee.eas.fdc.sellhouse.CustomerTypeEnum.EnterpriceCustomer);
+//			}else{
+//				boxCustomerType.setSelectedItem(com.kingdee.eas.fdc.sellhouse.CustomerTypeEnum.PersonalCustomer);
+//		        
+//			}
+//		}
 		if(!STATUS_ADDNEW.equals(this.getOprtState())){
 			initPropertyHouse();
 			initCustomerServiceSpecial();

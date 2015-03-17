@@ -348,11 +348,11 @@ public class ImportExcelRoomUIForSHE extends AbstractImportExcelRoomUIForSHE {
 		// getKDBizPromptBoxEditor
 		// ("com.kingdee.eas.fdc.sellhouse.app.ProductDetialQuery", null));
 
-		if( FDCSysContext.getInstance().checkIsSHEOrg()){
-			 this.tblMain.getColumn(COL_IS_FOR_SHE).getStyleAttributes().setHided(true);
-			 this.tblMain.getColumn(COL_IS_FOR_TEN).getStyleAttributes().setHided(true);
-			 this.tblMain.getColumn(COL_IS_FOR_PPM).getStyleAttributes().setHided(true);
-		}
+//		if( FDCSysContext.getInstance().checkIsSHEOrg()){
+//			 this.tblMain.getColumn(COL_IS_FOR_SHE).getStyleAttributes().setHided(true);
+//			 this.tblMain.getColumn(COL_IS_FOR_TEN).getStyleAttributes().setHided(true);
+//			 this.tblMain.getColumn(COL_IS_FOR_PPM).getStyleAttributes().setHided(true);
+//		}
 	
 				
 		// 不需要导入的列灰显
@@ -1510,11 +1510,11 @@ public class ImportExcelRoomUIForSHE extends AbstractImportExcelRoomUIForSHE {
 		for (int i = 0; i < totalCount; i++) {
 			IRow row = tblMain.getRow(i);
 			// by tim_gao
-			if( FDCSysContext.getInstance().checkIsSHEOrg()){//售楼系统是售楼属性为true
-				row.getCell(COL_IS_FOR_SHE).setValue("是");
-				row.getCell(COL_IS_FOR_TEN).setValue("");
-				row.getCell(COL_IS_FOR_PPM).setValue("");
-			}
+//			if( FDCSysContext.getInstance().checkIsSHEOrg()){//售楼系统是售楼属性为true
+//				row.getCell(COL_IS_FOR_SHE).setValue("是");
+//				row.getCell(COL_IS_FOR_TEN).setValue("");
+//				row.getCell(COL_IS_FOR_PPM).setValue("");
+//			}
 			Object building = row.getCell(COL_BUILDING_NUMBER).getValue();
 			if (FDCHelper.isEmpty(building)) {
 				row.getCell(COL_IMPORT_STATUS).setValue(INVALID_BUILD_NUMBER);

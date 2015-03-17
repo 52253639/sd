@@ -262,6 +262,9 @@ public class RoomNewCreateUI extends AbstractRoomNewCreateUI {
 			for (int i = 0; i < rooms.size(); i++) {
 				RoomInfo roomInfo = rooms.get(i);
 				roomInfo.setBuilding(building);
+				roomInfo.setIsForSHE(building.getSellProject().isIsForSHE());
+				roomInfo.setIsForTen(building.getSellProject().isIsForTen());
+				roomInfo.setIsForPPM(building.getSellProject().isIsForPPM());
 				if(null!=roomInfo.getId()){
 					//批量更新不给力
 //					coreBaseUptColl.add(roomInfo);
@@ -648,6 +651,9 @@ public class RoomNewCreateUI extends AbstractRoomNewCreateUI {
 		sels.add("roomDes.*");
 		sels.add("rooms.*");
 		sels.add("sellProject.name");
+		sels.add("sellProject.isForSHE");
+		sels.add("sellProject.isForTen");
+		sels.add("sellProject.isForPPM");
 		sels.add("subarea.name");
 		sels.add("sellProject.orgUnit.name");
 		sels.add("building.sellProject.projectResource");

@@ -60,6 +60,9 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCompanyOrgUnit;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contProjectBase;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contEndDate;
+    protected com.kingdee.bos.ctrl.swing.KDCheckBox chkIsForSHE;
+    protected com.kingdee.bos.ctrl.swing.KDCheckBox chkIsForTen;
+    protected com.kingdee.bos.ctrl.swing.KDCheckBox chkIsForPPM;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtSimpleName;
@@ -131,6 +134,9 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         this.contCompanyOrgUnit = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contProjectBase = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.chkIsForSHE = new com.kingdee.bos.ctrl.swing.KDCheckBox();
+        this.chkIsForTen = new com.kingdee.bos.ctrl.swing.KDCheckBox();
+        this.chkIsForPPM = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtSimpleName = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -162,6 +168,9 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         this.contCompanyOrgUnit.setName("contCompanyOrgUnit");
         this.contProjectBase.setName("contProjectBase");
         this.contEndDate.setName("contEndDate");
+        this.chkIsForSHE.setName("chkIsForSHE");
+        this.chkIsForTen.setName("chkIsForTen");
+        this.chkIsForPPM.setName("chkIsForPPM");
         this.txtNumber.setName("txtNumber");
         this.txtName.setName("txtName");
         this.txtSimpleName.setName("txtSimpleName");
@@ -228,6 +237,12 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         this.contEndDate.setBoundLabelText(resHelper.getString("contEndDate.boundLabelText"));		
         this.contEndDate.setBoundLabelLength(100);		
         this.contEndDate.setBoundLabelUnderline(true);
+        // chkIsForSHE		
+        this.chkIsForSHE.setText(resHelper.getString("chkIsForSHE.text"));
+        // chkIsForTen		
+        this.chkIsForTen.setText(resHelper.getString("chkIsForTen.text"));
+        // chkIsForPPM		
+        this.chkIsForPPM.setText(resHelper.getString("chkIsForPPM.text"));
         // txtNumber		
         this.txtNumber.setMaxLength(80);		
         this.txtNumber.setRequired(true);
@@ -317,7 +332,7 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
     {
         this.setBounds(new Rectangle(10, 10, 680, 450));
         this.setLayout(null);
-        kDTabbedPane1.setBounds(new Rectangle(25, 22, 626, 388));
+        kDTabbedPane1.setBounds(new Rectangle(6, 5, 669, 439));
         this.add(kDTabbedPane1, null);
         //kDTabbedPane1
         kDTabbedPane1.add(kdpBase, resHelper.getString("kdpBase.constraints"));
@@ -325,26 +340,32 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         kDTabbedPane1.add(kdpShareRoom, resHelper.getString("kdpShareRoom.constraints"));
         //kdpBase
         kdpBase.setLayout(new KDLayout());
-        kdpBase.putClientProperty("OriginalBounds", new Rectangle(0, 0, 625, 355));        contNumber.setBounds(new Rectangle(31, 36, 270, 19));
-        kdpBase.add(contNumber, new KDLayout.Constraints(31, 36, 270, 19, 0));
-        contName.setBounds(new Rectangle(337, 36, 270, 19));
-        kdpBase.add(contName, new KDLayout.Constraints(337, 36, 270, 19, 0));
-        contSimpleName.setBounds(new Rectangle(31, 73, 270, 19));
-        kdpBase.add(contSimpleName, new KDLayout.Constraints(31, 73, 270, 19, 0));
-        contProject.setBounds(new Rectangle(337, 297, 270, 19));
-        kdpBase.add(contProject, new KDLayout.Constraints(337, 297, 270, 19, 0));
-        contTermBegin.setBounds(new Rectangle(31, 110, 270, 19));
-        kdpBase.add(contTermBegin, new KDLayout.Constraints(31, 110, 270, 19, 0));
-        contTermEnd.setBounds(new Rectangle(337, 110, 270, 19));
-        kdpBase.add(contTermEnd, new KDLayout.Constraints(337, 110, 270, 19, 0));
-        contDescription.setBounds(new Rectangle(31, 184, 576, 92));
-        kdpBase.add(contDescription, new KDLayout.Constraints(31, 184, 576, 92, 0));
-        contCompanyOrgUnit.setBounds(new Rectangle(337, 73, 270, 19));
-        kdpBase.add(contCompanyOrgUnit, new KDLayout.Constraints(337, 73, 270, 19, 0));
-        contProjectBase.setBounds(new Rectangle(31, 297, 270, 19));
-        kdpBase.add(contProjectBase, new KDLayout.Constraints(31, 297, 270, 19, 0));
-        contEndDate.setBounds(new Rectangle(31, 147, 270, 19));
-        kdpBase.add(contEndDate, new KDLayout.Constraints(31, 147, 270, 19, 0));
+        kdpBase.putClientProperty("OriginalBounds", new Rectangle(0, 0, 668, 406));        contNumber.setBounds(new Rectangle(13, 15, 270, 19));
+        kdpBase.add(contNumber, new KDLayout.Constraints(13, 15, 270, 19, 0));
+        contName.setBounds(new Rectangle(367, 15, 270, 19));
+        kdpBase.add(contName, new KDLayout.Constraints(367, 15, 270, 19, 0));
+        contSimpleName.setBounds(new Rectangle(13, 37, 270, 19));
+        kdpBase.add(contSimpleName, new KDLayout.Constraints(13, 37, 270, 19, 0));
+        contProject.setBounds(new Rectangle(547, 135, 270, 19));
+        kdpBase.add(contProject, new KDLayout.Constraints(547, 135, 270, 19, 0));
+        contTermBegin.setBounds(new Rectangle(13, 59, 270, 19));
+        kdpBase.add(contTermBegin, new KDLayout.Constraints(13, 59, 270, 19, 0));
+        contTermEnd.setBounds(new Rectangle(367, 59, 270, 19));
+        kdpBase.add(contTermEnd, new KDLayout.Constraints(367, 59, 270, 19, 0));
+        contDescription.setBounds(new Rectangle(13, 155, 623, 233));
+        kdpBase.add(contDescription, new KDLayout.Constraints(13, 155, 623, 233, 0));
+        contCompanyOrgUnit.setBounds(new Rectangle(367, 37, 270, 19));
+        kdpBase.add(contCompanyOrgUnit, new KDLayout.Constraints(367, 37, 270, 19, 0));
+        contProjectBase.setBounds(new Rectangle(13, 103, 270, 19));
+        kdpBase.add(contProjectBase, new KDLayout.Constraints(13, 103, 270, 19, 0));
+        contEndDate.setBounds(new Rectangle(13, 81, 270, 19));
+        kdpBase.add(contEndDate, new KDLayout.Constraints(13, 81, 270, 19, 0));
+        chkIsForSHE.setBounds(new Rectangle(13, 127, 140, 19));
+        kdpBase.add(chkIsForSHE, new KDLayout.Constraints(13, 127, 140, 19, 0));
+        chkIsForTen.setBounds(new Rectangle(204, 127, 140, 19));
+        kdpBase.add(chkIsForTen, new KDLayout.Constraints(204, 127, 140, 19, 0));
+        chkIsForPPM.setBounds(new Rectangle(396, 127, 140, 19));
+        kdpBase.add(chkIsForPPM, new KDLayout.Constraints(396, 127, 140, 19, 0));
         //contNumber
         contNumber.setBoundEditor(txtNumber);
         //contName
@@ -369,20 +390,20 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         contEndDate.setBoundEditor(pkEndDate);
         //kdpShareOrgUnit
         kdpShareOrgUnit.setLayout(new KDLayout());
-        kdpShareOrgUnit.putClientProperty("OriginalBounds", new Rectangle(0, 0, 625, 355));        btnAdd.setBounds(new Rectangle(418, 23, 90, 20));
-        kdpShareOrgUnit.add(btnAdd, new KDLayout.Constraints(418, 23, 90, 20, 0));
-        btnDel.setBounds(new Rectangle(519, 23, 83, 20));
-        kdpShareOrgUnit.add(btnDel, new KDLayout.Constraints(519, 23, 83, 20, 0));
-        kDTable1.setBounds(new Rectangle(10, 47, 597, 300));
-        kdpShareOrgUnit.add(kDTable1, new KDLayout.Constraints(10, 47, 597, 300, 0));
+        kdpShareOrgUnit.putClientProperty("OriginalBounds", new Rectangle(0, 0, 668, 406));        btnAdd.setBounds(new Rectangle(470, 10, 90, 20));
+        kdpShareOrgUnit.add(btnAdd, new KDLayout.Constraints(470, 10, 90, 20, 0));
+        btnDel.setBounds(new Rectangle(570, 10, 90, 20));
+        kdpShareOrgUnit.add(btnDel, new KDLayout.Constraints(570, 10, 90, 20, 0));
+        kDTable1.setBounds(new Rectangle(5, 45, 655, 350));
+        kdpShareOrgUnit.add(kDTable1, new KDLayout.Constraints(5, 45, 655, 350, 0));
         //kdpShareRoom
         kdpShareRoom.setLayout(new KDLayout());
-        kdpShareRoom.putClientProperty("OriginalBounds", new Rectangle(0, 0, 625, 355));        btnAddRoom.setBounds(new Rectangle(370, 24, 96, 20));
-        kdpShareRoom.add(btnAddRoom, new KDLayout.Constraints(370, 24, 96, 20, 0));
-        btnDelRoom.setBounds(new Rectangle(500, 24, 96, 20));
-        kdpShareRoom.add(btnDelRoom, new KDLayout.Constraints(500, 24, 96, 20, 0));
-        kDTable2.setBounds(new Rectangle(5, 55, 607, 291));
-        kdpShareRoom.add(kDTable2, new KDLayout.Constraints(5, 55, 607, 291, 0));
+        kdpShareRoom.putClientProperty("OriginalBounds", new Rectangle(0, 0, 668, 406));        btnAddRoom.setBounds(new Rectangle(470, 10, 90, 20));
+        kdpShareRoom.add(btnAddRoom, new KDLayout.Constraints(470, 10, 90, 20, 0));
+        btnDelRoom.setBounds(new Rectangle(570, 10, 90, 20));
+        kdpShareRoom.add(btnDelRoom, new KDLayout.Constraints(570, 10, 90, 20, 0));
+        kDTable2.setBounds(new Rectangle(5, 45, 655, 350));
+        kdpShareRoom.add(kDTable2, new KDLayout.Constraints(5, 45, 655, 350, 0));
 
     }
 
@@ -402,9 +423,13 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -442,6 +467,7 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -460,8 +486,11 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnReset);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnSave);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -485,6 +514,9 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
 
 	//Regiester control's property binding.
 	private void registerBindings(){
+		dataBinder.registerBinding("isForSHE", boolean.class, this.chkIsForSHE, "selected");
+		dataBinder.registerBinding("isForTen", boolean.class, this.chkIsForTen, "selected");
+		dataBinder.registerBinding("isForPPM", boolean.class, this.chkIsForPPM, "selected");
 		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
 		dataBinder.registerBinding("name", String.class, this.txtName, "text");
 		dataBinder.registerBinding("simpleName", String.class, this.txtSimpleName, "text");
@@ -553,6 +585,9 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
 	 */
 	protected void registerValidator() {
     	getValidateHelper().setCustomValidator( getValidator() );
+		getValidateHelper().registerBindProperty("isForSHE", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("isForTen", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("isForPPM", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("simpleName", ValidateHelper.ON_SAVE);    
@@ -591,14 +626,45 @@ public abstract class AbstractSHESellProjectEditUI extends com.kingdee.eas.frame
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
+        sic.add(new SelectorItemInfo("isForSHE"));
+        sic.add(new SelectorItemInfo("isForTen"));
+        sic.add(new SelectorItemInfo("isForPPM"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("name"));
         sic.add(new SelectorItemInfo("simpleName"));
-        sic.add(new SelectorItemInfo("project.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("project.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("project.id"));
+        	sic.add(new SelectorItemInfo("project.number"));
+        	sic.add(new SelectorItemInfo("project.name"));
+		}
         sic.add(new SelectorItemInfo("termBegin"));
         sic.add(new SelectorItemInfo("termEnd"));
-        sic.add(new SelectorItemInfo("companyOrgUnit.*"));
-        sic.add(new SelectorItemInfo("projectBase.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("companyOrgUnit.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("companyOrgUnit.id"));
+        	sic.add(new SelectorItemInfo("companyOrgUnit.number"));
+        	sic.add(new SelectorItemInfo("companyOrgUnit.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("projectBase.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("projectBase.id"));
+        	sic.add(new SelectorItemInfo("projectBase.number"));
+        	sic.add(new SelectorItemInfo("projectBase.name"));
+		}
         sic.add(new SelectorItemInfo("endDate"));
         return sic;
     }        

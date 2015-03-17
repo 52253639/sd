@@ -678,14 +678,14 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 
 		// add by yaowei_wen 初始化房间的销售项目租售属性2009-06-09
 		// ---------start
-//		roomInfo.setIsForSHE(sellProject.isIsForSHE());
-//		roomInfo.setIsForTen(sellProject.isIsForTen());
-//		roomInfo.setIsForPPM(sellProject.isIsForPPM());
-		if(FDCSysContext.getInstance().checkIsSHEOrg()){
-			roomInfo.setIsForSHE(true);
-			roomInfo.setIsForTen(false);
-			roomInfo.setIsForPPM(false);
-		}
+		roomInfo.setIsForSHE(sellProject.isIsForSHE());
+		roomInfo.setIsForTen(sellProject.isIsForTen());
+		roomInfo.setIsForPPM(sellProject.isIsForPPM());
+//		if(FDCSysContext.getInstance().checkIsSHEOrg()){
+//			roomInfo.setIsForSHE(true);
+//			roomInfo.setIsForTen(false);
+//			roomInfo.setIsForPPM(false);
+//		}
 		
 		// ---------end
 		return roomInfo;

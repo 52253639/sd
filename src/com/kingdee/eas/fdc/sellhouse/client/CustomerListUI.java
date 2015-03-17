@@ -217,6 +217,12 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		actionMap.remove(KDTAction.CUT);
 		
 		disableExport(this, tblMain);
+		
+		this.actionImportantTrack.setVisible(false);
+		this.actionCancelImportantTrack.setVisible(false);
+		this.actionToSysCustomer.setVisible(false);
+		this.actionCancelCancel.setVisible(false);
+		this.actionCancel.setVisible(false);
 }
 
 	
@@ -351,10 +357,10 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		this.tblMain.getColumn("employment").getStyleAttributes().setHided(isEnterCus);
 		this.tblMain.getColumn("workCompany").getStyleAttributes().setHided(isEnterCus);
 
-		this.tblMain.getColumn("enterpriceProperty").getStyleAttributes().setHided(!isEnterCus);
-		this.tblMain.getColumn("enterpriceSize").getStyleAttributes().setHided(!isEnterCus);
-		this.tblMain.getColumn("enterpriceHomepage").getStyleAttributes().setHided(!isEnterCus);
-		this.tblMain.getColumn("industry.name").getStyleAttributes().setHided(!isEnterCus);
+//		this.tblMain.getColumn("enterpriceProperty").getStyleAttributes().setHided(!isEnterCus);
+//		this.tblMain.getColumn("enterpriceSize").getStyleAttributes().setHided(!isEnterCus);
+//		this.tblMain.getColumn("enterpriceHomepage").getStyleAttributes().setHided(!isEnterCus);
+//		this.tblMain.getColumn("industry.name").getStyleAttributes().setHided(!isEnterCus);
 		//和李方波，金志诚确认，由于性能问题将是否认购字段注释
 		this.tblMain.getColumn("isSub").getStyleAttributes().setHided(true);
 		return super.getQueryExecutor(queryPK, viewInfo);

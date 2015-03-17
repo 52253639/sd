@@ -858,7 +858,7 @@ public class RoomControllerBean extends AbstractRoomControllerBean {
 		
 		if(roomList!=null && roomList.size()>0){
 			try {
-				String sql = "update t_she_room set FPlanBuildingArea=?,FPlanRoomArea=?,FBuildingArea=?,FRoomArea=? ,FActualBuildingArea = ?,FActualRoomArea=?,FSellAreaType=? where fid=?";
+				String sql = "update t_she_room set FPlanBuildingArea=?,FPlanRoomArea=?,FBuildingArea=?,FRoomArea=? ,FActualBuildingArea = ?,FActualRoomArea=?,FTenancyArea=?,FSellAreaType=? where fid=?";
 				FDCSQLBuilder sqlBuilder = new FDCSQLBuilder(ctx);
 				sqlBuilder.setPrepareStatementSql(sql);
 				sqlBuilder.setBatchType(FDCSQLBuilder.PREPARESTATEMENT_TYPE);
@@ -871,6 +871,7 @@ public class RoomControllerBean extends AbstractRoomControllerBean {
 					sqlBuilder.addParam(info.getRoomArea());
 					sqlBuilder.addParam(info.getActualBuildingArea());
 					sqlBuilder.addParam(info.getActualRoomArea());
+					sqlBuilder.addParam(info.getTenancyArea());
 					if(info.getSellAreaType().equals(SellAreaTypeEnum.PLANNING)){
 						sqlBuilder.addParam(SellAreaTypeEnum.PLANNING_VALUE.toString());
 					}

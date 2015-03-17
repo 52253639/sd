@@ -114,10 +114,10 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 
 	protected void treeMain_valueChanged(TreeSelectionEvent e) throws Exception {
 		this.execQuery();
-		TableUtils.getFootRow(tblMain,new String[]{"planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
+		TableUtils.getFootRow(tblMain,new String[]{"tenancyArea","planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
 	}
 	protected void tblMain_editStopped(KDTEditEvent e) throws Exception {
-		TableUtils.getFootRow(tblMain,new String[]{"planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
+		TableUtils.getFootRow(tblMain,new String[]{"tenancyArea","planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
 	}
 	
 	protected void tblMain_tableClicked(KDTMouseEvent e) throws Exception {
@@ -192,7 +192,7 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 			}
 		}
 		this.execQuery();
-		TableUtils.getFootRow(tblMain,new String[]{"planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
+		TableUtils.getFootRow(tblMain,new String[]{"tenancyArea","planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
 	}
 
 	protected boolean isIgnoreCUFilter() {
@@ -287,7 +287,7 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 			}
 		});
 		
-		TableUtils.getFootRow(tblMain,new String[]{"planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
+		TableUtils.getFootRow(tblMain,new String[]{"tenancyArea","planBuildingArea","planRoomArea","preBuildingArea","preRoomArea","actualBuildingArea","actualRoomArea"});
 		String[] fields=new String[tblMain.getColumnCount()];
 		for(int i=0;i<tblMain.getColumnCount();i++){
 			fields[i]=tblMain.getColumnKey(i);
@@ -427,21 +427,18 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 	}
 
 	private void initTable() {
-
+		KDFormattedTextField formattedTextField = new KDFormattedTextField(
+				KDFormattedTextField.DECIMAL);
+		formattedTextField.setPrecision(2);
+		formattedTextField.setSupportedEmpty(true);
+		formattedTextField.setNegatived(false);
+		ICellEditor numberEditor = new KDTDefaultCellEditor(
+				formattedTextField);
 		if (saleOrg.isIsBizUnit() || isSellOrg()) {
-			KDFormattedTextField formattedTextField = new KDFormattedTextField(
-					KDFormattedTextField.DECIMAL);
-			formattedTextField.setPrecision(2);
-			formattedTextField.setSupportedEmpty(true);
-			formattedTextField.setNegatived(false);
-			ICellEditor numberEditor = new KDTDefaultCellEditor(
-					formattedTextField);
-
 			if (this.tblMain.getColumn("name") != null) {
 				this.tblMain.getColumn("name").getStyleAttributes().setLocked(
 						true);
 			}
-
 			KDComboBox combo = new KDComboBox();
 			Iterator iterator = SellAreaTypeEnum.iterator();
 			while (iterator.hasNext()) {
@@ -525,7 +522,9 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 		} else {
 			this.tblMain.getStyleAttributes().setLocked(true);
 		}
-
+		this.tblMain.getColumn("tenancyArea").getStyleAttributes().setLocked(false);
+		this.tblMain.getColumn("tenancyArea").getStyleAttributes().setNumberFormat(FDCClientHelper.KDTABLE_NUMBER_FTM);
+		this.tblMain.getColumn("tenancyArea").setEditor(numberEditor);
 	}
 
 	public void actionSave_actionPerformed(ActionEvent e) throws Exception {
@@ -605,7 +604,12 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 			} else {
 				room.setSellAreaType(SellAreaTypeEnum.PLANNING);
 			}
-
+			if(row.getCell("tenancyArea").getValue() instanceof String){
+				room.setTenancyArea(new BigDecimal(row.getCell("tenancyArea").getValue().toString()).setScale(2, BigDecimal.ROUND_HALF_UP));
+			}else if(row.getCell("tenancyArea").getValue() instanceof BigDecimal){
+				room.setTenancyArea(((BigDecimal) row.getCell(
+				"tenancyArea").getValue()).setScale(2, BigDecimal.ROUND_HALF_UP));
+			}
 			roomList.add(room);
 		}
 		try {
@@ -729,6 +733,22 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 			if (actualBuildingArea != null && actualRoomArea != null
 					&& actualRoomArea.compareTo(actualBuildingArea) > 0) {
 				MsgBox.showInfo("第" + (i + 1) + "行" + "实测建筑面积必须大于等于套内面积!");
+				return false;
+			}
+			
+			BigDecimal tenancyArea = null;
+			if(row.getCell("tenancyArea").getValue() instanceof String){
+				tenancyArea = new BigDecimal(row.getCell("tenancyArea").getValue().toString());
+			}else if(row.getCell("tenancyArea").getValue() instanceof BigDecimal){
+				tenancyArea = (BigDecimal) row.getCell(
+				"tenancyArea").getValue();
+			}
+			
+			if (tenancyArea == null) {
+				tenancyArea = FDCHelper.ZERO;
+			} else if (tenancyArea != null
+					&& tenancyArea.compareTo(FDCHelper.ZERO) == -1) {
+				MsgBox.showInfo("计租面积不能为负数!");
 				return false;
 			}
 		}
@@ -1041,7 +1061,9 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 				if(row.getCell("actualRoomArea").getValue()!=null){
 					room.setActualRoomArea(new BigDecimal(row.getCell("actualRoomArea").getValue().toString()));
 				}
-
+				if(row.getCell("tenancyArea").getValue()!=null){
+					room.setTenancyArea(new BigDecimal(row.getCell("tenancyArea").getValue().toString()));
+				}
 				this.roomMap.put(room.getId().toString(), room);
 
 				if (row.getCell("isPlan").getValue() != null) {
@@ -1145,7 +1167,11 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 			row.getCell("actualRoomArea").getStyleAttributes().setBackground(
 					FDCClientHelper.KDTABLE_TOTAL_BG_COLOR);
 		}
-
+		row.getCell("tenancyArea").getStyleAttributes().setLocked(
+				false);
+		row.getCell("tenancyArea").getStyleAttributes()
+				.setBackground(FDCClientHelper.KDTABLE_TOTAL_BG_COLOR);
+		
 		if (isPlan && isPre && isAct) {
 			row.getCell("sellAreaType").getStyleAttributes().setLocked(true);
 		}
@@ -1272,10 +1298,10 @@ public class RoomAreaInputNewUI extends AbstractRoomAreaInputNewUI {
 			if (room == null) {
 				return false;
 			}
-			String[] compareyKeys = new String[] { "planBuildingArea",
+			String[] compareyKeys = new String[] {"tenancyArea", "planBuildingArea",
 					"planRoomArea", "buildingArea", "roomArea",
 					"actualBuildingArea", "actualRoomArea" };
-			String[] columnKeys = new String[] { "planBuildingArea",
+			String[] columnKeys = new String[] {"tenancyArea", "planBuildingArea",
 					"planRoomArea", "preBuildingArea", "preRoomArea",
 					"actualBuildingArea", "actualRoomArea" };
 			for (int i = 0; i < compareyKeys.length; i++) {
