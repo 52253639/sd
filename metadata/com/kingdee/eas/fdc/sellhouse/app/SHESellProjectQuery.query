@@ -4,7 +4,7 @@
     <name>SHESellProjectQuery</name>
     <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].alias</alias>
     <description>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].description</description>
-    <userDefined>false</userDefined>
+    <userDefined>true</userDefined>
     <reportDataSource />
     <bizUnitPK />
     <connectionProvider />
@@ -12,7 +12,7 @@
         <subEntity>
             <name>SellProject</name>
             <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[SellProject].alias</alias>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <query>
                 <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
                 <key name="name" value="SHESellProjectQuery" />
@@ -25,7 +25,7 @@
         <subEntity>
             <name>companyOrgUnit</name>
             <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[companyOrgUnit].alias</alias>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <query>
                 <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
                 <key name="name" value="SHESellProjectQuery" />
@@ -38,7 +38,7 @@
         <subEntity>
             <name>orgUnit</name>
             <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[orgUnit].alias</alias>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <query>
                 <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
                 <key name="name" value="SHESellProjectQuery" />
@@ -51,7 +51,7 @@
         <subEntity>
             <name>projectBase</name>
             <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[projectBase].alias</alias>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <query>
                 <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
                 <key name="name" value="SHESellProjectQuery" />
@@ -65,7 +65,7 @@
     <units>
         <queryField>
             <name>id</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[id].displayName</displayName>
@@ -96,7 +96,7 @@
         </queryField>
         <queryField>
             <name>number</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[number].displayName</displayName>
@@ -127,7 +127,7 @@
         </queryField>
         <queryField>
             <name>name</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[name].displayName</displayName>
@@ -157,39 +157,8 @@
             </query>
         </queryField>
         <queryField>
-            <name>longNumber</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[longNumber].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>69c98a91-c23f-4325-a6d7-7e1fa58aabcf</key>
-                    <parentUnit>
-                        <key name="name" value="longNumber" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="SellProject" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="longNumber" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="SHESellProjectQuery" />
-            </query>
-        </queryField>
-        <queryField>
             <name>simpleName</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[simpleName].displayName</displayName>
@@ -219,8 +188,39 @@
             </query>
         </queryField>
         <queryField>
+            <name>projectBase.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[projectBase.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bd498ccc-d74d-448f-b994-09ef73d81456</key>
+                    <parentUnit>
+                        <key name="name" value="projectBase.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="projectBase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHESellProjectQuery" />
+            </query>
+        </queryField>
+        <queryField>
             <name>termBegin</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termBegin].displayName</displayName>
@@ -251,7 +251,7 @@
         </queryField>
         <queryField>
             <name>termEnd</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termEnd].displayName</displayName>
@@ -282,7 +282,7 @@
         </queryField>
         <queryField>
             <name>endDate</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[endDate].displayName</displayName>
@@ -313,7 +313,7 @@
         </queryField>
         <queryField>
             <name>companyOrgUnit.name</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.name].displayName</displayName>
@@ -343,39 +343,8 @@
             </query>
         </queryField>
         <queryField>
-            <name>projectBase.name</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[projectBase.name].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>bd498ccc-d74d-448f-b994-09ef73d81456</key>
-                    <parentUnit>
-                        <key name="name" value="projectBase.name" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="projectBase" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="name" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="SHESellProjectQuery" />
-            </query>
-        </queryField>
-        <queryField>
             <name>description</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[description].displayName</displayName>
@@ -406,7 +375,7 @@
         </queryField>
         <propertyUnit>
             <name>f4a03dea-f84b-484f-befd-f134adee7d1e</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[f4a03dea-f84b-484f-befd-f134adee7d1e].displayName</displayName>
@@ -437,7 +406,7 @@
         </propertyUnit>
         <propertyUnit>
             <name>741dca10-c690-4516-88e3-e9a19c603f2c</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[741dca10-c690-4516-88e3-e9a19c603f2c].displayName</displayName>
@@ -466,71 +435,9 @@
                 <key name="name" value="SHESellProjectQuery" />
             </query>
         </propertyUnit>
-        <queryField>
-            <name>companyOrgUnit.id</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.id].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>ab5b3801-41ee-40f1-929d-0e2d68eac663</key>
-                    <parentUnit>
-                        <key name="name" value="companyOrgUnit.id" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="companyOrgUnit" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="id" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="SHESellProjectQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>isForSHE</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForSHE].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>Boolean</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>b1ad4cc0-6598-49c4-b549-4ceca8901653</key>
-                    <parentUnit>
-                        <key name="name" value="isForSHE" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="SellProject" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="isForSHE" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="SHESellProjectQuery" />
-            </query>
-        </queryField>
         <propertyUnit>
             <name>d0cf7705-7286-45a8-9a08-0f9f7ef3b18b</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[d0cf7705-7286-45a8-9a08-0f9f7ef3b18b].displayName</displayName>
@@ -561,7 +468,7 @@
         </propertyUnit>
         <propertyUnit>
             <name>f6ca9b27-92d3-4e20-af8e-70f873ed8535</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[f6ca9b27-92d3-4e20-af8e-70f873ed8535].displayName</displayName>
@@ -591,8 +498,132 @@
             </query>
         </propertyUnit>
         <queryField>
+            <name>isForSHE</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForSHE].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a2895b65-caa8-46fa-9220-3dc8c16907a6</key>
+                    <parentUnit>
+                        <key name="name" value="isForSHE" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SellProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isForSHE" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHESellProjectQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isForTen</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForTen].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>75e43a0f-c11a-4a20-83b1-68bb44f4dc85</key>
+                    <parentUnit>
+                        <key name="name" value="isForTen" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SellProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isForTen" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHESellProjectQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isForPPM</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForPPM].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7a325c41-3625-4542-9c7a-5e00815bcf15</key>
+                    <parentUnit>
+                        <key name="name" value="isForPPM" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SellProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isForPPM" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHESellProjectQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>companyOrgUnit.id</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ab5b3801-41ee-40f1-929d-0e2d68eac663</key>
+                    <parentUnit>
+                        <key name="name" value="companyOrgUnit.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="companyOrgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHESellProjectQuery" />
+            </query>
+        </queryField>
+        <queryField>
             <name>orgUnit.id</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[orgUnit.id].displayName</displayName>
@@ -622,28 +653,28 @@
             </query>
         </queryField>
         <queryField>
-            <name>createTime</name>
-            <userDefined>false</userDefined>
+            <name>longNumber</name>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[createTime].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[longNumber].displayName</displayName>
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
-            <isSorter>true</isSorter>
+            <isSorter>false</isSorter>
             <isParameter>false</isParameter>
-            <returnType>Timestamp</returnType>
+            <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>5b902156-cfa8-4624-8ab7-4f466ef782f0</key>
+                    <key>69c98a91-c23f-4325-a6d7-7e1fa58aabcf</key>
                     <parentUnit>
-                        <key name="name" value="createTime" />
+                        <key name="name" value="longNumber" />
                     </parentUnit>
                     <subEntity>
                         <key name="name" value="SellProject" />
                     </subEntity>
                     <refProperty>
-                        <key name="name" value="createTime" />
+                        <key name="name" value="longNumber" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -654,7 +685,7 @@
         </queryField>
         <propertyUnit>
             <name>d4c4408b-4d52-438f-8c64-3c3e3932d95f</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[d4c4408b-4d52-438f-8c64-3c3e3932d95f].displayName</displayName>
@@ -685,7 +716,7 @@
         </propertyUnit>
         <propertyUnit>
             <name>a2bf03c6-b3a4-45a0-b5d2-401ef1511b32</name>
-            <userDefined>false</userDefined>
+            <userDefined>true</userDefined>
             <formulaString />
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[a2bf03c6-b3a4-45a0-b5d2-401ef1511b32].displayName</displayName>
@@ -718,35 +749,11 @@
     <defaultFilter>
         <name>defaultFilter</name>
         <formulaString />
-        <filterItems>
-            <queryFilterItem>
-                <propertyName>isForSHE</propertyName>
-                <compareType>=</compareType>
-                <compareValue>1</compareValue>
-                <userDefined>false</userDefined>
-                <filter>
-                    <key name="name" value="defaultFilter" />
-                </filter>
-                <configured>false</configured>
-            </queryFilterItem>
-        </filterItems>
         <query>
             <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
             <key name="name" value="SHESellProjectQuery" />
         </query>
     </defaultFilter>
-    <defaultSorters>
-        <querySorterItem>
-            <propertyName>createTime</propertyName>
-            <sortType>ASC</sortType>
-            <userDefined>false</userDefined>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="SHESellProjectQuery" />
-            </query>
-            <configured>false</configured>
-        </querySorterItem>
-    </defaultSorters>
     <isDistinct>false</isDistinct>
     <joins>
         <join>
@@ -842,286 +849,312 @@
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].alias">
-            <lang locale="zh_CN" value="项目建立" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="项目建立" />
             <lang locale="zh_HK" value="項目建立" />
             <lang locale="zh_TW" value="項目建立" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].description">
-            <lang locale="zh_CN" value="项目建立" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="项目建立" />
             <lang locale="zh_HK" value="項目建立" />
             <lang locale="zh_TW" value="項目建立" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[SellProject].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[companyOrgUnit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[orgUnit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].subObjects.subEntity[projectBase].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[741dca10-c690-4516-88e3-e9a19c603f2c].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[a2bf03c6-b3a4-45a0-b5d2-401ef1511b32].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[d0cf7705-7286-45a8-9a08-0f9f7ef3b18b].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[d4c4408b-4d52-438f-8c64-3c3e3932d95f].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[f4a03dea-f84b-484f-befd-f134adee7d1e].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.propertyUnit[f6ca9b27-92d3-4e20-af8e-70f873ed8535].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.name].displayName">
-            <lang locale="zh_CN" value="财务组织" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="财务组织" />
             <lang locale="zh_HK" value="財務組織" />
             <lang locale="zh_TW" value="財務組織" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[companyOrgUnit.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
-        </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[createTime].displayName">
-            <lang locale="zh_CN" value="创建时间" />
-            <lang locale="en_US" value="createTime" />
-            <lang locale="zh_HK" value="創建時間" />
-            <lang locale="zh_TW" value="創建時間" />
-        </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[createTime].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_CN" value="false" />
-            <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[description].displayName">
-            <lang locale="zh_CN" value="项目描述" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="项目描述" />
             <lang locale="zh_HK" value="項目描述" />
             <lang locale="zh_TW" value="項目描述" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[description].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[description].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[endDate].displayName">
-            <lang locale="zh_CN" value="竣工备案日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="竣工备案日期" />
             <lang locale="zh_HK" value="竣工備案日期" />
             <lang locale="zh_TW" value="竣工備案日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[endDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[endDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForPPM].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="物业属性" />
+            <lang locale="zh_HK" value="物業屬性" />
+            <lang locale="zh_TW" value="物業屬性" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForPPM].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForPPM].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForSHE].displayName">
-            <lang locale="zh_CN" value="售楼属性" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="售楼属性" />
             <lang locale="zh_HK" value="售樓屬性" />
             <lang locale="zh_TW" value="售樓屬性" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForSHE].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_CN" value="false" />
-            <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForSHE].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForSHE].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForTen].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="租赁属性" />
+            <lang locale="zh_HK" value="租賃屬性" />
+            <lang locale="zh_TW" value="租賃屬性" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForTen].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[isForTen].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[longNumber].displayName">
-            <lang locale="zh_CN" value="长编码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="长编码" />
             <lang locale="zh_HK" value="長編碼" />
             <lang locale="zh_TW" value="長編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[longNumber].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[name].displayName">
-            <lang locale="zh_CN" value="项目名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="项目名称" />
             <lang locale="zh_HK" value="項目名稱" />
             <lang locale="zh_TW" value="項目名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[number].displayName">
-            <lang locale="zh_CN" value="项目编码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="项目编码" />
             <lang locale="zh_HK" value="項目編碼" />
             <lang locale="zh_TW" value="項目編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[orgUnit.id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[orgUnit.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[projectBase.name].displayName">
-            <lang locale="zh_CN" value="主数据项目信息" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="主数据项目信息" />
             <lang locale="zh_HK" value="主數據項目信息" />
             <lang locale="zh_TW" value="主數據項目信息" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[projectBase.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[projectBase.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[simpleName].displayName">
-            <lang locale="zh_CN" value="项目简称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="项目简称" />
             <lang locale="zh_HK" value="項目簡稱" />
             <lang locale="zh_TW" value="項目簡稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[simpleName].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[simpleName].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termBegin].displayName">
-            <lang locale="zh_CN" value="开工日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="开工日期" />
             <lang locale="zh_HK" value="開工日期" />
             <lang locale="zh_TW" value="開工日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termBegin].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termBegin].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termEnd].displayName">
-            <lang locale="zh_CN" value="竣工日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="竣工日期" />
             <lang locale="zh_HK" value="竣工日期" />
             <lang locale="zh_TW" value="竣工日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termEnd].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHESellProjectQuery].units.queryField[termEnd].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
     </resource>
 </joinQuery>
