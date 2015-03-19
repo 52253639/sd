@@ -3,13 +3,18 @@
  */
 package com.kingdee.eas.fdc.sellhouse.report;
 
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.*;
 import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
@@ -18,8 +23,12 @@ import javax.swing.tree.TreeModel;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.entity.FilterInfo;
+import com.kingdee.bos.metadata.entity.FilterItemInfo;
+import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
+import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
@@ -36,11 +45,20 @@ import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.basedata.org.NewOrgUtils;
 import com.kingdee.eas.basedata.org.OrgStructureInfo;
 import com.kingdee.eas.basedata.org.OrgViewType;
+import com.kingdee.eas.common.client.OprtState;
+import com.kingdee.eas.common.client.UIContext;
+import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
+import com.kingdee.eas.fdc.basedata.FDCConstants;
+import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
+import com.kingdee.eas.fdc.sellhouse.client.PrePurchaseManageListUI;
+import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageListUI;
+import com.kingdee.eas.fdc.sellhouse.client.SignManageListUI;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
@@ -52,6 +70,7 @@ import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
 import com.kingdee.eas.util.client.EASResource;
+import com.kingdee.jdbc.rowset.IRowSet;
 
 /**
  * output class name
@@ -142,10 +161,14 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
              				totoalSignRow=tblMain.addRow();
              				totoalSignRow.getCell("company").setValue("宋都控股");
              				totoalSignRow.getCell("type").setValue("销售收入");
+             				totoalSignRow.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
+             				totoalSignRow.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
              				
              				totoalRevRow=tblMain.addRow();
              				totoalRevRow.getCell("company").setValue("宋都控股");
              				totoalRevRow.getCell("type").setValue("回笼资金");
+             				totoalRevRow.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
+             				totoalRevRow.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
              				
              				IRow row=tblMain.addRow();
              				row.getCell("company").setValue("宋都控股");
@@ -162,19 +185,25 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
              		 }
                      while(signRs.next()){
                     	 IRow row=tblMain.addRow();
+                    	 row.getCell("orgId").setValue(signRs.getString("orgId"));
                     	 row.getCell("company").setValue(signRs.getString("company"));
                     	 row.getCell("type").setValue("销售收入");
                     	 row.getCell("act").setValue(signRs.getBigDecimal("monthAmount"));
+                    	 row.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
                     	 row.getCell("yearAct").setValue(signRs.getBigDecimal("yearAmount"));
+                    	 row.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
                     	 
                     	 totalSignMonthAmount=FDCHelper.add(totalSignMonthAmount, signRs.getBigDecimal("monthAmount"));
                     	 totalSignYearAmount=FDCHelper.add(totalSignYearAmount, signRs.getBigDecimal("yearAmount"));
                     	 
                     	 row=tblMain.addRow();
+                    	 row.getCell("orgId").setValue(signRs.getString("orgId"));
                     	 row.getCell("company").setValue(signRs.getString("company"));
                     	 row.getCell("type").setValue("回笼资金");
                     	 row.getCell("act").setValue(FDCHelper.ZERO);
+                    	 row.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
                     	 row.getCell("yearAct").setValue(FDCHelper.ZERO);
+                    	 row.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
                     	 
                     	 revMap.put(signRs.getString("company"), row);
                     	 
@@ -286,7 +315,105 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 	IUIWindow uiWindow=null;
 	protected void tblMain_tableClicked(KDTMouseEvent e) throws Exception {
 		if (e.getType() == KDTStyleConstants.BODY_ROW && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
+			Object value=this.tblMain.getRow(e.getRowIndex()).getCell(e.getColIndex()).getValue();
+			if(value==null
+					||(value!=null&&value instanceof BigDecimal
+							&&((BigDecimal)value).compareTo(FDCHelper.ZERO)<=0)){
+				return;
+			}
+			String orgId=(String)this.tblMain.getRow(e.getRowIndex()).getCell("orgId").getValue();
+			String type=(String)this.tblMain.getRow(e.getRowIndex()).getCell("type").getValue();
+			if(!(type.equals("销售收入")||type.equals("回笼资金"))){
+				return;
+			}
+			if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("act")){
+				if(type.equals("销售收入")){
+					toBaseTransaction(1,orgId);
+				}else if(type.equals("回笼资金")){
+					toSheRevBill(1,orgId);
+				}
+			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yearAct")){
+				if(type.equals("销售收入")){
+					toBaseTransaction(0,orgId);
+				}else if(type.equals("回笼资金")){
+					toSheRevBill(0,orgId);
+				}
+			}
 		}
 	}
+	protected void toBaseTransaction(int type,String orgId) throws BOSException, SQLException{
+		Date fromDate = (Date)params.getObject("fromDate");
+    	Date toDate =   (Date)params.getObject("toDate");
+    	
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select pre.fid from t_she_signManage pre ");
+		sb.append(" where pre.fbizState in('SignApple','SignAudit')");
+		if(type==0){
+    		if(fromDate!=null){
+    			sb.append(" and pre.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+    		}
+    		if(toDate!=null){
+    			sb.append(" and pre.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
+    		}
+    	}else if(type==1){
+    		if(fromDate!=null){
+    			sb.append(" and pre.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
+    			sb.append(" and pre.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");
+    		}
+    	}
+    	if(orgId!=null){
+			sb.append(" and pre.forgUnitId ='"+orgId+"'");
+		}
+    	FilterInfo filter=new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("id",sb.toString(),CompareType.INNER));
+
+		UIContext uiContext = new UIContext(this);
+		uiContext.put(UIContext.OWNER, this);
+		uiContext.put("filter", filter);
+		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(SignManageListUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow.show();
+	}
+	protected void toSheRevBill(int type,String orgId) throws BOSException, SQLException{
+		Date fromDate = (Date)params.getObject("fromDate");
+    	Date toDate =   (Date)params.getObject("toDate");
+    	
+		StringBuilder sb = new StringBuilder();
+		
+    	sb.append(" select entry.fid id from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
+    	sb.append(" left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
+    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fnumber not in('01','12','17','18','19','20','21','22','23','24')");
+    	if(type==0){
+    		if(fromDate!=null){
+    			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+    		}
+    		if(toDate!=null){
+    			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
+    		}
+    	}else if(type==1){
+    		if(fromDate!=null){
+    			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
+    			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");
+    		}
+    	}
+    	if(orgId!=null){
+			sb.append(" and revBill.fsaleOrgUnitId = '"+orgId+"'");
+		}
+		FDCSQLBuilder _builder = new FDCSQLBuilder();
+		_builder.appendSql(sb.toString());
+		final IRowSet rowSet = _builder.executeQuery();
+		Set id=new HashSet();
+		while(rowSet.next()) {
+			id.add(rowSet.getString("id"));
+		}
+		
+    	FilterInfo filter=new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("entrys.id",id,CompareType.INCLUDE));
+		
+		UIContext uiContext = new UIContext(this);
+		uiContext.put(UIContext.OWNER, this);
+		uiContext.put("filter", filter);
+		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(PaymentReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow.show();
+    }
 
 }
