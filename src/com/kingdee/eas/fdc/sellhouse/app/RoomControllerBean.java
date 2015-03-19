@@ -1022,13 +1022,14 @@ public class RoomControllerBean extends AbstractRoomControllerBean {
 			EASBizException {
 		if(roomIdList!=null && roomIdList.size()>0){
 			try {
-				String sql = "update t_she_room set fispre=?,FIsPreAudited=?,FPreChangeState=?,FIsChangeSellArea=?,FsellAreaType=? where fid=?";
+				String sql = "update t_she_room set fispre=?,FIsPreAudited=?,FIsAreaAudited=?,FPreChangeState=?,FIsChangeSellArea=?,FsellAreaType=? where fid=?";
 				FDCSQLBuilder sqlBuilder = new FDCSQLBuilder(ctx);
 				sqlBuilder.setPrepareStatementSql(sql);
 				sqlBuilder.setBatchType(FDCSQLBuilder.PREPARESTATEMENT_TYPE);
 
 				for (int i = 0; i < roomIdList.size(); i++) {
 					RoomInfo  room=  (RoomInfo)roomIdList.get(i);
+					sqlBuilder.addParam(new Integer("1"));
 					sqlBuilder.addParam(new Integer("1"));
 					sqlBuilder.addParam(new Integer("1"));
 					if(room.isIsPreAudited()){
@@ -1062,13 +1063,14 @@ public class RoomControllerBean extends AbstractRoomControllerBean {
 			throws BOSException, EASBizException {
 		if(roomIdList!=null && roomIdList.size()>0){
 			try {
-				String sql = "update t_she_room set fispre=?,FIsPreAudited=?,FsellAreaType=? where fid=?";
+				String sql = "update t_she_room set fispre=?,FIsPreAudited=?,FIsAreaAudited=?,FsellAreaType=? where fid=?";
 				FDCSQLBuilder sqlBuilder = new FDCSQLBuilder(ctx);
 				sqlBuilder.setPrepareStatementSql(sql);
 				sqlBuilder.setBatchType(FDCSQLBuilder.PREPARESTATEMENT_TYPE);
 
 				for (int i = 0; i < roomIdList.size(); i++) {
 					RoomInfo room  =  (RoomInfo)roomIdList.get(i);
+					sqlBuilder.addParam(new Integer("0"));
 					sqlBuilder.addParam(new Integer("0"));
 					sqlBuilder.addParam(new Integer("0"));
 					if(!room.isIsActAudited()){

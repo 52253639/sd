@@ -702,7 +702,7 @@ public class SHEHelper {
 	 * @throws Exception
 	 */
 	public static TreeModel getSellProjectTree(ItemAction actionOnLoad) throws Exception {
-		return FDCTreeHelper.getSellProjectTree(actionOnLoad, null);
+		return FDCTreeHelper.getSellProjectTreeForSHE(actionOnLoad, null);
 	}
 
 	/**
@@ -710,7 +710,7 @@ public class SHEHelper {
 	 *            拥有售楼属性的、拥有租赁属性的、拥有物业属性的；
 	 */
 	public static TreeModel getSellProjectTree(ItemAction actionOnLoad, MoneySysTypeEnum sysTypeParam) throws Exception {
-		return FDCTreeHelper.getSellProjectTree(actionOnLoad, sysTypeParam);
+		return FDCTreeHelper.getSellProjectTreeForSHE(actionOnLoad,MoneySysTypeEnum.SalehouseSys);
 	}
 
 	/**
@@ -748,7 +748,7 @@ public class SHEHelper {
 	 * @throws Exception
 	 */
 	public static TreeModel getBuildingTree(ItemAction actionOnLoad) throws Exception {
-		return FDCTreeHelper.getBuildingTree(actionOnLoad, null);
+		return FDCTreeHelper.getBuildingTreeForSHE(actionOnLoad, null);
 	}
 
 	/**
@@ -759,13 +759,13 @@ public class SHEHelper {
 	 * @throws Exception
 	 */
 	public static TreeModel getBuildingTree(ItemAction actionOnLoad, MoneySysTypeEnum sysTypeParam) throws Exception {
-		return FDCTreeHelper.getBuildingTree(actionOnLoad, sysTypeParam);
+		return FDCTreeHelper.getBuildingTreeForSHE(actionOnLoad, sysTypeParam);
 	}
 
 	
 	public static TreeModel getBuildingTree(ItemAction actionOnLoad, MoneySysTypeEnum sysTypeParam, boolean showShare) throws Exception
 	{
-		return FDCTreeHelper.getBuildingTree(actionOnLoad, sysTypeParam, showShare);
+		return FDCTreeHelper.getBuildingTreeForSHE(actionOnLoad, sysTypeParam);
 	}
 	/**
 	 * @deprecated 构建单元树 树型结构 销售组织 - 销售项目 - 分区 - 楼栋 - 单元
@@ -774,11 +774,11 @@ public class SHEHelper {
 	 * @throws Exception
 	 */
 	public static TreeModel getUnitTree(ItemAction actionOnLoad) throws Exception {
-		return FDCTreeHelper.getUnitTree(actionOnLoad, null);
+		return FDCTreeHelper.getUnitTreeForSHE(actionOnLoad, null);
 	}
 
 	public static TreeModel getUnitTree(ItemAction actionOnLoad, MoneySysTypeEnum sysTypeParam) throws Exception {
-		return FDCTreeHelper.getUnitTree(actionOnLoad, sysTypeParam);
+		return FDCTreeHelper.getUnitTreeForSHE(actionOnLoad, sysTypeParam);
 	}
 	
 	//Add by zhiyuan_tang 2010/08/28

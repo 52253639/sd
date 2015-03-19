@@ -767,7 +767,8 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 				MsgBox.showInfo("所选楼栋中有房间未进行售前复核,不能进行定租");
 				f7Building.setValue(null);
 				return;
-			}else if(room.getTenancyArea()==null || room.getTenancyArea().compareTo(new BigDecimal(0))==0)
+			}else
+				if(room.getTenancyArea()==null || room.getTenancyArea().compareTo(new BigDecimal(0))==0)
 			{
 				MsgBox.showInfo("所选楼栋中有房间计租面积为空,不能进行定租");
 				f7Building.setValue(null);
