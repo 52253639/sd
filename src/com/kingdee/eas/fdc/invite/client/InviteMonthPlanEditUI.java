@@ -573,7 +573,7 @@ public class InviteMonthPlanEditUI extends AbstractInviteMonthPlanEditUI
 //		            	row.getCell("paperDate").getStyleAttributes().setLocked(true);
 		            	
 		            	if(firstLoad) {
-							actAccepterDateMap.put(entry.getProgrammingContractID().toString(), results.get(0).getAuditTime());
+							actAccepterDateMap.put(entry.getProgrammingContractID().toString(), resultsTwo.get(0).getAuditTime());
 						}
 		            }
 //	            	this.setRequiredColor(row);

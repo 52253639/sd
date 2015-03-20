@@ -359,11 +359,11 @@ public class checkRptUI2 extends AbstractCopy_checkRptUI {
 			abort();
 		}
 
-		try {
+//		try {
 			super.onLoad();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 		
 		kDDatePicker1.setValue(null);
 		kDDatePicker2.setValue(null);
@@ -1042,9 +1042,9 @@ public class checkRptUI2 extends AbstractCopy_checkRptUI {
 		this.tblCheck.setFormatXml(resHelper.translateString("tblMain",
 				tblMainStrXML));
 
-		tblCheck.getColumn("column17").getStyleAttributes().setHided(true);
-		tblCheck.getColumn("column18").getStyleAttributes().setHided(true);
-		tblCheck.getColumn("column19").getStyleAttributes().setHided(true);
+		if(tblCheck.getColumn("column17")!=null)tblCheck.getColumn("column17").getStyleAttributes().setHided(true);
+		if(tblCheck.getColumn("column18")!=null)tblCheck.getColumn("column18").getStyleAttributes().setHided(true);
+		if(tblCheck.getColumn("column19")!=null)tblCheck.getColumn("column19").getStyleAttributes().setHided(true);
 
 
 //		   kDSplitPane2.add(tblMain, "bottom");
