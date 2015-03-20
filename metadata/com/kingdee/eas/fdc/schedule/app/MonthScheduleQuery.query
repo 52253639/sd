@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.app</package>
+    <name>MonthScheduleQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>MonthSchedule</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[MonthSchedule].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthSchedule" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>adminPerson</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[adminPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>adminDept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[adminDept].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <propertyUnit>
+            <name>cae660d8-a415-4f6e-98d0-3509ec35023c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[cae660d8-a415-4f6e-98d0-3509ec35023c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>55f7160f-f5da-45d9-8230-d148cd44f552</key>
+                    <parentUnit>
+                        <key name="name" value="cae660d8-a415-4f6e-98d0-3509ec35023c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>7007043d-6332-42ee-92c4-6b4f54cdec3c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[7007043d-6332-42ee-92c4-6b4f54cdec3c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>6ec6c14f-cc0d-424e-88ec-cc7ca6c889f1</key>
+                    <parentUnit>
+                        <key name="name" value="7007043d-6332-42ee-92c4-6b4f54cdec3c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>3213c08e-be69-458f-b699-b65fadb69ea5</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[3213c08e-be69-458f-b699-b65fadb69ea5].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>0413ce5d-eee9-423b-a9da-2a91f5bc9df1</key>
+                    <parentUnit>
+                        <key name="name" value="3213c08e-be69-458f-b699-b65fadb69ea5" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="adminPerson" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>73432e6a-3d26-441f-adbf-fc1e636a3123</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[73432e6a-3d26-441f-adbf-fc1e636a3123].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>1d75719c-a677-40c5-8ae3-bc03f0f790dc</key>
+                    <parentUnit>
+                        <key name="name" value="73432e6a-3d26-441f-adbf-fc1e636a3123" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>ca6532ba-22e2-4e01-b2fb-273a1f7a06dd</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[ca6532ba-22e2-4e01-b2fb-273a1f7a06dd].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>a1d0bea2-dbfd-4613-a565-60242faab15d</key>
+                    <parentUnit>
+                        <key name="name" value="ca6532ba-22e2-4e01-b2fb-273a1f7a06dd" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="adminDept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2bbb3952-d50a-45fe-96bd-ac00ca0dcd97</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[2bbb3952-d50a-45fe-96bd-ac00ca0dcd97].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>4562d3df-62b8-4b7f-acc4-8f7fcd509c5f</key>
+                    <parentUnit>
+                        <key name="name" value="2bbb3952-d50a-45fe-96bd-ac00ca0dcd97" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>086e3869-a249-42b9-83a4-0707ea8a921d</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[086e3869-a249-42b9-83a4-0707ea8a921d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>f210d6f5-1506-49d0-b499-ddbc7fce798f</key>
+                    <parentUnit>
+                        <key name="name" value="086e3869-a249-42b9-83a4-0707ea8a921d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d219ffba-711f-490a-bcd4-d7b0c7da9eb1</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[d219ffba-711f-490a-bcd4-d7b0c7da9eb1].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>53145181-b263-41da-9db2-6259ce26e272</key>
+                    <parentUnit>
+                        <key name="name" value="d219ffba-711f-490a-bcd4-d7b0c7da9eb1" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>adminDept.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[adminDept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>340333eb-341e-42d0-9f4c-1590539e2dd2</key>
+                    <parentUnit>
+                        <key name="name" value="adminDept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ed6efbd0-c13e-4ecb-a0e7-b53d6568af3c</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c1f8a226-9974-4460-b5df-a7c946a5aeca</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6b750f4a-51b3-4e4d-9c64-b5b861caa97f</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>33d35165-bd23-41c7-8d27-11d9e5671776</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>planType</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[planType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ba3c364a-3895-4810-aeaa-80152f575253</key>
+                    <parentUnit>
+                        <key name="name" value="planType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="planType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>month</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[month].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fbd53af3-f455-4e7a-8b81-d1ced10aaf7a</key>
+                    <parentUnit>
+                        <key name="name" value="month" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="month" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>66514fc6-18c3-43bc-a80f-897fce5eefc8</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>adminPerson.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[adminPerson.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c0b0d77e-46dd-4c2e-a004-dc8d250a6553</key>
+                    <parentUnit>
+                        <key name="name" value="adminPerson.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0411653b-3bac-44e0-b4de-5b0919fd3518</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MonthSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7ff499bd-67f2-4579-9bcd-2466d42cd238</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+            <key name="name" value="MonthScheduleQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>5af93513-937c-4c96-9ee4-3d6ed0770431</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="MonthSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>993eedd7-d8df-46a2-8640-5956a8bee782</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="cae660d8-a415-4f6e-98d0-3509ec35023c" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="7007043d-6332-42ee-92c4-6b4f54cdec3c" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="5af93513-937c-4c96-9ee4-3d6ed0770431" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </join>
+        <join>
+            <name>0cadef84-f57d-4dcb-9d2a-42658ff7ad38</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="MonthSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="adminPerson" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>e5d6c85f-bcee-477d-a7b3-47ac23c5011b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="3213c08e-be69-458f-b699-b65fadb69ea5" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="73432e6a-3d26-441f-adbf-fc1e636a3123" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="0cadef84-f57d-4dcb-9d2a-42658ff7ad38" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4ad78a3a-9c6a-4dcd-9255-d3ea222f8d91</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="MonthSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="adminDept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>017c718b-8e6f-4eb0-84e2-8ce00bd2b353</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="ca6532ba-22e2-4e01-b2fb-273a1f7a06dd" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="2bbb3952-d50a-45fe-96bd-ac00ca0dcd97" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4ad78a3a-9c6a-4dcd-9255-d3ea222f8d91" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </join>
+        <join>
+            <name>fe4700e7-051b-49bd-89ad-311d9bfe03bd</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="MonthSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>937ee60f-5d95-4eed-b0b3-9d7f41bb4f5c</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="086e3869-a249-42b9-83a4-0707ea8a921d" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="d219ffba-711f-490a-bcd4-d7b0c7da9eb1" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="fe4700e7-051b-49bd-89ad-311d9bfe03bd" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="MonthScheduleQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].alias">
+            <lang locale="zh_CN" value="月度进度计划" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="月度進度計畫" />
+            <lang locale="zh_TW" value="月度進度計畫" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[MonthSchedule].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[adminDept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[adminPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[086e3869-a249-42b9-83a4-0707ea8a921d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[2bbb3952-d50a-45fe-96bd-ac00ca0dcd97].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[3213c08e-be69-458f-b699-b65fadb69ea5].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[7007043d-6332-42ee-92c4-6b4f54cdec3c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[73432e6a-3d26-441f-adbf-fc1e636a3123].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[ca6532ba-22e2-4e01-b2fb-273a1f7a06dd].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[cae660d8-a415-4f6e-98d0-3509ec35023c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.propertyUnit[d219ffba-711f-490a-bcd4-d7b0c7da9eb1].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[adminDept.name].displayName">
+            <lang locale="zh_CN" value="部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="部門" />
+            <lang locale="zh_TW" value="部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[adminPerson.name].displayName">
+            <lang locale="zh_CN" value="责任人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="責任人" />
+            <lang locale="zh_TW" value="責任人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[createTime].displayName">
+            <lang locale="zh_CN" value="创建时间" />
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_HK" value="創建時間" />
+            <lang locale="zh_TW" value="創建時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="创建人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="創建人" />
+            <lang locale="zh_TW" value="創建人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[month].displayName">
+            <lang locale="zh_CN" value="计划月份" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫月份" />
+            <lang locale="zh_TW" value="計畫月份" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="计划名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫名稱" />
+            <lang locale="zh_TW" value="計畫名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編號" />
+            <lang locale="zh_TW" value="單據編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[planType].displayName">
+            <lang locale="zh_CN" value="计划类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫類型" />
+            <lang locale="zh_TW" value="計畫類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="工程项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目" />
+            <lang locale="zh_TW" value="工程項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.MonthScheduleQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+    </resource>
+</joinQuery>
+

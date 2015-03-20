@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.app</package>
+    <name>T_SCH_SchAdjustPrefixTask</name>
+    <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FTaskID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FTaskID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FTaskID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FPrefixTaskID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FPrefixTaskID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FPrefixTaskID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FType</name>
+            <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FType].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FType].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>100</length>
+            <scale>0</scale>
+            <precision>100</precision>
+        </column>
+        <column>
+            <name>FDifference</name>
+            <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FDifference].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FDifference].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>4</precision>
+        </column>
+        <column>
+            <name>FHardness</name>
+            <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FHardness].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FHardness].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>100</length>
+            <scale>0</scale>
+            <precision>100</precision>
+        </column>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_ScheduleAdjustP</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType>ASC</sortType>
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>FK_SCH_SchAPTRfxT</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="T_SCH_ScheduleNewTaskEntry" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FPrefixTaskID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FDifference].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FDifference].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="延迟" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FHardness].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FHardness].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="硬性" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FPrefixTaskID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FPrefixTaskID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="前置任务" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FTaskID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FTaskID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="新增的任务" />
+            <lang locale="zh_TW" value="新增的任務" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].columns.column[FType].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="类型,后续可能要改成枚举" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.schedule.app.T_SCH_SchAdjustPrefixTask].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="进度调整任务依赖" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</dataTable>
+

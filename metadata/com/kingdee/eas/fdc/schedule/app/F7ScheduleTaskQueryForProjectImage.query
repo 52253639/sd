@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.app</package>
+    <name>F7ScheduleTaskQueryForProjectImage</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>FDCScheduleTask</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].subObjects.subEntity[FDCScheduleTask].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTask" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>schedule</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].subObjects.subEntity[schedule].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCSchedule" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].subObjects.subEntity[project].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>cb7e39ba-1a48-4512-9b6d-c1266532e1ab</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f9cdbb38-8765-4140-bc51-63aa6940540d</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString>replace ( #0 , '!' , '.' )</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bfcec7f8-ce8b-4606-a689-3f706031eeb3</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>longNumber</name>
+            <userDefined>false</userDefined>
+            <formulaString>replace ( #0 , '!' , '.' )</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[longNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c8cdaa7b-a6bb-452e-8ef0-e060a991cffe</key>
+                    <parentUnit>
+                        <key name="name" value="longNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="longNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9bffe165-f588-4c20-8620-4c10b32fb2ca</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>effectTimes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[effectTimes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c3fb2e4e-09eb-4071-96cd-020c1a15e6c4</key>
+                    <parentUnit>
+                        <key name="name" value="effectTimes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="effectTimes" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>start</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[start].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>50e03500-83a8-4808-9a6f-a73b737072a9</key>
+                    <parentUnit>
+                        <key name="name" value="start" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="start" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>end</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[end].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0db88e96-9b8b-4abb-b3f8-5a677a06d6f8</key>
+                    <parentUnit>
+                        <key name="name" value="end" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="end" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>natureTimes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[natureTimes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b4a9de47-4fab-4b68-ad52-a704d4c9ce7e</key>
+                    <parentUnit>
+                        <key name="name" value="natureTimes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="natureTimes" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isKey</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[isKey].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c676e003-bd45-4fc6-8107-1e7797c136e9</key>
+                    <parentUnit>
+                        <key name="name" value="isKey" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isKey" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>complete</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[complete].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>da7d57f9-ffd2-4b99-968a-768389c01e5d</key>
+                    <parentUnit>
+                        <key name="name" value="complete" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="complete" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>5d9e2927-d9c3-4818-bf5c-50cf67099728</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[5d9e2927-d9c3-4818-bf5c-50cf67099728].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>c465fd62-32eb-42e3-afd4-a040df810fcc</key>
+                    <parentUnit>
+                        <key name="name" value="5d9e2927-d9c3-4818-bf5c-50cf67099728" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="schedule" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>6b86902c-590e-41aa-bc18-fc39fb28899d</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[6b86902c-590e-41aa-bc18-fc39fb28899d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>01be1a46-d923-48bb-b5cc-dab96f81d84a</key>
+                    <parentUnit>
+                        <key name="name" value="6b86902c-590e-41aa-bc18-fc39fb28899d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d57c0748-1eb2-4e28-b6f9-79ea8a5af26b</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[d57c0748-1eb2-4e28-b6f9-79ea8a5af26b].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>602c3f45-f8b4-4931-b556-ed21431889e8</key>
+                    <parentUnit>
+                        <key name="name" value="d57c0748-1eb2-4e28-b6f9-79ea8a5af26b" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>90004c11-4c77-427b-a5b6-4f941e132e22</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[90004c11-4c77-427b-a5b6-4f941e132e22].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>9bea4e5a-9c77-40dd-9e14-9c3de3f57bc3</key>
+                    <parentUnit>
+                        <key name="name" value="90004c11-4c77-427b-a5b6-4f941e132e22" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>level</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[level].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b9e37563-a10d-4169-a065-77b0e0667692</key>
+                    <parentUnit>
+                        <key name="name" value="level" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="level" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isLeaf</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[isLeaf].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>34a4624e-9dc2-4640-bf30-206c03b2ea7a</key>
+                    <parentUnit>
+                        <key name="name" value="isLeaf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isLeaf" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.id</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>008fad87-e848-4d75-9515-c3a579b4214c</key>
+                    <parentUnit>
+                        <key name="name" value="project.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.longNumber</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.longNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1aab4ebb-e1eb-4b58-86fa-50c5e1d81969</key>
+                    <parentUnit>
+                        <key name="name" value="project.longNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="longNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>schedule.isLatestVer</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.isLatestVer].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>61865275-df3f-4f6e-a36d-26014f26a0e0</key>
+                    <parentUnit>
+                        <key name="name" value="schedule.isLatestVer" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isLatestVer" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>schedule.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9dfbc410-3067-475c-902a-a2de45197628</key>
+                    <parentUnit>
+                        <key name="name" value="schedule.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>schedule.state</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>65466c89-031e-4dac-b548-141938b9c263</key>
+                    <parentUnit>
+                        <key name="name" value="schedule.state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>srcID</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[srcID].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3ff30a7f-ad4e-4249-bcc1-71737ac3ee27</key>
+                    <parentUnit>
+                        <key name="name" value="srcID" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="srcID" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <filterItems>
+            <queryFilterItem>
+                <propertyName>schedule.isLatestVer</propertyName>
+                <compareType>=</compareType>
+                <compareValue>1</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+                <configured>false</configured>
+            </queryFilterItem>
+        </filterItems>
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+            <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>project.longNumber</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+            <configured>false</configured>
+        </querySorterItem>
+        <querySorterItem>
+            <propertyName>longNumber</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+            <configured>false</configured>
+        </querySorterItem>
+    </defaultSorters>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>ffa0edba-2f31-4e40-a9cf-9347b66c78b5</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCScheduleTask" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="schedule" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d1a66eec-8b38-4d86-b4b1-7f1bbd0c683b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="5d9e2927-d9c3-4818-bf5c-50cf67099728" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="6b86902c-590e-41aa-bc18-fc39fb28899d" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="ffa0edba-2f31-4e40-a9cf-9347b66c78b5" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </join>
+        <join>
+            <name>b3cd93fa-14ce-4278-b225-2efa83c55cc8</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="schedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>22b4d57c-3827-42c0-b1e5-58a641754ed7</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d57c0748-1eb2-4e28-b6f9-79ea8a5af26b" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="90004c11-4c77-427b-a5b6-4f941e132e22" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="b3cd93fa-14ce-4278-b225-2efa83c55cc8" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleTaskQueryForProjectImage" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].alias">
+            <lang locale="zh_CN" value="进度任务F7查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="進度任務F7查詢" />
+            <lang locale="zh_TW" value="進度任務F7查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].defaultSorters.querySorterItemextendedProperty.f7WindowTitle">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="" />
+            <lang locale="en_US" value="" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].description">
+            <lang locale="zh_CN" value="进度任务F7查询——仅给形象进度（ProjectImageEditUI）使用" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="進度任務F7查詢——僅給形象進度（ProjectImageEditUI）使用" />
+            <lang locale="zh_TW" value="進度任務F7查詢——僅給形象進度（ProjectImageEditUI）使用" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].extendedProperty.f7WindowTitle">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.schedule.ScheduleResource.f7scheduletask" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.schedule.ScheduleResource.f7scheduletask" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.schedule.ScheduleResource.f7scheduletask" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].subObjects.subEntity[FDCScheduleTask].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].subObjects.subEntity[schedule].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[5d9e2927-d9c3-4818-bf5c-50cf67099728].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[6b86902c-590e-41aa-bc18-fc39fb28899d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[90004c11-4c77-427b-a5b6-4f941e132e22].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.propertyUnit[d57c0748-1eb2-4e28-b6f9-79ea8a5af26b].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[complete].displayName">
+            <lang locale="zh_CN" value="完成情况" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="完成情況" />
+            <lang locale="zh_TW" value="完成情況" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[complete].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[effectTimes].displayName">
+            <lang locale="zh_CN" value="工期(天)" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工期(天)" />
+            <lang locale="zh_TW" value="工期(天)" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[end].displayName">
+            <lang locale="zh_CN" value="计划完成日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫完成日期" />
+            <lang locale="zh_TW" value="計畫完成日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[isKey].displayName">
+            <lang locale="zh_CN" value="关键任务" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="關鍵任務" />
+            <lang locale="zh_TW" value="關鍵任務" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[isKey].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[isLeaf].displayName">
+            <lang locale="zh_CN" value="是否叶子节点" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="是否葉子節點" />
+            <lang locale="zh_TW" value="是否葉子節點" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[isLeaf].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[level].displayName">
+            <lang locale="zh_CN" value="级次" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="級次" />
+            <lang locale="zh_TW" value="級次" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[level].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[longNumber].displayName">
+            <lang locale="zh_CN" value="WBS编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="WBS編碼" />
+            <lang locale="zh_TW" value="WBS編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[longNumber].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="任务名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="任務名稱" />
+            <lang locale="zh_TW" value="任務名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[natureTimes].displayName">
+            <lang locale="zh_CN" value="自然工期(天)" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="自然工期(天)" />
+            <lang locale="zh_TW" value="自然工期(天)" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[natureTimes].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="編碼" />
+            <lang locale="zh_TW" value="編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.longNumber].displayName">
+            <lang locale="zh_CN" value="长编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="長編碼" />
+            <lang locale="zh_TW" value="長編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.longNumber].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="工程项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目" />
+            <lang locale="zh_TW" value="工程項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[project.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.isLatestVer].displayName">
+            <lang locale="zh_CN" value="最新版本" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="最新版本" />
+            <lang locale="zh_TW" value="最新版本" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.isLatestVer].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.state].displayName">
+            <lang locale="zh_CN" value="计划状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫狀態" />
+            <lang locale="zh_TW" value="計畫狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[schedule.state].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[srcID].displayName">
+            <lang locale="zh_CN" value="源任务ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="源任務ID" />
+            <lang locale="zh_TW" value="源任務ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[srcID].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleTaskQueryForProjectImage].units.queryField[start].displayName">
+            <lang locale="zh_CN" value="计划开始日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫開始日期" />
+            <lang locale="zh_TW" value="計畫開始日期" />
+        </rs>
+    </resource>
+</joinQuery>
+

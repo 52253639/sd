@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.app</package>
+    <name>WorkAmountQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>WorkAmountBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[WorkAmountBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountBill" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>bizDept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[bizDept].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <propertyUnit>
+            <name>d0eed95e-32fd-4f5a-92ba-7ca40c3500f5</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[d0eed95e-32fd-4f5a-92ba-7ca40c3500f5].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>ab5a224a-f7d9-4613-bcee-9e52855a98c9</key>
+                    <parentUnit>
+                        <key name="name" value="d0eed95e-32fd-4f5a-92ba-7ca40c3500f5" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f74b00bc-e1f0-4e3b-a9e5-47e066287d0a</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[f74b00bc-e1f0-4e3b-a9e5-47e066287d0a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>fe58805e-4607-4f48-9ba9-065f6ff01e5d</key>
+                    <parentUnit>
+                        <key name="name" value="f74b00bc-e1f0-4e3b-a9e5-47e066287d0a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d10abc15-fb2a-431b-98f2-86c5b6b87c30</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[d10abc15-fb2a-431b-98f2-86c5b6b87c30].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>80454ae1-d013-4b0c-ba01-c14c031c6943</key>
+                    <parentUnit>
+                        <key name="name" value="d10abc15-fb2a-431b-98f2-86c5b6b87c30" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>0b296613-6915-4fe0-b945-3f00cae4785c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[0b296613-6915-4fe0-b945-3f00cae4785c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>349aa2c8-a811-40c7-88ba-c4ecfd9f78f4</key>
+                    <parentUnit>
+                        <key name="name" value="0b296613-6915-4fe0-b945-3f00cae4785c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="bizDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>efeae849-2f20-417b-bc19-7fa4f3f571f8</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[efeae849-2f20-417b-bc19-7fa4f3f571f8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>706d4dd7-3020-498d-a012-312c4e4a3800</key>
+                    <parentUnit>
+                        <key name="name" value="efeae849-2f20-417b-bc19-7fa4f3f571f8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a867f27a-b7a3-44e4-8da0-34ca1cc50172</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[a867f27a-b7a3-44e4-8da0-34ca1cc50172].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>3a975021-166f-4c9c-b2d4-5daa43cccbc0</key>
+                    <parentUnit>
+                        <key name="name" value="a867f27a-b7a3-44e4-8da0-34ca1cc50172" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9e7c7ef1-2aa7-46d6-95ff-586043c42cc9</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[9e7c7ef1-2aa7-46d6-95ff-586043c42cc9].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>3c2960d6-3061-4d46-84ea-b4c0e39d162c</key>
+                    <parentUnit>
+                        <key name="name" value="9e7c7ef1-2aa7-46d6-95ff-586043c42cc9" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1c181956-79db-442c-924f-a6ed8548bedd</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[1c181956-79db-442c-924f-a6ed8548bedd].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>099cc6db-bb10-4b46-8e82-a3dddfd8dd5f</key>
+                    <parentUnit>
+                        <key name="name" value="1c181956-79db-442c-924f-a6ed8548bedd" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3dce542e-1284-409a-9e8b-c6dc5aa7f14a</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bb5f3844-365e-4bbe-8747-f4742e6b6153</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3960202b-6e81-4ad6-9870-cdc9fdc0b9c2</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e696363a-f300-4817-b39d-00532f246417</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDept.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[bizDept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>32a63043-b0c0-442d-ac96-24ed27f9180b</key>
+                    <parentUnit>
+                        <key name="name" value="bizDept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="bizDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bc287554-5f4a-435c-9973-78555df47669</key>
+                    <parentUnit>
+                        <key name="name" value="bizDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3e7fbd0c-9b42-40d7-bc00-ad79137333a7</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9ba8ba49-97bc-479d-bccd-2d43db4ecd08</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>312748a9-f292-445d-a232-5a073d2fddb5</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f404ef8b-403c-4966-af78-5fd0bd6ed708</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="WorkAmountBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+            <key name="name" value="WorkAmountQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>763aaa1b-5513-4c9b-90e4-01075b10b0a0</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="WorkAmountBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>33036986-1a57-4ac5-91ac-15305a4e1880</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d0eed95e-32fd-4f5a-92ba-7ca40c3500f5" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f74b00bc-e1f0-4e3b-a9e5-47e066287d0a" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="763aaa1b-5513-4c9b-90e4-01075b10b0a0" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </join>
+        <join>
+            <name>601cf5b7-4059-467b-92e1-78a0e67fd5d7</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="WorkAmountBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="bizDept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d23ef206-8def-4888-be3b-ee5ac4eea88a</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d10abc15-fb2a-431b-98f2-86c5b6b87c30" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="0b296613-6915-4fe0-b945-3f00cae4785c" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="601cf5b7-4059-467b-92e1-78a0e67fd5d7" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </join>
+        <join>
+            <name>1c6e5333-ff00-4532-b050-3596e3840ec8</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="WorkAmountBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>8c7f85ed-117d-4061-8699-c6ec7d6f4f0b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="efeae849-2f20-417b-bc19-7fa4f3f571f8" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="a867f27a-b7a3-44e4-8da0-34ca1cc50172" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="1c6e5333-ff00-4532-b050-3596e3840ec8" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </join>
+        <join>
+            <name>953eea8b-9233-4275-a74f-be9367cc5592</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="WorkAmountBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>50700b84-7e5a-4315-850d-820594e1fcd6</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9e7c7ef1-2aa7-46d6-95ff-586043c42cc9" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="1c181956-79db-442c-924f-a6ed8548bedd" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="953eea8b-9233-4275-a74f-be9367cc5592" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="WorkAmountQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].alias">
+            <lang locale="zh_CN" value="工程量录入查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程量錄入查詢" />
+            <lang locale="zh_TW" value="工程量錄入查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].description">
+            <lang locale="zh_CN" value="工程量录入查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程量錄入查詢" />
+            <lang locale="zh_TW" value="工程量錄入查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[WorkAmountBill].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[bizDept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[0b296613-6915-4fe0-b945-3f00cae4785c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[1c181956-79db-442c-924f-a6ed8548bedd].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[9e7c7ef1-2aa7-46d6-95ff-586043c42cc9].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[a867f27a-b7a3-44e4-8da0-34ca1cc50172].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[d0eed95e-32fd-4f5a-92ba-7ca40c3500f5].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[d10abc15-fb2a-431b-98f2-86c5b6b87c30].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[efeae849-2f20-417b-bc19-7fa4f3f571f8].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.propertyUnit[f74b00bc-e1f0-4e3b-a9e5-47e066287d0a].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批日期" />
+            <lang locale="zh_TW" value="審批日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="审批人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[bizDate].displayName">
+            <lang locale="zh_CN" value="填报日期" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="填報日期" />
+            <lang locale="zh_TW" value="填報日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[bizDept.name].displayName">
+            <lang locale="zh_CN" value="填报部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="填報部門" />
+            <lang locale="zh_TW" value="填報部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="填报人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="填報人" />
+            <lang locale="zh_TW" value="填報人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="单据名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據名稱" />
+            <lang locale="zh_TW" value="單據名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編碼" />
+            <lang locale="zh_TW" value="單據編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="工程项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目" />
+            <lang locale="zh_TW" value="工程項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.WorkAmountQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="单据状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據狀態" />
+            <lang locale="zh_TW" value="單據狀態" />
+        </rs>
+    </resource>
+</joinQuery>
+

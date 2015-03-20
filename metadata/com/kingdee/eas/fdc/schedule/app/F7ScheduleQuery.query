@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.app</package>
+    <name>F7ScheduleQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>FDCSchedule</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[FDCSchedule].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCSchedule" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>taskEntrys</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[taskEntrys].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTask" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>scheduleType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[scheduleType].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="TaskType" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ee47d6c1-6878-43cc-962e-632718f7a825</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>82ca09e5-20a6-4eef-b6a2-cb24b0a0fc4b</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8e67ba1f-df26-4701-9787-92612a8dcdb9</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2593b4a3-d659-488e-9f3c-ca37e12eadc3</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[project.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c94f062e-e52f-4609-badb-9b1ef01dbd02</key>
+                    <parentUnit>
+                        <key name="name" value="project.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>00c9b5e5-88ea-4683-ba0c-c198b26fa3f3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[00c9b5e5-88ea-4683-ba0c-c198b26fa3f3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>cd6f550c-1036-4f55-91f2-c91b16d6a43b</key>
+                    <parentUnit>
+                        <key name="name" value="00c9b5e5-88ea-4683-ba0c-c198b26fa3f3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f08f25e6-b0a6-439e-b38e-7674ab30c7d3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[f08f25e6-b0a6-439e-b38e-7674ab30c7d3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>768a2d77-1dcb-4786-b280-4cf01a89115b</key>
+                    <parentUnit>
+                        <key name="name" value="f08f25e6-b0a6-439e-b38e-7674ab30c7d3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>291d305a-ac28-40ba-8fa8-d9ae122c24e0</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[291d305a-ac28-40ba-8fa8-d9ae122c24e0].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c4adce3d-acb0-4668-8a2b-deaa9a1ad234</key>
+                    <parentUnit>
+                        <key name="name" value="291d305a-ac28-40ba-8fa8-d9ae122c24e0" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>3b9d31f7-6f00-4a59-a085-7d231149febf</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[3b9d31f7-6f00-4a59-a085-7d231149febf].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5b71061d-a647-41bd-8d32-2005aa13f56b</key>
+                    <parentUnit>
+                        <key name="name" value="3b9d31f7-6f00-4a59-a085-7d231149febf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="taskEntrys" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="schedule" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>scheduleType.id</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 = 'Fs627NttSemeAN1knRHeIxN/5DU=' then 1 else 0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[scheduleType.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>78670c4c-762f-41d0-830c-6391f26d00fa</key>
+                    <parentUnit>
+                        <key name="name" value="scheduleType.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="scheduleType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isLatestVer</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[isLatestVer].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1b2deee7-eb84-4166-b020-69312826cde4</key>
+                    <parentUnit>
+                        <key name="name" value="isLatestVer" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isLatestVer" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>851a3126-e3c0-4aee-a6a8-f0e48d2a2603</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[851a3126-e3c0-4aee-a6a8-f0e48d2a2603].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>8e4b151a-7604-4749-b84e-88367ec1ef4d</key>
+                    <parentUnit>
+                        <key name="name" value="851a3126-e3c0-4aee-a6a8-f0e48d2a2603" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCSchedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="scheduleType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>69774e59-e382-4dae-9825-cc37c4cc4832</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[69774e59-e382-4dae-9825-cc37c4cc4832].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>af1299ed-336e-4f28-af3e-2bceba8e3418</key>
+                    <parentUnit>
+                        <key name="name" value="69774e59-e382-4dae-9825-cc37c4cc4832" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="scheduleType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </propertyUnit>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <filterItems>
+            <queryFilterItem>
+                <propertyName>isLatestVer</propertyName>
+                <compareType>=</compareType>
+                <compareValue>1</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+            </queryFilterItem>
+        </filterItems>
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+            <key name="name" value="F7ScheduleQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>02a843db-986d-46db-a856-f8f18f874bb3</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>9f0a361a-8940-40d9-8a06-d6f62bb757bd</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="00c9b5e5-88ea-4683-ba0c-c198b26fa3f3" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f08f25e6-b0a6-439e-b38e-7674ab30c7d3" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="02a843db-986d-46db-a856-f8f18f874bb3" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </join>
+        <join>
+            <name>04cdbcec-e36b-4c3d-8ef2-d0429cf369b2</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="taskEntrys" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4ed3b5dd-b9f7-4a56-be34-b3dab7902fa0</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="291d305a-ac28-40ba-8fa8-d9ae122c24e0" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="3b9d31f7-6f00-4a59-a085-7d231149febf" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="04cdbcec-e36b-4c3d-8ef2-d0429cf369b2" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </join>
+        <join>
+            <name>5f76092c-611b-4f82-a376-9aecdd83edb8</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCSchedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="scheduleType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>5b2e16e3-b03e-456b-b8be-0fc8cb6140e4</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="851a3126-e3c0-4aee-a6a8-f0e48d2a2603" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="69774e59-e382-4dae-9825-cc37c4cc4832" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="5f76092c-611b-4f82-a376-9aecdd83edb8" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="F7ScheduleQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].alias">
+            <lang locale="zh_CN" value="进度查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="進度查詢" />
+            <lang locale="zh_TW" value="進度查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].description">
+            <lang locale="zh_CN" value="进度查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="進度查詢" />
+            <lang locale="zh_TW" value="進度查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].extendedProperty.f7WindowTitle">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.schedule.ScheduleResource.f7schedule" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.schedule.ScheduleResource.f7schedule" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.schedule.ScheduleResource.f7schedule" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[FDCSchedule].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[scheduleType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].subObjects.subEntity[taskEntrys].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[00c9b5e5-88ea-4683-ba0c-c198b26fa3f3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[291d305a-ac28-40ba-8fa8-d9ae122c24e0].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[3b9d31f7-6f00-4a59-a085-7d231149febf].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[69774e59-e382-4dae-9825-cc37c4cc4832].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[851a3126-e3c0-4aee-a6a8-f0e48d2a2603].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.propertyUnit[f08f25e6-b0a6-439e-b38e-7674ab30c7d3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[isLatestVer].displayName">
+            <lang locale="zh_CN" value="最新版本" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="最新版本" />
+            <lang locale="zh_TW" value="最新版本" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="计划名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫名稱" />
+            <lang locale="zh_TW" value="計畫名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="计划编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫編碼" />
+            <lang locale="zh_TW" value="計畫編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[project.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[project.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="工程项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目" />
+            <lang locale="zh_TW" value="工程項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.F7ScheduleQuery].units.queryField[scheduleType.id].displayName">
+            <lang locale="zh_CN" value="是否主项计划" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否主項計畫" />
+            <lang locale="zh_TW" value="是否主項計畫" />
+        </rs>
+    </resource>
+</joinQuery>
+

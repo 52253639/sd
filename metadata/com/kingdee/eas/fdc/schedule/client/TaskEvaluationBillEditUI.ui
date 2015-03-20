@@ -1,0 +1,2729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uiObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.client</package>
+    <name>TaskEvaluationBillEditUI</name>
+    <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].alias</alias>
+    <description>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].description</description>
+    <userDefined>false</userDefined>
+    <releasePackage>com.kingdee.eas.fdc.schedule.client</releasePackage>
+    <releaseClass>TaskEvaluationBillEditUI</releaseClass>
+    <title>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].title</title>
+    <uitype />
+    <defaultbutton />
+    <bizUnitPK />
+    <parent>
+        <key name="package" value="com.kingdee.eas.fdc.basedata.client" />
+        <key name="name" value="FDCBillEditUI" />
+    </parent>
+    <components>
+        <component>
+            <name>CoreUI</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[CoreUI].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints>10,10,700,520</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>prmtEvaluationPerson</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>457,523,170,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationPerson].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>data</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>evalucationPerson</bindingField>
+                    <fieldType>com.kingdee.eas.basedata.person.PersonInfo</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+        </component>
+        <component>
+            <name>pnlTaskEvaluation</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlTaskEvaluation].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints>8,233,684,277</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>border</name>
+                    <type>javax.swing.border.Border</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlTaskEvaluation].properties.property[border].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+        </component>
+        <component>
+            <name>pnlScheduleInfo</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlScheduleInfo].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints>8,17,684,197</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>border</name>
+                    <type>javax.swing.border.Border</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlScheduleInfo].properties.property[border].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+        </component>
+        <component>
+            <name>kDScrollPane1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kDScrollPane1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDScrollPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>17,104,647,158</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SameGridLayout</type>
+                <value>1,1,0,0,0,0</value>
+            </layoutInfo>
+            <parent>
+                <key name="name" value="pnlTaskEvaluation" />
+            </parent>
+        </component>
+        <component>
+            <name>contEvaluationDes</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>17,80,60,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlTaskEvaluation" />
+            </parent>
+        </component>
+        <component>
+            <name>contEvaluationResult</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>397,19,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlTaskEvaluation" />
+            </parent>
+        </component>
+        <component>
+            <name>contEvaluationType</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>17,19,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlTaskEvaluation" />
+            </parent>
+        </component>
+        <component>
+            <name>contCreateTime</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>397,49,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlTaskEvaluation" />
+            </parent>
+        </component>
+        <component>
+            <name>contCreator</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>17,49,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlTaskEvaluation" />
+            </parent>
+        </component>
+        <component>
+            <name>txtEvaluationDes</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtEvaluationDes].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTextArea</classType>
+            <isContainer>false</isContainer>
+            <constraints>25,167,647,100</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDScrollPane1" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>text</propertyName>
+                    <propertyType>java.lang.String</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>evaluationDes</bindingField>
+                    <fieldType>String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+        </component>
+        <component>
+            <name>prmtEvaluationResult</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationResult].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>queryInfo</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationResult].properties.property[queryInfo].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contEvaluationResult" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>data</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>evaluationResult</bindingField>
+                    <fieldType>com.kingdee.eas.fdc.schedule.TaskEvaluationInfo</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+        </component>
+        <component>
+            <name>comboEvaluationType</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[comboEvaluationType].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDComboBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>items</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[comboEvaluationType].properties.property[items].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contEvaluationType" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>selectedItem</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>evaluationType</bindingField>
+                    <fieldType>com.kingdee.eas.fdc.schedule.TaskEvaluationTypeEnum</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+            <eventBindings>
+                <eventBinding>
+                    <name>itemStateChanged</name>
+                    <eventType>java.awt.event.ItemEvent</eventType>
+                    <scene />
+                    <listenerType>java.awt.event.ItemListener</listenerType>
+                    <listenerAdapter>java.awt.event.ItemListener</listenerAdapter>
+                    <methodName>comboEvaluationType_itemStateChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>pkCreateTime</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pkCreateTime].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="contCreateTime" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>value</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>createTime</bindingField>
+                    <fieldType>java.sql.Timestamp</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+        </component>
+        <component>
+            <name>prmtCreator</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtCreator].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>queryInfo</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtCreator].properties.property[queryInfo].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contCreator" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>data</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>creator</bindingField>
+                    <fieldType>com.kingdee.eas.base.permission.UserInfo</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+        </component>
+        <component>
+            <name>contTaskName</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>15,20,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contTaskNumber</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>396,20,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contAdminPerson</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>15,51,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contAdminDept</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>396,50,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contTaskType</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>15,81,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contTotalWorkLoad</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>396,81,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contPlanStart</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>18,114,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contPlanEnd</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>396,117,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contActualStart</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>19,146,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>contActualEnd</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>396,153,270,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].properties.property[boundLabelUnderline].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlScheduleInfo" />
+            </parent>
+        </component>
+        <component>
+            <name>txtTaskName</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskName].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTextField</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskName].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contTaskName" />
+            </parent>
+        </component>
+        <component>
+            <name>txtTaskNumber</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskNumber].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTextField</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskNumber].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contTaskNumber" />
+            </parent>
+        </component>
+        <component>
+            <name>prmtAdminPerson</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminPerson].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contAdminPerson" />
+            </parent>
+        </component>
+        <component>
+            <name>prmtAdminDept</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminDept].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminDept].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contAdminDept" />
+            </parent>
+        </component>
+        <component>
+            <name>txtTotalPercent</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDNumberTextField</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dataType</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].properties.property[dataType].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>precision</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].properties.property[precision].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contTaskType" />
+            </parent>
+        </component>
+        <component>
+            <name>txtTotalWorkload</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalWorkload].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDNumberTextField</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalWorkload].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>precision</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalWorkload].properties.property[precision].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contTotalWorkLoad" />
+            </parent>
+        </component>
+        <component>
+            <name>kdpPlanStart</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanStart].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanStart].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contPlanStart" />
+            </parent>
+        </component>
+        <component>
+            <name>kdpPlanEnd</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanEnd].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanEnd].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contPlanEnd" />
+            </parent>
+        </component>
+        <component>
+            <name>kdpActualStart</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualStart].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualStart].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contActualStart" />
+            </parent>
+        </component>
+        <component>
+            <name>kdpActualEnd</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualEnd].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualEnd].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="contActualEnd" />
+            </parent>
+        </component>
+        <component>
+            <name>btnAddNew</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddNew].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddNew].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnSubmit</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnSubmit].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnSubmit].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnCopy</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCopy].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCopy].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnRemove</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemove].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemove].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnAttachment</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAttachment].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAttachment].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnPrint</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrint].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrint].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnPrintPreview</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrintPreview].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrintPreview].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnFirst</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnFirst].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnFirst].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnPre</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPre].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPre].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnNext</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNext].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNext].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnLast</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnLast].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnLast].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnTraceUp</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceUp].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceUp].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnTraceDown</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceDown].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceDown].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnWorkFlowG</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnWorkFlowG].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnWorkFlowG].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnCreateFrom</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCreateFrom].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCreateFrom].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnAddLine</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddLine].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddLine].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnInsertLine</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnInsertLine].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnInsertLine].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnRemoveLine</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemoveLine].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemoveLine].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnAuditResult</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAuditResult].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAuditResult].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnMultiapprove</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnMultiapprove].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnMultiapprove].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnNextPerson</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNextPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNextPerson].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnAudit</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAudit].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAudit].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnUnAudit</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnUnAudit].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnUnAudit].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnCalculator</name>
+            <alias>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCalculator].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCalculator].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+    </components>
+    <dataObjects>
+        <dataObject>
+            <name>editData</name>
+            <type>com.kingdee.eas.fdc.schedule.app.TaskEvaluationBill</type>
+            <objectType>enty</objectType>
+            <herited>true</herited>
+            <userDefined>false</userDefined>
+        </dataObject>
+    </dataObjects>
+    <actions>
+        <action>
+            <instanceName>actionSave</instanceName>
+            <className>ActionSave</className>
+            <name>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].name</name>
+            <enabled>true</enabled>
+            <actionPerformed />
+            <beforeActionPerformed />
+            <afterActionPerformed />
+            <finallyActionPerformed />
+            <actionCommandKey />
+            <acceleratorKey>shift ctrl S</acceleratorKey>
+            <mnemonicKey />
+            <smallIcon>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].smallIcon</smallIcon>
+            <shortDescription>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].shortDescription</shortDescription>
+            <longDescription>uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].longDescription</longDescription>
+            <isBindWorkFlow>false</isBindWorkFlow>
+            <herited>true</herited>
+            <daemonRun>false</daemonRun>
+            <actionExtendProperty>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ExtendProperty&gt;&lt;item key="canForewarn" value="true" /&gt;&lt;/ExtendProperty&gt;
+</actionExtendProperty>
+            <services>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;root&gt;&lt;service class="com.kingdee.eas.framework.client.service.PermissionService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.NetFunctionService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.UserMonitorService" /&gt;&lt;/root&gt;</services>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <oprtIntent />
+            <nextUI />
+            <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
+        </action>
+    </actions>
+    <resource>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].longDescription">
+            <lang locale="zh_CN" value="保存" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="保存" />
+            <lang locale="zh_TW" value="保存" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].name">
+            <lang locale="zh_CN" value="保存" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="保存" />
+            <lang locale="zh_TW" value="保存" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].shortDescription">
+            <lang locale="zh_CN" value="保存" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="保存" />
+            <lang locale="zh_TW" value="保存" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].actions.action[actionSave].smallIcon">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].alias">
+            <lang locale="zh_CN" value="任务评价界面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="任務評價介面" />
+            <lang locale="zh_TW" value="任務評價介面" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[CoreUI].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddLine].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddLine].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddNew].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAddNew].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAttachment].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAttachment].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAuditResult].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAuditResult].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAudit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnAudit].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCalculator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCalculator].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCopy].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCopy].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCreateFrom].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnCreateFrom].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnFirst].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnFirst].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnInsertLine].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnInsertLine].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnLast].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnLast].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnMultiapprove].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnMultiapprove].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNextPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNextPerson].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNext].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnNext].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPre].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPre].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrintPreview].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrintPreview].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrint].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnPrint].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemoveLine].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemoveLine].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemove].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnRemove].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnSubmit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnSubmit].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceDown].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceDown].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceUp].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnTraceUp].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnUnAudit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnUnAudit].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnWorkFlowG].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[btnWorkFlowG].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[comboEvaluationType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[comboEvaluationType].properties.property[items].value">
+            <lang locale="zh_CN" value="[Enum]com.kingdee.eas.fdc.schedule.TaskEvaluationTypeEnum" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="[Enum]com.kingdee.eas.fdc.schedule.TaskEvaluationTypeEnum" />
+            <lang locale="zh_TW" value="[Enum]com.kingdee.eas.fdc.schedule.TaskEvaluationTypeEnum" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="实际完成时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際完成時間" />
+            <lang locale="zh_TW" value="實際完成時間" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualEnd].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="实际开始时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際開始時間" />
+            <lang locale="zh_TW" value="實際開始時間" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contActualStart].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="责任部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="責任部門" />
+            <lang locale="zh_TW" value="責任部門" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminDept].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="责任人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="責任人" />
+            <lang locale="zh_TW" value="責任人" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contAdminPerson].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="评价日期" />
+            <lang locale="en_US" value="创建时间" />
+            <lang locale="zh_HK" value="評價日期" />
+            <lang locale="zh_TW" value="評價日期" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreateTime].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="评价人" />
+            <lang locale="en_US" value="创建者" />
+            <lang locale="zh_HK" value="評價人" />
+            <lang locale="zh_TW" value="評價人" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contCreator].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="评价说明:" />
+            <lang locale="en_US" value="评价描述" />
+            <lang locale="zh_HK" value="評價說明:" />
+            <lang locale="zh_TW" value="評價說明:" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationDes].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="评价结果" />
+            <lang locale="en_US" value="评价结果" />
+            <lang locale="zh_HK" value="評價結果" />
+            <lang locale="zh_TW" value="評價結果" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationResult].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="评价类型" />
+            <lang locale="en_US" value="评价类型" />
+            <lang locale="zh_HK" value="評價類型" />
+            <lang locale="zh_TW" value="評價類型" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contEvaluationType].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="计划完成时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫完成時間" />
+            <lang locale="zh_TW" value="計畫完成時間" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanEnd].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="计划开始时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫開始時間" />
+            <lang locale="zh_TW" value="計畫開始時間" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contPlanStart].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="任务名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="任務名稱" />
+            <lang locale="zh_TW" value="任務名稱" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskName].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="任务编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="任務編碼" />
+            <lang locale="zh_TW" value="任務編碼" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskNumber].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="累计完成百分比" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="累計完成百分比" />
+            <lang locale="zh_TW" value="累計完成百分比" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTaskType].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].properties.property[boundLabelLength].value">
+            <lang locale="zh_CN" value="100" />
+            <lang locale="en_US" value="100" />
+            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_TW" value="100" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].properties.property[boundLabelText].value">
+            <lang locale="zh_CN" value="累计完工工程量" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="累計完工工程量" />
+            <lang locale="zh_TW" value="累計完工工程量" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[contTotalWorkLoad].properties.property[boundLabelUnderline].value">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kDScrollPane1].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualEnd].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualEnd].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualStart].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpActualStart].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanEnd].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanEnd].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanStart].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[kdpPlanStart].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pkCreateTime].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlScheduleInfo].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlScheduleInfo].properties.property[border].value">
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;Border&gt;&lt;Type&gt;6&lt;/Type&gt;&lt;Name&gt;Custom&lt;/Name&gt;&lt;CustomType&gt;61&lt;/CustomType&gt;&lt;Title&gt;任务执行信息&lt;/Title&gt;&lt;Options&gt;&lt;Width&gt;1&lt;/Width&gt;&lt;Color R=&quot;0&quot; G=&quot;0&quot; B=&quot;0&quot; /&gt;&lt;/Options&gt;&lt;/Border&gt; " />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;Border&gt;&lt;Type&gt;6&lt;/Type&gt;&lt;Name&gt;Custom&lt;/Name&gt;&lt;CustomType&gt;61&lt;/CustomType&gt;&lt;Title&gt;任務執行信息&lt;/Title&gt;&lt;Options&gt;&lt;Width&gt;1&lt;/Width&gt;&lt;Color R=&quot;0&quot; G=&quot;0&quot; B=&quot;0&quot; /&gt;&lt;/Options&gt;&lt;/Border&gt; " />
+            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;Border&gt;&lt;Type&gt;6&lt;/Type&gt;&lt;Name&gt;Custom&lt;/Name&gt;&lt;CustomType&gt;61&lt;/CustomType&gt;&lt;Title&gt;任務執行信息&lt;/Title&gt;&lt;Options&gt;&lt;Width&gt;1&lt;/Width&gt;&lt;Color R=&quot;0&quot; G=&quot;0&quot; B=&quot;0&quot; /&gt;&lt;/Options&gt;&lt;/Border&gt; " />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlTaskEvaluation].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[pnlTaskEvaluation].properties.property[border].value">
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;Border&gt;&lt;Type&gt;6&lt;/Type&gt;&lt;Name&gt;Custom&lt;/Name&gt;&lt;CustomType&gt;61&lt;/CustomType&gt;&lt;Title&gt;任务评价&lt;/Title&gt;&lt;Options&gt;&lt;Width&gt;1&lt;/Width&gt;&lt;Color R=&quot;0&quot; G=&quot;0&quot; B=&quot;0&quot; /&gt;&lt;/Options&gt;&lt;/Border&gt; " />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;Border&gt;&lt;Type&gt;6&lt;/Type&gt;&lt;Name&gt;Custom&lt;/Name&gt;&lt;CustomType&gt;61&lt;/CustomType&gt;&lt;Title&gt;任務評價&lt;/Title&gt;&lt;Options&gt;&lt;Width&gt;1&lt;/Width&gt;&lt;Color R=&quot;0&quot; G=&quot;0&quot; B=&quot;0&quot; /&gt;&lt;/Options&gt;&lt;/Border&gt; " />
+            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;Border&gt;&lt;Type&gt;6&lt;/Type&gt;&lt;Name&gt;Custom&lt;/Name&gt;&lt;CustomType&gt;61&lt;/CustomType&gt;&lt;Title&gt;任務評價&lt;/Title&gt;&lt;Options&gt;&lt;Width&gt;1&lt;/Width&gt;&lt;Color R=&quot;0&quot; G=&quot;0&quot; B=&quot;0&quot; /&gt;&lt;/Options&gt;&lt;/Border&gt; " />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminDept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminDept].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtAdminPerson].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtCreator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtCreator].properties.property[queryInfo].value">
+            <lang locale="zh_CN" value="com.kingdee.eas.base.permission.app.UserInfoQuery" />
+            <lang locale="en_US" value="com.kingdee.eas.base.permission.app.UserInfoQuery" />
+            <lang locale="zh_HK" value="com.kingdee.eas.base.permission.app.UserInfoQuery" />
+            <lang locale="zh_TW" value="com.kingdee.eas.base.permission.app.UserInfoQuery" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationPerson].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationResult].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[prmtEvaluationResult].properties.property[queryInfo].value">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.schedule.app.TaskEvaluationQuery" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.schedule.app.TaskEvaluationQuery" />
+            <lang locale="zh_HK" value="com.kingdee.eas.fdc.schedule.app.TaskEvaluationQuery" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.schedule.app.TaskEvaluationQuery" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtEvaluationDes].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskName].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskName].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskNumber].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTaskNumber].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].properties.property[dataType].value">
+            <lang locale="zh_CN" value="6" />
+            <lang locale="en_US" value="6" />
+            <lang locale="zh_HK" value="6" />
+            <lang locale="zh_TW" value="6" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalPercent].properties.property[precision].value">
+            <lang locale="zh_CN" value="2" />
+            <lang locale="en_US" value="2" />
+            <lang locale="zh_HK" value="2" />
+            <lang locale="zh_TW" value="2" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalWorkload].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalWorkload].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].components.component[txtTotalWorkload].properties.property[precision].value">
+            <lang locale="zh_CN" value="2" />
+            <lang locale="en_US" value="2" />
+            <lang locale="zh_HK" value="2" />
+            <lang locale="zh_TW" value="2" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].description">
+            <lang locale="zh_CN" value="任务评价界面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="任務評價介面" />
+            <lang locale="zh_TW" value="任務評價介面" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.schedule.client.TaskEvaluationBillEditUI].title">
+            <lang locale="zh_CN" value="任务评价界面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="任務評價介面" />
+            <lang locale="zh_TW" value="任務評價介面" />
+        </rs>
+    </resource>
+</uiObject>
+

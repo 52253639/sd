@@ -1,0 +1,1408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.schedule.app</package>
+    <name>FDCScheduleTaskStatusQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>FDCScheduleTask</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[FDCScheduleTask].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTask" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>schedule</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[schedule].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCSchedule" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>adminPerson</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[adminPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>adminDept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[adminDept].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>actualEndDate</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[actualEndDate].displayName</displayName>
+            <groupType>None</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>36a305a6-31a4-4a3c-93a6-4966c86bd440</key>
+                    <parentUnit>
+                        <key name="name" value="actualEndDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actualEndDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>complete</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[complete].displayName</displayName>
+            <groupType>None</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>cfbb4dd7-905e-4fd0-8240-f1f63adf3fb1</key>
+                    <parentUnit>
+                        <key name="name" value="complete" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="complete" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>end</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[end].displayName</displayName>
+            <groupType>None</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>18deb4f8-afab-43ca-9605-ed956797a119</key>
+                    <parentUnit>
+                        <key name="name" value="end" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="end" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>taskState</name>
+            <userDefined>false</userDefined>
+            <formulaString>CASE #1 when 100 then ( case when Convert ( varchar ( 10 ) , #0 ) &lt;= #2 then 0 else 1 end ) else ( case when Convert ( varchar ( 10 ) , #0 ) &lt;= #2 then 2 else 3 end ) end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[taskState].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f3e7af15-d4fa-48a2-b5c3-36a174b4af04</key>
+                    <parentUnit>
+                        <key name="name" value="taskState" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actualEndDate" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>1959dcec-bcdd-43e0-b9e4-0b4864c8f56a</key>
+                    <parentUnit>
+                        <key name="name" value="taskState" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="complete" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>3f967070-3e2a-4e26-9ac4-31df9db03b25</key>
+                    <parentUnit>
+                        <key name="name" value="taskState" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="end" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>meeting</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[meeting].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ae000076-f5b6-41f4-9b94-1d6245ed37c7</key>
+                    <parentUnit>
+                        <key name="name" value="meeting" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="meeting" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>checkDate</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[checkDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>78f4d253-d0ae-4582-aada-e74f8aa8a395</key>
+                    <parentUnit>
+                        <key name="name" value="checkDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="checkDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>actualStartDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[actualStartDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f7671597-a733-4887-82a1-f7e109a01110</key>
+                    <parentUnit>
+                        <key name="name" value="actualStartDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actualStartDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>delayDay</name>
+            <userDefined>false</userDefined>
+            <formulaString>DATEDIFF ( dd , #1 , #0 )</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[delayDay].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4da0ee97-a34d-440f-ad09-34fe787bb563</key>
+                    <parentUnit>
+                        <key name="name" value="delayDay" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actualEndDate" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>ae4d1447-b31e-4882-8c36-5b03eea4ecca</key>
+                    <parentUnit>
+                        <key name="name" value="delayDay" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="end" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5b776eb2-f7b1-4643-9df7-166c910a6ceb</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7aa6747d-2c8b-42cf-9389-76f2e43200ae</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>start</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[start].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>903e7dcb-492c-4694-b356-225a9f9b645e</key>
+                    <parentUnit>
+                        <key name="name" value="start" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="start" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>hiddenStatus</name>
+            <userDefined>false</userDefined>
+            <formulaString>case #1 when 100 then ( case when #0 &lt;= #2 then 0 else 1 end ) else ( case when #0 &lt;= #2 then 2 else 3 end ) end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[hiddenStatus].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5b9ed929-ef86-441e-a795-5bc0c8eba78f</key>
+                    <parentUnit>
+                        <key name="name" value="hiddenStatus" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actualEndDate" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>f31cad89-1be3-4102-85b2-7cca54184b5e</key>
+                    <parentUnit>
+                        <key name="name" value="hiddenStatus" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="complete" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>1d1cd460-7568-4145-98a9-37f87ba65427</key>
+                    <parentUnit>
+                        <key name="name" value="hiddenStatus" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="end" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>d690d02f-d11c-40a1-b23b-c45418587880</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[d690d02f-d11c-40a1-b23b-c45418587880].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>3f478da6-cbb5-4c7d-868a-4038a34de6c2</key>
+                    <parentUnit>
+                        <key name="name" value="d690d02f-d11c-40a1-b23b-c45418587880" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="schedule" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a6b75305-71e9-42fe-8027-0d306e25df2b</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[a6b75305-71e9-42fe-8027-0d306e25df2b].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>0624639b-93e3-481a-88db-5f23a95d4d9e</key>
+                    <parentUnit>
+                        <key name="name" value="a6b75305-71e9-42fe-8027-0d306e25df2b" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>97f1c1fc-5644-4aff-a608-57341b353a6c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[97f1c1fc-5644-4aff-a608-57341b353a6c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>fdfd14a1-f802-4c75-9095-86e81ca2e0eb</key>
+                    <parentUnit>
+                        <key name="name" value="97f1c1fc-5644-4aff-a608-57341b353a6c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4fc9f281-59fa-4f53-bfa6-ad82e702bd97</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[4fc9f281-59fa-4f53-bfa6-ad82e702bd97].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>38e89ded-2b82-4db7-be1b-c5491e5bb482</key>
+                    <parentUnit>
+                        <key name="name" value="4fc9f281-59fa-4f53-bfa6-ad82e702bd97" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>project.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[project.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>142a9eef-32fe-428a-ad16-7a553f8f572e</key>
+                    <parentUnit>
+                        <key name="name" value="project.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>schedule.isLatestVer</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[schedule.isLatestVer].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>77f41885-1c2f-49f6-bb09-16298b9d2c6f</key>
+                    <parentUnit>
+                        <key name="name" value="schedule.isLatestVer" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="schedule" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isLatestVer" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>taskType</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[taskType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>71eec820-7afa-4ea8-9c90-b05a0c6f4aa0</key>
+                    <parentUnit>
+                        <key name="name" value="taskType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="taskType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>natureTimes</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[natureTimes].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d9b8ff3f-66ed-4245-bc24-be9a38eff368</key>
+                    <parentUnit>
+                        <key name="name" value="natureTimes" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="duration" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>srcID</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[srcID].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bfb4df94-9ba7-4025-bc75-99166bad9485</key>
+                    <parentUnit>
+                        <key name="name" value="srcID" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="srcID" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>62fe069f-9775-4941-9af3-445241b6dffc</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[62fe069f-9775-4941-9af3-445241b6dffc].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a1757017-e2fe-451b-aacb-2c3e01c2373a</key>
+                    <parentUnit>
+                        <key name="name" value="62fe069f-9775-4941-9af3-445241b6dffc" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="adminPerson" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>829dc98d-ca4a-4436-881c-cdd739284589</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[829dc98d-ca4a-4436-881c-cdd739284589].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7f0c4c5c-2068-40c4-8fda-2cc1a6610153</key>
+                    <parentUnit>
+                        <key name="name" value="829dc98d-ca4a-4436-881c-cdd739284589" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>feb7ea49-e4f2-4fec-9cea-452c4908f243</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[feb7ea49-e4f2-4fec-9cea-452c4908f243].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7c6dc6df-7e32-4eca-9c41-53b2a7229d45</key>
+                    <parentUnit>
+                        <key name="name" value="feb7ea49-e4f2-4fec-9cea-452c4908f243" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="adminDept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>429665fc-c220-4deb-af5f-9e88c1368290</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[429665fc-c220-4deb-af5f-9e88c1368290].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>129ee468-4acc-489f-84fd-cba1ee19d8b6</key>
+                    <parentUnit>
+                        <key name="name" value="429665fc-c220-4deb-af5f-9e88c1368290" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>adminDept.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[adminDept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6e0f4c1b-b8bd-4c48-8d8b-56e1d68b0a36</key>
+                    <parentUnit>
+                        <key name="name" value="adminDept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>adminPerson.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[adminPerson.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>90d94fc3-f4b1-40b2-8716-786717f3ea2e</key>
+                    <parentUnit>
+                        <key name="name" value="adminPerson.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>longNumber</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[longNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5e830f16-d879-4d69-bdd4-b8026b1f91c6</key>
+                    <parentUnit>
+                        <key name="name" value="longNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCScheduleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="longNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <filterItems>
+            <queryFilterItem>
+                <propertyName>schedule.isLatestVer</propertyName>
+                <compareType>=</compareType>
+                <compareValue>1</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+                <configured>false</configured>
+            </queryFilterItem>
+            <queryFilterItem>
+                <propertyName>taskType</propertyName>
+                <compareType>=</compareType>
+                <compareValue>milestone</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+                <configured>false</configured>
+            </queryFilterItem>
+        </filterItems>
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+            <key name="name" value="FDCScheduleTaskStatusQuery" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>start</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+            <configured>false</configured>
+        </querySorterItem>
+    </defaultSorters>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>f3951350-aa9c-40cb-84f6-d254cb4939f1</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCScheduleTask" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="schedule" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>f71cea3d-6882-4b0d-867d-4e2b3631c679</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d690d02f-d11c-40a1-b23b-c45418587880" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="a6b75305-71e9-42fe-8027-0d306e25df2b" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="f3951350-aa9c-40cb-84f6-d254cb4939f1" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </join>
+        <join>
+            <name>bfade606-30be-4ef1-a6ad-7dc84ba98d8a</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="schedule" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d7dd8575-f5f5-489c-83e3-2bd83a89d8e5</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="97f1c1fc-5644-4aff-a608-57341b353a6c" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4fc9f281-59fa-4f53-bfa6-ad82e702bd97" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="bfade606-30be-4ef1-a6ad-7dc84ba98d8a" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </join>
+        <join>
+            <name>0e5a6b25-f87e-4c03-a87e-377ef8daf7cf</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCScheduleTask" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="adminPerson" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>6bdb716a-cb10-46de-996a-9cd80f281327</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="62fe069f-9775-4941-9af3-445241b6dffc" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="829dc98d-ca4a-4436-881c-cdd739284589" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="0e5a6b25-f87e-4c03-a87e-377ef8daf7cf" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </join>
+        <join>
+            <name>aae47126-c4bd-4336-baa0-3afd8a163b22</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCScheduleTask" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="adminDept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>b06487cb-7e34-46f5-88b8-ae3178b02ee1</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="feb7ea49-e4f2-4fec-9cea-452c4908f243" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="429665fc-c220-4deb-af5f-9e88c1368290" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="aae47126-c4bd-4336-baa0-3afd8a163b22" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.schedule.app" />
+                <key name="name" value="FDCScheduleTaskStatusQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="进度状态显示query" />
+            <lang locale="zh_HK" value="進度狀態顯示query" />
+            <lang locale="zh_TW" value="進度狀態顯示query" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="进度状态显示query" />
+            <lang locale="zh_HK" value="進度狀態顯示query" />
+            <lang locale="zh_TW" value="進度狀態顯示query" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].queryPK[QueryPK].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].queryPK[QueryPK].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[FDCScheduleTask].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[adminDept].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[adminPerson].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[project].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].subObjects.subEntity[schedule].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[429665fc-c220-4deb-af5f-9e88c1368290].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[4fc9f281-59fa-4f53-bfa6-ad82e702bd97].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[62fe069f-9775-4941-9af3-445241b6dffc].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[829dc98d-ca4a-4436-881c-cdd739284589].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[97f1c1fc-5644-4aff-a608-57341b353a6c].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[a6b75305-71e9-42fe-8027-0d306e25df2b].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[d690d02f-d11c-40a1-b23b-c45418587880].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.propertyUnit[feb7ea49-e4f2-4fec-9cea-452c4908f243].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[actualEndDate].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="实际完工日期" />
+            <lang locale="zh_HK" value="實際完工日期" />
+            <lang locale="zh_TW" value="實際完工日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[actualStartDate].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="实际开始时间" />
+            <lang locale="zh_HK" value="實際開始時間" />
+            <lang locale="zh_TW" value="實際開始時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[adminDept.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="责任部门" />
+            <lang locale="zh_HK" value="責任部門" />
+            <lang locale="zh_TW" value="責任部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[adminPerson.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="责任人" />
+            <lang locale="zh_HK" value="責任人" />
+            <lang locale="zh_TW" value="責任人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[checkDate].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="考核日期" />
+            <lang locale="zh_HK" value="考核日期" />
+            <lang locale="zh_TW" value="考核日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[complete].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="完成情况" />
+            <lang locale="zh_HK" value="完成情況" />
+            <lang locale="zh_TW" value="完成情況" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[delayDay].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="延误天数" />
+            <lang locale="zh_HK" value="延誤天數" />
+            <lang locale="zh_TW" value="延誤天數" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[end].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="结束日期" />
+            <lang locale="zh_HK" value="結束日期" />
+            <lang locale="zh_TW" value="結束日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[hiddenStatus].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="隐藏状态" />
+            <lang locale="zh_HK" value="隱藏狀態" />
+            <lang locale="zh_TW" value="隱藏狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[longNumber].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="长编码" />
+            <lang locale="zh_HK" value="長編碼" />
+            <lang locale="zh_TW" value="長編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[meeting].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="里程碑" />
+            <lang locale="zh_HK" value="裏程碑" />
+            <lang locale="zh_TW" value="裏程碑" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[natureTimes].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="持续时间" />
+            <lang locale="zh_HK" value="持續時間" />
+            <lang locale="zh_TW" value="持續時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[project.id].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[schedule.isLatestVer].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="最新版本" />
+            <lang locale="zh_HK" value="最新版本" />
+            <lang locale="zh_TW" value="最新版本" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[srcID].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="源任务ID" />
+            <lang locale="zh_HK" value="源任務ID" />
+            <lang locale="zh_TW" value="源任務ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[start].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="开始时间" />
+            <lang locale="zh_HK" value="開始時間" />
+            <lang locale="zh_TW" value="開始時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[taskState].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="任务状态" />
+            <lang locale="zh_HK" value="任務狀態" />
+            <lang locale="zh_TW" value="任務狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.schedule.app.FDCScheduleTaskStatusQuery].units.queryField[taskType].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="任务类别" />
+            <lang locale="zh_HK" value="任務類別" />
+            <lang locale="zh_TW" value="任務類別" />
+        </rs>
+    </resource>
+</joinQuery>
+
