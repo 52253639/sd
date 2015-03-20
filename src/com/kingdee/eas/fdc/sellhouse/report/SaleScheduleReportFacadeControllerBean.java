@@ -50,7 +50,7 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
 	{
 	    RptTableHeader header = new RptTableHeader();
 	    RptTableColumn col = null;
-	    initColoum(header,col,"orgId",150,false);
+	    initColoum(header,col,"orgId",150,true);
 	    initColoum(header,col,"company",150,false);
 	    initColoum(header,col,"type",150,false);
 	    initColoum(header,col,"plan",150,false);
