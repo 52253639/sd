@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.measure.app</package>
+    <name>LandTaxFeeQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>GroundValueAddedTax</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[GroundValueAddedTax].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="GroundValueAddedTax" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>entrys</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[entrys].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="GroundValueAddedTaxEntry" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>measureProject</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[measureProject].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="MeasureProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>orgUnit</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[orgUnit].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f9d6005c-1566-475a-bc7f-ca689a0e2d3b</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4139a4b7-2c93-464a-a62d-b4c449e132e5</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isEnabled</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[isEnabled].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1db4ab75-fb9c-437d-9604-311bc045df47</key>
+                    <parentUnit>
+                        <key name="name" value="isEnabled" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isEnabled" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>measureProject.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[measureProject.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3f4b1d8c-e93f-4166-9d89-23ad20899ef0</key>
+                    <parentUnit>
+                        <key name="name" value="measureProject.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="measureProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>f085e69c-41bf-42cd-803a-17a63b9c5e87</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[f085e69c-41bf-42cd-803a-17a63b9c5e87].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>27ddc7b1-15ad-426b-a5fc-4f19610591b8</key>
+                    <parentUnit>
+                        <key name="name" value="f085e69c-41bf-42cd-803a-17a63b9c5e87" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>435ac4f9-db29-4255-85f0-55c7883f76d3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[435ac4f9-db29-4255-85f0-55c7883f76d3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>be96f7f7-148e-4483-9f06-d9515d37c730</key>
+                    <parentUnit>
+                        <key name="name" value="435ac4f9-db29-4255-85f0-55c7883f76d3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entrys" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="parent" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9e001342-9d28-4e4c-9c81-52396b3c1280</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[9e001342-9d28-4e4c-9c81-52396b3c1280].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bc8ac104-8264-4315-81a4-bb8c00c922fc</key>
+                    <parentUnit>
+                        <key name="name" value="9e001342-9d28-4e4c-9c81-52396b3c1280" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="measureProject" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>5a3119d3-c265-4817-9213-f8ee52bf7d4c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[5a3119d3-c265-4817-9213-f8ee52bf7d4c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fae181bf-db8b-479b-94a0-8d3c76519685</key>
+                    <parentUnit>
+                        <key name="name" value="5a3119d3-c265-4817-9213-f8ee52bf7d4c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="measureProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d2367c02-5781-4e91-9249-a58e9a0f3b31</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[d2367c02-5781-4e91-9249-a58e9a0f3b31].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>eac41feb-d6cb-4b1d-ac7b-39b9e8cf98d4</key>
+                    <parentUnit>
+                        <key name="name" value="d2367c02-5781-4e91-9249-a58e9a0f3b31" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="orgUnit" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>70b06166-a066-4cff-baca-9d723ce81469</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[70b06166-a066-4cff-baca-9d723ce81469].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3bf78ff0-f18e-4f0b-ac2d-1d08af2afffe</key>
+                    <parentUnit>
+                        <key name="name" value="70b06166-a066-4cff-baca-9d723ce81469" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="orgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>44e0a810-eaaf-42ab-ae21-0be93cde9656</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="GroundValueAddedTax" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <filterItems>
+            <queryFilterItem>
+                <propertyName>isEnabled</propertyName>
+                <compareType>=</compareType>
+                <compareValue>1</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+            </queryFilterItem>
+        </filterItems>
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+            <key name="name" value="LandTaxFeeQuery" />
+        </query>
+    </defaultFilter>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>63ec9ac5-7b7c-4434-9180-c29dd4a769bc</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="GroundValueAddedTax" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="entrys" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>38a17fe5-bf8c-49ab-bf41-88c484752e6b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="f085e69c-41bf-42cd-803a-17a63b9c5e87" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="435ac4f9-db29-4255-85f0-55c7883f76d3" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="63ec9ac5-7b7c-4434-9180-c29dd4a769bc" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </join>
+        <join>
+            <name>f85b1759-46e5-497e-b413-92c5396c01db</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="GroundValueAddedTax" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="measureProject" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>3f595e7a-9e50-4342-92a4-d9bec5b3819e</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9e001342-9d28-4e4c-9c81-52396b3c1280" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="5a3119d3-c265-4817-9213-f8ee52bf7d4c" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="f85b1759-46e5-497e-b413-92c5396c01db" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </join>
+        <join>
+            <name>fda7fcdc-743f-4070-9124-e01be2f5c039</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="GroundValueAddedTax" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="orgUnit" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2ecfbedd-f07c-44aa-93a2-852c518d72f7</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d2367c02-5781-4e91-9249-a58e9a0f3b31" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="70b06166-a066-4cff-baca-9d723ce81469" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="fda7fcdc-743f-4070-9124-e01be2f5c039" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.measure.app" />
+                <key name="name" value="LandTaxFeeQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].alias">
+            <lang locale="zh_CN" value="土地增值税查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="土地增值稅查詢" />
+            <lang locale="zh_TW" value="土地增值稅查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].description">
+            <lang locale="zh_CN" value="土地增值税查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="土地增值稅查詢" />
+            <lang locale="zh_TW" value="土地增值稅查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[GroundValueAddedTax].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[entrys].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[measureProject].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].subObjects.subEntity[orgUnit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[435ac4f9-db29-4255-85f0-55c7883f76d3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[5a3119d3-c265-4817-9213-f8ee52bf7d4c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[70b06166-a066-4cff-baca-9d723ce81469].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[9e001342-9d28-4e4c-9c81-52396b3c1280].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[d2367c02-5781-4e91-9249-a58e9a0f3b31].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.propertyUnit[f085e69c-41bf-42cd-803a-17a63b9c5e87].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[isEnabled].displayName">
+            <lang locale="zh_CN" value="启用" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="啟用" />
+            <lang locale="zh_TW" value="啟用" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[measureProject.name].displayName">
+            <lang locale="zh_CN" value="测算项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="測算項目" />
+            <lang locale="zh_TW" value="測算項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="计算方案名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計算方案名稱" />
+            <lang locale="zh_TW" value="計算方案名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編號" />
+            <lang locale="zh_TW" value="單據編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.measure.app.LandTaxFeeQuery].units.queryField[number].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</joinQuery>
+

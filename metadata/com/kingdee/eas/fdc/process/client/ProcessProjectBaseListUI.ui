@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uiObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.process.client</package>
+    <name>ProcessProjectBaseListUI</name>
+    <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].alias</alias>
+    <description>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].description</description>
+    <userDefined>false</userDefined>
+    <releasePackage>com.kingdee.eas.fdc.process.client</releasePackage>
+    <releaseClass>ProcessProjectBaseListUI</releaseClass>
+    <title>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].title</title>
+    <uitype />
+    <defaultbutton />
+    <bizUnitPK />
+    <parent>
+        <key name="package" value="com.kingdee.eas.framework.client" />
+        <key name="name" value="BillListUI" />
+    </parent>
+    <components>
+        <component>
+            <name>CoreUI</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[CoreUI].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name>kDLayout1</name>
+                <type>KDLayout</type>
+                <value />
+            </layoutInfo>
+        </component>
+        <component>
+            <name>tblMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[tblMain].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.kdf.table.KDTable</classType>
+            <isContainer>false</isContainer>
+            <constraints>Center</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>formatXml</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[tblMain].properties.property[formatXml].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="kDContainer3" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>id.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>id</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>number.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>number</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>version.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>version</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>modifyStatus.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>modifyStatus</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>state.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>state</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>person.name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>person.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>startDate.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>startDate</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>totalProjectTime.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>totalProjectTime</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>availabilityProjectTime.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>availabilityProjectTime</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>project.name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>project.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>org.name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>org.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>project.longNumber.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>project.longNumber</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>handler.name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>handler.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>creator.name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>creator.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>createTime.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>createTime</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+        </component>
+        <component>
+            <name>btnAttachment</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnAttachment].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnAttachment].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>btnCreateTo</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnCreateTo].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnCreateTo].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>separatorFW3</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[separatorFW3].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[separatorFW3].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>kDSplitPane1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDSplitPane1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>7,10,997,608,15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDSplitPane1].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+        </component>
+        <component>
+            <name>kDContainer3</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer3].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>right</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name>borderLayout1</name>
+                <type>BorderLayout</type>
+                <value>0,0</value>
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>title</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer3].properties.property[title].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="kDSplitPane1" />
+            </parent>
+        </component>
+        <component>
+            <name>kDScrollPane1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDScrollPane1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDScrollPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>Center</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SameGridLayout</type>
+                <value>1,1,0,0,0,0</value>
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDContainer1" />
+            </parent>
+        </component>
+        <component>
+            <name>treeOrg</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[treeOrg].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>0,0,1,1</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDScrollPane1" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>treeOrg_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>kDContainer1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>left</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name>borderLayout1</name>
+                <type>BorderLayout</type>
+                <value>0,0</value>
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>title</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer1].properties.property[title].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="kDSplitPane1" />
+            </parent>
+        </component>
+    </components>
+    <dataObjects>
+        <dataObject>
+            <name>mainQuery</name>
+            <type>com.kingdee.eas.fdc.process.app.ProcessProjectQuery</type>
+            <objectType>jqye</objectType>
+            <herited>true</herited>
+            <userDefined>false</userDefined>
+        </dataObject>
+    </dataObjects>
+    <resource>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="进度管理项目" />
+            <lang locale="zh_TW" value="進度管理項目" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[CoreUI].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnAttachment].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnAttachment].properties.property[visible].value">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnCreateTo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[btnCreateTo].properties.property[visible].value">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer1].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer1].properties.property[title].value">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="组织" />
+            <lang locale="zh_TW" value="組織" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer3].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDContainer3].properties.property[title].value">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="进度管理项目" />
+            <lang locale="zh_TW" value="進度管理項目" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDScrollPane1].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDSplitPane1].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[kDSplitPane1].properties.property[dividerLocation].value">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="250" />
+            <lang locale="zh_TW" value="250" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[separatorFW3].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[separatorFW3].properties.property[visible].value">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[tblMain].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[tblMain].properties.property[formatXml].value">
+            <lang locale="en_US" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles /&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;version&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;modifyStatus&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;person.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;totalProjectTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;availabilityProjectTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;project.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;org.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;project.longNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;handler.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;name&lt;/t:Cell&gt;&lt;t:Cell&gt;number&lt;/t:Cell&gt;&lt;t:Cell&gt;version&lt;/t:Cell&gt;&lt;t:Cell&gt;modifyStatus&lt;/t:Cell&gt;&lt;t:Cell&gt;state&lt;/t:Cell&gt;&lt;t:Cell&gt;person.name&lt;/t:Cell&gt;&lt;t:Cell&gt;startDate&lt;/t:Cell&gt;&lt;t:Cell&gt;totalProjectTime&lt;/t:Cell&gt;&lt;t:Cell&gt;availabilityProjectTime&lt;/t:Cell&gt;&lt;t:Cell&gt;project.name&lt;/t:Cell&gt;&lt;t:Cell&gt;org.name&lt;/t:Cell&gt;&lt;t:Cell&gt;project.longNumber&lt;/t:Cell&gt;&lt;t:Cell&gt;用户别名&lt;/t:Cell&gt;&lt;t:Cell&gt;用户别名&lt;/t:Cell&gt;&lt;t:Cell&gt;createTime&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;version&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;modifyStatus&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;person.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;totalProjectTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;availabilityProjectTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;project.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;org.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;project.longNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;handler.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;名称&lt;/t:Cell&gt;&lt;t:Cell&gt;编码&lt;/t:Cell&gt;&lt;t:Cell&gt;版本&lt;/t:Cell&gt;&lt;t:Cell&gt;调整状态&lt;/t:Cell&gt;&lt;t:Cell&gt;状态&lt;/t:Cell&gt;&lt;t:Cell&gt;负责人&lt;/t:Cell&gt;&lt;t:Cell&gt;开工日期&lt;/t:Cell&gt;&lt;t:Cell&gt;总工期&lt;/t:Cell&gt;&lt;t:Cell&gt;有效工期&lt;/t:Cell&gt;&lt;t:Cell&gt;所属工程项目&lt;/t:Cell&gt;&lt;t:Cell&gt;所属组织&lt;/t:Cell&gt;&lt;t:Cell&gt;长编码&lt;/t:Cell&gt;&lt;t:Cell&gt;处理人&lt;/t:Cell&gt;&lt;t:Cell&gt;创建人&lt;/t:Cell&gt;&lt;t:Cell&gt;创建时间&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;version&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;modifyStatus&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;person.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;totalProjectTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;availabilityProjectTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;project.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;org.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;project.longNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;handler.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;版本&lt;/t:Cell&gt;&lt;t:Cell&gt;調整狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;負責人&lt;/t:Cell&gt;&lt;t:Cell&gt;開工日期&lt;/t:Cell&gt;&lt;t:Cell&gt;總工期&lt;/t:Cell&gt;&lt;t:Cell&gt;有效工期&lt;/t:Cell&gt;&lt;t:Cell&gt;所屬工程項目&lt;/t:Cell&gt;&lt;t:Cell&gt;所屬組織&lt;/t:Cell&gt;&lt;t:Cell&gt;長編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;處理人&lt;/t:Cell&gt;&lt;t:Cell&gt;創建人&lt;/t:Cell&gt;&lt;t:Cell&gt;創建時間&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].components.component[treeOrg].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.process.client.ProcessProjectBaseListUI].title">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="进度管理项目" />
+            <lang locale="zh_TW" value="進度管理項目" />
+        </rs>
+    </resource>
+</uiObject>
+

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>ReviseRecord</name>
+    <alias>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].description</description>
+    <userDefined>true</userDefined>
+    <bosType>0C24E519</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.pm.ReviseRecord</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.pm.app.ReviseRecordController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.framework.app" />
+        <key name="name" value="CoreBillEntryBase" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+        <key name="name" value="T_FPM_ReviseRecord" />
+    </table>
+    <properties>
+        <linkProperty>
+            <name>parent</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.linkProperty[parent].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.linkProperty[parent].description</description>
+            <userDefined>true</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FParentID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="R_DlanProManagerBill_ReviseRecord_record" />
+            </relationship>
+        </linkProperty>
+        <ownProperty>
+            <name>name</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[name].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[name].description</description>
+            <userDefined>true</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>80</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[name].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FName" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>date</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[date].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[date].description</description>
+            <userDefined>true</userDefined>
+            <configured>false</configured>
+            <dataType>Date</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[date].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FDate" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>contents</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[contents].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[contents].description</description>
+            <userDefined>true</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>true</isNullable>
+            <formula />
+            <length>255</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[contents].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FContents" />
+            </mappingField>
+        </ownProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>true</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="设计过程管理修订记录" />
+            <lang locale="zh_TW" value="設計過程管理修訂記錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="设计过程管理修订记录" />
+            <lang locale="zh_TW" value="設計過程管理修訂記錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].logicalKey[id].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].logicalKey[id].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.linkProperty[parent].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="所属单据头" />
+            <lang locale="zh_TW" value="所屬單據頭" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.linkProperty[parent].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="所属单据头" />
+            <lang locale="zh_TW" value="所屬單據頭" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[contents].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="修订内容" />
+            <lang locale="zh_TW" value="修訂內容" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[contents].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[contents].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="修订内容" />
+            <lang locale="zh_TW" value="修訂內容" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[date].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="修订日期" />
+            <lang locale="zh_TW" value="修訂日期" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[date].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[date].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="修订日期" />
+            <lang locale="zh_TW" value="修訂日期" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[name].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="修订人" />
+            <lang locale="zh_TW" value="修訂人" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[name].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.ReviseRecord].properties.ownProperty[name].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="修订人" />
+            <lang locale="zh_TW" value="修訂人" />
+        </rs>
+    </resource>
+</entityObject>
+

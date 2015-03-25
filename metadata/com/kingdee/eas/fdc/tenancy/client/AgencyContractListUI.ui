@@ -44,17 +44,6 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnPageSetup</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnPageSetup].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>9</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
             <name>CoreUI_menubar</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[CoreUI_menubar].alias</alias>
             <userDefined>false</userDefined>
@@ -64,6 +53,34 @@
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
+        </component>
+        <component>
+            <name>kDSplitPane1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>10,10,996,580,15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane1].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
         </component>
         <component>
             <name>tblMain</name>
@@ -104,17 +121,6 @@
                     <propertyType>java.lang.Object</propertyType>
                     <bindingObject>mainQuery</bindingObject>
                     <bindingField>name</bindingField>
-                    <fieldType>java.lang.String</fieldType>
-                    <accessType>2</accessType>
-                    <autoMode>false</autoMode>
-                    <herited>false</herited>
-                    <userDefined>false</userDefined>
-                </propertyBinding>
-                <propertyBinding>
-                    <propertyName>agency.name.text</propertyName>
-                    <propertyType>java.lang.Object</propertyType>
-                    <bindingObject>mainQuery</bindingObject>
-                    <bindingField>agency.name</bindingField>
                     <fieldType>java.lang.String</fieldType>
                     <accessType>2</accessType>
                     <autoMode>false</autoMode>
@@ -198,7 +204,157 @@
                     <herited>false</herited>
                     <userDefined>false</userDefined>
                 </propertyBinding>
+                <propertyBinding>
+                    <propertyName>agency.name.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>tenancyAgency.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
             </propertyBindings>
+        </component>
+        <component>
+            <name>kDSplitPane2</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane2].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>left</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>orientation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane2].properties.property[orientation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane2].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="kDSplitPane1" />
+            </parent>
+        </component>
+        <component>
+            <name>kDTreeView1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDTreeView1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
+            <isContainer>true</isContainer>
+            <constraints>top</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TreeViewLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDSplitPane2" />
+            </parent>
+        </component>
+        <component>
+            <name>kDTreeView2</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDTreeView2].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
+            <isContainer>true</isContainer>
+            <constraints>bottom</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TreeViewLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDSplitPane2" />
+            </parent>
+        </component>
+        <component>
+            <name>treeSellProject</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[treeSellProject].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDTreeView1" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>treeSellProject_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>treeAgency</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[treeAgency].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDTreeView2" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>treeAgency_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
         </component>
         <component>
             <name>btnAddNew</name>
@@ -256,6 +412,17 @@
             <bimUIObjectPK />
         </component>
         <component>
+            <name>btnQuery</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnQuery].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>5</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
             <name>btnLocate</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnLocate].alias</alias>
             <userDefined>false</userDefined>
@@ -267,12 +434,34 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnQuery</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnQuery].alias</alias>
+            <name>btnAttachment</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnAttachment].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>5</constraints>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>8</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnPageSetup</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnPageSetup].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>9</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -300,17 +489,6 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnAttachment</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnAttachment].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>7</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
             <name>separatorFW2</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW2].alias</alias>
             <userDefined>false</userDefined>
@@ -322,51 +500,180 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>menuItemCancelCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancelCancel].alias</alias>
+            <name>btnCreateTo</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCreateTo].alias</alias>
             <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>0</constraints>
+            <constraints>13</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
-            <properties>
-                <property>
-                    <name>visible</name>
-                    <type>boolean</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancelCancel].properties.property[visible].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
         </component>
         <component>
-            <name>menuItemCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancel].alias</alias>
+            <name>btnCopyTo</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCopyTo].alias</alias>
             <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>1</constraints>
+            <constraints>14</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
-            <properties>
-                <property>
-                    <name>toolTipText</name>
-                    <type>java.lang.String</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancel].properties.property[toolTipText].value</value>
-                    <isMultiLan>true</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>visible</name>
-                    <type>boolean</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancel].properties.property[visible].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
+        </component>
+        <component>
+            <name>btnQueryScheme</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnQueryScheme].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW3</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW3].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>16</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnTraceUp</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnTraceUp].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>17</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnTraceDown</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnTraceDown].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>18</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnWorkFlowG</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnWorkFlowG].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnWorkFlowList</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnWorkFlowList].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>20</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnSignature</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnSignature].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>21</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnViewSignature</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnViewSignature].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>22</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW4</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW4].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>23</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>24</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnDelVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnDelVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>25</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnMultiapprove</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnMultiapprove].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>26</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnNextPerson</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnNextPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>27</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnAuditResult</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnAuditResult].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>28</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
         </component>
         <component>
             <name>btnCancel</name>
@@ -379,6 +686,13 @@
             <herited>false</herited>
             <bimUIObjectPK />
             <properties>
+                <property>
+                    <name>text</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancel].properties.property[text].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
                 <property>
                     <name>toolTipText</name>
                     <type>java.lang.String</type>
@@ -407,6 +721,13 @@
             <bimUIObjectPK />
             <properties>
                 <property>
+                    <name>text</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancelCancel].properties.property[text].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
                     <name>visible</name>
                     <type>boolean</type>
                     <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancelCancel].properties.property[visible].value</value>
@@ -414,105 +735,6 @@
                     <userDefined>false</userDefined>
                 </property>
             </properties>
-        </component>
-        <component>
-            <name>separatorFW1</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW1].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>8</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnQueryScheme</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnQueryScheme].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>15</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>24</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnDelVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnDelVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>25</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnCreateTo</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCreateTo].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>13</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnCopyTo</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCopyTo].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>14</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnTraceUp</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnTraceUp].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>17</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnTraceDown</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnTraceDown].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>18</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnAuditResult</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnAuditResult].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>28</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
         </component>
         <component>
             <name>btnWFViewdoProccess</name>
@@ -524,283 +746,6 @@
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnMultiapprove</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnMultiapprove].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>26</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnNextPerson</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnNextPerson].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>27</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemDelVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemDelVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>3</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>separatorFW4</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW4].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>23</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnWorkFlowG</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnWorkFlowG].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>19</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>separatorFW3</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[separatorFW3].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>16</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnSignature</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnSignature].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>21</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnWorkFlowList</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnWorkFlowList].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>20</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnViewSignature</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnViewSignature].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>22</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>kDSplitPane1</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane1].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
-            <isContainer>true</isContainer>
-            <constraints>10,10,996,580,15</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>SplitLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>dividerLocation</name>
-                    <type>int</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane1].properties.property[dividerLocation].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="CoreUI" />
-            </parent>
-        </component>
-        <component>
-            <name>kDSplitPane2</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane2].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
-            <isContainer>true</isContainer>
-            <constraints>left</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>SplitLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>orientation</name>
-                    <type>int</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane2].properties.property[orientation].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>dividerLocation</name>
-                    <type>int</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDSplitPane2].properties.property[dividerLocation].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="kDSplitPane1" />
-            </parent>
-        </component>
-        <component>
-            <name>kDTreeView1</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDTreeView1].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
-            <isContainer>true</isContainer>
-            <constraints>top</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>TreeViewLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="kDSplitPane2" />
-            </parent>
-        </component>
-        <component>
-            <name>treeSellProject</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[treeSellProject].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="kDTreeView1" />
-            </parent>
-            <eventBindings>
-                <eventBinding>
-                    <name>valueChanged</name>
-                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
-                    <scene />
-                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
-                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
-                    <methodName>treeSellProject_valueChanged</methodName>
-                    <code />
-                    <isBindWorkFlow>false</isBindWorkFlow>
-                    <herited>false</herited>
-                    <userDefined>false</userDefined>
-                </eventBinding>
-            </eventBindings>
-        </component>
-        <component>
-            <name>kDTreeView2</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[kDTreeView2].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
-            <isContainer>true</isContainer>
-            <constraints>bottom</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>TreeViewLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="kDSplitPane2" />
-            </parent>
-        </component>
-        <component>
-            <name>treeAgency</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[treeAgency].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="kDTreeView2" />
-            </parent>
-            <eventBindings>
-                <eventBinding>
-                    <name>valueChanged</name>
-                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
-                    <scene />
-                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
-                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
-                    <methodName>treeAgency_valueChanged</methodName>
-                    <code />
-                    <isBindWorkFlow>false</isBindWorkFlow>
-                    <herited>false</herited>
-                    <userDefined>false</userDefined>
-                </eventBinding>
-            </eventBindings>
         </component>
         <component>
             <name>btnAudit</name>
@@ -850,6 +795,75 @@
             <parent>
                 <key name="name" value="CoreUI_toolbar" />
             </parent>
+        </component>
+        <component>
+            <name>menuItemCancelCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancelCancel].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>0</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancelCancel].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>menuItemCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancel].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>1</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>toolTipText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancel].properties.property[toolTipText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemCancel].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>menuItemVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemDelVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[menuItemDelVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>3</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
         </component>
         <component>
             <name>menuItemAudit</name>
@@ -932,6 +946,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
     </actions>
     <resource>
@@ -1037,6 +1054,12 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancelCancel].properties.property[text].value">
+            <lang locale="zh_CN" value="执行" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="執行" />
+            <lang locale="zh_TW" value="執行" />
+        </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancelCancel].properties.property[visible].value">
             <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
@@ -1048,6 +1071,12 @@
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancel].properties.property[text].value">
+            <lang locale="zh_CN" value="终止" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="終止" />
+            <lang locale="zh_TW" value="終止" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[btnCancel].properties.property[toolTipText].value">
             <lang locale="zh_CN" value="终止" />
@@ -1344,10 +1373,10 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[tblMain].properties.property[formatXml].value">
-            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;合同编码&lt;/t:Cell&gt;&lt;t:Cell&gt;合同名称&lt;/t:Cell&gt;&lt;t:Cell&gt;合同状态&lt;/t:Cell&gt;&lt;t:Cell&gt;中介机构&lt;/t:Cell&gt;&lt;t:Cell&gt;签订人&lt;/t:Cell&gt;&lt;t:Cell&gt;佣金标准&lt;/t:Cell&gt;&lt;t:Cell&gt;金额(百分比)&lt;/t:Cell&gt;&lt;t:Cell&gt;制单人&lt;/t:Cell&gt;&lt;t:Cell&gt;制单日期&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;合同编码&lt;/t:Cell&gt;&lt;t:Cell&gt;合同名称&lt;/t:Cell&gt;&lt;t:Cell&gt;合同状态&lt;/t:Cell&gt;&lt;t:Cell&gt;代理商&lt;/t:Cell&gt;&lt;t:Cell&gt;签订人&lt;/t:Cell&gt;&lt;t:Cell&gt;佣金标准&lt;/t:Cell&gt;&lt;t:Cell&gt;金额(百分比)&lt;/t:Cell&gt;&lt;t:Cell&gt;制单人&lt;/t:Cell&gt;&lt;t:Cell&gt;制单日期&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
             <lang locale="en_US" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles /&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;number&lt;/t:Cell&gt;&lt;t:Cell&gt;name&lt;/t:Cell&gt;&lt;t:Cell&gt;state&lt;/t:Cell&gt;&lt;t:Cell&gt;agency.name&lt;/t:Cell&gt;&lt;t:Cell&gt;用户别名&lt;/t:Cell&gt;&lt;t:Cell&gt;commisionStandard&lt;/t:Cell&gt;&lt;t:Cell&gt;value&lt;/t:Cell&gt;&lt;t:Cell&gt;用户别名&lt;/t:Cell&gt;&lt;t:Cell&gt;createTime&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
-            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;合同名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;仲介機構&lt;/t:Cell&gt;&lt;t:Cell&gt;簽訂人&lt;/t:Cell&gt;&lt;t:Cell&gt;傭金標準&lt;/t:Cell&gt;&lt;t:Cell&gt;金額(百分比)&lt;/t:Cell&gt;&lt;t:Cell&gt;制單人&lt;/t:Cell&gt;&lt;t:Cell&gt;制單日期&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
-            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;合同名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;仲介機構&lt;/t:Cell&gt;&lt;t:Cell&gt;簽訂人&lt;/t:Cell&gt;&lt;t:Cell&gt;傭金標準&lt;/t:Cell&gt;&lt;t:Cell&gt;金額(百分比)&lt;/t:Cell&gt;&lt;t:Cell&gt;制單人&lt;/t:Cell&gt;&lt;t:Cell&gt;制單日期&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;合同名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;代理商&lt;/t:Cell&gt;&lt;t:Cell&gt;簽訂人&lt;/t:Cell&gt;&lt;t:Cell&gt;傭金標準&lt;/t:Cell&gt;&lt;t:Cell&gt;金額(百分比)&lt;/t:Cell&gt;&lt;t:Cell&gt;制單人&lt;/t:Cell&gt;&lt;t:Cell&gt;制單日期&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
+            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; /&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; /&gt;&lt;t:Column t:key=&quot;agency.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; /&gt;&lt;t:Column t:key=&quot;signer.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; /&gt;&lt;t:Column t:key=&quot;commisionStandard&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; /&gt;&lt;t:Column t:key=&quot;value&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;creator.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;合同名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;代理商&lt;/t:Cell&gt;&lt;t:Cell&gt;簽訂人&lt;/t:Cell&gt;&lt;t:Cell&gt;傭金標準&lt;/t:Cell&gt;&lt;t:Cell&gt;金額(百分比)&lt;/t:Cell&gt;&lt;t:Cell&gt;制單人&lt;/t:Cell&gt;&lt;t:Cell&gt;制單日期&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.AgencyContractListUI].components.component[treeAgency].alias">
             <lang locale="zh_CN" value="null" />

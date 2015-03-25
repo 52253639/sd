@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.propertymgmt.app</package>
+    <name>T_PPM_PpmFireControlAreaEntrys</name>
+    <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].description</description>
+    <userDefined>false</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FSeq</name>
+            <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FSeq].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FSeq].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>4</precision>
+        </column>
+        <column>
+            <name>FParentID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FParentID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FParentID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FDeviceID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDeviceID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDeviceID].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+        <column>
+            <name>FAmount</name>
+            <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FAmount].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FAmount].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>NUMERIC</sqlType>
+            <length>28</length>
+            <scale>10</scale>
+            <precision>28</precision>
+        </column>
+        <column>
+            <name>FDevicedesc</name>
+            <alias>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDevicedesc].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDevicedesc].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>NVARCHAR</sqlType>
+            <length>100</length>
+            <scale>0</scale>
+            <precision>0</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>PK_PPM_PpmFCAEIDen</name>
+        <userDefined>false</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType />
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>FK_PPM_PpmFCAEEvic</name>
+            <userDefined>false</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.propertymgmt.app" />
+                <key name="name" value="T_PPM_PpmDevFileMaintenance" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FDeviceID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="消防器材明细" />
+            <lang locale="zh_TW" value="消防器材明細" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FAmount].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="数量" />
+            <lang locale="zh_TW" value="數量" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FAmount].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="数量" />
+            <lang locale="zh_TW" value="數量" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDeviceID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="消防设备" />
+            <lang locale="zh_TW" value="消防設備" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDeviceID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="消防设备" />
+            <lang locale="zh_TW" value="消防設備" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDevicedesc].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="说明" />
+            <lang locale="zh_TW" value="說明" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FDevicedesc].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="说明" />
+            <lang locale="zh_TW" value="說明" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FParentID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FParentID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FSeq].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单据分录序列号" />
+            <lang locale="zh_TW" value="單據分錄序列號" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].columns.column[FSeq].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单据分录序列号（定义为序列属性即使用{seq}）" />
+            <lang locale="zh_TW" value="單據分錄序列號（定義為序列屬性即使用{seq}）" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.propertymgmt.app.T_PPM_PpmFireControlAreaEntrys].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="消防器材明细" />
+            <lang locale="zh_TW" value="消防器材明細" />
+        </rs>
+    </resource>
+</dataTable>
+

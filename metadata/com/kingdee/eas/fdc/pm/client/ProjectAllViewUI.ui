@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uiObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.client</package>
+    <name>ProjectAllViewUI</name>
+    <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].alias</alias>
+    <description>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].description</description>
+    <userDefined>false</userDefined>
+    <releasePackage>com.kingdee.eas.fdc.pm.client</releasePackage>
+    <releaseClass>ProjectAllViewUI</releaseClass>
+    <title>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].title</title>
+    <uitype />
+    <defaultbutton />
+    <bizUnitPK />
+    <parent>
+        <key name="package" value="com.kingdee.eas.fdc.pm.client" />
+        <key name="name" value="ProjectBaseEditUI" />
+    </parent>
+    <components>
+        <component>
+            <name>CoreUI</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[CoreUI].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints>10,10,996,580</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name>kDLayout1</name>
+                <type>KDLayout</type>
+                <value />
+            </layoutInfo>
+        </component>
+        <component>
+            <name>menuItemEdit</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[menuItemEdit].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <properties>
+                <property>
+                    <name>enabled</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[menuItemEdit].properties.property[enabled].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+        </component>
+        <component>
+            <name>pnlMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[pnlMain].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>1,0,995,580,15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[pnlMain].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+        </component>
+        <component>
+            <name>kDTreeView1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTreeView1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
+            <isContainer>true</isContainer>
+            <constraints>left</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TreeViewLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>showButton</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTreeView1].properties.property[showButton].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>showControlPanel</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTreeView1].properties.property[showControlPanel].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="pnlMain" />
+            </parent>
+        </component>
+        <component>
+            <name>treeMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[treeMain].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDTreeView1" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>treeMain_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>true</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>kDTabbedPane1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTabbedPane1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTabbedPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>right</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TabbedPaneLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="pnlMain" />
+            </parent>
+        </component>
+        <component>
+            <name>kDPanel1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDPanel1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints>项目汇总查询</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name>xYLayout1</name>
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDTabbedPane1" />
+            </parent>
+        </component>
+        <component>
+            <name>project</name>
+            <alias>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[project].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox</classType>
+            <isContainer>false</isContainer>
+            <constraints>233,203,170,19</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>visible</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[project].properties.property[visible].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="kDPanel1" />
+            </parent>
+        </component>
+    </components>
+    <resource>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].alias">
+            <lang locale="zh_CN" value="项目汇总查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目匯總查詢" />
+            <lang locale="zh_TW" value="項目匯總查詢" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[CoreUI].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDPanel1].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTabbedPane1].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTreeView1].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTreeView1].properties.property[showButton].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[kDTreeView1].properties.property[showControlPanel].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[menuItemEdit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[menuItemEdit].properties.property[enabled].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[pnlMain].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[pnlMain].properties.property[dividerLocation].value">
+            <lang locale="zh_CN" value="240" />
+            <lang locale="en_US" value="240" />
+            <lang locale="zh_HK" value="240" />
+            <lang locale="zh_TW" value="240" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[project].properties.property[visible].value">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].components.component[treeMain].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].description">
+            <lang locale="zh_CN" value="项目汇总查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目匯總查詢" />
+            <lang locale="zh_TW" value="項目匯總查詢" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.pm.client.ProjectAllViewUI].title">
+            <lang locale="zh_CN" value="项目汇总查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目匯總查詢" />
+            <lang locale="zh_TW" value="項目匯總查詢" />
+        </rs>
+    </resource>
+</uiObject>
+

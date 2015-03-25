@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataTable xmlns="com.kingdee.bos.metadata">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><dataTable xmlns="com.kingdee.bos.metadata">
     <package>com.kingdee.eas.fdc.tenancy.app</package>
     <name>T_TEN_AttachResType</name>
     <alias>dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].alias</alias>
     <description>dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].description</description>
     <userDefined>false</userDefined>
-    <bizUnitPK />
+    <bizUnitPK/>
     <columns>
         <column>
             <name>FName</name>
@@ -15,7 +14,7 @@
             <isMultilingual>true</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NVARCHAR</sqlType>
             <length>255</length>
             <scale>0</scale>
@@ -29,7 +28,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NVARCHAR</sqlType>
             <length>100</length>
             <scale>0</scale>
@@ -43,7 +42,7 @@
             <isMultilingual>true</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NVARCHAR</sqlType>
             <length>255</length>
             <scale>0</scale>
@@ -57,7 +56,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NVARCHAR</sqlType>
             <length>100</length>
             <scale>0</scale>
@@ -71,7 +70,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -85,7 +84,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>DATETIME</sqlType>
             <length>8</length>
             <scale>0</scale>
@@ -99,7 +98,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -113,7 +112,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>DATETIME</sqlType>
             <length>8</length>
             <scale>0</scale>
@@ -127,7 +126,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -141,7 +140,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>false</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -156,201 +155,142 @@
                 <indexID>0</indexID>
                 <sortType>ASC</sortType>
                 <column>
-                    <key name="name" value="FID" />
+                    <key name="name" value="FID"/>
                 </column>
             </primaryKeyColumn>
         </primaryKeyColumns>
     </primaryKey>
-    <foreignKeys>
-        <foreignKey>
-            <name>FK_TEN_AttachRTRtr</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.base.permission.app" />
-                <key name="name" value="T_PM_User" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FCreatorID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-        <foreignKey>
-            <name>FK_TEN_AtxRTAstUU</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.base.permission.app" />
-                <key name="name" value="T_PM_User" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FLastUpdateUserID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-        <foreignKey>
-            <name>FK_TEN_AttachResTy</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.basedata.org" />
-                <key name="name" value="T_ORG_CtrlUnit" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FControlUnitID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-    </foreignKeys>
+    
     <resource>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].alias">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="null"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FControlUnitID].alias">
-            <lang locale="zh_CN" value="null" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
-            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="null"/>
+            <lang locale="zh_TW" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FControlUnitID].description">
-            <lang locale="zh_CN" value="控制单元" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="控制單元" />
-            <lang locale="zh_TW" value="控制單元" />
+            <lang locale="zh_CN" value="控制单元"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="控制單元"/>
+            <lang locale="zh_TW" value="控制單元"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FCreateTime].alias">
-            <lang locale="zh_CN" value="创建时间" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="創建時間" />
-            <lang locale="zh_TW" value="創建時間" />
+            <lang locale="zh_CN" value="创建时间"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="創建時間"/>
+            <lang locale="zh_TW" value="創建時間"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FCreateTime].description">
-            <lang locale="zh_CN" value="创建时间" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="創建時間" />
-            <lang locale="zh_TW" value="創建時間" />
+            <lang locale="zh_CN" value="创建时间"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="創建時間"/>
+            <lang locale="zh_TW" value="創建時間"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FCreatorID].alias">
-            <lang locale="zh_CN" value="null" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
-            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="null"/>
+            <lang locale="zh_TW" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FCreatorID].description">
-            <lang locale="zh_CN" value="创建者" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="創建者" />
-            <lang locale="zh_TW" value="創建者" />
+            <lang locale="zh_CN" value="创建者"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="創建者"/>
+            <lang locale="zh_TW" value="創建者"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FDescription].alias">
-            <lang locale="zh_CN" value="描述" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="描述" />
-            <lang locale="zh_TW" value="描述" />
+            <lang locale="zh_CN" value="描述"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="描述"/>
+            <lang locale="zh_TW" value="描述"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FDescription].description">
-            <lang locale="zh_CN" value="描述" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="描述" />
-            <lang locale="zh_TW" value="描述" />
+            <lang locale="zh_CN" value="描述"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="描述"/>
+            <lang locale="zh_TW" value="描述"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FID].alias">
-            <lang locale="zh_CN" value="ID" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="ID" />
-            <lang locale="zh_TW" value="ID" />
+            <lang locale="zh_CN" value="ID"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="ID"/>
+            <lang locale="zh_TW" value="ID"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FID].description">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="null"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FLastUpdateTime].alias">
-            <lang locale="zh_CN" value="最后修改时间" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="最後修改時間" />
-            <lang locale="zh_TW" value="最後修改時間" />
+            <lang locale="zh_CN" value="最后修改时间"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="最後修改時間"/>
+            <lang locale="zh_TW" value="最後修改時間"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FLastUpdateTime].description">
-            <lang locale="zh_CN" value="最后修改时间" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="最後修改時間" />
-            <lang locale="zh_TW" value="最後修改時間" />
+            <lang locale="zh_CN" value="最后修改时间"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="最後修改時間"/>
+            <lang locale="zh_TW" value="最後修改時間"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FLastUpdateUserID].alias">
-            <lang locale="zh_CN" value="null" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
-            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="null"/>
+            <lang locale="zh_TW" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FLastUpdateUserID].description">
-            <lang locale="zh_CN" value="最后修改者" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="最後修改者" />
-            <lang locale="zh_TW" value="最後修改者" />
+            <lang locale="zh_CN" value="最后修改者"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="最後修改者"/>
+            <lang locale="zh_TW" value="最後修改者"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FName].alias">
-            <lang locale="zh_CN" value="名称" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="名稱" />
-            <lang locale="zh_TW" value="名稱" />
+            <lang locale="zh_CN" value="名称"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="名稱"/>
+            <lang locale="zh_TW" value="名稱"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FName].description">
-            <lang locale="zh_CN" value="名称" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="名稱" />
-            <lang locale="zh_TW" value="名稱" />
+            <lang locale="zh_CN" value="名称"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="名稱"/>
+            <lang locale="zh_TW" value="名稱"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FNumber].alias">
-            <lang locale="zh_CN" value="编码" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="編碼" />
-            <lang locale="zh_TW" value="編碼" />
+            <lang locale="zh_CN" value="编码"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="編碼"/>
+            <lang locale="zh_TW" value="編碼"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FNumber].description">
-            <lang locale="zh_CN" value="编码" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="編碼" />
-            <lang locale="zh_TW" value="編碼" />
+            <lang locale="zh_CN" value="编码"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="編碼"/>
+            <lang locale="zh_TW" value="編碼"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FSimpleName].alias">
-            <lang locale="zh_CN" value="简称" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="簡稱" />
-            <lang locale="zh_TW" value="簡稱" />
+            <lang locale="zh_CN" value="简称"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="簡稱"/>
+            <lang locale="zh_TW" value="簡稱"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].columns.column[FSimpleName].description">
-            <lang locale="zh_CN" value="简称" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="簡稱" />
-            <lang locale="zh_TW" value="簡稱" />
+            <lang locale="zh_CN" value="简称"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="簡稱"/>
+            <lang locale="zh_TW" value="簡稱"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_AttachResType].description">
-            <lang locale="zh_CN" value="配套资源类型" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="配套資源類型" />
-            <lang locale="zh_TW" value="配套資源類型" />
+            <lang locale="zh_CN" value="配套资源类型"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="配套資源類型"/>
+            <lang locale="zh_TW" value="配套資源類型"/>
         </rs>
     </resource>
 </dataTable>
-

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>ProjectHandoverBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>830ab707-f3c6-477e-a0a9-62800ddf952e</id>
+            <parentID />
+            <source>handoverUnit=handoverDpt.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>6bce4725-3d27-4c1a-8ab8-ed89e0eb9336</id>
+            <parentID>830ab707-f3c6-477e-a0a9-62800ddf952e</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>bf0efc88-6e3f-4aa8-a7c6-ea622d8a4479</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>bf0efc88-6e3f-4aa8-a7c6-ea622d8a4479</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txthandoverUnit</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1216b869-f68a-4599-bb0b-318973fae8e9</id>
+            <parentID>830ab707-f3c6-477e-a0a9-62800ddf952e</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>cbea43a3-b8ea-4ece-86d4-4096c12255e7</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>0df43cf2-3b08-4ae6-b53c-213fea938443</id>
+                        <expressionID>5e4c6603-ab7b-4c05-9d19-317195debb1a</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>7c1db4dc-c31e-46ad-9861-86a28d8e08b7</id>
+                        <expressionID>1a4a53d2-bdd4-403d-bb97-49caeb4fc68d</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>cbea43a3-b8ea-4ece-86d4-4096c12255e7</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5e4c6603-ab7b-4c05-9d19-317195debb1a</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>22cba419-5b96-41ef-a9b3-a0b9e788d728</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>22cba419-5b96-41ef-a9b3-a0b9e788d728</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmthandoverDpt</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1a4a53d2-bdd4-403d-bb97-49caeb4fc68d</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>3770b242-df35-4ddc-9598-e9cf99b83c2e</id>
+            <parentID />
+            <source>receiveUnit=receiveDpt.parent.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>9f1bd5d2-57dd-4cf8-b8b8-558744906a4f</id>
+            <parentID>3770b242-df35-4ddc-9598-e9cf99b83c2e</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>72135c5f-0956-42d5-83e0-f4707446cb9b</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>72135c5f-0956-42d5-83e0-f4707446cb9b</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtreceiveUnit</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4251a02f-2a36-4a57-862b-744a4f276da7</id>
+            <parentID>3770b242-df35-4ddc-9598-e9cf99b83c2e</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>b0779ab0-b1b4-457f-b3e9-9d4c56a978fb</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>032d8cfb-cfa1-4f07-9b89-01e54e7637e0</id>
+                        <expressionID>e6575637-e8bf-4596-b7d4-3e6aec41fe3a</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>681f3a7b-a2a2-4e97-977f-976e9b1c2411</id>
+                        <expressionID>dbc61516-4d9c-4f42-8717-a8a3bd037e1d</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b0779ab0-b1b4-457f-b3e9-9d4c56a978fb</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e6575637-e8bf-4596-b7d4-3e6aec41fe3a</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>02559537-ae9e-4475-9256-afbcb3b7086f</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>02559537-ae9e-4475-9256-afbcb3b7086f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtreceiveDpt</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>dbc61516-4d9c-4f42-8717-a8a3bd037e1d</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>parent.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>895c22c0-df3a-437b-b2b9-c8f1dd8e1dd0</id>
+            <parentID />
+            <source>entrys.connectType=entrys.connectPrjName.connecttype</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>0823f32c-cb77-43a4-9cab-2547f6a139db</id>
+            <parentID>895c22c0-df3a-437b-b2b9-c8f1dd8e1dd0</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>d85763ca-eb1c-4a0e-bc3b-48fb65295fa9</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d85763ca-eb1c-4a0e-bc3b-48fb65295fa9</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"connectType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>216c353d-a63c-49a9-984c-d7fc3d1e1ef3</id>
+            <parentID>895c22c0-df3a-437b-b2b9-c8f1dd8e1dd0</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>1edd1e75-882a-454d-8411-31a1ebc5351c</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>0d5ebf10-a6ec-435d-955a-a3734c305381</id>
+                        <expressionID>47853423-d39f-42ff-8ebc-4cb65227e669</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>a3eb6d51-7c4f-4300-aad2-09a182a2cc6d</id>
+                        <expressionID>d77e108f-34cd-474a-b933-14721ae3f88f</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1edd1e75-882a-454d-8411-31a1ebc5351c</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>47853423-d39f-42ff-8ebc-4cb65227e669</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>17ddd3f5-a4ff-4ca4-9583-f4d1955c4807</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>17ddd3f5-a4ff-4ca4-9583-f4d1955c4807</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"connectPrjName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d77e108f-34cd-474a-b933-14721ae3f88f</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>connecttype</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>140fff4f-288b-4510-8d84-f3d707a94bf9</id>
+            <parentID />
+            <source>entrys.connectType=entrys.connectPrjName.connectType.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>87c00808-2807-4802-90e2-6cb8e20a54e1</id>
+            <parentID>140fff4f-288b-4510-8d84-f3d707a94bf9</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>e117becf-62d3-486e-94e7-ec289694b040</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e117becf-62d3-486e-94e7-ec289694b040</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"connectType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>713763ee-55f3-452b-9a3a-a7e940ad41b6</id>
+            <parentID>140fff4f-288b-4510-8d84-f3d707a94bf9</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>d4360b76-b5fb-4eb7-81e3-605c0c0997bc</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>90e2557e-9ea9-4336-9cae-d2ac5f617e3b</id>
+                        <expressionID>ea5ddd6f-8ea4-4d8d-9abc-fea4af15993f</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>b34e105e-3958-4129-9b36-bedb119a92c3</id>
+                        <expressionID>7ebd9b2d-4a86-4b48-8c2a-eb48a69efe46</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d4360b76-b5fb-4eb7-81e3-605c0c0997bc</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ea5ddd6f-8ea4-4d8d-9abc-fea4af15993f</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>1684fd37-816e-409d-83b1-2969b15a0e73</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1684fd37-816e-409d-83b1-2969b15a0e73</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"connectPrjName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7ebd9b2d-4a86-4b48-8c2a-eb48a69efe46</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>connectType.name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>543f2c41-d51f-42eb-9f36-7c31da46d545</id>
+            <name>ProjectHandoverBill_handoverUnit_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_handoverUnit_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_handoverUnit_ActionInfo].description</description>
+            <expressionID>830ab707-f3c6-477e-a0a9-62800ddf952e</expressionID>
+        </action>
+        <action>
+            <id>fadb4418-4852-4d20-a64f-37ec0f4a735a</id>
+            <name>ProjectHandoverBill_receiveUnit_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_receiveUnit_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_receiveUnit_ActionInfo].description</description>
+            <expressionID>3770b242-df35-4ddc-9598-e9cf99b83c2e</expressionID>
+        </action>
+        <action>
+            <id>94979b5a-f5e8-4990-9614-a10732ddb5ac</id>
+            <name>entrys_connectType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[entrys_connectType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[entrys_connectType_ActionInfo].description</description>
+            <expressionID>895c22c0-df3a-437b-b2b9-c8f1dd8e1dd0</expressionID>
+        </action>
+        <action>
+            <id>0a1eb9e2-106f-4e66-be72-0951824f553a</id>
+            <name>entrys_connectType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[entrys_connectType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[entrys_connectType_ActionInfo].description</description>
+            <expressionID>140fff4f-288b-4510-8d84-f3d707a94bf9</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>entrys_connectType_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[entrys_connectType_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[entrys_connectType_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="0a1eb9e2-106f-4e66-be72-0951824f553a" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ProjectHandoverBill_handoverUnit_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_handoverUnit_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_handoverUnit_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="543f2c41-d51f-42eb-9f36-7c31da46d545" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ProjectHandoverBill_receiveUnit_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_receiveUnit_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_receiveUnit_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="fadb4418-4852-4d20-a64f-37ec0f4a735a" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_handoverUnit_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_handoverUnit_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_receiveUnit_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[ProjectHandoverBill_receiveUnit_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[entrys_connectType_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_connectType" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_connectType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_connectType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].actions.action[entrys_connectType_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_handoverUnit_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_handoverUnit_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_handoverUnit_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="handoverDpt" />
+            <lang locale="zh_TW" value="handoverDpt" />
+            <lang locale="en_US" value="handoverDpt" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_handoverUnit_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_receiveUnit_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_parent" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_parent" />
+            <lang locale="zh_TW" value="攜帶字段屬性_parent" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_receiveUnit_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_receiveUnit_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="receiveDpt" />
+            <lang locale="zh_TW" value="receiveDpt" />
+            <lang locale="en_US" value="receiveDpt" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[ProjectHandoverBill_receiveUnit_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[entrys_connectType_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_connectType" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_connectType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_connectType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[entrys_connectType_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[entrys_connectType_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="connectPrjName" />
+            <lang locale="zh_TW" value="connectPrjName" />
+            <lang locale="en_US" value="connectPrjName" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.ProjectHandoverBillRuleSet].rules.conditionRule[entrys_connectType_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

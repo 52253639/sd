@@ -33,15 +33,117 @@
             </layoutInfo>
         </component>
         <component>
-            <name>btnPageSetup</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnPageSetup].alias</alias>
+            <name>pnlMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[pnlMain].alias</alias>
             <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>9</constraints>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>10,10,992,586,15</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[pnlMain].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+        </component>
+        <component>
+            <name>treeView</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[treeView].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
+            <isContainer>true</isContainer>
+            <constraints>left</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TreeViewLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="pnlMain" />
+            </parent>
+        </component>
+        <component>
+            <name>overViewTab</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[overViewTab].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTabbedPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>right</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TabbedPaneLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="pnlMain" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>stateChanged</name>
+                    <eventType>javax.swing.event.ChangeEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.ChangeListener</listenerType>
+                    <listenerAdapter>javax.swing.event.ChangeListener</listenerAdapter>
+                    <methodName>overViewTab_stateChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>treeMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[treeMain].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="treeView" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>treeMain_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
         </component>
         <component>
             <name>tblMain</name>
@@ -49,7 +151,7 @@
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.kdf.table.KDTable</classType>
             <isContainer>false</isContainer>
-            <constraints>right</constraints>
+            <constraints>单个减免</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -63,7 +165,7 @@
                 </property>
             </properties>
             <parent>
-                <key name="name" value="pnlMain" />
+                <key name="name" value="overViewTab" />
             </parent>
             <propertyBindings>
                 <propertyBinding>
@@ -187,6 +289,17 @@
                     <herited>false</herited>
                     <userDefined>false</userDefined>
                 </propertyBinding>
+                <propertyBinding>
+                    <propertyName>remark.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>mainQuery</bindingObject>
+                    <bindingField>remark</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
             </propertyBindings>
             <eventBindings>
                 <eventBinding>
@@ -196,6 +309,138 @@
                     <listenerType>com.kingdee.bos.ctrl.kdf.table.event.KDTEditListener</listenerType>
                     <listenerAdapter>com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter</listenerAdapter>
                     <methodName>tblMain_editValueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>kdtBatch</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[kdtBatch].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.kdf.table.KDTable</classType>
+            <isContainer>false</isContainer>
+            <constraints>批量减免</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>formatXml</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[kdtBatch].properties.property[formatXml].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="overViewTab" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>number.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>number</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>bizDate.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>bizDate</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>creator.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>creator.name</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>createTime.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>createTime</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>remark.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>description</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>id.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>id</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>adjustMode.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>adjustMode</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+                <propertyBinding>
+                    <propertyName>adjustAmount.text</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>batchRentRemissionQuery</bindingObject>
+                    <bindingField>adjustAmount</bindingField>
+                    <fieldType>java.lang.String</fieldType>
+                    <accessType />
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+            <eventBindings>
+                <eventBinding>
+                    <name>tableClicked</name>
+                    <eventType>com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent</eventType>
+                    <scene />
+                    <listenerType>com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener</listenerType>
+                    <listenerAdapter>com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener</listenerAdapter>
+                    <methodName>kdtBatch_tableClicked</methodName>
                     <code />
                     <isBindWorkFlow>false</isBindWorkFlow>
                     <herited>false</herited>
@@ -259,6 +504,17 @@
             <bimUIObjectPK />
         </component>
         <component>
+            <name>btnQuery</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnQuery].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>5</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
             <name>btnLocate</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnLocate].alias</alias>
             <userDefined>false</userDefined>
@@ -270,12 +526,34 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnQuery</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnQuery].alias</alias>
+            <name>btnAttachment</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnAttachment].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>5</constraints>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>8</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnPageSetup</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnPageSetup].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>9</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -303,111 +581,12 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnAttachment</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnAttachment].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>7</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
             <name>separatorFW2</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW2].alias</alias>
             <userDefined>false</userDefined>
             <classType>javax.swing.JToolBar.Separator</classType>
             <isContainer>false</isContainer>
             <constraints>12</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemCancelCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemCancelCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>0</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>1</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>29</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnCancelCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnCancelCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>30</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>separatorFW1</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW1].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>8</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnQueryScheme</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnQueryScheme].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>15</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>24</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnDelVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnDelVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>25</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -435,6 +614,28 @@
             <bimUIObjectPK />
         </component>
         <component>
+            <name>btnQueryScheme</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnQueryScheme].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW3</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW3].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>16</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
             <name>btnTraceUp</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnTraceUp].alias</alias>
             <userDefined>false</userDefined>
@@ -457,23 +658,78 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnAuditResult</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnAuditResult].alias</alias>
+            <name>btnWorkFlowG</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnWorkFlowG].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>28</constraints>
+            <constraints>19</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnWFViewdoProccess</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnWFViewdoProccess].alias</alias>
+            <name>btnWorkFlowList</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnWorkFlowList].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>31</constraints>
+            <constraints>20</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnSignature</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnSignature].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>21</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnViewSignature</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnViewSignature].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>22</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW4</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW4].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>23</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>24</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnDelVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnDelVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>25</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -501,172 +757,48 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>menuItemVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemDelVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemDelVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>3</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>separatorFW4</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW4].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>23</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnWorkFlowG</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnWorkFlowG].alias</alias>
+            <name>btnAuditResult</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnAuditResult].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>19</constraints>
+            <constraints>28</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>separatorFW3</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[separatorFW3].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>16</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnSignature</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnSignature].alias</alias>
+            <name>btnCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnCancel].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>21</constraints>
+            <constraints>29</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnWorkFlowList</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnWorkFlowList].alias</alias>
+            <name>btnCancelCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnCancelCancel].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>20</constraints>
+            <constraints>30</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnViewSignature</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnViewSignature].alias</alias>
+            <name>btnWFViewdoProccess</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnWFViewdoProccess].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>22</constraints>
+            <constraints>31</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
-        </component>
-        <component>
-            <name>pnlMain</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[pnlMain].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
-            <isContainer>true</isContainer>
-            <constraints>10,10,992,586,15</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>SplitLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>dividerLocation</name>
-                    <type>int</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[pnlMain].properties.property[dividerLocation].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="CoreUI" />
-            </parent>
-        </component>
-        <component>
-            <name>treeView</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[treeView].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
-            <isContainer>true</isContainer>
-            <constraints>left</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>TreeViewLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="pnlMain" />
-            </parent>
-        </component>
-        <component>
-            <name>treeMain</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[treeMain].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="treeView" />
-            </parent>
-            <eventBindings>
-                <eventBinding>
-                    <name>valueChanged</name>
-                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
-                    <scene />
-                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
-                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
-                    <methodName>treeMain_valueChanged</methodName>
-                    <code />
-                    <isBindWorkFlow>false</isBindWorkFlow>
-                    <herited>false</herited>
-                    <userDefined>false</userDefined>
-                </eventBinding>
-            </eventBindings>
         </component>
         <component>
             <name>btnAudit</name>
@@ -678,6 +810,11 @@
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
             <properties>
                 <property>
                     <name>text</name>
@@ -704,6 +841,92 @@
             <parent>
                 <key name="name" value="CoreUI_toolbar" />
             </parent>
+        </component>
+        <component>
+            <name>btnUnaudit</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>33</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>text</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].properties.property[text].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>icon</name>
+                    <type>javax.swing.Icon</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].properties.property[icon].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>action</name>
+                    <type>javax.swing.Action</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].properties.property[action].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI_toolbar" />
+            </parent>
+        </component>
+        <component>
+            <name>menuItemCancelCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemCancelCancel].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>0</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemCancel].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>1</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemDelVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemDelVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>3</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
         </component>
         <component>
             <name>menuItemAudit</name>
@@ -751,6 +974,13 @@
             <herited>true</herited>
             <userDefined>false</userDefined>
         </dataObject>
+        <dataObject>
+            <name>batchRentRemissionQuery</name>
+            <type>com.kingdee.eas.fdc.tenancy.app.BatchRentRemissionQuery</type>
+            <objectType>jqye</objectType>
+            <herited>false</herited>
+            <userDefined>false</userDefined>
+        </dataObject>
     </dataObjects>
     <actions>
         <action>
@@ -779,6 +1009,39 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
+        </action>
+        <action>
+            <instanceName>actionUnaudit</instanceName>
+            <className>ActionUnaudit</className>
+            <name>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].name</name>
+            <enabled>true</enabled>
+            <actionPerformed />
+            <beforeActionPerformed />
+            <afterActionPerformed />
+            <finallyActionPerformed />
+            <actionCommandKey />
+            <acceleratorKey />
+            <mnemonicKey />
+            <smallIcon>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].smallIcon</smallIcon>
+            <shortDescription>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].shortDescription</shortDescription>
+            <longDescription>uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].longDescription</longDescription>
+            <isBindWorkFlow>false</isBindWorkFlow>
+            <herited>false</herited>
+            <daemonRun>false</daemonRun>
+            <actionExtendProperty />
+            <services>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;root&gt;&lt;service class="com.kingdee.eas.framework.client.service.PermissionService" /&gt;&lt;/root&gt;</services>
+            <userDefined>false</userDefined>
+            <userDefinedLogic />
+            <oprtIntent />
+            <nextUI />
+            <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
     </actions>
     <resource>
@@ -806,11 +1069,35 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
-        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].alias">
-            <lang locale="zh_CN" value="租金减免序时簿" />
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].longDescription">
+            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="租金減免序時簿" />
-            <lang locale="zh_TW" value="租金減免序時簿" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].name">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].shortDescription">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].actions.action[actionUnaudit].smallIcon">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].alias">
+            <lang locale="zh_CN" value="租金减免" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="租金減免" />
+            <lang locale="zh_TW" value="租金減免" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[CoreUI].alias">
             <lang locale="zh_CN" value="null" />
@@ -974,6 +1261,30 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].properties.property[action].value">
+            <lang locale="zh_CN" value="actionUnaudit" />
+            <lang locale="en_US" value="actionUnaudit" />
+            <lang locale="zh_HK" value="actionUnaudit" />
+            <lang locale="zh_TW" value="actionUnaudit" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].properties.property[icon].value">
+            <lang locale="zh_CN" value="imgTbtn_unaudit" />
+            <lang locale="en_US" value="imgTbtn_unaudit" />
+            <lang locale="zh_HK" value="imgTbtn_unaudit" />
+            <lang locale="zh_TW" value="imgTbtn_unaudit" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnUnaudit].properties.property[text].value">
+            <lang locale="zh_CN" value="反审批" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="反審批" />
+            <lang locale="zh_TW" value="反審批" />
+        </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[btnViewSignature].alias">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
@@ -1009,6 +1320,18 @@
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[kdtBatch].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[kdtBatch].properties.property[formatXml].value">
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection locked=&quot;true&quot; hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol1&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;#.##&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; t:styleID=&quot;sCol1&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;adjustMode&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;adjustAmount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;creator&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header1&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;单据编码&lt;/t:Cell&gt;&lt;t:Cell&gt;业务日期&lt;/t:Cell&gt;&lt;t:Cell&gt;调整模式&lt;/t:Cell&gt;&lt;t:Cell&gt;调整金额&lt;/t:Cell&gt;&lt;t:Cell&gt;制单人&lt;/t:Cell&gt;&lt;t:Cell&gt;制单日期&lt;/t:Cell&gt;&lt;t:Cell&gt;备注&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection locked=&quot;true&quot; hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol1&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;#.##&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; t:styleID=&quot;sCol1&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;adjustMode&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;adjustAmount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;creator&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header1&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;單據編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;業務日期&lt;/t:Cell&gt;&lt;t:Cell&gt;調整模式&lt;/t:Cell&gt;&lt;t:Cell&gt;調整金額&lt;/t:Cell&gt;&lt;t:Cell&gt;制單人&lt;/t:Cell&gt;&lt;t:Cell&gt;制單日期&lt;/t:Cell&gt;&lt;t:Cell&gt;備註&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
+            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection locked=&quot;true&quot; hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol1&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;#.##&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;1&quot; t:styleID=&quot;sCol1&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;adjustMode&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;adjustAmount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;creator&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;createTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header1&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;單據編碼&lt;/t:Cell&gt;&lt;t:Cell&gt;業務日期&lt;/t:Cell&gt;&lt;t:Cell&gt;調整模式&lt;/t:Cell&gt;&lt;t:Cell&gt;調整金額&lt;/t:Cell&gt;&lt;t:Cell&gt;制單人&lt;/t:Cell&gt;&lt;t:Cell&gt;制單日期&lt;/t:Cell&gt;&lt;t:Cell&gt;備註&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[menuItemAudit].alias">
             <lang locale="zh_CN" value="null" />
@@ -1058,6 +1381,12 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[overViewTab].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[pnlMain].alias">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
@@ -1101,10 +1430,10 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[tblMain].properties.property[formatXml].value">
-            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00;-#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol10&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;tenancyNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol10&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;单据状态&lt;/t:Cell&gt;&lt;t:Cell&gt;单据编号&lt;/t:Cell&gt;&lt;t:Cell&gt;单据名称&lt;/t:Cell&gt;&lt;t:Cell&gt;合同编号&lt;/t:Cell&gt;&lt;t:Cell&gt;客户名称&lt;/t:Cell&gt;&lt;t:Cell&gt;房间&lt;/t:Cell&gt;&lt;t:Cell&gt;配套资源&lt;/t:Cell&gt;&lt;t:Cell&gt;合同租期&lt;/t:Cell&gt;&lt;t:Cell&gt;业务日期&lt;/t:Cell&gt;&lt;t:Cell&gt;审批时间&lt;/t:Cell&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00;-#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol11&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;tenancyNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;10&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;11&quot; t:styleID=&quot;sCol11&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;单据状态&lt;/t:Cell&gt;&lt;t:Cell&gt;单据编号&lt;/t:Cell&gt;&lt;t:Cell&gt;单据名称&lt;/t:Cell&gt;&lt;t:Cell&gt;合同编号&lt;/t:Cell&gt;&lt;t:Cell&gt;客户名称&lt;/t:Cell&gt;&lt;t:Cell&gt;房间&lt;/t:Cell&gt;&lt;t:Cell&gt;配套资源&lt;/t:Cell&gt;&lt;t:Cell&gt;合同租期&lt;/t:Cell&gt;&lt;t:Cell&gt;业务日期&lt;/t:Cell&gt;&lt;t:Cell&gt;审批时间&lt;/t:Cell&gt;&lt;t:Cell&gt;备注&lt;/t:Cell&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
             <lang locale="en_US" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles /&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;sellProject.name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;state&lt;/t:Cell&gt;&lt;t:Cell&gt;number&lt;/t:Cell&gt;&lt;t:Cell&gt;name&lt;/t:Cell&gt;&lt;t:Cell&gt;sellProject.name&lt;/t:Cell&gt;&lt;t:Cell&gt;customerName&lt;/t:Cell&gt;&lt;t:Cell&gt;roomName&lt;/t:Cell&gt;&lt;t:Cell&gt;attachResource&lt;/t:Cell&gt;&lt;t:Cell&gt;leaseCount&lt;/t:Cell&gt;&lt;t:Cell&gt;bizDate&lt;/t:Cell&gt;&lt;t:Cell&gt;auditTime&lt;/t:Cell&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
-            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00;-#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol10&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;tenancyNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol10&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;單據狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;單據編號&lt;/t:Cell&gt;&lt;t:Cell&gt;單據名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編號&lt;/t:Cell&gt;&lt;t:Cell&gt;客戶名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;房間&lt;/t:Cell&gt;&lt;t:Cell&gt;配套資源&lt;/t:Cell&gt;&lt;t:Cell&gt;合同租期&lt;/t:Cell&gt;&lt;t:Cell&gt;業務日期&lt;/t:Cell&gt;&lt;t:Cell&gt;審批時間&lt;/t:Cell&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
-            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00;-#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol10&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;tenancyNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol10&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;單據狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;單據編號&lt;/t:Cell&gt;&lt;t:Cell&gt;單據名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編號&lt;/t:Cell&gt;&lt;t:Cell&gt;客戶名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;房間&lt;/t:Cell&gt;&lt;t:Cell&gt;配套資源&lt;/t:Cell&gt;&lt;t:Cell&gt;合同租期&lt;/t:Cell&gt;&lt;t:Cell&gt;業務日期&lt;/t:Cell&gt;&lt;t:Cell&gt;審批時間&lt;/t:Cell&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00;-#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol11&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;tenancyNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;10&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;11&quot; t:styleID=&quot;sCol11&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;單據狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;單據編號&lt;/t:Cell&gt;&lt;t:Cell&gt;單據名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編號&lt;/t:Cell&gt;&lt;t:Cell&gt;客戶名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;房間&lt;/t:Cell&gt;&lt;t:Cell&gt;配套資源&lt;/t:Cell&gt;&lt;t:Cell&gt;合同租期&lt;/t:Cell&gt;&lt;t:Cell&gt;業務日期&lt;/t:Cell&gt;&lt;t:Cell&gt;審批時間&lt;/t:Cell&gt;&lt;t:Cell&gt;備註&lt;/t:Cell&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
+            <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:NumberFormat&gt;#,##0.00;-#,##0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol11&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;state&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;number&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;name&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;tenancyNumber&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;customerName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;roomName&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;attachResource&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;leaseCount&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;bizDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;auditTime&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;-1&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;10&quot; /&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;11&quot; t:styleID=&quot;sCol11&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;單據狀態&lt;/t:Cell&gt;&lt;t:Cell&gt;單據編號&lt;/t:Cell&gt;&lt;t:Cell&gt;單據名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;合同編號&lt;/t:Cell&gt;&lt;t:Cell&gt;客戶名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;房間&lt;/t:Cell&gt;&lt;t:Cell&gt;配套資源&lt;/t:Cell&gt;&lt;t:Cell&gt;合同租期&lt;/t:Cell&gt;&lt;t:Cell&gt;業務日期&lt;/t:Cell&gt;&lt;t:Cell&gt;審批時間&lt;/t:Cell&gt;&lt;t:Cell&gt;備註&lt;/t:Cell&gt;&lt;t:Cell&gt;ID&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt;" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].components.component[treeMain].alias">
             <lang locale="zh_CN" value="null" />
@@ -1125,10 +1454,10 @@
             <lang locale="zh_TW" value="租金減免序時簿" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI].title">
-            <lang locale="zh_CN" value="租金减免序时簿" />
+            <lang locale="zh_CN" value="租金减免" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="租金減免序時簿" />
-            <lang locale="zh_TW" value="租金減免序時簿" />
+            <lang locale="zh_HK" value="租金減免" />
+            <lang locale="zh_TW" value="租金減免" />
         </rs>
     </resource>
 </uiObject>

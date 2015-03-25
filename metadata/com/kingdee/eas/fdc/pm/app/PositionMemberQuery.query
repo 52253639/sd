@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>PositionMemberQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>PositionMember</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[PositionMember].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="PositionMember" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>position</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[position].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="Position" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>adminOrgUnit</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[adminOrgUnit].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="AdminOrgUnit" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>person</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[person].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ec9dbe84-0065-48ae-91b7-944060478260</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PositionMember" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8d15c859-9670-489a-8e53-9a4a1f8120fe</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="person" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>AdminOrgUnit.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[AdminOrgUnit.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>80bd6d38-7c04-4bb4-b5c8-1ca2cbf8e672</key>
+                    <parentUnit>
+                        <key name="name" value="AdminOrgUnit.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminOrgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>email</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[email].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1b3c2433-adff-4b52-89a7-f2f83c696488</key>
+                    <parentUnit>
+                        <key name="name" value="email" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="person" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="email" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>cell</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[cell].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4bc74f87-a601-45ec-8432-1c79238ece03</key>
+                    <parentUnit>
+                        <key name="name" value="cell" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="person" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="cell" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Position.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[Position.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f52f0bbd-5300-446b-bf39-fa3964b76e51</key>
+                    <parentUnit>
+                        <key name="name" value="Position.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="position" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>7199773a-93ea-4d56-9d88-ab62bf452cb4</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[7199773a-93ea-4d56-9d88-ab62bf452cb4].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>689062e2-ac44-4c1f-963a-5767aaa1974c</key>
+                    <parentUnit>
+                        <key name="name" value="7199773a-93ea-4d56-9d88-ab62bf452cb4" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="position" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="adminOrgUnit" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>dbf3c0b4-a082-49b6-9b06-28cb7d944a4c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[dbf3c0b4-a082-49b6-9b06-28cb7d944a4c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b930a92b-21e3-47ed-b5e2-6d8a5854dd53</key>
+                    <parentUnit>
+                        <key name="name" value="dbf3c0b4-a082-49b6-9b06-28cb7d944a4c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="adminOrgUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8a67bc28-d22c-4786-a8a6-27b2957289c1</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[8a67bc28-d22c-4786-a8a6-27b2957289c1].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b57aea9a-b23d-45b6-ad30-5eed02c1312e</key>
+                    <parentUnit>
+                        <key name="name" value="8a67bc28-d22c-4786-a8a6-27b2957289c1" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PositionMember" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="position" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>e7baf068-ce00-4882-9476-ce6acf1180f3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[e7baf068-ce00-4882-9476-ce6acf1180f3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6cec5659-ae21-43c8-ab89-c4ae62748694</key>
+                    <parentUnit>
+                        <key name="name" value="e7baf068-ce00-4882-9476-ce6acf1180f3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="position" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>fbe890f3-636f-4ae5-925f-38bae8a8d7e8</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[fbe890f3-636f-4ae5-925f-38bae8a8d7e8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fc043200-f3e3-4a02-84d0-3e1448cd0418</key>
+                    <parentUnit>
+                        <key name="name" value="fbe890f3-636f-4ae5-925f-38bae8a8d7e8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PositionMember" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="person" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>ad8003ec-7581-4f49-90bb-2a5f6bfa1b8f</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[ad8003ec-7581-4f49-90bb-2a5f6bfa1b8f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>aec18cca-4932-4d88-ad50-d9b6fbc152cd</key>
+                    <parentUnit>
+                        <key name="name" value="ad8003ec-7581-4f49-90bb-2a5f6bfa1b8f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="person" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </propertyUnit>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="PositionMemberQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>21e29cbd-666a-4de4-a4d7-c622e8281bc9</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PositionMember" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="position" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>ed19a275-8cc7-4150-a420-fc42c3e08162</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="8a67bc28-d22c-4786-a8a6-27b2957289c1" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="e7baf068-ce00-4882-9476-ce6acf1180f3" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="21e29cbd-666a-4de4-a4d7-c622e8281bc9" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </join>
+        <join>
+            <name>be04e760-9768-4e87-baff-5567aebe8527</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="position" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="adminOrgUnit" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>6cfc95b8-f857-4435-bcc8-eb619d1b353b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="7199773a-93ea-4d56-9d88-ab62bf452cb4" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="dbf3c0b4-a082-49b6-9b06-28cb7d944a4c" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="be04e760-9768-4e87-baff-5567aebe8527" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </join>
+        <join>
+            <name>ec622475-0cde-4772-9ef6-65f66a9a454e</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PositionMember" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="person" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>10f9426c-c221-4e1b-a5fd-75ce6730a4b9</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="fbe890f3-636f-4ae5-925f-38bae8a8d7e8" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="ad8003ec-7581-4f49-90bb-2a5f6bfa1b8f" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="ec622475-0cde-4772-9ef6-65f66a9a454e" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PositionMemberQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].alias">
+            <lang locale="zh_CN" value="查询职员/职位" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="查詢職員/職位" />
+            <lang locale="zh_TW" value="查詢職員/職位" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].description">
+            <lang locale="zh_CN" value="查询职员/职位" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="查詢職員/職位" />
+            <lang locale="zh_TW" value="查詢職員/職位" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[PositionMember].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[adminOrgUnit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[person].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].subObjects.subEntity[position].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[7199773a-93ea-4d56-9d88-ab62bf452cb4].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[8a67bc28-d22c-4786-a8a6-27b2957289c1].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[ad8003ec-7581-4f49-90bb-2a5f6bfa1b8f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[dbf3c0b4-a082-49b6-9b06-28cb7d944a4c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[e7baf068-ce00-4882-9476-ce6acf1180f3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.propertyUnit[fbe890f3-636f-4ae5-925f-38bae8a8d7e8].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[AdminOrgUnit.name].displayName">
+            <lang locale="zh_CN" value="部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="部門" />
+            <lang locale="zh_TW" value="部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[Position.name].displayName">
+            <lang locale="zh_CN" value="岗位" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="崗位" />
+            <lang locale="zh_TW" value="崗位" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[cell].displayName">
+            <lang locale="zh_CN" value="联系方式" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="聯繫方式" />
+            <lang locale="zh_TW" value="聯繫方式" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[email].displayName">
+            <lang locale="zh_CN" value="邮箱" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="郵箱" />
+            <lang locale="zh_TW" value="郵箱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="編號" />
+            <lang locale="zh_TW" value="編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PositionMemberQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="姓名" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="姓名" />
+            <lang locale="zh_TW" value="姓名" />
+        </rs>
+    </resource>
+</joinQuery>
+

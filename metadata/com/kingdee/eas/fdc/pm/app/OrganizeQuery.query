@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>OrganizeQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>Organize</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[Organize].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="Organize" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>lastUpdateUser</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[lastUpdateUser].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>project.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>792aca26-511b-42d0-be28-91f578641a22</key>
+                    <parentUnit>
+                        <key name="name" value="project.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bb8e82ed-c801-45bb-aa75-15a8ee162cd3</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>91ca2eea-60f4-4cdc-8b1c-c7f2e858da5b</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>008663d9-fbd6-4314-865c-ee759d22f54c</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>lastUpdateUser.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[lastUpdateUser.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>979ba85a-0586-463e-afcc-e70fdf890505</key>
+                    <parentUnit>
+                        <key name="name" value="lastUpdateUser.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="lastUpdateUser" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>lastUpdateUser.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[lastUpdateUser.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8088f4f2-7f46-4d9e-a8a4-ed4ecd8b00f8</key>
+                    <parentUnit>
+                        <key name="name" value="lastUpdateUser.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="lastUpdateUser" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>lastUpdateTime</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[lastUpdateTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f79621e9-429b-45ba-af2c-c4535d384195</key>
+                    <parentUnit>
+                        <key name="name" value="lastUpdateTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="lastUpdateTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>83202ae0-ab6b-4f7b-96fc-4330044d8976</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f386cbdd-87fe-4513-bc97-9772038a7afa</key>
+                    <parentUnit>
+                        <key name="name" value="project.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[creator.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f315d1ad-501e-47e9-93eb-8d62181f2b36</key>
+                    <parentUnit>
+                        <key name="name" value="creator.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>eca015cd-0572-4ea2-89d1-510894f0edf8</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[eca015cd-0572-4ea2-89d1-510894f0edf8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b8933371-7975-4db1-9255-9ec20e5a4719</key>
+                    <parentUnit>
+                        <key name="name" value="eca015cd-0572-4ea2-89d1-510894f0edf8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>7d870568-1e2a-4979-9dd4-8de0976f624e</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[7d870568-1e2a-4979-9dd4-8de0976f624e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4fdb267a-085b-4236-9aeb-248a8fe909da</key>
+                    <parentUnit>
+                        <key name="name" value="7d870568-1e2a-4979-9dd4-8de0976f624e" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>aee97784-81c4-4a46-8064-eb7041d9cb68</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[aee97784-81c4-4a46-8064-eb7041d9cb68].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>978359fe-b3ca-4ccd-b6a8-1a7594d194e6</key>
+                    <parentUnit>
+                        <key name="name" value="aee97784-81c4-4a46-8064-eb7041d9cb68" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="lastUpdateUser" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d6332cc1-6b13-4539-bc7c-10ffe9a44a6d</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[d6332cc1-6b13-4539-bc7c-10ffe9a44a6d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f6e86148-0a42-4d33-b6ee-0cfb3933ed3e</key>
+                    <parentUnit>
+                        <key name="name" value="d6332cc1-6b13-4539-bc7c-10ffe9a44a6d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="lastUpdateUser" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>3ea497ed-96e7-4289-94d1-2b0b211fc647</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[3ea497ed-96e7-4289-94d1-2b0b211fc647].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>db62e227-76ca-4553-9bec-b979b6c339da</key>
+                    <parentUnit>
+                        <key name="name" value="3ea497ed-96e7-4289-94d1-2b0b211fc647" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f2a97a12-4baa-4239-a07c-37cbd048094d</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[f2a97a12-4baa-4239-a07c-37cbd048094d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>264edc0e-1075-44fe-83ae-8bd36cabdd3e</key>
+                    <parentUnit>
+                        <key name="name" value="f2a97a12-4baa-4239-a07c-37cbd048094d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>72a90b08-088b-4f90-a822-a3ff8ad90c57</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Organize" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="OrganizeQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>107c6d33-8060-4156-8b0d-711f38b47adf</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="Organize" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>ec7b5944-56b4-40e0-a01c-25f546f0e3db</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="eca015cd-0572-4ea2-89d1-510894f0edf8" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="7d870568-1e2a-4979-9dd4-8de0976f624e" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="107c6d33-8060-4156-8b0d-711f38b47adf" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </join>
+        <join>
+            <name>5328d986-4950-416e-9eb4-18b42c7ff603</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="Organize" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="lastUpdateUser" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>61e1dde5-c3f7-4878-9503-53fb462dddfd</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="aee97784-81c4-4a46-8064-eb7041d9cb68" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="d6332cc1-6b13-4539-bc7c-10ffe9a44a6d" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="5328d986-4950-416e-9eb4-18b42c7ff603" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </join>
+        <join>
+            <name>1d2351a0-1aeb-4eac-aa80-bade3e0e2196</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="Organize" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>5e2f692e-9bb2-4bc8-beca-d79f9f9eab56</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="3ea497ed-96e7-4289-94d1-2b0b211fc647" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f2a97a12-4baa-4239-a07c-37cbd048094d" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="1d2351a0-1aeb-4eac-aa80-bade3e0e2196" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="OrganizeQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].alias">
+            <lang locale="zh_CN" value="项目组织架构查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目組織架構查詢" />
+            <lang locale="zh_TW" value="項目組織架構查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].description">
+            <lang locale="zh_CN" value="项目组织架构查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目組織架構查詢" />
+            <lang locale="zh_TW" value="項目組織架構查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[Organize].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[lastUpdateUser].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[3ea497ed-96e7-4289-94d1-2b0b211fc647].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[7d870568-1e2a-4979-9dd4-8de0976f624e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[aee97784-81c4-4a46-8064-eb7041d9cb68].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[d6332cc1-6b13-4539-bc7c-10ffe9a44a6d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[eca015cd-0572-4ea2-89d1-510894f0edf8].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.propertyUnit[f2a97a12-4baa-4239-a07c-37cbd048094d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[createTime].displayName">
+            <lang locale="zh_CN" value="创建时间" />
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_HK" value="創建時間" />
+            <lang locale="zh_TW" value="創建時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[creator.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="用戶實名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[lastUpdateTime].displayName">
+            <lang locale="zh_CN" value="最后修改时间" />
+            <lang locale="en_US" value="lastUpdateTime" />
+            <lang locale="zh_HK" value="最後修改時間" />
+            <lang locale="zh_TW" value="最後修改時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[lastUpdateUser.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[lastUpdateUser.name].displayName">
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="用戶實名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="项目名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目名稱" />
+            <lang locale="zh_TW" value="項目名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.number].displayName">
+            <lang locale="zh_CN" value="项目编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="項目編碼" />
+            <lang locale="zh_TW" value="項目編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[project.number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.OrganizeQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+    </resource>
+</joinQuery>
+

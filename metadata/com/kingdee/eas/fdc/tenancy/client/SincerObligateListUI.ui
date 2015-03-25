@@ -33,15 +33,32 @@
             </layoutInfo>
         </component>
         <component>
-            <name>btnPageSetup</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnPageSetup].alias</alias>
+            <name>pnlMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[pnlMain].alias</alias>
             <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>9</constraints>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>10,10,1004,589,15</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[pnlMain].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
         </component>
         <component>
             <name>tblMain</name>
@@ -289,6 +306,58 @@
             </propertyBindings>
         </component>
         <component>
+            <name>treeView</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[treeView].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
+            <isContainer>true</isContainer>
+            <constraints>left</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TreeViewLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="pnlMain" />
+            </parent>
+        </component>
+        <component>
+            <name>treeMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[treeMain].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="treeView" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>treeMain_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
             <name>btnAddNew</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnAddNew].alias</alias>
             <userDefined>false</userDefined>
@@ -344,6 +413,17 @@
             <bimUIObjectPK />
         </component>
         <component>
+            <name>btnQuery</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnQuery].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>5</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
             <name>btnLocate</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnLocate].alias</alias>
             <userDefined>false</userDefined>
@@ -355,12 +435,34 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnQuery</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnQuery].alias</alias>
+            <name>btnAttachment</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnAttachment].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>5</constraints>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW1</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW1].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>8</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnPageSetup</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnPageSetup].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>9</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -388,111 +490,12 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnAttachment</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnAttachment].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>7</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
             <name>separatorFW2</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW2].alias</alias>
             <userDefined>false</userDefined>
             <classType>javax.swing.JToolBar.Separator</classType>
             <isContainer>false</isContainer>
             <constraints>12</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemCancelCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemCancelCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>0</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>1</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>29</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnCancelCancel</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelCancel].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>30</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>separatorFW1</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW1].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>8</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnQueryScheme</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnQueryScheme].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>15</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>24</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnDelVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnDelVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>25</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -520,6 +523,28 @@
             <bimUIObjectPK />
         </component>
         <component>
+            <name>btnQueryScheme</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnQueryScheme].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW3</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW3].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>16</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
             <name>btnTraceUp</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnTraceUp].alias</alias>
             <userDefined>false</userDefined>
@@ -542,23 +567,78 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnAuditResult</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnAuditResult].alias</alias>
+            <name>btnWorkFlowG</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnWorkFlowG].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>28</constraints>
+            <constraints>19</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnWFViewdoProccess</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnWFViewdoProccess].alias</alias>
+            <name>btnWorkFlowList</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnWorkFlowList].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>31</constraints>
+            <constraints>20</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnSignature</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnSignature].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>21</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnViewSignature</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnViewSignature].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>22</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>separatorFW4</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW4].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>javax.swing.JToolBar.Separator</classType>
+            <isContainer>false</isContainer>
+            <constraints>23</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>24</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>btnDelVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnDelVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>25</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -586,89 +666,45 @@
             <bimUIObjectPK />
         </component>
         <component>
-            <name>menuItemVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>menuItemDelVoucher</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemDelVoucher].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
-            <isContainer>false</isContainer>
-            <constraints>3</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>separatorFW4</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW4].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>23</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnWorkFlowG</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnWorkFlowG].alias</alias>
+            <name>btnAuditResult</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnAuditResult].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>19</constraints>
+            <constraints>28</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>separatorFW3</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[separatorFW3].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>javax.swing.JToolBar.Separator</classType>
-            <isContainer>false</isContainer>
-            <constraints>16</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-        </component>
-        <component>
-            <name>btnSignature</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnSignature].alias</alias>
+            <name>btnCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancel].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>21</constraints>
+            <constraints>29</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnWorkFlowList</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnWorkFlowList].alias</alias>
+            <name>btnCancelCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelCancel].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>20</constraints>
+            <constraints>30</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
         </component>
         <component>
-            <name>btnViewSignature</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnViewSignature].alias</alias>
+            <name>btnWFViewdoProccess</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnWFViewdoProccess].alias</alias>
             <userDefined>false</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
             <isContainer>false</isContainer>
-            <constraints>22</constraints>
+            <constraints>31</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -842,6 +878,176 @@
             </parent>
         </component>
         <component>
+            <name>btnCancelSincer</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>36</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>text</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].properties.property[text].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>action</name>
+                    <type>javax.swing.Action</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].properties.property[action].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>icon</name>
+                    <type>javax.swing.Icon</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].properties.property[icon].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI_toolbar" />
+            </parent>
+        </component>
+        <component>
+            <name>btnToTenancy</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>37</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>text</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].properties.property[text].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>action</name>
+                    <type>javax.swing.Action</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].properties.property[action].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>icon</name>
+                    <type>javax.swing.Icon</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].properties.property[icon].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI_toolbar" />
+            </parent>
+        </component>
+        <component>
+            <name>btnReceivebill</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
+            <isContainer>false</isContainer>
+            <constraints>38</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>text</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].properties.property[text].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>action</name>
+                    <type>javax.swing.Action</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].properties.property[action].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+                <property>
+                    <name>icon</name>
+                    <type>javax.swing.Icon</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].properties.property[icon].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI_toolbar" />
+            </parent>
+        </component>
+        <component>
+            <name>menuItemCancelCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemCancelCancel].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>0</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemCancel</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemCancel].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>1</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
+            <name>menuItemDelVoucher</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuItemDelVoucher].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDMenuItem</classType>
+            <isContainer>false</isContainer>
+            <constraints>3</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+        </component>
+        <component>
             <name>menuAudit</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuAudit].alias</alias>
             <userDefined>false</userDefined>
@@ -1010,170 +1216,6 @@
             </parent>
         </component>
         <component>
-            <name>treeMain</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[treeMain].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
-            <isContainer>false</isContainer>
-            <constraints>2</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="treeView" />
-            </parent>
-            <eventBindings>
-                <eventBinding>
-                    <name>valueChanged</name>
-                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
-                    <scene />
-                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
-                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
-                    <methodName>treeMain_valueChanged</methodName>
-                    <code />
-                    <isBindWorkFlow>false</isBindWorkFlow>
-                    <herited>false</herited>
-                    <userDefined>false</userDefined>
-                </eventBinding>
-            </eventBindings>
-        </component>
-        <component>
-            <name>pnlMain</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[pnlMain].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
-            <isContainer>true</isContainer>
-            <constraints>10,10,1004,589,15</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>SplitLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>dividerLocation</name>
-                    <type>int</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[pnlMain].properties.property[dividerLocation].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="CoreUI" />
-            </parent>
-        </component>
-        <component>
-            <name>treeView</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[treeView].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
-            <isContainer>true</isContainer>
-            <constraints>left</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>TreeViewLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="pnlMain" />
-            </parent>
-        </component>
-        <component>
-            <name>btnCancelSincer</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>36</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>text</name>
-                    <type>java.lang.String</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].properties.property[text].value</value>
-                    <isMultiLan>true</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>action</name>
-                    <type>javax.swing.Action</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].properties.property[action].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>icon</name>
-                    <type>javax.swing.Icon</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnCancelSincer].properties.property[icon].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="CoreUI_toolbar" />
-            </parent>
-        </component>
-        <component>
-            <name>btnToTenancy</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>37</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>text</name>
-                    <type>java.lang.String</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].properties.property[text].value</value>
-                    <isMultiLan>true</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>action</name>
-                    <type>javax.swing.Action</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].properties.property[action].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>icon</name>
-                    <type>javax.swing.Icon</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnToTenancy].properties.property[icon].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="CoreUI_toolbar" />
-            </parent>
-        </component>
-        <component>
             <name>menuCancelSincer</name>
             <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[menuCancelSincer].alias</alias>
             <userDefined>false</userDefined>
@@ -1241,48 +1283,6 @@
             </properties>
             <parent>
                 <key name="name" value="menuBiz" />
-            </parent>
-        </component>
-        <component>
-            <name>btnReceivebill</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].alias</alias>
-            <userDefined>false</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDWorkButton</classType>
-            <isContainer>false</isContainer>
-            <constraints>38</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>text</name>
-                    <type>java.lang.String</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].properties.property[text].value</value>
-                    <isMultiLan>true</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>action</name>
-                    <type>javax.swing.Action</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].properties.property[action].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-                <property>
-                    <name>icon</name>
-                    <type>javax.swing.Icon</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[btnReceivebill].properties.property[icon].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>false</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="CoreUI_toolbar" />
             </parent>
         </component>
         <component>
@@ -1364,6 +1364,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
         <action>
             <instanceName>actionUnAudit</instanceName>
@@ -1391,6 +1394,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
         <action>
             <instanceName>actionExecute</instanceName>
@@ -1418,6 +1424,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
         <action>
             <instanceName>actionBlankOut</instanceName>
@@ -1445,6 +1454,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
         <action>
             <instanceName>actionCancelSincer</instanceName>
@@ -1472,6 +1484,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
         <action>
             <instanceName>actionToTenancy</instanceName>
@@ -1499,6 +1514,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
         <action>
             <instanceName>actionReceiveBill</instanceName>
@@ -1526,6 +1544,9 @@
             <oprtIntent />
             <nextUI />
             <isUIPNavigator>false</isUIPNavigator>
+            <isBatchAction>false</isBatchAction>
+            <isEntryAction>false</isEntryAction>
+            <batchMethodName />
         </action>
     </actions>
     <resource>
@@ -1698,10 +1719,10 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].alias">
-            <lang locale="zh_CN" value="诚意预留序时薄" />
+            <lang locale="zh_CN" value="诚意预留" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="誠意預留序時薄" />
-            <lang locale="zh_TW" value="誠意預留序時薄" />
+            <lang locale="zh_HK" value="誠意預留" />
+            <lang locale="zh_TW" value="誠意預留" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].components.component[CoreUI].alias">
             <lang locale="zh_CN" value="null" />
@@ -2292,10 +2313,10 @@
             <lang locale="zh_TW" value="誠意預留序時薄" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.SincerObligateListUI].title">
-            <lang locale="zh_CN" value="诚意预留序时薄" />
+            <lang locale="zh_CN" value="诚意预留" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="誠意預留序時薄" />
-            <lang locale="zh_TW" value="誠意預留序時薄" />
+            <lang locale="zh_HK" value="誠意預留" />
+            <lang locale="zh_TW" value="誠意預留" />
         </rs>
     </resource>
 </uiObject>

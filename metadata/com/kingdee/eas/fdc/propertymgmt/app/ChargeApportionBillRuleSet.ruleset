@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.propertymgmt.app</package>
+    <name>ChargeApportionBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>393062ae-819e-4a49-873b-de2cf28249e0</id>
+            <parentID />
+            <source>chargeItem=apportionRule.chargeItem.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>d192c142-8161-4b7b-8df0-017759f38675</id>
+            <parentID>393062ae-819e-4a49-873b-de2cf28249e0</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>15e7f0f4-0327-4a22-935a-eefbbcc2a0a0</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>15e7f0f4-0327-4a22-935a-eefbbcc2a0a0</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtchargeItem</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>89c6129f-1364-4ce6-9168-a263ebc70c3d</id>
+            <parentID>393062ae-819e-4a49-873b-de2cf28249e0</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>afd44f1c-c3f9-4546-9d1e-914ef3ebd4ac</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>cb35da46-b50c-42d6-87da-b1e210f8182c</id>
+                        <expressionID>d78a721f-ab16-4c59-8397-bea1a6ce3803</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>cf2c12f6-8a4e-4426-80ab-482c0027ec95</id>
+                        <expressionID>746bc4c6-b693-4fe4-a9b6-634488fa24b5</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>afd44f1c-c3f9-4546-9d1e-914ef3ebd4ac</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d78a721f-ab16-4c59-8397-bea1a6ce3803</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>b56bf485-cfea-46f0-88d6-1913616f3720</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b56bf485-cfea-46f0-88d6-1913616f3720</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtapportionRule</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>746bc4c6-b693-4fe4-a9b6-634488fa24b5</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>chargeItem.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>27b0939e-c2af-4247-b422-0290b6e1f3c0</id>
+            <parentID />
+            <source>chargeStandard=apportionRule.chargeStandard.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>c2643a6d-cffc-45db-bd86-88ba4d87eab5</id>
+            <parentID>27b0939e-c2af-4247-b422-0290b6e1f3c0</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>e400d083-1252-4138-b5e0-a3c5ab6a641f</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e400d083-1252-4138-b5e0-a3c5ab6a641f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtchargeStandard</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a94d08dc-3875-4bc0-a623-bff43eb59bff</id>
+            <parentID>27b0939e-c2af-4247-b422-0290b6e1f3c0</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>f738063f-2bf4-4fda-bb12-ecff8a802fb0</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>5394110c-1386-41e2-bfbf-c5ded05676c9</id>
+                        <expressionID>cb7c6ed1-8ee2-48ef-8455-e2a633f98a9e</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>f51e7d59-8819-40f1-90de-f5c8e0613b2b</id>
+                        <expressionID>341638a5-ae90-4dbe-94c8-01eb4ba9cdff</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f738063f-2bf4-4fda-bb12-ecff8a802fb0</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>cb7c6ed1-8ee2-48ef-8455-e2a633f98a9e</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>f1de617f-11b6-4683-ac20-9a31fbfaf2ca</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f1de617f-11b6-4683-ac20-9a31fbfaf2ca</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtapportionRule</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>341638a5-ae90-4dbe-94c8-01eb4ba9cdff</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>chargeStandard.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>730d4e3c-0492-46d0-ba16-eaa2423545c6</id>
+            <parentID />
+            <source>publicMeter=apportionRule.publicMeter.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>877dbbab-3e92-4c03-bfd6-53952783e7e9</id>
+            <parentID>730d4e3c-0492-46d0-ba16-eaa2423545c6</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>acb8f141-d454-4a0d-9531-d705506dd687</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>acb8f141-d454-4a0d-9531-d705506dd687</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtpublicMeter</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>885ad637-613d-4936-b1d9-6bf8025142b5</id>
+            <parentID>730d4e3c-0492-46d0-ba16-eaa2423545c6</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>0e821e90-36ba-4dc8-b87c-a9e4ecef627d</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>87affa4a-57ae-47d8-a52f-9eabbd81fc2e</id>
+                        <expressionID>a6275558-ac26-42a2-9439-7aba21d45892</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>8bf63445-efad-4627-afdd-51443141131f</id>
+                        <expressionID>ca0269f6-bc77-4820-ba19-faa60537bfc5</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>0e821e90-36ba-4dc8-b87c-a9e4ecef627d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a6275558-ac26-42a2-9439-7aba21d45892</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>1f6dcb83-2a84-45d6-81f6-da7c1852f572</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1f6dcb83-2a84-45d6-81f6-da7c1852f572</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtapportionRule</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ca0269f6-bc77-4820-ba19-faa60537bfc5</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>publicMeter.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>2ad51ac6-7e29-4629-b03b-6d11c900958e</id>
+            <parentID />
+            <source>apportionType=apportionRule.apportionType</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>27f6d974-f0b9-42a9-995d-7b96b441565a</id>
+            <parentID>2ad51ac6-7e29-4629-b03b-6d11c900958e</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>8cf258ea-0d82-4711-b3d1-c5dda66fc581</ownerID>
+                <name>selectedItem</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8cf258ea-0d82-4711-b3d1-c5dda66fc581</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>apportionType</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>6d109127-15a1-4996-909d-46f4993c3d02</id>
+            <parentID>2ad51ac6-7e29-4629-b03b-6d11c900958e</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Enum</valueType>
+            <value />
+            <method>
+                <ownerID>f1639361-5959-4eee-bbb6-50d6135f873a</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>811c24e3-ff8f-4065-8ce1-a2a51b0d406e</id>
+                        <expressionID>b413f04c-4cff-4371-895f-49963551d739</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>f2435f44-890b-4170-a23a-b65d1147c5d5</id>
+                        <expressionID>e4c38820-dbee-4326-95f7-05a43e538c26</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f1639361-5959-4eee-bbb6-50d6135f873a</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b413f04c-4cff-4371-895f-49963551d739</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>65c94d6a-25b1-425a-aee3-6c2dfe56b80a</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>65c94d6a-25b1-425a-aee3-6c2dfe56b80a</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtapportionRule</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e4c38820-dbee-4326-95f7-05a43e538c26</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>apportionType</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>1f2c1550-a494-4e96-ba94-ef86a7c4415a</id>
+            <name>ChargeApportionBill_chargeItem_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeItem_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeItem_ActionInfo].description</description>
+            <expressionID>393062ae-819e-4a49-873b-de2cf28249e0</expressionID>
+        </action>
+        <action>
+            <id>88976135-c1e5-44a5-b090-db11a4a60ca0</id>
+            <name>ChargeApportionBill_chargeStandard_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeStandard_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeStandard_ActionInfo].description</description>
+            <expressionID>27b0939e-c2af-4247-b422-0290b6e1f3c0</expressionID>
+        </action>
+        <action>
+            <id>53912f87-0bbc-46aa-8daf-2b6806aa7781</id>
+            <name>ChargeApportionBill_publicMeter_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_publicMeter_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_publicMeter_ActionInfo].description</description>
+            <expressionID>730d4e3c-0492-46d0-ba16-eaa2423545c6</expressionID>
+        </action>
+        <action>
+            <id>e55475be-b384-4b16-a802-9d39ae6e3cd6</id>
+            <name>ChargeApportionBill_apportionType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_apportionType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_apportionType_ActionInfo].description</description>
+            <expressionID>2ad51ac6-7e29-4629-b03b-6d11c900958e</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>ChargeApportionBill_chargeItem_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeItem_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeItem_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="1f2c1550-a494-4e96-ba94-ef86a7c4415a" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ChargeApportionBill_chargeStandard_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeStandard_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeStandard_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="88976135-c1e5-44a5-b090-db11a4a60ca0" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ChargeApportionBill_publicMeter_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_publicMeter_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_publicMeter_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="53912f87-0bbc-46aa-8daf-2b6806aa7781" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ChargeApportionBill_apportionType_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_apportionType_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_apportionType_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="e55475be-b384-4b16-a802-9d39ae6e3cd6" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_apportionType_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_apportionType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_apportionType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_apportionType_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeItem_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_chargeItem" />
+            <lang locale="zh_TW" value="攜帶字段屬性_chargeItem" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeItem_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeStandard_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_chargeStandard" />
+            <lang locale="zh_TW" value="攜帶字段屬性_chargeStandard" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_chargeStandard_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_publicMeter_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_publicMeter" />
+            <lang locale="zh_TW" value="攜帶字段屬性_publicMeter" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].actions.action[ChargeApportionBill_publicMeter_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_apportionType_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_apportionType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_apportionType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_apportionType_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_apportionType_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="apportionRule" />
+            <lang locale="zh_CN" value="apportionRule" />
+            <lang locale="zh_TW" value="apportionRule" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_apportionType_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeItem_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_chargeItem" />
+            <lang locale="zh_TW" value="攜帶字段屬性_chargeItem" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeItem_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeItem_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="apportionRule" />
+            <lang locale="zh_CN" value="apportionRule" />
+            <lang locale="zh_TW" value="apportionRule" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeItem_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeStandard_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_chargeStandard" />
+            <lang locale="zh_TW" value="攜帶字段屬性_chargeStandard" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeStandard_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeStandard_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="apportionRule" />
+            <lang locale="zh_CN" value="apportionRule" />
+            <lang locale="zh_TW" value="apportionRule" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_chargeStandard_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_publicMeter_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_publicMeter" />
+            <lang locale="zh_TW" value="攜帶字段屬性_publicMeter" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_publicMeter_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_publicMeter_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="apportionRule" />
+            <lang locale="zh_CN" value="apportionRule" />
+            <lang locale="zh_TW" value="apportionRule" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.ChargeApportionBillRuleSet].rules.conditionRule[ChargeApportionBill_publicMeter_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

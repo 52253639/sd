@@ -230,6 +230,45 @@
                 <key name="name" value="TenancyRoomPayListEntry" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>invoice</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[invoice].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Invoice" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>receipt</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[receipt].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Cheque" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>transOutTenBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[transOutTenBill].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenancyBill" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <propertyUnit>
@@ -1163,11 +1202,11 @@
             </query>
         </propertyUnit>
         <queryField>
-            <name>id</name>
+            <name>sellProject.name</name>
             <userDefined>false</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[id].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[sellProject.name].displayName</displayName>
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
@@ -1176,15 +1215,232 @@
             <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>5d51ec7d-6cef-4bfc-9c19-da203b9f170d</key>
+                    <key>bbf90359-a076-4e22-a8dd-d1681d378281</key>
                     <parentUnit>
-                        <key name="name" value="id" />
+                        <key name="name" value="sellProject.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="sellProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>currency.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[currency.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>73e5ed72-c8c3-4734-b730-3a3c53398ba1</key>
+                    <parentUnit>
+                        <key name="name" value="currency.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="currency" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>71aa0ce0-df6b-4f44-83e8-d96acab53a35</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
                     </parentUnit>
                     <subEntity>
                         <key name="name" value="FDCReceivingBill" />
                     </subEntity>
                     <refProperty>
-                        <key name="name" value="id" />
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>amount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[amount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>87076b6e-b610-46de-8f3c-4ba4fd4330a7</key>
+                    <parentUnit>
+                        <key name="name" value="amount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="amount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>receiptNumber</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ef025eb8-35f5-4307-a46a-c170046894c3</key>
+                    <parentUnit>
+                        <key name="name" value="receiptNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="receiptNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>invoice.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>960fc549-76c3-42bd-ae16-87acc9438871</key>
+                    <parentUnit>
+                        <key name="name" value="invoice.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="invoice" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>invoice.amount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.amount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>cac26e86-0319-42f1-8488-0ce1d598f7e4</key>
+                    <parentUnit>
+                        <key name="name" value="invoice.amount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="invoice" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="amount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>352b267f-63fc-4973-80d7-960d30d773b7</key>
+                    <parentUnit>
+                        <key name="name" value="bizDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDate" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -1256,6 +1512,192 @@
             </query>
         </queryField>
         <queryField>
+            <name>revBizType</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revBizType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5d83a323-f9ec-4024-9607-1c3562f01df9</key>
+                    <parentUnit>
+                        <key name="name" value="revBizType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="revBizType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>entries.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0e16cd82-318e-4f08-9807-edf10c11a426</key>
+                    <parentUnit>
+                        <key name="name" value="entries.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entries" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>entries.revAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.revAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>77cf00cb-ee00-4391-a1b8-75e6d6ae0a7a</key>
+                    <parentUnit>
+                        <key name="name" value="entries.revAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entries" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="revAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>entries.bankNumber</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.bankNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8aaa5e10-a183-4a37-9b8e-97134943bef8</key>
+                    <parentUnit>
+                        <key name="name" value="entries.bankNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entries" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bankNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>entries.settlementNumber</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.settlementNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a26d0c97-3296-4b11-a9d2-a6a4a1d37586</key>
+                    <parentUnit>
+                        <key name="name" value="entries.settlementNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entries" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="settlementNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5d51ec7d-6cef-4bfc-9c19-da203b9f170d</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
             <name>fiVouchered</name>
             <userDefined>false</userDefined>
             <formulaString />
@@ -1278,68 +1720,6 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="fiVouchered" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>number</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[number].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>71aa0ce0-df6b-4f44-83e8-d96acab53a35</key>
-                    <parentUnit>
-                        <key name="name" value="number" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="FDCReceivingBill" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="number" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>sellProject.name</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[sellProject.name].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>bbf90359-a076-4e22-a8dd-d1681d378281</key>
-                    <parentUnit>
-                        <key name="name" value="sellProject.name" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="sellProject" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="name" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -1382,7 +1762,7 @@
         <queryField>
             <name>tenancyObj.number</name>
             <userDefined>false</userDefined>
-            <formulaString />
+            <formulaString>ISNULL ( #0 , #1 )</formulaString>
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.number].displayName</displayName>
             <groupType />
@@ -1393,7 +1773,7 @@
             <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>1279a3a9-e2b4-4422-a69c-d0e094aca769</key>
+                    <key>44437a0b-404d-4e1b-af98-2fbb9bd2ed4b</key>
                     <parentUnit>
                         <key name="name" value="tenancyObj.number" />
                     </parentUnit>
@@ -1402,6 +1782,18 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>4a57fd08-7da7-4975-9cc2-ab3c528e6fcc</key>
+                    <parentUnit>
+                        <key name="name" value="tenancyObj.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="tennacyStr" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -1442,42 +1834,11 @@
             </query>
         </queryField>
         <queryField>
-            <name>entries.revAmount</name>
+            <name>revAccountBank.BACNumber</name>
             <userDefined>false</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.revAmount].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>Number</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>77cf00cb-ee00-4391-a1b8-75e6d6ae0a7a</key>
-                    <parentUnit>
-                        <key name="name" value="entries.revAmount" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="entries" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="revAmount" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>revAccountBank.bankAccountNumber</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.bankAccountNumber].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.BACNumber].displayName</displayName>
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
@@ -1488,7 +1849,7 @@
                 <propertyRef>
                     <key>8d23646e-fa98-47d7-b2e3-d9610bddb679</key>
                     <parentUnit>
-                        <key name="name" value="revAccountBank.bankAccountNumber" />
+                        <key name="name" value="revAccountBank.BACNumber" />
                     </parentUnit>
                     <subEntity>
                         <key name="name" value="revAccountBank" />
@@ -1597,99 +1958,6 @@
             </query>
         </queryField>
         <queryField>
-            <name>currency.name</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[currency.name].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>73e5ed72-c8c3-4734-b730-3a3c53398ba1</key>
-                    <parentUnit>
-                        <key name="name" value="currency.name" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="currency" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="name" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>amount</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[amount].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>Number</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>87076b6e-b610-46de-8f3c-4ba4fd4330a7</key>
-                    <parentUnit>
-                        <key name="name" value="amount" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="FDCReceivingBill" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="amount" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>bizDate</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[bizDate].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>Date</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>352b267f-63fc-4973-80d7-960d30d773b7</key>
-                    <parentUnit>
-                        <key name="name" value="bizDate" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="FDCReceivingBill" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="bizDate" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
             <name>createTime</name>
             <userDefined>false</userDefined>
             <formulaString />
@@ -1783,37 +2051,6 @@
             </query>
         </queryField>
         <queryField>
-            <name>revBizType</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revBizType].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>5d83a323-f9ec-4024-9607-1c3562f01df9</key>
-                    <parentUnit>
-                        <key name="name" value="revBizType" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="FDCReceivingBill" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="revBizType" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
             <name>auditor.name</name>
             <userDefined>false</userDefined>
             <formulaString />
@@ -1867,37 +2104,6 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="auditTime" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenReceivingBillQuery" />
-            </query>
-        </queryField>
-        <queryField>
-            <name>entries.id</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.id].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>0e16cd82-318e-4f08-9807-edf10c11a426</key>
-                    <parentUnit>
-                        <key name="name" value="entries.id" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="entries" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="id" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -2053,6 +2259,533 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>c03dda1f-cbff-4957-b6f9-d89329a22cd8</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[c03dda1f-cbff-4957-b6f9-d89329a22cd8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>ba27cd20-746f-46a3-8708-c755e355f746</key>
+                    <parentUnit>
+                        <key name="name" value="c03dda1f-cbff-4957-b6f9-d89329a22cd8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="invoice" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a540b38f-0d64-4aec-843e-4765a9411680</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[a540b38f-0d64-4aec-843e-4765a9411680].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a4139a9-4916-49e7-a1f2-36d94d9fb975</key>
+                    <parentUnit>
+                        <key name="name" value="a540b38f-0d64-4aec-843e-4765a9411680" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="invoice" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>tennacyStr</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tennacyStr].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2a756959-77e8-4801-b6b8-2bd66aaad4eb</key>
+                    <parentUnit>
+                        <key name="name" value="tennacyStr" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="tennacyStr" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>invoice.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>650faefa-83ed-4e1a-832c-604a5c07f0db</key>
+                    <parentUnit>
+                        <key name="name" value="invoice.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="invoice" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>receiptState</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptState].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bd0759e6-48d3-4c12-be99-bf2af3e79514</key>
+                    <parentUnit>
+                        <key name="name" value="receiptState" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="receiptState" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>677b78b5-a64f-42e7-9f3b-44572c8991a9</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[677b78b5-a64f-42e7-9f3b-44572c8991a9].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e0f212ce-8763-48cd-bf5f-4caf7f098676</key>
+                    <parentUnit>
+                        <key name="name" value="677b78b5-a64f-42e7-9f3b-44572c8991a9" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="receipt" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>eb0df1ea-2afe-4160-91b1-3b63d942ba9c</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[eb0df1ea-2afe-4160-91b1-3b63d942ba9c].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>eebeff08-0b39-4b6a-9c32-442bdb8c431b</key>
+                    <parentUnit>
+                        <key name="name" value="eb0df1ea-2afe-4160-91b1-3b63d942ba9c" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="receipt" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>receipt.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receipt.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c73b6041-a0f2-4696-98a2-bfb9a9d278d2</key>
+                    <parentUnit>
+                        <key name="name" value="receipt.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="receipt" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[room.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>79cf3990-4319-4f5a-aa30-15e5f1854a5b</key>
+                    <parentUnit>
+                        <key name="name" value="room.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>tenancyObj.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9a95d147-a8f8-40b4-a571-36be53d74e29</key>
+                    <parentUnit>
+                        <key name="name" value="tenancyObj.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="tenancyObj" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>moneyDefine.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[moneyDefine.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>14bcfea2-6290-4e84-902e-29449f0bc8fd</key>
+                    <parentUnit>
+                        <key name="name" value="moneyDefine.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>tenRoomPay.collectionFlag</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenRoomPay.collectionFlag].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6b6f8cf3-8a0a-4523-bb63-ea2bcd0c2ab6</key>
+                    <parentUnit>
+                        <key name="name" value="tenRoomPay.collectionFlag" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="tenRoomPay" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="collectionFlag" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>isCollection</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[isCollection].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ec1aa665-71a8-404d-b7b5-030afc284e92</key>
+                    <parentUnit>
+                        <key name="name" value="isCollection" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isCollection" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>fdcCustomerStr</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[fdcCustomerStr].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6e85211b-a5f9-44eb-a2bf-62be9e4a9977</key>
+                    <parentUnit>
+                        <key name="name" value="fdcCustomerStr" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="fdcCustomerStr" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>783ef313-116d-4423-8b03-2dadb39c6278</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[783ef313-116d-4423-8b03-2dadb39c6278].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a6b3cbd1-adc2-4804-b5d2-6f8933ffdb6d</key>
+                    <parentUnit>
+                        <key name="name" value="783ef313-116d-4423-8b03-2dadb39c6278" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="FDCReceivingBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="transOutTenBill" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>ec9fb4fb-0321-4667-923c-2f45eaa33ac3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[ec9fb4fb-0321-4667-923c-2f45eaa33ac3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>640b4908-3a6b-4f5e-a9ce-c5b46965a055</key>
+                    <parentUnit>
+                        <key name="name" value="ec9fb4fb-0321-4667-923c-2f45eaa33ac3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="transOutTenBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>transOutTenBill.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[transOutTenBill.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>69de1a88-5a82-4ac4-bfdf-90ac3f8b5e2c</key>
+                    <parentUnit>
+                        <key name="name" value="transOutTenBill.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="transOutTenBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -2565,6 +3298,96 @@
                 <key name="name" value="TenReceivingBillQuery" />
             </query>
         </join>
+        <join>
+            <name>b7e45a57-784f-46db-9c05-341bb03415d2</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCReceivingBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="invoice" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>0603f094-e5e3-496b-9c48-611040386475</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="c03dda1f-cbff-4957-b6f9-d89329a22cd8" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="a540b38f-0d64-4aec-843e-4765a9411680" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="b7e45a57-784f-46db-9c05-341bb03415d2" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>47d01ef7-08bc-4fa6-8a1a-7456265946ef</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCReceivingBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="receipt" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>92cf2aa9-78e0-49a6-936f-46d664811622</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="677b78b5-a64f-42e7-9f3b-44572c8991a9" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="eb0df1ea-2afe-4160-91b1-3b63d942ba9c" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="47d01ef7-08bc-4fa6-8a1a-7456265946ef" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </join>
+        <join>
+            <name>dff4eb77-9674-482e-913a-0e5ad02332b0</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="FDCReceivingBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="transOutTenBill" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d4aa4dfa-8c19-4d6f-af5f-3a6b4474a6fd</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="783ef313-116d-4423-8b03-2dadb39c6278" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="ec9fb4fb-0321-4667-923c-2f45eaa33ac3" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="dff4eb77-9674-482e-913a-0e5ad02332b0" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenReceivingBillQuery" />
+            </query>
+        </join>
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].alias">
@@ -2627,6 +3450,12 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[invoice].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[moneyDefine].alias">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
@@ -2640,6 +3469,12 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[oppAccount].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[receipt].alias">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -2688,6 +3523,12 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[tenancyUser].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].subObjects.subEntity[transOutTenBill].alias">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -2789,6 +3630,12 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[677b78b5-a64f-42e7-9f3b-44572c8991a9].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[699997ea-6d33-4714-8b25-b3960ddd3309].displayName">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
@@ -2802,6 +3649,12 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[7723d936-7773-46e0-aee6-93b0ceea2667].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[783ef313-116d-4423-8b03-2dadb39c6278].displayName">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -2843,7 +3696,19 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[a540b38f-0d64-4aec-843e-4765a9411680].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[b9a87f21-f3df-43c3-a672-f17c4605a64b].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[c03dda1f-cbff-4957-b6f9-d89329a22cd8].displayName">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -2874,6 +3739,18 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[dfe8fe25-5525-4290-9566-3cd12b768946].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[eb0df1ea-2afe-4160-91b1-3b63d942ba9c].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.propertyUnit[ec9fb4fb-0321-4667-923c-2f45eaa33ac3].displayName">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -2987,10 +3864,20 @@
             <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[creator.name].displayName">
-            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="zh_CN" value="创建者" />
             <lang locale="en_US" value="用户别名" />
-            <lang locale="zh_HK" value="用戶實名" />
-            <lang locale="zh_TW" value="用戶實名" />
+            <lang locale="zh_HK" value="創建者" />
+            <lang locale="zh_TW" value="創建者" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[creator.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[creator.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[currency.name].displayName">
             <lang locale="zh_CN" value="币别" />
@@ -3009,10 +3896,20 @@
             <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[customer.name].displayName">
-            <lang locale="zh_CN" value="名称" />
+            <lang locale="zh_CN" value="缴费客户" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="名稱" />
-            <lang locale="zh_TW" value="名稱" />
+            <lang locale="zh_HK" value="繳費客戶" />
+            <lang locale="zh_TW" value="繳費客戶" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[customer.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[customer.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[description].displayName">
             <lang locale="zh_CN" value="参考消息" />
@@ -3030,11 +3927,27 @@
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.id].displayName">
-            <lang locale="zh_CN" value="ID" />
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.bankNumber].displayName">
+            <lang locale="zh_CN" value="客户账号" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="ID" />
-            <lang locale="zh_TW" value="ID" />
+            <lang locale="zh_HK" value="客戶賬號" />
+            <lang locale="zh_TW" value="客戶賬號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.bankNumber].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.bankNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.id].displayName">
+            <lang locale="zh_CN" value="分录ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="分錄ID" />
+            <lang locale="zh_TW" value="分錄ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.revAmount].displayName">
             <lang locale="zh_CN" value="收款金额" />
@@ -3053,6 +3966,38 @@
             <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.revAmount].extendedProperty.isSumField">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.settlementNumber].displayName">
+            <lang locale="zh_CN" value="结算号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="結算號" />
+            <lang locale="zh_TW" value="結算號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.settlementNumber].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[entries.settlementNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[fdcCustomerStr].displayName">
+            <lang locale="zh_CN" value="租赁客户" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="租賃客戶" />
+            <lang locale="zh_TW" value="租賃客戶" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[fdcCustomerStr].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[fdcCustomerStr].extendedProperty.isCommonQuerySorter">
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
@@ -3083,6 +4028,66 @@
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.amount].displayName">
+            <lang locale="zh_CN" value="发票金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="發票金額" />
+            <lang locale="zh_TW" value="發票金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.amount].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.amount].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.name].displayName">
+            <lang locale="zh_CN" value="发票号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="發票號" />
+            <lang locale="zh_TW" value="發票號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.number].displayName">
+            <lang locale="zh_CN" value="发票号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="發票號" />
+            <lang locale="zh_TW" value="發票號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[invoice.number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[isCollection].displayName">
+            <lang locale="zh_CN" value="是否托收" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否托收" />
+            <lang locale="zh_TW" value="是否托收" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[moneyDefine.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[moneyDefine.name].displayName">
             <lang locale="zh_CN" value="款项名称" />
@@ -3116,18 +4121,66 @@
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.bankAccountNumber].displayName">
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receipt.number].displayName">
+            <lang locale="zh_CN" value="收据编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="收據編碼" />
+            <lang locale="zh_TW" value="收據編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receipt.number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receipt.number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptNumber].displayName">
+            <lang locale="zh_CN" value="收据号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="收據號" />
+            <lang locale="zh_TW" value="收據號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptNumber].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptState].displayName">
+            <lang locale="zh_CN" value="收据状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="收據狀態" />
+            <lang locale="zh_TW" value="收據狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptState].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[receiptState].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.BACNumber].displayName">
             <lang locale="zh_CN" value="收款账号" />
             <lang locale="en_US" value="银行账号" />
             <lang locale="zh_HK" value="收款賬號" />
             <lang locale="zh_TW" value="收款賬號" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.bankAccountNumber].extendedProperty.isCommonQueryFilter">
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.BACNumber].extendedProperty.isCommonQueryFilter">
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.bankAccountNumber].extendedProperty.isCommonQuerySorter">
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[revAccountBank.BACNumber].extendedProperty.isCommonQuerySorter">
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
@@ -3163,6 +4216,12 @@
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[room.name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[room.number].displayName">
             <lang locale="zh_CN" value="房间" />
@@ -3212,6 +4271,12 @@
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenRoomPay.collectionFlag].displayName">
+            <lang locale="zh_CN" value="是否托收" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="是否托收" />
+            <lang locale="zh_TW" value="是否托收" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenRoomPay.endDate].displayName">
             <lang locale="zh_CN" value="结束日期" />
             <lang locale="en_US" value="null" />
@@ -3223,6 +4288,12 @@
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="開始日期" />
             <lang locale="zh_TW" value="開始日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.number].displayName">
             <lang locale="zh_CN" value="租赁合同编号" />
@@ -3246,15 +4317,10 @@
             <lang locale="zh_HK" value="租賃客戶" />
             <lang locale="zh_TW" value="租賃客戶" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.tenCustomerDes].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_CN" value="true" />
-            <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
-        </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.tenCustomerDes].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_CN" value="true" />
-            <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyObj.tenCustomerDes].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tenancyUser.name].displayName">
             <lang locale="zh_CN" value="租赁顾问" />
@@ -3271,6 +4337,18 @@
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[tennacyStr].displayName">
+            <lang locale="zh_CN" value="多合同冗余字段" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="多合同冗餘字段" />
+            <lang locale="zh_TW" value="多合同冗餘字段" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenReceivingBillQuery].units.queryField[transOutTenBill.number].displayName">
+            <lang locale="zh_CN" value="转出合同" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="轉出合同" />
+            <lang locale="zh_TW" value="轉出合同" />
         </rs>
     </resource>
 </joinQuery>

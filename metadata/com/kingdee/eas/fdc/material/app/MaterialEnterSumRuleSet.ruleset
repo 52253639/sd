@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.material.app</package>
+    <name>MaterialEnterSumRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>dfa9d3a6-9254-478a-8b31-eab478aebf21</id>
+            <parentID />
+            <source>entrys.materialName=entrys.material.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>cc8352f8-99a6-450b-a123-767ec9c214af</id>
+            <parentID>dfa9d3a6-9254-478a-8b31-eab478aebf21</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>d3045f65-345c-498a-8962-9bc87418dcca</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d3045f65-345c-498a-8962-9bc87418dcca</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"materialName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>69613d6a-73da-4496-b8a0-b75fd395d798</id>
+            <parentID>dfa9d3a6-9254-478a-8b31-eab478aebf21</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>9e23146b-43e2-44a3-9df9-ff790367863f</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>fe6369ed-df1b-41c6-86a6-3ee26f026daf</id>
+                        <expressionID>53e3e008-9a65-4611-a883-80380c12c3de</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>1f588a3c-f365-438c-b8f7-e19ed49b06c9</id>
+                        <expressionID>60eb11de-b875-4319-b6bd-e1b5b6df6ce8</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>9e23146b-43e2-44a3-9df9-ff790367863f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>53e3e008-9a65-4611-a883-80380c12c3de</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>67b2f2db-cca2-4017-891c-f0e4569c90c1</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>67b2f2db-cca2-4017-891c-f0e4569c90c1</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"material")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>60eb11de-b875-4319-b6bd-e1b5b6df6ce8</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>bac50a8d-69e4-4080-937f-3981d938ce66</id>
+            <name>entrys_materialName_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].actions.action[entrys_materialName_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].actions.action[entrys_materialName_ActionInfo].description</description>
+            <expressionID>dfa9d3a6-9254-478a-8b31-eab478aebf21</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>entrys_materialName_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].rules.conditionRule[entrys_materialName_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].rules.conditionRule[entrys_materialName_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="bac50a8d-69e4-4080-937f-3981d938ce66" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].actions.action[entrys_materialName_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].actions.action[entrys_materialName_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].rules.conditionRule[entrys_materialName_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].rules.conditionRule[entrys_materialName_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].rules.conditionRule[entrys_materialName_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="material" />
+            <lang locale="zh_TW" value="material" />
+            <lang locale="en_US" value="material" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.material.app.MaterialEnterSumRuleSet].rules.conditionRule[entrys_materialName_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.customerservice.app</package>
+    <name>CmsCustomerReprCompRegBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>4b1cb14e-ad6c-40a0-b921-9c046943d618</id>
+            <parentID />
+            <source>UThingsEntry.uthingsUnit=UThingsEntry.uthings.baseUnit.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>75aeac9e-7c7a-41e3-9151-ede9aa2b5ca7</id>
+            <parentID>4b1cb14e-ad6c-40a0-b921-9c046943d618</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>a3ec3e1e-7c18-4ead-ace2-3ccd2c5561dd</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a3ec3e1e-7c18-4ead-ace2-3ccd2c5561dd</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtUThingsEntry.getCell(rowIndex,"uthingsUnit")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5fd4595d-c606-4d4e-badf-d0fba5609d81</id>
+            <parentID>4b1cb14e-ad6c-40a0-b921-9c046943d618</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>7c3e22ea-da7a-4d3e-8b83-868c9fe5b080</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>a5e89373-703e-43a7-9972-917c9cc3ea64</id>
+                        <expressionID>b62003e7-d7d1-4876-98c5-9a1e8c41eff7</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>4b2f35b1-16b6-4d29-9cd6-da2db39538ae</id>
+                        <expressionID>a2b3714f-60ab-4131-985b-11a183383bf9</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7c3e22ea-da7a-4d3e-8b83-868c9fe5b080</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b62003e7-d7d1-4876-98c5-9a1e8c41eff7</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>15932299-571a-49c0-9735-52e9b80afd10</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>15932299-571a-49c0-9735-52e9b80afd10</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtUThingsEntry.getCell(rowIndex,"uthings")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a2b3714f-60ab-4131-985b-11a183383bf9</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>baseUnit.name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>4a64764c-88e7-47b5-9e79-1b72e06f53f3</id>
+            <name>UThingsEntry_uthingsUnit_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].actions.action[UThingsEntry_uthingsUnit_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].actions.action[UThingsEntry_uthingsUnit_ActionInfo].description</description>
+            <expressionID>4b1cb14e-ad6c-40a0-b921-9c046943d618</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>UThingsEntry_uthingsUnit_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].rules.conditionRule[UThingsEntry_uthingsUnit_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].rules.conditionRule[UThingsEntry_uthingsUnit_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="4a64764c-88e7-47b5-9e79-1b72e06f53f3" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].actions.action[UThingsEntry_uthingsUnit_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_baseUnit" />
+            <lang locale="zh_TW" value="攜帶字段屬性_baseUnit" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].actions.action[UThingsEntry_uthingsUnit_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].rules.conditionRule[UThingsEntry_uthingsUnit_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_baseUnit" />
+            <lang locale="zh_TW" value="攜帶字段屬性_baseUnit" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].rules.conditionRule[UThingsEntry_uthingsUnit_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].rules.conditionRule[UThingsEntry_uthingsUnit_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="uthings" />
+            <lang locale="zh_CN" value="uthings" />
+            <lang locale="zh_TW" value="uthings" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsCustomerReprCompRegBillRuleSet].rules.conditionRule[UThingsEntry_uthingsUnit_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

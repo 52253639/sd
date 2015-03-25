@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.customerservice.app</package>
+    <name>CmsTimeConferBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>909850b4-5edd-4577-963d-bf57723b78d4</id>
+            <parentID />
+            <source>linkTel=customer.phone</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>68c6ae91-2fc6-4444-a6fe-3d9e24e2f000</id>
+            <parentID>909850b4-5edd-4577-963d-bf57723b78d4</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>649034e7-20ba-43b7-828d-401de55b76d7</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>649034e7-20ba-43b7-828d-401de55b76d7</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtlinkTel</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>28b4d957-3f27-4dd5-94ea-f475861ee8f4</id>
+            <parentID>909850b4-5edd-4577-963d-bf57723b78d4</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>f8768a69-8cac-4deb-8cd5-42d39cbde017</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>be7b407b-a2ea-49e8-9c2f-520735911536</id>
+                        <expressionID>492aeb14-032a-4ad2-a93b-c64a3c2d7c4a</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>4217ea79-eecb-4572-8d01-0e802dbd9d13</id>
+                        <expressionID>037b1a42-a500-43fc-bf66-7bb310bdd6f7</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f8768a69-8cac-4deb-8cd5-42d39cbde017</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>492aeb14-032a-4ad2-a93b-c64a3c2d7c4a</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>13e9b4cf-ebe7-4e2e-bf03-60999e7fc316</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>13e9b4cf-ebe7-4e2e-bf03-60999e7fc316</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtcustomer</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>037b1a42-a500-43fc-bf66-7bb310bdd6f7</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>phone</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>dde37794-42bd-4360-a7b9-e4be9dee18f0</id>
+            <parentID />
+            <source>measureUnit=serviceItem.measureUnit.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>c39ddeca-709e-422f-b196-b0fbe0784e50</id>
+            <parentID>dde37794-42bd-4360-a7b9-e4be9dee18f0</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>2807380b-48e0-49bf-84e3-76d3f3325fc2</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2807380b-48e0-49bf-84e3-76d3f3325fc2</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtmeasureUnit</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>daad13e0-7833-41e2-8eb9-ebc6d136cc3e</id>
+            <parentID>dde37794-42bd-4360-a7b9-e4be9dee18f0</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>481d7687-92da-48a6-b603-542fd77861ce</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>261b394b-c49f-4845-99f2-1a169352fe0a</id>
+                        <expressionID>c9570835-b482-4f1b-9f30-6fb99ca08b9c</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>4be64147-e86b-4e13-9719-621f8444928e</id>
+                        <expressionID>f2395246-d51f-40c7-86b1-b283fec5c175</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>481d7687-92da-48a6-b603-542fd77861ce</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c9570835-b482-4f1b-9f30-6fb99ca08b9c</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>5df701b5-d9ee-4cd3-ba8e-2df3d526279a</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5df701b5-d9ee-4cd3-ba8e-2df3d526279a</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtserviceItem</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f2395246-d51f-40c7-86b1-b283fec5c175</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>measureUnit.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>4be8ba2f-298d-4c0f-8306-876278b4e95e</id>
+            <parentID />
+            <source>unitPrice=serviceItem.unitPrice</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>09381619-fe04-4099-96d0-74803528e3e9</id>
+            <parentID>4be8ba2f-298d-4c0f-8306-876278b4e95e</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>BigDecimal</valueType>
+            <value />
+            <property>
+                <ownerID>352cf697-f0f5-4b21-9e62-dfc05bbf547f</ownerID>
+                <name>value</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>352cf697-f0f5-4b21-9e62-dfc05bbf547f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtunitPrice</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>40230491-94f5-46c8-b61d-522dafbbf5be</id>
+            <parentID>4be8ba2f-298d-4c0f-8306-876278b4e95e</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>BigDecimal</valueType>
+            <value />
+            <method>
+                <ownerID>ffa8c22e-7b44-4de8-8f54-1481aeb3eec4</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>933380d0-b35f-4340-925d-42dd2469437e</id>
+                        <expressionID>843279f8-3b67-41e8-ad92-108282fef6a4</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>cd1cbb04-a151-4ebd-8c97-854c54afc7c7</id>
+                        <expressionID>b2a973b6-823b-4a29-a3a3-eed458662b46</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ffa8c22e-7b44-4de8-8f54-1481aeb3eec4</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>843279f8-3b67-41e8-ad92-108282fef6a4</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>70519277-2aaf-4c6a-87b8-420fea368968</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>70519277-2aaf-4c6a-87b8-420fea368968</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtserviceItem</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b2a973b6-823b-4a29-a3a3-eed458662b46</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>unitPrice</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>b5e07596-a57c-4e04-b5fd-b01a5edfad6f</id>
+            <parentID />
+            <source>linkTel=customer.phone</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>f35f54e6-418c-4044-bd8e-707c1ce9139c</id>
+            <parentID>b5e07596-a57c-4e04-b5fd-b01a5edfad6f</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>8b6969e1-f7a0-4a53-9b7f-a6dca875d5f2</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8b6969e1-f7a0-4a53-9b7f-a6dca875d5f2</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtlinkTel</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7f1f9e1c-800c-4521-ae4d-b1316ff0b874</id>
+            <parentID>b5e07596-a57c-4e04-b5fd-b01a5edfad6f</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>5c8daf6a-46b7-4223-8dc1-de09c1794d94</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>cbc01454-facd-4769-9e95-2276cd3a484b</id>
+                        <expressionID>ac575a2a-d56d-4b56-b71a-934beeea7807</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>e595aca3-179c-443a-9571-c9ae1550e894</id>
+                        <expressionID>ac594ebb-91f4-49b6-9951-a9393ed973dd</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5c8daf6a-46b7-4223-8dc1-de09c1794d94</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ac575a2a-d56d-4b56-b71a-934beeea7807</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>ecb00545-2da3-4789-bb47-65275bf47ef3</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ecb00545-2da3-4789-bb47-65275bf47ef3</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtcustomer</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ac594ebb-91f4-49b6-9951-a9393ed973dd</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>phone</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>25e1c4e4-b8ee-46fd-a8d8-12938c8f3751</id>
+            <parentID />
+            <source>operativeTimeF.enabled = false</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>267c0a12-2c43-423b-a54d-ce8b087ca838</id>
+            <parentID>25e1c4e4-b8ee-46fd-a8d8-12938c8f3751</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>bd7fc899-a4c4-4bd3-aa4b-cb7a6fe1e217</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>bd7fc899-a4c4-4bd3-aa4b-cb7a6fe1e217</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeF</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a01cf22d-bb82-4158-91a9-fe02893c6b38</id>
+            <parentID>25e1c4e4-b8ee-46fd-a8d8-12938c8f3751</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>false</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>77ef05a2-03e0-442b-a9ae-ed2916969fd6</id>
+            <parentID />
+            <source>operativeTimeT.enabled = false</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>a07b1832-638d-4e79-b436-d163f81efbba</id>
+            <parentID>77ef05a2-03e0-442b-a9ae-ed2916969fd6</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>d38da2d6-6bb7-45f0-b1df-941c4107db69</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d38da2d6-6bb7-45f0-b1df-941c4107db69</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeT</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>aeed02cf-b233-4e28-a3f9-7dc54d4468c6</id>
+            <parentID>77ef05a2-03e0-442b-a9ae-ed2916969fd6</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>false</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>1eb65e09-8d42-4c00-802a-656b207386db</id>
+            <parentID />
+            <source>operativeTimeF.enabled = true</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>ddd45197-f6c7-4f60-8656-4d7cdd6a574d</id>
+            <parentID>1eb65e09-8d42-4c00-802a-656b207386db</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>60eeba37-0dfe-4408-a556-8cea789d4973</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>60eeba37-0dfe-4408-a556-8cea789d4973</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeF</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>6a693151-747c-410e-9680-78efb6c7e892</id>
+            <parentID>1eb65e09-8d42-4c00-802a-656b207386db</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>true</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>7ab51683-0ee0-4096-a53d-bb6c32598f57</id>
+            <parentID />
+            <source>operativeTimeT.enabled = true</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>b6bbe279-8b99-4d8e-bfdc-2021fcc9d576</id>
+            <parentID>7ab51683-0ee0-4096-a53d-bb6c32598f57</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>c4426721-5a40-4419-9308-5a59d0945f5d</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c4426721-5a40-4419-9308-5a59d0945f5d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeT</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e1f7c880-d62d-48f5-aa2e-2fe748daaf18</id>
+            <parentID>7ab51683-0ee0-4096-a53d-bb6c32598f57</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>true</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>72b7b28b-c4b0-41f3-b309-4f7983212f9a</id>
+            <parentID />
+            <source>operativeTimeF.enabled = true</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>c0e52eae-17ba-4336-b835-154ce676dfc6</id>
+            <parentID>72b7b28b-c4b0-41f3-b309-4f7983212f9a</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>cbbd148a-0537-44ca-87df-4bcf1da5860a</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>cbbd148a-0537-44ca-87df-4bcf1da5860a</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeF</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d372bf11-926f-4ada-9325-b56d74b88363</id>
+            <parentID>72b7b28b-c4b0-41f3-b309-4f7983212f9a</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>true</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>a0fc586a-f45e-40a6-a87e-91f65826a5af</id>
+            <parentID />
+            <source>operativeTimeT.enabled = true</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>227a8fce-dd13-4f64-814b-fc54c1401fe3</id>
+            <parentID>a0fc586a-f45e-40a6-a87e-91f65826a5af</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>b427be3a-b4cb-4192-934f-f4c76347f14e</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b427be3a-b4cb-4192-934f-f4c76347f14e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeT</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7938819e-d7b7-4e53-b20a-c87cde51a4a2</id>
+            <parentID>a0fc586a-f45e-40a6-a87e-91f65826a5af</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>true</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>e01ef007-02e7-4adb-8b0d-1b5e159bfc93</id>
+            <parentID />
+            <source>operativeTimeF.enabled = false</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>fb370678-794d-44eb-9637-94b97c07bc32</id>
+            <parentID>e01ef007-02e7-4adb-8b0d-1b5e159bfc93</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>3c1479af-53b3-4eb0-82dc-88ea09358b7d</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3c1479af-53b3-4eb0-82dc-88ea09358b7d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeF</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f66df7d5-c3f6-4305-84ce-025d3487be19</id>
+            <parentID>e01ef007-02e7-4adb-8b0d-1b5e159bfc93</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>false</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>a89252b2-312c-4d02-97f3-3ee062c0cfa7</id>
+            <parentID />
+            <source>operativeTimeT.enabled = false</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>9b7b8d0e-9319-4c3b-9701-af339dc27b2d</id>
+            <parentID>a89252b2-312c-4d02-97f3-3ee062c0cfa7</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>boolean</valueType>
+            <value />
+            <property>
+                <ownerID>43a57ce2-a57a-4658-88aa-4fcb26fb088c</ownerID>
+                <name>enabled</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>43a57ce2-a57a-4658-88aa-4fcb26fb088c</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>contoperativeTimeT</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a174b26a-81c1-49f4-85bc-f49696ed87d3</id>
+            <parentID>a89252b2-312c-4d02-97f3-3ee062c0cfa7</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>false</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>1e5b67c2-808d-4b63-80e2-df9c3dddc31d</id>
+            <parentID />
+            <source>[isTimed] = true</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>9f15c984-b824-47be-b3a5-30948b819ea0</id>
+            <parentID>1e5b67c2-808d-4b63-80e2-df9c3dddc31d</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Boolean</valueType>
+            <value />
+            <property>
+                <ownerID>81da01d5-f557-482d-8a69-c5b4da80830b</ownerID>
+                <name>selected</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>81da01d5-f557-482d-8a69-c5b4da80830b</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>chkisTimed</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>71521791-c837-4ef4-afcf-2836b4166e46</id>
+            <parentID>1e5b67c2-808d-4b63-80e2-df9c3dddc31d</parentID>
+            <source />
+            <type>CONST</type>
+            <valueType>Boolean</valueType>
+            <value>true</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>91d33a08-d596-407f-baba-e4789e55847b</id>
+            <parentID />
+            <source>[isTimed]</source>
+            <type>PROPERTYACCESS</type>
+            <valueType>Boolean</valueType>
+            <value />
+            <property>
+                <ownerID>d8220d4b-67d2-4044-830d-8baca13decb6</ownerID>
+                <name>selected</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d8220d4b-67d2-4044-830d-8baca13decb6</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>chkisTimed</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>64cd5919-0782-4ecd-abfd-172793a1f1fe</id>
+            <parentID />
+            <source>[isTimed]</source>
+            <type>PROPERTYACCESS</type>
+            <valueType>Boolean</valueType>
+            <value />
+            <property>
+                <ownerID>e97e43d1-abfe-43bc-8c66-60811230ef83</ownerID>
+                <name>selected</name>
+                <type>boolean</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e97e43d1-abfe-43bc-8c66-60811230ef83</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>chkisTimed</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>cb306ae9-372e-4be8-b04a-75d12244b472</id>
+            <name>CmsTimeConferBill_linkTel_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_linkTel_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_linkTel_ActionInfo].description</description>
+            <expressionID>909850b4-5edd-4577-963d-bf57723b78d4</expressionID>
+        </action>
+        <action>
+            <id>0e124670-6af7-494d-b4e5-b80302217170</id>
+            <name>CmsTimeConferBill_measureUnit_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_measureUnit_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_measureUnit_ActionInfo].description</description>
+            <expressionID>dde37794-42bd-4360-a7b9-e4be9dee18f0</expressionID>
+        </action>
+        <action>
+            <id>f001e65c-fedb-4c71-9985-6abb5db3d8bf</id>
+            <name>CmsTimeConferBill_unitPrice_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_unitPrice_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_unitPrice_ActionInfo].description</description>
+            <expressionID>4be8ba2f-298d-4c0f-8306-876278b4e95e</expressionID>
+        </action>
+        <action>
+            <id>e2f44f19-4fdc-40de-b84c-f3c1e30dcf45</id>
+            <name>CmsTimeConferBill_linkTel_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_linkTel_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_linkTel_ActionInfo].description</description>
+            <expressionID>b5e07596-a57c-4e04-b5fd-b01a5edfad6f</expressionID>
+        </action>
+        <action>
+            <id>05d5e782-74cb-490a-a7cb-163a593b839d</id>
+            <name>AVQSY7$9</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSY7$9].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSY7$9].description</description>
+            <expressionID>25e1c4e4-b8ee-46fd-a8d8-12938c8f3751</expressionID>
+        </action>
+        <action>
+            <id>d0380d5b-0bcf-4faf-b218-6c2f51cba9ef</id>
+            <name>AVQUNYML</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUNYML].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUNYML].description</description>
+            <expressionID>77ef05a2-03e0-442b-a9ae-ed2916969fd6</expressionID>
+        </action>
+        <action>
+            <id>cd493dd1-b8ea-48b3-9022-b4e345f76270</id>
+            <name>AVQPOCH6</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQPOCH6].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQPOCH6].description</description>
+            <expressionID>1eb65e09-8d42-4c00-802a-656b207386db</expressionID>
+        </action>
+        <action>
+            <id>a979e1ba-c8b1-4d94-9ddd-95520f5266da</id>
+            <name>AVQPOCH6</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQPOCH6].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQPOCH6].description</description>
+            <expressionID>7ab51683-0ee0-4096-a53d-bb6c32598f57</expressionID>
+        </action>
+        <action>
+            <id>56191c47-7127-4d50-8ce9-7251354241a0</id>
+            <name>AVQSXEYS</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSXEYS].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSXEYS].description</description>
+            <expressionID>72b7b28b-c4b0-41f3-b309-4f7983212f9a</expressionID>
+        </action>
+        <action>
+            <id>0950fd21-ff3a-4817-9d9c-c39fa1d04d2e</id>
+            <name>AVQUP7F0</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUP7F0].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUP7F0].description</description>
+            <expressionID>a0fc586a-f45e-40a6-a87e-91f65826a5af</expressionID>
+        </action>
+        <action>
+            <id>defd2924-27e0-447c-b5f3-f6ce263c963e</id>
+            <name>AVRIIMX5</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVRIIMX5].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVRIIMX5].description</description>
+            <expressionID>e01ef007-02e7-4adb-8b0d-1b5e159bfc93</expressionID>
+        </action>
+        <action>
+            <id>339b4771-4f4e-4c2b-b31d-2efd12156d21</id>
+            <name>AVRIIMX5</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVRIIMX5].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVRIIMX5].description</description>
+            <expressionID>a89252b2-312c-4d02-97f3-3ee062c0cfa7</expressionID>
+        </action>
+    </actions>
+    <conditions>
+        <baseCondition>
+            <id>0118b557-1fef-4793-b695-3ffceb64c352</id>
+            <name />
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseConditionalias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseConditiondescription</description>
+            <expressionID>1e5b67c2-808d-4b63-80e2-df9c3dddc31d</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>a197d231-b89b-4b88-8a47-517539e5996f</id>
+            <name>AVQPOCH6</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseCondition[AVQPOCH6].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseCondition[AVQPOCH6].description</description>
+            <expressionID>91d33a08-d596-407f-baba-e4789e55847b</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>5d6dcf05-3306-432b-80d5-d0e4145af1d2</id>
+            <name />
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseConditionalias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseConditiondescription</description>
+            <expressionID>64cd5919-0782-4ecd-abfd-172793a1f1fe</expressionID>
+        </baseCondition>
+    </conditions>
+    <rules>
+        <conditionRule>
+            <name>CmsTimeConferBillAVQVD$XB</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVQVD$XB].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVQVD$XB].description</description>
+            <ruleType>linkproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <condition>
+                <key name="id" value="a197d231-b89b-4b88-8a47-517539e5996f" />
+            </condition>
+            <actions>
+                <action>
+                    <key name="id" value="cd493dd1-b8ea-48b3-9022-b4e345f76270" />
+                </action>
+                <action>
+                    <key name="id" value="a979e1ba-c8b1-4d94-9ddd-95520f5266da" />
+                </action>
+            </actions>
+            <exceptionActions>
+                <action>
+                    <key name="id" value="05d5e782-74cb-490a-a7cb-163a593b839d" />
+                </action>
+                <action>
+                    <key name="id" value="d0380d5b-0bcf-4faf-b218-6c2f51cba9ef" />
+                </action>
+            </exceptionActions>
+        </conditionRule>
+        <conditionRule>
+            <name>CmsTimeConferBillAVRIGTQ1</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVRIGTQ1].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVRIGTQ1].description</description>
+            <ruleType>linkproperty</ruleType>
+            <eventObjectName />
+            <eventType>INITIAL</eventType>
+            <eventName>INITIAL</eventName>
+            <condition>
+                <key name="id" value="5d6dcf05-3306-432b-80d5-d0e4145af1d2" />
+            </condition>
+            <actions>
+                <action>
+                    <key name="id" value="56191c47-7127-4d50-8ce9-7251354241a0" />
+                </action>
+                <action>
+                    <key name="id" value="0950fd21-ff3a-4817-9d9c-c39fa1d04d2e" />
+                </action>
+            </actions>
+            <exceptionActions>
+                <action>
+                    <key name="id" value="defd2924-27e0-447c-b5f3-f6ce263c963e" />
+                </action>
+                <action>
+                    <key name="id" value="339b4771-4f4e-4c2b-b31d-2efd12156d21" />
+                </action>
+            </exceptionActions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQPOCH6].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQPOCH6].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSXEYS].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSXEYS].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSY7$9].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQSY7$9].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUNYML].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUNYML].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUP7F0].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVQUP7F0].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVRIIMX5].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[AVRIIMX5].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_linkTel_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_phone" />
+            <lang locale="zh_TW" value="攜帶字段屬性_phone" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_linkTel_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_measureUnit_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_measureUnit" />
+            <lang locale="zh_TW" value="攜帶字段屬性_measureUnit" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_measureUnit_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_unitPrice_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_unitPrice" />
+            <lang locale="zh_TW" value="攜帶字段屬性_unitPrice" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].actions.action[CmsTimeConferBill_unitPrice_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseCondition[AVQPOCH6].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseCondition[AVQPOCH6].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseConditionalias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].conditions.baseConditiondescription">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVQVD$XB].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="isTimed" />
+            <lang locale="zh_TW" value="isTimed" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVQVD$XB].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVQVD$XB].extendedProperty.columnName">
+            <lang locale="en_US" value="isTimed" />
+            <lang locale="zh_CN" value="isTimed" />
+            <lang locale="zh_TW" value="isTimed" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVRIGTQ1].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="setTime_onLoad" />
+            <lang locale="zh_TW" value="setTime_onLoad" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVRIGTQ1].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.customerservice.app.CmsTimeConferBillRuleSet].rules.conditionRule[CmsTimeConferBillAVRIGTQ1].extendedProperty.columnName">
+            <lang locale="en_US" value="isTimed" />
+            <lang locale="zh_CN" value="isTimed" />
+            <lang locale="zh_TW" value="isTimed" />
+        </rs>
+    </resource>
+</ruleSet>
+

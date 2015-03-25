@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>SafeManageQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>SafeManage</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].subObjects.subEntity[SafeManage].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManage" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>curProject</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].subObjects.subEntity[curProject].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>partB</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].subObjects.subEntity[partB].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.master.cssp.app" />
+                <key name="name" value="Supplier" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <propertyUnit>
+            <name>2c9c84bf-41b6-459f-9b72-e3ea0c69c8e3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[2c9c84bf-41b6-459f-9b72-e3ea0c69c8e3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2d72dcaa-c5de-489e-9f4f-ba88f03db8d3</key>
+                    <parentUnit>
+                        <key name="name" value="2c9c84bf-41b6-459f-9b72-e3ea0c69c8e3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="curProject" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>23a68914-8d97-4f26-9938-d6dc3b3186ab</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[23a68914-8d97-4f26-9938-d6dc3b3186ab].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>29740bf0-7db6-4832-8d53-d8bffcea4318</key>
+                    <parentUnit>
+                        <key name="name" value="23a68914-8d97-4f26-9938-d6dc3b3186ab" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="curProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1327f439-c029-4237-9873-4daf284063f7</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>value</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[value].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1e73512b-48a7-43d7-9a5f-e55c0b059854</key>
+                    <parentUnit>
+                        <key name="name" value="value" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="value" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>65c23334-3124-4d75-9cff-29d80bf07d1d</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3c59f1d4-56ac-43fb-902a-41e5e407b553</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>description</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[description].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c174cd3d-735d-48c5-b3eb-bc6ebf6f1684</key>
+                    <parentUnit>
+                        <key name="name" value="description" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="description" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>partB.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[partB.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ece1b4ff-6e0d-4fe1-b5c7-bab769ce8d5c</key>
+                    <parentUnit>
+                        <key name="name" value="partB.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="partB" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>curProject.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[curProject.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bc165924-7f8b-453e-a046-571863f9b385</key>
+                    <parentUnit>
+                        <key name="name" value="curProject.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="curProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>curProject.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[curProject.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>04340b2e-03b3-46d2-80fc-a5202040c2ba</key>
+                    <parentUnit>
+                        <key name="name" value="curProject.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="curProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ab5f5e54-0582-40ca-adeb-8edc44990383</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>907ac249-e570-4cf7-a9b8-6b940b1fbc50</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[907ac249-e570-4cf7-a9b8-6b940b1fbc50].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>017d67ff-ec77-44b7-97b0-bbccea920959</key>
+                    <parentUnit>
+                        <key name="name" value="907ac249-e570-4cf7-a9b8-6b940b1fbc50" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SafeManage" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="partB" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>15d50cae-f093-456c-b165-47d288d7b605</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[15d50cae-f093-456c-b165-47d288d7b605].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>980c2867-2ee8-4d0c-874e-9baeb3c741e5</key>
+                    <parentUnit>
+                        <key name="name" value="15d50cae-f093-456c-b165-47d288d7b605" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="partB" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>partB.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[partB.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1fb11cdd-3396-40dd-9643-bbe754e854c7</key>
+                    <parentUnit>
+                        <key name="name" value="partB.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="partB" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="SafeManageQuery" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>number</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </querySorterItem>
+    </defaultSorters>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>cfa6b124-1c8d-4fe1-a637-2a5909092e5f</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="SafeManage" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="curProject" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>c99225b9-c7b0-444f-9c05-ec400503b8ed</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="2c9c84bf-41b6-459f-9b72-e3ea0c69c8e3" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="23a68914-8d97-4f26-9938-d6dc3b3186ab" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="cfa6b124-1c8d-4fe1-a637-2a5909092e5f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </join>
+        <join>
+            <name>1323e963-aa84-4ab5-9c4e-22e2d3cbb1cd</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="SafeManage" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="partB" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>4402a428-5eb0-4cf3-99a1-631f15addf82</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="907ac249-e570-4cf7-a9b8-6b940b1fbc50" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="15d50cae-f093-456c-b165-47d288d7b605" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="1323e963-aa84-4ab5-9c4e-22e2d3cbb1cd" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="SafeManageQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].subObjects.subEntity[SafeManage].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].subObjects.subEntity[curProject].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].subObjects.subEntity[partB].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[15d50cae-f093-456c-b165-47d288d7b605].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[23a68914-8d97-4f26-9938-d6dc3b3186ab].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[2c9c84bf-41b6-459f-9b72-e3ea0c69c8e3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.propertyUnit[907ac249-e570-4cf7-a9b8-6b940b1fbc50].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[curProject.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[curProject.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[curProject.name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[description].displayName">
+            <lang locale="zh_CN" value="参考信息" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="參考信息" />
+            <lang locale="zh_TW" value="參考信息" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編號" />
+            <lang locale="zh_TW" value="單據編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[partB.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[partB.name].displayName">
+            <lang locale="zh_CN" value="施工单位" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="施工單位" />
+            <lang locale="zh_TW" value="施工單位" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.SafeManageQuery].units.queryField[value].displayName">
+            <lang locale="zh_CN" value="总分值" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="總分值" />
+            <lang locale="zh_TW" value="總分值" />
+        </rs>
+    </resource>
+</joinQuery>
+

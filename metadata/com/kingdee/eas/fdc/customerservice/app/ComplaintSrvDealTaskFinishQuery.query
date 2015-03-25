@@ -1,0 +1,1131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.customerservice.app</package>
+    <name>ComplaintSrvDealTaskFinishQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>ComplaintSrvDeal</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[ComplaintSrvDeal].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDeal" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>finisher</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[finisher].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>workInTime</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[workInTime].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="WorkInTime" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>custEvaluation</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[custEvaluation].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="CmsCustomerEvaluation" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>dealDept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[dealDept].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="AdminOrgUnit" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>dealPerson</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[dealPerson].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>finishDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[finishDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>96ec43a0-681b-44a1-9e16-753dc58b4ade</key>
+                    <parentUnit>
+                        <key name="name" value="finishDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="finishDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>finishRemark</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[finishRemark].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ab1babcc-397a-4b18-acdd-117e30b0d449</key>
+                    <parentUnit>
+                        <key name="name" value="finishRemark" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="finishRemark" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>c8724b05-9402-4160-a768-247d7b808abf</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[c8724b05-9402-4160-a768-247d7b808abf].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>e71ccaeb-9a10-4cf6-b625-aa3819db11be</key>
+                    <parentUnit>
+                        <key name="name" value="c8724b05-9402-4160-a768-247d7b808abf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="finisher" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9e4dad57-0980-4fcf-90bc-66c6b3719275</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[9e4dad57-0980-4fcf-90bc-66c6b3719275].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>31197d9f-a559-4472-9822-cb5396eb89b0</key>
+                    <parentUnit>
+                        <key name="name" value="9e4dad57-0980-4fcf-90bc-66c6b3719275" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="finisher" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>191fbaeb-a267-4051-aeed-d2e512017eef</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[191fbaeb-a267-4051-aeed-d2e512017eef].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>00ed9f5b-0ba2-440e-852b-6be6ce7abfff</key>
+                    <parentUnit>
+                        <key name="name" value="191fbaeb-a267-4051-aeed-d2e512017eef" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="workInTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>fd0e1b28-2587-4f52-9ac8-96feb59e3b36</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[fd0e1b28-2587-4f52-9ac8-96feb59e3b36].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>8f86e435-310c-478c-8e35-619e24230116</key>
+                    <parentUnit>
+                        <key name="name" value="fd0e1b28-2587-4f52-9ac8-96feb59e3b36" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="workInTime" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>0b234ee5-47ee-4edc-ad3b-6bdd537f061d</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[0b234ee5-47ee-4edc-ad3b-6bdd537f061d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>25fa9fdc-bb37-4481-a061-4c2ea27b7f67</key>
+                    <parentUnit>
+                        <key name="name" value="0b234ee5-47ee-4edc-ad3b-6bdd537f061d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="custEvaluation" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1fc09f35-1695-4cec-893d-615a40fbbf4a</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[1fc09f35-1695-4cec-893d-615a40fbbf4a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>5ab3f0d1-a277-49a9-ac98-2808c165583e</key>
+                    <parentUnit>
+                        <key name="name" value="1fc09f35-1695-4cec-893d-615a40fbbf4a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="custEvaluation" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f4c860ee-eb02-4d97-b3a2-a0355f041bbf</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>workInTime.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[workInTime.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f0235435-e938-4b36-883f-85d313d27ea3</key>
+                    <parentUnit>
+                        <key name="name" value="workInTime.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="workInTime" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>custEvaluation.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[custEvaluation.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6462d889-ffc2-41f2-b1bc-fe9d465ddeb2</key>
+                    <parentUnit>
+                        <key name="name" value="custEvaluation.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="custEvaluation" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>e4f38658-39cc-4080-baf0-d6d7de4fc093</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[e4f38658-39cc-4080-baf0-d6d7de4fc093].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>85899c6d-04ee-4ebd-8c69-33c28b8c5403</key>
+                    <parentUnit>
+                        <key name="name" value="e4f38658-39cc-4080-baf0-d6d7de4fc093" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4bb846c3-63c1-478f-b508-fa29f7933cf9</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[4bb846c3-63c1-478f-b508-fa29f7933cf9].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>20c2fd6d-3ecd-46a7-a57c-92a9261e52b2</key>
+                    <parentUnit>
+                        <key name="name" value="4bb846c3-63c1-478f-b508-fa29f7933cf9" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>dealExp</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[dealExp].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c26ea0f8-59d9-455c-ac96-3b2d9bd13103</key>
+                    <parentUnit>
+                        <key name="name" value="dealExp" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="dealExp" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>075fb063-412d-4fda-a21c-8ee3d53a4da0</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[075fb063-412d-4fda-a21c-8ee3d53a4da0].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>049b17c3-5f10-4ea2-954a-9daccaabd084</key>
+                    <parentUnit>
+                        <key name="name" value="075fb063-412d-4fda-a21c-8ee3d53a4da0" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="dealDept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a5a09c21-67ae-4c7e-8387-4610f8985fa7</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[a5a09c21-67ae-4c7e-8387-4610f8985fa7].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>bd4ddefc-d196-4c4f-8f61-2056642d1753</key>
+                    <parentUnit>
+                        <key name="name" value="a5a09c21-67ae-4c7e-8387-4610f8985fa7" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="dealDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>dfb90a30-c6ea-4b14-adca-0e6450e57f39</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[dfb90a30-c6ea-4b14-adca-0e6450e57f39].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>2048b212-865a-4fe7-a4aa-7a4303e9d5b8</key>
+                    <parentUnit>
+                        <key name="name" value="dfb90a30-c6ea-4b14-adca-0e6450e57f39" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="dealPerson" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a7d7d4f5-952d-4b77-968a-8722aaf165e3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[a7d7d4f5-952d-4b77-968a-8722aaf165e3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>35141251-3e20-4036-82d9-47cf5f0fc1ef</key>
+                    <parentUnit>
+                        <key name="name" value="a7d7d4f5-952d-4b77-968a-8722aaf165e3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="dealPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>dealDept.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[dealDept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>02d91cab-bc6e-459f-91a9-ba73c7b7401a</key>
+                    <parentUnit>
+                        <key name="name" value="dealDept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="dealDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>dealPerson.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[dealPerson.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>dd6cc254-40eb-4e67-9ce1-cba16909b329</key>
+                    <parentUnit>
+                        <key name="name" value="dealPerson.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="dealPerson" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>beginDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[beginDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5eb89dc8-c172-4415-8277-5d8306cfa552</key>
+                    <parentUnit>
+                        <key name="name" value="beginDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ComplaintSrvDeal" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="beginDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+            <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+        </query>
+    </defaultFilter>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>baf9ef4d-ca7d-4d00-bce8-b64255252178</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ComplaintSrvDeal" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="finisher" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d0b4c777-bb90-4850-b287-c0d601985377</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="c8724b05-9402-4160-a768-247d7b808abf" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="9e4dad57-0980-4fcf-90bc-66c6b3719275" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="baf9ef4d-ca7d-4d00-bce8-b64255252178" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </join>
+        <join>
+            <name>cedf8c72-0f6d-41b0-bd37-15243c70d704</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ComplaintSrvDeal" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="workInTime" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>723e1eeb-2591-4627-a80a-eceac10a3ccf</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="191fbaeb-a267-4051-aeed-d2e512017eef" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="fd0e1b28-2587-4f52-9ac8-96feb59e3b36" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="cedf8c72-0f6d-41b0-bd37-15243c70d704" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </join>
+        <join>
+            <name>087bb057-8c73-4bb3-832e-661ffadf5bae</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ComplaintSrvDeal" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="custEvaluation" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>eda2d973-891d-42cc-ab54-49b9d150fbbd</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="0b234ee5-47ee-4edc-ad3b-6bdd537f061d" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="1fc09f35-1695-4cec-893d-615a40fbbf4a" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="087bb057-8c73-4bb3-832e-661ffadf5bae" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </join>
+        <join>
+            <name>2dfc5b0a-fa18-4712-bfe1-10121cd81c2a</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ComplaintSrvDeal" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>b71d857b-7959-41c7-9f05-bef33bea5cb1</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="e4f38658-39cc-4080-baf0-d6d7de4fc093" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4bb846c3-63c1-478f-b508-fa29f7933cf9" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2dfc5b0a-fa18-4712-bfe1-10121cd81c2a" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </join>
+        <join>
+            <name>4403a011-e885-4d0b-8e86-a20f614593f6</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ComplaintSrvDeal" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="dealDept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>3d200c89-38c2-41dd-812f-1fd61acfaaba</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="075fb063-412d-4fda-a21c-8ee3d53a4da0" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="a5a09c21-67ae-4c7e-8387-4610f8985fa7" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="4403a011-e885-4d0b-8e86-a20f614593f6" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </join>
+        <join>
+            <name>56790e45-f425-4d46-a57f-b22c6aae19f7</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ComplaintSrvDeal" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="dealPerson" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>ec4d6402-6de4-4a59-bcfa-da6d96d633f5</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="dfb90a30-c6ea-4b14-adca-0e6450e57f39" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="a7d7d4f5-952d-4b77-968a-8722aaf165e3" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="56790e45-f425-4d46-a57f-b22c6aae19f7" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.customerservice.app" />
+                <key name="name" value="ComplaintSrvDealTaskFinishQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].alias">
+            <lang locale="zh_CN" value="投诉任务关闭分录套打" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="投訴任務關閉分錄套打" />
+            <lang locale="zh_TW" value="投訴任務關閉分錄套打" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].description">
+            <lang locale="zh_CN" value="投诉任务关闭分录套打" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="投訴任務關閉分錄套打" />
+            <lang locale="zh_TW" value="投訴任務關閉分錄套打" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[ComplaintSrvDeal].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[custEvaluation].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[dealDept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[dealPerson].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[finisher].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].subObjects.subEntity[workInTime].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[075fb063-412d-4fda-a21c-8ee3d53a4da0].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[0b234ee5-47ee-4edc-ad3b-6bdd537f061d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[191fbaeb-a267-4051-aeed-d2e512017eef].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[1fc09f35-1695-4cec-893d-615a40fbbf4a].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[4bb846c3-63c1-478f-b508-fa29f7933cf9].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[9e4dad57-0980-4fcf-90bc-66c6b3719275].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[a5a09c21-67ae-4c7e-8387-4610f8985fa7].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[a7d7d4f5-952d-4b77-968a-8722aaf165e3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[c8724b05-9402-4160-a768-247d7b808abf].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[dfb90a30-c6ea-4b14-adca-0e6450e57f39].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[e4f38658-39cc-4080-baf0-d6d7de4fc093].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.propertyUnit[fd0e1b28-2587-4f52-9ac8-96feb59e3b36].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[beginDate].displayName">
+            <lang locale="zh_CN" value="开工时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="開工時間" />
+            <lang locale="zh_TW" value="開工時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[custEvaluation.name].displayName">
+            <lang locale="zh_CN" value="客户评价" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="客戶評價" />
+            <lang locale="zh_TW" value="客戶評價" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[dealDept.name].displayName">
+            <lang locale="zh_CN" value="处理部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理部門" />
+            <lang locale="zh_TW" value="處理部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[dealExp].displayName">
+            <lang locale="zh_CN" value="处理措施" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理措施" />
+            <lang locale="zh_TW" value="處理措施" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[dealPerson.name].displayName">
+            <lang locale="zh_CN" value="处理人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="處理人" />
+            <lang locale="zh_TW" value="處理人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[finishDate].displayName">
+            <lang locale="zh_CN" value="完工时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="完工時間" />
+            <lang locale="zh_TW" value="完工時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[finishRemark].displayName">
+            <lang locale="zh_CN" value="完工备注" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="完工備註" />
+            <lang locale="zh_TW" value="完工備註" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.customerservice.app.ComplaintSrvDealTaskFinishQuery].units.queryField[workInTime.name].displayName">
+            <lang locale="zh_CN" value="及时性" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="及時性" />
+            <lang locale="zh_TW" value="及時性" />
+        </rs>
+    </resource>
+</joinQuery>
+

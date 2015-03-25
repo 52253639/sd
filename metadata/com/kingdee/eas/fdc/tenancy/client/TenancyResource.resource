@@ -87,6 +87,16 @@
             <value>i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].resourceItems.resourceItem[CooperateModeQueryF7WindowTitle].value</value>
             <userDefined>false</userDefined>
         </resourceItem>
+        <resourceItem>
+            <name>Liquidated</name>
+            <value>i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].resourceItems.resourceItem[Liquidated].value</value>
+            <userDefined>false</userDefined>
+        </resourceItem>
+        <resourceItem>
+            <name>LiquidatedManage</name>
+            <value>i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].resourceItems.resourceItem[LiquidatedManage].value</value>
+            <userDefined>false</userDefined>
+        </resourceItem>
     </resourceItems>
     <resource>
         <rs key="i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].alias">
@@ -142,6 +152,18 @@
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="保留租賃房" />
             <lang locale="zh_TW" value="保留租賃房" />
+        </rs>
+        <rs key="i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].resourceItems.resourceItem[LiquidatedManage].value">
+            <lang locale="zh_CN" value="违约金管理" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="違約金管理" />
+            <lang locale="zh_TW" value="違約金管理" />
+        </rs>
+        <rs key="i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].resourceItems.resourceItem[Liquidated].value">
+            <lang locale="zh_CN" value="违约金计算方案设置" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="違約金計算方案設置" />
+            <lang locale="zh_TW" value="違約金計算方案設置" />
         </rs>
         <rs key="i18nResource[com.kingdee.eas.fdc.tenancy.client.TenancyResource].resourceItems.resourceItem[NatureEnterpriseQueryF7WindowTitle].value">
             <lang locale="zh_CN" value="企业性质" />

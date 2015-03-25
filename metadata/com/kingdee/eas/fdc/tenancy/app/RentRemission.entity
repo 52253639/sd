@@ -36,6 +36,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getValue</name>
@@ -70,6 +71,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getValue</name>
@@ -95,6 +97,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getCollection</name>
@@ -109,6 +112,7 @@
             <transactionAttribute>Supports</transactionAttribute>
             <userDefined>false</userDefined>
             <userDefinedLogic />
+            <configured>false</configured>
         </method>
         <method>
             <name>getCollection</name>
@@ -134,6 +138,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getCollection</name>
@@ -159,6 +164,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
     </methods>
     <isAbstract>false</isAbstract>
@@ -289,6 +295,40 @@
             <relationship>
                 <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
                 <key name="name" value="R_RentRemission_SellProject_sellProject" />
+            </relationship>
+        </linkProperty>
+        <ownProperty>
+            <name>remark</name>
+            <alias>entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[remark].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[remark].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>1000</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[remark].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FRemark" />
+            </mappingField>
+        </ownProperty>
+        <linkProperty>
+            <name>batchBill</name>
+            <alias>entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.linkProperty[batchBill].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.linkProperty[batchBill].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FBatchBillID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="R_BatchRentRemission_RentRemission_rentRemissionEntry" />
             </relationship>
         </linkProperty>
     </properties>
@@ -872,6 +912,16 @@
             <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
         </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].extendedProperty.CRNumberEdit">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].extendedProperty.CRNumberEdit ">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].extendedProperty.OrgType">
             <lang locale="zh_CN" value="Sale" />
             <lang locale="zh_TW" value="Sale" />
@@ -888,9 +938,9 @@
             <lang locale="en_US" value="-" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].extendedProperty.editUI">
-            <lang locale="zh_CN" value="-" />
-            <lang locale="zh_TW" value="-" />
-            <lang locale="en_US" value="-" />
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.tenancy.client.RentRemissionEditUI" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.tenancy.client.RentRemissionEditUI" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.tenancy.client.RentRemissionEditUI" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].extendedProperty.enableFieldPermission">
             <lang locale="zh_CN" value="false" />
@@ -903,9 +953,9 @@
             <lang locale="en_US" value="false" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].extendedProperty.listUI">
-            <lang locale="zh_CN" value="-" />
-            <lang locale="zh_TW" value="-" />
-            <lang locale="en_US" value="-" />
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.tenancy.client.RentRemissionListUI" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].logicalKey[id].alias">
             <lang locale="zh_CN" value="null" />
@@ -1003,6 +1053,18 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.linkProperty[batchBill].alias">
+            <lang locale="zh_CN" value="批量单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="批量單ID" />
+            <lang locale="zh_TW" value="批量單ID" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.linkProperty[batchBill].description">
+            <lang locale="zh_CN" value="批量单ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="批量單ID" />
+            <lang locale="zh_TW" value="批量單ID" />
+        </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.linkProperty[entry].alias">
             <lang locale="zh_CN" value="租金减免分录" />
             <lang locale="en_US" value="null" />
@@ -1092,6 +1154,24 @@
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="合同租期" />
             <lang locale="zh_TW" value="合同租期" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[remark].alias">
+            <lang locale="zh_CN" value="备注" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="備註" />
+            <lang locale="zh_TW" value="備註" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[remark].defaultValue">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[remark].description">
+            <lang locale="zh_CN" value="备注" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="備註" />
+            <lang locale="zh_TW" value="備註" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.RentRemission].properties.ownProperty[roomName].alias">
             <lang locale="zh_CN" value="房间" />

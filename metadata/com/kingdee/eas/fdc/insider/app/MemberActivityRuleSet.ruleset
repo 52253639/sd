@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.insider.app</package>
+    <name>MemberActivityRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>d7966203-3966-4aee-bb00-287d5e96e777</id>
+            <parentID />
+            <source>entrys.insiderName=entrys.insider.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>f16ee283-f167-4251-a61b-eb1e04e668e3</id>
+            <parentID>d7966203-3966-4aee-bb00-287d5e96e777</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>7dd28fb6-9c0f-43f0-85d7-0565399065cb</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7dd28fb6-9c0f-43f0-85d7-0565399065cb</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"insiderName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5db8f157-3152-491d-9275-a59a457330b8</id>
+            <parentID>d7966203-3966-4aee-bb00-287d5e96e777</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>95e60fe0-bf72-4471-8a6f-6e5a1f86a73a</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>66f0e1fb-3284-4f03-8ef7-a12e716b0ace</id>
+                        <expressionID>fa36cc90-80ac-4d94-a895-b43d40b5f094</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>37e97e05-3eb1-4f5c-a414-760681a32c58</id>
+                        <expressionID>b473b151-a592-4565-854a-e960ccacd472</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>95e60fe0-bf72-4471-8a6f-6e5a1f86a73a</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>fa36cc90-80ac-4d94-a895-b43d40b5f094</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>f643aed7-d079-4d0d-9a64-1da3e2f5a6ab</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f643aed7-d079-4d0d-9a64-1da3e2f5a6ab</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"insider")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b473b151-a592-4565-854a-e960ccacd472</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>4db41ed7-17ed-40d5-b6a3-345c8bb62128</id>
+            <name>entrys_insiderName_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].actions.action[entrys_insiderName_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].actions.action[entrys_insiderName_ActionInfo].description</description>
+            <expressionID>d7966203-3966-4aee-bb00-287d5e96e777</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>entrys_insiderName_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].rules.conditionRule[entrys_insiderName_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].rules.conditionRule[entrys_insiderName_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="4db41ed7-17ed-40d5-b6a3-345c8bb62128" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].actions.action[entrys_insiderName_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].actions.action[entrys_insiderName_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].rules.conditionRule[entrys_insiderName_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_name" />
+            <lang locale="zh_TW" value="攜帶字段屬性_name" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].rules.conditionRule[entrys_insiderName_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].rules.conditionRule[entrys_insiderName_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="insider" />
+            <lang locale="zh_CN" value="insider" />
+            <lang locale="zh_TW" value="insider" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.MemberActivityRuleSet].rules.conditionRule[entrys_insiderName_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

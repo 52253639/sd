@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.myfdc.app</package>
+    <name>OrderRoomEntry</name>
+    <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].description</description>
+    <userDefined>false</userDefined>
+    <bosType>5D9DBA39</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.myfdc.OrderRoomEntry</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.framework.app" />
+        <key name="name" value="CoreBillEntryBase" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+        <key name="name" value="T_MYF_OrderRoomEntry" />
+    </table>
+    <properties>
+        <linkProperty>
+            <name>room</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[room].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[room].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FRoomID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="R_OrderRoomEntry_Room_room" />
+            </relationship>
+        </linkProperty>
+        <ownProperty>
+            <name>inDate</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inDate].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inDate].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>TimeStamp</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inDate].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FInDate" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>orderDay</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[orderDay].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[orderDay].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>BigDecimal</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>21</length>
+            <precision>7</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[orderDay].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FOrderDay" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>inPerson</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inPerson].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inPerson].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>100</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inPerson].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FInPerson" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>phone</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[phone].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[phone].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>100</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[phone].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FPhone" />
+            </mappingField>
+        </ownProperty>
+        <ownProperty>
+            <name>roomPrice</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[roomPrice].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[roomPrice].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>BigDecimal</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>28</length>
+            <precision>7</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[roomPrice].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FRoomPrice" />
+            </mappingField>
+        </ownProperty>
+        <linkProperty>
+            <name>parent</name>
+            <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[parent].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[parent].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FParentID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="R_OrderRoomBill_OrderRoomEntry_entry" />
+            </relationship>
+        </linkProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>false</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="订房单分录" />
+            <lang locale="zh_TW" value="訂房單分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="订房单分录" />
+            <lang locale="zh_TW" value="訂房單分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].logicalKey[id].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].logicalKey[id].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[parent].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[parent].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[room].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="房间" />
+            <lang locale="zh_TW" value="房間" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.linkProperty[room].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inDate].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="入住时间" />
+            <lang locale="zh_TW" value="入住時間" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inDate].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inDate].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inPerson].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="入住人" />
+            <lang locale="zh_TW" value="入住人" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inPerson].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[inPerson].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="入住人" />
+            <lang locale="zh_TW" value="入住人" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[orderDay].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="预订天数" />
+            <lang locale="zh_TW" value="預訂天數" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[orderDay].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[orderDay].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[phone].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="电话" />
+            <lang locale="zh_TW" value="電話" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[phone].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[phone].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="电话" />
+            <lang locale="zh_TW" value="電話" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[roomPrice].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="房间单价" />
+            <lang locale="zh_TW" value="房間單價" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[roomPrice].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntry].properties.ownProperty[roomPrice].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</entityObject>
+

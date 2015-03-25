@@ -48,6 +48,19 @@
                 <key name="name" value="FDCCustomer" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>certificateName</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].subObjects.subEntity[certificateName].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenancyCustomerEntryPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Certificate" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <propertyUnit>
@@ -330,11 +343,11 @@
             </query>
         </queryField>
         <queryField>
-            <name>fdcCustomer.tel</name>
+            <name>fdcCustomer.phone</name>
             <userDefined>false</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.tel].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.phone].displayName</displayName>
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
@@ -343,15 +356,15 @@
             <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>e0f92b45-0577-4d47-88a4-454d90065612</key>
+                    <key>a72d5aaf-526c-4694-b5c1-069b3e4bd702</key>
                     <parentUnit>
-                        <key name="name" value="fdcCustomer.tel" />
+                        <key name="name" value="fdcCustomer.phone" />
                     </parentUnit>
                     <subEntity>
                         <key name="name" value="fdcCustomer" />
                     </subEntity>
                     <refProperty>
-                        <key name="name" value="tel" />
+                        <key name="name" value="phone" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -361,11 +374,11 @@
             </query>
         </queryField>
         <queryField>
-            <name>fdcCustomer.certificateName</name>
+            <name>certificateName.name</name>
             <userDefined>false</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.certificateName].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[certificateName.name].displayName</displayName>
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
@@ -374,15 +387,15 @@
             <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>c0b7263b-e22b-4ea8-8fd1-57a72bed047c</key>
+                    <key>d87520cb-5aa2-4028-997d-44b2b7b68add</key>
                     <parentUnit>
-                        <key name="name" value="fdcCustomer.certificateName" />
+                        <key name="name" value="certificateName.name" />
                     </parentUnit>
                     <subEntity>
-                        <key name="name" value="fdcCustomer" />
+                        <key name="name" value="certificateName" />
                     </subEntity>
                     <refProperty>
-                        <key name="name" value="certificateName" />
+                        <key name="name" value="name" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -454,40 +467,9 @@
             </query>
         </queryField>
         <queryField>
-            <name>fdcCustomer.address</name>
-            <userDefined>false</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.address].displayName</displayName>
-            <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType>String</returnType>
-            <propertyRefs>
-                <propertyRef>
-                    <key>6da31230-4c64-4eaa-b704-80ad790c4721</key>
-                    <parentUnit>
-                        <key name="name" value="fdcCustomer.address" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="fdcCustomer" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="address" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="TenancyCustomerEntryPrintQuery" />
-            </query>
-        </queryField>
-        <queryField>
             <name>fdcCustomer.createTime</name>
             <userDefined>false</userDefined>
-            <formulaString />
+            <formulaString>#0</formulaString>
             <constString />
             <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.createTime].displayName</displayName>
             <groupType />
@@ -608,6 +590,99 @@
                 <key name="name" value="TenancyCustomerEntryPrintQuery" />
             </query>
         </queryField>
+        <queryField>
+            <name>certificateName.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[certificateName.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>76172855-1331-4068-becf-efa7d738e930</key>
+                    <parentUnit>
+                        <key name="name" value="certificateName.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="certificateName" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenancyCustomerEntryPrintQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>663dfdfc-a476-49b5-9f18-57b2046cda9e</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.propertyUnit[663dfdfc-a476-49b5-9f18-57b2046cda9e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>042b5160-51ef-4e88-b8f8-e0f00cdcf5b3</key>
+                    <parentUnit>
+                        <key name="name" value="663dfdfc-a476-49b5-9f18-57b2046cda9e" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="fdcCustomer" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="certificateName" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenancyCustomerEntryPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>cb87e133-a3c4-4f99-acc4-6896b04ec725</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.propertyUnit[cb87e133-a3c4-4f99-acc4-6896b04ec725].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>83541e03-835c-48fa-8c8a-77803b9ebf0b</key>
+                    <parentUnit>
+                        <key name="name" value="cb87e133-a3c4-4f99-acc4-6896b04ec725" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="certificateName" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenancyCustomerEntryPrintQuery" />
+            </query>
+        </propertyUnit>
     </units>
     <defaultFilter>
         <name>defaultFilter</name>
@@ -689,6 +764,36 @@
                 <key name="name" value="TenancyCustomerEntryPrintQuery" />
             </query>
         </join>
+        <join>
+            <name>71216a62-9d83-4888-b1ce-c9b323ad46c7</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="fdcCustomer" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="certificateName" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>397489a4-6d25-4869-82d6-859c7f8c8362</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="663dfdfc-a476-49b5-9f18-57b2046cda9e" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="cb87e133-a3c4-4f99-acc4-6896b04ec725" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="71216a62-9d83-4888-b1ce-c9b323ad46c7" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="TenancyCustomerEntryPrintQuery" />
+            </query>
+        </join>
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].alias">
@@ -721,6 +826,12 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].subObjects.subEntity[certificateName].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].subObjects.subEntity[fdcCustomer].alias">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
@@ -745,7 +856,19 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.propertyUnit[663dfdfc-a476-49b5-9f18-57b2046cda9e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.propertyUnit[bd7c0e2c-b543-4c98-9806-53f276cee6cd].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.propertyUnit[cb87e133-a3c4-4f99-acc4-6896b04ec725].displayName">
             <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -757,23 +880,23 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[certificateName.id].displayName">
+            <lang locale="zh_CN" value="证件名称ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="證件名稱ID" />
+            <lang locale="zh_TW" value="證件名稱ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[certificateName.name].displayName">
+            <lang locale="zh_CN" value="证件名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="證件名稱" />
+            <lang locale="zh_TW" value="證件名稱" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[description].displayName">
             <lang locale="zh_CN" value="描述" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="描述" />
             <lang locale="zh_TW" value="描述" />
-        </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.address].displayName">
-            <lang locale="zh_CN" value="地址" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="地址" />
-            <lang locale="zh_TW" value="地址" />
-        </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.certificateName].displayName">
-            <lang locale="zh_CN" value="证件名称" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="證件名稱" />
-            <lang locale="zh_TW" value="證件名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.certificateNumber].displayName">
             <lang locale="zh_CN" value="证件号码" />
@@ -782,16 +905,16 @@
             <lang locale="zh_TW" value="證件號碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.createTime].displayName">
-            <lang locale="zh_CN" value="等级日期" />
+            <lang locale="zh_CN" value="登记日期" />
             <lang locale="en_US" value="createTime" />
-            <lang locale="zh_HK" value="等級日期" />
-            <lang locale="zh_TW" value="等級日期" />
+            <lang locale="zh_HK" value="登記日期" />
+            <lang locale="zh_TW" value="登記日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.description].displayName">
-            <lang locale="zh_CN" value="客户描述" />
+            <lang locale="zh_CN" value="客户备注" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="客戶描述" />
-            <lang locale="zh_TW" value="客戶描述" />
+            <lang locale="zh_HK" value="客戶備註" />
+            <lang locale="zh_TW" value="客戶備註" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.mailAddress].displayName">
             <lang locale="zh_CN" value="通信地址" />
@@ -811,17 +934,17 @@
             <lang locale="zh_HK" value="客戶編碼" />
             <lang locale="zh_TW" value="客戶編碼" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.phone].displayName">
+            <lang locale="zh_CN" value="联系电话" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="聯繫電話" />
+            <lang locale="zh_TW" value="聯繫電話" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.postalcode].displayName">
             <lang locale="zh_CN" value="邮编" />
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="郵編" />
             <lang locale="zh_TW" value="郵編" />
-        </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[fdcCustomer.tel].displayName">
-            <lang locale="zh_CN" value="联系电话" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="聯繫電話" />
-            <lang locale="zh_TW" value="聯繫電話" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.TenancyCustomerEntryPrintQuery].units.queryField[id].displayName">
             <lang locale="zh_CN" value="租赁客户分录ID" />

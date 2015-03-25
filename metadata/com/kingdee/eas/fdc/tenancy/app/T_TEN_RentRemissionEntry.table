@@ -141,11 +141,25 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>false</isNullable>
-            <defaultValue />
+            <defaultValue>''</defaultValue>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
             <precision>44</precision>
+        </column>
+        <column>
+            <name>FAppDate</name>
+            <alias>dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RentRemissionEntry].columns.column[FAppDate].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RentRemissionEntry].columns.column[FAppDate].description</description>
+            <userDefined>false</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue />
+            <sqlType>DATETIME</sqlType>
+            <length>8</length>
+            <scale>0</scale>
+            <precision>0</precision>
         </column>
     </columns>
     <primaryKey>
@@ -161,46 +175,6 @@
             </primaryKeyColumn>
         </primaryKeyColumns>
     </primaryKey>
-    <foreignKeys>
-        <foreignKey>
-            <name>FK_TEN_RentREEntRR</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="T_TEN_TenancyRoomPayListEntry" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FRentRemissionRoomID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-        <foreignKey>
-            <name>FK_TEN_RentREOnD</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="T_SHE_MoneyDefine" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FTenRoomID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-    </foreignKeys>
     <resource>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RentRemissionEntry].alias">
             <lang locale="zh_CN" value="" />
@@ -218,6 +192,18 @@
             <lang locale="en_US" value="null" />
             <lang locale="zh_HK" value="原應付金額" />
             <lang locale="zh_TW" value="原應付金額" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RentRemissionEntry].columns.column[FAppDate].alias">
+            <lang locale="zh_CN" value="FAppDate" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="FAppDate" />
+            <lang locale="zh_TW" value="FAppDate" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RentRemissionEntry].columns.column[FAppDate].description">
+            <lang locale="zh_CN" value="FAppDate" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="FAppDate" />
+            <lang locale="zh_TW" value="FAppDate" />
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RentRemissionEntry].columns.column[FEndDate].alias">
             <lang locale="zh_CN" value="null" />

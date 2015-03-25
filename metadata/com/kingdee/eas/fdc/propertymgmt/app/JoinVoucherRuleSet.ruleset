@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.propertymgmt.app</package>
+    <name>JoinVoucherRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>bedf271d-666e-42e7-abb1-33c050080f67</id>
+            <parentID />
+            <source>EntrysMeterReading.meterSpec=EntrysMeterReading.meter.meterspec.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>e3b3924c-7718-4963-9943-35a921f67082</id>
+            <parentID>bedf271d-666e-42e7-abb1-33c050080f67</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType />
+            <value />
+            <property>
+                <ownerID>91c91450-02b6-4772-8897-916947284e67</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>91c91450-02b6-4772-8897-916947284e67</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrysMeterReading.getCell(rowIndex,"meterSpec")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4ae8fe04-03a5-4ead-a072-e5cf04fa9584</id>
+            <parentID>bedf271d-666e-42e7-abb1-33c050080f67</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>f89612be-dd08-4b3e-92ea-805582c32236</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>1444f090-7f4e-496a-b77b-9ea0672206bd</id>
+                        <expressionID>a3517004-fed3-45b2-b7bd-31e1a9c03616</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>e23f42ca-0dc2-4dc7-8762-82b1432cb11b</id>
+                        <expressionID>70f1c31c-abf2-4778-a2a5-ab170ed7e31a</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f89612be-dd08-4b3e-92ea-805582c32236</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a3517004-fed3-45b2-b7bd-31e1a9c03616</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>6216b727-290a-4012-a8e4-8de11aa68b36</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>6216b727-290a-4012-a8e4-8de11aa68b36</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrysMeterReading.getCell(rowIndex,"meter")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>70f1c31c-abf2-4778-a2a5-ab170ed7e31a</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>meterspec.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>049feea5-d45d-4dd6-8247-0d2499878e8f</id>
+            <parentID />
+            <source>EntrysMeterReading.location=EntrysMeterReading.meter.location</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>e03ec0d5-4cb9-4f50-aebc-2d92adfe3b44</id>
+            <parentID>049feea5-d45d-4dd6-8247-0d2499878e8f</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>8ca89b03-be8f-4afd-aa4b-37e15f8f8b76</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8ca89b03-be8f-4afd-aa4b-37e15f8f8b76</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrysMeterReading.getCell(rowIndex,"location")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>25e5c7b2-681d-49dd-b95c-973af1e6238e</id>
+            <parentID>049feea5-d45d-4dd6-8247-0d2499878e8f</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>94ccecf1-bd75-4c8a-8558-d156c15a683d</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>8e784973-edee-4ca8-b312-1c06b095cef4</id>
+                        <expressionID>87a8977a-23f3-4c2c-9cc6-e74fd918ab65</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>6d7523e8-1539-425b-a141-42c504159d35</id>
+                        <expressionID>bf7a166f-a6fc-4663-94bd-2c2d8dacfcf1</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>94ccecf1-bd75-4c8a-8558-d156c15a683d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>87a8977a-23f3-4c2c-9cc6-e74fd918ab65</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>84972d03-e053-411b-b32d-f1ea471807da</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>84972d03-e053-411b-b32d-f1ea471807da</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrysMeterReading.getCell(rowIndex,"meter")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>bf7a166f-a6fc-4663-94bd-2c2d8dacfcf1</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>location</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>09db7fe2-c1a9-467c-a275-756411b971bc</id>
+            <parentID />
+            <source>EntrysMeterReading.location=EntrysMeterReading.meter.location</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>2f258121-9ef2-4161-a660-e965cd649afa</id>
+            <parentID>09db7fe2-c1a9-467c-a275-756411b971bc</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>f31183b4-167a-4a87-8c3c-22c89dcb66d5</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f31183b4-167a-4a87-8c3c-22c89dcb66d5</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrysMeterReading.getCell(rowIndex,"location")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>96d26ae1-c99a-4436-99fc-be37c028f2d3</id>
+            <parentID>09db7fe2-c1a9-467c-a275-756411b971bc</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>42228ba4-fe97-4bac-8440-58837548d654</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>15b22f8a-ae85-4255-8755-98c437b8b5b9</id>
+                        <expressionID>9c64b5c7-6049-4cf6-a30e-24b4459eca4d</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>3422e9e2-fa6c-4eb0-8428-72acd3094902</id>
+                        <expressionID>f1bdc086-891d-41b8-b73a-f20d9cee50c2</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>42228ba4-fe97-4bac-8440-58837548d654</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>9c64b5c7-6049-4cf6-a30e-24b4459eca4d</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>a6667e1e-7ce7-49bd-b840-5b41eef7e94f</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a6667e1e-7ce7-49bd-b840-5b41eef7e94f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrysMeterReading.getCell(rowIndex,"meter")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f1bdc086-891d-41b8-b73a-f20d9cee50c2</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>location</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>3622417e-6939-44bd-a2f1-836c5711bfcb</id>
+            <name>EntrysMeterReading_meterSpec_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_meterSpec_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_meterSpec_ActionInfo].description</description>
+            <expressionID>bedf271d-666e-42e7-abb1-33c050080f67</expressionID>
+        </action>
+        <action>
+            <id>71a73274-e303-4730-b2f7-1a72b71b7c91</id>
+            <name>EntrysMeterReading_location_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_location_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_location_ActionInfo].description</description>
+            <expressionID>049feea5-d45d-4dd6-8247-0d2499878e8f</expressionID>
+        </action>
+        <action>
+            <id>d907ee76-97e6-47fa-b106-83389e17843c</id>
+            <name>EntrysMeterReading_location_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_location_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_location_ActionInfo].description</description>
+            <expressionID>09db7fe2-c1a9-467c-a275-756411b971bc</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>EntrysMeterReading_meterSpec_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_meterSpec_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_meterSpec_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="3622417e-6939-44bd-a2f1-836c5711bfcb" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>EntrysMeterReading_location_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_location_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_location_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="d907ee76-97e6-47fa-b106-83389e17843c" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_location_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_location" />
+            <lang locale="zh_TW" value="攜帶字段屬性_location" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_location_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_meterSpec_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_meterspec" />
+            <lang locale="zh_TW" value="攜帶字段屬性_meterspec" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].actions.action[EntrysMeterReading_meterSpec_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_location_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_location" />
+            <lang locale="zh_TW" value="攜帶字段屬性_location" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_location_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_location_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="meter" />
+            <lang locale="zh_CN" value="meter" />
+            <lang locale="zh_TW" value="meter" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_location_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_meterSpec_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_meterspec" />
+            <lang locale="zh_TW" value="攜帶字段屬性_meterspec" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_meterSpec_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_meterSpec_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="meter" />
+            <lang locale="zh_CN" value="meter" />
+            <lang locale="zh_TW" value="meter" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.JoinVoucherRuleSet].rules.conditionRule[EntrysMeterReading_meterSpec_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

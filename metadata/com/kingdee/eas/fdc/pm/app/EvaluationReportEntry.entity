@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entityObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>EvaluationReportEntry</name>
+    <alias>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].alias</alias>
+    <description>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].description</description>
+    <userDefined>false</userDefined>
+    <bosType>67481F12</bosType>
+    <stereoType>false</stereoType>
+    <businessImplName>com.kingdee.eas.fdc.pm.EvaluationReportEntry</businessImplName>
+    <businessControllerName>com.kingdee.eas.fdc.pm.app.EvaluationReportEntryController</businessControllerName>
+    <accessLevel>public</accessLevel>
+    <subClassingMode>normal</subClassingMode>
+    <isAbstract>false</isAbstract>
+    <bizUnitPK />
+    <baseEntity>
+        <key name="package" value="com.kingdee.eas.framework.app" />
+        <key name="name" value="CoreBillEntryBase" />
+    </baseEntity>
+    <table>
+        <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+        <key name="name" value="T_FPM_EvaluationReportEntry" />
+    </table>
+    <properties>
+        <ownProperty>
+            <name>content</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[content].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[content].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>255</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[content].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FContent" />
+            </mappingField>
+        </ownProperty>
+        <linkProperty>
+            <name>parent</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[parent].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[parent].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FParentID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="R_EvaluationReport_EvaluationEntry_entry" />
+            </relationship>
+        </linkProperty>
+        <linkProperty>
+            <name>evaluationDetail</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[evaluationDetail].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[evaluationDetail].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FEvaluationDetailID" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="R_EvaluationReport_EvaluationDetail_detailInfo" />
+            </relationship>
+        </linkProperty>
+        <ownProperty>
+            <name>description</name>
+            <alias>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[description].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[description].description</description>
+            <userDefined>false</userDefined>
+            <configured>false</configured>
+            <dataType>String</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>255</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[description].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FDescription" />
+            </mappingField>
+        </ownProperty>
+    </properties>
+    <logicalKey>
+        <name>id</name>
+        <alias>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].logicalKey[id].alias</alias>
+        <description>entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].logicalKey[id].description</description>
+        <keyClass>com.kingdee.bos.dao.IObjectPK</keyClass>
+        <userDefined>false</userDefined>
+        <keyProperties>
+            <baseProperty>
+                <key name="name" value="id" />
+            </baseProperty>
+        </keyProperties>
+    </logicalKey>
+    <resource>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="评估报告分录" />
+            <lang locale="zh_TW" value="評估報告分錄" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].logicalKey[id].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].logicalKey[id].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[evaluationDetail].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="详细信息" />
+            <lang locale="zh_TW" value="詳細信息" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[evaluationDetail].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[parent].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="分录所属评估报告" />
+            <lang locale="zh_TW" value="分錄所屬評估報告" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.linkProperty[parent].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[content].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="内容" />
+            <lang locale="zh_TW" value="內容" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[content].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[content].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[description].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="描述" />
+            <lang locale="zh_TW" value="描述" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[description].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.pm.app.EvaluationReportEntry].properties.ownProperty[description].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</entityObject>
+

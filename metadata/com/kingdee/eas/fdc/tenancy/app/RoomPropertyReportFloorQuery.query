@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.tenancy.app</package>
+    <name>RoomPropertyReportFloorQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource/>
+    <bizUnitPK/>
+    <connectionProvider/>
+    <subObjects>
+        <subEntity>
+            <name>BuildingFloorEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].subObjects.subEntity[BuildingFloorEntry].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app"/>
+                <key name="name" value="RoomPropertyReportFloorQuery"/>
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app"/>
+                <key name="name" value="BuildingFloorEntry"/>
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>building</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].subObjects.subEntity[building].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app"/>
+                <key name="name" value="RoomPropertyReportFloorQuery"/>
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app"/>
+                <key name="name" value="Building"/>
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <propertyUnit>
+            <name>251b9c22-88f9-49a2-8c0b-8bde1c82a98b</name>
+            <userDefined>false</userDefined>
+            <formulaString/>
+            <constString/>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].units.propertyUnit[251b9c22-88f9-49a2-8c0b-8bde1c82a98b].displayName</displayName>
+            <groupType/>
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType/>
+            <propertyRefs>
+                <propertyRef>
+                    <key>81bb7a5c-a492-4255-b048-2fa761f15df4</key>
+                    <parentUnit>
+                        <key name="name" value="251b9c22-88f9-49a2-8c0b-8bde1c82a98b"/>
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="BuildingFloorEntry"/>
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="building"/>
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app"/>
+                <key name="name" value="RoomPropertyReportFloorQuery"/>
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>6095706a-a3e2-4bbb-b699-004b1108e531</name>
+            <userDefined>false</userDefined>
+            <formulaString/>
+            <constString/>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].units.propertyUnit[6095706a-a3e2-4bbb-b699-004b1108e531].displayName</displayName>
+            <groupType/>
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType/>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2a99a9af-10ad-4638-bc81-ae37e2c22fde</key>
+                    <parentUnit>
+                        <key name="name" value="6095706a-a3e2-4bbb-b699-004b1108e531"/>
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="building"/>
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id"/>
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app"/>
+                <key name="name" value="RoomPropertyReportFloorQuery"/>
+            </query>
+        </propertyUnit>
+    </units>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>67866334-021e-4ceb-936d-6e87731d299b</name>
+            <formulaString>#0</formulaString>
+            <type>RIGHT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="BuildingFloorEntry"/>
+            </leftObject>
+            <rightObject>
+                <key name="name" value="building"/>
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>b3b38b4c-b4e0-4aa9-9695-43dcd9b363cf</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="251b9c22-88f9-49a2-8c0b-8bde1c82a98b"/>
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="6095706a-a3e2-4bbb-b699-004b1108e531"/>
+                    </rightField>
+                    <join>
+                        <key name="name" value="67866334-021e-4ceb-936d-6e87731d299b"/>
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app"/>
+                <key name="name" value="RoomPropertyReportFloorQuery"/>
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].alias">
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_CN" value="房屋产权楼层查询"/>
+            <lang locale="zh_TW" value="null"/>
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].description">
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_CN" value="房屋产权楼层查询"/>
+            <lang locale="zh_TW" value="null"/>
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].subObjects.subEntity[BuildingFloorEntry].alias">
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="zh_TW" value="null"/>
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].subObjects.subEntity[building].alias">
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="zh_TW" value="null"/>
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].units.propertyUnit[251b9c22-88f9-49a2-8c0b-8bde1c82a98b].displayName">
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="zh_TW" value="null"/>
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.RoomPropertyReportFloorQuery].units.propertyUnit[6095706a-a3e2-4bbb-b699-004b1108e531].displayName">
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="zh_TW" value="null"/>
+        </rs>
+    </resource>
+</joinQuery>

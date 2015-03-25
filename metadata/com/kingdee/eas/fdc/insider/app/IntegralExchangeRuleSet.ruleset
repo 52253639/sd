@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.insider.app</package>
+    <name>IntegralExchangeRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>abceaf86-bbb0-4809-8630-9ffd7c5ce9c5</id>
+            <parentID />
+            <source>ArticleEntrys.counterpartsInt=ArticleEntrys.exchangeArticle.exchangeInteg</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>b0710bb6-15ce-425b-9759-a4a970ba0626</id>
+            <parentID>abceaf86-bbb0-4809-8630-9ffd7c5ce9c5</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Integer</valueType>
+            <value />
+            <property>
+                <ownerID>e3fdd7fc-a17a-425d-80f8-5f8948a9aa23</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e3fdd7fc-a17a-425d-80f8-5f8948a9aa23</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtArticleEntrys.getCell(rowIndex,"counterpartsInt")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3c9c8847-a9a9-482b-9360-8bacbab8f749</id>
+            <parentID>abceaf86-bbb0-4809-8630-9ffd7c5ce9c5</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Integer</valueType>
+            <value />
+            <method>
+                <ownerID>8b50217b-9531-42a0-90ae-7991655842cb</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>67420bc5-d7d3-4555-b078-2336094c28d1</id>
+                        <expressionID>ec9818c6-7dd5-4bc2-9393-70847b1f17c5</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>fcc4f6c2-1dd4-49f3-942f-a6f353ccd951</id>
+                        <expressionID>60d79831-5964-4682-a3c3-06fd8bd72a32</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8b50217b-9531-42a0-90ae-7991655842cb</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ec9818c6-7dd5-4bc2-9393-70847b1f17c5</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>939242aa-bccb-464d-8243-186121f1ab67</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>939242aa-bccb-464d-8243-186121f1ab67</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtArticleEntrys.getCell(rowIndex,"exchangeArticle")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>60d79831-5964-4682-a3c3-06fd8bd72a32</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>exchangeInteg</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>718bb766-be4f-44e4-af7c-0ec3f29a0b8f</id>
+            <parentID />
+            <source>ArticleEntrys.exchangePolicy=ArticleEntrys.exchangeArticle.exchangePolicy</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>cce3e046-0ca9-4a50-8e9e-0cf1a6286f9a</id>
+            <parentID>718bb766-be4f-44e4-af7c-0ec3f29a0b8f</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>4c352091-e885-4a23-b5cf-24d26dc1ea14</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4c352091-e885-4a23-b5cf-24d26dc1ea14</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtArticleEntrys.getCell(rowIndex,"exchangePolicy")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3bbea595-46b7-4269-8baa-311efd83237c</id>
+            <parentID>718bb766-be4f-44e4-af7c-0ec3f29a0b8f</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>685afc4b-b106-4a62-8e5d-d4009b5123de</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>d450e263-6f91-49dd-96f4-5a76f1710e1c</id>
+                        <expressionID>26f25234-4555-42b1-a8d5-e4e0d5f7fc72</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>9584ff17-b9ec-433a-be5b-b7b1f55d414f</id>
+                        <expressionID>834ffdf6-4a28-4cd6-9c4e-e69528367f43</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>685afc4b-b106-4a62-8e5d-d4009b5123de</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>26f25234-4555-42b1-a8d5-e4e0d5f7fc72</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>04ea3ef2-cfd8-4d24-8bf5-be20c382f933</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>04ea3ef2-cfd8-4d24-8bf5-be20c382f933</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtArticleEntrys.getCell(rowIndex,"exchangeArticle")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>834ffdf6-4a28-4cd6-9c4e-e69528367f43</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>exchangePolicy</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>cd46f4cb-760b-4560-992e-e0062fcdbb2a</id>
+            <parentID />
+            <source>ArticleEntrys.number=ArticleEntrys.exchangeArticle.articleNumber</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>5b4e222d-0ee9-4cdd-b8d5-5aa56a362aae</id>
+            <parentID>cd46f4cb-760b-4560-992e-e0062fcdbb2a</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Integer</valueType>
+            <value />
+            <property>
+                <ownerID>ad2c33ef-2320-4394-ab71-570bdb48bb08</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ad2c33ef-2320-4394-ab71-570bdb48bb08</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtArticleEntrys.getCell(rowIndex,"number")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>bb41e8de-1c1e-4fb9-856a-6f91f0f13d58</id>
+            <parentID>cd46f4cb-760b-4560-992e-e0062fcdbb2a</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Integer</valueType>
+            <value />
+            <method>
+                <ownerID>166db170-6970-4d89-a27d-c7922b1151ee</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>976b50bd-cf32-419b-9b20-5027a4b73a53</id>
+                        <expressionID>feccf9ab-0f1b-46b8-9dee-85fff92f89a8</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>8297a8f5-ad9c-4506-99bd-536dccab6a93</id>
+                        <expressionID>ad828c18-edea-483c-b48c-03fab6f149b0</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>166db170-6970-4d89-a27d-c7922b1151ee</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>feccf9ab-0f1b-46b8-9dee-85fff92f89a8</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>f5a5435f-7328-439f-bd13-ef1bc0e72be5</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f5a5435f-7328-439f-bd13-ef1bc0e72be5</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtArticleEntrys.getCell(rowIndex,"exchangeArticle")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ad828c18-edea-483c-b48c-03fab6f149b0</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>articleNumber</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c6a70084-f27d-4cf9-87b6-38f676c80d34</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("单据编号不能为空！")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>a34a42e5-ae7b-4198-8a79-93a1ecb29477</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>b6f9e8de-78a1-4537-924a-b0c1b0cbd165</id>
+                        <expressionID>29e4a835-732e-4f70-bb73-e02d7a05f0ac</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a34a42e5-ae7b-4198-8a79-93a1ecb29477</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>29e4a835-732e-4f70-bb73-e02d7a05f0ac</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>单据编号不能为空！</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a0054144-eb86-4838-89a2-0ae1949660d6</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("兑换开始日期不能为空！")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>c428df8d-7997-4ab8-9a29-2c15cd52d58c</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>90feb407-c9af-42be-aae7-3ae589adb322</id>
+                        <expressionID>3c3c3245-a33d-4303-8eec-d1a85b1a4d8e</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c428df8d-7997-4ab8-9a29-2c15cd52d58c</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3c3c3245-a33d-4303-8eec-d1a85b1a4d8e</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>兑换开始日期不能为空！</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>14e73fe4-4ce4-4846-b149-96bf031bf1d1</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("兑换积分不能为空！")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>7f6f59d0-15e7-4f94-9db4-5c12ac5af234</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>de7f427e-a7c1-4554-b5bd-f327a198121b</id>
+                        <expressionID>f14e3113-43ed-4ccc-8408-caa587b6274f</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7f6f59d0-15e7-4f94-9db4-5c12ac5af234</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f14e3113-43ed-4ccc-8408-caa587b6274f</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>兑换积分不能为空！</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>030d7861-f462-4469-b694-296b1954b720</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("兑换结束日期不能为空！")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>a2531144-84d8-43eb-8bae-e1a123eda685</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>d74e59a2-16e4-448c-ad71-d76110f1fdd1</id>
+                        <expressionID>3f55208f-eed7-4fdc-bace-e7238e69a2b9</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a2531144-84d8-43eb-8bae-e1a123eda685</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3f55208f-eed7-4fdc-bace-e7238e69a2b9</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>兑换结束日期不能为空！</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a475aabd-4d25-44df-90a8-eccd83174cee</id>
+            <parentID />
+            <source>ISNULL( [number] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>c41fa9fd-e461-4ffb-8651-dbf3a7bcf897</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>dacb0b37-38ac-494a-b854-4b67d60629c4</id>
+                        <expressionID>2b4ff0b4-868f-4dc6-8e11-17e4d09d4ac1</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c41fa9fd-e461-4ffb-8651-dbf3a7bcf897</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2b4ff0b4-868f-4dc6-8e11-17e4d09d4ac1</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>cb2bae68-bbfe-4f15-96c1-e2347460f2f0</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>cb2bae68-bbfe-4f15-96c1-e2347460f2f0</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtNumber</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b222874c-98e1-4458-93ab-5cd588f54500</id>
+            <parentID />
+            <source>ISNULL( [beginDate] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>023f10b2-f44e-4974-b487-797b630ff98d</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>073c1292-1fcd-45c7-a14a-0ba193229aab</id>
+                        <expressionID>82ea0820-e88c-47e5-b3f7-0dff75da8be6</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>023f10b2-f44e-4974-b487-797b630ff98d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>82ea0820-e88c-47e5-b3f7-0dff75da8be6</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Date</valueType>
+            <value />
+            <property>
+                <ownerID>29a2adb5-ab74-4335-b90f-9e3a3dfc6f7b</ownerID>
+                <name>value</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>29a2adb5-ab74-4335-b90f-9e3a3dfc6f7b</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>pkbeginDate</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>79be70a8-b3d1-4503-b5cd-a09b1801575c</id>
+            <parentID />
+            <source>ISNULL( [exchangeInteg] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>00dcf281-ebc9-4392-9998-fc06fe12b325</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>e375368c-c4eb-4a4e-9d8d-32e3a249b295</id>
+                        <expressionID>518e0dca-56a9-44fa-8d83-3301c9b0071a</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>00dcf281-ebc9-4392-9998-fc06fe12b325</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>518e0dca-56a9-44fa-8d83-3301c9b0071a</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Integer</valueType>
+            <value />
+            <property>
+                <ownerID>df256cc6-1355-4719-9177-451ebad06615</ownerID>
+                <name>value</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>df256cc6-1355-4719-9177-451ebad06615</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtexchangeInteg</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3fefad7b-a420-4d47-b5ca-3b539951137e</id>
+            <parentID />
+            <source>ISNULL( [endDate] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>212887f8-471e-4a9a-b126-7461193d1b58</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>df13533e-ff30-478f-8e92-463f695df879</id>
+                        <expressionID>70612b08-2ead-4206-9689-5e669f0a0a40</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>212887f8-471e-4a9a-b126-7461193d1b58</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>70612b08-2ead-4206-9689-5e669f0a0a40</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Date</valueType>
+            <value />
+            <property>
+                <ownerID>4b292024-1cc0-4582-ae2c-92ecb25dbccc</ownerID>
+                <name>value</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4b292024-1cc0-4582-ae2c-92ecb25dbccc</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>pkendDate</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>ea583cdc-24a5-44af-a08e-946a4b5ea349</id>
+            <name>ArticleEntrys_counterpartsInt_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_counterpartsInt_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_counterpartsInt_ActionInfo].description</description>
+            <expressionID>abceaf86-bbb0-4809-8630-9ffd7c5ce9c5</expressionID>
+        </action>
+        <action>
+            <id>1ac33975-a1df-4403-81ab-1308eb987660</id>
+            <name>ArticleEntrys_exchangePolicy_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_exchangePolicy_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_exchangePolicy_ActionInfo].description</description>
+            <expressionID>718bb766-be4f-44e4-af7c-0ec3f29a0b8f</expressionID>
+        </action>
+        <action>
+            <id>5c57d1ae-5608-4ede-aa62-051c4b009756</id>
+            <name>ArticleEntrys_number_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_number_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_number_ActionInfo].description</description>
+            <expressionID>cd46f4cb-760b-4560-992e-e0062fcdbb2a</expressionID>
+        </action>
+        <action>
+            <id>a5c8f9e6-152b-4df2-b73a-689e60bf59d5</id>
+            <name>AT4BXV$1</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4BXV$1].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4BXV$1].description</description>
+            <expressionID>c6a70084-f27d-4cf9-87b6-38f676c80d34</expressionID>
+        </action>
+        <action>
+            <id>34a148d2-5343-4dff-94f0-7797e24030ab</id>
+            <name>AT4C4SD7</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4C4SD7].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4C4SD7].description</description>
+            <expressionID>a0054144-eb86-4838-89a2-0ae1949660d6</expressionID>
+        </action>
+        <action>
+            <id>ee947c51-1a08-4c90-b3e9-3c7f8a0a6800</id>
+            <name>AT4H6PHS</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H6PHS].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H6PHS].description</description>
+            <expressionID>14e73fe4-4ce4-4846-b149-96bf031bf1d1</expressionID>
+        </action>
+        <action>
+            <id>7cdb4f6e-77be-47af-b723-bbcf2f7a32eb</id>
+            <name>AT4H7R5$</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H7R5$].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H7R5$].description</description>
+            <expressionID>030d7861-f462-4469-b694-296b1954b720</expressionID>
+        </action>
+    </actions>
+    <conditions>
+        <baseCondition>
+            <id>63db24ef-bb67-4d36-9b5a-c88b55f0add1</id>
+            <name>AT4BYV0K</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4BYV0K].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4BYV0K].description</description>
+            <expressionID>a475aabd-4d25-44df-90a8-eccd83174cee</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>14647389-19c8-400a-8e54-4ff2b6801619</id>
+            <name>AT4C6MCR</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4C6MCR].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4C6MCR].description</description>
+            <expressionID>b222874c-98e1-4458-93ab-5cd588f54500</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>849ddd65-a200-4d15-b29c-c76e3e5b05b1</id>
+            <name>AT4H7F4C</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H7F4C].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H7F4C].description</description>
+            <expressionID>79be70a8-b3d1-4503-b5cd-a09b1801575c</expressionID>
+        </baseCondition>
+        <baseCondition>
+            <id>9781d93f-67ab-430d-a7b8-178db93691ba</id>
+            <name>AT4H8BO0</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H8BO0].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H8BO0].description</description>
+            <expressionID>3fefad7b-a420-4d47-b5ca-3b539951137e</expressionID>
+        </baseCondition>
+    </conditions>
+    <rules>
+        <conditionRule>
+            <name>ArticleEntrys_counterpartsInt_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_counterpartsInt_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_counterpartsInt_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="ea583cdc-24a5-44af-a08e-946a4b5ea349" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ArticleEntrys_exchangePolicy_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_exchangePolicy_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_exchangePolicy_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="1ac33975-a1df-4403-81ab-1308eb987660" />
+                </action>
+            </actions>
+        </conditionRule>
+        <conditionRule>
+            <name>ArticleEntrys_number_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_number_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_number_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="5c57d1ae-5608-4ede-aa62-051c4b009756" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4BXV$1].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4BXV$1].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4C4SD7].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4C4SD7].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H6PHS].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H6PHS].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H7R5$].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[AT4H7R5$].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_counterpartsInt_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_exchangeInteg" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_exchangeInteg" />
+            <lang locale="zh_TW" value="攜帶字段屬性_exchangeInteg" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_counterpartsInt_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_exchangePolicy_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_exchangePolicy" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_exchangePolicy" />
+            <lang locale="zh_TW" value="攜帶字段屬性_exchangePolicy" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_exchangePolicy_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_number_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_articleNumber" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_articleNumber" />
+            <lang locale="zh_TW" value="攜帶字段屬性_articleNumber" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].actions.action[ArticleEntrys_number_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4BYV0K].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4BYV0K].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4C6MCR].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4C6MCR].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H7F4C].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H7F4C].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H8BO0].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].conditions.baseCondition[AT4H8BO0].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_counterpartsInt_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_exchangeInteg" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_exchangeInteg" />
+            <lang locale="zh_TW" value="攜帶字段屬性_exchangeInteg" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_counterpartsInt_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_counterpartsInt_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="exchangeArticle" />
+            <lang locale="zh_TW" value="exchangeArticle" />
+            <lang locale="en_US" value="exchangeArticle" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_counterpartsInt_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_exchangePolicy_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_exchangePolicy" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_exchangePolicy" />
+            <lang locale="zh_TW" value="攜帶字段屬性_exchangePolicy" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_exchangePolicy_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_exchangePolicy_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="exchangeArticle" />
+            <lang locale="zh_TW" value="exchangeArticle" />
+            <lang locale="en_US" value="exchangeArticle" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_exchangePolicy_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_number_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_articleNumber" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_articleNumber" />
+            <lang locale="zh_TW" value="攜帶字段屬性_articleNumber" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_number_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_number_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="exchangeArticle" />
+            <lang locale="zh_TW" value="exchangeArticle" />
+            <lang locale="en_US" value="exchangeArticle" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralExchangeRuleSet].rules.conditionRule[ArticleEntrys_number_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

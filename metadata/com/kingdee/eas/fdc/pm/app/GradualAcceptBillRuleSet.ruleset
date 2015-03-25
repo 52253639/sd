@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>GradualAcceptBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>a22513c9-a666-45a7-b5a7-3217c721c662</id>
+            <parentID />
+            <source>entrys.acceptType=entrys.acceptprjName.checktype</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>d2c70e81-a890-4d37-b5fb-68e7ae62acf7</id>
+            <parentID>a22513c9-a666-45a7-b5a7-3217c721c662</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>31f7000e-f837-4425-9f60-fc78b3bd56a4</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>31f7000e-f837-4425-9f60-fc78b3bd56a4</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"acceptType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ef701603-4300-455d-9993-0a20d4122d8c</id>
+            <parentID>a22513c9-a666-45a7-b5a7-3217c721c662</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>4e8c2d80-fedd-475a-b984-1150da74ddf5</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>48391c0d-84a8-4d40-bfcf-4012dbe62a61</id>
+                        <expressionID>615f24ba-952d-402d-ac58-284528a3366a</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>77bf5fcf-f99d-4913-bacb-ca729d990067</id>
+                        <expressionID>52e596a7-447d-4b2f-bc8c-94360e8ba20a</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4e8c2d80-fedd-475a-b984-1150da74ddf5</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>615f24ba-952d-402d-ac58-284528a3366a</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>c8a05df6-b06e-4c37-a6c4-1aa9b96533af</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c8a05df6-b06e-4c37-a6c4-1aa9b96533af</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"acceptprjName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>52e596a7-447d-4b2f-bc8c-94360e8ba20a</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>checktype</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>1184974e-099a-45e1-a688-f3b5185954a0</id>
+            <parentID />
+            <source>entrys.acceptType=entrys.acceptprjName.acceptType.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>a173efa2-46ff-4ad2-a901-b9e499d4b041</id>
+            <parentID>1184974e-099a-45e1-a688-f3b5185954a0</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>f4f3ebad-c8bd-47b6-b165-b6a15ba5125f</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f4f3ebad-c8bd-47b6-b165-b6a15ba5125f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"acceptType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>58d2c3ad-56d0-4bed-b5b4-7150be67f8b7</id>
+            <parentID>1184974e-099a-45e1-a688-f3b5185954a0</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>d10ca4db-0135-4670-b05f-1b0ba6fa5da9</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>bcdf4bc1-0b96-4663-b2f6-f9bad91ae1d8</id>
+                        <expressionID>961778d4-6648-4b23-b3e7-ac276681a18d</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>2d0a8479-19e8-4715-be3a-c9a179d30e21</id>
+                        <expressionID>51305eed-a05c-42da-94ef-6e5eab0c1414</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d10ca4db-0135-4670-b05f-1b0ba6fa5da9</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>961778d4-6648-4b23-b3e7-ac276681a18d</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>2a20b442-074d-428c-babe-3a52666ecaf1</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2a20b442-074d-428c-babe-3a52666ecaf1</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"acceptprjName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>51305eed-a05c-42da-94ef-6e5eab0c1414</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>acceptType.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>b3d1bb99-d1eb-4346-b858-830c7ec159e2</id>
+            <parentID />
+            <source>entrys.acceptType=entrys.acceptprjName.acceptType.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>08f7dc1b-ec03-48d8-9cd0-a950ef7c8f8e</id>
+            <parentID>b3d1bb99-d1eb-4346-b858-830c7ec159e2</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>b768271d-1539-48d9-9d10-cae730441e2b</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b768271d-1539-48d9-9d10-cae730441e2b</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"acceptType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3bf405ef-da5a-4ed7-96ec-c2a51f0ee5de</id>
+            <parentID>b3d1bb99-d1eb-4346-b858-830c7ec159e2</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>49320fae-04c7-4f29-b70a-e3cd2ea23920</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>b3790f38-88c8-4ceb-a33d-d5a937ea1b6d</id>
+                        <expressionID>b3ac465c-9fd1-47a5-b1c8-9eea918f7297</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>127164e6-ff3d-489f-b305-9563ca841fdf</id>
+                        <expressionID>73ffec19-2090-4f7b-9d1b-3e07159b6d4a</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>49320fae-04c7-4f29-b70a-e3cd2ea23920</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b3ac465c-9fd1-47a5-b1c8-9eea918f7297</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>f78e702b-3730-4630-8e54-fc1ae4825961</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f78e702b-3730-4630-8e54-fc1ae4825961</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"acceptprjName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>73ffec19-2090-4f7b-9d1b-3e07159b6d4a</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>acceptType.name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>f117f9f1-0dfd-43a2-a701-1764fb875234</id>
+            <name>entrys_acceptType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].description</description>
+            <expressionID>a22513c9-a666-45a7-b5a7-3217c721c662</expressionID>
+        </action>
+        <action>
+            <id>716b278c-ea07-4a76-857c-8b4060205b4b</id>
+            <name>entrys_acceptType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].description</description>
+            <expressionID>1184974e-099a-45e1-a688-f3b5185954a0</expressionID>
+        </action>
+        <action>
+            <id>13fd147f-059f-4e51-82d2-c8edd092ebaa</id>
+            <name>entrys_acceptType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].description</description>
+            <expressionID>b3d1bb99-d1eb-4346-b858-830c7ec159e2</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>entrys_acceptType_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].rules.conditionRule[entrys_acceptType_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].rules.conditionRule[entrys_acceptType_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="13fd147f-059f-4e51-82d2-c8edd092ebaa" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_acceptType" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_acceptType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_acceptType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].actions.action[entrys_acceptType_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].rules.conditionRule[entrys_acceptType_RuleInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_acceptType" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_acceptType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_acceptType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].rules.conditionRule[entrys_acceptType_RuleInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].rules.conditionRule[entrys_acceptType_RuleInfo].extendedProperty.columnName">
+            <lang locale="zh_CN" value="acceptprjName" />
+            <lang locale="zh_TW" value="acceptprjName" />
+            <lang locale="en_US" value="acceptprjName" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.pm.app.GradualAcceptBillRuleSet].rules.conditionRule[entrys_acceptType_RuleInfo].extendedProperty.userDefined">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

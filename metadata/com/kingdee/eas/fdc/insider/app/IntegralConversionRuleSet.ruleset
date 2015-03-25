@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.insider.app</package>
+    <name>IntegralConversionRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>080db0b1-f3af-4657-b1c8-869826f37b86</id>
+            <parentID />
+            <source>entrys.joinType=entrys.insiderName.joinType.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>55acb193-f8bd-4fd6-8dec-4e18a3c9bea7</id>
+            <parentID>080db0b1-f3af-4657-b1c8-869826f37b86</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>f23b8c34-e770-4773-ba79-6cd18852632e</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f23b8c34-e770-4773-ba79-6cd18852632e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"joinType")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d80843ba-770e-4fe3-80ac-10dfca14924b</id>
+            <parentID>080db0b1-f3af-4657-b1c8-869826f37b86</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>d404f8fe-e45c-4c05-9b62-0f6f2efda28f</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>cc1aaec2-576a-43af-ab1c-a58d67659ddd</id>
+                        <expressionID>9715a6c1-233c-4815-a6ab-4f5d5c7dbac1</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>846dbefe-6582-4bf2-82df-8cb942e6366a</id>
+                        <expressionID>a000cad2-0321-4674-bf2a-a8a950455be4</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d404f8fe-e45c-4c05-9b62-0f6f2efda28f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>9715a6c1-233c-4815-a6ab-4f5d5c7dbac1</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>2085ab8d-afde-4874-86e4-a5eac9320757</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>2085ab8d-afde-4874-86e4-a5eac9320757</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"insiderName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a000cad2-0321-4674-bf2a-a8a950455be4</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>joinType.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>75c55f90-fd39-454e-bd79-b1b0b20cddeb</id>
+            <parentID />
+            <source>entrys.integralLevel=entrys.insiderName.integralLevel.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>09d531a1-5d32-4f1f-b217-ac47721d761d</id>
+            <parentID>75c55f90-fd39-454e-bd79-b1b0b20cddeb</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>9b39610c-d5ce-409f-9ff7-ac0a895759c9</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>9b39610c-d5ce-409f-9ff7-ac0a895759c9</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"integralLevel")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>986848ca-acca-4a2a-8767-c8e2408753c7</id>
+            <parentID>75c55f90-fd39-454e-bd79-b1b0b20cddeb</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>477c5b8b-2324-4c23-bb2a-1e6b91922dce</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>6fa046bc-83d4-46b8-82d6-8b89f4c7f3d4</id>
+                        <expressionID>657bf8b3-7c4a-47d6-b47f-ae9f26cbc659</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>dd4621da-973f-4002-8666-c283261d8919</id>
+                        <expressionID>102fb605-21a4-4096-a525-3a1fc98b0f41</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>477c5b8b-2324-4c23-bb2a-1e6b91922dce</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>657bf8b3-7c4a-47d6-b47f-ae9f26cbc659</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>8d78ce5c-f75e-4536-bf56-0feab3af5aa5</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8d78ce5c-f75e-4536-bf56-0feab3af5aa5</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"insiderName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>102fb605-21a4-4096-a525-3a1fc98b0f41</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>integralLevel.name</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>88c9376f-8dd3-48f9-ae4e-9b0f4e1fa37f</id>
+            <parentID />
+            <source>entrys.remark=entrys.insiderName.remark</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>0823017b-2b30-47c6-8403-e33f323a1f3d</id>
+            <parentID>88c9376f-8dd3-48f9-ae4e-9b0f4e1fa37f</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>cbcbc653-0e74-4b8b-9fd1-ae6a1bafe4f8</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>cbcbc653-0e74-4b8b-9fd1-ae6a1bafe4f8</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"remark")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e39e4335-a97f-4306-9ff7-e514a3bfe266</id>
+            <parentID>88c9376f-8dd3-48f9-ae4e-9b0f4e1fa37f</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>25779663-2ea9-4519-820a-aaf7a86a6480</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>9041112d-3e69-46ae-bda1-dcb58af8689c</id>
+                        <expressionID>75f6d03d-c218-4228-b8e6-2a9537e6210e</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>c5879d8d-1197-456f-a8b8-ebfce5814170</id>
+                        <expressionID>1a730393-f77b-4087-97a1-5e07ccb5ff31</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>25779663-2ea9-4519-820a-aaf7a86a6480</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>75f6d03d-c218-4228-b8e6-2a9537e6210e</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>8bdc18f5-ab76-4f09-9066-c122f58ace79</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8bdc18f5-ab76-4f09-9066-c122f58ace79</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"insiderName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1a730393-f77b-4087-97a1-5e07ccb5ff31</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>remark</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>d7521e2a-f4fa-498e-bc93-5da1d291f1bf</id>
+            <parentID />
+            <source>entrys.insiderNumber=entrys.insiderName.number</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>46fb8263-f061-4e3c-bfad-fb154e4c900c</id>
+            <parentID>d7521e2a-f4fa-498e-bc93-5da1d291f1bf</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>45a3defc-226f-4455-947f-8e370facce2d</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>45a3defc-226f-4455-947f-8e370facce2d</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"insiderNumber")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8c3e4794-5d03-4379-8492-d32d62f9f263</id>
+            <parentID>d7521e2a-f4fa-498e-bc93-5da1d291f1bf</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>3ce32aa1-b2d2-4d61-8250-093b18817d82</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>6c5616d7-9eba-4b59-a548-7487199bd816</id>
+                        <expressionID>3666b8af-cad6-4431-940d-74e3587d33e8</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>a142a83c-af56-4cdd-8b77-55de10629e7c</id>
+                        <expressionID>f2b540f3-1bf1-435b-9599-83fb68de3e56</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3ce32aa1-b2d2-4d61-8250-093b18817d82</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3666b8af-cad6-4431-940d-74e3587d33e8</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>e6f9512a-740b-4be0-b34b-359821ce369e</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>e6f9512a-740b-4be0-b34b-359821ce369e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"insiderName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f2b540f3-1bf1-435b-9599-83fb68de3e56</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>number</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>654fbe80-1da2-4229-889c-9ab86384e3e9</id>
+            <parentID />
+            <source>entrys.insiderCompany=entrys.insiderName.location.name</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>8791f8ca-568f-48b9-a33a-b65cabd087a3</id>
+            <parentID>654fbe80-1da2-4229-889c-9ab86384e3e9</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>fab5cade-dce6-4210-be9c-066b4b6f0ada</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>fab5cade-dce6-4210-be9c-066b4b6f0ada</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntrys.getCell(rowIndex,"insiderCompany")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>6c5fe1fa-10b8-490f-aa67-c687c3c464c6</id>
+            <parentID>654fbe80-1da2-4229-889c-9ab86384e3e9</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>8ba97fed-a97c-43d2-bfb8-1b3bb8e6be6e</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>d07138c7-a41b-4475-90b2-e2dbc37f5299</id>
+                        <expressionID>5cbca7ed-2055-4cd3-83f8-8a35d3c2bc95</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>76e33964-ccc2-41d1-9776-7cb932322b5a</id>
+                        <expressionID>87bcf93c-2959-4e8b-be70-e04b80f83528</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8ba97fed-a97c-43d2-bfb8-1b3bb8e6be6e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>5cbca7ed-2055-4cd3-83f8-8a35d3c2bc95</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>7fe4803a-8954-40af-aca3-2f7bca2e47af</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>7fe4803a-8954-40af-aca3-2f7bca2e47af</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntrys.getCell(rowIndex,"insiderName")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>87bcf93c-2959-4e8b-be70-e04b80f83528</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>location.name</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>86cc6c40-0aa1-483d-9142-8c684624c745</id>
+            <name>entrys_joinType_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_joinType_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_joinType_ActionInfo].description</description>
+            <expressionID>080db0b1-f3af-4657-b1c8-869826f37b86</expressionID>
+        </action>
+        <action>
+            <id>4fd8e732-f847-4c88-a829-0288544dfb54</id>
+            <name>entrys_integralLevel_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_integralLevel_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_integralLevel_ActionInfo].description</description>
+            <expressionID>75c55f90-fd39-454e-bd79-b1b0b20cddeb</expressionID>
+        </action>
+        <action>
+            <id>c5a5ca95-222f-43a5-a5c3-97b94f956541</id>
+            <name>entrys_remark_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_remark_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_remark_ActionInfo].description</description>
+            <expressionID>88c9376f-8dd3-48f9-ae4e-9b0f4e1fa37f</expressionID>
+        </action>
+        <action>
+            <id>4998e108-0f10-4ef4-92f6-839332a07b6f</id>
+            <name>entrys_insiderNumber_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderNumber_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderNumber_ActionInfo].description</description>
+            <expressionID>d7521e2a-f4fa-498e-bc93-5da1d291f1bf</expressionID>
+        </action>
+        <action>
+            <id>7194c78d-3312-421b-bb74-5781bbbaf6da</id>
+            <name>entrys_insiderCompany_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderCompany_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderCompany_ActionInfo].description</description>
+            <expressionID>654fbe80-1da2-4229-889c-9ab86384e3e9</expressionID>
+        </action>
+    </actions>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderCompany_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_location" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_location" />
+            <lang locale="zh_TW" value="攜帶字段屬性_location" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderCompany_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderNumber_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_number" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_number" />
+            <lang locale="zh_TW" value="攜帶字段屬性_number" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_insiderNumber_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_integralLevel_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_integralLevel" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_integralLevel" />
+            <lang locale="zh_TW" value="攜帶字段屬性_integralLevel" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_integralLevel_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_joinType_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_joinType" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_joinType" />
+            <lang locale="zh_TW" value="攜帶字段屬性_joinType" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_joinType_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_remark_ActionInfo].alias">
+            <lang locale="zh_CN" value="携带字段属性_remark" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="攜帶字段屬性_remark" />
+            <lang locale="zh_TW" value="攜帶字段屬性_remark" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].actions.action[entrys_remark_ActionInfo].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralConversionRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</ruleSet>
+

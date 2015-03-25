@@ -1,0 +1,2456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.achievementmgmt.app</package>
+    <name>SaleTaskQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK>com.kingdee.eas.fdc.achievementmgmt.SaleTask</bizUnitPK>
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>SaleTask</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[SaleTask].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTask" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>DecomposeEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[DecomposeEntry].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskDecomposeEntry" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>marketingUnit</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[marketingUnit].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="MarketingUnit" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>saleMan</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[saleMan].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subQuery>
+            <name>byMarket</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subQuery[byMarket].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <unionType />
+            <queryRef>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMarketUnitQuery" />
+            </queryRef>
+        </subQuery>
+        <subQuery>
+            <name>byMember</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subQuery[byMember].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <unionType />
+            <queryRef>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </queryRef>
+        </subQuery>
+        <subEntity>
+            <name>monthScheme</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[monthScheme].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleScheme" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>marketingUnit.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[marketingUnit.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>933969a2-0174-4570-a14e-b777aaf95323</key>
+                    <parentUnit>
+                        <key name="name" value="marketingUnit.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="marketingUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>marketingUnit.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[marketingUnit.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>89276819-fabd-4836-bfd8-b25da1ba14cc</key>
+                    <parentUnit>
+                        <key name="name" value="marketingUnit.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="marketingUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>saleMan.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleMan.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>96ee4807-22bc-4c96-ae20-9519300751c3</key>
+                    <parentUnit>
+                        <key name="name" value="saleMan.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="saleMan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>saleMan.name</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleMan.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f5f8478b-7046-4692-a28f-563be2a7db68</key>
+                    <parentUnit>
+                        <key name="name" value="saleMan.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="saleMan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SaleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SaleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bizDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[bizDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d9668145-1981-4ea1-a3a7-a3297b800b3c</key>
+                    <parentUnit>
+                        <key name="name" value="bizDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SaleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="bizDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.planToSaleNum</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planToSaleNum].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>056b480c-ae74-47b2-b925-12640a8af35e</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.planToSaleNum" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="planToSaleNum" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.planToSaleArea</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planToSaleArea].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d655d05e-22b3-44dd-b701-cbd040ca5d79</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.planToSaleArea" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="planToSaleArea" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.planAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>44ae625b-5058-4fce-97b4-537e26c29824</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.planAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="planAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.planReAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planReAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>cd7db29a-5479-46cc-80f0-01d3a3c858ca</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.planReAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="planReAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.decomposeType</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.decomposeType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>23aa5bb1-3aaa-4f8b-ab96-7eda412aabea</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.decomposeType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="decomposeType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.remark</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.remark].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f9a49ffa-f8a6-47ee-acfd-d5e189244df7</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.remark" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="remark" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.seq</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.seq].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5560542d-0b61-42a2-9923-0d481f3bbce2</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.seq" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="seq" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>Dec.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e24b7702-12ad-4c7d-a67e-520e455fd40c</key>
+                    <parentUnit>
+                        <key name="name" value="Dec.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>9cf918ee-b7a3-4850-a1d1-d62c370231b4</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[9cf918ee-b7a3-4850-a1d1-d62c370231b4].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d18802e3-e24d-4876-8cbd-50cb732ad0f0</key>
+                    <parentUnit>
+                        <key name="name" value="9cf918ee-b7a3-4850-a1d1-d62c370231b4" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SaleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>368270b3-12ae-4232-a36c-a0c6e9dfc3d0</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[368270b3-12ae-4232-a36c-a0c6e9dfc3d0].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0102317f-dca7-473f-a16f-658c835aab9a</key>
+                    <parentUnit>
+                        <key name="name" value="368270b3-12ae-4232-a36c-a0c6e9dfc3d0" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="parent" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>066e4cf0-d57e-4e73-88d5-cd0506aff899</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[066e4cf0-d57e-4e73-88d5-cd0506aff899].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a2d5dff0-e198-4f29-9a08-0c959a6cb85e</key>
+                    <parentUnit>
+                        <key name="name" value="066e4cf0-d57e-4e73-88d5-cd0506aff899" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="marketingUnit" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>ca24c083-2709-4ced-afdf-f113d89dd9a2</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[ca24c083-2709-4ced-afdf-f113d89dd9a2].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b63d2aeb-6e2f-4b76-bfdd-b61b72deb2aa</key>
+                    <parentUnit>
+                        <key name="name" value="ca24c083-2709-4ced-afdf-f113d89dd9a2" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="marketingUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>daa32631-4b92-440f-a3bf-ebf5a69f2a6a</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[daa32631-4b92-440f-a3bf-ebf5a69f2a6a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>98e55b57-c8c4-41b0-8a8f-fea80948c9fe</key>
+                    <parentUnit>
+                        <key name="name" value="daa32631-4b92-440f-a3bf-ebf5a69f2a6a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="saleMan" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>0a5a1ba7-a79e-4cd5-821a-c8f3fdd320ec</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[0a5a1ba7-a79e-4cd5-821a-c8f3fdd320ec].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>74916374-9ae1-46e2-8dc3-34be5ce3228b</key>
+                    <parentUnit>
+                        <key name="name" value="0a5a1ba7-a79e-4cd5-821a-c8f3fdd320ec" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="saleMan" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>bf222fc9-d381-4ec9-a2de-9fa437354131</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[bf222fc9-d381-4ec9-a2de-9fa437354131].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4a24f17b-24ba-4b0f-b1da-314e6e0981b9</key>
+                    <parentUnit>
+                        <key name="name" value="bf222fc9-d381-4ec9-a2de-9fa437354131" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="saleMan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>saleNum</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 = 0 then #1 else #2 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleNum].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>08d47dad-bd79-43af-ad73-0de8ce0b3ef8</key>
+                    <parentUnit>
+                        <key name="name" value="saleNum" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="decomposeType" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>a3bac095-6640-454b-b9fc-c188682a40d6</key>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="saleNum" />
+                    </refUnit>
+                </propertyRef>
+                <propertyRef>
+                    <key>4d962044-4fcc-47c9-8181-409c3e0e31d9</key>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="saleNum" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>saleArea</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 = 0 then #1 else #2 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleArea].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7f388af3-bdb0-4be5-84f0-09683f1e619d</key>
+                    <parentUnit>
+                        <key name="name" value="saleArea" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="decomposeType" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>f34c1561-49d6-43ce-b7e1-386d5888a24f</key>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="saleArea" />
+                    </refUnit>
+                </propertyRef>
+                <propertyRef>
+                    <key>fb96cd18-a98f-4f11-b2e9-2b7eafb4fded</key>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="room.saleArea" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>totalAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 = 0 then #1 else #2 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[totalAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e537f964-c1da-4c0e-99a3-d4428c835872</key>
+                    <parentUnit>
+                        <key name="name" value="totalAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="decomposeType" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>3bcfa7be-1dca-4a04-bf65-0520f8c00114</key>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="contractTotalAmount" />
+                    </refUnit>
+                </propertyRef>
+                <propertyRef>
+                    <key>b6c15304-2097-4f88-88e4-097a3a6c2467</key>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="contractTotalAmount" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>reAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 = 0 then #1 else #2 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[reAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>07b488ca-55a0-4f1c-af71-600a5757178b</key>
+                    <parentUnit>
+                        <key name="name" value="reAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="DecomposeEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="decomposeType" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>7147fe63-8cba-4d44-9df8-a01b8ce20fdf</key>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="reAmount" />
+                    </refUnit>
+                </propertyRef>
+                <propertyRef>
+                    <key>08cea6c8-622e-4add-ad6d-9b51e4dc0156</key>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="reAmount" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>1d7b6e8b-80c7-482a-89a1-636b43ca13eb</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1d7b6e8b-80c7-482a-89a1-636b43ca13eb].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d651402f-ba1e-4771-ae13-925e946df350</key>
+                    <parentUnit>
+                        <key name="name" value="1d7b6e8b-80c7-482a-89a1-636b43ca13eb" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SaleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="monthScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>791f68c2-d1fd-4214-9218-7ee177e89c56</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[791f68c2-d1fd-4214-9218-7ee177e89c56].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c3b7c574-375f-48dd-8e42-aaa8d3ec57ac</key>
+                    <parentUnit>
+                        <key name="name" value="791f68c2-d1fd-4214-9218-7ee177e89c56" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>0a3166b2-44f0-4dbd-bfbf-78a63b7f9caa</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[0a3166b2-44f0-4dbd-bfbf-78a63b7f9caa].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>01b7bef5-06bc-4029-9dbf-702e8c0dacae</key>
+                    <parentUnit>
+                        <key name="name" value="0a3166b2-44f0-4dbd-bfbf-78a63b7f9caa" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="saleMan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d4606e5e-3107-4137-84d4-3c8424034c32</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[d4606e5e-3107-4137-84d4-3c8424034c32].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>13be60d0-3c66-4cd6-80d8-936b3455e1cc</key>
+                    <parentUnit>
+                        <key name="name" value="d4606e5e-3107-4137-84d4-3c8424034c32" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="salesman.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>5dbb382c-bef7-4b1f-a993-2d98c31deea3</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[5dbb382c-bef7-4b1f-a993-2d98c31deea3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Enum</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4c476dbf-4a49-44df-a4c7-7bae50e18cc3</key>
+                    <parentUnit>
+                        <key name="name" value="5dbb382c-bef7-4b1f-a993-2d98c31deea3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="monthScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>7f232a0f-93f3-46d0-8383-882f352e398e</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[7f232a0f-93f3-46d0-8383-882f352e398e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b128cad3-38a4-4f70-bf66-f16e08958a8b</key>
+                    <parentUnit>
+                        <key name="name" value="7f232a0f-93f3-46d0-8383-882f352e398e" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="pMonth" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>bf5237cd-ef63-4ae1-a511-9f8678afccfa</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[bf5237cd-ef63-4ae1-a511-9f8678afccfa].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2bf19c5c-f1db-403e-ac4c-5a583c434194</key>
+                    <parentUnit>
+                        <key name="name" value="bf5237cd-ef63-4ae1-a511-9f8678afccfa" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="marketingUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9bd5e3fd-3aed-4633-ba8f-7fcb2518e0f5</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[9bd5e3fd-3aed-4633-ba8f-7fcb2518e0f5].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>80757b87-7207-4a17-a5cb-13f8d70534c4</key>
+                    <parentUnit>
+                        <key name="name" value="9bd5e3fd-3aed-4633-ba8f-7fcb2518e0f5" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="marketUnit.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1b9e7242-06c3-4678-bf5e-c7fa7b43772b</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1b9e7242-06c3-4678-bf5e-c7fa7b43772b].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Enum</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1c51cad6-ba38-4a30-aaa8-99339ee9b3a5</key>
+                    <parentUnit>
+                        <key name="name" value="1b9e7242-06c3-4678-bf5e-c7fa7b43772b" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="monthScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>fa407855-0e06-4c8a-bdc4-290370e15498</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[fa407855-0e06-4c8a-bdc4-290370e15498].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>acb7ef6d-7081-4716-a96f-892231517ce7</key>
+                    <parentUnit>
+                        <key name="name" value="fa407855-0e06-4c8a-bdc4-290370e15498" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="pMonth" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>20c074f3-ade1-47f7-8180-5813f8a99873</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[20c074f3-ade1-47f7-8180-5813f8a99873].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2bf19c5c-f1db-403e-ac4c-5a583c434194</key>
+                    <parentUnit>
+                        <key name="name" value="20c074f3-ade1-47f7-8180-5813f8a99873" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="marketingUnit" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>c89cca51-b226-4e91-9521-54274806ac89</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[c89cca51-b226-4e91-9521-54274806ac89].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>80757b87-7207-4a17-a5cb-13f8d70534c4</key>
+                    <parentUnit>
+                        <key name="name" value="c89cca51-b226-4e91-9521-54274806ac89" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="marketUnit.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d392e426-5e7a-42b2-87e9-a5a2dceb0a35</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[d392e426-5e7a-42b2-87e9-a5a2dceb0a35].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Enum</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>52aa6a89-bb46-4e17-8d9c-401f5d25cb4f</key>
+                    <parentUnit>
+                        <key name="name" value="d392e426-5e7a-42b2-87e9-a5a2dceb0a35" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="monthScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>5e3b5aff-fa07-4a9a-905d-eeaf4313d971</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[5e3b5aff-fa07-4a9a-905d-eeaf4313d971].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>465936d8-7f15-40e0-b85a-2e6bd4b6aefe</key>
+                    <parentUnit>
+                        <key name="name" value="5e3b5aff-fa07-4a9a-905d-eeaf4313d971" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="pMonth" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8af692c7-8c5d-42da-9efc-9ab0bac00757</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[8af692c7-8c5d-42da-9efc-9ab0bac00757].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>04f09aad-2be8-4e3c-bfde-673fffde1a0e</key>
+                    <parentUnit>
+                        <key name="name" value="8af692c7-8c5d-42da-9efc-9ab0bac00757" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="yearScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f826d030-b5c1-4492-85d1-de0c9c3925d9</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[f826d030-b5c1-4492-85d1-de0c9c3925d9].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c5948611-472e-4df1-a95e-792bab323cc7</key>
+                    <parentUnit>
+                        <key name="name" value="f826d030-b5c1-4492-85d1-de0c9c3925d9" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMarket" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="pYear" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1acd600b-7cc8-47f7-a571-95aabf4472f6</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1acd600b-7cc8-47f7-a571-95aabf4472f6].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>01b7bef5-06bc-4029-9dbf-702e8c0dacae</key>
+                    <parentUnit>
+                        <key name="name" value="1acd600b-7cc8-47f7-a571-95aabf4472f6" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="saleMan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>01d5cbf3-2c47-4c05-9532-f45af6584e80</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[01d5cbf3-2c47-4c05-9532-f45af6584e80].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>13be60d0-3c66-4cd6-80d8-936b3455e1cc</key>
+                    <parentUnit>
+                        <key name="name" value="01d5cbf3-2c47-4c05-9532-f45af6584e80" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="salesman.id" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a97c814c-ee61-4502-84b1-e064a9b96173</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[a97c814c-ee61-4502-84b1-e064a9b96173].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Enum</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>be34ec66-e011-4e49-be03-6dbdf44a8819</key>
+                    <parentUnit>
+                        <key name="name" value="a97c814c-ee61-4502-84b1-e064a9b96173" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="monthScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1f7d6797-290e-4519-9084-9519f5d997dc</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1f7d6797-290e-4519-9084-9519f5d997dc].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3f2ddb64-b53f-4480-b134-bde038adb26a</key>
+                    <parentUnit>
+                        <key name="name" value="1f7d6797-290e-4519-9084-9519f5d997dc" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="pMonth" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>69fcc6b6-d15e-4b1c-85b7-897e01e4b866</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[69fcc6b6-d15e-4b1c-85b7-897e01e4b866].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3f74ea2a-fb1b-4408-87b5-ec712024206d</key>
+                    <parentUnit>
+                        <key name="name" value="69fcc6b6-d15e-4b1c-85b7-897e01e4b866" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="monthScheme" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="yearScheme" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>bbf3b3c4-925f-414e-8a01-b55ace2b1f57</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[bbf3b3c4-925f-414e-8a01-b55ace2b1f57].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>569121f2-2288-4f3a-b903-4af65e90c904</key>
+                    <parentUnit>
+                        <key name="name" value="bbf3b3c4-925f-414e-8a01-b55ace2b1f57" />
+                    </parentUnit>
+                    <subQuery>
+                        <key name="name" value="byMember" />
+                    </subQuery>
+                    <refUnit>
+                        <key name="name" value="pYear" />
+                    </refUnit>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>state</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e57c7df9-7682-4299-97cb-46672de2a5ae</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SaleTask" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+            <key name="name" value="SaleTaskQuery" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>Dec.seq</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </querySorterItem>
+    </defaultSorters>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>e819a88b-7904-455c-b66d-d557d6f03e7f</name>
+            <formulaString>#0</formulaString>
+            <type>RIGHT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="SaleTask" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="DecomposeEntry" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>ab09239b-f615-4580-9bb4-83523b79f3c8</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9cf918ee-b7a3-4850-a1d1-d62c370231b4" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="368270b3-12ae-4232-a36c-a0c6e9dfc3d0" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="e819a88b-7904-455c-b66d-d557d6f03e7f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </join>
+        <join>
+            <name>8abe2803-5979-4695-b8f1-9bcc0c90ba63</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="DecomposeEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="marketingUnit" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>08418e52-e14e-441f-9b93-f782dc54d779</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="066e4cf0-d57e-4e73-88d5-cd0506aff899" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="ca24c083-2709-4ced-afdf-f113d89dd9a2" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="8abe2803-5979-4695-b8f1-9bcc0c90ba63" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </join>
+        <join>
+            <name>f771f068-10c0-4b4e-9009-d92635d1044f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="DecomposeEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="saleMan" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>3447a83c-ea00-49d6-8b00-59816c82d30f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="0a5a1ba7-a79e-4cd5-821a-c8f3fdd320ec" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="bf222fc9-d381-4ec9-a2de-9fa437354131" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="f771f068-10c0-4b4e-9009-d92635d1044f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </join>
+        <join>
+            <name>c380c5a0-4b8b-467e-83c0-24120667bbeb</name>
+            <formulaString>#0 and #1 and #2</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="marketingUnit" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="byMarket" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>7028f5b0-0dc3-4335-bbec-a62a2a7f6937</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="20c074f3-ade1-47f7-8180-5813f8a99873" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="c89cca51-b226-4e91-9521-54274806ac89" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="c380c5a0-4b8b-467e-83c0-24120667bbeb" />
+                    </join>
+                </joinItem>
+                <joinItem>
+                    <name>3a0f228c-7200-42f6-96e1-f6acc4a93abe</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d392e426-5e7a-42b2-87e9-a5a2dceb0a35" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="5e3b5aff-fa07-4a9a-905d-eeaf4313d971" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="c380c5a0-4b8b-467e-83c0-24120667bbeb" />
+                    </join>
+                </joinItem>
+                <joinItem>
+                    <name>fa5bbc2a-bdfa-4409-84ae-6ac1a1cb1e73</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="8af692c7-8c5d-42da-9efc-9ab0bac00757" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f826d030-b5c1-4492-85d1-de0c9c3925d9" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="c380c5a0-4b8b-467e-83c0-24120667bbeb" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </join>
+        <join>
+            <name>32a672e0-3689-43de-9125-56376053b429</name>
+            <formulaString>#0 and #1 and #2</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="saleMan" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="byMember" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>8ab68b0c-0254-4ea8-bcb1-263f08c2957c</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="1acd600b-7cc8-47f7-a571-95aabf4472f6" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="01d5cbf3-2c47-4c05-9532-f45af6584e80" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="32a672e0-3689-43de-9125-56376053b429" />
+                    </join>
+                </joinItem>
+                <joinItem>
+                    <name>8e1bc313-5926-48ef-8626-5a6db27c277d</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="a97c814c-ee61-4502-84b1-e064a9b96173" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="1f7d6797-290e-4519-9084-9519f5d997dc" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="32a672e0-3689-43de-9125-56376053b429" />
+                    </join>
+                </joinItem>
+                <joinItem>
+                    <name>d41f87fa-2a69-4c17-8bae-4107e4d563a8</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="69fcc6b6-d15e-4b1c-85b7-897e01e4b866" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="bbf3b3c4-925f-414e-8a01-b55ace2b1f57" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="32a672e0-3689-43de-9125-56376053b429" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </join>
+        <join>
+            <name>faa3eda7-d99c-4b2b-9a78-7204695904f0</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="SaleTask" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="monthScheme" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>a4a3aa6f-61ae-4ed3-95e9-9579b1186edb</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="1d7b6e8b-80c7-482a-89a1-636b43ca13eb" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="791f68c2-d1fd-4214-9218-7ee177e89c56" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="faa3eda7-d99c-4b2b-9a78-7204695904f0" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="SaleTaskQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].alias">
+            <lang locale="zh_CN" value="销售任务" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="銷售任務" />
+            <lang locale="zh_TW" value="銷售任務" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.ColWidthInKDTable">
+            <lang locale="zh_CN" value="50" />
+            <lang locale="zh_TW" value="50" />
+            <lang locale="en_US" value="50" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.F7WindowTitle">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.achievementmgmt.client.AchievementmgmtResource.SaleTaskQueryF7WindowTitle" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.achievementmgmt.client.AchievementmgmtResource.SaleTaskQueryF7WindowTitle" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.achievementmgmt.client.AchievementmgmtResource.SaleTaskQueryF7WindowTitle" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.bimTemplateType">
+            <lang locale="zh_CN" value="BillBase" />
+            <lang locale="zh_TW" value="BillBase" />
+            <lang locale="en_US" value="BillBase" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.f7WindowTitle">
+            <lang locale="zh_CN" value="SaleTask" />
+            <lang locale="zh_TW" value="SaleTask" />
+            <lang locale="en_US" value="SaleTask" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].defaultSorters.querySorterItemextendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].description">
+            <lang locale="zh_CN" value="销售任务" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="銷售任務" />
+            <lang locale="zh_TW" value="銷售任務" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.ColWidthInKDTable">
+            <lang locale="zh_CN" value="50" />
+            <lang locale="zh_TW" value="50" />
+            <lang locale="en_US" value="50" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.F7WindowTitle">
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.achievementmgmt.client.AchievementmgmtResource.SaleTaskQueryF7WindowTitle" />
+            <lang locale="zh_TW" value="com.kingdee.eas.fdc.achievementmgmt.client.AchievementmgmtResource.SaleTaskQueryF7WindowTitle" />
+            <lang locale="en_US" value="com.kingdee.eas.fdc.achievementmgmt.client.AchievementmgmtResource.SaleTaskQueryF7WindowTitle" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.bimTemplateType">
+            <lang locale="zh_CN" value="BillBase" />
+            <lang locale="zh_TW" value="BillBase" />
+            <lang locale="en_US" value="BillBase" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.f7WindowTitle">
+            <lang locale="zh_CN" value="SaleTask" />
+            <lang locale="zh_TW" value="SaleTask" />
+            <lang locale="en_US" value="SaleTask" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[DecomposeEntry].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[SaleTask].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[marketingUnit].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[monthScheme].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subEntity[saleMan].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subQuery[byMarket].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].subObjects.subQuery[byMember].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[01d5cbf3-2c47-4c05-9532-f45af6584e80].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[066e4cf0-d57e-4e73-88d5-cd0506aff899].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[0a3166b2-44f0-4dbd-bfbf-78a63b7f9caa].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[0a5a1ba7-a79e-4cd5-821a-c8f3fdd320ec].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1acd600b-7cc8-47f7-a571-95aabf4472f6].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1b9e7242-06c3-4678-bf5e-c7fa7b43772b].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1d7b6e8b-80c7-482a-89a1-636b43ca13eb].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[1f7d6797-290e-4519-9084-9519f5d997dc].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[20c074f3-ade1-47f7-8180-5813f8a99873].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[368270b3-12ae-4232-a36c-a0c6e9dfc3d0].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[5dbb382c-bef7-4b1f-a993-2d98c31deea3].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[5e3b5aff-fa07-4a9a-905d-eeaf4313d971].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[69fcc6b6-d15e-4b1c-85b7-897e01e4b866].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[791f68c2-d1fd-4214-9218-7ee177e89c56].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[7f232a0f-93f3-46d0-8383-882f352e398e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[8af692c7-8c5d-42da-9efc-9ab0bac00757].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[9bd5e3fd-3aed-4633-ba8f-7fcb2518e0f5].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[9cf918ee-b7a3-4850-a1d1-d62c370231b4].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[a97c814c-ee61-4502-84b1-e064a9b96173].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[bbf3b3c4-925f-414e-8a01-b55ace2b1f57].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[bf222fc9-d381-4ec9-a2de-9fa437354131].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[bf5237cd-ef63-4ae1-a511-9f8678afccfa].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[c89cca51-b226-4e91-9521-54274806ac89].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[ca24c083-2709-4ced-afdf-f113d89dd9a2].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[d392e426-5e7a-42b2-87e9-a5a2dceb0a35].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[d4606e5e-3107-4137-84d4-3c8424034c32].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[daa32631-4b92-440f-a3bf-ebf5a69f2a6a].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[f826d030-b5c1-4492-85d1-de0c9c3925d9].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.propertyUnit[fa407855-0e06-4c8a-bdc4-290370e15498].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.decomposeType].displayName">
+            <lang locale="zh_CN" value="分解类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="分解類型" />
+            <lang locale="zh_TW" value="分解類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planAmount].displayName">
+            <lang locale="zh_CN" value="计划合同金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫合同金額" />
+            <lang locale="zh_TW" value="計畫合同金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planReAmount].displayName">
+            <lang locale="zh_CN" value="计划回款金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫回款金額" />
+            <lang locale="zh_TW" value="計畫回款金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planToSaleArea].displayName">
+            <lang locale="zh_CN" value="计划销售面积" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫銷售面積" />
+            <lang locale="zh_TW" value="計畫銷售面積" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.planToSaleNum].displayName">
+            <lang locale="zh_CN" value="计划销售套数" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="計畫銷售套數" />
+            <lang locale="zh_TW" value="計畫銷售套數" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.remark].displayName">
+            <lang locale="zh_CN" value="备注" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="備註" />
+            <lang locale="zh_TW" value="備註" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[Dec.seq].displayName">
+            <lang locale="zh_CN" value="单据分录序列号" />
+            <lang locale="en_US" value="sequence" />
+            <lang locale="zh_HK" value="單據分錄序列號" />
+            <lang locale="zh_TW" value="單據分錄序列號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[bizDate].displayName">
+            <lang locale="zh_CN" value="编制日期" />
+            <lang locale="en_US" value="" />
+            <lang locale="zh_HK" value="編制日期" />
+            <lang locale="zh_TW" value="編制日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].extendedProperty.colWidthInKDTable">
+            <lang locale="zh_CN" value="50" />
+            <lang locale="zh_TW" value="50" />
+            <lang locale="en_US" value="50" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].extendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[marketingUnit.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[marketingUnit.name].displayName">
+            <lang locale="zh_CN" value="营销单元" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="營銷單元" />
+            <lang locale="zh_TW" value="營銷單元" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="销售任务编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="銷售任務編號" />
+            <lang locale="zh_TW" value="銷售任務編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].extendedProperty.colWidthInKDTable">
+            <lang locale="zh_CN" value="50" />
+            <lang locale="zh_TW" value="50" />
+            <lang locale="en_US" value="50" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].extendedProperty.isUsingF7">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[number].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[reAmount].displayName">
+            <lang locale="zh_CN" value="实际回款金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際回款金額" />
+            <lang locale="zh_TW" value="實際回款金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleArea].displayName">
+            <lang locale="zh_CN" value="实际销售面积" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際銷售面積" />
+            <lang locale="zh_TW" value="實際銷售面積" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleMan.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleMan.name].displayName">
+            <lang locale="zh_CN" value="销售顾问" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="銷售顧問" />
+            <lang locale="zh_TW" value="銷售顧問" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[saleNum].displayName">
+            <lang locale="zh_CN" value="实际销售套数" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際銷售套數" />
+            <lang locale="zh_TW" value="實際銷售套數" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.SaleTaskQuery].units.queryField[totalAmount].displayName">
+            <lang locale="zh_CN" value="实际合同金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際合同金額" />
+            <lang locale="zh_TW" value="實際合同金額" />
+        </rs>
+    </resource>
+</joinQuery>
+

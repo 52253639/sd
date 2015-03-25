@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataTable xmlns="com.kingdee.bos.metadata">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><dataTable xmlns="com.kingdee.bos.metadata">
     <package>com.kingdee.eas.fdc.tenancy.app</package>
     <name>T_TEN_RestReceivableEntry</name>
     <alias>dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].alias</alias>
     <description>dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].description</description>
     <userDefined>false</userDefined>
-    <bizUnitPK />
+    <bizUnitPK/>
     <columns>
         <column>
             <name>FParentID</name>
@@ -15,7 +14,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -29,7 +28,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>DATETIME</sqlType>
             <length>8</length>
             <scale>0</scale>
@@ -43,7 +42,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NUMERIC</sqlType>
             <length>28</length>
             <scale>2</scale>
@@ -57,7 +56,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -71,7 +70,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>DATETIME</sqlType>
             <length>8</length>
             <scale>0</scale>
@@ -85,7 +84,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NUMERIC</sqlType>
             <length>28</length>
             <scale>2</scale>
@@ -99,7 +98,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>NVARCHAR</sqlType>
             <length>255</length>
             <scale>0</scale>
@@ -113,7 +112,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -127,7 +126,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -141,7 +140,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>true</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>INT</sqlType>
             <length>4</length>
             <scale>0</scale>
@@ -155,7 +154,7 @@
             <isMultilingual>false</isMultilingual>
             <isEncoded>false</isEncoded>
             <isNullable>false</isNullable>
-            <defaultValue />
+            <defaultValue/>
             <sqlType>VARCHAR</sqlType>
             <length>44</length>
             <scale>0</scale>
@@ -170,228 +169,150 @@
                 <indexID>0</indexID>
                 <sortType>ASC</sortType>
                 <column>
-                    <key name="name" value="FID" />
+                    <key name="name" value="FID"/>
                 </column>
             </primaryKeyColumn>
         </primaryKeyColumns>
     </primaryKey>
-    <foreignKeys>
-        <foreignKey>
-            <name>FK_TEN_RestREArent</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="T_TEN_RestReceivable" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FParentID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-        <foreignKey>
-            <name>FK_TEN_RestREUrns</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.basedata.assistant" />
-                <key name="name" value="T_BD_Currency" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FCurrencyID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-        <foreignKey>
-            <name>FK_TEN_RestREOnD</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
-                <key name="name" value="T_SHE_MoneyDefine" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FMoneyDefineID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-        <foreignKey>
-            <name>FK_TEN_RestREEnnBE</name>
-            <userDefined>false</userDefined>
-            <refTable>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="T_TEN_TenBillOtherPay" />
-            </refTable>
-            <fkColumnPairs>
-                <fkColumnPair>
-                    <sequence>0</sequence>
-                    <refColumn>
-                        <key name="name" value="FID" />
-                    </refColumn>
-                    <fkColumn>
-                        <key name="name" value="FTenancyBillEntryID" />
-                    </fkColumn>
-                </fkColumnPair>
-            </fkColumnPairs>
-        </foreignKey>
-    </foreignKeys>
+    
     <resource>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].alias">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="分錄" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="分錄"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FActRevAmount].alias">
-            <lang locale="zh_CN" value="实收金额" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="實收金額" />
-            <lang locale="zh_TW" value="實收金額" />
+            <lang locale="zh_CN" value="实收金额"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="實收金額"/>
+            <lang locale="zh_TW" value="實收金額"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FActRevAmount].description">
-            <lang locale="zh_CN" value="实收金额" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="實收金額" />
-            <lang locale="zh_TW" value="實收金額" />
+            <lang locale="zh_CN" value="实收金额"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="實收金額"/>
+            <lang locale="zh_TW" value="實收金額"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FActRevDate].alias">
-            <lang locale="zh_CN" value="实收日期" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="實收日期" />
-            <lang locale="zh_TW" value="實收日期" />
+            <lang locale="zh_CN" value="实收日期"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="實收日期"/>
+            <lang locale="zh_TW" value="實收日期"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FActRevDate].description">
-            <lang locale="zh_CN" value="实收日期" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="實收日期" />
-            <lang locale="zh_TW" value="實收日期" />
+            <lang locale="zh_CN" value="实收日期"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="實收日期"/>
+            <lang locale="zh_TW" value="實收日期"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FAppAmount].alias">
-            <lang locale="zh_CN" value="应收金额" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="應收金額" />
-            <lang locale="zh_TW" value="應收金額" />
+            <lang locale="zh_CN" value="应收金额"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="應收金額"/>
+            <lang locale="zh_TW" value="應收金額"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FAppAmount].description">
-            <lang locale="zh_CN" value="应收金额" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="應收金額" />
-            <lang locale="zh_TW" value="應收金額" />
+            <lang locale="zh_CN" value="应收金额"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="應收金額"/>
+            <lang locale="zh_TW" value="應收金額"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FAppDate].alias">
-            <lang locale="zh_CN" value="应收日期" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="應收日期" />
-            <lang locale="zh_TW" value="應收日期" />
+            <lang locale="zh_CN" value="应收日期"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="應收日期"/>
+            <lang locale="zh_TW" value="應收日期"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FAppDate].description">
-            <lang locale="zh_CN" value="应收日期" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="應收日期" />
-            <lang locale="zh_TW" value="應收日期" />
+            <lang locale="zh_CN" value="应收日期"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="應收日期"/>
+            <lang locale="zh_TW" value="應收日期"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FCurrencyID].alias">
-            <lang locale="zh_CN" value="币别" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="幣別" />
-            <lang locale="zh_TW" value="幣別" />
+            <lang locale="zh_CN" value="币别"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="幣別"/>
+            <lang locale="zh_TW" value="幣別"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FCurrencyID].description">
-            <lang locale="zh_CN" value="币别" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="幣別" />
-            <lang locale="zh_TW" value="幣別" />
+            <lang locale="zh_CN" value="币别"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="幣別"/>
+            <lang locale="zh_TW" value="幣別"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FID].alias">
-            <lang locale="zh_CN" value="null" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
-            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="null"/>
+            <lang locale="zh_TW" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FID].description">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="null"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FMoneyDefineID].alias">
-            <lang locale="zh_CN" value="款项名称" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="款項名稱" />
-            <lang locale="zh_TW" value="款項名稱" />
+            <lang locale="zh_CN" value="款项名称"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="款項名稱"/>
+            <lang locale="zh_TW" value="款項名稱"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FMoneyDefineID].description">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="款項名稱" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="款項名稱"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FParentID].alias">
-            <lang locale="zh_CN" value="null" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
-            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="null"/>
+            <lang locale="zh_TW" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FParentID].description">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="null"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FRemark].alias">
-            <lang locale="zh_CN" value="备注" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="備註" />
-            <lang locale="zh_TW" value="備註" />
+            <lang locale="zh_CN" value="备注"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="備註"/>
+            <lang locale="zh_TW" value="備註"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FRemark].description">
-            <lang locale="zh_CN" value="备注" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="備註" />
-            <lang locale="zh_TW" value="備註" />
+            <lang locale="zh_CN" value="备注"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="備註"/>
+            <lang locale="zh_TW" value="備註"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FSeq].alias">
-            <lang locale="zh_CN" value="null" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
-            <lang locale="zh_TW" value="null" />
+            <lang locale="zh_CN" value="null"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="null"/>
+            <lang locale="zh_TW" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FSeq].description">
-            <lang locale="zh_CN" value="单据分录序列号（定义为序列属性即使用{seq}）" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="單據分錄序列號（定義為序列屬性即使用{seq}）" />
-            <lang locale="zh_TW" value="單據分錄序列號（定義為序列屬性即使用{seq}）" />
+            <lang locale="zh_CN" value="单据分录序列号（定义为序列属性即使用{seq}）"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="單據分錄序列號（定義為序列屬性即使用{seq}）"/>
+            <lang locale="zh_TW" value="單據分錄序列號（定義為序列屬性即使用{seq}）"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FTenancyBillEntryID].alias">
-            <lang locale="zh_CN" value="租赁合同分录" />
-            <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="租賃合同分錄" />
-            <lang locale="zh_TW" value="租賃合同分錄" />
+            <lang locale="zh_CN" value="租赁合同分录"/>
+            <lang locale="en_US" value="null"/>
+            <lang locale="zh_HK" value="租賃合同分錄"/>
+            <lang locale="zh_TW" value="租賃合同分錄"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].columns.column[FTenancyBillEntryID].description">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="租賃合同分錄" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="租賃合同分錄"/>
+            <lang locale="en_US" value="null"/>
         </rs>
         <rs key="dataTable[com.kingdee.eas.fdc.tenancy.app.T_TEN_RestReceivableEntry].description">
-            <lang locale="zh_CN" value="" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value=""/>
+            <lang locale="zh_TW" value="null"/>
+            <lang locale="en_US" value="null"/>
         </rs>
     </resource>
 </dataTable>
-

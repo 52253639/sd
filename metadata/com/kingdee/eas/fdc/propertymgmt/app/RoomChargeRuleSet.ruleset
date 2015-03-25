@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.propertymgmt.app</package>
+    <name>RoomChargeRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>89406b10-56a5-45c7-8f21-345ed5847607</id>
+            <parentID />
+            <source>buildArea=room.buildingArea</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>ad967dba-6df3-4c84-ab3f-154dc99e3641</id>
+            <parentID>89406b10-56a5-45c7-8f21-345ed5847607</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>BigDecimal</valueType>
+            <value />
+            <property>
+                <ownerID>41cc38ef-3d70-4183-a6d8-7ec17e09e339</ownerID>
+                <name>value</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>41cc38ef-3d70-4183-a6d8-7ec17e09e339</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtbuildArea</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>33acabf1-1f20-4e87-9b34-f6b7842a3c06</id>
+            <parentID>89406b10-56a5-45c7-8f21-345ed5847607</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>BigDecimal</valueType>
+            <value />
+            <method>
+                <ownerID>6a67d0b7-76ec-4e07-b1f5-6eda9fae1183</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>e3ae81f6-daa8-4a83-bff2-77162e81dde8</id>
+                        <expressionID>837c5983-c8cd-45fd-8409-6596e3f61a7b</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>c748e183-fd07-43ff-9589-5faf2c5d07bb</id>
+                        <expressionID>b450bd2f-fd5d-4af7-b896-b88af4330279</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>6a67d0b7-76ec-4e07-b1f5-6eda9fae1183</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>837c5983-c8cd-45fd-8409-6596e3f61a7b</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>ca171b8a-d040-45fb-8bd0-cd6720b7882e</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>ca171b8a-d040-45fb-8bd0-cd6720b7882e</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtroom</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>b450bd2f-fd5d-4af7-b896-b88af4330279</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>buildingArea</value>
+        </simpleExpression>
+        <groupExpression>
+            <id>05a0de92-105f-40a3-a807-4b953e267a61</id>
+            <parentID />
+            <source>innerArea=room.roomArea</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>132fcd2c-2cdf-4bec-a9dd-c6c889e1caa2</id>
+            <parentID>05a0de92-105f-40a3-a807-4b953e267a61</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>BigDecimal</valueType>
+            <value />
+            <property>
+                <ownerID>698f5bba-5a24-4d7e-9b1a-630e29c255f7</ownerID>
+                <name>value</name>
+                <type>java.lang.Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>698f5bba-5a24-4d7e-9b1a-630e29c255f7</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtinnerArea</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>4ec694cc-71ff-47e3-83fe-805351329120</id>
+            <parentID>05a0de92-105f-40a3-a807-4b953e267a61</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>BigDecimal</valueType>
+            <value />
+            <method>
+                <ownerID>3ab12664-6b25-43c5-b1bf-c6a0af8986bd</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>d1670ed2-b8a1-4dff-93f1-6035782d5eec</id>
+                        <expressionID>8b7ec64c-0e74-4571-b830-83131afeab05</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>c935bf8d-c454-4c05-b10d-b8e2224c86ee</id>
+                        <expressionID>da6fef2c-2382-4ee3-a48d-44e1fab92642</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>3ab12664-6b25-43c5-b1bf-c6a0af8986bd</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>8b7ec64c-0e74-4571-b830-83131afeab05</id>
+            <parentID />
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>Object</valueType>
+            <value />
+            <method>
+                <ownerID>f2b86cb9-d743-4463-b9ae-f18682ade09f</ownerID>
+                <name>getData</name>
+                <type>Object</type>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>f2b86cb9-d743-4463-b9ae-f18682ade09f</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)prmtroom</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>da6fef2c-2382-4ee3-a48d-44e1fab92642</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>roomArea</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>57950349-113e-473b-8c03-b01ef136fc33</id>
+            <name>RoomCharge_buildArea_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_buildArea_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_buildArea_ActionInfo].description</description>
+            <expressionID>89406b10-56a5-45c7-8f21-345ed5847607</expressionID>
+        </action>
+        <action>
+            <id>ebfda142-2c95-48e2-b8c7-0bff0bab436c</id>
+            <name>RoomCharge_innerArea_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_innerArea_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_innerArea_ActionInfo].description</description>
+            <expressionID>05a0de92-105f-40a3-a807-4b953e267a61</expressionID>
+        </action>
+    </actions>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_buildArea_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_buildingArea" />
+            <lang locale="zh_TW" value="攜帶字段屬性_buildingArea" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_buildArea_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_innerArea_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_roomArea" />
+            <lang locale="zh_TW" value="攜帶字段屬性_roomArea" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].actions.action[RoomCharge_innerArea_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.RoomChargeRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+    </resource>
+</ruleSet>
+

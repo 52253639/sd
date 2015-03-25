@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTable xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.fault.app</package>
+    <name>CT_SUPPLIER_Fc</name>
+    <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].alias</alias>
+    <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].description</description>
+    <userDefined>true</userDefined>
+    <bizUnitPK />
+    <columns>
+        <column>
+            <name>FSeq</name>
+            <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSeq].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSeq].description</description>
+            <userDefined>true</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue>0</defaultValue>
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>4</precision>
+        </column>
+        <column>
+            <name>FID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FID].description</description>
+            <userDefined>true</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>false</isNullable>
+            <defaultValue>''</defaultValue>
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+        <column>
+            <name>FParentID</name>
+            <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FParentID].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FParentID].description</description>
+            <userDefined>true</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue>''</defaultValue>
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+        <column>
+            <name>FSupplierId</name>
+            <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSupplierId].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSupplierId].description</description>
+            <userDefined>true</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue>''</defaultValue>
+            <sqlType>VARCHAR</sqlType>
+            <length>44</length>
+            <scale>0</scale>
+            <precision>44</precision>
+        </column>
+        <column>
+            <name>FIsRespon</name>
+            <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FIsRespon].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FIsRespon].description</description>
+            <userDefined>true</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue>0</defaultValue>
+            <sqlType>INT</sqlType>
+            <length>4</length>
+            <scale>0</scale>
+            <precision>4</precision>
+        </column>
+        <column>
+            <name>FDescription</name>
+            <alias>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FDescription].alias</alias>
+            <description>dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FDescription].description</description>
+            <userDefined>true</userDefined>
+            <isMultilingual>false</isMultilingual>
+            <isEncoded>false</isEncoded>
+            <isNullable>true</isNullable>
+            <defaultValue>''</defaultValue>
+            <sqlType>VARCHAR</sqlType>
+            <length>255</length>
+            <scale>0</scale>
+            <precision>255</precision>
+        </column>
+    </columns>
+    <primaryKey>
+        <name>CPK_PFSUPPLIER</name>
+        <userDefined>true</userDefined>
+        <primaryKeyColumns>
+            <primaryKeyColumn>
+                <indexID>0</indexID>
+                <sortType>ASC</sortType>
+                <column>
+                    <key name="name" value="FID" />
+                </column>
+            </primaryKeyColumn>
+        </primaryKeyColumns>
+    </primaryKey>
+    <foreignKeys>
+        <foreignKey>
+            <name>CFK_PFFromSupplier</name>
+            <userDefined>true</userDefined>
+            <refTable>
+                <key name="package" value="com.kingdee.eas.fdc.fault.app" />
+                <key name="name" value="CT_FAU_ProjectFault" />
+            </refTable>
+            <fkColumnPairs>
+                <fkColumnPair>
+                    <sequence>0</sequence>
+                    <refColumn>
+                        <key name="name" value="FID" />
+                    </refColumn>
+                    <fkColumn>
+                        <key name="name" value="FParentID" />
+                    </fkColumn>
+                </fkColumnPair>
+            </fkColumnPairs>
+        </foreignKey>
+    </foreignKeys>
+    <resource>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="供应商" />
+            <lang locale="zh_TW" value="缺陷供應商分類" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FDescription].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FDescription" />
+            <lang locale="zh_TW" value="FDescription" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FDescription].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="说明" />
+            <lang locale="zh_TW" value="說明" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FID" />
+            <lang locale="zh_TW" value="FID" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FID" />
+            <lang locale="zh_TW" value="FID" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FIsRespon].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FIsRespon" />
+            <lang locale="zh_TW" value="FIsRespon" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FIsRespon].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否负责人" />
+            <lang locale="zh_TW" value="是否負責人" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FParentID].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FParentID" />
+            <lang locale="zh_TW" value="FParentID" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FParentID].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSeq].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FSeq" />
+            <lang locale="zh_TW" value="FSeq" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSeq].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FSeq" />
+            <lang locale="zh_TW" value="FSeq" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSupplierId].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="FSupplierId" />
+            <lang locale="zh_TW" value="FSupplierId" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].columns.column[FSupplierId].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="供应商" />
+            <lang locale="zh_TW" value="供應商" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="缺陷供應商分類" />
+        </rs>
+        <rs key="dataTable[com.kingdee.eas.fdc.fault.app.CT_SUPPLIER_Fc].extendedProperty.userDefined">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+    </resource>
+</dataTable>
+

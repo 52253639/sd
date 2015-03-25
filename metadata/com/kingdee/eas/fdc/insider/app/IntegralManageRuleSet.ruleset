@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.insider.app</package>
+    <name>IntegralManageRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <simpleExpression>
+            <id>153f567c-849b-49c5-bf78-0fb188c55428</id>
+            <parentID />
+            <source>UIRuleUtil.throwException("编号不能为空!")</source>
+            <type>METHODINVOKE</type>
+            <valueType>Unkown</valueType>
+            <value />
+            <method>
+                <ownerID>20184841-7ccf-4ea5-a571-2ba88e9b7035</ownerID>
+                <name>throwException</name>
+                <type>Unkown</type>
+                <parameters>
+                    <parameter>
+                        <id>a07a6ef4-8620-4b2f-b38c-5ad20d91be06</id>
+                        <expressionID>d8351bca-a895-4573-a294-ff334a721d85</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>20184841-7ccf-4ea5-a571-2ba88e9b7035</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>d8351bca-a895-4573-a294-ff334a721d85</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>编号不能为空!</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>72017bc9-3f15-424c-9151-5fa7e6166765</id>
+            <parentID />
+            <source>ISNULL( [number] )</source>
+            <type>METHODINVOKE</type>
+            <valueType>boolean</valueType>
+            <value />
+            <method>
+                <ownerID>a3b0ce8c-e170-4922-8850-844e73d1affb</ownerID>
+                <name>isNull</name>
+                <type>boolean</type>
+                <parameters>
+                    <parameter>
+                        <id>1dfea3cd-aa9a-4e40-a6eb-4f9faea60a59</id>
+                        <expressionID>1a2550b0-b586-45cd-a9ff-a0b73bcfa451</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>a3b0ce8c-e170-4922-8850-844e73d1affb</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>1a2550b0-b586-45cd-a9ff-a0b73bcfa451</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>String</valueType>
+            <value />
+            <property>
+                <ownerID>eb544e2b-d9c2-4444-a0c4-19ea55715d46</ownerID>
+                <name>text</name>
+                <type>java.lang.String</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>eb544e2b-d9c2-4444-a0c4-19ea55715d46</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>txtNumber</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>58e5cfce-9bb8-4e8e-8fda-37d766c5cef5</id>
+            <name>ASZ_JPMW</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].actions.action[ASZ_JPMW].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].actions.action[ASZ_JPMW].description</description>
+            <expressionID>153f567c-849b-49c5-bf78-0fb188c55428</expressionID>
+        </action>
+    </actions>
+    <conditions>
+        <baseCondition>
+            <id>dd1414fe-7060-45e4-97f9-805c82e348a7</id>
+            <name>ASZ_K9KR</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].conditions.baseCondition[ASZ_K9KR].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].conditions.baseCondition[ASZ_K9KR].description</description>
+            <expressionID>72017bc9-3f15-424c-9151-5fa7e6166765</expressionID>
+        </baseCondition>
+    </conditions>
+    <rules>
+        <conditionRule>
+            <name>IntegralManageASZ_KDLA</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].rules.conditionRule[IntegralManageASZ_KDLA].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].rules.conditionRule[IntegralManageASZ_KDLA].description</description>
+            <ruleType>validate</ruleType>
+            <eventObjectName />
+            <eventType>SUBMIT</eventType>
+            <eventName>SUBMIT</eventName>
+            <condition>
+                <key name="id" value="dd1414fe-7060-45e4-97f9-805c82e348a7" />
+            </condition>
+            <actions>
+                <action>
+                    <key name="id" value="58e5cfce-9bb8-4e8e-8fda-37d766c5cef5" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].actions.action[ASZ_JPMW].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].actions.action[ASZ_JPMW].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].conditions.baseCondition[ASZ_K9KR].alias">
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+            <lang locale="en_US" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].conditions.baseCondition[ASZ_K9KR].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].rules.conditionRule[IntegralManageASZ_KDLA].alias">
+            <lang locale="zh_CN" value="ValidateEvent0001" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ValidateEvent0001" />
+            <lang locale="zh_TW" value="ValidateEvent0001" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].rules.conditionRule[IntegralManageASZ_KDLA].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.insider.app.IntegralManageRuleSet].rules.conditionRule[IntegralManageASZ_KDLA].extendedProperty.columnName">
+            <lang locale="zh_CN" value="number" />
+            <lang locale="zh_TW" value="number" />
+            <lang locale="en_US" value="number" />
+        </rs>
+    </resource>
+</ruleSet>
+

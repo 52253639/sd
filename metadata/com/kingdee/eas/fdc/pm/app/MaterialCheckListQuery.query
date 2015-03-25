@@ -1,0 +1,1313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>MaterialCheckListQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].description</description>
+    <userDefined>true</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>MaterialCheck</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[MaterialCheck].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheck" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>projectItem</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[projectItem].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>sendCheckName</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[sendCheckName].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.master.cssp.app" />
+                <key name="name" value="Supplier" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>id</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c7fa6152-ff7e-45de-b59f-e36eedfe1f54</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>projectItem.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[projectItem.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5cb2bcdc-de03-4ac0-af82-6de9af7ce767</key>
+                    <parentUnit>
+                        <key name="name" value="projectItem.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="projectItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b764801c-df37-4ad8-9508-c40c931bc174</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f46242f0-acdc-4fcd-a0e2-d67d7185552d</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7216e140-7a49-4452-9dc5-de6f63b693a7</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>checkItem</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[checkItem].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f0b07983-b66b-4c1c-9813-5208cbbb57c9</key>
+                    <parentUnit>
+                        <key name="name" value="checkItem" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="checkItem" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>sendCheckName.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[sendCheckName.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>665b5fcd-0609-4460-bcf8-bf788afab43e</key>
+                    <parentUnit>
+                        <key name="name" value="sendCheckName.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="sendCheckName" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>738788d5-f82f-419a-8f5f-6290b4948a5f</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createDate</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[createDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b0b5954a-024d-4e04-b94a-15d7cf4ee9a6</key>
+                    <parentUnit>
+                        <key name="name" value="createDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>905bab1c-f789-45bd-8385-6217c95242e2</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fe5b7dc7-0ee0-42ce-b560-709be21a0c8a</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>7d0d83e8-89a1-4636-8f3e-efe891819ce0</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[7d0d83e8-89a1-4636-8f3e-efe891819ce0].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2a3c96d1-8fe6-45dc-9899-2d5c3796242b</key>
+                    <parentUnit>
+                        <key name="name" value="7d0d83e8-89a1-4636-8f3e-efe891819ce0" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="projectItem" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>789a20fe-8741-4144-bd2e-8e1320bf1eeb</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[789a20fe-8741-4144-bd2e-8e1320bf1eeb].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ea69c1f9-66f8-4c5a-8061-3f4c96703d04</key>
+                    <parentUnit>
+                        <key name="name" value="789a20fe-8741-4144-bd2e-8e1320bf1eeb" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>735a0742-b777-4604-9a1a-d051c801fe68</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[735a0742-b777-4604-9a1a-d051c801fe68].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>06460083-fc81-43de-8760-d9cf548a258b</key>
+                    <parentUnit>
+                        <key name="name" value="735a0742-b777-4604-9a1a-d051c801fe68" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>3dc2380b-417c-458a-add4-74496049ac71</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[3dc2380b-417c-458a-add4-74496049ac71].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f8d7018c-fd28-4e4c-940d-d09dfb17d86f</key>
+                    <parentUnit>
+                        <key name="name" value="3dc2380b-417c-458a-add4-74496049ac71" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="sendCheckName" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8e2cc54a-0826-4726-87c2-81f6d31a0999</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[8e2cc54a-0826-4726-87c2-81f6d31a0999].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2a3c96d1-8fe6-45dc-9899-2d5c3796242b</key>
+                    <parentUnit>
+                        <key name="name" value="8e2cc54a-0826-4726-87c2-81f6d31a0999" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="projectItem" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1a596c44-88ae-48f9-912c-4901291ec2c4</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[1a596c44-88ae-48f9-912c-4901291ec2c4].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f8d7018c-fd28-4e4c-940d-d09dfb17d86f</key>
+                    <parentUnit>
+                        <key name="name" value="1a596c44-88ae-48f9-912c-4901291ec2c4" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="sendCheckName" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8571cf02-c0f6-4cf6-88b4-7755c88803dd</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[8571cf02-c0f6-4cf6-88b4-7755c88803dd].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2a3c96d1-8fe6-45dc-9899-2d5c3796242b</key>
+                    <parentUnit>
+                        <key name="name" value="8571cf02-c0f6-4cf6-88b4-7755c88803dd" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="projectItem" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>99e9d746-4105-4aac-b4d8-0408de94bafd</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[99e9d746-4105-4aac-b4d8-0408de94bafd].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2a3c96d1-8fe6-45dc-9899-2d5c3796242b</key>
+                    <parentUnit>
+                        <key name="name" value="99e9d746-4105-4aac-b4d8-0408de94bafd" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="projectItem" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f14dbb93-dae4-48c1-89da-caa1ffb946ae</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[f14dbb93-dae4-48c1-89da-caa1ffb946ae].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>87d2820d-80a0-4d41-9af1-a53947a747a3</key>
+                    <parentUnit>
+                        <key name="name" value="f14dbb93-dae4-48c1-89da-caa1ffb946ae" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f56986e4-5060-4400-9083-35ac5285ba18</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[f56986e4-5060-4400-9083-35ac5285ba18].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>6b692326-aa4e-4b30-8d3f-fbe77d96b557</key>
+                    <parentUnit>
+                        <key name="name" value="f56986e4-5060-4400-9083-35ac5285ba18" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d72618f8-b194-47de-9ac1-3a6198dc571e</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[d72618f8-b194-47de-9ac1-3a6198dc571e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>64501a58-40c0-462c-b8ec-1385910a499d</key>
+                    <parentUnit>
+                        <key name="name" value="d72618f8-b194-47de-9ac1-3a6198dc571e" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>bca6ada6-ce0a-4533-931f-7394da17950a</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[bca6ada6-ce0a-4533-931f-7394da17950a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2977599b-4019-44a2-9ad0-7cbf8d8dec8f</key>
+                    <parentUnit>
+                        <key name="name" value="bca6ada6-ce0a-4533-931f-7394da17950a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>eb5ec573-9d2c-43d4-9427-efba45bb5fdd</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[eb5ec573-9d2c-43d4-9427-efba45bb5fdd].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>24a44d67-0245-4460-ad90-728e260c0489</key>
+                    <parentUnit>
+                        <key name="name" value="eb5ec573-9d2c-43d4-9427-efba45bb5fdd" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="projectItem" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>07d01753-f1a2-4633-99cc-eb82f16918de</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[07d01753-f1a2-4633-99cc-eb82f16918de].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3d19eaeb-359d-4cf9-9305-d20de566a738</key>
+                    <parentUnit>
+                        <key name="name" value="07d01753-f1a2-4633-99cc-eb82f16918de" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="projectItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>310c005d-2896-4eed-b261-d0ae9e259878</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[310c005d-2896-4eed-b261-d0ae9e259878].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>47cfc5e6-f2b3-4507-8c95-ae3025cf627d</key>
+                    <parentUnit>
+                        <key name="name" value="310c005d-2896-4eed-b261-d0ae9e259878" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="MaterialCheck" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="sendCheckName" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>bfa850a8-cd67-457f-8861-3ae4fd59436e</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[bfa850a8-cd67-457f-8861-3ae4fd59436e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9bccaa5e-04dc-473c-b984-1415993ad871</key>
+                    <parentUnit>
+                        <key name="name" value="bfa850a8-cd67-457f-8861-3ae4fd59436e" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="sendCheckName" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>projectItem.codingNumber</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[projectItem.codingNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b748788a-5f55-4e5f-8b83-3d7021760ad7</key>
+                    <parentUnit>
+                        <key name="name" value="projectItem.codingNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="projectItem" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="codingNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="MaterialCheckListQuery" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>projectItem.codingNumber</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </querySorterItem>
+    </defaultSorters>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>23201351-996f-45e6-8b2b-45cc20d1a04b</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="MaterialCheck" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>e1350bd1-a2ed-4930-957a-833ffb4bc996</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d72618f8-b194-47de-9ac1-3a6198dc571e" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="bca6ada6-ce0a-4533-931f-7394da17950a" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="23201351-996f-45e6-8b2b-45cc20d1a04b" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </join>
+        <join>
+            <name>1b3e19ee-bbe3-461e-96b4-54651eef463a</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="MaterialCheck" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="projectItem" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>01c7af07-3d16-4a1f-a8a6-a08274f85577</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="eb5ec573-9d2c-43d4-9427-efba45bb5fdd" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="07d01753-f1a2-4633-99cc-eb82f16918de" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="1b3e19ee-bbe3-461e-96b4-54651eef463a" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </join>
+        <join>
+            <name>5f5ee596-de97-4f51-b486-5a998f2bd8db</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="MaterialCheck" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>008b701a-0d0d-4ea6-a849-183a4c61605f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="f14dbb93-dae4-48c1-89da-caa1ffb946ae" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f56986e4-5060-4400-9083-35ac5285ba18" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="5f5ee596-de97-4f51-b486-5a998f2bd8db" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </join>
+        <join>
+            <name>21b955d4-948c-4706-9b4d-9c8a6d3e2019</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="MaterialCheck" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="sendCheckName" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>182b0d1b-d7d8-4054-ba8a-54024a328ab9</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="310c005d-2896-4eed-b261-d0ae9e259878" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="bfa850a8-cd67-457f-8861-3ae4fd59436e" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="21b955d4-948c-4706-9b4d-9c8a6d3e2019" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="MaterialCheckListQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].alias">
+            <lang locale="zh_CN" value="材料抽检单序时薄查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="材料抽檢單序時薄查詢" />
+            <lang locale="zh_TW" value="材料抽檢單序時薄查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].description">
+            <lang locale="zh_CN" value="材料抽检单序时薄查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="材料抽檢單序時薄查詢" />
+            <lang locale="zh_TW" value="材料抽檢單序時薄查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[MaterialCheck].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[projectItem].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].subObjects.subEntity[sendCheckName].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[07d01753-f1a2-4633-99cc-eb82f16918de].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[1a596c44-88ae-48f9-912c-4901291ec2c4].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[310c005d-2896-4eed-b261-d0ae9e259878].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[3dc2380b-417c-458a-add4-74496049ac71].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[735a0742-b777-4604-9a1a-d051c801fe68].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[789a20fe-8741-4144-bd2e-8e1320bf1eeb].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[7d0d83e8-89a1-4636-8f3e-efe891819ce0].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[8571cf02-c0f6-4cf6-88b4-7755c88803dd].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[8e2cc54a-0826-4726-87c2-81f6d31a0999].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[99e9d746-4105-4aac-b4d8-0408de94bafd].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[bca6ada6-ce0a-4533-931f-7394da17950a].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[bfa850a8-cd67-457f-8861-3ae4fd59436e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[d72618f8-b194-47de-9ac1-3a6198dc571e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[eb5ec573-9d2c-43d4-9427-efba45bb5fdd].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[f14dbb93-dae4-48c1-89da-caa1ffb946ae].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.propertyUnit[f56986e4-5060-4400-9083-35ac5285ba18].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批時間" />
+            <lang locale="zh_TW" value="審批時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="用戶實名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[checkItem].displayName">
+            <lang locale="zh_CN" value="抽检事项" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="抽檢事項" />
+            <lang locale="zh_TW" value="抽檢事項" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[createDate].displayName">
+            <lang locale="zh_CN" value="创建日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="創建日期" />
+            <lang locale="zh_TW" value="創建日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="用戶實名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編號" />
+            <lang locale="zh_TW" value="單據編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[projectItem.codingNumber].displayName">
+            <lang locale="zh_CN" value="工程项目长编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目長編碼" />
+            <lang locale="zh_TW" value="工程項目長編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[projectItem.codingNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[projectItem.codingNumber].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[projectItem.name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[sendCheckName.name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.MaterialCheckListQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+    </resource>
+</joinQuery>
+

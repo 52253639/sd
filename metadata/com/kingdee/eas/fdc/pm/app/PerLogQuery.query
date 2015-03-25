@@ -1,0 +1,1221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>PerLogQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].description</description>
+    <userDefined>true</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>PersonnelLog</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[PersonnelLog].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PersonnelLog" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>dept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[dept].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="FullOrgUnit" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>person</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[person].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.person.app" />
+                <key name="name" value="Person" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>person.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[person.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>398c0cd4-2fee-4e6e-a4a1-98b133fb686c</key>
+                    <parentUnit>
+                        <key name="name" value="person.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="person" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>currentlyDate</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[currentlyDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9a9e8111-0abe-4066-9e42-05037b6a5486</key>
+                    <parentUnit>
+                        <key name="name" value="currentlyDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="currentlyDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>week</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[week].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>11410417-3f67-413a-9b68-92b9ed7d76ff</key>
+                    <parentUnit>
+                        <key name="name" value="week" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="week" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>weather</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[weather].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a61b4dda-4dce-4502-8164-b86cac996ecb</key>
+                    <parentUnit>
+                        <key name="name" value="weather" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="weather" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>d31d56d9-a359-4c7d-a94e-89e48f769594</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[d31d56d9-a359-4c7d-a94e-89e48f769594].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>d0cbb0f4-bfaf-40bb-b9d3-ed9efc43aafc</key>
+                    <parentUnit>
+                        <key name="name" value="d31d56d9-a359-4c7d-a94e-89e48f769594" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>ca3828b1-43df-4975-b8be-c05f1235f414</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[ca3828b1-43df-4975-b8be-c05f1235f414].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>891c6ff4-126f-40f5-b20a-3e7a241671a7</key>
+                    <parentUnit>
+                        <key name="name" value="ca3828b1-43df-4975-b8be-c05f1235f414" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>73a80835-1ef7-4563-9580-a9cea0d29dd5</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[73a80835-1ef7-4563-9580-a9cea0d29dd5].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>08d7c744-bacc-401b-a621-3ecd5fe1f442</key>
+                    <parentUnit>
+                        <key name="name" value="73a80835-1ef7-4563-9580-a9cea0d29dd5" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>098daed4-a90f-4e39-8769-2af53a98b892</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[098daed4-a90f-4e39-8769-2af53a98b892].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>0205a316-3041-4272-a205-14f640399aa1</key>
+                    <parentUnit>
+                        <key name="name" value="098daed4-a90f-4e39-8769-2af53a98b892" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4173ae21-d215-4beb-bffd-4199b792ab44</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[4173ae21-d215-4beb-bffd-4199b792ab44].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>c766283e-81da-4e9b-bbcf-fe936d556d31</key>
+                    <parentUnit>
+                        <key name="name" value="4173ae21-d215-4beb-bffd-4199b792ab44" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>81a4bba0-e112-4623-b1ed-e58cd6c794f0</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[81a4bba0-e112-4623-b1ed-e58cd6c794f0].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>fdf269a7-16e2-4d30-bdc4-ae705184c2a4</key>
+                    <parentUnit>
+                        <key name="name" value="81a4bba0-e112-4623-b1ed-e58cd6c794f0" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4fefad32-d27f-4266-ab88-a3c3823bf1e5</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[4fefad32-d27f-4266-ab88-a3c3823bf1e5].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>4e6f9f78-6b57-4f3c-b4fe-769c5ffa68e4</key>
+                    <parentUnit>
+                        <key name="name" value="4fefad32-d27f-4266-ab88-a3c3823bf1e5" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="dept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8267439d-8037-42cb-8d3b-28e672d8b425</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[8267439d-8037-42cb-8d3b-28e672d8b425].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>a3b9a44d-70dd-437d-a04b-5a8bcb9e46ce</key>
+                    <parentUnit>
+                        <key name="name" value="8267439d-8037-42cb-8d3b-28e672d8b425" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="dept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b2059b54-7ca5-4a9e-ae15-43f4fb4500b7</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b6f7549d-8efc-438e-a28a-bfc4552edb08</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>3038496e-d9c5-498c-9efb-35972ff76c69</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ca454064-7652-4de1-84b6-ca30100e197c</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>dc7506c3-c6fb-482c-9f32-beb662f7eddb</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>dept.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[dept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>858e288c-c77e-4006-bc10-143aedc198f3</key>
+                    <parentUnit>
+                        <key name="name" value="dept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="dept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>e013ea3a-61a0-489d-abd8-a3499bb6d52f</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[e013ea3a-61a0-489d-abd8-a3499bb6d52f].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>ebe6aed4-d71c-421c-82e1-4d882cdb29ed</key>
+                    <parentUnit>
+                        <key name="name" value="e013ea3a-61a0-489d-abd8-a3499bb6d52f" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="person" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8a11b034-e60e-47b0-8d15-b528951c3dd4</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[8a11b034-e60e-47b0-8d15-b528951c3dd4].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>494b926c-363a-4834-b5d1-9a5f53777900</key>
+                    <parentUnit>
+                        <key name="name" value="8a11b034-e60e-47b0-8d15-b528951c3dd4" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="person" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>logType</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[logType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2ee87e46-b40f-44bb-9224-7c67bbefc589</key>
+                    <parentUnit>
+                        <key name="name" value="logType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="logType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6beb731d-41b6-4e67-babc-47c64edb4ef1</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="PersonnelLog" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="PerLogQuery" />
+        </query>
+    </defaultFilter>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>29e3008d-7c25-48db-8b03-e913c7a3486f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PersonnelLog" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>b9bb8a21-de7d-4f8c-b7d3-a6073cd8b90b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="d31d56d9-a359-4c7d-a94e-89e48f769594" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="ca3828b1-43df-4975-b8be-c05f1235f414" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="29e3008d-7c25-48db-8b03-e913c7a3486f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </join>
+        <join>
+            <name>09e2b61d-7092-46a2-b6a0-ec2790d43baf</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PersonnelLog" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>fc7f5f2c-540f-41c3-9472-a83455e1064f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="73a80835-1ef7-4563-9580-a9cea0d29dd5" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="098daed4-a90f-4e39-8769-2af53a98b892" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="09e2b61d-7092-46a2-b6a0-ec2790d43baf" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </join>
+        <join>
+            <name>683dce22-d139-42a8-8c2a-3363a0d226dd</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PersonnelLog" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>cab68e50-ca33-4cc0-b647-2f39b7360b93</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4173ae21-d215-4beb-bffd-4199b792ab44" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="81a4bba0-e112-4623-b1ed-e58cd6c794f0" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="683dce22-d139-42a8-8c2a-3363a0d226dd" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </join>
+        <join>
+            <name>add32d19-0aa3-4c76-b833-df49ed8242b1</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="PersonnelLog" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="dept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>7a865fef-0660-49c5-bbb9-cb4c5f302092</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="4fefad32-d27f-4266-ab88-a3c3823bf1e5" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="8267439d-8037-42cb-8d3b-28e672d8b425" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="add32d19-0aa3-4c76-b833-df49ed8242b1" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </join>
+        <join>
+            <name>c2bba769-0cdd-434d-beaf-3de0e659e30c</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="PersonnelLog" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="person" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>eb430dc4-4f64-4950-854f-465a5364c3de</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="e013ea3a-61a0-489d-abd8-a3499bb6d52f" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="8a11b034-e60e-47b0-8d15-b528951c3dd4" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="c2bba769-0cdd-434d-beaf-3de0e659e30c" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="PerLogQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].alias">
+            <lang locale="zh_CN" value="人员日志查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="人員日誌查詢" />
+            <lang locale="zh_TW" value="人員日誌查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].description">
+            <lang locale="zh_CN" value="人员日志查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="人員日誌查詢" />
+            <lang locale="zh_TW" value="人員日誌查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[PersonnelLog].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[dept].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[person].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[098daed4-a90f-4e39-8769-2af53a98b892].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[4173ae21-d215-4beb-bffd-4199b792ab44].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[4fefad32-d27f-4266-ab88-a3c3823bf1e5].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[73a80835-1ef7-4563-9580-a9cea0d29dd5].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[81a4bba0-e112-4623-b1ed-e58cd6c794f0].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[8267439d-8037-42cb-8d3b-28e672d8b425].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[8a11b034-e60e-47b0-8d15-b528951c3dd4].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[ca3828b1-43df-4975-b8be-c05f1235f414].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[d31d56d9-a359-4c7d-a94e-89e48f769594].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.propertyUnit[e013ea3a-61a0-489d-abd8-a3499bb6d52f].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批時間" />
+            <lang locale="zh_TW" value="審批時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[auditTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="审批人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[auditor.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[createTime].displayName">
+            <lang locale="zh_CN" value="制单时间" />
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_HK" value="制單時間" />
+            <lang locale="zh_TW" value="制單時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[createTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="制单人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="制單人" />
+            <lang locale="zh_TW" value="制單人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[creator.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[currentlyDate].displayName">
+            <lang locale="zh_CN" value="日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="日期" />
+            <lang locale="zh_TW" value="日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[currentlyDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[currentlyDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[dept.name].displayName">
+            <lang locale="zh_CN" value="部门" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="部門" />
+            <lang locale="zh_TW" value="部門" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[dept.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[dept.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[logType].displayName">
+            <lang locale="zh_CN" value="日志类型" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="日誌類型" />
+            <lang locale="zh_TW" value="日誌類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[logType].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[person.name].displayName">
+            <lang locale="zh_CN" value="人员" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="人員" />
+            <lang locale="zh_TW" value="人員" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[person.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[person.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="工程项目名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目名稱" />
+            <lang locale="zh_TW" value="工程項目名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[project.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[project.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[weather].displayName">
+            <lang locale="zh_CN" value="天气" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="天氣" />
+            <lang locale="zh_TW" value="天氣" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[weather].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[weather].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[week].displayName">
+            <lang locale="zh_CN" value="星期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="星期" />
+            <lang locale="zh_TW" value="星期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.PerLogQuery].units.queryField[week].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+    </resource>
+</joinQuery>
+

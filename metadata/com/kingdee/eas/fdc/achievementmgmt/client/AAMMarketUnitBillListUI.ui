@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uiObject xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.achievementmgmt.client</package>
+    <name>AAMMarketUnitBillListUI</name>
+    <alias>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].alias</alias>
+    <description>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].description</description>
+    <userDefined>false</userDefined>
+    <releasePackage>com.kingdee.eas.fdc.achievementmgmt.client</releasePackage>
+    <releaseClass>AAMMarketUnitBillListUI</releaseClass>
+    <title>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].title</title>
+    <uitype />
+    <defaultbutton />
+    <bizUnitPK />
+    <parent>
+        <key name="package" value="com.kingdee.eas.fdc.basedata.client" />
+        <key name="name" value="FDCBillListUI" />
+    </parent>
+    <components>
+        <component>
+            <name>CoreUI</name>
+            <alias>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[CoreUI].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
+            <isContainer>true</isContainer>
+            <constraints />
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name>kDLayout1</name>
+                <type>KDLayout</type>
+                <value />
+            </layoutInfo>
+        </component>
+        <component>
+            <name>tblMain</name>
+            <alias>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[tblMain].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.kdf.table.KDTable</classType>
+            <isContainer>false</isContainer>
+            <constraints>right</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <parent>
+                <key name="name" value="kDSplitPane" />
+            </parent>
+        </component>
+        <component>
+            <name>kDSplitPane</name>
+            <alias>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[kDSplitPane].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDSplitPane</classType>
+            <isContainer>true</isContainer>
+            <constraints>2,2,1010,625,15</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>SplitLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>dividerLocation</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[kDSplitPane].properties.property[dividerLocation].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>false</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="CoreUI" />
+            </parent>
+        </component>
+        <component>
+            <name>treeView</name>
+            <alias>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[treeView].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTreeView</classType>
+            <isContainer>true</isContainer>
+            <constraints>left</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>TreeViewLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="kDSplitPane" />
+            </parent>
+        </component>
+        <component>
+            <name>marketUnitTree</name>
+            <alias>uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[marketUnitTree].alias</alias>
+            <userDefined>false</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDTree</classType>
+            <isContainer>false</isContainer>
+            <constraints>2</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="treeView" />
+            </parent>
+            <eventBindings>
+                <eventBinding>
+                    <name>valueChanged</name>
+                    <eventType>javax.swing.event.TreeSelectionEvent</eventType>
+                    <scene />
+                    <listenerType>javax.swing.event.TreeSelectionListener</listenerType>
+                    <listenerAdapter>javax.swing.event.TreeSelectionListener</listenerAdapter>
+                    <methodName>marketUnitTree_valueChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>false</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+    </components>
+    <resource>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].alias">
+            <lang locale="zh_CN" value="带营销单元树的列表页面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="帶營銷單元樹的列表頁面" />
+            <lang locale="zh_TW" value="帶營銷單元樹的列表頁面" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[CoreUI].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[kDSplitPane].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[kDSplitPane].properties.property[dividerLocation].value">
+            <lang locale="zh_CN" value="200" />
+            <lang locale="en_US" value="200" />
+            <lang locale="zh_HK" value="200" />
+            <lang locale="zh_TW" value="200" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[marketUnitTree].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[tblMain].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].components.component[treeView].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].description">
+            <lang locale="zh_CN" value="带营销单元树的列表页面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="帶營銷單元樹的列表頁面" />
+            <lang locale="zh_TW" value="帶營銷單元樹的列表頁面" />
+        </rs>
+        <rs key="uiObject[com.kingdee.eas.fdc.achievementmgmt.client.AAMMarketUnitBillListUI].title">
+            <lang locale="zh_CN" value="带营销单元树的列表页面" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="帶營銷單元樹的列表頁面" />
+            <lang locale="zh_TW" value="帶營銷單元樹的列表頁面" />
+        </rs>
+    </resource>
+</uiObject>
+

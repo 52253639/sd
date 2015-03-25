@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleSet xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.propertymgmt.app</package>
+    <name>MeterReadingBillRuleSet</name>
+    <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].alias</alias>
+    <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].description</description>
+    <userDefined>true</userDefined>
+    <expressions>
+        <groupExpression>
+            <id>371e0ea5-8152-4a2c-898d-0b5e4288155a</id>
+            <parentID />
+            <source>Entry.location=Entry.roommeter.location</source>
+            <operator>=</operator>
+        </groupExpression>
+        <simpleExpression>
+            <id>349a7bd3-ab1c-46af-ae40-b902d14af424</id>
+            <parentID>371e0ea5-8152-4a2c-898d-0b5e4288155a</parentID>
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType />
+            <value />
+            <property>
+                <ownerID>40cd3575-6f58-468d-b57d-e91b57e546e0</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>40cd3575-6f58-468d-b57d-e91b57e546e0</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>kdtEntry.getCell(rowIndex,"location")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>c0ef0f0a-8c2c-4047-97a5-20d1cb87ef63</id>
+            <parentID>371e0ea5-8152-4a2c-898d-0b5e4288155a</parentID>
+            <source />
+            <type>METHODINVOKE</type>
+            <valueType>String</valueType>
+            <value />
+            <method>
+                <ownerID>abda0c65-483c-4985-9037-69aa203349ff</ownerID>
+                <name>getProperty</name>
+                <type>Object</type>
+                <parameters>
+                    <parameter>
+                        <id>897543f9-f155-4b52-8fa9-a4c58f5391fc</id>
+                        <expressionID>0ccf9697-0a98-46f0-8863-5406e0a5dd2c</expressionID>
+                    </parameter>
+                    <parameter>
+                        <id>2be0d3a3-e976-484c-8e23-06bf51783337</id>
+                        <expressionID>56a06201-fe6a-4622-9483-846b6c9c226e</expressionID>
+                    </parameter>
+                </parameters>
+            </method>
+        </simpleExpression>
+        <simpleExpression>
+            <id>abda0c65-483c-4985-9037-69aa203349ff</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>com.kingdee.bos.ui.face.UIRuleUtil</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>0ccf9697-0a98-46f0-8863-5406e0a5dd2c</id>
+            <parentID />
+            <source />
+            <type>PROPERTYACCESS</type>
+            <valueType>Object</valueType>
+            <value />
+            <property>
+                <ownerID>fda52626-dd97-4aad-ad98-df4a452f73a4</ownerID>
+                <name>value</name>
+                <type>Object</type>
+            </property>
+        </simpleExpression>
+        <simpleExpression>
+            <id>fda52626-dd97-4aad-ad98-df4a452f73a4</id>
+            <parentID />
+            <source />
+            <type>VARIANT</type>
+            <valueType>UNKOWN</valueType>
+            <value>(com.kingdee.bos.dao.IObjectValue)kdtEntry.getCell(rowIndex,"roommeter")</value>
+        </simpleExpression>
+        <simpleExpression>
+            <id>56a06201-fe6a-4622-9483-846b6c9c226e</id>
+            <parentID />
+            <source />
+            <type>CONST</type>
+            <valueType>String</valueType>
+            <value>location</value>
+        </simpleExpression>
+    </expressions>
+    <actions>
+        <action>
+            <id>3795640f-50b9-40bb-9edc-be8b8f3735c7</id>
+            <name>Entry_location_ActionInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].actions.action[Entry_location_ActionInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].actions.action[Entry_location_ActionInfo].description</description>
+            <expressionID>371e0ea5-8152-4a2c-898d-0b5e4288155a</expressionID>
+        </action>
+    </actions>
+    <rules>
+        <conditionRule>
+            <name>Entry_location_RuleInfo</name>
+            <alias>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].rules.conditionRule[Entry_location_RuleInfo].alias</alias>
+            <description>ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].rules.conditionRule[Entry_location_RuleInfo].description</description>
+            <ruleType>withproperty</ruleType>
+            <eventObjectName />
+            <eventType>CHANGE</eventType>
+            <eventName>CHANGE</eventName>
+            <actions>
+                <action>
+                    <key name="id" value="3795640f-50b9-40bb-9edc-be8b8f3735c7" />
+                </action>
+            </actions>
+        </conditionRule>
+    </rules>
+    <resource>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].actions.action[Entry_location_ActionInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_location" />
+            <lang locale="zh_TW" value="攜帶字段屬性_location" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].actions.action[Entry_location_ActionInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].rules.conditionRule[Entry_location_RuleInfo].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="携带字段属性_location" />
+            <lang locale="zh_TW" value="攜帶字段屬性_location" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].rules.conditionRule[Entry_location_RuleInfo].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].rules.conditionRule[Entry_location_RuleInfo].extendedProperty.columnName">
+            <lang locale="en_US" value="roommeter" />
+            <lang locale="zh_CN" value="roommeter" />
+            <lang locale="zh_TW" value="roommeter" />
+        </rs>
+        <rs key="ruleSet[com.kingdee.eas.fdc.propertymgmt.app.MeterReadingBillRuleSet].rules.conditionRule[Entry_location_RuleInfo].extendedProperty.userDefined">
+            <lang locale="en_US" value="false" />
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+    </resource>
+</ruleSet>
+

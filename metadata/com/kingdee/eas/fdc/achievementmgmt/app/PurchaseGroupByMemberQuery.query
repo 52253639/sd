@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.achievementmgmt.app</package>
+    <name>PurchaseGroupByMemberQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>Purchase</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[Purchase].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Purchase" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>room</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[room].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Room" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>salesman</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[salesman].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>payListEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[payListEntry].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="PurchasePayListEntry" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>saleNum</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[saleNum].displayName</displayName>
+            <groupType>Count</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d26f815d-e0ad-429b-a715-131959801e0d</key>
+                    <parentUnit>
+                        <key name="name" value="saleNum" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>salesman.id</name>
+            <userDefined>false</userDefined>
+            <formulaString>#0</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[salesman.id].displayName</displayName>
+            <groupType>Grouping</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e9df3ee0-f986-4d45-ac1d-82db04b19a9d</key>
+                    <parentUnit>
+                        <key name="name" value="salesman.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="salesman" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contractTotalAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[contractTotalAmount].displayName</displayName>
+            <groupType>Sum</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9c04b38f-3185-4350-b3ad-b825c7244831</key>
+                    <parentUnit>
+                        <key name="name" value="contractTotalAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contractTotalAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.saleArea</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[room.saleArea].displayName</displayName>
+            <groupType>Sum</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>782e99b8-9c32-473c-9ea1-0b2d03eea743</key>
+                    <parentUnit>
+                        <key name="name" value="room.saleArea" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="saleArea" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>reAmount</name>
+            <userDefined>false</userDefined>
+            <formulaString>case when #0 is null then 0 else #0 end - case when #1 is null then 0 else #1 end</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[reAmount].displayName</displayName>
+            <groupType>Sum</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>609b189e-dd5c-489d-9c0d-da478a3c69da</key>
+                    <parentUnit>
+                        <key name="name" value="reAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="payListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="actRevAmount" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>7e1a5d36-5a89-4b8b-8293-e79fea7e45cf</key>
+                    <parentUnit>
+                        <key name="name" value="reAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="payListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="hasRefundmentAmount" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>b7434618-58e0-4e02-9ab8-0722d154176e</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[b7434618-58e0-4e02-9ab8-0722d154176e].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9720d0a9-1627-4a32-b866-1be46b916574</key>
+                    <parentUnit>
+                        <key name="name" value="b7434618-58e0-4e02-9ab8-0722d154176e" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="room" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>ccbbaab3-554e-4122-a133-16de93062926</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[ccbbaab3-554e-4122-a133-16de93062926].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>779665d8-30fd-4178-9c92-bcf15d9e140c</key>
+                    <parentUnit>
+                        <key name="name" value="ccbbaab3-554e-4122-a133-16de93062926" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>64d18ad6-1a84-4569-a367-be28f35c7e13</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[64d18ad6-1a84-4569-a367-be28f35c7e13].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>47d9a0fd-4f02-4710-844c-3bc9ef0fd781</key>
+                    <parentUnit>
+                        <key name="name" value="64d18ad6-1a84-4569-a367-be28f35c7e13" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="salesman" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d5185984-4678-49e7-a566-d318ec6086dc</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[d5185984-4678-49e7-a566-d318ec6086dc].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e9473524-d0e8-4ac2-a794-90cb63dfa61e</key>
+                    <parentUnit>
+                        <key name="name" value="d5185984-4678-49e7-a566-d318ec6086dc" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="salesman" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>c3b6042e-c96f-41fc-ba13-80018f08af1b</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[c3b6042e-c96f-41fc-ba13-80018f08af1b].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a9811553-4b17-4833-8b1b-01e164d94984</key>
+                    <parentUnit>
+                        <key name="name" value="c3b6042e-c96f-41fc-ba13-80018f08af1b" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>d2c092f5-a2a2-4c98-9acb-4cd56d5ce812</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[d2c092f5-a2a2-4c98-9acb-4cd56d5ce812].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c38263c0-0e1a-4414-808b-139a981b6481</key>
+                    <parentUnit>
+                        <key name="name" value="d2c092f5-a2a2-4c98-9acb-4cd56d5ce812" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="payListEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="head" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>pYear</name>
+            <userDefined>false</userDefined>
+            <formulaString>YEAR ( #0 )</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[pYear].displayName</displayName>
+            <groupType>Grouping</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>b120d528-d763-491b-b2f3-60d784db8d83</key>
+                    <parentUnit>
+                        <key name="name" value="pYear" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="purchaseDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>pMonth</name>
+            <userDefined>false</userDefined>
+            <formulaString>MONTH ( #0 )</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[pMonth].displayName</displayName>
+            <groupType>Grouping</groupType>
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>17d863d5-da17-435c-92bb-8ed81b4ff6a2</key>
+                    <parentUnit>
+                        <key name="name" value="pMonth" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="Purchase" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="purchaseDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <filterItems>
+            <queryFilterItem>
+                <propertyName>salesman.id</propertyName>
+                <compareType>is not</compareType>
+                <compareValue>null</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+                <configured>false</configured>
+            </queryFilterItem>
+            <queryFilterItem>
+                <propertyName>pYear</propertyName>
+                <compareType>is not</compareType>
+                <compareValue>null</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+                <configured>false</configured>
+            </queryFilterItem>
+            <queryFilterItem>
+                <propertyName>pMonth</propertyName>
+                <compareType>is not</compareType>
+                <compareValue>null</compareValue>
+                <userDefined>false</userDefined>
+                <filter>
+                    <key name="name" value="defaultFilter" />
+                </filter>
+                <configured>false</configured>
+            </queryFilterItem>
+        </filterItems>
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+            <key name="name" value="PurchaseGroupByMemberQuery" />
+        </query>
+    </defaultFilter>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>0f45387c-f7ac-4132-99d4-d90da145cb8f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="Purchase" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="room" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>37b96a30-a70d-49de-9190-1971c79cb2a1</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="b7434618-58e0-4e02-9ab8-0722d154176e" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="ccbbaab3-554e-4122-a133-16de93062926" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="0f45387c-f7ac-4132-99d4-d90da145cb8f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </join>
+        <join>
+            <name>142e8a04-f542-4e8e-8640-2a7014b24582</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="Purchase" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="salesman" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d95c6972-d451-4292-b5d1-7336557ff66f</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="64d18ad6-1a84-4569-a367-be28f35c7e13" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="d5185984-4678-49e7-a566-d318ec6086dc" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="142e8a04-f542-4e8e-8640-2a7014b24582" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </join>
+        <join>
+            <name>e4c6b50b-8b7e-4cf3-a13b-0cbf78cb6f69</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="Purchase" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="payListEntry" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>b155f225-71ff-4239-b817-24c7500cd6c7</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="c3b6042e-c96f-41fc-ba13-80018f08af1b" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="d2c092f5-a2a2-4c98-9acb-4cd56d5ce812" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="e4c6b50b-8b7e-4cf3-a13b-0cbf78cb6f69" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.achievementmgmt.app" />
+                <key name="name" value="PurchaseGroupByMemberQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].alias">
+            <lang locale="zh_CN" value="按销售员分组统计的认购单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="按銷售員分組統計的認購單" />
+            <lang locale="zh_TW" value="按銷售員分組統計的認購單" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].description">
+            <lang locale="zh_CN" value="按销售员分组统计的认购单" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="按銷售員分組統計的認購單" />
+            <lang locale="zh_TW" value="按銷售員分組統計的認購單" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[Purchase].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[payListEntry].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[room].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].subObjects.subEntity[salesman].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[64d18ad6-1a84-4569-a367-be28f35c7e13].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[b7434618-58e0-4e02-9ab8-0722d154176e].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[c3b6042e-c96f-41fc-ba13-80018f08af1b].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[ccbbaab3-554e-4122-a133-16de93062926].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[d2c092f5-a2a2-4c98-9acb-4cd56d5ce812].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.propertyUnit[d5185984-4678-49e7-a566-d318ec6086dc].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[contractTotalAmount].displayName">
+            <lang locale="zh_CN" value="实际合同金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際合同金額" />
+            <lang locale="zh_TW" value="實際合同金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[pMonth].displayName">
+            <lang locale="zh_CN" value="认购月份" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="認購月份" />
+            <lang locale="zh_TW" value="認購月份" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[pYear].displayName">
+            <lang locale="zh_CN" value="认购年份" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="認購年份" />
+            <lang locale="zh_TW" value="認購年份" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[reAmount].displayName">
+            <lang locale="zh_CN" value="实际回款金额" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際回款金額" />
+            <lang locale="zh_TW" value="實際回款金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[room.saleArea].displayName">
+            <lang locale="zh_CN" value="实际销售面积" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際銷售面積" />
+            <lang locale="zh_TW" value="實際銷售面積" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[saleNum].displayName">
+            <lang locale="zh_CN" value="实际销售套数" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="實際銷售套數" />
+            <lang locale="zh_TW" value="實際銷售套數" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.achievementmgmt.app.PurchaseGroupByMemberQuery].units.queryField[salesman.id].displayName">
+            <lang locale="zh_CN" value="销售顾问的ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="銷售顧問的ID" />
+            <lang locale="zh_TW" value="銷售顧問的ID" />
+        </rs>
+    </resource>
+</joinQuery>
+

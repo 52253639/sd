@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.myfdc.app</package>
+    <name>OrderRoomEntryForPrintQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].description</description>
+    <userDefined>false</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>OrderRoomEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].subObjects.subEntity[OrderRoomEntry].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntry" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>room</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].subObjects.subEntity[room].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Room" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>parent</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].subObjects.subEntity[parent].alias</alias>
+            <userDefined>false</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomBill" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>inDate</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[inDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4998ac71-4133-47be-9129-bd88d76a811c</key>
+                    <parentUnit>
+                        <key name="name" value="inDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="inDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>orderDay</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[orderDay].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>be2eb01a-5f64-40a5-9eec-f90769688faa</key>
+                    <parentUnit>
+                        <key name="name" value="orderDay" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="orderDay" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>inPerson</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[inPerson].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>83ea7450-70b8-4d58-9fab-35af941dc7e3</key>
+                    <parentUnit>
+                        <key name="name" value="inPerson" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="inPerson" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>phone</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[phone].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>211ee448-4ce5-4a21-80f5-39e92c1644f1</key>
+                    <parentUnit>
+                        <key name="name" value="phone" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="phone" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>roomPrice</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[roomPrice].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>03b629c5-88bb-49ce-8a2a-9773dc57743e</key>
+                    <parentUnit>
+                        <key name="name" value="roomPrice" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="roomPrice" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>seq</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[seq].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Int</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>8717a828-f69a-4cb7-b787-cefd392ed294</key>
+                    <parentUnit>
+                        <key name="name" value="seq" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="seq" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2edfa30f-92cd-440c-9332-6ff775607fc4</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.number</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[room.number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9f7bf754-94af-4193-8c65-8966bc4d3449</key>
+                    <parentUnit>
+                        <key name="name" value="room.number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>28c008f6-7aca-4816-9678-bcb6dc078e04</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[28c008f6-7aca-4816-9678-bcb6dc078e04].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>39c84662-e6f6-492c-a760-c225134d6c1f</key>
+                    <parentUnit>
+                        <key name="name" value="28c008f6-7aca-4816-9678-bcb6dc078e04" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="room" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>98ef04ff-d4cd-4962-883e-cbfbfbd4392d</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[98ef04ff-d4cd-4962-883e-cbfbfbd4392d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c4fdad36-21e7-4ae1-af02-936de6bf5ffc</key>
+                    <parentUnit>
+                        <key name="name" value="98ef04ff-d4cd-4962-883e-cbfbfbd4392d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9159b4c0-e018-4cca-ba57-a29e403bb6a6</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[9159b4c0-e018-4cca-ba57-a29e403bb6a6].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>8df2e160-a682-4a7a-abca-7eeab69d7f5e</key>
+                    <parentUnit>
+                        <key name="name" value="9159b4c0-e018-4cca-ba57-a29e403bb6a6" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OrderRoomEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="parent" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>b544f121-63f9-4cec-ad0f-5a626cc16e4b</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[b544f121-63f9-4cec-ad0f-5a626cc16e4b].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>b5884866-32f7-48f5-98c7-c0ca731c6447</key>
+                    <parentUnit>
+                        <key name="name" value="b544f121-63f9-4cec-ad0f-5a626cc16e4b" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="parent" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>parent.id</name>
+            <userDefined>false</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[parent.id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d2300843-ac5c-473e-acc1-c934d573e4de</key>
+                    <parentUnit>
+                        <key name="name" value="parent.id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="parent" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+            <key name="name" value="OrderRoomEntryForPrintQuery" />
+        </query>
+    </defaultFilter>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>cd8bb303-30b7-48d4-b307-fbba8d60eb77</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="OrderRoomEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="room" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>99431c0e-6e2f-4f27-b8f8-bb90e16cb6e9</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="28c008f6-7aca-4816-9678-bcb6dc078e04" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="98ef04ff-d4cd-4962-883e-cbfbfbd4392d" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="cd8bb303-30b7-48d4-b307-fbba8d60eb77" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </join>
+        <join>
+            <name>e80f7e20-22a9-49c4-8273-cd2ea2b5f75b</name>
+            <formulaString>#0</formulaString>
+            <type>RIGHT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="OrderRoomEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="parent" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>506c24c9-90b6-42bc-94f3-161ae92e86be</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9159b4c0-e018-4cca-ba57-a29e403bb6a6" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="b544f121-63f9-4cec-ad0f-5a626cc16e4b" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="e80f7e20-22a9-49c4-8273-cd2ea2b5f75b" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.myfdc.app" />
+                <key name="name" value="OrderRoomEntryForPrintQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].alias">
+            <lang locale="zh_CN" value="订房单分录打印查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="訂房單分錄列印查詢" />
+            <lang locale="zh_TW" value="訂房單分錄列印查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].subObjects.subEntity[OrderRoomEntry].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].subObjects.subEntity[parent].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].subObjects.subEntity[room].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[28c008f6-7aca-4816-9678-bcb6dc078e04].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[9159b4c0-e018-4cca-ba57-a29e403bb6a6].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[98ef04ff-d4cd-4962-883e-cbfbfbd4392d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.propertyUnit[b544f121-63f9-4cec-ad0f-5a626cc16e4b].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[inDate].displayName">
+            <lang locale="zh_CN" value="入住时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="入住時間" />
+            <lang locale="zh_TW" value="入住時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[inPerson].displayName">
+            <lang locale="zh_CN" value="入住人" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="入住人" />
+            <lang locale="zh_TW" value="入住人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[orderDay].displayName">
+            <lang locale="zh_CN" value="预订天数" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="預訂天數" />
+            <lang locale="zh_TW" value="預訂天數" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[parent.id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[phone].displayName">
+            <lang locale="zh_CN" value="电话" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="電話" />
+            <lang locale="zh_TW" value="電話" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[room.number].displayName">
+            <lang locale="zh_CN" value="编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="編碼" />
+            <lang locale="zh_TW" value="編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[roomPrice].displayName">
+            <lang locale="zh_CN" value="房间单价" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="房間單價" />
+            <lang locale="zh_TW" value="房間單價" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.myfdc.app.OrderRoomEntryForPrintQuery].units.queryField[seq].displayName">
+            <lang locale="zh_CN" value="单据分录序列号" />
+            <lang locale="en_US" value="sequence" />
+            <lang locale="zh_HK" value="單據分錄序列號" />
+            <lang locale="zh_TW" value="單據分錄序列號" />
+        </rs>
+    </resource>
+</joinQuery>
+

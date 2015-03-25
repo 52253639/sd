@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>QualityPlanQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].description</description>
+    <userDefined>true</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>QualityPlan</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[QualityPlan].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlan" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>project</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[project].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>supplier</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[supplier].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.master.cssp.app" />
+                <key name="name" value="Supplier" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>id</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e83da602-8b34-49c6-8d95-27fe15b8375c</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9213a618-841f-4cd8-9c41-138478d884cd</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>7993b114-cf8e-4302-9b21-d2e8cfb47ca2</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>6d84a082-6b25-49a3-9b81-7c2366926f77</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ec8a2a78-f92f-4ee7-a1f7-8a3042e9c1f3</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fd3cb2f9-2561-4bb7-a47c-16fce4d0fcf2</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createTime</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[createTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Timestamp</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e9f8d210-239c-47ed-a951-2a6dcaa1af19</key>
+                    <parentUnit>
+                        <key name="name" value="createTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1ab347fb-7e1f-423c-bae6-6ee9b45398ee</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2642c341-ae69-4592-ad95-36aef637275a</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>94334dd7-aca2-4f05-b3b9-1b153d5ba279</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[94334dd7-aca2-4f05-b3b9-1b153d5ba279].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>02f1626b-e172-40f6-b1e3-df2bc7749209</key>
+                    <parentUnit>
+                        <key name="name" value="94334dd7-aca2-4f05-b3b9-1b153d5ba279" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f1761831-f342-432c-b1ca-d0ee0f92ad70</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[f1761831-f342-432c-b1ca-d0ee0f92ad70].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>13dd5d42-57ef-427c-a877-23721a455dd1</key>
+                    <parentUnit>
+                        <key name="name" value="f1761831-f342-432c-b1ca-d0ee0f92ad70" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>41b674d3-990d-48dc-8ce8-bae9c0184edf</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[41b674d3-990d-48dc-8ce8-bae9c0184edf].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>171e6ae2-dc60-4b4f-9158-c1ddb61b92c1</key>
+                    <parentUnit>
+                        <key name="name" value="41b674d3-990d-48dc-8ce8-bae9c0184edf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>43280029-a429-466e-9418-98014a65ea16</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[43280029-a429-466e-9418-98014a65ea16].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2c99216c-05d6-4775-a783-9b6e90131e09</key>
+                    <parentUnit>
+                        <key name="name" value="43280029-a429-466e-9418-98014a65ea16" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>0b87c0d5-a03c-4c6b-8641-2e50b99e3f95</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[0b87c0d5-a03c-4c6b-8641-2e50b99e3f95].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>852cb841-fe07-40cb-a78a-9cca3dc59751</key>
+                    <parentUnit>
+                        <key name="name" value="0b87c0d5-a03c-4c6b-8641-2e50b99e3f95" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f8df4b6a-402f-4bbd-8d40-faf52cfb226d</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[f8df4b6a-402f-4bbd-8d40-faf52cfb226d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>60740e21-fbc9-4953-8119-4b8db2c2cb29</key>
+                    <parentUnit>
+                        <key name="name" value="f8df4b6a-402f-4bbd-8d40-faf52cfb226d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>de7f77c0-4e5b-467c-bf55-caba7ee1a317</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[de7f77c0-4e5b-467c-bf55-caba7ee1a317].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d0a44c33-8b6d-4df3-b641-502bc2d18fcf</key>
+                    <parentUnit>
+                        <key name="name" value="de7f77c0-4e5b-467c-bf55-caba7ee1a317" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityPlan" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="supplier" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>4c8ac3a6-a550-493c-8d69-6ad25b663be7</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[4c8ac3a6-a550-493c-8d69-6ad25b663be7].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>84274a37-016a-492e-9719-4bcb4e562a59</key>
+                    <parentUnit>
+                        <key name="name" value="4c8ac3a6-a550-493c-8d69-6ad25b663be7" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="supplier" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>project.codingNumber</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[project.codingNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>268fe6ff-3f14-4127-ae78-e8ae9790935f</key>
+                    <parentUnit>
+                        <key name="name" value="project.codingNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="project" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="codingNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </queryField>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="QualityPlanQuery" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>project.codingNumber</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </querySorterItem>
+    </defaultSorters>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].queryPK[QueryPK].description</description>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>d616daf4-8185-43fc-abb3-1dbb824fba0d</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityPlan" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="project" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>348f7a16-f45f-4b73-b5bb-67dbbecddeee</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="94334dd7-aca2-4f05-b3b9-1b153d5ba279" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f1761831-f342-432c-b1ca-d0ee0f92ad70" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="d616daf4-8185-43fc-abb3-1dbb824fba0d" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </join>
+        <join>
+            <name>335d9308-5bce-4ee3-9424-5642304a7d6c</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityPlan" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>078fd24b-915e-48ed-a628-237e2384062c</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="41b674d3-990d-48dc-8ce8-bae9c0184edf" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="43280029-a429-466e-9418-98014a65ea16" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="335d9308-5bce-4ee3-9424-5642304a7d6c" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </join>
+        <join>
+            <name>cf3ee362-6fdc-42c2-9ee9-88f7ef84394d</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityPlan" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>96dee6ef-33a0-4c19-94cf-0b6361c11267</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="0b87c0d5-a03c-4c6b-8641-2e50b99e3f95" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f8df4b6a-402f-4bbd-8d40-faf52cfb226d" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="cf3ee362-6fdc-42c2-9ee9-88f7ef84394d" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </join>
+        <join>
+            <name>febecb13-0e26-4065-9a67-e5ec42c8936b</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityPlan" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="supplier" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>08d1a0c1-6748-41cf-ba69-c7b15f9fc40c</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="de7f77c0-4e5b-467c-bf55-caba7ee1a317" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="4c8ac3a6-a550-493c-8d69-6ad25b663be7" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="febecb13-0e26-4065-9a67-e5ec42c8936b" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityPlanQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].alias">
+            <lang locale="zh_CN" value="质量计划书查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="質量計畫書查詢" />
+            <lang locale="zh_TW" value="質量計畫書查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].description">
+            <lang locale="zh_CN" value="质量计划书查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="質量計畫書查詢" />
+            <lang locale="zh_TW" value="質量計畫書查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[QualityPlan].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[project].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].subObjects.subEntity[supplier].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[0b87c0d5-a03c-4c6b-8641-2e50b99e3f95].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[41b674d3-990d-48dc-8ce8-bae9c0184edf].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[43280029-a429-466e-9418-98014a65ea16].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[4c8ac3a6-a550-493c-8d69-6ad25b663be7].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[94334dd7-aca2-4f05-b3b9-1b153d5ba279].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[de7f77c0-4e5b-467c-bf55-caba7ee1a317].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[f1761831-f342-432c-b1ca-d0ee0f92ad70].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.propertyUnit[f8df4b6a-402f-4bbd-8d40-faf52cfb226d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批时间" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批時間" />
+            <lang locale="zh_TW" value="審批時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="用戶實名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[createTime].displayName">
+            <lang locale="zh_CN" value="创建时间" />
+            <lang locale="en_US" value="createTime" />
+            <lang locale="zh_HK" value="創建時間" />
+            <lang locale="zh_TW" value="創建時間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="用户实名" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="用戶實名" />
+            <lang locale="zh_TW" value="用戶實名" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编号" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編號" />
+            <lang locale="zh_TW" value="單據編號" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[project.codingNumber].displayName">
+            <lang locale="zh_CN" value="工程项目长编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目長編碼" />
+            <lang locale="zh_TW" value="工程項目長編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[project.codingNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[project.codingNumber].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityPlanQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="狀態" />
+            <lang locale="zh_TW" value="狀態" />
+        </rs>
+    </resource>
+</joinQuery>
+

@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joinQuery xmlns="com.kingdee.bos.metadata">
+    <package>com.kingdee.eas.fdc.pm.app</package>
+    <name>QualityAcceptanceQuery</name>
+    <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].alias</alias>
+    <description>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].description</description>
+    <userDefined>true</userDefined>
+    <reportDataSource />
+    <bizUnitPK />
+    <connectionProvider />
+    <subObjects>
+        <subEntity>
+            <name>QualityAcceptanceBill</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[QualityAcceptanceBill].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceBill" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>conCurProject</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[conCurProject].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="CurProject" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>auditor</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[auditor].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>creator</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[creator].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.base.permission.app" />
+                <key name="name" value="User" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>suppiler</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[suppiler].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.master.cssp.app" />
+                <key name="name" value="Supplier" />
+            </entityRef>
+        </subEntity>
+    </subObjects>
+    <units>
+        <queryField>
+            <name>project.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[project.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d450ef18-5290-4a08-868a-cc7a79c3e3d4</key>
+                    <parentUnit>
+                        <key name="name" value="project.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="conCurProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>id</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[id].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fe779e21-7568-471e-8cbf-6574e13746dc</key>
+                    <parentUnit>
+                        <key name="name" value="id" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>number</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[number].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>9e6221ca-d5f2-407b-b8ec-96dd18e6ec3f</key>
+                    <parentUnit>
+                        <key name="name" value="number" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1b71da12-52e2-4a69-8ada-cadfd8e11f1a</key>
+                    <parentUnit>
+                        <key name="name" value="name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>state</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[state].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c2b66eeb-1013-4661-a736-15f5362263f0</key>
+                    <parentUnit>
+                        <key name="name" value="state" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="state" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>acceptanceMatter</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[acceptanceMatter].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>afb777a6-c4c9-4752-bf20-9a27b2dd4512</key>
+                    <parentUnit>
+                        <key name="name" value="acceptanceMatter" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="acceptanceMatter" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>suppiler.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[suppiler.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>70c21e6a-1a9e-421b-83a0-9c4951bcbedc</key>
+                    <parentUnit>
+                        <key name="name" value="suppiler.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="suppiler" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>acceptanceDate</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[acceptanceDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bce2511b-c60d-4dce-9f75-1f4ee7e23174</key>
+                    <parentUnit>
+                        <key name="name" value="acceptanceDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="acceptanceDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>creator.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[creator.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>31ddc415-5871-4d1e-af7b-d85e1027b5b7</key>
+                    <parentUnit>
+                        <key name="name" value="creator.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>createDate</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[createDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e4885fce-5649-47a7-86b8-66a9a1efebc6</key>
+                    <parentUnit>
+                        <key name="name" value="createDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createDate" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditor.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[auditor.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>e94f10dc-200f-4709-b6fe-edf9c5aa41a5</key>
+                    <parentUnit>
+                        <key name="name" value="auditor.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>auditTime</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[auditTime].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c08e4818-af67-4ed7-a2cc-1bb04161fff9</key>
+                    <parentUnit>
+                        <key name="name" value="auditTime" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditTime" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>b6398044-3872-4317-9475-83f4eb40b1bf</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[b6398044-3872-4317-9475-83f4eb40b1bf].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>dc8ceb22-3bc5-4ae3-896a-b4a331100a54</key>
+                    <parentUnit>
+                        <key name="name" value="b6398044-3872-4317-9475-83f4eb40b1bf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="auditor" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>a590f79c-057a-4c88-aaad-d5c336bdd731</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[a590f79c-057a-4c88-aaad-d5c336bdd731].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>a29fcefb-def4-4ae9-bd47-ff9e96e0a306</key>
+                    <parentUnit>
+                        <key name="name" value="a590f79c-057a-4c88-aaad-d5c336bdd731" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="auditor" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>c99ffa50-eb40-4428-8d57-5652e96394e8</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[c99ffa50-eb40-4428-8d57-5652e96394e8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ae24d545-b3e4-4123-b33c-4c36a0fc2dfd</key>
+                    <parentUnit>
+                        <key name="name" value="c99ffa50-eb40-4428-8d57-5652e96394e8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="suppiler" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1ebf84f7-a3d7-4d39-8a94-ad225616239d</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[1ebf84f7-a3d7-4d39-8a94-ad225616239d].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ef961abf-215d-41e8-9de5-bdf599f259b7</key>
+                    <parentUnit>
+                        <key name="name" value="1ebf84f7-a3d7-4d39-8a94-ad225616239d" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="suppiler" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9a031a35-6d79-4ede-96ad-fe4636e67345</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[9a031a35-6d79-4ede-96ad-fe4636e67345].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>73fba3d4-aeda-4eea-8771-66d8c0673741</key>
+                    <parentUnit>
+                        <key name="name" value="9a031a35-6d79-4ede-96ad-fe4636e67345" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="suppiler" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>conCurProject.codingNumber</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[conCurProject.codingNumber].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>true</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>358e450a-dc8b-48a4-aad0-3c1245bdb77c</key>
+                    <parentUnit>
+                        <key name="name" value="conCurProject.codingNumber" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="conCurProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="codingNumber" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </queryField>
+        <propertyUnit>
+            <name>f21fb31a-ce20-45ab-bf30-ea26aa299db0</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[f21fb31a-ce20-45ab-bf30-ea26aa299db0].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>2d141815-24eb-40eb-be7e-d6a2ada45fbc</key>
+                    <parentUnit>
+                        <key name="name" value="f21fb31a-ce20-45ab-bf30-ea26aa299db0" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="creator" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f0794c88-ee2a-4436-af18-10e6fd9fa0c4</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[f0794c88-ee2a-4436-af18-10e6fd9fa0c4].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>f64aa6c6-c218-4ccf-beda-7f165ad9446b</key>
+                    <parentUnit>
+                        <key name="name" value="f0794c88-ee2a-4436-af18-10e6fd9fa0c4" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="creator" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>9456e9c2-052f-4db2-a10c-73fde9c3c467</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[9456e9c2-052f-4db2-a10c-73fde9c3c467].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>de2934af-c2c9-4f92-97ce-02d6ddfe21ec</key>
+                    <parentUnit>
+                        <key name="name" value="9456e9c2-052f-4db2-a10c-73fde9c3c467" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="QualityAcceptanceBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="project" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>f33e15a0-81a6-4745-963d-427a84131c87</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[f33e15a0-81a6-4745-963d-427a84131c87].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>c3856ca6-0dc3-40e6-8911-c24f4f803c02</key>
+                    <parentUnit>
+                        <key name="name" value="f33e15a0-81a6-4745-963d-427a84131c87" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="conCurProject" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </propertyUnit>
+    </units>
+    <defaultFilter>
+        <name>defaultFilter</name>
+        <formulaString />
+        <query>
+            <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+            <key name="name" value="QualityAcceptanceQuery" />
+        </query>
+    </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>conCurProject.codingNumber</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </querySorterItem>
+    </defaultSorters>
+    <queryPK>
+        <name>QueryPK</name>
+        <alias>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].queryPK[QueryPK].alias</alias>
+        <description>joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].queryPK[QueryPK].description</description>
+        <keyProperties>
+            <queryField>
+                <key name="name" value="id" />
+            </queryField>
+        </keyProperties>
+    </queryPK>
+    <isDistinct>false</isDistinct>
+    <joins>
+        <join>
+            <name>df5760ac-55a2-467b-ac23-59579d3a6808</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityAcceptanceBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="conCurProject" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>d9ab4041-c677-4aa8-aaa7-c27fbf46bd29</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9456e9c2-052f-4db2-a10c-73fde9c3c467" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f33e15a0-81a6-4745-963d-427a84131c87" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="df5760ac-55a2-467b-ac23-59579d3a6808" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </join>
+        <join>
+            <name>62099e48-82f0-4e5a-9daa-98bae189739f</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityAcceptanceBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="auditor" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>2ff36a08-33a2-4569-af5f-5d5c1e89e824</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="b6398044-3872-4317-9475-83f4eb40b1bf" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="a590f79c-057a-4c88-aaad-d5c336bdd731" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="62099e48-82f0-4e5a-9daa-98bae189739f" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </join>
+        <join>
+            <name>be3e4c77-5e25-4a4b-8f2a-ce6478c5b75a</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityAcceptanceBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="creator" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>b646ac74-b8c8-4879-be63-3c2217ec800e</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="f21fb31a-ce20-45ab-bf30-ea26aa299db0" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="f0794c88-ee2a-4436-af18-10e6fd9fa0c4" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="be3e4c77-5e25-4a4b-8f2a-ce6478c5b75a" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </join>
+        <join>
+            <name>d6ed266c-1966-420f-a92e-793571189d73</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="QualityAcceptanceBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="suppiler" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>822cca00-256f-447f-a635-f8445fc02e79</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="1ebf84f7-a3d7-4d39-8a94-ad225616239d" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="9a031a35-6d79-4ede-96ad-fe4636e67345" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="d6ed266c-1966-420f-a92e-793571189d73" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.pm.app" />
+                <key name="name" value="QualityAcceptanceQuery" />
+            </query>
+        </join>
+    </joins>
+    <resource>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].alias">
+            <lang locale="zh_CN" value="质量验收查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="質量驗收查詢" />
+            <lang locale="zh_TW" value="質量驗收查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].description">
+            <lang locale="zh_CN" value="质量验收查询" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="質量驗收查詢" />
+            <lang locale="zh_TW" value="質量驗收查詢" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].queryPK[QueryPK].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].queryPK[QueryPK].description">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[QualityAcceptanceBill].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[auditor].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[conCurProject].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[creator].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].subObjects.subEntity[suppiler].alias">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[1ebf84f7-a3d7-4d39-8a94-ad225616239d].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[9456e9c2-052f-4db2-a10c-73fde9c3c467].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[9a031a35-6d79-4ede-96ad-fe4636e67345].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[a590f79c-057a-4c88-aaad-d5c336bdd731].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[b6398044-3872-4317-9475-83f4eb40b1bf].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[c99ffa50-eb40-4428-8d57-5652e96394e8].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[f0794c88-ee2a-4436-af18-10e6fd9fa0c4].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[f21fb31a-ce20-45ab-bf30-ea26aa299db0].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.propertyUnit[f33e15a0-81a6-4745-963d-427a84131c87].displayName">
+            <lang locale="zh_CN" value="null" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[acceptanceDate].displayName">
+            <lang locale="zh_CN" value="验收日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="驗收日期" />
+            <lang locale="zh_TW" value="驗收日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[acceptanceMatter].displayName">
+            <lang locale="zh_CN" value="验收事项" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="驗收事項" />
+            <lang locale="zh_TW" value="驗收事項" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[auditTime].displayName">
+            <lang locale="zh_CN" value="审批日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="審批日期" />
+            <lang locale="zh_TW" value="審批日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[auditor.name].displayName">
+            <lang locale="zh_CN" value="审批人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[conCurProject.codingNumber].displayName">
+            <lang locale="zh_CN" value="工程项目长编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目長編碼" />
+            <lang locale="zh_TW" value="工程項目長編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[conCurProject.codingNumber].extendedProperty.isCommonQueryFilter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[conCurProject.codingNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+            <lang locale="en_US" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[conCurProject.codingNumber].extendedProperty.isVisibleForKDTable">
+            <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+            <lang locale="en_US" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[createDate].displayName">
+            <lang locale="zh_CN" value="制单日期" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="制單日期" />
+            <lang locale="zh_TW" value="制單日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[creator.name].displayName">
+            <lang locale="zh_CN" value="制单人" />
+            <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_HK" value="制單人" />
+            <lang locale="zh_TW" value="制單人" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[id].displayName">
+            <lang locale="zh_CN" value="ID" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[name].displayName">
+            <lang locale="zh_CN" value="单据名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據名稱" />
+            <lang locale="zh_TW" value="單據名稱" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[number].displayName">
+            <lang locale="zh_CN" value="单据编码" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據編碼" />
+            <lang locale="zh_TW" value="單據編碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[project.name].displayName">
+            <lang locale="zh_CN" value="工程项目" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="工程項目" />
+            <lang locale="zh_TW" value="工程項目" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[state].displayName">
+            <lang locale="zh_CN" value="单据状态" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="單據狀態" />
+            <lang locale="zh_TW" value="單據狀態" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.pm.app.QualityAcceptanceQuery].units.queryField[suppiler.name].displayName">
+            <lang locale="zh_CN" value="名称" />
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_HK" value="名稱" />
+            <lang locale="zh_TW" value="名稱" />
+        </rs>
+    </resource>
+</joinQuery>
+
