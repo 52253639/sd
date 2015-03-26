@@ -172,7 +172,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 //		}
 //		
 //		this.kDBizPromptBox1.setDisplayFormatter(new myFormatter());
-		this.kDBizPromptBox1.setDisplayFormat("$name$");
+		this.kDBizPromptBox1.setDisplayFormat("$daysOfMonth$");
 		
 		
 		//by tim_gao 日单价设置事件，值改变时变标准租金和租金单价
@@ -421,8 +421,8 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 		this.actionAttachment.setVisible(true);		
 		this.chkMenuItemSubmitAndAddNew.setSelected(true);
 		this.menuSubmitOption.setVisible(false);
-		this.btnAddRooms.setVisible(false);
-		this.btnDeleteRoom.setVisible(false);
+		this.btnAddRooms.setVisible(true);
+		this.btnDeleteRoom.setVisible(true);
 		this.actionAuditResult.setVisible(false);
 	}
 
@@ -530,7 +530,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 	 */
 	public void storeFields() {
 		super.storeFields();
-		TenancyRentBillInfo tenancyInfo = this.editData;
+		TenancyRentBillInfo tenancyInfo = (TenancyRentBillInfo)this.editData;
 		//by tim_gao 从控件内加入月天数
 		
 		tenancyInfo.setDaysOfMonth((TenRentBillDaysOfMonthInfo)this.kDBizPromptBox1.getData());
@@ -636,7 +636,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 	public void loadFields() {
 		EventListener[]  list = this.kDBizPromptBox1.getListeners(DataChangeListener.class);
 		this.kDBizPromptBox1.removeDataChangeListener((DataChangeListener)list[0]);
-		TenancyRentBillInfo tenancyRentBillInfo = this.editData;
+		TenancyRentBillInfo tenancyRentBillInfo = (TenancyRentBillInfo)this.editData;
 		this.txtSellProjectNumber.setText(tenancyRentBillInfo.getProject().getNumber());
 		this.txtSellProjectName.setText(tenancyRentBillInfo.getProject().getName());
 		this.txtNumber.setText(tenancyRentBillInfo.getNumber());
@@ -669,7 +669,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 		if (TenancyPriceTypeEnum.BatchPrice.equals(tenancyRentBillInfo.getPriceBillType()) || TenancyPriceTypeEnum.BatchPrice.equals((TenancyPriceTypeEnum) this.comboRentBillType.getSelectedItem())) {
 			this.tblRooms.removeRows();
 			this.f7Building.setRequired(true);
-			BuildigRentEntrysCollection buildRentEntrysColl = this.editData.getBuildingEntrys();
+			BuildigRentEntrysCollection buildRentEntrysColl = ((TenancyRentBillInfo)this.editData).getBuildingEntrys();
 			BuildingInfo[] buildingInfo = null;
 			if (!buildRentEntrysColl.isEmpty()) {
 				buildingInfo = new BuildingInfo[buildRentEntrysColl.size()];
@@ -679,13 +679,13 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 			}
 			// set楼栋信息，触发dataChage事件
 			this.f7Building.setValue(buildingInfo);
-			if (this.editData.getState() != null && !FDCBillStateEnum.SAVED.equals(this.editData.getState())) {
+			if (((TenancyRentBillInfo)this.editData).getState() != null && !FDCBillStateEnum.SAVED.equals(((TenancyRentBillInfo)this.editData).getState())) {
 				this.actionSave.setEnabled(false);
 			}
 		} else {
 			this.tblRooms.removeRows();
 			this.f7Building.setRequired(false);
-			BuildingRoomEntrysCollection buildRoomEntrysColl = this.editData.getRoomEntrys();
+			BuildingRoomEntrysCollection buildRoomEntrysColl = ((TenancyRentBillInfo)this.editData).getRoomEntrys();
 			for (int i = 0; i < buildRoomEntrysColl.size(); i++) {
 				BuildingRoomEntrysInfo entryInfo = buildRoomEntrysColl.get(i);
 				this.addRowByEntry(entryInfo);
@@ -779,7 +779,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 		if (count == 0) {
 			// 找出定租单中的房间分录信息，新增时为空。如果有存在MAP中，用于和下面的房间信息比较
 			Map entryMap = new HashMap();
-			BuildigRentEntrysCollection buildingColl = this.editData.getBuildingEntrys();
+			BuildigRentEntrysCollection buildingColl = ((TenancyRentBillInfo)this.editData).getBuildingEntrys();
 			for (int j = 0; j < buildingColl.size(); j++) {
 				BuildigRentEntrysInfo buildingRentInfo = buildingColl.get(j);
 				// 楼栋对应的房间分录
@@ -923,7 +923,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 		}
 		RoomInfo room = entry.getRooms();
 		row.getCell("building").setValue(room.getBuilding().getName());
-		row.getCell("roomName").setValue(entry.getRoomNumber());
+		row.getCell("roomName").setValue(room.getName());
 		row.getCell("roomUnit").setValue(new Integer(room.getUnit()).toString());
 		row.getCell("standardRent").setValue(sumPrice);
 		row.getCell("tenancyModel").setValue(tenModel);
@@ -1400,6 +1400,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 		tenRentBill.setCU(SysContext.getSysContext().getCurrentCtrlUnit());
 		tenRentBill.setOrgUnit(SysContext.getSysContext().getCurrentOrgUnit().castToFullOrgUnitInfo());
 		tenRentBill.setBookedDate(new Date());
+		tenRentBill.setPriceBillType(TenancyPriceTypeEnum.SolitudePrice);
 		return tenRentBill;
 	}
 
@@ -1552,8 +1553,8 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 		super.comboRentBillType_itemStateChanged(e);
 		this.tblRooms.removeRows();
 		if (TenancyPriceTypeEnum.BatchPrice.equals((TenancyPriceTypeEnum) this.comboRentBillType.getSelectedItem())) {
-			this.btnAddRooms.setVisible(false);
-			this.btnDeleteRoom.setVisible(false);
+			this.btnAddRooms.setVisible(true);
+			this.btnDeleteRoom.setVisible(true);
 			this.contBuilding.setVisible(true);
 			this.f7Building.setValue(null);
 			this.f7Building.setRequired(true);
@@ -1577,40 +1578,40 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 	}
 
 	protected void btnAddRooms_actionPerformed(ActionEvent e) throws Exception {
-		RoomCollection rooms = RoomSelectUI.showMultiRoomSelectUI(this, null, null, MoneySysTypeEnum.TenancySys, null, this.editData.getProject());
+		RoomCollection rooms = RoomSelectUI.showMultiRoomSelectUI(this, null, null, MoneySysTypeEnum.TenancySys, null, ((TenancyRentBillInfo)this.editData).getProject());
 		if (rooms == null) {
 			return;
 		}
 		for (int i = 0; i < rooms.size(); i++) {
 			RoomInfo room = rooms.get(i);
 			if (!room.isIsAreaAudited()) {
-				MsgBox.showInfo(room.getNumber() + " 未进行售前复核!");
+				MsgBox.showInfo(room.getName() + " 未进行售前复核!");
 				return;
 			}
 			if (room.isIsForTen() == false) {
-				MsgBox.showInfo(room.getNumber() + " 非租赁房间!");
+				MsgBox.showInfo(room.getName() + " 非租赁房间!");
 				return;
 			}
 			if(room.getTenancyArea()==null || room.getTenancyArea().compareTo(new BigDecimal(0))==0)
 			{
-				MsgBox.showInfo(room.getNumber() +" 计租面积为空!");
+				MsgBox.showInfo(room.getName() +" 计租面积为空!");
 				return;
 			}
 			if (TenancyStateEnum.newTenancy.equals(room.getTenancyState()) || TenancyStateEnum.continueTenancy.equals(room.getTenancyState())
 					|| TenancyStateEnum.enlargeTenancy.equals(room.getTenancyState())) {
-				MsgBox.showInfo(room.getNumber() + " 已经出租!");
+				MsgBox.showInfo(room.getName() + " 已经出租!");
 				return;
 			}
 			if (TenancyStateEnum.keepTenancy.equals(room.getTenancyState())) {
-				MsgBox.showInfo(room.getNumber() + " 已保留!");
+				MsgBox.showInfo(room.getName() + " 已保留!");
 				return;
 			}
 			if (TenancyStateEnum.sincerObligate.equals(room.getTenancyState())) {
-				MsgBox.showInfo(room.getNumber() + " 已预留!");
+				MsgBox.showInfo(room.getName() + " 已预留!");
 				return;
 			}
 			if (isExist(room)) {
-				MsgBox.showInfo(room.getNumber() + " 已经在列表中!");
+				MsgBox.showInfo(room.getName() + " 已经在列表中!");
 				continue;
 			}
 			BuildingRoomEntrysInfo entry = new BuildingRoomEntrysInfo();
@@ -1618,7 +1619,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 			entry.setStandardRentPrice(room.getStandardRentPrice());
 			entry.setRentType(room.getRentType());
 			entry.setTenancyState(room.getTenancyState());
-			entry.setRoomNumber(room.getNumber());
+			entry.setRoomNumber(room.getName());
 			if (room.isIsActualAreaAudited() && room.getActualBuildingArea() != null) {
 				entry.setBuildingArea(room.getActualBuildingArea());
 			} else {

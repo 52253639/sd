@@ -322,9 +322,9 @@ public class CommerceChanceImportUI extends AbstractCommerceChanceImportUI
 		
 		//importStatus 导入状态  
 		try{
-			this.tblMain.getColumn("saleMan").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.base.permission.app.F7UserQuery",CommerceHelper.getPermitSalemanView()));  // 营销顾问
+			this.tblMain.getColumn("saleMan").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.base.permission.app.F7UserQuery",CommerceHelper.getPermitSalemanView(null)));  // 营销顾问
 			this.tblMain.getColumn("saleMan").getStyleAttributes().setBackground(CommerceHelper.BK_COLOR_MUST);
-			this.tblMain.getColumn("fdcCustomer").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery",CommerceHelper.getPermitCustomerView()));  //客户名称	fdcCustomer
+			this.tblMain.getColumn("fdcCustomer").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery",CommerceHelper.getPermitCustomerView(null)));  //客户名称	fdcCustomer
 			this.tblMain.getColumn("fdcCustomer").getStyleAttributes().setBackground(CommerceHelper.BK_COLOR_MUST);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -400,7 +400,7 @@ public class CommerceChanceImportUI extends AbstractCommerceChanceImportUI
 			//营销顾问   mapSaleMan 
 			if(mapSaleMan==null)  {
 				UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-				mapSaleMan = CommerceHelper.getPermitUserMap(currentUserInfo);				
+				mapSaleMan = CommerceHelper.getPermitUserMap(null,currentUserInfo);				
 			}
 		    Object seller = row.getCell("saleMan").getValue();  
 	    	if(seller!=null) {
@@ -442,7 +442,7 @@ public class CommerceChanceImportUI extends AbstractCommerceChanceImportUI
 						
 						try {
 							UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-							String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(currentUserInfo);
+							String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(null,currentUserInfo);
 							filter.getFilterItems().add(new FilterItemInfo("salesman.id",sqlPerSalmanIdStr,CompareType.INNER));
 						} catch (EASBizException e) {
 							e.printStackTrace();

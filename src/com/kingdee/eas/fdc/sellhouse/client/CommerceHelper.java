@@ -49,6 +49,7 @@ import com.kingdee.bos.ctrl.swing.KDTimePicker;
 import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
+import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.metadata.IMetaDataLoader;
 import com.kingdee.bos.metadata.MetaDataLoaderFactory;
 import com.kingdee.bos.metadata.MetaDataPK;
@@ -172,6 +173,7 @@ import com.kingdee.eas.fdc.sellhouse.RoomModelInfo;
 import com.kingdee.eas.fdc.sellhouse.RoomModelTypeCollection;
 import com.kingdee.eas.fdc.sellhouse.RoomModelTypeFactory;
 import com.kingdee.eas.fdc.sellhouse.RoomModelTypeInfo;
+import com.kingdee.eas.fdc.sellhouse.SellProjectFactory;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SexEnum;
 import com.kingdee.eas.fdc.sellhouse.SightRequirementCollection;
@@ -188,9 +190,9 @@ import com.kingdee.eas.fdc.tenancy.BusinessScopeInfo;
 import com.kingdee.eas.fdc.tenancy.CooperateModeCollection;
 import com.kingdee.eas.fdc.tenancy.CooperateModeFactory;
 import com.kingdee.eas.fdc.tenancy.CooperateModeInfo;
-import com.kingdee.eas.fdc.tenancy.MarketingUnitFactory;
-import com.kingdee.eas.fdc.tenancy.MarketingUnitMemberCollection;
-import com.kingdee.eas.fdc.tenancy.MarketingUnitMemberFactory;
+import com.kingdee.eas.fdc.sellhouse.MarketingUnitFactory;
+import com.kingdee.eas.fdc.sellhouse.MarketingUnitMemberCollection;
+import com.kingdee.eas.fdc.sellhouse.MarketingUnitMemberFactory;
 import com.kingdee.eas.fdc.tenancy.NatureEnterpriseCollection;
 import com.kingdee.eas.fdc.tenancy.NatureEnterpriseFactory;
 import com.kingdee.eas.fdc.tenancy.NatureEnterpriseInfo;
@@ -219,9 +221,8 @@ public class CommerceHelper {
 	/**
 	 * @deprecated  建议传递系统参数
 	 */
-	public static EntityViewInfo getPermitCustomerView() throws EASBizException, BOSException{
-		UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-		return getPermitCustomerView(currentUserInfo,null);
+	public static EntityViewInfo getPermitCustomerView(SellProjectInfo sp) throws EASBizException, BOSException{
+		return getPermitCustomerView(sp,SysContext.getSysContext().getCurrentUserInfo());
 	}
 	/**
 	 * 获得指定营销人员能够看到的客户资料的view (针对客户资料的f7控件)
@@ -229,47 +230,48 @@ public class CommerceHelper {
 	 * @throws BOSException 
 	 * @throws EASBizException 
 	 */
-	public static EntityViewInfo getPermitCustomerView(UserInfo userInfo,MoneySysTypeEnum sysType) throws EASBizException, BOSException{	
+	public static EntityViewInfo getPermitCustomerView(SellProjectInfo sp,UserInfo userInfo) throws EASBizException, BOSException{	
+		SaleOrgUnitInfo orgUnitInfo = SysContext.getSysContext().getCurrentSaleUnit();
+		
 		EntityViewInfo viewInfo = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();		
-		if(userInfo==null){
-			filter.getFilterItems().add(new FilterItemInfo("id", "null"));
-			viewInfo.setFilter(filter);
-			return viewInfo;
-		}		
-		
-		filter.getFilterItems().add(new FilterItemInfo("isEnabled", new Integer(1)));
-		if(sysType!=null) {
-			if(sysType.equals(MoneySysTypeEnum.SalehouseSys))
-				filter.getFilterItems().add(new FilterItemInfo("isForSHE", new Integer(1)));
-			else if(sysType.equals(MoneySysTypeEnum.TenancySys))
-				filter.getFilterItems().add(new FilterItemInfo("isForTen", new Integer(1)));
-			else if(sysType.equals(MoneySysTypeEnum.ManageSys))
-				filter.getFilterItems().add(new FilterItemInfo("isForPPM", new Integer(1)));
-		}		
-		
-		FilterInfo filterUnion = new FilterInfo();
-		filterUnion.getFilterItems().add(new FilterItemInfo("salesman.id",getPermitSaleManIdSet(userInfo),CompareType.INCLUDE));
-		
-		FilterInfo filterShare = new FilterInfo();
-		Set shareIdSet = new HashSet();
-		String shareIdStr = getPermitShareCustomerIdStr(userInfo);
-		FDCSQLBuilder builder = new FDCSQLBuilder();
-		builder.appendSql(shareIdStr);
-		IRowSet rowSet = builder.executeQuery();
-		try {
-			while(rowSet.next()){
-				shareIdSet.add(rowSet.getString("fheadId"));
+		if(sp==null) {
+			String permitSaleIdStr = getPermitSaleManIdSql(sp,userInfo);
+//			String permitProIdStr = getPermitProjectIdSql(userInfo);
+//			filter.getFilterItems().add(new FilterItemInfo("createUnit.id",orgUnitInfo.getId().toString()));
+			
+			filter.getFilterItems().add(new FilterItemInfo("salesMan.id",permitSaleIdStr,CompareType.INNER));			
+			//共享给营销顾问的客户
+//			String saleSaleIdStr = "select FCustomerID from T_SHE_ShareProperty where FUserID in ("+permitSaleIdStr+")";
+//			filter.getFilterItems().add(new FilterItemInfo("id",saleSaleIdStr,CompareType.INNER));			
+//			//共享给项目的客户
+//			String sellProIdStr = "select FCustomerID from T_SHE_ShareSellProject where FSellProjectID in ("+permitProIdStr+") ";
+//			filter.getFilterItems().add(new FilterItemInfo("id",sellProIdStr,CompareType.INNER));
+			
+//			filter.setMaskString("#0 and (#1 or #2 or #3)");
+		}else{
+			String permitSaleIdStr = getPermitSaleManIdSql(sp,userInfo);
+			//permitSaleIdStr += " and FSellProjectID = '"+sellPorjct.getId()+"' ";
+			
+//			filter.getFilterItems().add(new FilterItemInfo("createUnit.id",orgUnitInfo.getId().toString()));
+			sp=SellProjectFactory.getRemoteInstance().getSellProjectInfo(new ObjectUuidPK(sp.getId()));
+			if(sp.getParent()!=null){
+				filter.getFilterItems().add(new FilterItemInfo("project.id",sp.getParent().getId().toString()));
+			}else{
+				filter.getFilterItems().add(new FilterItemInfo("project.id",sp.getId().toString()));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			SysUtil.abort();
+			
+			filter.getFilterItems().add(new FilterItemInfo("salesMan.id",permitSaleIdStr,CompareType.INNER));			
+			//共享给营销顾问的客户
+//			String saleSaleIdStr = "select FCustomerID from T_SHE_ShareProperty where FUserID in ("+permitSaleIdStr+")";
+//			filter.getFilterItems().add(new FilterItemInfo("id",saleSaleIdStr,CompareType.INNER));			
+//			//共享给项目的客户
+//			String sellProIdStr = "select FCustomerID from T_SHE_ShareSellProject where FSellProjectID = '"+sellPorjct.getId()+"' ";
+//			filter.getFilterItems().add(new FilterItemInfo("id",sellProIdStr,CompareType.INNER));
+			
+//			filter.setMaskString("#0 and ((#1 and (#2 or #3)) or #4)  ");			
 		}
-		if(shareIdSet.size()==0) shareIdSet.add("nullnull");
-		filterShare.getFilterItems().add(new FilterItemInfo("id",shareIdSet,CompareType.INCLUDE));
-		filterUnion.mergeFilter(filterShare, "OR");
 		
-		filter.mergeFilter(filterUnion, "AND");
 		viewInfo.setFilter(filter);
 		return viewInfo;
 	}
@@ -349,12 +351,12 @@ public class CommerceHelper {
 	 * @return
 	 * @throws EASBizException 
 	 */
-	public static EntityViewInfo getPermitSalemanView() throws BOSException, EASBizException {
+	public static EntityViewInfo getPermitSalemanView(SellProjectInfo sp) throws BOSException, EASBizException {
 		UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();		
 		
 		EntityViewInfo view = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("id",getPermitSaleManIdSql(currentUserInfo),CompareType.INNER));
+		filter.getFilterItems().add(new FilterItemInfo("id",getPermitSaleManIdSql(sp,currentUserInfo),CompareType.INNER));
 		view.setFilter(filter);
 		return view;
 	}
@@ -390,10 +392,9 @@ public class CommerceHelper {
 	{	
 		return MarketingUnitFactory.getRemoteInstance().getPermitSaleManIdSet(userInfo);
 	}
-	public static String getPermitSaleManIdSql(UserInfo userInfo) throws BOSException, EASBizException
+	public static String getPermitSaleManIdSql(SellProjectInfo sp,UserInfo userInfo) throws BOSException, EASBizException
 	{
-		UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-		return MarketingUnitFactory.getRemoteInstance().getPermitSaleManIdSql(currentUserInfo);	
+		return MarketingUnitFactory.getRemoteInstance().getPermitSaleManIdSql(userInfo,sp);
 	}
 	
 		
@@ -1100,10 +1101,10 @@ public class CommerceHelper {
 		
 	
 	
-	public static Map getPermitUserMap(UserInfo saleMan) throws BOSException{
+	public static Map getPermitUserMap(SellProjectInfo sp,UserInfo saleMan) throws BOSException{
 		String permitSaleManIsSql = null;
 		try {
-			permitSaleManIsSql =getPermitSaleManIdSql(saleMan);
+			permitSaleManIsSql =getPermitSaleManIdSql(sp,saleMan);
 		} catch (EASBizException e) {
 			e.printStackTrace();
 			SysUtil.abort();
@@ -1146,12 +1147,12 @@ public class CommerceHelper {
 	 *  根据number字段，返回个人信息
 	 * @since 2010-9-27
 	 */
-	public static UserInfo getUserMapByNumber(String saleMan) throws BOSException{
+	public static UserInfo getUserMapByNumber(SellProjectInfo sp,String saleMan) throws BOSException{
 		String permitSaleManIsSql = null;
 		try {
 			UserInfo sqlUserInfo = new UserInfo();
 			sqlUserInfo.setNumber(saleMan);
-			permitSaleManIsSql =getPermitSaleManIdSql(sqlUserInfo);
+			permitSaleManIsSql =getPermitSaleManIdSql(sp,sqlUserInfo);
 		} catch (EASBizException e) {
 			e.printStackTrace();
 			SysUtil.abort();

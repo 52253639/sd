@@ -137,7 +137,9 @@ public class RoomSelectUI extends AbstractRoomSelectUI {
 			tblMain.removeColumns();
 			tblMain.removeHeadRows();
 			tblMain.removeRows();
-			setSellStateCountByColor();
+			if(moneySysTypeEnum!=null&&moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys)){
+				setSellStateCountByColor();
+			}
 			return;
 		}
 		
@@ -159,7 +161,9 @@ public class RoomSelectUI extends AbstractRoomSelectUI {
 		
 		
 		SHEHelper.fillRoomTableByNode(this.tblMain,node, moneySysTypeEnum, roomColl,sellProject,setting,null);
-		setSellStateCountByColor();
+		if(moneySysTypeEnum!=null&&moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys)){
+			setSellStateCountByColor();
+		}
 //		if (node.getUserObject() instanceof Integer) {
 //			BuildingInfo building = (BuildingInfo) ((DefaultKingdeeTreeNode) node
 //					.getParent()).getUserObject();

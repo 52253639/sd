@@ -17,11 +17,11 @@ public abstract class AbstractTenBillBaseEditUIHandler extends com.kingdee.eas.f
 	public void handleactionAudit(RequestContext request,ResponseContext response, Context context) throws Exception {
 		_handleactionAudit(request,response,context);
 	}
-	abstract protected void _handleactionAudit(RequestContext request,ResponseContext response, Context context)
-		throws Exception;
+	protected void _handleactionAudit(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 	public void handleActionUnAudit(RequestContext request,ResponseContext response, Context context) throws Exception {
 		_handleActionUnAudit(request,response,context);
 	}
-	abstract protected void _handleActionUnAudit(RequestContext request,ResponseContext response, Context context)
-		throws Exception;
+	protected void _handleActionUnAudit(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

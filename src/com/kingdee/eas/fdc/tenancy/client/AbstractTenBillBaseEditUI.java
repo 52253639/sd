@@ -76,7 +76,9 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         //actionAudit
         this.actionAudit = new actionAudit(this);
         getActionManager().registerAction("actionAudit", actionAudit);
+        this.actionAudit.setExtendProperty("canForewarn", "true");
          this.actionAudit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+         this.actionAudit.addService(new com.kingdee.eas.framework.client.service.ForewarnService());
         //actionUnAudit
         this.actionUnAudit = new ActionUnAudit(this);
         getActionManager().registerAction("actionUnAudit", actionUnAudit);
@@ -119,6 +121,18 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
 
     }
 
+	public com.kingdee.bos.ctrl.swing.KDToolBar[] getUIMultiToolBar(){
+		java.util.List list = new java.util.ArrayList();
+		com.kingdee.bos.ctrl.swing.KDToolBar[] bars = super.getUIMultiToolBar();
+		if (bars != null) {
+			list.addAll(java.util.Arrays.asList(bars));
+		}
+		return (com.kingdee.bos.ctrl.swing.KDToolBar[])list.toArray(new com.kingdee.bos.ctrl.swing.KDToolBar[list.size()]);
+	}
+
+
+
+
     /**
      * output initUIContentLayout method
      */
@@ -137,6 +151,7 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
     {
         this.menuBar.add(menuFile);
         this.menuBar.add(menuEdit);
+        this.menuBar.add(MenuService);
         this.menuBar.add(menuView);
         this.menuBar.add(menuBiz);
         this.menuBar.add(menuTable1);
@@ -146,9 +161,13 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -158,6 +177,8 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
+        menuFile.add(kDSeparator6);
+        menuFile.add(menuItemSendMail);
         menuFile.add(kDSeparator3);
         menuFile.add(menuItemExitCurrent);
         //menuSubmitOption
@@ -168,12 +189,19 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         menuEdit.add(menuItemEdit);
         menuEdit.add(menuItemRemove);
         menuEdit.add(kDSeparator4);
+        menuEdit.add(menuItemReset);
         menuEdit.add(separator1);
         menuEdit.add(menuItemCreateFrom);
         menuEdit.add(menuItemCreateTo);
         menuEdit.add(menuItemCopyFrom);
         menuEdit.add(separatorEdit1);
+        menuEdit.add(menuItemEnterToNextRow);
         menuEdit.add(separator2);
+        //MenuService
+        MenuService.add(MenuItemKnowStore);
+        MenuService.add(MenuItemAnwser);
+        MenuService.add(SepratorService);
+        MenuService.add(MenuItemRemoteAssist);
         //menuView
         menuView.add(menuItemFirst);
         menuView.add(menuItemPre);
@@ -182,6 +210,8 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         menuView.add(separator3);
         menuView.add(menuItemTraceUp);
         menuView.add(menuItemTraceDown);
+        menuView.add(kDSeparator7);
+        menuView.add(menuItemLocate);
         //menuBiz
         menuBiz.add(menuItemCancelCancel);
         menuBiz.add(menuItemCancel);
@@ -191,12 +221,14 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         menuBiz.add(menuItemUnAudit);
         //menuTable1
         menuTable1.add(menuItemAddLine);
+        menuTable1.add(menuItemCopyLine);
         menuTable1.add(menuItemInsertLine);
         menuTable1.add(menuItemRemoveLine);
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -228,8 +260,11 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -253,6 +288,7 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnCreateFrom);
         this.toolBar.add(btnCopyFrom);
@@ -260,6 +296,7 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         this.toolBar.add(separatorFW5);
         this.toolBar.add(separatorFW8);
         this.toolBar.add(btnAddLine);
+        this.toolBar.add(btnCopyLine);
         this.toolBar.add(btnInsertLine);
         this.toolBar.add(btnRemoveLine);
         this.toolBar.add(separatorFW6);
@@ -274,6 +311,7 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
         this.toolBar.add(btnAudit);
         this.toolBar.add(btnUnAudit);
         this.toolBar.add(btnCalculator);
+
 
     }
 
@@ -361,6 +399,10 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
     	
@@ -404,17 +446,18 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
 
     /**
      * output actionAudit class
-     */
-    protected class actionAudit extends ItemAction
-    {
+     */     
+    protected class actionAudit extends ItemAction {     
+    
         public actionAudit()
         {
             this(null);
         }
 
         public actionAudit(IUIObject uiObject)
-        {
-            super(uiObject);
+        {     
+		super(uiObject);     
+        
             String _tempStr = null;
             this.setEnabled(false);
             _tempStr = resHelper.getString("actionAudit.SHORT_DESCRIPTION");
@@ -434,17 +477,18 @@ public abstract class AbstractTenBillBaseEditUI extends com.kingdee.eas.framewor
 
     /**
      * output ActionUnAudit class
-     */
-    protected class ActionUnAudit extends ItemAction
-    {
+     */     
+    protected class ActionUnAudit extends ItemAction {     
+    
         public ActionUnAudit()
         {
             this(null);
         }
 
         public ActionUnAudit(IUIObject uiObject)
-        {
-            super(uiObject);
+        {     
+		super(uiObject);     
+        
             String _tempStr = null;
             this.setEnabled(false);
             _tempStr = resHelper.getString("ActionUnAudit.SHORT_DESCRIPTION");

@@ -177,6 +177,17 @@ public class AbstractTrackRecordInfo extends com.kingdee.eas.fdc.basedata.FDCBil
     {
         setString("phoneNumber", item);
     }
+    /**
+     * Object: 客户跟进记录 's 媒体渠道 property 
+     */
+    public com.kingdee.eas.fdc.market.ChannelTypeInfo getClassify()
+    {
+        return (com.kingdee.eas.fdc.market.ChannelTypeInfo)get("classify");
+    }
+    public void setClassify(com.kingdee.eas.fdc.market.ChannelTypeInfo item)
+    {
+        put("classify", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("83DD37C1");

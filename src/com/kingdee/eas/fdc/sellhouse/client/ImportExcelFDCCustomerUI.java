@@ -549,7 +549,7 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 		try{
 			this.tblMain.getColumn("project.name").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.fdc.sellhouse.app.SellProjectQuery",CommerceHelper.getPermitProjectView()));
 			this.tblMain.getColumn("project.name").getStyleAttributes().setBackground(CommerceHelper.BK_COLOR_MUST);
-			this.tblMain.getColumn("salesman.name").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.base.permission.app.F7UserQuery",CommerceHelper.getPermitSalemanView()));  //必须导入
+			this.tblMain.getColumn("salesman.name").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.base.permission.app.F7UserQuery",CommerceHelper.getPermitSalemanView(null)));  //必须导入
 			this.tblMain.getColumn("salesman.name").getStyleAttributes().setBackground(CommerceHelper.BK_COLOR_MUST);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -649,7 +649,7 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 		f7CustomManager.setEditFormat("$name$");
 		f7CustomManager.setCommitFormat("$name$");
 		f7CustomManager.setQueryInfo("com.kingdee.eas.base.permission.app.F7UserQuery");
-		f7CustomManager.setEntityViewInfo(CommerceHelper.getPermitSalemanView());
+		f7CustomManager.setEntityViewInfo(CommerceHelper.getPermitSalemanView(null));
 		KDTDefaultCellEditor customerEditor = new KDTDefaultCellEditor(f7CustomManager);
 		this.tblMain.getColumn("customerManager").setEditor(customerEditor);
 		//设置F7多选
@@ -814,7 +814,7 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 				}
 				try{
 					UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-					String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(currentUserInfo);
+					String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(null,currentUserInfo);
 					filter.getFilterItems().add(new FilterItemInfo("salesman.id",sqlPerSalmanIdStr,CompareType.INNER));
 				} catch (EASBizException e) {
 					SysUtil.abort();
@@ -853,7 +853,7 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 				if(customer.getNumber()!=null) filter.getFilterItems().add(new FilterItemInfo("number",customer.getNumber()));
 				try{
 					UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-					String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(currentUserInfo);
+					String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(null,currentUserInfo);
 					filter.getFilterItems().add(new FilterItemInfo("salesman.id",sqlPerSalmanIdStr,CompareType.INNER));
 				} catch (EASBizException e) {
 					SysUtil.abort();
@@ -1760,7 +1760,7 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 		if(saleMan==null || saleMan.trim().equals("")) return null;
 		UserInfo getUser=null;
 			try {
-				 getUser=CommerceHelper.getUserMapByNumber(saleMan);
+				 getUser=CommerceHelper.getUserMapByNumber(null,saleMan);
 			} catch (BOSException e1) {
 				// TODO Auto-generated catch block
 				this.abort();

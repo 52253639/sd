@@ -89,4 +89,24 @@ public abstract class AbstractTenancyBillListUIHandler extends com.kingdee.eas.f
 	}
 	protected void _handleActionPrintPreviewBill(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionPriceChange(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionPriceChange(request,response,context);
+	}
+	protected void _handleActionPriceChange(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionCustomerChangeName(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionCustomerChangeName(request,response,context);
+	}
+	protected void _handleActionCustomerChangeName(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionImportSql(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionImportSql(request,response,context);
+	}
+	protected void _handleActionImportSql(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionImport(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionImport(request,response,context);
+	}
+	protected void _handleActionImport(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

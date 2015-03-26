@@ -6,6 +6,7 @@ package com.kingdee.eas.fdc.sellhouse.client;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -55,6 +56,7 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.fdc.basecrm.client.CRMTreeHelper;
 import com.kingdee.eas.fdc.basedata.FDCCustomerParams;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
@@ -71,6 +73,8 @@ import com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo;
 import com.kingdee.eas.fdc.sellhouse.IFDCCustomer;
 import com.kingdee.eas.fdc.sellhouse.LinkmanEntryInfo;
 import com.kingdee.eas.fdc.sellhouse.PurchaseCustomerInfoFactory;
+import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
+import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SincerityPurchaseFactory;
 import com.kingdee.eas.fdc.sellhouse.TrackRecordFactory;
 import com.kingdee.eas.fdc.sellhouse.TrackRecordInfo;
@@ -164,7 +168,6 @@ public class CustomerListUI extends AbstractCustomerListUI {
 
 		// initCommonQueryDialog();
 		initTree();
-		this.treeMain.setSelectionRow(0);
 		super.onLoad();
 		this.MenuItemAttachment.setVisible(true);
 		this.btnAttachment.setVisible(true);
@@ -223,6 +226,7 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		this.actionToSysCustomer.setVisible(false);
 		this.actionCancelCancel.setVisible(false);
 		this.actionCancel.setVisible(false);
+		this.actionQuestionPrint.setVisible(false);
 }
 
 	
@@ -297,47 +301,82 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		try {
 			// 过滤面板上的条件加上销售顾问的过滤
 			viewInfo = (EntityViewInfo) this.mainQuery.clone();
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode) treeMain.getLastSelectedPathComponent();
-			MarketingUnitInfo marketingInfo = null;
-			Set marketSet = new HashSet();
-			Set orgSet = new HashSet();
-			// 当点击的节点为营销顾问时只显示营销顾问所属的客户和共享给改顾问的客户
-			// 当点击的节点为营销单元时显示该营销单元能看到的所有客户以及共享给他下级营销单元的客户
-			// 当点击的节点为销售组织时显示该组织能显示的所有客户以及共享给该组织的客户
-			// 注释的代码是因为以前客户显示，点击节点为营销顾问时显示上面所说的以及共享给他所在的营销单元的
-			// 和上级营销单元的以及共享给组织的全都显示。点击节点为营销单元时显示上面所说的以及共享给他上级单元的客户
-
-			if (node != null && node.getUserObject() instanceof MarketingUnitInfo) {
-				marketingInfo = (MarketingUnitInfo) node.getUserObject();
-				marketSet.add(marketingInfo.getId().toString());
-				// marketSet = SHEHelper.getMarketingUnit(node, marketSet);
-				marketSet = SHEHelper.getChildMarketUnit(node, marketSet);
-			} else if (node != null && node.getUserObject() instanceof OrgStructureInfo) {
-				orgSet.add(saleOrg.getId().toString());
-			}
+			DefaultMutableTreeNode orgNode = (DefaultMutableTreeNode) treeMain.getLastSelectedPathComponent();
+//			MarketingUnitInfo marketingInfo = null;
+//			Set marketSet = new HashSet();
+//			Set orgSet = new HashSet();
+//			// 当点击的节点为营销顾问时只显示营销顾问所属的客户和共享给改顾问的客户
+//			// 当点击的节点为营销单元时显示该营销单元能看到的所有客户以及共享给他下级营销单元的客户
+//			// 当点击的节点为销售组织时显示该组织能显示的所有客户以及共享给该组织的客户
+//			// 注释的代码是因为以前客户显示，点击节点为营销顾问时显示上面所说的以及共享给他所在的营销单元的
+//			// 和上级营销单元的以及共享给组织的全都显示。点击节点为营销单元时显示上面所说的以及共享给他上级单元的客户
+//
+//			if (node != null && node.getUserObject() instanceof MarketingUnitInfo) {
+//				marketingInfo = (MarketingUnitInfo) node.getUserObject();
+//				marketSet.add(marketingInfo.getId().toString());
+//				// marketSet = SHEHelper.getMarketingUnit(node, marketSet);
+//				marketSet = SHEHelper.getChildMarketUnit(node, marketSet);
+//			} else if (node != null && node.getUserObject() instanceof OrgStructureInfo) {
+//				orgSet.add(saleOrg.getId().toString());
+//			}
 			FilterInfo thisFilter = new FilterInfo();
-			saleUserIds = "null";
-			if (node != null)
-				getAllSaleIds(node);
-			thisFilter.getFilterItems().add(new FilterItemInfo("salesman.id", saleUserIds, CompareType.INCLUDE));
-			FDCCustomerParams para = new FDCCustomerParams(this.getFilterUI().getCustomerParams());
-			if (para.getBoolean("chkShare")) {
-				thisFilter.getFilterItems().add(new FilterItemInfo("shareSellerList.seller.id", saleUserIds, CompareType.INCLUDE));
-				if (orgSet.size() > 0) {
-					thisFilter.getFilterItems().add(new FilterItemInfo("shareSellerList.orgUnit.id", orgSet, CompareType.INCLUDE));
-					thisFilter.setMaskString("#0 or #1 or #2");
-				} else if (marketSet.size() > 0) {
-					thisFilter.getFilterItems().add(new FilterItemInfo("shareSellerList.marketingUnit.id", marketSet,CompareType.INCLUDE));
-					thisFilter.setMaskString("#0 or #1 or #2");
-				} else {
-					thisFilter.setMaskString("#0 or #1");
-				}
-			}
-
-			//需要增加项目隔离
-			FilterInfo addSpFilter = addSeparateBySellProject(node);
-			thisFilter.mergeFilter(addSpFilter, "and");			
+//			saleUserIds = "null";
+//			if (node != null)
+//				getAllSaleIds(node);
+//			thisFilter.getFilterItems().add(new FilterItemInfo("salesman.id", saleUserIds, CompareType.INCLUDE));
+//			FDCCustomerParams para = new FDCCustomerParams(this.getFilterUI().getCustomerParams());
+//			if (para.getBoolean("chkShare")) {
+//				thisFilter.getFilterItems().add(new FilterItemInfo("shareSellerList.seller.id", saleUserIds, CompareType.INCLUDE));
+//				if (orgSet.size() > 0) {
+//					thisFilter.getFilterItems().add(new FilterItemInfo("shareSellerList.orgUnit.id", orgSet, CompareType.INCLUDE));
+//					thisFilter.setMaskString("#0 or #1 or #2");
+//				} else if (marketSet.size() > 0) {
+//					thisFilter.getFilterItems().add(new FilterItemInfo("shareSellerList.marketingUnit.id", marketSet,CompareType.INCLUDE));
+//					thisFilter.setMaskString("#0 or #1 or #2");
+//				} else {
+//					thisFilter.setMaskString("#0 or #1");
+//				}
+//			}
+//
+//			//需要增加项目隔离
+//			FilterInfo addSpFilter = addSeparateBySellProject(node);
+//			thisFilter.mergeFilter(addSpFilter, "and");			
 			
+			if (orgNode != null) {
+				if (orgNode.getUserObject() != null&& orgNode.getUserObject() instanceof OrgStructureInfo) {
+					thisFilter = new FilterInfo();
+					thisFilter.getFilterItems().add(new FilterItemInfo("id", "null"));
+					this.actionAddNew.setEnabled(false);
+					this.actionEdit.setEnabled(false);
+					this.actionRemove.setEnabled(false);
+				} else if (orgNode.getUserObject() != null&& orgNode.getUserObject() instanceof SellProjectInfo) {
+					if (saleOrg.isIsBizUnit()) {
+						this.actionAddNew.setEnabled(true);
+						this.actionEdit.setEnabled(true);
+						this.actionRemove.setEnabled(true);
+					}
+					SellProjectInfo sellProject = (SellProjectInfo) orgNode.getUserObject();
+//					Set idRow = new HashSet();
+//					idRow = getShareCustomerIdSet(sellProject);
+//					idRow = getCustomerId(sellProject);
+					thisFilter.getFilterItems().add(new FilterItemInfo("project.id", sellProject.getId().toString()));
+//					if (idRow != null && idRow.size() > 0) {
+//					filter.getFilterItems().add(
+//							new FilterItemInfo("id", idRow,
+//									CompareType.INNER));
+//					}else{
+//						filter.getFilterItems().add(
+//								new FilterItemInfo("id", null,
+//										CompareType.EQUALS));
+//					}
+					if(!isControl){
+						Set saleMan=SHEManageHelper.getPermitSaleManSet(sellProject,permit);
+						thisFilter.getFilterItems().add(new FilterItemInfo("salesman.id", saleMan,CompareType.INNER));
+					}
+				}
+			}else{
+				thisFilter.getFilterItems().add(new FilterItemInfo("id", "null"));
+			}
 			if (viewInfo.getFilter() != null) {
 				thisFilter.mergeFilter(viewInfo.getFilter(), "AND");
 			}
@@ -365,8 +404,8 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		this.tblMain.getColumn("isSub").getStyleAttributes().setHided(true);
 		return super.getQueryExecutor(queryPK, viewInfo);
 	}
-	
-	
+	protected boolean isControl=SHEManageHelper.isControl(null, SysContext.getSysContext().getCurrentUserInfo());
+	protected Map permit=new HashMap();
 	//若选择的节点非当前用户，则必须增加项目隔离
 	private FilterInfo addSeparateBySellProject(DefaultMutableTreeNode thisNode) throws EASBizException, BOSException{
 		FilterInfo filter = new FilterInfo();	
@@ -418,10 +457,13 @@ public class CustomerListUI extends AbstractCustomerListUI {
 	}
 
 	protected void initTree() throws Exception {
-		this.treeMain.setModel(FDCTreeHelper.getMarketTree(this.actionOnLoad));
-		// this.treeMain.setModel(SHEHelper.getMarketTree(this.actionOnLoad));
-
+		this.treeMain.setModel(CRMTreeHelper.getSellProjectTree(actionOnLoad,false));
 		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
+		if(this.treeMain.getRowCount()>0){
+			treeMain.setSelectionRow(1); 
+		}else{
+			treeMain.setSelectionRow(0); 
+		}
 	}
 
 	public void actionCancel_actionPerformed(ActionEvent e) throws Exception {
@@ -699,6 +741,10 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		if (node.getUserObject() instanceof MarketingUnitInfo) {
 			MarketingUnitInfo marketingUnit = (MarketingUnitInfo) node.getUserObject();
 			uiContext.put("marketingUnit", marketingUnit);
+		}
+		if (node.getUserObject() != null && node.getUserObject() instanceof SellProjectInfo) {
+			SellProjectInfo sellProjectInfo = (SellProjectInfo) node.getUserObject();
+			uiContext.put("sellProject", sellProjectInfo);
 		}
 //		marketNode = (TreeNode) this.treeMain.getLastSelectedPathComponent();
 		marketNode=(TreeNode)this.treeMain.getModel().getRoot();    

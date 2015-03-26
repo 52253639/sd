@@ -349,6 +349,28 @@ public class AbstractFDCReceivingBillInfo extends com.kingdee.eas.fdc.basedata.F
     {
         setString("tennacyStr", item);
     }
+    /**
+     * Object:房地产收款单's 客户名称property 
+     */
+    public String getFdcCustomerStr()
+    {
+        return getString("fdcCustomerStr");
+    }
+    public void setFdcCustomerStr(String item)
+    {
+        setString("fdcCustomerStr", item);
+    }
+    /**
+     * Object: 房地产收款单 's 转出合同 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.TenancyBillInfo getTransOutTenBill()
+    {
+        return (com.kingdee.eas.fdc.tenancy.TenancyBillInfo)get("transOutTenBill");
+    }
+    public void setTransOutTenBill(com.kingdee.eas.fdc.tenancy.TenancyBillInfo item)
+    {
+        put("transOutTenBill", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("F12182FE");

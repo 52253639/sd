@@ -478,7 +478,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			//FDCHelper.getCostCenter(editData.getCurProject(),null).castToFullOrgUnitInfo(); 
 			//FDCClientUtils.getCostOrgByProj(projId);
 
-			txtOrg.setText(costOrg.getDisplayName());
+			txtOrg.setText(editData.getCurProject().getFullOrgUnit().getName());
 			editData.setOrgUnit(costOrg);
 			editData.setCU(curProject.getCU());
 		}
@@ -4821,9 +4821,9 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			}
 			
 			if (cddi!=null && cddi.isIsMustInput()){
-				if (entryInfo.getContent() == null || entryInfo.getDesc() == null){
+				if (entryInfo.getContent() == null){
 					String info = ContractClientUtils.getRes("conDtlCantEmpty");
-					String[] args = new String[] {entryInfo.getDetail(), entryInfo.getContent()==null? "ÄÚÈÝ":"ÃèÊö"};
+					String[] args = new String[] {entryInfo.getDetail(), "ÄÚÈÝ"};
 					FDCMsgBox.showInfo(this,FDCClientHelper.formatMessage(info, args));
 					SysUtil.abort();
 					return;

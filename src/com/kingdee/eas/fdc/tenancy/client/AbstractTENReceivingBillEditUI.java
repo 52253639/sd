@@ -124,7 +124,8 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.contFdcCustomers.setBoundLabelText(resHelper.getString("contFdcCustomers.boundLabelText"));		
         this.contCustomer.setVisible(false);		
         this.contRoom.setBoundLabelText(resHelper.getString("contRoom.boundLabelText"));		
-        this.contRoomLongNumber.setVisible(false);
+        this.contRoomLongNumber.setVisible(false);		
+        this.f7SellProject.setEnabled(false);
         this.f7SellProject.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
             public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
                 try {
@@ -147,11 +148,13 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         });		
         this.f7FdcCustomers.setEditFormat("$name$");		
         this.f7FdcCustomers.setEnabledMultiSelection(true);		
+        this.f7FdcCustomers.setEnabled(false);		
         this.f7Customer.setEnabledMultiSelection(true);		
         this.f7Room.setQueryInfo("");		
-        this.f7Room.setDisplayFormat("$number$");		
+        this.f7Room.setDisplayFormat("$name$");		
         this.f7Room.setEditFormat("$number$");		
-        this.f7Room.setCommitFormat("$number$");
+        this.f7Room.setCommitFormat("$number$");		
+        this.f7Room.setEnabled(false);
         this.f7Room.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
             public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
                 try {
@@ -183,7 +186,8 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.f7TenancyBill.setQueryInfo("com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery");		
         this.f7TenancyBill.setCommitFormat("$number$");		
         this.f7TenancyBill.setDisplayFormat("$name$");		
-        this.f7TenancyBill.setEditFormat("$number$");
+        this.f7TenancyBill.setEditFormat("$number$");		
+        this.f7TenancyBill.setEnabled(false);
         this.f7TenancyBill.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
             public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
                 try {

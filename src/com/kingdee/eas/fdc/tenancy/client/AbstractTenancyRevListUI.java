@@ -49,6 +49,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
     protected com.kingdee.bos.ctrl.swing.KDSplitPane kDSplitPane1;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtTenancy;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnUpdateSubject;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnCreateBill;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnTDPrint;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnTDPrintPreview;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemBatchReceieving;
@@ -56,6 +57,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
     protected ActionTDPrint actionTDPrint = null;
     protected ActionTDPrintPreview actionTDPrintPreview = null;
     protected ActionUpdateSubject actionUpdateSubject = null;
+    protected ActionCreateBill actionCreateBill = null;
     /**
      * output class constructor
      */
@@ -127,9 +129,14 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.actionUpdateSubject = new ActionUpdateSubject(this);
         getActionManager().registerAction("actionUpdateSubject", actionUpdateSubject);
          this.actionUpdateSubject.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionCreateBill
+        this.actionCreateBill = new ActionCreateBill(this);
+        getActionManager().registerAction("actionCreateBill", actionCreateBill);
+         this.actionCreateBill.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.kDSplitPane1 = new com.kingdee.bos.ctrl.swing.KDSplitPane();
         this.kdtTenancy = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.btnUpdateSubject = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnCreateBill = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnTDPrint = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnTDPrintPreview = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemBatchReceieving = new com.kingdee.bos.ctrl.swing.KDMenuItem();
@@ -137,15 +144,16 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.kDSplitPane1.setName("kDSplitPane1");
         this.kdtTenancy.setName("kdtTenancy");
         this.btnUpdateSubject.setName("btnUpdateSubject");
+        this.btnCreateBill.setName("btnCreateBill");
         this.btnTDPrint.setName("btnTDPrint");
         this.btnTDPrintPreview.setName("btnTDPrintPreview");
         this.menuItemBatchReceieving.setName("menuItemBatchReceieving");
         this.menuItemUpdateSubject.setName("menuItemUpdateSubject");
         // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol8\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol13\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol19\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol25\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"sellProject.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"currency.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"originalAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"receiptNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"invoiceNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"bizDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" t:styleID=\"sCol8\" /><t:Column t:key=\"billStatus\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"revBillType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"revBizType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"customer.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"entries.revAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" t:styleID=\"sCol13\" /><t:Column t:key=\"entries.bankNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"entries.settlementNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"moneyDefine.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"settlementType.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" /><t:Column t:key=\"moneyDefine.moneyType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" /><t:Column t:key=\"room.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" t:styleID=\"sCol19\" /><t:Column t:key=\"roomLongNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" /><t:Column t:key=\"room.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" /><t:Column t:key=\"room.number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" /><t:Column t:key=\"fiVouchered\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" /><t:Column t:key=\"state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" /><t:Column t:key=\"createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" t:styleID=\"sCol25\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{sellProject.name}</t:Cell><t:Cell>$Resource{currency.name}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{originalAmount}</t:Cell><t:Cell>$Resource{receiptNumber}</t:Cell><t:Cell>$Resource{invoiceNumber}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{billStatus}</t:Cell><t:Cell>$Resource{revBillType}</t:Cell><t:Cell>$Resource{revBizType}</t:Cell><t:Cell>$Resource{customer.name}</t:Cell><t:Cell>$Resource{entries.revAmount}</t:Cell><t:Cell>$Resource{entries.bankNumber}</t:Cell><t:Cell>$Resource{entries.settlementNumber}</t:Cell><t:Cell>$Resource{moneyDefine.name}</t:Cell><t:Cell>$Resource{settlementType.name}</t:Cell><t:Cell>$Resource{moneyDefine.moneyType}</t:Cell><t:Cell>$Resource{room.id}</t:Cell><t:Cell>$Resource{roomLongNumber}</t:Cell><t:Cell>$Resource{room.name}</t:Cell><t:Cell>$Resource{room.number}</t:Cell><t:Cell>$Resource{fiVouchered}</t:Cell><t:Cell>$Resource{state}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{description}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol8\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol14\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol20\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol26\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"sellProject.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"currency.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"originalAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"receiptNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"invoiceNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"bizDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" t:styleID=\"sCol8\" /><t:Column t:key=\"billStatus\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"isCreateBill\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"revBillType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"revBizType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"customer.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"entries.revAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" t:styleID=\"sCol14\" /><t:Column t:key=\"entries.bankNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"entries.settlementNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"moneyDefine.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" /><t:Column t:key=\"settlementType.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" /><t:Column t:key=\"moneyDefine.moneyType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" /><t:Column t:key=\"room.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" t:styleID=\"sCol20\" /><t:Column t:key=\"roomLongNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" /><t:Column t:key=\"room.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" /><t:Column t:key=\"room.number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" /><t:Column t:key=\"fiVouchered\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" /><t:Column t:key=\"state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" /><t:Column t:key=\"createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"26\" t:styleID=\"sCol26\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"27\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{sellProject.name}</t:Cell><t:Cell>$Resource{currency.name}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{originalAmount}</t:Cell><t:Cell>$Resource{receiptNumber}</t:Cell><t:Cell>$Resource{invoiceNumber}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{billStatus}</t:Cell><t:Cell>$Resource{isCreateBill}</t:Cell><t:Cell>$Resource{revBillType}</t:Cell><t:Cell>$Resource{revBizType}</t:Cell><t:Cell>$Resource{customer.name}</t:Cell><t:Cell>$Resource{entries.revAmount}</t:Cell><t:Cell>$Resource{entries.bankNumber}</t:Cell><t:Cell>$Resource{entries.settlementNumber}</t:Cell><t:Cell>$Resource{moneyDefine.name}</t:Cell><t:Cell>$Resource{settlementType.name}</t:Cell><t:Cell>$Resource{moneyDefine.moneyType}</t:Cell><t:Cell>$Resource{room.id}</t:Cell><t:Cell>$Resource{roomLongNumber}</t:Cell><t:Cell>$Resource{room.name}</t:Cell><t:Cell>$Resource{room.number}</t:Cell><t:Cell>$Resource{fiVouchered}</t:Cell><t:Cell>$Resource{state}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{description}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
-                this.tblMain.putBindContents("mainQuery",new String[] {"id","sellProject.name","currency.name","number","amount","","","","bizDate","billStatus","revBillType","revBizType","customer.name","entries.revAmount","","","moneyDefine.name","settlementType.name","","","","","room.number","fiVouchered","","createTime","description"});
+                this.tblMain.putBindContents("mainQuery",new String[] {"id","sellProject.name","currency.name","number","amount","","","","bizDate","billStatus","isCreateBill","revBillType","revBizType","customer.name","entries.revAmount","","","moneyDefine.name","settlementType.name","","","","","room.number","fiVouchered","","createTime","description"});
 
 
         this.btnBatchReceiving.setAction((IItemAction)ActionProxyFactory.getProxy(actionBatchReceiving, new Class[] { IItemAction.class }, getServiceContext()));		
@@ -186,6 +194,9 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.btnUpdateSubject.setText(resHelper.getString("btnUpdateSubject.text"));		
         this.btnUpdateSubject.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_subjectsetting"));		
         this.btnUpdateSubject.setToolTipText(resHelper.getString("btnUpdateSubject.toolTipText"));
+        // btnCreateBill
+        this.btnCreateBill.setAction((IItemAction)ActionProxyFactory.getProxy(actionCreateBill, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnCreateBill.setText(resHelper.getString("btnCreateBill.text"));
         // btnTDPrint
         this.btnTDPrint.setAction((IItemAction)ActionProxyFactory.getProxy(actionTDPrint, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnTDPrint.setText(resHelper.getString("btnTDPrint.text"));		
@@ -365,6 +376,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.toolBar.add(btnRemove);
         this.toolBar.add(btnBatchReceiving);
         this.toolBar.add(btnUpdateSubject);
+        this.toolBar.add(btnCreateBill);
         this.toolBar.add(btnRefresh);
         this.toolBar.add(btnQuery);
         this.toolBar.add(btnLocate);
@@ -531,6 +543,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         sic.add(new SelectorItemInfo("creator.name"));
         sic.add(new SelectorItemInfo("tenRoomPay.startDate"));
         sic.add(new SelectorItemInfo("tenRoomPay.endDate"));
+        sic.add(new SelectorItemInfo("isCreateBill"));
         return sic;
     }        
     	
@@ -582,6 +595,14 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
      * output actionUpdateSubject_actionPerformed method
      */
     public void actionUpdateSubject_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionCreateBill_actionPerformed method
+     */
+    public void actionCreateBill_actionPerformed(ActionEvent e) throws Exception
     {
     }
 	public RequestContext prepareActionRemove(IItemAction itemAction) throws Exception {
@@ -648,6 +669,17 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
     }
 	
 	public boolean isPrepareActionUpdateSubject() {
+    	return false;
+    }
+	public RequestContext prepareActionCreateBill(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionCreateBill() {
     	return false;
     }
 
@@ -741,6 +773,36 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractTenancyRevListUI.this, "ActionUpdateSubject", "actionUpdateSubject_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionCreateBill class
+     */     
+    protected class ActionCreateBill extends ItemAction {     
+    
+        public ActionCreateBill()
+        {
+            this(null);
+        }
+
+        public ActionCreateBill(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionCreateBill.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionCreateBill.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionCreateBill.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyRevListUI.this, "ActionCreateBill", "actionCreateBill_actionPerformed", e);
         }
     }
 

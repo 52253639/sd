@@ -64,7 +64,7 @@ public class TenancyRentBillListUI extends AbstractTenancyRentBillListUI
 	}
 
 	protected String getEditUIModal() {
-		return UIFactoryName.MODEL;
+		return UIFactoryName.NEWTAB;
 	}
 
 	protected String getEditUIName() {

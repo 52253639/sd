@@ -102,6 +102,7 @@ import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.EffectImageAndPlanisphereInfo;
 import com.kingdee.eas.fdc.sellhouse.client.ISolidSideImageListener;
 import com.kingdee.eas.fdc.sellhouse.client.RoomEditUI;
+import com.kingdee.eas.fdc.sellhouse.client.RoomSourceEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEImagePanel;
 import com.kingdee.eas.fdc.sellhouse.client.SolidSideImage;
@@ -330,6 +331,10 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 		setComboBoxZoomItem();
 		actionLocate.setVisible(true);
 		actionLocate.setEnabled(true);
+		
+		this.solidSideRadioBtn.setVisible(false);
+		this.planeRadioBtn.setVisible(false);
+		this.effectRadioBtn.setVisible(false);
 	}
 	
 	public void actionLocate_actionPerformed(ActionEvent e) throws Exception {
@@ -552,7 +557,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 				UIContext uiContext = new UIContext(this);
 				uiContext.put("ID", room.getId().toString());
 				IUIWindow uiWindow = UIFactory.createUIFactory(
-						UIFactoryName.NEWTAB).create(RoomEditUI.class.getName(),
+						UIFactoryName.NEWTAB).create(RoomSourceEditUI.class.getName(),
 								uiContext, null, "VIEW");
 				uiWindow.show();
 			}
@@ -721,7 +726,11 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 			pnlRoomPic.repaint();
 		}
 	}
-
+	 public void actionRefresh_actionPerformed(ActionEvent e)
+     throws Exception
+ {
+		 refresh(e);
+ }
 	protected void refresh(ActionEvent e) throws BOSException
 	{
 		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain

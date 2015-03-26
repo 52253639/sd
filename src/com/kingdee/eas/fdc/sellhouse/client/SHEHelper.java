@@ -5007,7 +5007,7 @@ public class SHEHelper {
 		IMetaDataLoader loader = MetaDataLoaderFactory.getRemoteMetaDataLoader();
 		dlg.setQueryInfo(loader.getQuery(new MetaDataPK("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery")));
 
-		dlg.setEntityViewInfo(CommerceHelper.getPermitCustomerView(user, MoneySysTypeEnum.SalehouseSys));
+		dlg.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,user));
 		dlg.show();
 		Object[] object = (Object[]) dlg.getData();
 		if (object != null && object.length > 0) {

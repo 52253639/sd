@@ -98,7 +98,7 @@ public class ArrearageQueryFilterUI extends AbstractArrearageQueryFilterUI
 		
 		UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
 		try {
-			this.prmtCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(currentUserInfo,MoneySysTypeEnum.SalehouseSys));
+			this.prmtCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,currentUserInfo));
 		} catch (EASBizException e1) {
 			e1.printStackTrace();
 		} catch (BOSException e1) {

@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.sql.Timestamp;
+import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
@@ -125,7 +126,7 @@ public class TrackRecordEditUI extends AbstractTrackRecordEditUI {
 		this.actionCalculator.setVisible(false);
 		this.actionCopy.setVisible(false);
 
-		this.actionAttachment.setVisible(false);
+		this.actionAttachment.setVisible(true);
 		this.btnAuditResult.setVisible(false);
 		this.btnMultiapprove.setVisible(false);
 		this.btnNextPerson.setVisible(false);
@@ -143,12 +144,12 @@ public class TrackRecordEditUI extends AbstractTrackRecordEditUI {
 		}
 
 		// 设置当前营销人员能看到的客户
-		this.prmtCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(SysContext.getSysContext().getCurrentUserInfo(), null));
+		this.prmtCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(this.editData.getSellProject(),SysContext.getSysContext().getCurrentUserInfo()));
 		// 设置当前营销人员能看到的项目
 		this.prmtSellProject.setEntityViewInfo(CommerceHelper.getPermitProjectView());
 		// 设置当前营销人员能看到的商机
 		this.prmtCommerceChance.setEntityViewInfo(CommerceHelper.getPermitCommerceChanceView());
-		this.prmtSaleMan.setEntityViewInfo(CommerceHelper.getPermitSalemanView());
+		this.prmtSaleMan.setEntityViewInfo(CommerceHelper.getPermitSalemanView(this.editData.getSellProject()));
 
 		setCommerceChanceView();
 
@@ -187,6 +188,25 @@ public class TrackRecordEditUI extends AbstractTrackRecordEditUI {
 
 		setGroupFilter();
 		setMarketManageView();
+		
+		EntityViewInfo evi= new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		
+		filter.getFilterItems().add(new FilterItemInfo("statrusing",Boolean.TRUE));
+		filter.getFilterItems().add(new FilterItemInfo("CU.id",SysContext.getSysContext().getCurrentCtrlUnit().getId().toString()));
+		evi.setFilter(filter);
+		
+		HashMap ctx=new HashMap();
+		ctx.put("EntityViewInfo", evi);
+		ctx.put("EnableMultiSelection", new Boolean(false));
+		ctx.put("HasCUDefaultFilter", new Boolean(true));
+		this.prmtClassify.setQueryInfo("com.kingdee.eas.fdc.market.app.ChannelTypeQuery");	
+		this.prmtClassify.setDisplayFormat("$name$");		
+        this.prmtClassify.setEditFormat("$number$");		
+	    this.prmtClassify.setCommitFormat("$number$");
+	    this.prmtClassify.setEntityViewInfo(evi);
+	    
+	    this.actionQuestionPrint.setVisible(false);
 	}
 
 	/**

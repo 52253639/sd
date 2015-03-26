@@ -33,6 +33,7 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.metadata.entity.SelectorItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
@@ -101,6 +102,9 @@ import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryInfo;
+import com.kingdee.eas.fi.cas.IReceivingBill;
+import com.kingdee.eas.fi.cas.ReceivingBillCollection;
+import com.kingdee.eas.fi.cas.ReceivingBillFactory;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.MsgBox;
 import com.kingdee.util.StringUtils;
@@ -439,6 +443,7 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 			MsgBox.showInfo("属于代收的收款单,不允许修改或删除！请去修改或删除源单据！");
 			this.abort();
 		}
+		checkCreateBillStatus(this.editData.getId().toString(),"所选收款单中已生成出纳收款单，不允许修改操作！");
 		super.actionEdit_actionPerformed(e);
 		this.actionAudit.setVisible(true);
 		this.actionAudit.setEnabled(true);
@@ -456,7 +461,7 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 			MsgBox.showInfo("属于代收的收款单,不允许修改或删除！请去修改或删除源单据！");
 			this.abort();
 		}
-		
+		checkCreateBillStatus(this.editData.getId().toString(),"所选收款单中已生成出纳收款单，不允许删除操作！");
 		super.actionRemove_actionPerformed(e);
 	}
 
@@ -1327,4 +1332,27 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 //			}
 //		}
 //	}
+	
+	private void checkCreateBillStatus(String id,String msg){
+		try {
+			IReceivingBill rece = ReceivingBillFactory.getRemoteInstance();
+			EntityViewInfo evi = new EntityViewInfo();
+			FilterInfo filterInfo = new FilterInfo();
+			filterInfo.getFilterItems().add(new FilterItemInfo("sourceBillId", id, CompareType.EQUALS));
+			evi.setFilter(filterInfo);
+			SelectorItemCollection coll = new SelectorItemCollection();
+			coll.add(new SelectorItemInfo("sourceBillId"));
+			coll.add(new SelectorItemInfo("billStatus"));
+			evi.setSelector(coll);
+			ReceivingBillCollection collection = rece.getReceivingBillCollection(evi);
+			if(collection!=null && collection.size()>0){
+				//result = true;
+				MsgBox.showWarning(this, msg);
+				SysUtil.abort();
+			}
+			} catch (BOSException e) {
+				logger.error(e.getMessage()+"获取是否已生成出纳收款单状态失败!");
+			}
+			
+	}
 }

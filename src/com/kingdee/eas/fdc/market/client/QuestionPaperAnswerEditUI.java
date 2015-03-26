@@ -357,7 +357,7 @@ public class QuestionPaperAnswerEditUI extends AbstractQuestionPaperAnswerEditUI
 		
 		// 设置当前营销人员能看到的客户
 		UserInfo currUsr = SysContext.getSysContext().getCurrentUserInfo();
-		this.f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(currUsr, null));
+		this.f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,currUsr));
 		// 项目
 		this.f7SellProject.setEntityViewInfo(CommerceHelper.getPermitProjectView());
 		setQuestionPaperView();

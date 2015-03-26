@@ -69,21 +69,21 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
     private static final Logger logger = CoreUIObject.getLogger(TenancyBillListUI.class);
     
 	public void actionImport_actionPerformed(ActionEvent e) throws Exception {
-//		super.actionImport_actionPerformed(e);
-//		String strSolutionName ="eas.fdc.tenancy.TenancyImport";
-//		DatataskCaller task = new DatataskCaller();
-//		task.setParentComponent(this);
-//		DatataskParameter param = new DatataskParameter();
-//		String solutionName = strSolutionName;
-//		param.solutionName = solutionName;
-//		param.alias = kDWorkButton1.getText();
-//		ArrayList paramList = new ArrayList();
-//		paramList.add(param);
-//		task.invoke(paramList, 0, true);
+		super.actionImport_actionPerformed(e);
+		String strSolutionName ="eas.fdc.tenancy.TenancyImport";
+		DatataskCaller task = new DatataskCaller();
+		task.setParentComponent(this);
+		DatataskParameter param = new DatataskParameter();
+		String solutionName = strSolutionName;
+		param.solutionName = solutionName;
+		param.alias = kDWorkButton1.getText();
+		ArrayList paramList = new ArrayList();
+		paramList.add(param);
+		task.invoke(paramList, 0, true);
 		
 	}
 	public void actionImportSql_actionPerformed(ActionEvent e) throws Exception {
-//		super.actionImportSql_actionPerformed(e);
+		super.actionImportSql_actionPerformed(e);
 		if(TenancyImport.tenancyUpdata()){
 			MsgBox.showInfo("修复导入合同操作已成功");
 		}else{
@@ -200,8 +200,8 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
    
 	public void onLoad() throws Exception {
 		this.menuSpecial.setIcon(EASResource.getIcon("imgTbtn_disassemble"));
-//		this.kDWorkButton1.setIcon(EASResource.getIcon("imgTbtn_inputoutput"));//导出模板导入数据
-//		this.kDWorkButton2.setIcon(EASResource.getIcon("imgTbtn_emend"));//修改导入数据
+		this.kDWorkButton1.setIcon(EASResource.getIcon("imgTbtn_inputoutput"));//导出模板导入数据
+		this.kDWorkButton2.setIcon(EASResource.getIcon("imgTbtn_emend"));//修改导入数据
 		KDMenuItem menuItem1 = new KDMenuItem();
 		menuItem1.setAction(this.actionContinueTenancy);
 		menuItem1.setText("续租申请");
@@ -273,8 +273,8 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		tblPrintBill.setIcon(this.btnPrint.getIcon());
 		JButton tblPrintPreviewBill = this.toolBar.add(this.actionPrintPreviewBill);
 		tblPrintPreviewBill.setIcon(this.btnPrintPreview.getIcon());
-//		this.actionImport.setVisible(false);
-//		this.actionImportSql.setVisible(false);
+		this.actionImport.setVisible(true);
+		this.actionImportSql.setVisible(true);
 	}
     
     public void actionPrintBill_actionPerformed(ActionEvent e) throws Exception {

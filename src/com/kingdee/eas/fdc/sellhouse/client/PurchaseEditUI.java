@@ -320,8 +320,8 @@ public class PurchaseEditUI extends AbstractPurchaseEditUI {
 		// TODO 临时隐藏
 		// this.tabPurchase.remove(panelOtherPay);
 
-		this.f7secondSeller.setEntityViewInfo(CommerceHelper.getPermitSalemanView());
-		this.f7Seller.setEntityViewInfo(CommerceHelper.getPermitSalemanView());
+		this.f7secondSeller.setEntityViewInfo(CommerceHelper.getPermitSalemanView(null));
+		this.f7Seller.setEntityViewInfo(CommerceHelper.getPermitSalemanView(null));
 		//审批和反审批的按钮控制
 		
 		this.actionAudit.setEnabled(true);
@@ -1274,7 +1274,7 @@ public class PurchaseEditUI extends AbstractPurchaseEditUI {
 	private void initCustomerFilter(UserInfo info) throws BOSException, EASBizException {
 		KDBizPromptBox f7Customer = new KDBizPromptBox();
 		f7Customer.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery");
-		f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(info, MoneySysTypeEnum.SalehouseSys));
+		f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,info));
 		f7Customer.setEditable(true);
 		f7Customer.setDisplayFormat("$name$");
 		f7Customer.setEditFormat("$number$");
@@ -4330,7 +4330,7 @@ public class PurchaseEditUI extends AbstractPurchaseEditUI {
 	 */
 	private void getSaleMans(){
 		try {
-			EntityViewInfo view = CommerceHelper.getPermitSalemanView();
+			EntityViewInfo view = CommerceHelper.getPermitSalemanView(null);
 			this.fullCustomer = UserFactory.getRemoteInstance().getUserCollection(view);
 		} catch (BOSException e) {
 			logger.error(e.getMessage());

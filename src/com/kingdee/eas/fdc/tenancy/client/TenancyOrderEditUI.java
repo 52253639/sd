@@ -65,9 +65,9 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 
 		TenancyOrderRoomEntryCollection roomEntrys = tenOrder.getRoomEntrys();
 		roomEntrys.clear();
-		for (int i = 0; i < this.tblRoom.getRowCount(); i++) {
-			TenancyOrderRoomEntryInfo roomEntry = (TenancyOrderRoomEntryInfo) tblRoom.getRow(i).getUserObject();
-			Object longNumberOb = tblRoom.getRow(i).getCell("roomLongNumber").getValue();
+		for (int i = 0; i < this.kdtRoom.getRowCount(); i++) {
+			TenancyOrderRoomEntryInfo roomEntry = (TenancyOrderRoomEntryInfo) kdtRoom.getRow(i).getUserObject();
+			Object longNumberOb = kdtRoom.getRow(i).getCell("roomName").getValue();
 			roomEntry.setRoomLongNumber(longNumberOb == null ? "" : longNumberOb.toString());
 			roomEntrys.add(roomEntry);
 		}
@@ -85,7 +85,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 	 * output btnAddRoom_actionPerformed method
 	 */
 	protected void btnAddRoom_actionPerformed(java.awt.event.ActionEvent e) throws Exception {
-		RoomCollection rooms = RoomSelectUI.showMultiRoomSelectUI(this, null, null, MoneySysTypeEnum.TenancySys, null, this.editData.getSellProject()); //
+		RoomCollection rooms = RoomSelectUI.showMultiRoomSelectUI(this, null, null, MoneySysTypeEnum.TenancySys, null, ((TenancyOrderInfo)this.editData).getSellProject()); //
 		if (rooms == null || rooms.size() < 1)
 			return;
 
@@ -95,24 +95,28 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		for (int i = 0; i < rooms.size(); i++) {
 			RoomInfo room = rooms.get(i);
 			if (room.getTenancyState() != null && !room.getTenancyState().equals(TenancyStateEnum.unTenancy)) {
-				buff.append("房间:" + room.getNumber() + "已不是未放租状态!\n");
+				buff.append("房间:" + room.getName() + "已不是未放租状态!\n");
 				continue;
 			}
 			if (!room.getBuilding().getSellProject().getId().equals(this.sellPro.getId())) {
-				buff.append("房间:" + room.getNumber() + "不属于本销售项目'" + sellPro.getName() + "'!\n");
+				buff.append("房间:" + room.getName() + "不属于本销售项目'" + sellPro.getName() + "'!\n");
 				continue;
 			}
 			if (!room.isIsForTen()) {
-				MsgBox.showInfo(room.getNumber() + " 没有租赁属性!");
+				MsgBox.showInfo(room.getName() + " 没有租赁属性!");
+				return;
+			}
+			if (room.getStandardRent()==null || room.getStandardRent().compareTo(new BigDecimal(0))==0) {
+				MsgBox.showInfo(room.getName() + " 未定价或者定价为0!");
 				return;
 			}
 			if (this.allRoomList.contains(room.getId())) {
-				buff.append("房间:" + room.getNumber() + "已经在列表里了!\n");
+				buff.append("房间:" + room.getName() + "已经在列表里了!\n");
 				continue;
 			}
 			if(room.getTenancyArea()==null || room.getTenancyArea().compareTo(new BigDecimal(0))==0)
 			{
-				MsgBox.showInfo(room.getNumber()+" 未录入计租面积或者计租面积为0");
+				MsgBox.showInfo(room.getName()+" 未录入计租面积或者计租面积为0!");
 				return;
 			}
 			okRooms.add(room);
@@ -130,26 +134,24 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 				RoomInfo thisRoom = okRooms.get(i);
 				TenancyOrderRoomEntryInfo roomEntry = new TenancyOrderRoomEntryInfo();
 				roomEntry.setRoom(thisRoom);
-				IRow row = this.tblRoom.addRow();
+				IRow row = this.kdtRoom.addRow();
 
 				roomEntry.setTenancyOrder(tenOrder);
-				String roomLongNumber = thisRoom.getBuilding() + "-" + thisRoom.getUnit() + "-" + thisRoom.getNumber();
-				roomEntry.setRoomLongNumber(roomLongNumber);
+				roomEntry.setRoomLongNumber(thisRoom.getName());
 				row.setUserObject(roomEntry);
 
 				row.getCell("building").setValue(thisRoom.getBuilding().getName());
-				row.getCell("unit").setValue(new Integer(thisRoom.getUnit()));
-				row.getCell("roomNumber").setValue(thisRoom.getNumber());
+				row.getCell("roomUnit").setValue(new Integer(thisRoom.getUnit()));
+				row.getCell("roomName").setValue(thisRoom.getName());
 				row.getCell("buildingArea").setValue(thisRoom.getBuildingArea() == null ? FDCHelper.ZERO : thisRoom.getBuildingArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
 				row.getCell("roomArea").setValue(thisRoom.getRoomArea() == null ? FDCHelper.ZERO : thisRoom.getRoomArea().divide(new BigDecimal("1"),3, BigDecimal.ROUND_HALF_UP));
 				row.getCell("tenancyArea").setValue(thisRoom.getTenancyArea() == null ? FDCHelper.ZERO : thisRoom.getTenancyArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
-				if (thisRoom.getStandardRent() == null){
-					row.getCell("rentNum").setValue(new BigDecimal("0.00"));
-				}else{
-					row.getCell("rentNum").setValue(thisRoom.getStandardRent());
-				}
-				row.getCell("roomLongNumber").setValue(roomLongNumber);
-
+				if(thisRoom.getRentType()!=null)row.getCell("rentType").setValue(thisRoom.getRentType().getAlias());
+				if(thisRoom.getTenancyModel()!=null)row.getCell("tenancyModel").setValue(thisRoom.getTenancyModel().getAlias());
+				row.getCell("standardRent").setValue(thisRoom.getStandardRent());
+				row.getCell("rentPrice").setValue(thisRoom.getStandardRentPrice());
+				row.getCell("dayPrice").setValue(thisRoom.getDayPrice());
+				
 				this.allRoomList.add(thisRoom.getId()); // 增加到房间list
 			}
 			this.CountAndSetTheRoomNums(); // 重新统计一遍
@@ -178,13 +180,13 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		 * }
 		 */
 
-		int index = this.tblRoom.getSelectManager().getActiveRowIndex();
+		int index = this.kdtRoom.getSelectManager().getActiveRowIndex();
 
 		if (index < 0) {
 			return;
 		}
 
-		IRow row = tblRoom.getRow(index);
+		IRow row = kdtRoom.getRow(index);
 		TenancyOrderRoomEntryInfo roomEntry = (TenancyOrderRoomEntryInfo) row.getUserObject();
 		// 只有是未放租的状态的房间才能删除
 		RoomInfo room = roomEntry.getRoom();
@@ -195,7 +197,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		if (room != null){
 			this.allRoomList.remove(room.getId()); // 从房间列表中删除
 		}
-		tblRoom.removeRow(index);
+		kdtRoom.removeRow(index);
 		this.CountAndSetTheRoomNums(); // 重新统计一遍
 	}
 
@@ -220,7 +222,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		}
 		if (StringUtils.isEmpty(this.txtName.getText()))
 			buff.append("名称必须录入！\n");
-		if (this.tblRoom.getRowCount() < 1)
+		if (this.kdtRoom.getRowCount() < 1)
 			buff.append("必须选择至少一个要推租的房间！\n");
 
 		if (!buff.toString().equals("")) {
@@ -267,36 +269,33 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 			TenancyOrderInfo tenOrder = (TenancyOrderInfo) this.editData;
 			TenancyOrderRoomEntryCollection roomEntrys = tenOrder.getRoomEntrys();
 			if (roomEntrys != null && roomEntrys.size() > 0) {
-				this.tblRoom.removeRows();
+				this.kdtRoom.removeRows();
 				for (int i = 0; i < roomEntrys.size(); i++) {
 					TenancyOrderRoomEntryInfo roomEntry = roomEntrys.get(i);
 
-					RoomInfo room = roomEntry.getRoom();
+					RoomInfo thisRoom = roomEntry.getRoom();
 
-					IRow row = this.tblRoom.addRow();
+					IRow row = this.kdtRoom.addRow();
 					row.setUserObject(roomEntry);
-					if (room != null) {
-						// building unit roomNumber buildingArea roomArea
-						// rentNum
-						row.getCell("building").setValue(room.getBuilding());
-						row.getCell("unit").setValue(new Integer(room.getUnit()));
-						row.getCell("roomNumber").setValue(room.getNumber());
-						row.getCell("buildingArea").setValue(room.getBuildingArea() == null ? FDCHelper.ZERO : room.getBuildingArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
-						row.getCell("roomArea").setValue(room.getRoomArea() == null ? FDCHelper.ZERO : room.getRoomArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
-						row.getCell("tenancyArea").setValue(room.getTenancyArea() == null ? FDCHelper.ZERO : room.getTenancyArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
-						if (room.getStandardRent() != null) {
-							row.getCell("rentNum").setValue(room.getStandardRent().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
-						} else {
-							row.getCell("rentNum").setValue(new BigDecimal("0.00"));
-						}
+					if (thisRoom != null) {
+						row.getCell("building").setValue(thisRoom.getBuilding().getName());
+						row.getCell("roomUnit").setValue(new Integer(thisRoom.getUnit()));
+						row.getCell("roomName").setValue(thisRoom.getName());
+						row.getCell("buildingArea").setValue(thisRoom.getBuildingArea() == null ? FDCHelper.ZERO : thisRoom.getBuildingArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
+						row.getCell("roomArea").setValue(thisRoom.getRoomArea() == null ? FDCHelper.ZERO : thisRoom.getRoomArea().divide(new BigDecimal("1"),3, BigDecimal.ROUND_HALF_UP));
+						row.getCell("tenancyArea").setValue(thisRoom.getTenancyArea() == null ? FDCHelper.ZERO : thisRoom.getTenancyArea().divide(new BigDecimal("1"), 3, BigDecimal.ROUND_HALF_UP));
+						if(thisRoom.getRentType()!=null)row.getCell("rentType").setValue(thisRoom.getRentType().getAlias());
+						if(thisRoom.getTenancyModel()!=null)row.getCell("tenancyModel").setValue(thisRoom.getTenancyModel().getAlias());
+						row.getCell("standardRent").setValue(thisRoom.getStandardRent());
+						row.getCell("rentPrice").setValue(thisRoom.getStandardRentPrice());
+						row.getCell("dayPrice").setValue(thisRoom.getDayPrice());
 					}
-					row.getCell("roomLongNumber").setValue(roomEntry.getRoomLongNumber());
 				}
 			}
 
 			CountAndSetTheRoomNums();
 		} else {
-			this.tblRoom.removeRows();
+			this.kdtRoom.removeRows();
 			this.txtTotalArea.setValue(null);
 			this.txtTotalRent.setValue(null);
 			this.txtTotalRoomNum.setValue(null);
@@ -310,8 +309,8 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		BigDecimal sumBdArea = FDCHelper.ZERO;
 		BigDecimal sumRmRent = FDCHelper.ZERO;
 		BigDecimal avgPrice = FDCHelper.ZERO;
-		for (int i = 0; i < this.tblRoom.getRowCount(); i++) {
-			IRow row = tblRoom.getRow(i);
+		for (int i = 0; i < this.kdtRoom.getRowCount(); i++) {
+			IRow row = kdtRoom.getRow(i);
 			TenancyOrderRoomEntryInfo tenOrder = (TenancyOrderRoomEntryInfo) row.getUserObject();
 			RoomInfo room = tenOrder.getRoom();
 			if (room == null) {
@@ -332,7 +331,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 
 		this.txtTotalArea.setValue(sumBdArea);
 		this.txtTotalRent.setValue(sumRmRent);
-		this.txtTotalRoomNum.setValue(new BigDecimal(this.tblRoom.getRowCount()));
+		this.txtTotalRoomNum.setValue(new BigDecimal(this.kdtRoom.getRowCount()));
 		this.txtAveragePrice.setValue(avgPrice);
 	}
 
@@ -346,10 +345,10 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		this.actionAddLine.setVisible(false);
 		this.actionRemoveLine.setVisible(false);
 
-		tblRoom.checkParsed();
+		kdtRoom.checkParsed();
 		// tblRoom.getStyleAttributes().setLocked(false);
-		tblRoom.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
-		tblRoom.getStyleAttributes().setLocked(true);
+		kdtRoom.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
+		kdtRoom.getStyleAttributes().setLocked(true);
 
 		if (this.getOprtState().equals(OprtState.VIEW)) {
 			this.btnAddRoom.setEnabled(false);
@@ -402,7 +401,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 	}
 
 	public void actionEdit_actionPerformed(ActionEvent e) throws Exception {
-		if(this.editData.isIsEnabled())
+		if(((TenancyOrderInfo)this.editData).isIsEnabled())
 		{
 			MsgBox.showError("批次已经执行,不能修改!");
     		return;

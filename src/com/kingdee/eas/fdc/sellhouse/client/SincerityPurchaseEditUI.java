@@ -1215,8 +1215,8 @@ public class SincerityPurchaseEditUI extends AbstractSincerityPurchaseEditUI {
 		// new FilterItemInfo("salesman.id", userInfo.getId()
 		// .toString()));
 
-		this.f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(
-				userInfo, MoneySysTypeEnum.SalehouseSys));
+		this.f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,
+				userInfo));
 		// this.spiSellOrderNum.setEnabled(false);
 		// this.spiRoomArrangeNum.setEnabled(false);
 		this.f7Currency.setEnabled(false);
@@ -1752,8 +1752,8 @@ public class SincerityPurchaseEditUI extends AbstractSincerityPurchaseEditUI {
 
 	private void setF7CustomerFilter(UserInfo info) throws EASBizException,
 			BOSException {
-		this.f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(
-				info, MoneySysTypeEnum.SalehouseSys));
+		this.f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,
+				info));
 	}
 
 	protected void f7Customer_dataChanged(DataChangeEvent e) throws Exception {

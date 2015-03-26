@@ -136,9 +136,7 @@ public class LiquidatedTBOPayFilterUI extends AbstractLiquidatedTBOPayFilterUI
 		box.setEditFormat("$number$");
 		box.setCommitFormat("$number$");
 		box.setEnabledMultiSelection(true);
-		box.setEntityViewInfo(CommerceHelper.getPermitCustomerView(SysContext.getSysContext().getCurrentUserInfo(), MoneySysTypeEnum.TenancySys));
-
-			
+		box.setEntityViewInfo(CommerceHelper.getPermitCustomerView((SellProjectInfo) this.sellProject.getValue(),SysContext.getSysContext().getCurrentUserInfo()));
 	}
    
     /**

@@ -28,6 +28,7 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.metadata.entity.SelectorItemInfo;
 import com.kingdee.bos.metadata.query.QueryFieldInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.metadata.resource.BizEnumValueInfo;
@@ -52,6 +53,7 @@ import com.kingdee.bos.ctrl.swing.KDMenuItem;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.bos.dao.query.BizEnumValueDTO;
 import com.kingdee.bos.dao.query.IQueryExecutor;
 import com.kingdee.eas.base.codingrule.CodingRuleManagerFactory;
 import com.kingdee.eas.base.codingrule.ICodingRuleManager;
@@ -68,6 +70,7 @@ import com.kingdee.eas.fdc.basecrm.FDCReceivingBillEntryInfo;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillInfo;
 import com.kingdee.eas.fdc.basecrm.IFDCReceivingBill;
+import com.kingdee.eas.fdc.basecrm.RevBillStatusEnum;
 import com.kingdee.eas.fdc.basecrm.RevBillTypeEnum;
 import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
 import com.kingdee.eas.fdc.basecrm.client.FDCReceivingBillEditUI;
@@ -77,6 +80,7 @@ import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineFactory;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.HandleStateEnum;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
@@ -90,6 +94,9 @@ import com.kingdee.eas.fdc.tenancy.TenancyDisPlaySetting;
 import com.kingdee.eas.fdc.tenancy.TenancyHelper;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
+import com.kingdee.eas.fi.cas.IReceivingBill;
+import com.kingdee.eas.fi.cas.ReceivingBillCollection;
+import com.kingdee.eas.fi.cas.ReceivingBillFactory;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
 import com.kingdee.eas.util.SysUtil;
@@ -141,6 +148,8 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		this.actionQuery.setVisible(false);
 		this.kdtTenancy.setEnabled(false);
 		this.kdtTenancy.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
+		
+		this.btnCreateBill.setIcon(EASResource.getIcon("imgTbtn_notice"));	
 	}
 
 	public void actionTraceDown_actionPerformed(ActionEvent e) throws Exception {
@@ -155,6 +164,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		setColGroup("tenancyUser.name");
 		setColGroup("auditor.name");
 		setColGroup("auditTime");
+		setColGroup("isCreateBill");
 	}
 
 	protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK,
@@ -225,7 +235,8 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 	}
 	// 租赁系统收款可以针对同一项目不同楼栋多房间,所以这里可能需要构建项目树
 	protected void initTree() throws Exception {
-		super.initTree();
+		this.treeMain.setModel(SHEHelper.getSellProjectTree(this.actionOnLoad,MoneySysTypeEnum.TenancySys));
+		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
 	}
 
 	public void setUITitle(String title) {
@@ -532,6 +543,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			return;
 		}
 		checkIsSupply(id);
+		checkCreateBillStatus(id,"所选收款单中已生成出纳收款单，不允许修改操作！");
 		super.actionEdit_actionPerformed(e);
 	}
 
@@ -556,7 +568,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			return;
 		}
 		checkIsSupply(id);
-
+		checkCreateBillStatus(id,"所选收款单中已生成出纳收款单，不允许删除操作！");
 		super.actionRemove_actionPerformed(e);
 	}
 
@@ -872,5 +884,221 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		}
 		return null;
 	}
-
+	private void checkBillType(){
+		int index=this.tblMain.getSelectManager().getActiveRowIndex();
+		
+		if(index==-1){
+			return;
+		}
+		
+		IRow row = this.tblMain.getRow(index);
+		
+		if(row ==null){
+			return;
+		}
+		
+		BizEnumValueDTO bizDTO=(BizEnumValueDTO)row.getCell("revBillType").getValue();
+		
+		if(bizDTO.getName().equals("transfer")){
+			FDCMsgBox.showWarning(this, "转款类型的收款单不能生成出纳收款单!");
+			SysUtil.abort();
+		}/*else if(bizDTO.getName().equals("adjust")){
+			FDCMsgBox.showWarning(this, "调整类型的收款单不能生成出纳收款单!");
+			SysUtil.abort();
+		}*/
+	}
+	public void actionCreateBill_actionPerformed(ActionEvent e) throws Exception {
+		
+		checkBillType();
+		ArrayList idList = this.getSelectedIdValues();
+		
+		if(idList!=null && idList.size()>1){
+			MsgBox.showWarning(this,"请选择单行数据进行此操作！");
+			SysUtil.abort();
+		}else{
+				if(idList.size()==0 && tblMain.getSelectManager().getActiveRowIndex()==-1){
+					idList.clear();
+					IRow row = tblMain.getRow(0);
+					if(row==null){
+						return;
+					}
+					String id = row.getCell("id").getValue().toString();
+					idList.add(id);
+				}
+				
+				checkBillStatusForCreate(idList);
+				isCreateVouchered(idList);
+				boolean res = isCreateBill(idList);
+				if(!res){
+					
+					boolean result = findBillFromCasPaymentBillbyId(idList);
+					if(!result){
+						MsgBox.showWarning(this,"已经生成出纳收款单，不允许重复生成！");
+						SysUtil.abort();
+					}
+				}
+				try{
+					FDCReceivingBillFactory.getRemoteInstance().createCashBill(idList, false);
+					MsgBox.showWarning(this, "出纳收款单生成成功！");
+					SysUtil.abort();
+				}catch(Exception ex){
+					if(ex instanceof BOSException&&ex.getMessage().startsWith("科目不按指定币别核算")){
+						MsgBox.showWarning(this, "科目不按指定币别核算，请选择其它币别！");
+						SysUtil.abort();
+					}else if(ex instanceof BOSException&&ex.getMessage().startsWith("生成出纳收款单失败")){
+						MsgBox.showWarning(this, "生成出纳收款单失败！");
+						SysUtil.abort();
+					}
+				}
+		}
+	}
+	private void checkBillStatusForCreate(ArrayList idList){
+		try {
+			
+			for (int i = 0; i < idList.size(); i++) {
+				
+				EntityViewInfo evi = new EntityViewInfo();
+				FilterInfo filterInfo = new FilterInfo();
+				filterInfo.getFilterItems().add(new FilterItemInfo("id", idList.get(i).toString(), CompareType.EQUALS));
+				evi.setFilter(filterInfo);
+				SelectorItemCollection coll = new SelectorItemCollection();
+				coll.add(new SelectorItemInfo("id"));
+				coll.add(new SelectorItemInfo("billStatus"));
+				evi.setSelector(coll);
+				IFDCReceivingBill fdcRece = FDCReceivingBillFactory.getRemoteInstance();
+				FDCReceivingBillCollection collection = fdcRece.getFDCReceivingBillCollection(evi);
+				if (collection != null && collection.size() > 0) {
+					for (int j = 0; j < collection.size(); j++) {
+						FDCReceivingBillInfo info = collection.get(j);
+					
+						if (info.getBillStatus().equals(RevBillStatusEnum.SAVE)) {
+							MsgBox.showWarning(this, "所选单据状态不对，请检查！");
+							SysUtil.abort();
+							break;
+						}else if (info.getBillStatus().equals(RevBillStatusEnum.SUBMIT)){
+							MsgBox.showWarning(this, "所选单据状态不对，请检查！");
+							SysUtil.abort();
+							break;
+						}else if (info.getBillStatus().equals(RevBillStatusEnum.AUDITING)){
+							MsgBox.showWarning(this, "所选单据状态不对，请检查！");
+							SysUtil.abort();
+							break;
+						}
+					}
+				}
+			}
+		} catch (BOSException e) {
+			logger.error(e.getMessage()+"获取房地产售楼收款单状态失败!");
+		}
+	}
+	private void isCreateVouchered(ArrayList idList){
+		boolean result = false;
+		try {
+				for (int i = 0; i < idList.size(); i++) {
+					IFDCReceivingBill fdcRece = FDCReceivingBillFactory.getRemoteInstance();
+					EntityViewInfo evi = new EntityViewInfo();
+					FilterInfo filterInfo = new FilterInfo();
+					filterInfo.getFilterItems().add(new FilterItemInfo("id", idList.get(i).toString(), CompareType.EQUALS));
+					evi.setFilter(filterInfo);
+					SelectorItemCollection coll = new SelectorItemCollection();
+					coll.add(new SelectorItemInfo("id"));
+					coll.add(new SelectorItemInfo("fiVouchered"));
+					evi.setSelector(coll);
+					FDCReceivingBillCollection collection = fdcRece.getFDCReceivingBillCollection(evi);
+					if(collection!=null && collection.size()>0){
+						FDCReceivingBillInfo info = collection.get(i);
+						if(info.isFiVouchered()){
+							result = true;
+						}
+					}
+				}
+			} catch (BOSException e) {
+				logger.error(e.getMessage()+"获取是否已生成凭证状态失败!");
+			}
+			
+			if(result){
+				MsgBox.showWarning(this, "已生成凭证，不能生成出纳收款单！");
+				SysUtil.abort();
+			}
+	}
+	private boolean isCreateBill(ArrayList idList){
+		
+		boolean result = true;
+	
+		try {
+				for (int i = 0; i < idList.size(); i++) {
+					EntityViewInfo evi = new EntityViewInfo();
+					FilterInfo filterInfo = new FilterInfo();
+					filterInfo.getFilterItems().add(new FilterItemInfo("id", idList.get(i).toString(), CompareType.EQUALS));
+					evi.setFilter(filterInfo);
+					SelectorItemCollection coll = new SelectorItemCollection();
+					coll.add(new SelectorItemInfo("id"));
+					coll.add(new SelectorItemInfo("isCreateBill"));
+					evi.setSelector(coll);
+					IFDCReceivingBill fdcRece = FDCReceivingBillFactory.getRemoteInstance();
+					FDCReceivingBillCollection collection = fdcRece.getFDCReceivingBillCollection(evi);
+					if (collection != null && collection.size() > 0) {
+						for (int j = 0; j < collection.size(); j++) {
+							FDCReceivingBillInfo info = collection.get(j);
+							if(info.isIsCreateBill()){
+								result = false;
+							}
+						}
+					}
+				}
+				
+				
+			} catch (BOSException e) {
+				logger.error(e.getMessage()+"获取房地产售楼收款单状态失败!");
+			}
+		return result;
+	}
+	private boolean findBillFromCasPaymentBillbyId(ArrayList idList){
+		boolean result = true;
+		try {
+			
+			for (int i = 0; i < idList.size(); i++) {
+				IReceivingBill rece = ReceivingBillFactory.getRemoteInstance();
+				EntityViewInfo evi = new EntityViewInfo();
+				FilterInfo filterInfo = new FilterInfo();
+				filterInfo.getFilterItems().add(new FilterItemInfo("sourceBillId", idList.get(0).toString(), CompareType.EQUALS));
+				evi.setFilter(filterInfo);
+				SelectorItemCollection coll = new SelectorItemCollection();
+				coll.add(new SelectorItemInfo("sourceBillId"));
+				coll.add(new SelectorItemInfo("billStatus"));
+				evi.setSelector(coll);
+				ReceivingBillCollection collection = rece.getReceivingBillCollection(evi);
+				if(collection!=null && collection.size()>0){
+					result = false;
+				}
+			}
+			
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	private void checkCreateBillStatus(String id,String msg){
+		try {
+			IReceivingBill rece = ReceivingBillFactory.getRemoteInstance();
+			EntityViewInfo evi = new EntityViewInfo();
+			FilterInfo filterInfo = new FilterInfo();
+			filterInfo.getFilterItems().add(new FilterItemInfo("sourceBillId", id, CompareType.EQUALS));
+			evi.setFilter(filterInfo);
+			SelectorItemCollection coll = new SelectorItemCollection();
+			coll.add(new SelectorItemInfo("sourceBillId"));
+			coll.add(new SelectorItemInfo("billStatus"));
+			evi.setSelector(coll);
+			ReceivingBillCollection collection = rece.getReceivingBillCollection(evi);
+			if(collection!=null && collection.size()>0){
+				//result = true;
+				MsgBox.showWarning(this, msg);
+				SysUtil.abort();
+			}
+			} catch (BOSException e) {
+				logger.error(e.getMessage()+"获取是否已生成出纳收款单状态失败!");
+			}
+			
+	}
 }

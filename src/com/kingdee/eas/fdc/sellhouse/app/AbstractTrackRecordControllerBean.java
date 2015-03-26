@@ -52,10 +52,13 @@ public abstract class AbstractTrackRecordControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0a638337-011b-1000-e000-0022c0a812c2"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TrackRecordInfo retValue = (TrackRecordInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TrackRecordInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -74,10 +77,13 @@ public abstract class AbstractTrackRecordControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0a638337-011b-1000-e000-0023c0a812c2"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TrackRecordInfo retValue = (TrackRecordInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TrackRecordInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -96,10 +102,13 @@ public abstract class AbstractTrackRecordControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0a638337-011b-1000-e000-0024c0a812c2"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TrackRecordInfo retValue = (TrackRecordInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TrackRecordInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -118,10 +127,13 @@ public abstract class AbstractTrackRecordControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0a638337-011b-1000-e000-0025c0a812c2"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TrackRecordCollection retValue = (TrackRecordCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TrackRecordCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -138,10 +150,13 @@ public abstract class AbstractTrackRecordControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0a638337-011b-1000-e000-0026c0a812c2"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TrackRecordCollection retValue = (TrackRecordCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TrackRecordCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -158,10 +173,13 @@ public abstract class AbstractTrackRecordControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0a638337-011b-1000-e000-0027c0a812c2"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TrackRecordCollection retValue = (TrackRecordCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TrackRecordCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

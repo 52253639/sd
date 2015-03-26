@@ -452,7 +452,7 @@ public class CustomerChangeNameEditUI extends AbstractCustomerChangeNameEditUI i
 		table.getColumn(C_CUS_BOOK_DATE).getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
 		KDBizPromptBox f7Customer = new KDBizPromptBox();
 		f7Customer.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery");
-		f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(userInfo, MoneySysTypeEnum.TenancySys));
+		f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(this.editData.getSellProject(),userInfo));
 		f7Customer.setEditable(true);
 		f7Customer.setDisplayFormat("$name$");
 		f7Customer.setEditFormat("$number$");

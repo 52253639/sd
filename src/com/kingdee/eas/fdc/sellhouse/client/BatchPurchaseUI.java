@@ -222,7 +222,7 @@ public class BatchPurchaseUI extends AbstractBatchPurchaseUI
 		customerBox.setDisplayFormat("$name$");
 		customerBox.setEditFormat("$number$");
 		customerBox.setCommitFormat("$number$");
-		customerBox.setEntityViewInfo(CommerceHelper.getPermitCustomerView(info, MoneySysTypeEnum.SalehouseSys));
+		customerBox.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,info));
 		ICellEditor customerEditor = new KDTDefaultCellEditor(customerBox);
 		this.tabCusPurchase.getColumn("contCustomer").setEditor(customerEditor);
 		this.tabCusPurchase.getColumn("contCustomer").getStyleAttributes().setBackground(

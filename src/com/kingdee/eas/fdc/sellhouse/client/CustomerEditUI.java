@@ -307,9 +307,6 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 		this.f7salesman.setRequired(true);
 		
 		//this.f7salesman.setEnabled(false);
-		EntityViewInfo saleManView = CommerceHelper.getPermitSalemanView();
-		this.f7salesman.setEntityViewInfo(saleManView);	
-		this.f7CustomerManager.setEntityViewInfo(saleManView);
 		this.btnAddLine.setToolTipText("新增行");
 		
 		initLinkmanTable();		
@@ -507,6 +504,14 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 			
 			String queryInfoLevel = "com.kingdee.eas.fdc.sellhouse.app.CommerceAssistantForSHEQuery";
 			SHEHelper.initF7(this.prmtLevel, queryInfoLevel, filterInfoLevel);
+			
+			this.actionInsider.setVisible(false);
+			this.actionAddCommerceChance.setVisible(false);
+			this.f7Project.setEnabled(false);
+			
+			EntityViewInfo saleManView = CommerceHelper.getPermitSalemanView(this.editData.getProject());
+			this.f7salesman.setEntityViewInfo(saleManView);	
+			this.f7CustomerManager.setEntityViewInfo(saleManView);
 	}
 	public void getQuestionPaperAnswer() throws Exception{
 		KDTable tblQuestion = this.tblQuestion;
@@ -805,7 +810,7 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 			selector.add(new SelectorItemInfo("eventType.name"));
 			selector.add(new SelectorItemInfo("receptionType.name"));
 			selector.add(new SelectorItemInfo("commerceChance.name"));
-			
+			selector.add(new SelectorItemInfo("classify.name"));
 			view.setSelector(selector);
 			TrackRecordCollection trackColl = null;			
 			try {
@@ -839,11 +844,10 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 					row.getCell("commerceChance.name").setValue(trackInfo.getCommerceChance()==null?"":trackInfo.getCommerceChance().getName());
 					row.getCell("description").setValue(trackInfo.getDescription());
 					row.getCell("createTime").setValue(trackInfo.getCreateTime());
+					row.getCell("classify").setValue(trackInfo.getClassify()==null?"":trackInfo.getClassify().getName());
 				}	
-				
 			}
 		}
-		
 	}
 	
 	
@@ -1882,6 +1886,7 @@ logger.info("CustomerEditUI:loadFields--" + "initCommerceChanceRecord()" + new T
 	
 	protected IObjectValue createNewData() {
 		FDCCustomerInfo value = new FDCCustomerInfo();
+		value.setIsForTen(true);
 		value.setIsEnabled(true);
 		value.setIsImportantTrack(false);
 		value.setCustomerType(CustomerTypeEnum.EnterpriceCustomer);
@@ -1895,6 +1900,7 @@ logger.info("CustomerEditUI:loadFields--" + "initCommerceChanceRecord()" + new T
 			e.printStackTrace();
 		}
 		value.setCreator(userInfo);
+		value.setProject((SellProjectInfo) this.getUIContext().get("sellProject"));
 		
 		value.setEnterpriceProperty(EnterprisePropertyEnum.PersonalAsset);
 		
@@ -1910,38 +1916,38 @@ logger.info("CustomerEditUI:loadFields--" + "initCommerceChanceRecord()" + new T
 		 * add by wenyaowei 20090616
 		 * ------------------start
 		 */
-		boolean isSellFunction = false;
-		boolean isTenancyFunction = false;
-		boolean isWuYeFunction = false;
-		MarketingUnitMemberCollection memCol = null;
-		EntityViewInfo view = new EntityViewInfo();
-		FilterInfo filter = new FilterInfo();
-		view.setFilter(filter);
-		filter.getFilterItems().add(new FilterItemInfo("member.id", SysContext.getSysContext().getCurrentUserInfo().getId().toString()));
-
-		try {
-			memCol = MarketingUnitMemberFactory.getRemoteInstance().getMarketingUnitMemberCollection(view);
-		} catch (BOSException e) {
-			handleException(e);
-		}
-		if (!memCol.isEmpty()) {
-			for (int i = 0; i < memCol.size(); i++) {
-				MarketingUnitMemberInfo info = memCol.get(i);
-				if (info.isIsSellFunction()) {
-					isSellFunction = true;
-				}
-				if (info.isIsTenancyFunction()) {
-					isTenancyFunction = true;
-				}
-				if (info.isIsWuYeFunction()) {
-					isWuYeFunction = true;
-				}
-			}
-		}		
-		
-		value.setIsForSHE(isSellFunction); // 设置售楼职能
-		value.setIsForTen(isTenancyFunction);// 设置租赁职能
-		value.setIsForPPM(isWuYeFunction); // 设置物业职能
+//		boolean isSellFunction = false;
+//		boolean isTenancyFunction = false;
+//		boolean isWuYeFunction = false;
+//		MarketingUnitMemberCollection memCol = null;
+//		EntityViewInfo view = new EntityViewInfo();
+//		FilterInfo filter = new FilterInfo();
+//		view.setFilter(filter);
+//		filter.getFilterItems().add(new FilterItemInfo("member.id", SysContext.getSysContext().getCurrentUserInfo().getId().toString()));
+//
+//		try {
+//			memCol = MarketingUnitMemberFactory.getRemoteInstance().getMarketingUnitMemberCollection(view);
+//		} catch (BOSException e) {
+//			handleException(e);
+//		}
+//		if (!memCol.isEmpty()) {
+//			for (int i = 0; i < memCol.size(); i++) {
+//				MarketingUnitMemberInfo info = memCol.get(i);
+//				if (info.isIsSellFunction()) {
+//					isSellFunction = true;
+//				}
+//				if (info.isIsTenancyFunction()) {
+//					isTenancyFunction = true;
+//				}
+//				if (info.isIsWuYeFunction()) {
+//					isWuYeFunction = true;
+//				}
+//			}
+//		}		
+//		
+//		value.setIsForSHE(isSellFunction); // 设置售楼职能
+//		value.setIsForTen(isTenancyFunction);// 设置租赁职能
+//		value.setIsForPPM(isWuYeFunction); // 设置物业职能
 		/*
 		 * ------------------end
 		 */
@@ -3060,7 +3066,7 @@ logger.info("CustomerEditUI:loadFields--" + "initCommerceChanceRecord()" + new T
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("id",proIds,CompareType.INCLUDE));
 		view.setFilter(filter);
-		this.f7Project.setEntityViewInfo(view);
+//		this.f7Project.setEntityViewInfo(view);
 	}
 	
 	

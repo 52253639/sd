@@ -213,11 +213,11 @@ public class CommerceChanceEditUI extends AbstractCommerceChanceEditUI {
 
 		// 设置当前营销人员能看到的客户
 		UserInfo currUsr = SysContext.getSysContext().getCurrentUserInfo();
-		this.prmtFdcCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(currUsr, null));
+		this.prmtFdcCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,currUsr));
 		// 项目
 		setSellProjectViewFilter();
 		// 设置允许看到的顾问
-		this.prmtSaleMan.setEntityViewInfo(CommerceHelper.getPermitSalemanView());
+		this.prmtSaleMan.setEntityViewInfo(CommerceHelper.getPermitSalemanView(null));
 
 		// 设置编码规则
 		SHEHelper.setNumberEnabled(this.editData, this.getOprtState(), this.txtNumber);

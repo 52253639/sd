@@ -280,7 +280,7 @@ public class CustomerExtEditUI extends AbstractCustomerExtEditUI
 		this.f7salesman.setRequired(true);
 		
 		//this.f7salesman.setEnabled(false);
-		EntityViewInfo saleManView = CommerceHelper.getPermitSalemanView();
+		EntityViewInfo saleManView = CommerceHelper.getPermitSalemanView(this.editData.getProject());
 		this.f7salesman.setEntityViewInfo(saleManView);	
 		this.f7CustomerManager.setEntityViewInfo(saleManView);
 		this.btnAddLine.setToolTipText("ÐÂÔöÐÐ");

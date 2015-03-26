@@ -54,10 +54,13 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-0017c0a812cc"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomDesInfo retValue = (RoomDesInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomDesInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -76,10 +79,13 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-0018c0a812cc"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomDesInfo retValue = (RoomDesInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomDesInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -98,10 +104,13 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-0019c0a812cc"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomDesInfo retValue = (RoomDesInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomDesInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -120,10 +129,13 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-001ac0a812cc"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomDesCollection retValue = (RoomDesCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomDesCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -140,10 +152,13 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-001bc0a812cc"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomDesCollection retValue = (RoomDesCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomDesCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -160,10 +175,13 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-001cc0a812cc"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomDesCollection retValue = (RoomDesCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomDesCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -180,10 +198,12 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ff05bac6-6438-48f0-8761-d691397eccd8"), new Object[]{ctx, building});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_cleanBuilding(ctx, building);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -194,17 +214,22 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
             super.cleanUpServiceState();
         }
     }
-    protected abstract boolean _cleanBuilding(Context ctx, IObjectValue building) throws BOSException, EASBizException;
+    protected boolean _cleanBuilding(Context ctx, IObjectValue building) throws BOSException, EASBizException
+    {    	
+        return false;
+    }
 
     public boolean roomDesSumbit(Context ctx, IObjectValue building, IObjectCollection Roomdes, IObjectCollection buildingUnit) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e639e39e-5b5d-458d-a3ed-fe33c0f62a5f"), new Object[]{ctx, building, Roomdes, buildingUnit});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_roomDesSumbit(ctx, building, Roomdes, buildingUnit);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -215,7 +240,10 @@ public abstract class AbstractRoomDesControllerBean extends FDCDataBaseControlle
             super.cleanUpServiceState();
         }
     }
-    protected abstract boolean _roomDesSumbit(Context ctx, IObjectValue building, IObjectCollection Roomdes, IObjectCollection buildingUnit) throws BOSException, EASBizException;
+    protected boolean _roomDesSumbit(Context ctx, IObjectValue building, IObjectCollection Roomdes, IObjectCollection buildingUnit) throws BOSException, EASBizException
+    {    	
+        return false;
+    }
 
     public FDCDataBaseCollection getFDCDataBaseCollection (Context ctx) throws BOSException
     {

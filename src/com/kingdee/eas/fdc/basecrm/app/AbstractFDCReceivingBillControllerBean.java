@@ -57,10 +57,13 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c077ce96-c00b-46fe-b24b-4d46ca43c1f6"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             FDCReceivingBillInfo retValue = (FDCReceivingBillInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (FDCReceivingBillInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -79,10 +82,13 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("be85b31a-cb4f-447e-9969-42f70658ae84"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             FDCReceivingBillInfo retValue = (FDCReceivingBillInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (FDCReceivingBillInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -101,10 +107,13 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f63c6fb5-ec78-4334-b62c-fd3afb131f7c"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             FDCReceivingBillInfo retValue = (FDCReceivingBillInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (FDCReceivingBillInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -123,10 +132,13 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("967284db-6f28-4c56-aba0-538155c52d41"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             FDCReceivingBillCollection retValue = (FDCReceivingBillCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (FDCReceivingBillCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -143,10 +155,13 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("a0c1cbfa-1ca1-4343-986e-45588a7f4a53"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             FDCReceivingBillCollection retValue = (FDCReceivingBillCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (FDCReceivingBillCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -163,10 +178,13 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("69ebd1d0-2cb3-4bfa-80fa-245ede197bdb"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             FDCReceivingBillCollection retValue = (FDCReceivingBillCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (FDCReceivingBillCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -183,10 +201,12 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("612e7553-e75f-47a0-82b7-9de84476cee5"), new Object[]{ctx, rev, handleClazzName});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             String retValue = (String)_submitRev(ctx, rev, handleClazzName);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (String)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -204,7 +224,9 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c29f44b1-36b4-44f3-bdfb-8d67b1f55028"), new Object[]{ctx, recidList});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _receive(ctx, recidList);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -223,7 +245,9 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("26570f81-3ff6-4c6a-afc7-4270a3e260bd"), new Object[]{ctx, fdcReceivingID, handleClazzName});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _delete(ctx, fdcReceivingID, handleClazzName);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -242,7 +266,9 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("4745811a-a27f-4ba5-8b19-d6ba769c4e88"), new Object[]{ctx, recidList});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _canceReceive(ctx, recidList);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -261,10 +287,12 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0aa0394f-c4ea-418a-9d90-a508097abda9"), new Object[]{ctx, billId});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             Map retValue = (Map)_adjust(ctx, billId);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (Map)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -282,7 +310,9 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f2bc7494-a88f-490c-8f7d-475db2d59fd2"), new Object[]{ctx, idList, new Boolean(isCreate)});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _createCashBill(ctx, idList, isCreate);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -301,7 +331,9 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f505d362-41f4-4616-b4bf-75a8ac7995b9"), new Object[]{ctx, billId, map});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _adjustReceiveBill(ctx, billId, map);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -320,7 +352,9 @@ public abstract class AbstractFDCReceivingBillControllerBean extends FDCBillCont
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("befa6ee9-17bc-4a32-853d-09d6fbd5f518"), new Object[]{ctx, BOSUuid});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _receive(ctx, BOSUuid);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();

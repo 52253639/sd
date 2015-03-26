@@ -1755,7 +1755,7 @@ public class SincerityPurchaseChangeNameUI extends AbstractSincerityPurchaseChan
     	
 		uiContext.put(UIContext.INIT_DATAOBJECT, new CustomerRptEditUI());
 		
-		EntityViewInfo view=CommerceHelper.getPermitCustomerView(user, MoneySysTypeEnum.SalehouseSys);
+		EntityViewInfo view=CommerceHelper.getPermitCustomerView(null,user);
 	
 		uiContext.put("view", view);
 		
@@ -1777,7 +1777,7 @@ public class SincerityPurchaseChangeNameUI extends AbstractSincerityPurchaseChan
    	
 		uiContext.put(UIContext.INIT_DATAOBJECT, new CustomerRptEditUI());
 		
-		EntityViewInfo view=CommerceHelper.getPermitCustomerView(user, MoneySysTypeEnum.SalehouseSys);
+		EntityViewInfo view=CommerceHelper.getPermitCustomerView(null,user);
 	
 		uiContext.put("view", view);
 		
@@ -1799,7 +1799,7 @@ public class SincerityPurchaseChangeNameUI extends AbstractSincerityPurchaseChan
 	
 	uiContext.put(UIContext.INIT_DATAOBJECT, new CustomerRptEditUI());
 	
-	EntityViewInfo view=CommerceHelper.getPermitCustomerView(user, MoneySysTypeEnum.SalehouseSys);
+	EntityViewInfo view=CommerceHelper.getPermitCustomerView(null,user);
 
 	uiContext.put("view", view);
 	
@@ -1821,7 +1821,7 @@ public class SincerityPurchaseChangeNameUI extends AbstractSincerityPurchaseChan
     	
 		uiContext.put(UIContext.INIT_DATAOBJECT, new CustomerRptEditUI());
 		
-		EntityViewInfo view=CommerceHelper.getPermitCustomerView(user, MoneySysTypeEnum.SalehouseSys);
+		EntityViewInfo view=CommerceHelper.getPermitCustomerView(null,user);
 	
 		uiContext.put("view", view);
 		
@@ -1844,7 +1844,7 @@ public class SincerityPurchaseChangeNameUI extends AbstractSincerityPurchaseChan
     	
 		uiContext.put(UIContext.INIT_DATAOBJECT, new CustomerRptEditUI());
 		
-		EntityViewInfo view=CommerceHelper.getPermitCustomerView(user, MoneySysTypeEnum.SalehouseSys);
+		EntityViewInfo view=CommerceHelper.getPermitCustomerView(null,user);
 	
 		uiContext.put("view", view);
 		

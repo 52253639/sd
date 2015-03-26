@@ -167,7 +167,7 @@ public class TenancyOrderListUI extends AbstractTenancyOrderListUI
 	}
 
 	protected String getEditUIModal() {
-		return UIFactoryName.MODEL;
+		return UIFactoryName.NEWTAB;
 	}
 
 	protected void refresh(ActionEvent e) throws Exception {

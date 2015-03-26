@@ -550,6 +550,10 @@ public abstract class AbstractCustomerListUI extends com.kingdee.eas.framework.c
         IObjectValue ov = dataObject;        	    	
         super.setDataObject(ov);
     }
+			protected com.kingdee.eas.basedata.org.OrgType getMainBizOrgType() {
+			return com.kingdee.eas.basedata.org.OrgType.getEnum("Sale");
+		}
+
 
     /**
      * output loadFields method

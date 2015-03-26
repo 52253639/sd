@@ -312,9 +312,9 @@ public class TrackRecordImportUI extends AbstractTrackRecordImportUI
 		this.tblMain.getColumn("importStatus").setWidth(200);  // 导入状态
 		
 		try{
-			this.tblMain.getColumn("seller").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.base.permission.app.F7UserQuery",CommerceHelper.getPermitSalemanView()));  // 营销顾问
+			this.tblMain.getColumn("seller").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.base.permission.app.F7UserQuery",CommerceHelper.getPermitSalemanView((SellProjectInfo)this.prmtSellProject.getValue())));  // 营销顾问
 			this.tblMain.getColumn("seller").getStyleAttributes().setBackground(CommerceHelper.BK_COLOR_MUST);
-			this.tblMain.getColumn("customer").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery",CommerceHelper.getPermitCustomerView()));  // 客户
+			this.tblMain.getColumn("customer").setEditor(CommerceHelper.getKDBizPromptBoxEditor("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery",CommerceHelper.getPermitCustomerView((SellProjectInfo)this.prmtSellProject.getValue())));  // 客户
 			this.tblMain.getColumn("customer").getStyleAttributes().setBackground(CommerceHelper.BK_COLOR_MUST);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -369,7 +369,7 @@ public class TrackRecordImportUI extends AbstractTrackRecordImportUI
 		if(mapSaleMan==null) {
 			try{
 				UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-				mapSaleMan = CommerceHelper.getPermitUserMap(currentUserInfo);
+				mapSaleMan = CommerceHelper.getPermitUserMap((SellProjectInfo)this.prmtSellProject.getValue(),currentUserInfo);
 			}catch(BOSException e){this.abort();}
 		}
 	    Object seller = row.getCell("seller").getValue();  
@@ -418,7 +418,7 @@ public class TrackRecordImportUI extends AbstractTrackRecordImportUI
 						}
 						try{
 							UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-							String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql(currentUserInfo);	
+							String sqlPerSalmanIdStr = CommerceHelper.getPermitSaleManIdSql((SellProjectInfo)this.prmtSellProject.getValue(),currentUserInfo);	
 							filter.getFilterItems().add(new FilterItemInfo("salesman.id",sqlPerSalmanIdStr,CompareType.INNER));
 						} catch (EASBizException e) {
 							e.printStackTrace();

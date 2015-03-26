@@ -210,7 +210,13 @@ public class CustomerRptListUI extends AbstractCustomerRptListUI {
 					isOrgData = true;
 				}
 			}else{
-				this.btnCusTransform.setEnabled(true);
+				if (map.containsKey(SysContext.getSysContext().getCurrentOrgUnit().getId().toString())) {
+					this.actionAddNew.setEnabled(true);
+					this.actionImport.setEnabled(true);
+					this.btnCusTransform.setEnabled(true);
+					this.actionEdit.setEnabled(true);
+					this.actionRemove.setEnabled(true);
+				}
 				mainQueryPK = new MetaDataPK("com.kingdee.eas.fdc.sellhouse.app", "SHECustomerQuery");
 				isOrgData = false;
 			}

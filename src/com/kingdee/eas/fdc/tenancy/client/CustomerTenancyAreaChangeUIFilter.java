@@ -342,7 +342,7 @@ public class CustomerTenancyAreaChangeUIFilter extends AbstractCustomerTenancyAr
      */
 	private void initCustomer() throws EASBizException, BOSException {
 		com.kingdee.eas.base.permission.UserInfo currentUserInfo = SysContext.getSysContext().getCurrentUserInfo();
-		kDBizPromptBox1.setEntityViewInfo(CommerceHelper.getPermitCustomerView(currentUserInfo, MoneySysTypeEnum.SalehouseSys));
+		kDBizPromptBox1.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,currentUserInfo));
 	}
 
 	protected void radioByDay_actionPerformed(ActionEvent e) throws Exception

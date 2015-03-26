@@ -59,6 +59,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnFlagAtTerm;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnSpecial;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRepairStartDate;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnPrintBill;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnPrintPreviewBill;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton kDWorkButton1;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton kDWorkButton2;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemAudit;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemUnAudit;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemBlankOut;
@@ -88,6 +92,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
     protected ActionRepairStartDate actionRepairStartDate = null;
     protected ActionPrintBill actionPrintBill = null;
     protected ActionPrintPreviewBill actionPrintPreviewBill = null;
+    protected ActionPriceChange actionPriceChange = null;
+    protected ActionCustomerChangeName actionCustomerChangeName = null;
+    protected ActionImportSql actionImportSql = null;
+    protected ActionImport actionImport = null;
     /**
      * output class constructor
      */
@@ -124,7 +132,9 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.actionAudit = new ActionAudit(this);
         getActionManager().registerAction("actionAudit", actionAudit);
         this.actionAudit.setBindWorkFlow(true);
+        this.actionAudit.setExtendProperty("canForewarn", "true");
          this.actionAudit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+         this.actionAudit.addService(new com.kingdee.eas.framework.client.service.ForewarnService());
         //actionUnAudit
         this.actionUnAudit = new ActionUnAudit(this);
         getActionManager().registerAction("actionUnAudit", actionUnAudit);
@@ -170,6 +180,22 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.actionPrintPreviewBill = new ActionPrintPreviewBill(this);
         getActionManager().registerAction("actionPrintPreviewBill", actionPrintPreviewBill);
          this.actionPrintPreviewBill.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionPriceChange
+        this.actionPriceChange = new ActionPriceChange(this);
+        getActionManager().registerAction("actionPriceChange", actionPriceChange);
+         this.actionPriceChange.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionCustomerChangeName
+        this.actionCustomerChangeName = new ActionCustomerChangeName(this);
+        getActionManager().registerAction("actionCustomerChangeName", actionCustomerChangeName);
+         this.actionCustomerChangeName.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionImportSql
+        this.actionImportSql = new ActionImportSql(this);
+        getActionManager().registerAction("actionImportSql", actionImportSql);
+         this.actionImportSql.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionImport
+        this.actionImport = new ActionImport(this);
+        getActionManager().registerAction("actionImport", actionImport);
+         this.actionImport.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.pnlMain = new com.kingdee.bos.ctrl.swing.KDSplitPane();
         this.treeView = new com.kingdee.bos.ctrl.swing.KDTreeView();
         this.treeMain = new com.kingdee.bos.ctrl.swing.KDTree();
@@ -183,6 +209,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.btnFlagAtTerm = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnSpecial = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnRepairStartDate = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnPrintBill = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnPrintPreviewBill = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.kDWorkButton1 = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.kDWorkButton2 = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemAudit = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemUnAudit = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemBlankOut = new com.kingdee.bos.ctrl.swing.KDMenuItem();
@@ -210,6 +240,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.btnFlagAtTerm.setName("btnFlagAtTerm");
         this.btnSpecial.setName("btnSpecial");
         this.btnRepairStartDate.setName("btnRepairStartDate");
+        this.btnPrintBill.setName("btnPrintBill");
+        this.btnPrintPreviewBill.setName("btnPrintPreviewBill");
+        this.kDWorkButton1.setName("kDWorkButton1");
+        this.kDWorkButton2.setName("kDWorkButton2");
         this.menuItemAudit.setName("menuItemAudit");
         this.menuItemUnAudit.setName("menuItemUnAudit");
         this.menuItemBlankOut.setName("menuItemBlankOut");
@@ -225,10 +259,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.menuItemQuitTenancy.setName("menuItemQuitTenancy");
         this.menuRepairStartDate.setName("menuRepairStartDate");
         // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol25\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"tenancyState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"tenancyName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"tenRoomsDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"tenAttachesDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"tenCustomerDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"tenancyType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"oldTenancyBill.tenancyName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"startDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"leaseCount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"endDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"leaseTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"flagAtTerm\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"tenancyAdviser.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"agency.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"dealTotalRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"standardTotalRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" /><t:Column t:key=\"depositAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" /><t:Column t:key=\"firstPayRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" /><t:Column t:key=\"deliveryRoomDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" /><t:Column t:key=\"specialClause\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" /><t:Column t:key=\"creator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" /><t:Column t:key=\"createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" /><t:Column t:key=\"state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol25\" /><t:Column t:key=\"submitDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"auditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{tenancyState}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{tenancyName}</t:Cell><t:Cell>$Resource{tenRoomsDes}</t:Cell><t:Cell>$Resource{tenAttachesDes}</t:Cell><t:Cell>$Resource{tenCustomerDes}</t:Cell><t:Cell>$Resource{tenancyType}</t:Cell><t:Cell>$Resource{oldTenancyBill.tenancyName}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{leaseCount}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{leaseTime}</t:Cell><t:Cell>$Resource{flagAtTerm}</t:Cell><t:Cell>$Resource{tenancyAdviser.name}</t:Cell><t:Cell>$Resource{agency.name}</t:Cell><t:Cell>$Resource{dealTotalRent}</t:Cell><t:Cell>$Resource{standardTotalRent}</t:Cell><t:Cell>$Resource{depositAmount}</t:Cell><t:Cell>$Resource{firstPayRent}</t:Cell><t:Cell>$Resource{deliveryRoomDate}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{specialClause}</t:Cell><t:Cell>$Resource{creator.name}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{state}</t:Cell><t:Cell>$Resource{submitDate}</t:Cell><t:Cell>$Resource{auditDate}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol15\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol19\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol28\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"tenancyState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"moreRoomsType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"auditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"tenancyName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"tenRoomsDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"tenAttachesDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"tenCustomerDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"tenancyType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"oldTenancyBill.tenancyName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"startDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"leaseCount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"endDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"leaseTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"flagAtTerm\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /><t:Column t:key=\"tenancyAdviser.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"agency.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" /><t:Column t:key=\"dealTotalRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" /><t:Column t:key=\"roomsRentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" t:styleID=\"sCol19\" /><t:Column t:key=\"standardTotalRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" /><t:Column t:key=\"depositAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" /><t:Column t:key=\"firstPayRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" /><t:Column t:key=\"deliveryRoomDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" /><t:Column t:key=\"specialClause\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" /><t:Column t:key=\"creator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"26\" /><t:Column t:key=\"createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"27\" /><t:Column t:key=\"state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"28\" t:styleID=\"sCol28\" /><t:Column t:key=\"submitDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"29\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{tenancyState}</t:Cell><t:Cell>$Resource{moreRoomsType}</t:Cell><t:Cell>$Resource{auditDate}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{tenancyName}</t:Cell><t:Cell>$Resource{tenRoomsDes}</t:Cell><t:Cell>$Resource{tenAttachesDes}</t:Cell><t:Cell>$Resource{tenCustomerDes}</t:Cell><t:Cell>$Resource{tenancyType}</t:Cell><t:Cell>$Resource{oldTenancyBill.tenancyName}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{leaseCount}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{leaseTime}</t:Cell><t:Cell>$Resource{flagAtTerm}</t:Cell><t:Cell>$Resource{tenancyAdviser.name}</t:Cell><t:Cell>$Resource{agency.name}</t:Cell><t:Cell>$Resource{dealTotalRent}</t:Cell><t:Cell>$Resource{roomsRentType}</t:Cell><t:Cell>$Resource{standardTotalRent}</t:Cell><t:Cell>$Resource{depositAmount}</t:Cell><t:Cell>$Resource{firstPayRent}</t:Cell><t:Cell>$Resource{deliveryRoomDate}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{specialClause}</t:Cell><t:Cell>$Resource{creator.name}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{state}</t:Cell><t:Cell>$Resource{submitDate}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
-                this.tblMain.putBindContents("mainQuery",new String[] {"id","tenancyState","number","tenancyName","tenRoomsDes","tenAttachesDes","tenCustomerDes","tenancyType","oldTenancyBill.tenancyName","startDate","leaseCount","endDate","leaseTime","flagAtTerm","tenancyAdviser.name","agency.name","dealTotalRent","standardTotalRent","depositAmount","firstPayRent","deliveryRoomDate","description","specialClause","creator.name","createTime","state","lastUpdateTime","auditTime"});
+                this.tblMain.putBindContents("mainQuery",new String[] {"id","tenancyStateDisplay","moreRoomsType","auditTime","number","tenancyName","tenRoomsDes","tenAttachesDes","tenCustomerDes","tenancyType","oldTenancyBill.tenancyName","startDate","leaseCount","endDate","leaseTime","flagAtTerm","tenancyAdviser.name","tenancyAgency.name","dealTotalRent","tenRoomsRentType","standardTotalRent","depositAmount","firstPayRent","deliveryRoomDate","description","specialClause","creator.name","createTime","state","lastUpdateTime"});
 
 
         // pnlMain		
@@ -292,6 +326,18 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.btnRepairStartDate.setAction((IItemAction)ActionProxyFactory.getProxy(actionRepairStartDate, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnRepairStartDate.setText(resHelper.getString("btnRepairStartDate.text"));		
         this.btnRepairStartDate.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_reset"));
+        // btnPrintBill
+        this.btnPrintBill.setAction((IItemAction)ActionProxyFactory.getProxy(actionPrintBill, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnPrintBill.setText(resHelper.getString("btnPrintBill.text"));
+        // btnPrintPreviewBill
+        this.btnPrintPreviewBill.setAction((IItemAction)ActionProxyFactory.getProxy(actionPrintPreviewBill, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnPrintPreviewBill.setText(resHelper.getString("btnPrintPreviewBill.text"));
+        // kDWorkButton1
+        this.kDWorkButton1.setAction((IItemAction)ActionProxyFactory.getProxy(actionImport, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.kDWorkButton1.setText(resHelper.getString("kDWorkButton1.text"));
+        // kDWorkButton2
+        this.kDWorkButton2.setAction((IItemAction)ActionProxyFactory.getProxy(actionImportSql, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.kDWorkButton2.setText(resHelper.getString("kDWorkButton2.text"));
         // menuItemAudit
         this.menuItemAudit.setAction((IItemAction)ActionProxyFactory.getProxy(actionAudit, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemAudit.setText(resHelper.getString("menuItemAudit.text"));		
@@ -333,7 +379,9 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.menuItemFlagAtTerm.setToolTipText(resHelper.getString("menuItemFlagAtTerm.toolTipText"));
         // menuSpecial		
         this.menuSpecial.setText(resHelper.getString("menuSpecial.text"));		
-        this.menuSpecial.setToolTipText(resHelper.getString("menuSpecial.toolTipText"));
+        this.menuSpecial.setToolTipText(resHelper.getString("menuSpecial.toolTipText"));		
+        this.menuSpecial.setEnabled(false);		
+        this.menuSpecial.setVisible(false);
         // menuItemContinueTenancy
         this.menuItemContinueTenancy.setAction((IItemAction)ActionProxyFactory.getProxy(actionContinueTenancy, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemContinueTenancy.setText(resHelper.getString("menuItemContinueTenancy.text"));		
@@ -555,6 +603,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         this.toolBar.add(btnFlagAtTerm);
         this.toolBar.add(btnSpecial);
         this.toolBar.add(btnRepairStartDate);
+        this.toolBar.add(btnPrintBill);
+        this.toolBar.add(btnPrintPreviewBill);
+        this.toolBar.add(kDWorkButton1);
+        this.toolBar.add(kDWorkButton2);
 
 
     }
@@ -648,7 +700,6 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
 		if(StringUtils.isEmpty(selectorAll)){
 			selectorAll = "true";
 		}
-        sic.add(new SelectorItemInfo("tenancyState"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("tenancyName"));
         sic.add(new SelectorItemInfo("tenRoomsDes"));
@@ -662,7 +713,6 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         sic.add(new SelectorItemInfo("leaseTime"));
         sic.add(new SelectorItemInfo("flagAtTerm"));
         sic.add(new SelectorItemInfo("tenancyAdviser.name"));
-        sic.add(new SelectorItemInfo("agency.name"));
         sic.add(new SelectorItemInfo("dealTotalRent"));
         sic.add(new SelectorItemInfo("standardTotalRent"));
         sic.add(new SelectorItemInfo("depositAmount"));
@@ -676,6 +726,10 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         sic.add(new SelectorItemInfo("state"));
         sic.add(new SelectorItemInfo("lastUpdateTime"));
         sic.add(new SelectorItemInfo("auditTime"));
+        sic.add(new SelectorItemInfo("tenancyStateDisplay"));
+        sic.add(new SelectorItemInfo("tenRoomsRentType"));
+        sic.add(new SelectorItemInfo("moreRoomsType"));
+        sic.add(new SelectorItemInfo("tenancyAgency.name"));
         return sic;
     }        
     	
@@ -796,6 +850,38 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
      * output actionPrintPreviewBill_actionPerformed method
      */
     public void actionPrintPreviewBill_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionPriceChange_actionPerformed method
+     */
+    public void actionPriceChange_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionCustomerChangeName_actionPerformed method
+     */
+    public void actionCustomerChangeName_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionImportSql_actionPerformed method
+     */
+    public void actionImportSql_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionImport_actionPerformed method
+     */
+    public void actionImport_actionPerformed(ActionEvent e) throws Exception
     {
     }
 	public RequestContext prepareActionContinueTenancy(IItemAction itemAction) throws Exception {
@@ -961,6 +1047,50 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
     }
 	
 	public boolean isPrepareActionPrintPreviewBill() {
+    	return false;
+    }
+	public RequestContext prepareActionPriceChange(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionPriceChange() {
+    	return false;
+    }
+	public RequestContext prepareActionCustomerChangeName(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionCustomerChangeName() {
+    	return false;
+    }
+	public RequestContext prepareActionImportSql(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionImportSql() {
+    	return false;
+    }
+	public RequestContext prepareActionImport(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionImport() {
     	return false;
     }
 
@@ -1412,6 +1542,126 @@ public abstract class AbstractTenancyBillListUI extends com.kingdee.eas.fdc.tena
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractTenancyBillListUI.this, "ActionPrintPreviewBill", "actionPrintPreviewBill_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionPriceChange class
+     */     
+    protected class ActionPriceChange extends ItemAction {     
+    
+        public ActionPriceChange()
+        {
+            this(null);
+        }
+
+        public ActionPriceChange(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionPriceChange.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionPriceChange.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionPriceChange.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillListUI.this, "ActionPriceChange", "actionPriceChange_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionCustomerChangeName class
+     */     
+    protected class ActionCustomerChangeName extends ItemAction {     
+    
+        public ActionCustomerChangeName()
+        {
+            this(null);
+        }
+
+        public ActionCustomerChangeName(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionCustomerChangeName.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionCustomerChangeName.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionCustomerChangeName.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillListUI.this, "ActionCustomerChangeName", "actionCustomerChangeName_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionImportSql class
+     */     
+    protected class ActionImportSql extends ItemAction {     
+    
+        public ActionImportSql()
+        {
+            this(null);
+        }
+
+        public ActionImportSql(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionImportSql.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionImportSql.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionImportSql.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillListUI.this, "ActionImportSql", "actionImportSql_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionImport class
+     */     
+    protected class ActionImport extends ItemAction {     
+    
+        public ActionImport()
+        {
+            this(null);
+        }
+
+        public ActionImport(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionImport.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionImport.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionImport.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillListUI.this, "ActionImport", "actionImport_actionPerformed", e);
         }
     }
 

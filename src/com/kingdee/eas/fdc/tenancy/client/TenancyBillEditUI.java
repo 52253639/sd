@@ -751,6 +751,17 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}
     	this.panMDLiquidated.setBounds(26, 49, 490, 355);
     	setContMoreRoomsTypeVisiable();
+
+
+    	KDBizPromptBox f7Customer = new KDBizPromptBox();
+		f7Customer.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery");
+		f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(this.editData.getSellProject(),userInfo));
+		f7Customer.setEditable(true);
+		f7Customer.setDisplayFormat("$name$");
+		f7Customer.setEditFormat("$number$");
+		f7Customer.setCommitFormat("$number$");
+		ICellEditor f7Editor = new KDTDefaultCellEditor(f7Customer);
+		this.tblCustomer.getColumn(C_CUS_CUSTOMER).setEditor(f7Editor);
 	}
 	private void initF7Bussinss() {
 		this.f7BussinessDepartMent.setQueryInfo("com.kingdee.eas.basedata.org.app.OUQuery");
@@ -1320,15 +1331,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblCustomer.getColumn(C_CUS_PROPERTY_PERCENT).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 		this.tblCustomer.getColumn(C_CUS_PROPERTY_PERCENT).getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 		this.tblCustomer.getColumn(C_CUS_BOOK_DATE).getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
-		KDBizPromptBox f7Customer = new KDBizPromptBox();
-		f7Customer.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery");
-		f7Customer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(userInfo, MoneySysTypeEnum.TenancySys));
-		f7Customer.setEditable(true);
-		f7Customer.setDisplayFormat("$name$");
-		f7Customer.setEditFormat("$number$");
-		f7Customer.setCommitFormat("$number$");
-		ICellEditor f7Editor = new KDTDefaultCellEditor(f7Customer);
-		this.tblCustomer.getColumn(C_CUS_CUSTOMER).setEditor(f7Editor);
 		KDTextField textField = new KDTextField();
 		textField.setMaxLength(80);
 		ICellEditor txtEditor = new KDTDefaultCellEditor(textField);
@@ -4229,12 +4231,12 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				MsgBox.showInfo("第" + (row.getRowIndex() + 1) + "行客户没有录入!");
 				this.abort();
 			}
-			if (customer.getCertificateName() == null || customer.getCertificateNumber() == null) {
-				MsgBox.showInfo("客户" + customer.getName() + "证件不能为空!!");
-				CustomerCardUI.addTheCustomerAuthority(customer, this);
-				setCustomerRowData(customer, row);
-				this.abort();
-			}
+//			if (customer.getCertificateName() == null || customer.getCertificateNumber() == null) {
+//				MsgBox.showInfo("客户" + customer.getName() + "证件不能为空!!");
+//				CustomerCardUI.addTheCustomerAuthority(customer, this);
+//				setCustomerRowData(customer, row);
+//				this.abort();
+//			}
 			if (customerMap.containsKey(customer)) {
 				MsgBox.showInfo("第" + (row.getRowIndex() + 1) + "行客户重复!");
 				this.abort();

@@ -249,7 +249,7 @@ public class InvestorHouseEditUI extends AbstractInvestorHouseEditUI
 		//营销顾问和登记人根据左边营销单元树过滤  bt339998 by lijun
 		EntityViewInfo view = null;;
 		try {
-			view = CommerceHelper.getPermitSalemanView();
+			view = CommerceHelper.getPermitSalemanView(null);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			this.handleException(e);
