@@ -609,8 +609,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.btnAddAttachRes.setEnabled(true);
 			this.btnRemoveAttachRes.setEnabled(true);
 
-			this.btnAddIncrease.setEnabled(true);
-			this.btnRmIncrease.setEnabled(true);
+//			this.btnAddIncrease.setEnabled(true);
+//			this.btnRmIncrease.setEnabled(true);
 			this.btnAddFree.setEnabled(true);
 			this.btnRmFree.setEnabled(true);
 			
@@ -651,6 +651,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		initLiquidatedTable();
 		tabbedPaneContract.remove(panelContractInfo);
 		tabbedPaneContract.remove(panelLiquidated);
+		tabbedPaneContract.remove(kDPaneLongContract);
 		btnViewRoomInfo.setVisible(false);
 		btnViewCustInfo.setVisible(false);
 		btnNewCustomer.setVisible(false);
@@ -916,6 +917,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 		btnAddIncrease = initWorkBtn1(actionAddIncrease, "imgTbtn_sortstandard", this.containerIncrease, "Ìí¼Ó");
 		btnRmIncrease = initWorkBtn1(actionRmIncrease, "imgTbtn_sortstandard", this.containerIncrease, "É¾³ý");
+		btnAddIncrease.setEnabled(false);
+		btnRmIncrease.setEnabled(false);
 		btnAddFree = initWorkBtn1(actionAddFree, "imgTbtn_sortstandard", this.containerFree, "Ìí¼Ó");
 		btnRmFree = initWorkBtn1(actionRmFree, "imgTbtn_sortstandard", this.containerFree, "É¾³ý");
 	}
@@ -6290,8 +6293,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.pkEndDate.setRequired(true);
 			this.pkEndDate.setValue(new Date());
 			this.txtLeaseCount.setEnabled(false);
-			this.btnAddIncrease.setEnabled(true);
-			this.btnRmIncrease.setEnabled(true);
+//			this.btnAddIncrease.setEnabled(true);
+//			this.btnRmIncrease.setEnabled(true);
 			this.btnAddFree.setEnabled(true);
 			this.btnRmFree.setEnabled(true);
 			this.comboFirstLeaseType.setEnabled(true);
@@ -6361,8 +6364,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.contChargeOffsetDays.setEnabled(isFreeContract);
 		this.contRentStartType.setEnabled(isFreeContract);
 		this.contStartDateLimit.setEnabled(isFreeContract);
-		this.btnAddIncrease.setEnabled(isFreeContract);
-		this.btnRmIncrease.setEnabled(isFreeContract);
+//		this.btnAddIncrease.setEnabled(isFreeContract);
+//		this.btnRmIncrease.setEnabled(isFreeContract);
 		this.btnAddFree.setEnabled(isFreeContract);
 		this.btnRmFree.setEnabled(isFreeContract);
 		this.contRentCountType.setEnabled(isFreeContract);

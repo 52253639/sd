@@ -88,7 +88,7 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
     private String getBaseTransaction(String orgUnit,Date fromDate,Date toDate){
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select t.orgId,t.number,t.company,max(case t.name when 'month' then round(t.amount,2) else 0 end)/10000 monthAmount,max(case t.name when 'year' then round(t.amount,2) else 0 end)/10000 yearAmount");
-    	sb.append(" from (select 'month' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(sign.fcontractTotalAmount) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId where sign.fbizState in('SignApple','SignAudit')");
+    	sb.append(" from (select 'month' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(sign.fcontractTotalAmount+isnull(sign.fareaCompensate,0)) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId where sign.fbizState in('SignApple','SignAudit')");
 		if(fromDate!=null){
 			sb.append(" and sign.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
 			sb.append(" and sign.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");
@@ -100,7 +100,7 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
     	
     	sb.append(" union all");
     	
-    	sb.append(" select 'year' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(sign.fcontractTotalAmount) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId where sign.fbizState in('SignApple','SignAudit')");
+    	sb.append(" select 'year' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(sign.fcontractTotalAmount+isnull(sign.fareaCompensate,0)) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId where sign.fbizState in('SignApple','SignAudit')");
 		if(fromDate!=null){
 			sb.append(" and sign.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
 		}
@@ -120,7 +120,7 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
     	sb.append(" left join T_SHE_SignPayListEntry bo on bo.fheadId=sign.fid");
 		sb.append(" left join t_she_moneyDefine md on bo.fmoneyDefineid=md.fid");
     	sb.append(" left join t_she_TranBusinessOverView act on bo.ftanPayListEntryId=act.fid");
-    	sb.append(" where sign.fbizState in('SignApple','SignAudit') and md.fnumber not in('01','02','03','12','13','14','15','17','18','19','20','21','22','23','24','25')");
+    	sb.append(" where sign.fbizState in('SignApple','SignAudit') and md.fnumber not in('01','02','03','12','13','14','15','16','17','18','19','20','21','22','23','24','25')");
 		if(fromDate!=null){
 			sb.append(" and sign.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
 			sb.append(" and sign.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");
@@ -154,7 +154,7 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
     	sb.append(" select t.orgId,t.number,t.company,max(case t.name when 'month' then round(t.amount,2) else 0 end)/10000 monthAmount,max(case t.name when 'year' then round(t.amount,2) else 0 end)/10000 yearAmount");
     	sb.append(" from (select 'month' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(entry.frevAmount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	sb.append(" left join t_org_baseUnit org on org.fid=revBill.fsaleOrgUnitId left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
-    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fnumber not in('01','12','17','18','19','20','21','22','23','24')");
+    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fnumber not in('01','12','16','17','18','19','20','21','22','23','24')");
 		if(fromDate!=null){
 			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
 			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");

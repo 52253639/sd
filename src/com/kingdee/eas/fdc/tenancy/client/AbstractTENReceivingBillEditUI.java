@@ -50,10 +50,20 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSincerObligate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTenancyUser;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTransContract;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRevAccount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAccountBank;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSettlementType;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSettlementNumber;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBank;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7TenancyBill;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7SincerObligate;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7TenancyUser;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7TransContract;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtRevAccount;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAccountBank;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtSettlementType;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtSettlementNumber;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtBank;
     protected com.kingdee.eas.fdc.basecrm.FDCReceivingBillInfo editData = null;
     /**
      * output class constructor
@@ -96,26 +106,47 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.contSincerObligate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contTenancyUser = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contTransContract = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contRevAccount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contAccountBank = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contSettlementType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contSettlementNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contBank = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.f7TenancyBill = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.f7SincerObligate = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.f7TenancyUser = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.f7TransContract = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtRevAccount = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtAccountBank = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtSettlementType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.txtSettlementNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.prmtBank = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contTenancyBill.setName("contTenancyBill");
         this.contSincerObligate.setName("contSincerObligate");
         this.contTenancyUser.setName("contTenancyUser");
         this.contTransContract.setName("contTransContract");
+        this.contRevAccount.setName("contRevAccount");
+        this.contAccountBank.setName("contAccountBank");
+        this.contSettlementType.setName("contSettlementType");
+        this.contSettlementNumber.setName("contSettlementNumber");
+        this.contBank.setName("contBank");
         this.f7TenancyBill.setName("f7TenancyBill");
         this.f7SincerObligate.setName("f7SincerObligate");
         this.f7TenancyUser.setName("f7TenancyUser");
         this.f7TransContract.setName("f7TransContract");
+        this.prmtRevAccount.setName("prmtRevAccount");
+        this.prmtAccountBank.setName("prmtAccountBank");
+        this.prmtSettlementType.setName("prmtSettlementType");
+        this.txtSettlementNumber.setName("txtSettlementNumber");
+        this.prmtBank.setName("prmtBank");
         // CoreUI		
         this.contBizDate.setVisible(false);		
         this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
         this.contOrgUnit.setVisible(false);		
         this.contRecAmount.setBoundLabelText(resHelper.getString("contRecAmount.boundLabelText"));		
         this.contRevBillType.setVisible(false);
-		String tblEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"fromMoneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"fromAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"stleCount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"stleType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"stleNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"revAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"revBankAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"custAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"revAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"locAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"remissionAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"limitAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"hasRefundmentAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"oppAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"supplyOrg\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"supplyDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{fromMoneyDefine}</t:Cell><t:Cell>$Resource{fromAccount}</t:Cell><t:Cell>$Resource{stleCount}</t:Cell><t:Cell>$Resource{stleType}</t:Cell><t:Cell>$Resource{stleNumber}</t:Cell><t:Cell>$Resource{revAccount}</t:Cell><t:Cell>$Resource{revBankAccount}</t:Cell><t:Cell>$Resource{custAccount}</t:Cell><t:Cell>$Resource{revAmount}</t:Cell><t:Cell>$Resource{locAmount}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell><t:Cell>$Resource{remissionAmount}</t:Cell><t:Cell>$Resource{limitAmount}</t:Cell><t:Cell>$Resource{hasRefundmentAmount}</t:Cell><t:Cell>$Resource{oppAccount}</t:Cell><t:Cell>$Resource{supplyOrg}</t:Cell><t:Cell>$Resource{supplyDes}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
-
+		String tblEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol3\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol6\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol8\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol12\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"fromMoneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"fromAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"stleCount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"stleType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" t:styleID=\"sCol4\" /><t:Column t:key=\"stleNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"revAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol6\" /><t:Column t:key=\"revBankAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"custAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" t:styleID=\"sCol8\" /><t:Column t:key=\"appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"locAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"revAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" t:styleID=\"sCol12\" /><t:Column t:key=\"remissionAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"limitAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"hasRefundmentAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"oppAccount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"supplyOrg\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"supplyDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{fromMoneyDefine}</t:Cell><t:Cell>$Resource{fromAccount}</t:Cell><t:Cell>$Resource{stleCount}</t:Cell><t:Cell>$Resource{stleType}</t:Cell><t:Cell>$Resource{stleNumber}</t:Cell><t:Cell>$Resource{revAccount}</t:Cell><t:Cell>$Resource{revBankAccount}</t:Cell><t:Cell>$Resource{custAccount}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{locAmount}</t:Cell><t:Cell>$Resource{revAmount}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell><t:Cell>$Resource{remissionAmount}</t:Cell><t:Cell>$Resource{limitAmount}</t:Cell><t:Cell>$Resource{hasRefundmentAmount}</t:Cell><t:Cell>$Resource{oppAccount}</t:Cell><t:Cell>$Resource{supplyOrg}</t:Cell><t:Cell>$Resource{supplyDes}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		
+        this.tblEntry.setFormatXml(resHelper.translateString("tblEntry",tblEntryStrXML));
         this.tblEntry.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
         });
 
@@ -182,6 +213,26 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.contTransContract.setBoundLabelLength(100);		
         this.contTransContract.setBoundLabelUnderline(true);		
         this.contTransContract.setVisible(false);
+        // contRevAccount		
+        this.contRevAccount.setBoundLabelText(resHelper.getString("contRevAccount.boundLabelText"));		
+        this.contRevAccount.setBoundLabelLength(100);		
+        this.contRevAccount.setBoundLabelUnderline(true);
+        // contAccountBank		
+        this.contAccountBank.setBoundLabelText(resHelper.getString("contAccountBank.boundLabelText"));		
+        this.contAccountBank.setBoundLabelUnderline(true);		
+        this.contAccountBank.setBoundLabelLength(100);
+        // contSettlementType		
+        this.contSettlementType.setBoundLabelText(resHelper.getString("contSettlementType.boundLabelText"));		
+        this.contSettlementType.setBoundLabelLength(100);		
+        this.contSettlementType.setBoundLabelUnderline(true);
+        // contSettlementNumber		
+        this.contSettlementNumber.setBoundLabelText(resHelper.getString("contSettlementNumber.boundLabelText"));		
+        this.contSettlementNumber.setBoundLabelLength(100);		
+        this.contSettlementNumber.setBoundLabelUnderline(true);
+        // contBank		
+        this.contBank.setBoundLabelText(resHelper.getString("contBank.boundLabelText"));		
+        this.contBank.setBoundLabelLength(100);		
+        this.contBank.setBoundLabelUnderline(true);
         // f7TenancyBill		
         this.f7TenancyBill.setQueryInfo("com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery");		
         this.f7TenancyBill.setCommitFormat("$number$");		
@@ -224,6 +275,40 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.f7TransContract.setDisplayFormat("$name$");		
         this.f7TransContract.setEditFormat("$number$");		
         this.f7TransContract.setCommitFormat("$number$");
+        // prmtRevAccount		
+        this.prmtRevAccount.setQueryInfo("com.kingdee.eas.basedata.master.account.app.AccountViewQuery");		
+        this.prmtRevAccount.setRequired(true);
+        // prmtAccountBank		
+        this.prmtAccountBank.setQueryInfo("com.kingdee.eas.basedata.assistant.app.AccountBankQuery");
+        this.prmtAccountBank.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
+            public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
+                try {
+                    prmtAccountBank_dataChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
+        // prmtSettlementType		
+        this.prmtSettlementType.setQueryInfo("com.kingdee.eas.basedata.assistant.app.SettlementTypeQuery");		
+        this.prmtSettlementType.setCommitFormat("$number$");		
+        this.prmtSettlementType.setEditFormat("$number$");		
+        this.prmtSettlementType.setDisplayFormat("$name$");
+        // txtSettlementNumber		
+        this.txtSettlementNumber.setMaxLength(44);
+        // prmtBank		
+        this.prmtBank.setQueryInfo("com.kingdee.eas.basedata.assistant.app.BankQuery");
+        this.prmtBank.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
+            public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
+                try {
+                    prmtBank_dataChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -251,16 +336,16 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.setBounds(new Rectangle(10, 10, 1016, 600));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1016, 600));
-        contCreator.setBounds(new Rectangle(11, 548, 270, 19));
-        this.add(contCreator, new KDLayout.Constraints(11, 548, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT));
-        contCreateTime.setBounds(new Rectangle(371, 548, 270, 19));
-        this.add(contCreateTime, new KDLayout.Constraints(371, 548, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT));
+        contCreator.setBounds(new Rectangle(11, 551, 270, 19));
+        this.add(contCreator, new KDLayout.Constraints(11, 551, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT));
+        contCreateTime.setBounds(new Rectangle(371, 551, 270, 19));
+        this.add(contCreateTime, new KDLayout.Constraints(371, 551, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT));
         contNumber.setBounds(new Rectangle(734, 8, 270, 19));
         this.add(contNumber, new KDLayout.Constraints(734, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contBizDate.setBounds(new Rectangle(609, 268, 270, 19));
         this.add(contBizDate, new KDLayout.Constraints(609, 268, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE));
-        contDescription.setBounds(new Rectangle(13, 129, 991, 86));
-        this.add(contDescription, new KDLayout.Constraints(13, 129, 991, 86, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDescription.setBounds(new Rectangle(13, 165, 991, 74));
+        this.add(contDescription, new KDLayout.Constraints(13, 165, 991, 74, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contAuditor.setBounds(new Rectangle(11, 573, 270, 19));
         this.add(contAuditor, new KDLayout.Constraints(11, 573, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT));
         contOrgUnit.setBounds(new Rectangle(599, 249, 270, 19));
@@ -271,38 +356,48 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         this.add(contCompany, new KDLayout.Constraints(13, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contSellProject.setBounds(new Rectangle(373, 8, 270, 19));
         this.add(contSellProject, new KDLayout.Constraints(373, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCurrency.setBounds(new Rectangle(373, 79, 270, 19));
-        this.add(contCurrency, new KDLayout.Constraints(373, 79, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRecAmount.setBounds(new Rectangle(13, 79, 270, 19));
-        this.add(contRecAmount, new KDLayout.Constraints(13, 79, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contExchangeRate.setBounds(new Rectangle(734, 79, 270, 19));
-        this.add(contExchangeRate, new KDLayout.Constraints(734, 79, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contRecLocAmount.setBounds(new Rectangle(13, 103, 270, 19));
-        this.add(contRecLocAmount, new KDLayout.Constraints(13, 103, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRevBillType.setBounds(new Rectangle(732, 135, 270, 19));
-        this.add(contRevBillType, new KDLayout.Constraints(732, 135, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRevBizType.setBounds(new Rectangle(13, 31, 270, 19));
-        this.add(contRevBizType, new KDLayout.Constraints(13, 31, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        tblEntry.setBounds(new Rectangle(11, 265, 992, 275));
-        this.add(tblEntry, new KDLayout.Constraints(11, 265, 992, 275, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnSelectRevList.setBounds(new Rectangle(922, 231, 73, 19));
-        this.add(btnSelectRevList, new KDLayout.Constraints(922, 231, 73, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_RIGHT));
-        contFdcCustomers.setBounds(new Rectangle(373, 55, 270, 19));
-        this.add(contFdcCustomers, new KDLayout.Constraints(373, 55, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCustomer.setBounds(new Rectangle(737, 162, 270, 19));
-        this.add(contCustomer, new KDLayout.Constraints(737, 162, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contRoom.setBounds(new Rectangle(13, 55, 270, 19));
-        this.add(contRoom, new KDLayout.Constraints(13, 55, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomLongNumber.setBounds(new Rectangle(691, 154, 270, 19));
-        this.add(contRoomLongNumber, new KDLayout.Constraints(691, 154, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE));
-        contTenancyBill.setBounds(new Rectangle(373, 31, 270, 19));
-        this.add(contTenancyBill, new KDLayout.Constraints(373, 31, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contSincerObligate.setBounds(new Rectangle(734, 31, 270, 19));
-        this.add(contSincerObligate, new KDLayout.Constraints(734, 31, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contTenancyUser.setBounds(new Rectangle(734, 55, 270, 19));
-        this.add(contTenancyUser, new KDLayout.Constraints(734, 55, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contTransContract.setBounds(new Rectangle(725, 115, 270, 19));
-        this.add(contTransContract, new KDLayout.Constraints(725, 115, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE));
+        contCurrency.setBounds(new Rectangle(373, 74, 270, 19));
+        this.add(contCurrency, new KDLayout.Constraints(373, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRecAmount.setBounds(new Rectangle(13, 74, 270, 19));
+        this.add(contRecAmount, new KDLayout.Constraints(13, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contExchangeRate.setBounds(new Rectangle(734, 74, 270, 19));
+        this.add(contExchangeRate, new KDLayout.Constraints(734, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contRecLocAmount.setBounds(new Rectangle(13, 96, 270, 19));
+        this.add(contRecLocAmount, new KDLayout.Constraints(13, 96, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRevBillType.setBounds(new Rectangle(974, 163, 270, 19));
+        this.add(contRevBillType, new KDLayout.Constraints(974, 163, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRevBizType.setBounds(new Rectangle(13, 30, 270, 19));
+        this.add(contRevBizType, new KDLayout.Constraints(13, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        tblEntry.setBounds(new Rectangle(11, 271, 992, 275));
+        this.add(tblEntry, new KDLayout.Constraints(11, 271, 992, 275, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        btnSelectRevList.setBounds(new Rectangle(927, 246, 73, 19));
+        this.add(btnSelectRevList, new KDLayout.Constraints(927, 246, 73, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_RIGHT));
+        contFdcCustomers.setBounds(new Rectangle(373, 52, 270, 19));
+        this.add(contFdcCustomers, new KDLayout.Constraints(373, 52, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCustomer.setBounds(new Rectangle(966, 177, 270, 19));
+        this.add(contCustomer, new KDLayout.Constraints(966, 177, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contRoom.setBounds(new Rectangle(13, 52, 270, 19));
+        this.add(contRoom, new KDLayout.Constraints(13, 52, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRoomLongNumber.setBounds(new Rectangle(973, 191, 270, 19));
+        this.add(contRoomLongNumber, new KDLayout.Constraints(973, 191, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE));
+        contTenancyBill.setBounds(new Rectangle(373, 30, 270, 19));
+        this.add(contTenancyBill, new KDLayout.Constraints(373, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSincerObligate.setBounds(new Rectangle(734, 30, 270, 19));
+        this.add(contSincerObligate, new KDLayout.Constraints(734, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contTenancyUser.setBounds(new Rectangle(734, 52, 270, 19));
+        this.add(contTenancyUser, new KDLayout.Constraints(734, 52, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contTransContract.setBounds(new Rectangle(955, 197, 270, 19));
+        this.add(contTransContract, new KDLayout.Constraints(955, 197, 270, 19, KDLayout.Constraints.ANCHOR_CENTRE));
+        contRevAccount.setBounds(new Rectangle(373, 118, 270, 19));
+        this.add(contRevAccount, new KDLayout.Constraints(373, 118, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contAccountBank.setBounds(new Rectangle(13, 118, 270, 19));
+        this.add(contAccountBank, new KDLayout.Constraints(13, 118, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSettlementType.setBounds(new Rectangle(13, 140, 270, 19));
+        this.add(contSettlementType, new KDLayout.Constraints(13, 140, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSettlementNumber.setBounds(new Rectangle(373, 140, 270, 19));
+        this.add(contSettlementNumber, new KDLayout.Constraints(373, 140, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contBank.setBounds(new Rectangle(734, 118, 270, 19));
+        this.add(contBank, new KDLayout.Constraints(734, 118, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contCreator
         contCreator.setBoundEditor(f7Creator);
         //contCreateTime
@@ -353,6 +448,16 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         contTenancyUser.setBoundEditor(f7TenancyUser);
         //contTransContract
         contTransContract.setBoundEditor(f7TransContract);
+        //contRevAccount
+        contRevAccount.setBoundEditor(prmtRevAccount);
+        //contAccountBank
+        contAccountBank.setBoundEditor(prmtAccountBank);
+        //contSettlementType
+        contSettlementType.setBoundEditor(prmtSettlementType);
+        //contSettlementNumber
+        contSettlementNumber.setBoundEditor(txtSettlementNumber);
+        //contBank
+        contBank.setBoundEditor(prmtBank);
 
     }
 
@@ -535,7 +640,12 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
 		dataBinder.registerBinding("room", com.kingdee.eas.fdc.sellhouse.RoomInfo.class, this.f7Room, "data");
 		dataBinder.registerBinding("tenancyObj", com.kingdee.eas.fdc.tenancy.TenancyBillInfo.class, this.f7TenancyBill, "data");
 		dataBinder.registerBinding("obligateObj", com.kingdee.eas.fdc.tenancy.SincerObligateInfo.class, this.f7SincerObligate, "data");
-		dataBinder.registerBinding("tenancyUser", com.kingdee.eas.base.permission.UserInfo.class, this.f7TenancyUser, "data");		
+		dataBinder.registerBinding("tenancyUser", com.kingdee.eas.base.permission.UserInfo.class, this.f7TenancyUser, "data");
+		dataBinder.registerBinding("revAccount", com.kingdee.eas.basedata.master.account.AccountViewInfo.class, this.prmtRevAccount, "data");
+		dataBinder.registerBinding("accountBank", com.kingdee.eas.basedata.assistant.AccountBankInfo.class, this.prmtAccountBank, "data");
+		dataBinder.registerBinding("settlementType", com.kingdee.eas.basedata.assistant.SettlementTypeInfo.class, this.prmtSettlementType, "data");
+		dataBinder.registerBinding("settlementNumber", String.class, this.txtSettlementNumber, "text");
+		dataBinder.registerBinding("bank", com.kingdee.eas.basedata.assistant.BankInfo.class, this.prmtBank, "data");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -614,7 +724,12 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
 		getValidateHelper().registerBindProperty("room", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyObj", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("obligateObj", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyUser", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("tenancyUser", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("revAccount", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("accountBank", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("settlementType", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("settlementNumber", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("bank", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -671,6 +786,20 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
     }
 
     /**
+     * output prmtAccountBank_dataChanged method
+     */
+    protected void prmtAccountBank_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output prmtBank_dataChanged method
+     */
+    protected void prmtBank_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
+    {
+    }
+
+    /**
      * output getSelectors method
      */
     public SelectorItemCollection getSelectors()
@@ -715,6 +844,43 @@ public abstract class AbstractTENReceivingBillEditUI extends com.kingdee.eas.fdc
         	sic.add(new SelectorItemInfo("tenancyUser.id"));
         	sic.add(new SelectorItemInfo("tenancyUser.number"));
         	sic.add(new SelectorItemInfo("tenancyUser.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("revAccount.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("revAccount.id"));
+        	sic.add(new SelectorItemInfo("revAccount.number"));
+        	sic.add(new SelectorItemInfo("revAccount.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("accountBank.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("accountBank.id"));
+        	sic.add(new SelectorItemInfo("accountBank.number"));
+        	sic.add(new SelectorItemInfo("accountBank.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("settlementType.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("settlementType.id"));
+        	sic.add(new SelectorItemInfo("settlementType.number"));
+        	sic.add(new SelectorItemInfo("settlementType.name"));
+		}
+        sic.add(new SelectorItemInfo("settlementNumber"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("bank.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("bank.id"));
+        	sic.add(new SelectorItemInfo("bank.number"));
+        	sic.add(new SelectorItemInfo("bank.name"));
 		}
         return sic;
     }        

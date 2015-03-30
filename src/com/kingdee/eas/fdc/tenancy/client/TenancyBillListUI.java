@@ -3,9 +3,11 @@
  */
 package com.kingdee.eas.fdc.tenancy.client;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.event.TreeSelectionEvent;
@@ -17,6 +19,7 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTMergeManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
+import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.ctrl.swing.KDMenuItem;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
@@ -44,6 +47,7 @@ import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
 import com.kingdee.eas.fdc.basecrm.RevBillTypeEnum;
 import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
 import com.kingdee.eas.fdc.basecrm.client.FDCReceivingBillEditUI;
+import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
@@ -275,6 +279,13 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		tblPrintPreviewBill.setIcon(this.btnPrintPreview.getIcon());
 		this.actionImport.setVisible(true);
 		this.actionImportSql.setVisible(true);
+		
+		
+		this.actionPrintBill.setVisible(false);
+		this.actionPrintPreviewBill.setVisible(false);
+		this.actionReceiveBill.setVisible(false);
+		this.actionRefundment.setVisible(false);
+		this.actionRepairStartDate.setVisible(false);
 	}
     
     public void actionPrintBill_actionPerformed(ActionEvent e) throws Exception {
@@ -740,5 +751,14 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 	protected boolean isIgnoreCUFilter() {
 		return true;
 	}
-	
+	protected void afterTableFillData(KDTDataRequestEvent e) {
+	   super.afterTableFillData(e);
+	   for(int i = 0 ; i < tblMain.getRowCount();i++){
+		   IRow row = tblMain.getRow(i);
+		   Object state = row.getCell("tenancyState").getValue();
+		   if(state!=null&&state.toString().equals("Ö´ÐÐÖÐ")){
+			   row.getStyleAttributes().setBackground(Color.GREEN);
+		   }
+	   }
+   }
 }

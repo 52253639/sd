@@ -755,6 +755,7 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 		this.tabNew.remove(panelManager);
 		this.tabNew.remove(panelCustomer);
 		this.tabNew.remove(panelCusService);
+		this.tabNew.remove(panelQuestion);
 		
 		kDTabbedPane1.remove(tblShareSeller);
 		kDTabbedPane1.remove(tblAdapterLog);
@@ -768,7 +769,7 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 		if(isForPPM){
 //			this.tabNew.add(panelManager, "ŒÔ“µ");
 		}
-		tabNew.add(panelQuestion, resHelper.getString("panelQuestion.constraints"));
+//		tabNew.add(panelQuestion, resHelper.getString("panelQuestion.constraints"));
 	}
 	
 	protected void chkIsForSHE_actionPerformed(ActionEvent e) throws Exception {

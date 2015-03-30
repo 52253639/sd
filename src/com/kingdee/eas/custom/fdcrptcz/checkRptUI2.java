@@ -721,10 +721,7 @@ public class checkRptUI2 extends AbstractCopy_checkRptUI {
 			//				+ "   then 0 else 1 end" +
 			//						")  as winBuildCount " // --新增供应商中标项数
 			+", ( select (case when count(*)> 0 then 0 else (" +
-					"	case when t8.fhit = 1   " +
-					"         and  t6.fname_l2 not like '%项目集中采购%'  " +
-					"         and  t6.fname_l2 not like '%集团战略采购%'  " +
-					"         and  t6.fname_l2 not like '%城市公司集中采购%'   then 1 else 0 end) end) as v1  from T_GYS_SupplierReviewGather a1 " 
+					"	case when t8.fhit = 1 then 1 else 0 end) end) as v1  from T_GYS_SupplierReviewGather a1 " 
 			+" left join T_GYS_SupplierEvaluationType a2 on a1.FEvaluationTypeId = a2.fid   "
 			+" where a1.FSupplierId =  t8.FSupplierID  "
 			+" and to_char(add_months(a1.FAuditTime,12),'yyyy') <= to_char(sysdate,'yyyy') " 
@@ -783,7 +780,7 @@ public class checkRptUI2 extends AbstractCopy_checkRptUI {
 			+ " where t3.fid = '"
 			+ strProjectId
 			+ "'"
-			+ " and (t6.fname_l2 is null or (t6.fname_l2 not like '%集团战略采购%' and  t6.fname_l2 not like '%集团集中采购%')) "
+			+ " and (t6.fname_l2 is null or (t6.fname_l2 not like '%集团战略采购%')) "
 			+ // 统计内容不包含采购模式为‘集团战略/集中采购’的数据
 			" and t1.fversion = (select max(fversion) from T_INV_InviteMonthPlan where FProjectID =  '"
 			+ strProjectId + "')" + // 最新的版本

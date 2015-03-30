@@ -1382,11 +1382,11 @@ public class FDCReceivingBillEditUI extends AbstractFDCReceivingBillEditUI
 			//UPdate by zhiyuan_tang 2010/09/25
 			if (isSettleTypeNecessary()) {
 				//如果结算方式必须录入 ，则还是原来的逻辑
-				if(row.getCell(COL_STLE_TYPE).getValue()==null)
-				{
-						MsgBox.showInfo("第"+(i+1)+"行结算方式不能为空!");
-						this.abort();
-				}
+//				if(row.getCell(COL_STLE_TYPE).getValue()==null)
+//				{
+//						MsgBox.showInfo("第"+(i+1)+"行结算方式不能为空!");
+//						this.abort();
+//				}
 //				if(row.getCell(COL_REV_ACCOUNT).getValue()==null)
 //				{
 //					if (result) {

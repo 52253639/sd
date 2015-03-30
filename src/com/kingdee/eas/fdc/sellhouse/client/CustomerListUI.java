@@ -800,26 +800,26 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		Set cusIds = FDCHelper.list2Set(selectedIds);
 
 		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("id", cusIds, CompareType.INCLUDE));
-		filter.getFilterItems().add(new FilterItemInfo("isEnabled", Boolean.TRUE));
-		if (FDCCustomerFactory.getRemoteInstance().exists(filter)) {
-			MsgBox.showInfo(this, "只有作废的客户才能删除！");
-			return;
-		}
+//		filter.getFilterItems().add(new FilterItemInfo("id", cusIds, CompareType.INCLUDE));
+//		filter.getFilterItems().add(new FilterItemInfo("isEnabled", Boolean.TRUE));
+//		if (FDCCustomerFactory.getRemoteInstance().exists(filter)) {
+//			MsgBox.showInfo(this, "只有作废的客户才能删除！");
+//			return;
+//		}
 
-		filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("customer.id", cusIds, CompareType.INCLUDE));
-		if (SincerityPurchaseFactory.getRemoteInstance().exists(filter)) {
-			MsgBox.showInfo(this, "有客户参与了诚意认购，不能删除！");
-			return;
-		}
-
-		filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("customer.id", cusIds, CompareType.INCLUDE));
-		if (PurchaseCustomerInfoFactory.getRemoteInstance().exists(filter)) {
-			MsgBox.showInfo(this, "有客户参与了认购，不能删除！");
-			return;
-		}
+//		filter = new FilterInfo();
+//		filter.getFilterItems().add(new FilterItemInfo("customer.id", cusIds, CompareType.INCLUDE));
+//		if (SincerityPurchaseFactory.getRemoteInstance().exists(filter)) {
+//			MsgBox.showInfo(this, "有客户参与了诚意认购，不能删除！");
+//			return;
+//		}
+//
+//		filter = new FilterInfo();
+//		filter.getFilterItems().add(new FilterItemInfo("customer.id", cusIds, CompareType.INCLUDE));
+//		if (PurchaseCustomerInfoFactory.getRemoteInstance().exists(filter)) {
+//			MsgBox.showInfo(this, "有客户参与了认购，不能删除！");
+//			return;
+//		}
 
 		filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("fdcCustomer.id", cusIds, CompareType.INCLUDE));

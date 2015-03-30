@@ -335,6 +335,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 		this.solidSideRadioBtn.setVisible(false);
 		this.planeRadioBtn.setVisible(false);
 		this.effectRadioBtn.setVisible(false);
+		this.actionReceiveBill.setVisible(false);
 	}
 	
 	public void actionLocate_actionPerformed(ActionEvent e) throws Exception {

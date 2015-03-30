@@ -381,7 +381,7 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		
     	sb.append(" select entry.fid id from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	sb.append(" left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
-    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fnumber not in('01','12','17','18','19','20','21','22','23','24')");
+    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fnumber not in('01','12','16','17','18','19','20','21','22','23','24')");
     	if(type==0){
     		if(fromDate!=null){
     			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");

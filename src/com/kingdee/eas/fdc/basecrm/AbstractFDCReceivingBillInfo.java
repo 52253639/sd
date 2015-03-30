@@ -371,6 +371,61 @@ public class AbstractFDCReceivingBillInfo extends com.kingdee.eas.fdc.basedata.F
     {
         put("transOutTenBill", item);
     }
+    /**
+     * Object: 房地产收款单 's 收款账户 property 
+     */
+    public com.kingdee.eas.basedata.assistant.AccountBankInfo getAccountBank()
+    {
+        return (com.kingdee.eas.basedata.assistant.AccountBankInfo)get("accountBank");
+    }
+    public void setAccountBank(com.kingdee.eas.basedata.assistant.AccountBankInfo item)
+    {
+        put("accountBank", item);
+    }
+    /**
+     * Object: 房地产收款单 's 收款科目 property 
+     */
+    public com.kingdee.eas.basedata.master.account.AccountViewInfo getRevAccount()
+    {
+        return (com.kingdee.eas.basedata.master.account.AccountViewInfo)get("revAccount");
+    }
+    public void setRevAccount(com.kingdee.eas.basedata.master.account.AccountViewInfo item)
+    {
+        put("revAccount", item);
+    }
+    /**
+     * Object: 房地产收款单 's 收款银行 property 
+     */
+    public com.kingdee.eas.basedata.assistant.BankInfo getBank()
+    {
+        return (com.kingdee.eas.basedata.assistant.BankInfo)get("bank");
+    }
+    public void setBank(com.kingdee.eas.basedata.assistant.BankInfo item)
+    {
+        put("bank", item);
+    }
+    /**
+     * Object: 房地产收款单 's 结算方式 property 
+     */
+    public com.kingdee.eas.basedata.assistant.SettlementTypeInfo getSettlementType()
+    {
+        return (com.kingdee.eas.basedata.assistant.SettlementTypeInfo)get("settlementType");
+    }
+    public void setSettlementType(com.kingdee.eas.basedata.assistant.SettlementTypeInfo item)
+    {
+        put("settlementType", item);
+    }
+    /**
+     * Object:房地产收款单's 结算号property 
+     */
+    public String getSettlementNumber()
+    {
+        return getString("settlementNumber");
+    }
+    public void setSettlementNumber(String item)
+    {
+        setString("settlementNumber", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("F12182FE");

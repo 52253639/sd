@@ -978,6 +978,10 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		SelectorItemCollection sels = new SelectorItemCollection();
 		sels.add("billStatus");
 		this.updatePartial(ctx, rev, sels);
+		
+		ArrayList list=new ArrayList();
+		list.add(billId.toString());
+		this.createCashBill(ctx, list);
 	}
 	
 	protected void _unAudit(Context ctx, BOSUuid billId) throws BOSException, EASBizException {
@@ -1206,16 +1210,25 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		coll.add(new SelectorItemInfo("exchangeRate"));
 		coll.add(new SelectorItemInfo("currency.*"));
 		coll.add(new SelectorItemInfo("amount"));
+		coll.add(new SelectorItemInfo("originalAmount"));
+		
 		coll.add(new SelectorItemInfo("entries.*"));
-		coll.add(new SelectorItemInfo("entries.settlementType.*"));
-		coll.add(new SelectorItemInfo("entries.revAccount.*"));
+//		coll.add(new SelectorItemInfo("entries.settlementType.*"));
+//		coll.add(new SelectorItemInfo("entries.revAccount.*"));
 		coll.add(new SelectorItemInfo("entries.revAmount"));
 		coll.add(new SelectorItemInfo("entries.oppAccount.*"));
 		coll.add(new SelectorItemInfo("entries.moneyDefine.*"));
-		coll.add(new SelectorItemInfo("entries.moneyDefine.revBillType.*"));
+//		coll.add(new SelectorItemInfo("entries.moneyDefine.revBillType.*"));
 		coll.add(new SelectorItemInfo("customer.id"));
 		coll.add(new SelectorItemInfo("customer.number"));
 		coll.add(new SelectorItemInfo("customer.name"));
+		
+		coll.add(new SelectorItemInfo("revAccount.*"));
+		coll.add(new SelectorItemInfo("accountBank.*"));
+		coll.add(new SelectorItemInfo("settlementType.*"));
+		coll.add(new SelectorItemInfo("settlementNumber"));
+		coll.add(new SelectorItemInfo("bank.*"));
+		
 		
 		evi.setSelector(coll);
 
@@ -1244,152 +1257,141 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 					FDCReceivingBillInfo fdcReceivingBillInfo = billColl.get(j);
 					FDCReceivingBillEntryCollection billEntry = fdcReceivingBillInfo.getEntries();
 					
-					if(billEntry!=null && billEntry.size()>0){
-						for (int k = 0; k < billEntry.size(); k++) {
-							ReceivingBillInfo  receivingBillInfo = new ReceivingBillInfo();
-							//公司
-							receivingBillInfo.setCompany(fdcReceivingBillInfo.getCompany());
-							//业务日期
-							receivingBillInfo.setBizDate(fdcReceivingBillInfo.getBizDate());
-							//汇率
-							receivingBillInfo.setExchangeRate(fdcReceivingBillInfo.getExchangeRate());
-							//币别
-							receivingBillInfo.setCurrency(fdcReceivingBillInfo.getCurrency());
-							
-							//收款金额
-							//receivingBillInfo.setActRecAmt(fdcReceivingBillInfo.getAmount());
-							receivingBillInfo.setActRecAmt(billEntry.get(k).getRevAmount());
-							
-							receivingBillInfo.setCreator(userInfo);
-							receivingBillInfo.setCreateTime(new Timestamp(System.currentTimeMillis()));
-							receivingBillInfo.setLastUpdateTime(new Timestamp(System.currentTimeMillis()));
-							receivingBillInfo.setLastUpdateUser(userInfo);
-							receivingBillInfo.setCU(cuInfo);
-							
-						
-							/**
-							 * 设置编码		
-							 */
-							ICodingRuleManager iCodingRuleManager = null;
-							if(ctx!=null)	iCodingRuleManager = CodingRuleManagerFactory.getLocalInstance(ctx);
-							else 	iCodingRuleManager = CodingRuleManagerFactory.getRemoteInstance();
-							
-							OrgUnitInfo orgUnit = null;
-							if(ctx!=null) {
-								orgUnit = ContextUtil.getCurrentSaleUnit(ctx);
-								if(orgUnit==null) orgUnit = ContextUtil.getCurrentOrgUnit(ctx);
-							}else {
-								orgUnit = SysContext.getSysContext().getCurrentSaleUnit();
-								if(orgUnit==null) orgUnit = SysContext.getSysContext().getCurrentOrgUnit();
-							}
-							
-							String retNumber = iCodingRuleManager.getNumber(receivingBillInfo, orgUnit.getId().toString());
-							
-							
-							///if(retNumber==null || retNumber.trim().length()==0 )
-								//throw new EASBizException(new NumericExceptionSubItem("100","未启用编码规则 ，不能自动生成转款单！"));
-							
-							if(retNumber!=null && !"".equals(retNumber)){
-								receivingBillInfo.setNumber(retNumber);
-							}
-							
-							/**
-							 * 添加收款人
-							 */
-							CustomerInfo custInfo  = fdcReceivingBillInfo.getCustomer();
-							if(custInfo!=null){
-								receivingBillInfo.setPayerID(custInfo.getId().toString());
-								receivingBillInfo.setPayerNumber(custInfo.getNumber());
-								receivingBillInfo.setPayerName(custInfo.getName());
-							}
-							//折本位币
-							BigDecimal actrecLocAmt = FDCHelper.ZERO;
-							BigDecimal ecchangeRate = FDCHelper.ONE;
-							
-							if(fdcReceivingBillInfo.getExchangeRate()==null){
-								ecchangeRate = fdcReceivingBillInfo.getExchangeRate();
-							}
-							
-							actrecLocAmt  = FDCHelper.multiply(billEntry.get(k).getRevAmount(), ecchangeRate);
-							
-							receivingBillInfo.setActRecLocAmt(actrecLocAmt);
-							
-							//收款科目
-							if(billEntry.get(i).getRevAccount()!=null){
-								receivingBillInfo.setPayeeAccount(billEntry.get(k).getRevAccount());	
-							}
-							
-							// 检查科目合法性
-							try {
-								arapHelper.verifyAccountView(ctx, billEntry.get(k).getRevAccount(), receivingBillInfo
-										.getCurrency(), receivingBillInfo.getCompany());
-							} catch (EASBizException e) {
-								logger.error(e.getMessage()+"科目不按指定币别核算，请选择其它币别！");
-								throw new BOSException("科目不按指定币别核算，请选择其它币别！");
-							}
-							
-							//收款账户
-							if(billEntry.get(i).getRevAccountBank()!=null){
-								receivingBillInfo.setPayeeAccountBank(billEntry.get(k).getRevAccountBank());	
-							}
-							
-							//结算方式
-							receivingBillInfo.setSettlementType(billEntry.get(k).getSettlementType());
-							//结算号
-							receivingBillInfo.setSettlementNumber(billEntry.get(k).getSettlementNumber());
-							
-							
-							MoneyDefineInfo moneyDefineInfo  = billEntry.get(k).getMoneyDefine();
-							
-							/**
-							 * 新增加收款类型的转换
-							 */
-							if(moneyDefineInfo!=null){
-								//收款类型
-								receivingBillInfo.setRecBillType(moneyDefineInfo.getRevBillType());
-							}else{
-								//收款类型
-								receivingBillInfo.setRecBillType(receivingBillTypeInfo);
-							}
-							
-							
-							
-							/**
-							 * 设置非空字段
-							 */
-							receivingBillInfo.setReceivingBillType(CasRecPayBillTypeEnum.RealType);
-							receivingBillInfo.setIsExchanged(false);
-							receivingBillInfo.setIsInitializeBill(false);
-							receivingBillInfo.setIsImport(false);
-							receivingBillInfo.setFiVouchered(false);
-							receivingBillInfo.setSettlementStatus(SettlementStatusEnum.UNSUBMIT);
-							receivingBillInfo.setIsAppointVoucher(false);
-							receivingBillInfo.setIsCoopBuild(false);
-							receivingBillInfo.setSourceType(SourceTypeEnum.CASH);
-							
-							/**
-							 * 以下是分录内容
-							 */
-							ReceivingBillEntryCollection receBillEntry = receivingBillInfo.getEntries();
-							ReceivingBillEntryInfo receBillEntryInfo = new ReceivingBillEntryInfo();
-							//收款金额
-							receBillEntryInfo.setActualAmt(billEntry.get(k).getRevAmount());
-							//对方科目
-							if(billEntry.get(i).getOppAccount()!=null){
-								receBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());	
-							}
-							
-							receBillEntry.add(receBillEntryInfo);
-							
-							//单据状态
-							receivingBillInfo.setBillStatus(BillStatusEnum.SAVE);
-							
-							//原始单据id
-							receivingBillInfo.setSourceBillId(id);
-							iReceiving.addNewBatch(receivingBillInfo);
-						}
+					ReceivingBillInfo  receivingBillInfo = new ReceivingBillInfo();
+					//公司
+					receivingBillInfo.setCompany(fdcReceivingBillInfo.getCompany());
+					//业务日期
+					receivingBillInfo.setBizDate(fdcReceivingBillInfo.getBizDate());
+					//汇率
+					receivingBillInfo.setExchangeRate(fdcReceivingBillInfo.getExchangeRate());
+					//币别
+					receivingBillInfo.setCurrency(fdcReceivingBillInfo.getCurrency());
+					
+					//收款金额
+					receivingBillInfo.setActRecAmt(fdcReceivingBillInfo.getAmount());
+					
+					receivingBillInfo.setCreator(userInfo);
+					receivingBillInfo.setCreateTime(new Timestamp(System.currentTimeMillis()));
+					receivingBillInfo.setLastUpdateTime(new Timestamp(System.currentTimeMillis()));
+					receivingBillInfo.setLastUpdateUser(userInfo);
+					receivingBillInfo.setCU(cuInfo);
+					
+				
+					/**
+					 * 设置编码		
+					 */
+					ICodingRuleManager iCodingRuleManager = null;
+					if(ctx!=null)	iCodingRuleManager = CodingRuleManagerFactory.getLocalInstance(ctx);
+					else 	iCodingRuleManager = CodingRuleManagerFactory.getRemoteInstance();
+					
+					OrgUnitInfo orgUnit = null;
+					if(ctx!=null) {
+						orgUnit = ContextUtil.getCurrentSaleUnit(ctx);
+						if(orgUnit==null) orgUnit = ContextUtil.getCurrentOrgUnit(ctx);
+					}else {
+						orgUnit = SysContext.getSysContext().getCurrentSaleUnit();
+						if(orgUnit==null) orgUnit = SysContext.getSysContext().getCurrentOrgUnit();
 					}
-
+					
+					String retNumber = iCodingRuleManager.getNumber(receivingBillInfo, orgUnit.getId().toString());
+					
+					
+					///if(retNumber==null || retNumber.trim().length()==0 )
+						//throw new EASBizException(new NumericExceptionSubItem("100","未启用编码规则 ，不能自动生成转款单！"));
+					
+					if(retNumber!=null && !"".equals(retNumber)){
+						receivingBillInfo.setNumber(retNumber);
+					}
+					
+					/**
+					 * 添加收款人
+					 */
+					CustomerInfo custInfo  = fdcReceivingBillInfo.getCustomer();
+					if(custInfo!=null){
+						receivingBillInfo.setPayerID(custInfo.getId().toString());
+						receivingBillInfo.setPayerNumber(custInfo.getNumber());
+						receivingBillInfo.setPayerName(custInfo.getName());
+					}
+//					//折本位币
+//					BigDecimal actrecLocAmt = FDCHelper.ZERO;
+//					BigDecimal ecchangeRate = FDCHelper.ONE;
+					
+//					if(fdcReceivingBillInfo.getExchangeRate()==null){
+//						ecchangeRate = fdcReceivingBillInfo.getExchangeRate();
+//					}
+//					
+//					actrecLocAmt  = FDCHelper.multiply(billEntry.get(k).getRevAmount(), ecchangeRate);
+					
+					receivingBillInfo.setActRecLocAmt(fdcReceivingBillInfo.getOriginalAmount());
+					
+					//收款科目
+						receivingBillInfo.setPayeeAccount(fdcReceivingBillInfo.getRevAccount());	
+					
+					// 检查科目合法性
+					try {
+						arapHelper.verifyAccountView(ctx, fdcReceivingBillInfo.getRevAccount(), receivingBillInfo
+								.getCurrency(), receivingBillInfo.getCompany());
+					} catch (EASBizException e) {
+						logger.error(e.getMessage()+"科目不按指定币别核算，请选择其它币别！");
+						throw new BOSException("科目不按指定币别核算，请选择其它币别！");
+					}
+					
+					//收款账户
+//					if(billEntry.get(i).getRevAccountBank()!=null){
+						receivingBillInfo.setPayeeAccountBank(fdcReceivingBillInfo.getAccountBank());	
+//					}
+					
+					//结算方式
+					receivingBillInfo.setSettlementType(fdcReceivingBillInfo.getSettlementType());
+					//结算号
+					receivingBillInfo.setSettlementNumber(fdcReceivingBillInfo.getSettlementNumber());
+					receivingBillInfo.setPayeeBank(fdcReceivingBillInfo.getBank());
+					
+//					MoneyDefineInfo moneyDefineInfo  = billEntry.get(k).getMoneyDefine();
+					
+//					/**
+//					 * 新增加收款类型的转换
+//					 */
+//					if(moneyDefineInfo!=null){
+//						//收款类型
+//						receivingBillInfo.setRecBillType(moneyDefineInfo.getRevBillType());
+//					}else{
+						//收款类型
+						receivingBillInfo.setRecBillType(receivingBillTypeInfo);
+//					}
+					/**
+					 * 设置非空字段
+					 */
+					receivingBillInfo.setReceivingBillType(CasRecPayBillTypeEnum.RealType);
+					receivingBillInfo.setIsExchanged(false);
+					receivingBillInfo.setIsInitializeBill(false);
+					receivingBillInfo.setIsImport(false);
+					receivingBillInfo.setFiVouchered(false);
+					receivingBillInfo.setSettlementStatus(SettlementStatusEnum.UNSUBMIT);
+					receivingBillInfo.setIsAppointVoucher(false);
+					receivingBillInfo.setIsCoopBuild(false);
+					receivingBillInfo.setSourceType(SourceTypeEnum.CASH);
+					//单据状态
+					receivingBillInfo.setBillStatus(BillStatusEnum.SAVE);
+					//原始单据id
+					receivingBillInfo.setSourceBillId(id);
+					
+					for (int k = 0; k < billEntry.size(); k++) {
+						/**
+						 * 以下是分录内容
+						 */
+						ReceivingBillEntryCollection receBillEntry = receivingBillInfo.getEntries();
+						ReceivingBillEntryInfo receBillEntryInfo = new ReceivingBillEntryInfo();
+						//收款金额
+						receBillEntryInfo.setActualAmt(billEntry.get(k).getRevAmount());
+						//对方科目
+						if(billEntry.get(i).getOppAccount()!=null){
+							receBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());	
+						}
+						
+						receBillEntry.add(receBillEntryInfo);
+					}
+					iReceiving.addNewBatch(receivingBillInfo);
 				}
 			}
 			updateIdSet.add(id);

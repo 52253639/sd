@@ -80,22 +80,22 @@ public class checkRptUIWCMBCBDJDCL  extends checkRptUI2  {
 				case 0:
 					row.getCell("seq").setValue("一");
 					row.getCell("name").setValue("前期工程费");
-					setValue(row,"01.02"); 
+					setValue(row,"5001.02"); 
 					break;
 				case 1:
 					row.getCell("seq").setValue("二");
 					row.getCell("name").setValue("建安工程费"); 
-					setValue(row,"01.03"); 
+					setValue(row,"5001.03"); 
 					break;
 				case 2:
 					row.getCell("seq").setValue("三");
 					row.getCell("name").setValue("基础设施费"); 
-					setValue(row,"01.04");
+					setValue(row,"5001.04");
 					break;
 				case 3:
 					row.getCell("seq").setValue("四");
 					row.getCell("name").setValue("公建配套设施费"); 
-					setValue(row,"01.05");
+					setValue(row,"5001.05");
 					break;
 				case 4:
 					row.getCell("seq").setValue("五");

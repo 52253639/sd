@@ -300,7 +300,7 @@ public abstract class AbstractTrackRecordEditUI extends com.kingdee.eas.fdc.base
         this.txtNumber.setMaxLength(80);
         // kDScrollPane1
         // txtDescription		
-        this.txtDescription.setMaxLength(80);
+        this.txtDescription.setMaxLength(500);
         // pkEventDate		
         this.pkEventDate.setRequired(true);
         // prmtEventType		

@@ -42,6 +42,7 @@ import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
+import com.kingdee.eas.fdc.tenancy.ITenancyPayListInfo;
 import com.kingdee.eas.util.client.MsgBox;
 
 /**
@@ -157,6 +158,12 @@ public class SelectRevListUI extends AbstractSelectRevListUI
     	toTransferRevList = (List) getValue(KEY_TO_TRANSFER_REV_LIST);
     	hasSelectedIds = (Set) getValue(KEY_HAS_SELECTED_IDS);
     	loadAppRevListTable(appRevMap, tblAppRev);
+    	
+    	tblAppRev.getGroupManager().setGroup(true);
+			
+    	tblAppRev.getColumn("leaseSeq").setGroup(true);
+    	tblAppRev.getColumn("leaseSeq").setMergeable(true);
+    	
     	loadAppRevListTable(dirRevList, tblDirRev);
     	loadAppRevListTable(preRevList, tblPreRev);
     	
@@ -427,6 +434,9 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 			row.getStyleAttributes().setBackground(color);
 			row.setUserObject(revListInfo);
 			setLockActRevAmount(revListInfo,row);
+			if(revListInfo instanceof ITenancyPayListInfo){
+				setColValue(row, "leaseSeq", ((ITenancyPayListInfo)revListInfo).getLeaseSeq());
+			}
 			setColValue(row, COL_IS_SELECTED, Boolean.FALSE);
 			setColValue(row, COL_MONEY_DEFINE, revListInfo.getMoneyDefine());
 			setColValue(row, COL_APP_AMOUNT, revListInfo.getAppAmount());

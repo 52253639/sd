@@ -43,6 +43,7 @@ import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTIndexColumn;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
+import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.kdf.table.foot.KDTFootManager;
@@ -55,6 +56,7 @@ import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.BizEnumValueDTO;
 import com.kingdee.bos.dao.query.IQueryExecutor;
+import com.kingdee.bos.framework.DynamicObjectFactory;
 import com.kingdee.eas.base.codingrule.CodingRuleManagerFactory;
 import com.kingdee.eas.base.codingrule.ICodingRuleManager;
 import com.kingdee.eas.basedata.org.OrgUnitInfo;
@@ -73,14 +75,19 @@ import com.kingdee.eas.fdc.basecrm.IFDCReceivingBill;
 import com.kingdee.eas.fdc.basecrm.RevBillStatusEnum;
 import com.kingdee.eas.fdc.basecrm.RevBillTypeEnum;
 import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basecrm.client.FDCReceivingBillEditUI;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineFactory;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
+import com.kingdee.eas.fdc.sellhouse.PurchaseManageInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.SignManageFactory;
+import com.kingdee.eas.fdc.sellhouse.SignManageInfo;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
+import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.HandleStateEnum;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
@@ -97,6 +104,8 @@ import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
 import com.kingdee.eas.fi.cas.IReceivingBill;
 import com.kingdee.eas.fi.cas.ReceivingBillCollection;
 import com.kingdee.eas.fi.cas.ReceivingBillFactory;
+import com.kingdee.eas.fi.cas.client.CasReceivingBillUI;
+import com.kingdee.eas.fi.cas.client.ReceivingBillUI;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
 import com.kingdee.eas.util.SysUtil;
@@ -150,18 +159,59 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		this.kdtTenancy.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
 		
 		this.btnCreateBill.setIcon(EASResource.getIcon("imgTbtn_notice"));	
+		
+		this.actionBatchReceiving.setVisible(false);
+		this.actionReceive.setVisible(false);
+		this.actionUpdateSubject.setVisible(false);
+		this.actionVoucher.setVisible(false);
+		this.actionDelVoucher.setVisible(false);
+		this.actionTDPrint.setVisible(false);
+		this.actionTDPrintPreview.setVisible(false);
+		this.actionCreateBill.setVisible(false);
+		this.actionCanceReceive.setVisible(false);
+		
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entries.revAmount"});
+		
+		this.tblMain.getColumn("isCreateBill").getStyleAttributes().setHided(true);
 	}
-
+    protected void afterTableFillData(KDTDataRequestEvent e) {
+		super.afterTableFillData(e);
+		CRMClientHelper.getFootRow(tblMain, new String[]{"entries.revAmount"});
+	}
 	public void actionTraceDown_actionPerformed(ActionEvent e) throws Exception {
-		super.actionTraceDown_actionPerformed(e);
-
+		checkSelected();
+		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
+		IRow row = this.tblMain.getRow(rowIndex);
+		String id = (String) row.getCell(this.getKeyFieldName()).getValue();
+		ReceivingBillCollection col=ReceivingBillFactory.getRemoteInstance().getReceivingBillCollection("select id from where sourceBillId='"+id+"'");
+		if(col.size()>0){
+			UIContext uiContext = new UIContext(this);
+			uiContext.put("ID", col.get(0).getId().toString());
+	        IUIFactory uiFactory = UIFactory.createUIFactory(UIFactoryName.MODEL);
+	        IUIWindow uiWindow = uiFactory.create(CasReceivingBillUI.class.getName(), uiContext,null,OprtState.VIEW);
+	        uiWindow.show();
+	        return;
+		}
+		FDCMsgBox.showInfo(this,"目标单据为空！");
 	}
 
 	protected void setColGroups() {
-		super.setColGroups();
-		setColGroup("tenancyObj.number");
-		setColGroup("tenancyObj.tenCustomerDes");//
-		setColGroup("tenancyUser.name");
+		setColGroup("number");
+		setColGroup("currency.name");
+		setColGroup("amount");
+		setColGroup("originalAmount");
+		setColGroup("billStatus");
+		setColGroup("revBillType");
+		setColGroup("revBizType");
+		setColGroup("customer.name");
+		setColGroup("description");
+		setColGroup("accountBank.name");
+		setColGroup("revAccount.name");
+		setColGroup("bank.name");
+		setColGroup("settlementType.name");
+		setColGroup("settlementNumber");
+		setColGroup("creator.name");
+		setColGroup("createTime");
 		setColGroup("auditor.name");
 		setColGroup("auditTime");
 		setColGroup("isCreateBill");
@@ -795,7 +845,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 	}
 
 	protected boolean isFootVisible() {
-		return true;
+		return false;
 	}
 
 	protected IRow appendFootRow() {

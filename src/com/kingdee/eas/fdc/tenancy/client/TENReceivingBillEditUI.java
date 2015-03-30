@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.ctrl.kdf.data.impl.ICrossPrintDataProvider;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent;
 import com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper;
@@ -40,6 +41,11 @@ import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.base.permission.UserInfo;
+import com.kingdee.eas.basedata.assistant.AccountBankFactory;
+import com.kingdee.eas.basedata.assistant.AccountBankInfo;
+import com.kingdee.eas.basedata.assistant.BankInfo;
+import com.kingdee.eas.basedata.master.account.client.AccountPromptBox;
+import com.kingdee.eas.basedata.org.CompanyOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
@@ -75,6 +81,7 @@ import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.RoomCollection;
 import com.kingdee.eas.fdc.sellhouse.RoomInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.FDCRoomPromptDialog;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.BizStateEnum;
@@ -144,6 +151,33 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 //		}
 		this.txtNumber.setMaxLength(44);
 		
+		KDBizPromptBox gatheringSubject = new KDBizPromptBox();
+		CompanyOrgUnitInfo curCompany = SysContext.getSysContext().getCurrentFIUnit();
+		
+		EntityViewInfo view = this.getAccountEvi(curCompany);
+		AccountPromptBox opseelect = new AccountPromptBox(this, curCompany,view.getFilter(), false, true);
+		gatheringSubject.setEntityViewInfo(view);
+		gatheringSubject.setSelector(opseelect);
+		gatheringSubject.setQueryInfo("com.kingdee.eas.basedata.master.account.app.AccountViewQuery");
+		gatheringSubject.setEditFormat("$number$");
+		gatheringSubject.setCommitFormat("$number$");
+		this.prmtRevAccount.setDialog(opseelect);
+		
+        EntityViewInfo entityViewInfo = new EntityViewInfo();
+        FilterInfo filterInfo = new FilterInfo();
+        entityViewInfo.setFilter(filterInfo);
+        filterInfo.getFilterItems().add(new FilterItemInfo("company.id",SysContext.getSysContext().getCurrentFIUnit().getId()));
+        this.prmtAccountBank.setEntityViewInfo(entityViewInfo);
+        
+        this.prmtRevAccount.setRequired(true);
+        
+		this.actionReceive.setVisible(false);
+		this.actionVoucher.setVisible(false);
+		this.actionCopyFrom.setVisible(false);
+		
+		this.actionAddNew.setVisible(false);
+		
+		this.tblEntry.getColumn("stleCount").getStyleAttributes().setHided(true);
 	}
 	
 	protected void comboRevBillType_itemStateChanged(ItemEvent e)
@@ -226,6 +260,13 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 		}else if(RevBillTypeEnum.adjust.equals(revBillType)){
 			initEntryTableOfAdjust();
 		}
+		
+		this.tblEntry.getColumn("stleCount").getStyleAttributes().setHided(true);
+		this.tblEntry.getColumn("stleType").getStyleAttributes().setHided(true);
+		this.tblEntry.getColumn("stleNumber").getStyleAttributes().setHided(true);
+		this.tblEntry.getColumn("revAccount").getStyleAttributes().setHided(true);
+		this.tblEntry.getColumn("revBankAccount").getStyleAttributes().setHided(true);
+		this.tblEntry.getColumn("custAccount").getStyleAttributes().setHided(true);
 	}
 
 	public void loadFields() {
@@ -1171,19 +1212,19 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 				List list = new ArrayList();
 				if(RevListTypeEnum.tenRoomRev.equals(revListType))//租赁合同收款明细
 				{				
-					list.add(new Object[]{"roomDesCol", "房间", new Integer(1), "tenRoom.roomLongNum"});
-					list.add(new Object[]{"leaseSeq", "租期", new Integer(2), "leaseSeq"});
-					list.add(new Object[]{"startDate", "起始日期", new Integer(5), "startDate"});
-					list.add(new Object[]{"endDate", "结束日期", new Integer(6), "endDate"});
-					
-					list.add(new Object[]{"tenBillNumber", "合同编码", new Integer(3), "tenBill.number"});
-					list.add(new Object[]{"tenBillName", "合同名称", new Integer(4), "tenBill.tenancyName"});
+//					list.add(new Object[]{"roomDesCol", "房间", new Integer(1), "tenRoom.roomLongNum"});
+//					list.add(new Object[]{"leaseSeq", "租期", new Integer(2), "leaseSeq"});
+//					list.add(new Object[]{"startDate", "起始日期", new Integer(5), "startDate"});
+//					list.add(new Object[]{"endDate", "结束日期", new Integer(6), "endDate"});
+//					
+//					list.add(new Object[]{"tenBillNumber", "合同编码", new Integer(3), "tenBill.number"});
+//					list.add(new Object[]{"tenBillName", "合同名称", new Integer(4), "tenBill.tenancyName"});
 					
 				}else if(RevListTypeEnum.tenOtherRev.equals(revListType))//其他应收收款明细
 				{				
 //					list.add(new Object[]{"roomDesCol2", "房间2", new Integer(5), "tenRoom.roomLongNum2"});	
-					list.add(new Object[]{"tenBillNumber", "合同编码", new Integer(3), "head.number"});
-					list.add(new Object[]{"tenBillName", "合同名称", new Integer(4), "head.tenancyName"});
+//					list.add(new Object[]{"tenBillNumber", "合同编码", new Integer(3), "head.number"});
+//					list.add(new Object[]{"tenBillName", "合同名称", new Integer(4), "head.tenancyName"});
 				}
 				else if(RevListTypeEnum.sincerobligate.equals(revListType))
 				{
@@ -1355,4 +1396,58 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 			}
 			
 	}
+	protected void prmtAccountBank_dataChanged(DataChangeEvent e) throws Exception {
+    	if(this.prmtAccountBank.getValue()==null) return;
+    	AccountBankInfo revAccBankInfo = (AccountBankInfo)this.prmtAccountBank.getValue();
+    	SelectorItemCollection sels = new SelectorItemCollection();
+		sels.add("bank.id");
+		sels.add("bank.name");
+		sels.add("bank.number");
+		sels.add("account.*");
+		revAccBankInfo = (AccountBankInfo) AccountBankFactory.getRemoteInstance().getValue(new ObjectUuidPK(revAccBankInfo.getId()), sels);
+    	this.prmtBank.setValue(revAccBankInfo.getBank());
+    	this.prmtRevAccount.setValue(revAccBankInfo.getAccount());
+	}
+    protected void prmtBank_dataChanged(DataChangeEvent e) throws Exception {
+    	if(CommerceHelper.isF7DataChanged(e))
+    	{
+    		initrevAccountBankFilter();
+    	}
+	}
+	/*
+     * 银行账户根据银行来进行过滤
+     */
+    private void initrevAccountBankFilter() throws BOSException, EASBizException {
+    	EntityViewInfo viewInfo = new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		CompanyOrgUnitInfo company = SysContext.getSysContext().getCurrentFIUnit(); 
+    	if(this.prmtBank.getValue()!=null)
+		{
+			BankInfo revBank = (BankInfo)this.prmtBank.getValue();
+			filter.getFilterItems().add(new FilterItemInfo("bank.id", revBank.getId().toString()));
+			filter.getFilterItems().add(new FilterItemInfo("company.id", company.getId().toString()));
+			viewInfo.setFilter(filter);
+			prmtAccountBank.setEntityViewInfo(viewInfo);
+		}else
+		{
+			filter.getFilterItems().add(new FilterItemInfo("company.id", company.getId().toString()));
+			viewInfo.setFilter(filter);
+			prmtAccountBank.setEntityViewInfo(viewInfo);
+		}
+    }
+    private EntityViewInfo getAccountEvi(CompanyOrgUnitInfo companyInfo)
+	{
+		EntityViewInfo evi = new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		// -----------------转6.0后修改,科目不按CU隔离,根据财务组织进行隔离
+		filter.getFilterItems().add(new FilterItemInfo("companyID.id", companyInfo.getId().toString()));
+		if (companyInfo.getAccountTable() != null)
+		{
+			filter.getFilterItems().add(new FilterItemInfo("accountTableID.id", companyInfo.getAccountTable().getId().toString()));
+		}
+		filter.getFilterItems().add(new FilterItemInfo("isGFreeze", Boolean.FALSE));
+		evi.setFilter(filter);
+		return evi;
+	}
+
 }

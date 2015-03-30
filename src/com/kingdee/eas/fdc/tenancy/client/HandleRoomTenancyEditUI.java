@@ -85,6 +85,7 @@ public class HandleRoomTenancyEditUI extends AbstractHandleRoomTenancyEditUI
 			this.tenancyRoom.remove(1);
 		}
 		TenancyClientHelper.hideButton(hiddenAction);
+		this.btnAddLine.setVisible(false);
 		if(this.getOprtState().equals("VIEW"))
 		{
 			this.btnSelectRoom.setVisible(false);
@@ -111,6 +112,9 @@ public class HandleRoomTenancyEditUI extends AbstractHandleRoomTenancyEditUI
 			
 		}else
 		{
+			this.btnSelectRoom.setVisible(true);
+			this.btnSelectRoom.setEnabled(true);
+			this.btnRemoveLine.setEnabled(true);
 			String tenancyBillId = (String) this.getUIContext().get("tenancyBillId");
 
 			if(tenancyBillId == null)
@@ -160,6 +164,12 @@ public class HandleRoomTenancyEditUI extends AbstractHandleRoomTenancyEditUI
 			view.setFilter(filter);
 			this.f7tenancyBill.setEntityViewInfo(view);
 		}
+		
+		tenancyRoom.remove(attachPanle);
+		tenancyRoom.remove(joinVoucherPanel1);
+		tenancyRoom.remove(customerMoveVoucherPanel1);
+		tenancyRoom.remove(payListPanel1);
+		roomTable.getColumn("tenancyType").getStyleAttributes().setHided(true);
 	}
 	
 	private void showViewHandleRoomEntrysInfo(HandleRoomEntrysInfo handleEntrysInfo,IRow row)
