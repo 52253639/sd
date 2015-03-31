@@ -190,7 +190,11 @@ public class FDCCustomerControllerBean extends
 		EntityViewInfo view = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
 		view.setFilter(filter);
-		filter.getFilterItems().add(new FilterItemInfo("name", "售楼客户"));
+		Set name=new HashSet();
+		name.add("售楼客户");
+		name.add("房地产客户");
+		name.add("租赁客户");
+		filter.getFilterItems().add(new FilterItemInfo("name",name,CompareType.INCLUDE));
 		//---需要在集团下存在售楼客户分录，修改BUG309599
 		filter.getFilterItems().add(new FilterItemInfo("CU.id", OrgConstants.DEF_CU_ID));
 		//-----------------

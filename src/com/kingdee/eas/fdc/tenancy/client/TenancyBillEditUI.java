@@ -763,6 +763,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		f7Customer.setCommitFormat("$number$");
 		ICellEditor f7Editor = new KDTDefaultCellEditor(f7Customer);
 		this.tblCustomer.getColumn(C_CUS_CUSTOMER).setEditor(f7Editor);
+		
+		this.actionAddCollectProtocol.setVisible(false);
 	}
 	private void initF7Bussinss() {
 		this.f7BussinessDepartMent.setQueryInfo("com.kingdee.eas.basedata.org.app.OUQuery");

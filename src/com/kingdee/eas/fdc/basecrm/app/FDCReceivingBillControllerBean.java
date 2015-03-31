@@ -80,8 +80,10 @@ import com.kingdee.eas.fdc.sellhouse.RecordTypeEnum;
 import com.kingdee.eas.fi.cas.BillStatusEnum;
 import com.kingdee.eas.fi.cas.CasRecPayBillTypeEnum;
 import com.kingdee.eas.fi.cas.IReceivingBillType;
+import com.kingdee.eas.fi.cas.ReceivingBillCollection;
 import com.kingdee.eas.fi.cas.ReceivingBillEntryCollection;
 import com.kingdee.eas.fi.cas.ReceivingBillEntryInfo;
+import com.kingdee.eas.fi.cas.ReceivingBillFactory;
 import com.kingdee.eas.fi.cas.ReceivingBillInfo;
 import com.kingdee.eas.fi.cas.ReceivingBillTypeCollection;
 import com.kingdee.eas.fi.cas.ReceivingBillTypeFactory;
@@ -986,6 +988,10 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 	
 	protected void _unAudit(Context ctx, BOSUuid billId) throws BOSException, EASBizException {
 		super._unAudit(ctx, billId);
+		
+		if(ReceivingBillFactory.getLocalInstance(ctx).exists("select id from where sourceBillId='"+billId+"'")){
+			throw new EASBizException(new NumericExceptionSubItem("101","已生成出纳收款单，请先删除出纳收款单后再进行反审批操作！"));
+		}
 		FDCReceivingBillInfo rev = new FDCReceivingBillInfo();
 		rev.setId(billId);
 		rev.setBillStatus(RevBillStatusEnum.SUBMIT);
@@ -1247,11 +1253,11 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		
 		for (int i = 0; i < collection.size(); i++) {
 			FDCReceivingBillCollection billColl = null;
-			FDCReceivingBillCollection temp = new FDCReceivingBillCollection();
-			temp.add(collection.get(i));
+//			FDCReceivingBillCollection temp = new FDCReceivingBillCollection();
+//			temp.add(collection.get(i));
 			String id = collection.get(i).getId().toString();
-			billColl = deleteReduplicateBillCollection(temp);
-			
+//			billColl = deleteReduplicateBillCollection(temp);
+			billColl=collection;
 			if(billColl!=null && billColl.size()>0){
 				for (int j = 0; j < billColl.size(); j++) {
 					FDCReceivingBillInfo fdcReceivingBillInfo = billColl.get(j);
