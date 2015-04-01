@@ -192,7 +192,6 @@ public class FDCCustomerControllerBean extends
 		view.setFilter(filter);
 		Set name=new HashSet();
 		name.add("售楼客户");
-		name.add("房地产客户");
 		name.add("租赁客户");
 		filter.getFilterItems().add(new FilterItemInfo("name",name,CompareType.INCLUDE));
 		//---需要在集团下存在售楼客户分录，修改BUG309599
