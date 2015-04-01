@@ -158,6 +158,7 @@ import com.kingdee.eas.fdc.tenancy.LiquidatedInfo;
 import com.kingdee.eas.fdc.tenancy.MoneyEnum;
 import com.kingdee.eas.fdc.tenancy.MoreRoomsTypeEnum;
 import com.kingdee.eas.fdc.tenancy.OccurreStateEnum;
+import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
 import com.kingdee.eas.fdc.tenancy.RentCountTypeEnum;
 import com.kingdee.eas.fdc.tenancy.RentFreeEntryCollection;
@@ -394,6 +395,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	private void loadOtherPayList(TenancyBillInfo info) {
 		this.tblOtherPayList.removeRows();
 		TenBillOtherPayCollection otherPayList = info.getOtherPayList();
+		CRMHelper.sortCollection(otherPayList, "leaseSeq", true);
 //		Map payMap = new TreeMap();
 		for (int i = 0; i < otherPayList.size(); i++) {
 			TenBillOtherPayInfo tenOtherInfo = otherPayList.get(i);
@@ -5822,6 +5824,11 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id));
 		TenancyContractTypeEnum tenType = tenBill.getTenancyType();
 
+		if (OtherBillFactory.getRemoteInstance().exists("select id from where tenancyBill.id='"+id+"'")) {
+			MsgBox.showInfo(this, "存在其他合同，禁止反审批操作！");
+			this.abort();
+		}
+		
 		if (!tenType.equals(TenancyContractTypeEnum.NewTenancy)) {
 			MsgBox.showInfo(this, "只有新租合同才允许反审批！");
 			this.abort();
@@ -6071,6 +6078,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		sels.add("otherPayList.*");
 		sels.add("otherPayList.moneyDefine.*");
 		sels.add("otherPayList.currency.*");
+		sels.add("otherPayList.otherBill.*");
 
 		//add by yangfan
 		sels.add("tenLiquidated.*");
@@ -6558,6 +6566,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			return;
 		IRow row = this.tblOtherPayList.addRow();
 		row.setUserObject(tenOtherInfo);
+		row.getCell("leaseSeq").setValue(tenOtherInfo.getLeaseSeq()==0?null:tenOtherInfo.getLeaseSeq());
 		row.getCell("moneyTypeName").setValue(tenOtherInfo.getMoneyDefine());
 		row.getCell("appDate").setValue(tenOtherInfo.getAppDate());
 		row.getCell("startDate").setValue(tenOtherInfo.getStartDate());
@@ -6571,6 +6580,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		if (tenOtherInfo.getActRevAmount() != null && tenOtherInfo.getActRevAmount().compareTo(FDCHelper.ZERO) > 0) {
 			row.getStyleAttributes().setLocked(true);
 			row.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_SUBTOTAL_BG_COLOR);
+		}
+		if(tenOtherInfo.getOtherBill()!=null){
+			row.getStyleAttributes().setLocked(true);
 		}
 	}
 	
@@ -6589,6 +6601,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		BigDecimal actAmount = entry.getActRevAmount();
 		if (actAmount != null && actAmount.compareTo(FDCHelper.ZERO) != 0) {
 			MsgBox.showInfo("该分录已经收款,不能删除!");
+			return;
+		}
+		if(entry.getOtherBill()!=null){
+			MsgBox.showInfo("该分录由其他合同生成,不能删除!");
 			return;
 		}
 		this.tblOtherPayList.removeRow(activeRowIndex);
@@ -7045,6 +7061,13 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		textField.setMaxLength(80);
 		KDTDefaultCellEditor txtEditor = new KDTDefaultCellEditor(textField);
 		this.tblOtherPayList.getColumn("description").setEditor(txtEditor);
+		
+		
+		this.tblOtherPayList.getGroupManager().setGroup(true);
+		
+		this.tblOtherPayList.getColumn("leaseSeq").setGroup(true);
+		this.tblOtherPayList.getColumn("leaseSeq").setMergeable(true);
+		this.tblOtherPayList.getColumn("leaseSeq").getStyleAttributes().setLocked(true);
 	}
 	
 	public void actionPrint_actionPerformed(ActionEvent e) throws Exception {

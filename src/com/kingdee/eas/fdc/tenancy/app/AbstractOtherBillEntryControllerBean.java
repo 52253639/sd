@@ -24,39 +24,39 @@ import java.lang.String;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.dao.IObjectPK;
-import com.kingdee.eas.fdc.basecrm.RevListCollection;
+import com.kingdee.eas.fdc.tenancy.OtherBillEntryCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
+import com.kingdee.eas.framework.app.CoreBillEntryBaseControllerBean;
+import com.kingdee.eas.framework.CoreBillEntryBaseCollection;
+import com.kingdee.eas.fdc.tenancy.OtherBillEntryInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.eas.framework.CoreBaseCollection;
-import com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection;
-import com.kingdee.eas.fdc.basecrm.app.RevListControllerBean;
-import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
 
 
 
-public abstract class AbstractTenBillOtherPayControllerBean extends RevListControllerBean implements TenBillOtherPayController
+public abstract class AbstractOtherBillEntryControllerBean extends CoreBillEntryBaseControllerBean implements OtherBillEntryController
 {
-    protected AbstractTenBillOtherPayControllerBean()
+    protected AbstractOtherBillEntryControllerBean()
     {
     }
 
     protected BOSObjectType getBOSType()
     {
-        return new BOSObjectType("E17EA893");
+        return new BOSObjectType("220E0964");
     }
 
-    public TenBillOtherPayInfo getTenBillOtherPayInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
+    public OtherBillEntryInfo getOtherBillEntryInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("af4bef1f-f9f3-4943-85c9-147affaab7c5"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("49239091-c284-47fd-b97d-8bae3b2a75b4"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            TenBillOtherPayInfo retValue = (TenBillOtherPayInfo)_getValue(ctx, pk);
+            OtherBillEntryInfo retValue = (OtherBillEntryInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (TenBillOtherPayInfo)svcCtx.getMethodReturnValue();
+          return (OtherBillEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -70,18 +70,18 @@ public abstract class AbstractTenBillOtherPayControllerBean extends RevListContr
         return super._getValue(ctx, pk);
     }
 
-    public TenBillOtherPayInfo getTenBillOtherPayInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
+    public OtherBillEntryInfo getOtherBillEntryInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("601834a2-4e8e-4edf-b6ed-2fcd07efb11f"), new Object[]{ctx, pk, selector});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("b3506c56-c217-443f-bdb7-469ce1e6df96"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            TenBillOtherPayInfo retValue = (TenBillOtherPayInfo)_getValue(ctx, pk, selector);
+            OtherBillEntryInfo retValue = (OtherBillEntryInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (TenBillOtherPayInfo)svcCtx.getMethodReturnValue();
+          return (OtherBillEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -95,18 +95,18 @@ public abstract class AbstractTenBillOtherPayControllerBean extends RevListContr
         return super._getValue(ctx, pk, selector);
     }
 
-    public TenBillOtherPayInfo getTenBillOtherPayInfo(Context ctx, String oql) throws BOSException, EASBizException
+    public OtherBillEntryInfo getOtherBillEntryInfo(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("4b10f265-ba80-4ea7-b317-5dbb77b8a2c0"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("0d7eaf6b-c68c-439a-bd3d-a07c94a16f16"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            TenBillOtherPayInfo retValue = (TenBillOtherPayInfo)_getValue(ctx, oql);
+            OtherBillEntryInfo retValue = (OtherBillEntryInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (TenBillOtherPayInfo)svcCtx.getMethodReturnValue();
+          return (OtherBillEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -120,18 +120,18 @@ public abstract class AbstractTenBillOtherPayControllerBean extends RevListContr
         return super._getValue(ctx, oql);
     }
 
-    public TenBillOtherPayCollection getTenBillOtherPayCollection(Context ctx) throws BOSException
+    public OtherBillEntryCollection getOtherBillEntryCollection(Context ctx) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("908bc5b3-0593-442c-a949-b68987347462"), new Object[]{ctx});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("f7650fc9-f787-484f-a000-cb0673944032"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            TenBillOtherPayCollection retValue = (TenBillOtherPayCollection)_getCollection(ctx, svcCtx);
+            OtherBillEntryCollection retValue = (OtherBillEntryCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (TenBillOtherPayCollection)svcCtx.getMethodReturnValue();
+          return (OtherBillEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -143,18 +143,18 @@ public abstract class AbstractTenBillOtherPayControllerBean extends RevListContr
         return super._getCollection(ctx, svcCtx);
     }
 
-    public TenBillOtherPayCollection getTenBillOtherPayCollection(Context ctx, EntityViewInfo view) throws BOSException
+    public OtherBillEntryCollection getOtherBillEntryCollection(Context ctx, EntityViewInfo view) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("b0613798-f9f3-4581-a386-52b6e018f104"), new Object[]{ctx, view});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("83b42ba9-4fb4-4d3b-b2f2-57510b95d4a9"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            TenBillOtherPayCollection retValue = (TenBillOtherPayCollection)_getCollection(ctx, svcCtx, view);
+            OtherBillEntryCollection retValue = (OtherBillEntryCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (TenBillOtherPayCollection)svcCtx.getMethodReturnValue();
+          return (OtherBillEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -166,18 +166,18 @@ public abstract class AbstractTenBillOtherPayControllerBean extends RevListContr
         return super._getCollection(ctx, svcCtx, view);
     }
 
-    public TenBillOtherPayCollection getTenBillOtherPayCollection(Context ctx, String oql) throws BOSException
+    public OtherBillEntryCollection getOtherBillEntryCollection(Context ctx, String oql) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("727b695d-2765-4080-b931-17a42f7762b6"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("117b3f3a-cc46-4ee2-9193-fe1babe99e13"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            TenBillOtherPayCollection retValue = (TenBillOtherPayCollection)_getCollection(ctx, svcCtx, oql);
+            OtherBillEntryCollection retValue = (OtherBillEntryCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (TenBillOtherPayCollection)svcCtx.getMethodReturnValue();
+          return (OtherBillEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -189,28 +189,28 @@ public abstract class AbstractTenBillOtherPayControllerBean extends RevListContr
         return super._getCollection(ctx, svcCtx, oql);
     }
 
-    public RevListCollection getRevListCollection (Context ctx) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx) throws BOSException
     {
-    	return (RevListCollection)(getTenBillOtherPayCollection(ctx).cast(RevListCollection.class));
+    	return (CoreBillEntryBaseCollection)(getOtherBillEntryCollection(ctx).cast(CoreBillEntryBaseCollection.class));
     }
-    public RevListCollection getRevListCollection (Context ctx, EntityViewInfo view) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
     {
-    	return (RevListCollection)(getTenBillOtherPayCollection(ctx, view).cast(RevListCollection.class));
+    	return (CoreBillEntryBaseCollection)(getOtherBillEntryCollection(ctx, view).cast(CoreBillEntryBaseCollection.class));
     }
-    public RevListCollection getRevListCollection (Context ctx, String oql) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx, String oql) throws BOSException
     {
-    	return (RevListCollection)(getTenBillOtherPayCollection(ctx, oql).cast(RevListCollection.class));
+    	return (CoreBillEntryBaseCollection)(getOtherBillEntryCollection(ctx, oql).cast(CoreBillEntryBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx) throws BOSException
     {
-    	return (CoreBaseCollection)(getTenBillOtherPayCollection(ctx).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getOtherBillEntryCollection(ctx).cast(CoreBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
     {
-    	return (CoreBaseCollection)(getTenBillOtherPayCollection(ctx, view).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getOtherBillEntryCollection(ctx, view).cast(CoreBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx, String oql) throws BOSException
     {
-    	return (CoreBaseCollection)(getTenBillOtherPayCollection(ctx, oql).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getOtherBillEntryCollection(ctx, oql).cast(CoreBaseCollection.class));
     }
 }

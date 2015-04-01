@@ -83,6 +83,41 @@ public class AbstractTenBillOtherPayInfo extends com.kingdee.eas.fdc.basecrm.Rev
     {
         put("restReceivable", item);
     }
+    /**
+     * Object:租赁合同其他应付明细分录's 是否托收property 
+     */
+    public com.kingdee.eas.fdc.propertymgmt.DeductFlagEnum getCollectionFlag()
+    {
+        return com.kingdee.eas.fdc.propertymgmt.DeductFlagEnum.getEnum(getString("collectionFlag"));
+    }
+    public void setCollectionFlag(com.kingdee.eas.fdc.propertymgmt.DeductFlagEnum item)
+    {
+		if (item != null) {
+        setString("collectionFlag", item.getValue());
+		}
+    }
+    /**
+     * Object: 租赁合同其他应付明细分录 's 其他合同 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.OtherBillInfo getOtherBill()
+    {
+        return (com.kingdee.eas.fdc.tenancy.OtherBillInfo)get("otherBill");
+    }
+    public void setOtherBill(com.kingdee.eas.fdc.tenancy.OtherBillInfo item)
+    {
+        put("otherBill", item);
+    }
+    /**
+     * Object:租赁合同其他应付明细分录's 租期序号property 
+     */
+    public int getLeaseSeq()
+    {
+        return getInt("leaseSeq");
+    }
+    public void setLeaseSeq(int item)
+    {
+        setInt("leaseSeq", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("E17EA893");

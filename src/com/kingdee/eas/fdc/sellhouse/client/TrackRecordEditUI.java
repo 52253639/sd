@@ -164,7 +164,6 @@ public class TrackRecordEditUI extends AbstractTrackRecordEditUI {
 		}
 
 		this.txtTrackTxt.setMaxLength(80);
-		this.txtDescription.setMaxLength(80);
 
 		this.prmtRetionBill.setDisplayFormat("name"); //
 		this.prmtRetionBill.setEditFormat("$number$");
@@ -177,9 +176,9 @@ public class TrackRecordEditUI extends AbstractTrackRecordEditUI {
 			
 			//需要保留"问卷填写"和"退出"这两个按钮 by lww 12172010
 			this.btnAddNew.setVisible(false);
-			this.btnEdit.setVisible(false);
-			this.btnSave.setVisible(false);
-			this.btnRemove.setVisible(false);
+//			this.btnEdit.setVisible(false);
+//			this.btnSave.setVisible(false);
+//			this.btnRemove.setVisible(false);
 			this.btnFirst.setVisible(false);
 			this.btnPre.setVisible(false);
 			this.btnNext.setVisible(false);

@@ -43,6 +43,7 @@ import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.tenancy.ITenancyPayListInfo;
+import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
 import com.kingdee.eas.util.client.MsgBox;
 
 /**
@@ -436,6 +437,8 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 			setLockActRevAmount(revListInfo,row);
 			if(revListInfo instanceof ITenancyPayListInfo){
 				setColValue(row, "leaseSeq", ((ITenancyPayListInfo)revListInfo).getLeaseSeq());
+			}else if(revListInfo instanceof TenBillOtherPayInfo){
+				setColValue(row, "leaseSeq", ((TenBillOtherPayInfo)revListInfo).getLeaseSeq()==0?null:((TenBillOtherPayInfo)revListInfo).getLeaseSeq());
 			}
 			setColValue(row, COL_IS_SELECTED, Boolean.FALSE);
 			setColValue(row, COL_MONEY_DEFINE, revListInfo.getMoneyDefine());

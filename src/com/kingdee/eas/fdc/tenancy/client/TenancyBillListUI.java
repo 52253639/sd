@@ -53,6 +53,7 @@ import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.HandleStateEnum;
+import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
 import com.kingdee.eas.fdc.tenancy.RentStartTypeEnum;
 import com.kingdee.eas.fdc.tenancy.TenancyBillFactory;
@@ -284,7 +285,7 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		this.actionPrintBill.setVisible(false);
 		this.actionPrintPreviewBill.setVisible(false);
 		this.actionReceiveBill.setVisible(false);
-		this.actionRefundment.setVisible(false);
+//		this.actionRefundment.setVisible(false);
 		this.actionRepairStartDate.setVisible(false);
 	}
     
@@ -357,6 +358,11 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id));
 		TenancyContractTypeEnum tenType = tenBill.getTenancyType();
 
+		if (OtherBillFactory.getRemoteInstance().exists("select id from where tenancyBill.id='"+id+"'")) {
+			MsgBox.showInfo(this, "存在其他合同，禁止反审批操作！");
+			this.abort();
+		}
+		
 		if (!tenType.equals(TenancyContractTypeEnum.NewTenancy)) {
 			MsgBox.showInfo(this, "只有新租合同才允许反审批！");
 			this.abort();
