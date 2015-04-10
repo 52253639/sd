@@ -438,6 +438,7 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 	
 		
 		TenBillOtherPayCollection tenOtherColl = tenancy.getOtherPayList();
+		CRMHelper.sortCollection(tenOtherColl, "leaseSeq", true);
 		for (int i = 0; i < tenOtherColl.size(); i++) {
 			TenBillOtherPayInfo tenOtherInfo = tenOtherColl.get(i);
 			// by tim_gao 加入合同

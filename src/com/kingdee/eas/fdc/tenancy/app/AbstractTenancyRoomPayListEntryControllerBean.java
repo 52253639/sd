@@ -50,10 +50,13 @@ public abstract class AbstractTenancyRoomPayListEntryControllerBean extends RevL
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("b004ad68-1946-4963-8267-8173fd21aca5"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyRoomPayListEntryInfo retValue = (TenancyRoomPayListEntryInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyRoomPayListEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -72,10 +75,13 @@ public abstract class AbstractTenancyRoomPayListEntryControllerBean extends RevL
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e20b0788-ec76-48f8-b437-0461fc053e20"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyRoomPayListEntryInfo retValue = (TenancyRoomPayListEntryInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyRoomPayListEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -94,10 +100,13 @@ public abstract class AbstractTenancyRoomPayListEntryControllerBean extends RevL
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("56249a17-cfa0-4f60-904a-f21c0906a774"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyRoomPayListEntryInfo retValue = (TenancyRoomPayListEntryInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyRoomPayListEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -116,10 +125,13 @@ public abstract class AbstractTenancyRoomPayListEntryControllerBean extends RevL
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("dcceaa36-2fb0-4eae-8a76-1fcf12ad7bb5"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyRoomPayListEntryCollection retValue = (TenancyRoomPayListEntryCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyRoomPayListEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -136,10 +148,13 @@ public abstract class AbstractTenancyRoomPayListEntryControllerBean extends RevL
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("90d76e5d-7d57-427d-8851-8ef2ef9d0f23"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyRoomPayListEntryCollection retValue = (TenancyRoomPayListEntryCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyRoomPayListEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -156,10 +171,13 @@ public abstract class AbstractTenancyRoomPayListEntryControllerBean extends RevL
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bcade65c-03b7-438f-82a7-e084053f1872"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyRoomPayListEntryCollection retValue = (TenancyRoomPayListEntryCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyRoomPayListEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

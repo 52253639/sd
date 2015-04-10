@@ -65,9 +65,8 @@ public class InvoiceListUI extends AbstractInvoiceListUI {
 	.getLogger(InvoiceListUI.class);
 	
 	protected void initTree() throws Exception {
-		this.treeMain.setModel(SHEHelper.getUnitTree(this.actionOnLoad,MoneySysTypeEnum.SalehouseSys,true));
-		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel()
-				.getRoot());
+		this.treeMain.setModel(SHEHelper.getSellProjectTree(this.actionOnLoad,MoneySysTypeEnum.SalehouseSys));
+		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
 	}
 	
 	/**

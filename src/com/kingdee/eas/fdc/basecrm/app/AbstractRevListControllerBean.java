@@ -49,10 +49,13 @@ public abstract class AbstractRevListControllerBean extends CoreBaseControllerBe
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("849c4a8f-7cc5-4e3e-b438-b5fd0b3fa0f0"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RevListInfo retValue = (RevListInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RevListInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -71,10 +74,13 @@ public abstract class AbstractRevListControllerBean extends CoreBaseControllerBe
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("782b93aa-2848-44f5-9fed-73cdc61be414"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RevListInfo retValue = (RevListInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RevListInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -93,10 +99,13 @@ public abstract class AbstractRevListControllerBean extends CoreBaseControllerBe
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("485730c2-e0c3-4787-b1fe-611962cf71c6"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RevListInfo retValue = (RevListInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RevListInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -115,10 +124,13 @@ public abstract class AbstractRevListControllerBean extends CoreBaseControllerBe
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("440b2c33-6bc1-4754-8419-2f84e98c7bc4"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RevListCollection retValue = (RevListCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RevListCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -135,10 +147,13 @@ public abstract class AbstractRevListControllerBean extends CoreBaseControllerBe
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("721a9ac9-52c3-4a66-a07f-54dfbf485b06"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RevListCollection retValue = (RevListCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RevListCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -155,10 +170,13 @@ public abstract class AbstractRevListControllerBean extends CoreBaseControllerBe
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7d0f0b63-c16b-471d-8814-9bd65b6d1cbf"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RevListCollection retValue = (RevListCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RevListCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

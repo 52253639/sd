@@ -19,6 +19,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("tenAttachResourceList", new com.kingdee.eas.fdc.tenancy.TenAttachResourceEntryCollection());
         put("tenLiquidated", new com.kingdee.eas.fdc.tenancy.TenLiquidatedCollection());
         put("otherPayList", new com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection());
+        put("tenLongContract", new com.kingdee.eas.fdc.tenancy.TenancyLongContractCollection());
         put("tenancyRoomList", new com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection());
         put("increasedRents", new com.kingdee.eas.fdc.tenancy.IncreasedRentEntryCollection());
         put("rentFrees", new com.kingdee.eas.fdc.tenancy.RentFreeEntryCollection());
@@ -856,6 +857,103 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
     public void setSecondRevDate(java.util.Date item)
     {
         setDate("secondRevDate", item);
+    }
+    /**
+     * Object:租赁合同's 合同状态property 
+     */
+    public com.kingdee.eas.fdc.tenancy.TenancyStateDisplayEnum getTenancyStateDisplay()
+    {
+        return com.kingdee.eas.fdc.tenancy.TenancyStateDisplayEnum.getEnum(getString("tenancyStateDisplay"));
+    }
+    public void setTenancyStateDisplay(com.kingdee.eas.fdc.tenancy.TenancyStateDisplayEnum item)
+    {
+		if (item != null) {
+        setString("tenancyStateDisplay", item.getValue());
+		}
+    }
+    /**
+     * Object: 租赁合同 's 长租合同设置 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.TenancyLongContractCollection getTenLongContract()
+    {
+        return (com.kingdee.eas.fdc.tenancy.TenancyLongContractCollection)get("tenLongContract");
+    }
+    /**
+     * Object:租赁合同's 房间记租周期property 
+     */
+    public String getTenRoomsRentType()
+    {
+        return getString("tenRoomsRentType");
+    }
+    public void setTenRoomsRentType(String item)
+    {
+        setString("tenRoomsRentType", item);
+    }
+    /**
+     * Object: 租赁合同 's 变更原因 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.ChangeReasonInfo getChangeReason()
+    {
+        return (com.kingdee.eas.fdc.tenancy.ChangeReasonInfo)get("changeReason");
+    }
+    public void setChangeReason(com.kingdee.eas.fdc.tenancy.ChangeReasonInfo item)
+    {
+        put("changeReason", item);
+    }
+    /**
+     * Object: 租赁合同 's 经营业态 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.OperateStateInfo getOperateState()
+    {
+        return (com.kingdee.eas.fdc.tenancy.OperateStateInfo)get("operateState");
+    }
+    public void setOperateState(com.kingdee.eas.fdc.tenancy.OperateStateInfo item)
+    {
+        put("operateState", item);
+    }
+    /**
+     * Object: 租赁合同 's 代理商 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.TenancyAgencyInfo getTenancyAgency()
+    {
+        return (com.kingdee.eas.fdc.tenancy.TenancyAgencyInfo)get("tenancyAgency");
+    }
+    public void setTenancyAgency(com.kingdee.eas.fdc.tenancy.TenancyAgencyInfo item)
+    {
+        put("tenancyAgency", item);
+    }
+    /**
+     * Object:租赁合同's 固定金额property 
+     */
+    public java.math.BigDecimal getFinalAmount()
+    {
+        return getBigDecimal("finalAmount");
+    }
+    public void setFinalAmount(java.math.BigDecimal item)
+    {
+        setBigDecimal("finalAmount", item);
+    }
+    /**
+     * Object:租赁合同's 退租日期property 
+     */
+    public java.util.Date getQuitRoomDate()
+    {
+        return getDate("quitRoomDate");
+    }
+    public void setQuitRoomDate(java.util.Date item)
+    {
+        setDate("quitRoomDate", item);
+    }
+    /**
+     * Object: 租赁合同 's 免租期审批单 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.RentFreeBillInfo getRentFreeBill()
+    {
+        return (com.kingdee.eas.fdc.tenancy.RentFreeBillInfo)get("rentFreeBill");
+    }
+    public void setRentFreeBill(com.kingdee.eas.fdc.tenancy.RentFreeBillInfo item)
+    {
+        put("rentFreeBill", item);
     }
     public BOSObjectType getBOSType()
     {

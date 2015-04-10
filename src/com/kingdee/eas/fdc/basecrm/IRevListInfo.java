@@ -151,4 +151,7 @@ public interface IRevListInfo extends IObjectValue{
      */
     public int getSeq();
     public void setSeq(int item);
+    
+    public BigDecimal getInvoiceAmount();
+    public void setInvoiceAmount(BigDecimal amount);
 }

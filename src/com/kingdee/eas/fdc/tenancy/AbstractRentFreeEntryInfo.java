@@ -74,6 +74,28 @@ public class AbstractRentFreeEntryInfo extends com.kingdee.eas.framework.CoreBil
         setString("freeTenancyType", item.getValue());
 		}
     }
+    /**
+     * Object:免租分录's 是否赠送property 
+     */
+    public boolean isIsPresent()
+    {
+        return getBoolean("isPresent");
+    }
+    public void setIsPresent(boolean item)
+    {
+        setBoolean("isPresent", item);
+    }
+    /**
+     * Object: 免租分录 's 免租期审批单 property 
+     */
+    public com.kingdee.eas.fdc.tenancy.RentFreeBillInfo getRentFreeBill()
+    {
+        return (com.kingdee.eas.fdc.tenancy.RentFreeBillInfo)get("rentFreeBill");
+    }
+    public void setRentFreeBill(com.kingdee.eas.fdc.tenancy.RentFreeBillInfo item)
+    {
+        put("rentFreeBill", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("7D898324");

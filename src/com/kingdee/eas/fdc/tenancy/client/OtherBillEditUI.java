@@ -182,12 +182,14 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		}
 		
 		TenancyRoomEntryCollection tenancyRooms = this.editData.getTenancyBill().getTenancyRoomList();
-		for(int i=0;i<tenancyRooms.size();i++){
-			TenancyRoomEntryInfo roomEntry=tenancyRooms.get(i);
+		if(tenancyRooms.size()>0){
+			TenancyRoomEntryInfo roomEntry=tenancyRooms.get(0);
 			roomEntry.getPayList().clear();
-			for(int j=0;j<this.editData.getPayEntry().size();j++){
+			TenBillOtherPayCollection col=this.editData.getPayEntry();
+			CRMHelper.sortCollection(col, "seq", true);
+			for(int i=0;i<col.size();i++){
 				TenancyRoomPayListEntryInfo entry=new TenancyRoomPayListEntryInfo();
-				TenBillOtherPayInfo otherEntry=this.editData.getPayEntry().get(j);
+				TenBillOtherPayInfo otherEntry=col.get(i);
 				entry.setSeq(otherEntry.getSeq());
 				entry.setAppDate(otherEntry.getAppDate());
 				entry.setStartDate(otherEntry.getStartDate());
@@ -219,6 +221,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		TenancyRoomEntryCollection tenancyRooms = this.editData.getTenancyBill().getTenancyRoomList();
 		this.editData.getPayEntry().clear();
 		if(tenancyRooms.size()>0){
+			CRMHelper.sortCollection(tenancyRooms, "seq", true);
 			for(int i=0;i<tenancyRooms.get(0).getRoomPayList().size();i++){
 				TenancyRoomPayListEntryInfo entry=tenancyRooms.get(0).getRoomPayList().get(i);
 				TenBillOtherPayInfo otherEntry=new TenBillOtherPayInfo();
@@ -304,6 +307,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		this.actionAddLine.setVisible(true);
 		this.actionInsertLine.setVisible(true);
 		this.actionRemoveLine.setVisible(true);
+		this.actionAttachment.setVisible(true);
 		
 		this.btnAddLine.setVisible(false);
 		this.btnInsertLine.setVisible(false);
@@ -374,9 +378,6 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		OtherBillEntryInfo entry=new OtherBillEntryInfo();
 		return entry;
 	}
-	public void actionAddLine_actionPerformed(ActionEvent e) throws Exception {
-		super.actionAddLine_actionPerformed(e);
-	}
 	public void actionSubmit_actionPerformed(ActionEvent e) throws Exception {
 		super.actionSubmit_actionPerformed(e);
 		this.setOprtState("VIEW");
@@ -388,21 +389,12 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		setAuditButtonStatus(STATUS_VIEW);
 		this.actionSave.setEnabled(false);
 	}
-	public void actionEdit_actionPerformed(ActionEvent e) throws Exception {
-		super.actionEdit_actionPerformed(e);
-	}
-	public void actionInsertLine_actionPerformed(ActionEvent e)throws Exception {
-		super.actionInsertLine_actionPerformed(e);
-	}
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
 		if(editData.getId()!=null){
 			FDCClientUtils.checkBillInWorkflow(this, editData.getId().toString());
 		}
 		super.actionRemove_actionPerformed(e);
 		handleCodingRule();
-	}
-	public void actionRemoveLine_actionPerformed(ActionEvent e)throws Exception {
-		super.actionRemoveLine_actionPerformed(e);
 	}
 	public void actionUnAudit_actionPerformed(ActionEvent e) throws Exception {
 		super.actionUnAudit_actionPerformed(e);
@@ -1077,6 +1069,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		if(getNumberCtrl().isEnabled()) {
 			FDCClientVerifyHelper.verifyEmpty(this, getNumberCtrl());
 		}
+		FDCClientVerifyHelper.verifyEmpty(this, this.txtName);
 		FDCClientVerifyHelper.verifyEmpty(this, this.pkStartDate);
 		FDCClientVerifyHelper.verifyEmpty(this, this.pkEndDate);
 		

@@ -50,10 +50,13 @@ public abstract class AbstractSincerPaylistEntrysControllerBean extends RevListC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f16ae337-b132-4b36-a223-ec54eb843828"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SincerPaylistEntrysInfo retValue = (SincerPaylistEntrysInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SincerPaylistEntrysInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -72,10 +75,13 @@ public abstract class AbstractSincerPaylistEntrysControllerBean extends RevListC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("461e4b11-37bd-41e5-90ae-72939d04b727"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SincerPaylistEntrysInfo retValue = (SincerPaylistEntrysInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SincerPaylistEntrysInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -94,10 +100,13 @@ public abstract class AbstractSincerPaylistEntrysControllerBean extends RevListC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("9f20f8f7-dbd1-4a85-868b-1d78e4e75c36"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SincerPaylistEntrysInfo retValue = (SincerPaylistEntrysInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SincerPaylistEntrysInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -116,10 +125,13 @@ public abstract class AbstractSincerPaylistEntrysControllerBean extends RevListC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bf9b0f22-8e98-4d7c-9ec0-730161c28964"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SincerPaylistEntrysCollection retValue = (SincerPaylistEntrysCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SincerPaylistEntrysCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -136,10 +148,13 @@ public abstract class AbstractSincerPaylistEntrysControllerBean extends RevListC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("fd6bd202-0d50-41b6-84e2-d74e8e54cdd6"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SincerPaylistEntrysCollection retValue = (SincerPaylistEntrysCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SincerPaylistEntrysCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -156,10 +171,13 @@ public abstract class AbstractSincerPaylistEntrysControllerBean extends RevListC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7c576ead-872a-4d04-845d-435b6834800d"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SincerPaylistEntrysCollection retValue = (SincerPaylistEntrysCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SincerPaylistEntrysCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

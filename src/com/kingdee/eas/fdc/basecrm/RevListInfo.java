@@ -82,6 +82,8 @@ public abstract class RevListInfo extends AbstractRevListInfo implements Seriali
 		return CRMHelper.getBigDecimal(super.getHasAdjustedAmount());
 	}
 	
-
+	public BigDecimal getInvoiceAmount() {
+		return CRMHelper.getBigDecimal(super.getInvoiceAmount());
+	}
 	
 }

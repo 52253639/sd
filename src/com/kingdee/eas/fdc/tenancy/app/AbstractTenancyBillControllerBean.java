@@ -58,10 +58,13 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7430920b-18fb-4bdb-8b2c-af281361cf53"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyBillInfo retValue = (TenancyBillInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyBillInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -80,10 +83,13 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("59a8adee-19ca-474c-8624-51c7165267a4"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyBillInfo retValue = (TenancyBillInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyBillInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -102,10 +108,13 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("9d8a9069-f248-4a73-9d3f-70242da40836"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyBillInfo retValue = (TenancyBillInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyBillInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -124,10 +133,13 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("4032696f-ddfc-4b8c-a103-bf10155f79ed"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyBillCollection retValue = (TenancyBillCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyBillCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -144,10 +156,13 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("909046da-f5ba-4ffd-a70f-994a572ac211"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyBillCollection retValue = (TenancyBillCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyBillCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -164,10 +179,13 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f53b9653-185f-49a1-b124-d64d00b72c19"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TenancyBillCollection retValue = (TenancyBillCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TenancyBillCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -184,7 +202,9 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("edaaf97a-c1c5-4fd2-8603-9991f3f263db"), new Object[]{ctx, tenAttachEntryColl, tenancyRoomEntryColl, tenancyBillInfo, handleRoomEntryColl});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _handleTenancyRoom(ctx, tenAttachEntryColl, tenancyRoomEntryColl, tenancyBillInfo, handleRoomEntryColl);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -200,7 +220,9 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7cf76011-88de-43fe-93dd-1a6a715c889d"), new Object[]{ctx, receivingBills});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _carryForward(ctx, receivingBills);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -219,7 +241,9 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c86f6d80-76c9-46e4-a498-8f9b2779f27a"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _blankOut(ctx, pk);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -238,7 +262,9 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("12ec5f3f-39da-4940-b72e-7cc341b94d4d"), new Object[]{ctx, tenancyBillInfo, repairStartDate, firstLease, firstLeaseDate});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _repairStartDate(ctx, tenancyBillInfo, repairStartDate, firstLease, firstLeaseDate);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -257,7 +283,9 @@ public abstract class AbstractTenancyBillControllerBean extends TenBillBaseContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("6610dfee-64a9-4783-8308-848f11a29637"), new Object[]{ctx, billID});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _antiAudit(ctx, billID);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();

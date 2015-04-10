@@ -381,7 +381,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
                 this.kdtEntry.putBindContents("editData",new String[] {"moneyDefine","amount","description"});
 
 
-        // txtName
+        // txtName		
+        this.txtName.setRequired(true);
         // kDScrollPane1
         // txtDescription
         // prmtCreator		

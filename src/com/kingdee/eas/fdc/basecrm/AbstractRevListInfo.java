@@ -210,6 +210,17 @@ public class AbstractRevListInfo extends com.kingdee.eas.framework.CoreBaseInfo 
     {
         setDate("actRevDate", item);
     }
+    /**
+     * Object:收款明细's 发票金额property 
+     */
+    public java.math.BigDecimal getInvoiceAmount()
+    {
+        return getBigDecimal("invoiceAmount");
+    }
+    public void setInvoiceAmount(java.math.BigDecimal item)
+    {
+        setBigDecimal("invoiceAmount", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("E004F905");

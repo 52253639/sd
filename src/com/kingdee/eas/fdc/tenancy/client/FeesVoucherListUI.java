@@ -24,6 +24,7 @@ import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
+import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
@@ -99,7 +100,7 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
 	}
 	protected void initTree() throws Exception
 	{
-		this.treeMain.setModel(FDCTreeHelper.getSubareaTree(this.actionOnLoad,null));
+		this.treeMain.setModel(SHEHelper.getSellProjectTree(this.actionOnLoad,MoneySysTypeEnum.TenancySys));
 		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
 	}
 	protected ICoreBase getBizInterface() throws Exception {

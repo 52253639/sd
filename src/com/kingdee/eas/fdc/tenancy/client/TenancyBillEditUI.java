@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -94,6 +95,7 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.cp.bc.BizCollUtil;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillCollection;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
@@ -161,7 +163,9 @@ import com.kingdee.eas.fdc.tenancy.OccurreStateEnum;
 import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
 import com.kingdee.eas.fdc.tenancy.RentCountTypeEnum;
+import com.kingdee.eas.fdc.tenancy.RentFreeBillInfo;
 import com.kingdee.eas.fdc.tenancy.RentFreeEntryCollection;
+import com.kingdee.eas.fdc.tenancy.RentFreeEntryFactory;
 import com.kingdee.eas.fdc.tenancy.RentFreeEntryInfo;
 import com.kingdee.eas.fdc.tenancy.RentRemissionFactory;
 import com.kingdee.eas.fdc.tenancy.RentStartTypeEnum;
@@ -349,6 +353,24 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			isFreeConSet(this.chkIsFreeContract.isSelected());
 		} catch (BOSException e) {
 			this.handleException(e);
+		}
+		
+		if(this.tblRoom.getRowCount()>0){
+			this.prmtRentFreeBill.setEnabled(true);
+			TenancyRoomEntryInfo entry=(TenancyRoomEntryInfo) this.tblRoom.getRow(0).getUserObject();
+			EntityViewInfo view=new EntityViewInfo();
+			FilterInfo filter=new FilterInfo();
+			filter.getFilterItems().add(new FilterItemInfo("state",FDCBillStateEnum.AUDITTED_VALUE));
+			if(this.editData.getId()!=null){
+				filter.getFilterItems().add(new FilterItemInfo("id","select frentFreeBillId from T_TEN_TenancyBill where fid!='"+this.editData.getId().toString()+"' and frentFreeBillId is not null",CompareType.NOTINNER));
+			}else{
+				filter.getFilterItems().add(new FilterItemInfo("id","select frentFreeBillId from T_TEN_TenancyBill where frentFreeBillId is not null",CompareType.NOTINNER));
+			}
+			filter.getFilterItems().add(new FilterItemInfo("room.id",entry.getRoom().getId().toString()));
+			view.setFilter(filter);
+			prmtRentFreeBill.setEntityViewInfo(view);
+		}else{
+			this.prmtRentFreeBill.setEnabled(false);
 		}
 		attachListeners();	
 	}
@@ -694,7 +716,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.actionAttachment.setVisible(true);
 		//滞纳金比例 ,总成交租金进行 隐藏 2010.12.14 xin_wang
 		this.contLateFeeAmount.setVisible(false);
-		this.contTotalRoomDealRent.setVisible(false);
+//		this.contTotalRoomDealRent.setVisible(false);
 		//由租售项目的属性来确认是否显示物业页签 2010.12.14 xin_wang
 		SellProjectInfo sellProject = (SellProjectInfo)this.f7SellProject.getValue();
 		if(sellProject!=null){
@@ -767,6 +789,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblCustomer.getColumn(C_CUS_CUSTOMER).setEditor(f7Editor);
 		
 		this.actionAddCollectProtocol.setVisible(false);
+		
+		this.txtName.setEnabled(false);
 	}
 	private void initF7Bussinss() {
 		this.f7BussinessDepartMent.setQueryInfo("com.kingdee.eas.basedata.org.app.OUQuery");
@@ -881,6 +905,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblFree.getColumn(C_FREE_END_DATE).getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
 		this.tblFree.getColumn(C_FREE_TENANCY_TYPE).setEditor(createComboCellEditor(FreeTenancyTypeEnum.getEnumList()));
 		this.tblFree.getColumn(C_FREE_DES).setEditor(createTxtCellEditor(255, true));
+		this.tblFree.setEnabled(false);
 		
 		ItemAction actionAddIncrease = new ItemAction() {
 			public void actionPerformed(ActionEvent e) {
@@ -925,6 +950,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		btnRmIncrease.setEnabled(false);
 		btnAddFree = initWorkBtn1(actionAddFree, "imgTbtn_sortstandard", this.containerFree, "添加");
 		btnRmFree = initWorkBtn1(actionRmFree, "imgTbtn_sortstandard", this.containerFree, "删除");
+		
+		btnAddFree.setVisible(false);
+		btnRmFree.setVisible(false);
 	}
 
 	private KDTDefaultCellEditor createDateCellEditor() {
@@ -963,6 +991,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	private void actionAddFree_actionPerformed(ActionEvent e) {
 		IRow row = this.tblFree.addRow();
 		row.getCell("freeTenancyType").setValue(FreeTenancyTypeEnum.FreeTenNotMoney);
+		
 	}
 
 	private void actionRmFree_actionPerformed(ActionEvent e) throws BOSException {
@@ -1277,6 +1306,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		//by huanghefh
 		this.tblRoom.getColumn("dayPrice").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 		this.tblRoom.getColumn("dayPrice").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		this.tblRoom.getColumn("dayPrice").getStyleAttributes().setLocked(true);
 		comboField = new KDComboBox();
 		for (int i = 0; i < list.size(); i++) {
 			comboField.addItem(list.get(i));
@@ -1367,6 +1397,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblCustomer.getColumn(C_CUS_CERTIFICATE_NUMBER).setEditor(txtEditor);
 		this.tblCustomer.getColumn(C_CUS_CERTIFICATE_NUMBER).setRequired(true);
 		// setCustomerInfoEnable(true);
+		
+		this.tblCustomer.getColumn(C_CUS_CUSTOMER).getStyleAttributes().setFontColor(Color.BLUE);
 	}
 	/**
 	 * 初始化违约金方案设置 add by yangfan
@@ -1772,7 +1804,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				}
 
 				//如果是第一定价期的列，需要更新到租赁房间的成交总价上去. TODO 这里用colIndex=6来判断不太好 
-				if(colIndex == 5+monDefineColl.size()){
+				if(colIndex == 7+monDefineColl.size()){
 					tenEntry.setDealRent(amount);
 					tenEntry.setDealRentPrice(price);
 					//这里不好处理，简单处理，修改了第一定价期的列，才重置租金分录	
@@ -1809,7 +1841,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				}
 
 				//如果是第一定价期的列，需要更新到租赁房间的成交总价上去. TODO 这里用colIndex=6来判断不太好 
-				if(colIndex == 4+monDefineColl.size()){
+				if(colIndex == 6+monDefineColl.size()){
 					tenEntry.setDealRent(amount);
 					tenEntry.setDealRentPrice(price);
 					//这里不好处理，简单处理，修改了第一定价期的列，才重置租金分录	
@@ -2182,6 +2214,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		TenancyRoomEntryInfo tenRoom = (TenancyRoomEntryInfo) row.getUserObject();
 
 		tenRoom.setFlagAtTerm((FlagAtTermEnum)row.getCell(C_ROOM_FLAG_AT_TERM).getValue());
+		
 //		RentTypeEnum rentType = (RentTypeEnum) row.getCell(C_ROOM_DEAL_RENT_TYPE).getValue();
 //		BigDecimal rent = (BigDecimal) row.getCell(C_ROOM_DEAL_RENT).getValue();
 //		BigDecimal area = (BigDecimal) row.getCell(C_ROOM_BUILDING_AREA).getValue();
@@ -4212,6 +4245,16 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 //				abort();
 //			}
 		}
+		
+		String room="";
+		if(this.tblRoom.getRowCount()>0){
+			TenancyRoomEntryInfo entry=(TenancyRoomEntryInfo) this.tblRoom.getRow(0).getUserObject();
+			room=room+entry.getRoom().getName();
+		}
+		if(this.pkTenancyDate.getValue()!=null){
+			room=room+"("+FDCDateHelper.DateToString((Date) this.pkTenancyDate.getValue())+")";
+		}
+		this.txtName.setText(room);
 	}
 	
 	
@@ -4470,10 +4513,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.abort();
 		}
 
-		if (StringUtils.isEmpty(this.txtName.getText())) {
-			MsgBox.showInfo(this, "合同名称不能为空！");
-			this.abort();
-		}
+//		if (StringUtils.isEmpty(this.txtName.getText())) {
+//			MsgBox.showInfo(this, "合同名称不能为空！");
+//			this.abort();
+//		}
 
 		if (this.f7SellProject.getValue() == null) {
 			MsgBox.showInfo(this, "租售项目不能为空！");
@@ -4531,12 +4574,16 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	}
 
 	protected void btnAddRoom_actionPerformed(ActionEvent e) throws Exception {
+		if(this.tblRoom.getRowCount()>0){
+			MsgBox.showInfo(this, "只能选择一套房间！");
+			this.abort();
+		}
 		//获得选择的房间
 		BuildingInfo buildingInfo = (BuildingInfo) this.getUIContext().get("building");
 		BuildingUnitInfo buildUnit = (BuildingUnitInfo) this.getUIContext().get("buildUnit");
 
-		RoomCollection rooms = RoomSelectUI.showMultiRoomSelectUI(this, buildingInfo, buildUnit, MoneySysTypeEnum.TenancySys, null, sellProjectInfo);
-		if (rooms == null || rooms.isEmpty()) {
+		RoomInfo room = RoomSelectUI.showOneRoomSelectUI(this, buildingInfo, buildUnit, MoneySysTypeEnum.TenancySys, null, sellProjectInfo);
+		if (room == null || room.isEmpty()) {
 			return;
 		}
 
@@ -4553,8 +4600,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}
 
 		TenancyRoomEntryCollection tenRooms = new TenancyRoomEntryCollection();
-		for (int i = 0; i < rooms.size(); i++) {
-			RoomInfo room = rooms.get(i);
+//		for (int i = 0; i < rooms.size(); i++) {
+//			RoomInfo room = rooms.get(i);
 			room = SHEHelper.queryRoomInfo(room.getId().toString());
 			if (existRoomIds.contains(room.getId().toString())) {
 				MsgBox.showInfo(this, "房间" + room.getNumber() + "已存在于租赁房间列表中！");
@@ -4580,7 +4627,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			TenancyRoomEntryInfo tenancyRoom = roomToTenRoomEntry(room);
 			
 			tenRooms.add(tenancyRoom);
-		}
+//		}
 
 		//新增房间行
 		addRoomRows(tenRooms);
@@ -4591,6 +4638,19 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 		//更新付款明细等信息
 		updatePayListInfo();
+		
+		this.prmtRentFreeBill.setEnabled(true);
+		EntityViewInfo view=new EntityViewInfo();
+		FilterInfo filter=new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("state",FDCBillStateEnum.AUDITTED_VALUE));
+		if(this.editData.getId()!=null){
+			filter.getFilterItems().add(new FilterItemInfo("id","select frentFreeBillId from T_TEN_TenancyBill where fid!='"+this.editData.getId().toString()+"' and frentFreeBillId is not null",CompareType.NOTINNER));
+		}else{
+			filter.getFilterItems().add(new FilterItemInfo("id","select frentFreeBillId from T_TEN_TenancyBill where frentFreeBillId is not null",CompareType.NOTINNER));
+		}
+		filter.getFilterItems().add(new FilterItemInfo("room.id",room.getId().toString()));
+		view.setFilter(filter);
+		prmtRentFreeBill.setEntityViewInfo(view);
 	}	
 
 	private void setContMoreRoomsTypeVisiable(){
@@ -4933,6 +4993,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 		//删除房间，可能不需要重置租金分录。TODO 待验证
 		updatePayListInfo();
+		
+		this.prmtRentFreeBill.setValue(null);
+		this.prmtRentFreeBill.setEnabled(false);
 	}
 
 	protected void btnRemoveAttachRes_actionPerformed(ActionEvent e) throws Exception {
@@ -6000,11 +6063,12 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 		sels.add("increasedRents.*");
 		sels.add("rentFrees.*");
-
+		
 		sels.add("tenancyRoomList.*");
 		sels.add("tenancyRoomList.room.floor");
 		sels.add("tenancyRoomList.room.isForPPM");
 		sels.add("tenancyRoomList.room.number");
+		sels.add("tenancyRoomList.room.name");
 
 		sels.add("tenancyRoomList.room.building.name");
 		sels.add("tenancyRoomList.room.building.number");
@@ -6130,6 +6194,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 		this.addDataChangeListener(this.pkStartDate);
 		this.addDataChangeListener(this.pkEndDate);
+		this.addDataChangeListener(this.prmtRentFreeBill);
 	}
 
 	protected void detachListeners() {
@@ -6145,6 +6210,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		// TODO 实践证明,这2个监听器没有被去掉,待跟踪
 		this.removeDataChangeListener(this.pkStartDate);
 		this.removeDataChangeListener(this.pkEndDate);
+		this.removeDataChangeListener(this.prmtRentFreeBill);
 	}
 
 	protected void addActionListener(AbstractButton com) {
@@ -7178,7 +7244,23 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			}
 		}
 	}
-	
+	protected void tblCustomer_tableClicked(KDTMouseEvent e) throws Exception {
+		if (e.getType() == KDTStyleConstants.BODY_ROW && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2
+				&&tblCustomer.getColumn(e.getColIndex()).getKey().equals("customer")) {
+			IRow row = tblCustomer.getRow(e.getRowIndex());
+			if(row!=null){
+				TenancyCustomerEntryInfo TenancyCustomer = (TenancyCustomerEntryInfo)row.getUserObject();
+				if(TenancyCustomer.getFdcCustomer()!=null){
+					UIContext uiContext = new UIContext(this);
+					uiContext.put("ID",TenancyCustomer.getFdcCustomer().getId().toString());
+					IUIWindow uiWindow = UIFactory.createUIFactory(
+							UIFactoryName.NEWTAB).create(CustomerEditUI.class.getName(),uiContext, null, "VIEW");
+					uiWindow.show();
+				}
+			}
+		}
+	}
+
 	protected void btnViewCustInfo_actionPerformed(ActionEvent e)
 			throws Exception {
 		int activeRowIndex = this.tblCustomer.getSelectManager().getActiveRowIndex();
@@ -7222,4 +7304,23 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}
 		super.txtRate_dataChanged(e);
 	}
+	protected void prmtRentFreeBill_dataChanged(DataChangeEvent e)throws Exception {
+		boolean isChanged = true;
+		isChanged = BizCollUtil.isF7ValueChanged(e);
+        if(!isChanged){
+        	return;
+        }
+        RentFreeBillInfo info=(RentFreeBillInfo) this.prmtRentFreeBill.getValue();
+        this.editData.getRentFrees().clear();
+        if(info!=null){
+        	RentFreeEntryCollection col=RentFreeEntryFactory.getRemoteInstance().getRentFreeEntryCollection("select * from where rentFreeBill.id='"+info.getId()+"' order by seq");
+        	for(int i=0;i<col.size();i++){
+        		this.editData.getRentFrees().add(col.get(i));
+        	}
+        }
+        this.loadFreeRents(this.editData.getRentFrees());
+		updatePayListInfo();
+	}
+	
+	
 }

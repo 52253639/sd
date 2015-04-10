@@ -13,11 +13,11 @@ import com.kingdee.util.enums.StringEnum;
  */
 public class ChequeTypeEnum extends StringEnum
 {
-    public static final String RECEIPT_VALUE = "receipt";
-    public static final String INVOICE_VALUE = "invoice";
+    public static final String INVOICE_VALUE = "invoice";//alias=∑¢∆±
+    public static final String RECEIPT_VALUE = "receipt";//alias= ’æ›
 
-    public static final ChequeTypeEnum receipt = new ChequeTypeEnum("receipt", RECEIPT_VALUE);
     public static final ChequeTypeEnum invoice = new ChequeTypeEnum("invoice", INVOICE_VALUE);
+    public static final ChequeTypeEnum receipt = new ChequeTypeEnum("receipt", RECEIPT_VALUE);
 
     /**
      * construct function

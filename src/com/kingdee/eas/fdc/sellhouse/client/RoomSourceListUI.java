@@ -83,6 +83,8 @@ import com.kingdee.eas.fdc.sellhouse.RoomSellStateEnum;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectResourceEnum;
 import com.kingdee.eas.fdc.sellhouse.SubareaInfo;
+import com.kingdee.eas.fdc.tenancy.TenancyOrderFactory;
+import com.kingdee.eas.fdc.tenancy.TenancyOrderRoomEntryFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyStateEnum;
 import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.framework.DataBaseInfo;
@@ -1222,9 +1224,13 @@ if (node == null)
 							SysUtil.abort();
 						}
 						if (room.isIsForSHE()&&room.getStandardTotalAmount() != null
-								&& room.getStandardTotalAmount().compareTo(
-										FDCHelper.ZERO) != 0){
+								&& room.getStandardTotalAmount().compareTo(FDCHelper.ZERO) != 0){
 							FDCMsgBox.showWarning(this,"有选择的房间已经定价,不能"+warning);
+							SysUtil.abort();
+						}
+						if (room.isIsForTen()&&room.getStandardRent() != null
+								&& room.getStandardRent().compareTo(FDCHelper.ZERO) != 0){
+							FDCMsgBox.showWarning(this,"有选择的房间已经定租,不能"+warning);
 							SysUtil.abort();
 						}
 						FilterInfo filter = new FilterInfo();
@@ -1233,10 +1239,12 @@ if (node == null)
 							FDCMsgBox.showWarning(this,"有选择的房间已经被绑定,不能再"+warning);
 							SysUtil.abort();
 						}
-						filter = new FilterInfo();
-						filter.getFilterItems().add(new FilterItemInfo("room.id", room.getId().toString()));
 						if (PushManageHisEntryFactory.getRemoteInstance().exists(filter)){
 							FDCMsgBox.showWarning(this,"有选择的房间已经进入推盘管理,不能再"+warning);
+							SysUtil.abort();
+						}
+						if (TenancyOrderRoomEntryFactory.getRemoteInstance().exists(filter)){
+							FDCMsgBox.showWarning(this,"有选择的房间已经进入放租管理,不能再"+warning);
 							SysUtil.abort();
 						}
 					}

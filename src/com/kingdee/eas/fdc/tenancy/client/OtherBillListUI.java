@@ -21,6 +21,7 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.metadata.resource.BizEnumValueInfo;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
@@ -56,6 +57,7 @@ import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyBillFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
+import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.ICoreBase;
 import com.kingdee.eas.framework.batchHandler.UtilRequest;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
@@ -122,15 +124,6 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 
 	protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK,EntityViewInfo viewInfo) {
 		FilterInfo filter = new FilterInfo();
-		Set set = new HashSet();
-		set.add(RevBizTypeEnum.TENANCY_VALUE);
-		set.add(RevBizTypeEnum.OBLIGATE_VALUE);
-		IQueryExecutor queryExe = super.getQueryExecutor(queryPK, viewInfo);
-		EntityViewInfo view = queryExe.getObjectView();
-		for(int i=0;i<view.getFilter().getFilterItems().size();i++){
-			if(view.getFilter().getFilterItems().get(i).toString().indexOf("sellProject.id")>=0);
-			view.getFilter().getFilterItems().removeObject(i);
-		}
 		int rowIndex = this.kdtTenancy.getSelectManager().getActiveRowIndex();
 		String id="'null'";
 		if(rowIndex>=0){
@@ -139,12 +132,19 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 		}
 		filter.getFilterItems().add(new FilterItemInfo("tenancyBill.id",id));
 		try {
-			view.getFilter().mergeFilter(filter, "and");
+			viewInfo = (EntityViewInfo) this.mainQuery.clone();
+			if (viewInfo.getFilter() != null)
+			{
+				viewInfo.getFilter().mergeFilter(filter, "and");
+			} else
+			{
+				viewInfo.setFilter(filter);
+			}
 		} catch (BOSException e) {
 			this.handleException(e);
 			this.abort();
 		}
-		return queryExe;
+		return super.getQueryExecutor(queryPK, viewInfo);
 	}
 
 	protected void kdtTenancy_tableClicked(KDTMouseEvent e) throws Exception {
@@ -293,15 +293,28 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 				this.actionView.setEnabled(true);
 			}
 		}
+		getTenancyBillList();
+	}
+	private void getTenancyBillList(){
+		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();
 		EntityViewInfo vi = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.AUDITED_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.EXECUTING_VALUE));
+		if(this.cbIsAll.isSelected()){
+			filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.EXPIRATION_VALUE));
+		}
 		if (node != null  &&  node.getUserObject() instanceof SellProjectInfo) {
 			SellProjectInfo pro = (SellProjectInfo) node.getUserObject();
 			filter.getFilterItems().add(new FilterItemInfo("sellProject.id", pro.getId().toString()));
 		} else {
 			filter.getFilterItems().add(new FilterItemInfo("id", null));
 		}
-
+		if(this.cbIsAll.isSelected()){
+			filter.setMaskString("(#0 or #1 or #2) and #3");
+		}else{
+			filter.setMaskString("(#0 or #1) and #2");
+		}
 		vi.setFilter(filter);
 		SelectorItemCollection sels =new SelectorItemCollection();
 		sels.add("*");
@@ -313,6 +326,7 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 		try {
 			TenancyBillCollection tencol = TenancyBillFactory.getRemoteInstance().getTenancyBillCollection(vi);
 			this.kdtTenancy.removeRows();
+			this.tblMain.removeRows();
 			for(int i=0;i<tencol.size();i++){
 				IRow row=this.kdtTenancy.addRow();
 				TenancyBillInfo info=tencol.get(i);
@@ -455,5 +469,8 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 		}
 		FDCClientUtils.showOprtOK(this);
 		this.refresh(null);
+	}
+	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
+		getTenancyBillList();
 	}
 }

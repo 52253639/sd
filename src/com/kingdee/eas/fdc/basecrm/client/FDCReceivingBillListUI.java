@@ -86,6 +86,8 @@ import com.kingdee.eas.fdc.sellhouse.client.MakeOutReceiptUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEReceivingBillEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEReceivingBillListUI;
+import com.kingdee.eas.fdc.tenancy.client.InvoiceBillEditUI;
+import com.kingdee.eas.fdc.tenancy.client.OtherBillEditUI;
 import com.kingdee.eas.fdc.tenancy.client.TENReceivingBillListUI;
 import com.kingdee.eas.fi.ar.IVerificationBillentry;
 import com.kingdee.eas.fi.ar.OtherBillBizException;
@@ -195,6 +197,10 @@ public class FDCReceivingBillListUI extends AbstractFDCReceivingBillListUI
 	}
     
     protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK, EntityViewInfo viewInfo) {
+    	if(this.getEditUIName().equals(InvoiceBillEditUI.class.getName())||
+    			this.getEditUIName().equals(OtherBillEditUI.class.getName())){
+    		return super.getQueryExecutor(queryPK, viewInfo);	
+    	}
 		try {
 			DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();
 			
@@ -575,6 +581,11 @@ public class FDCReceivingBillListUI extends AbstractFDCReceivingBillListUI
     }
     
     public void actionVoucher_actionPerformed(ActionEvent e) throws Exception {
+    	if(this.getEditUIName().equals(InvoiceBillEditUI.class.getName())||
+    			this.getEditUIName().equals(OtherBillEditUI.class.getName())){
+    		super.actionVoucher_actionPerformed(e);	
+    		return;
+    	}
 		checkSelected();
 		ArrayList blocks = tblMain.getSelectManager().getBlocks();
 		KDTSelectBlock block2 = (KDTSelectBlock) blocks.get(0);

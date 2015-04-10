@@ -16,6 +16,7 @@ import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreeNode;
 
@@ -170,6 +171,11 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		this.actionCreateBill.setVisible(false);
 		this.actionCanceReceive.setVisible(false);
 		
+		this.actionReceipt.setVisible(false);
+		this.actionRetakeReceipt.setVisible(false);
+		this.actionCreateInvoice.setVisible(false);
+		this.actionClearInvoice.setVisible(false);
+		
 		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entries.revAmount"});
 		
 		this.tblMain.getColumn("isCreateBill").getStyleAttributes().setHided(true);
@@ -220,9 +226,9 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 	protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK,
 			EntityViewInfo viewInfo) {
 		FilterInfo filter = new FilterInfo();
-		Set set = new HashSet();
-		set.add(RevBizTypeEnum.TENANCY_VALUE);
-		set.add(RevBizTypeEnum.OBLIGATE_VALUE);
+//		Set set = new HashSet();
+//		set.add(RevBizTypeEnum.TENANCY_VALUE);
+//		set.add(RevBizTypeEnum.OBLIGATE_VALUE);
 //		filter.getFilterItems().add(
 //				new FilterItemInfo("revBizType", set, CompareType.INCLUDE));
 		// viewInfo = (EntityViewInfo) mainQuery.clone();
@@ -512,17 +518,28 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		//modify by warship at 2010/09/07 调整性能问题
 		//this.execQuery();
 		//this.refresh(null);
+		getTenancyBillList();
+	}
+	private void getTenancyBillList(){
+		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();
 		EntityViewInfo vi = new EntityViewInfo();
-
 		FilterInfo filter = new FilterInfo();
-//		filter.getFilterItems().add(new FilterItemInfo("tenancyState", TenancyBillStateEnum.AUDITED_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.AUDITED_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.EXECUTING_VALUE));
+		if(this.cbIsAll.isSelected()){
+			filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.EXPIRATION_VALUE));
+		}
 		if (node != null  &&  node.getUserObject() instanceof SellProjectInfo) {
 			SellProjectInfo pro = (SellProjectInfo) node.getUserObject();
 			filter.getFilterItems().add(new FilterItemInfo("sellProject.id", pro.getId().toString()));
 		} else {
 			filter.getFilterItems().add(new FilterItemInfo("id", null));
 		}
-
+		if(this.cbIsAll.isSelected()){
+			filter.setMaskString("(#0 or #1 or #2) and #3");
+		}else{
+			filter.setMaskString("(#0 or #1) and #2");
+		}
 		vi.setFilter(filter);
 		SelectorItemCollection sels =new SelectorItemCollection();
 		sels.add("*");
@@ -534,6 +551,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		try {
 			TenancyBillCollection tencol = TenancyBillFactory.getRemoteInstance().getTenancyBillCollection(vi);
 			this.kdtTenancy.removeRows();
+			this.tblMain.removeRows();
 			for(int i=0;i<tencol.size();i++){
 				IRow row=this.kdtTenancy.addRow();
 				TenancyBillInfo info=tencol.get(i);
@@ -572,7 +590,6 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			ee.printStackTrace();
 		}
 	}
-
 	public void actionEdit_actionPerformed(ActionEvent e) throws Exception {
 		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
 		if (rowIndex == -1) {
@@ -1150,5 +1167,8 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 				logger.error(e.getMessage()+"获取是否已生成出纳收款单状态失败!");
 			}
 			
+	}
+	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
+		getTenancyBillList();
 	}
 }

@@ -363,6 +363,7 @@ public class ReceiveGatherControllerBean extends AbstractReceiveGatherController
 					}
 				}
 			}	
+			payBillEntryInfo.setCostCenter(ContextUtil.getCurrentCostUnit(ctx));
 			payBillEntryInfo.setRemark(revGatherEntryInfo.getRemark());
 			payment.getEntries().add(payBillEntryInfo);
 		}
@@ -531,6 +532,7 @@ public class ReceiveGatherControllerBean extends AbstractReceiveGatherController
 			if(i==0){
 				receivingBillInfo.setDescription(receBillEntryInfo.getRemark());
 			}
+			receBillEntryInfo.setCostCenter(ContextUtil.getCurrentCostUnit(ctx));
 			receivingBillInfo.getEntries().add(receBillEntryInfo);
 		}
 		ReceivingBillFactory.getLocalInstance(ctx).save(receivingBillInfo);

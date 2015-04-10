@@ -50,10 +50,13 @@ public abstract class AbstractRentFreeEntryControllerBean extends CoreBillEntryB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e3b1bc61-f728-4d37-bf27-46c9687d1a3d"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentFreeEntryInfo retValue = (RentFreeEntryInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentFreeEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -72,10 +75,13 @@ public abstract class AbstractRentFreeEntryControllerBean extends CoreBillEntryB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f30c511b-7b68-4859-9fe5-8b636ad270b9"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentFreeEntryInfo retValue = (RentFreeEntryInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentFreeEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -94,10 +100,13 @@ public abstract class AbstractRentFreeEntryControllerBean extends CoreBillEntryB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("48c1b618-8e6e-401e-8f04-d093cb4ca4a1"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentFreeEntryInfo retValue = (RentFreeEntryInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentFreeEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -116,10 +125,13 @@ public abstract class AbstractRentFreeEntryControllerBean extends CoreBillEntryB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("a06a9d85-1432-4719-814a-05572a15f99d"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentFreeEntryCollection retValue = (RentFreeEntryCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentFreeEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -136,10 +148,13 @@ public abstract class AbstractRentFreeEntryControllerBean extends CoreBillEntryB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("2e03fbc6-4e5d-42ff-bb20-8fa668ac4a5b"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentFreeEntryCollection retValue = (RentFreeEntryCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentFreeEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -156,10 +171,13 @@ public abstract class AbstractRentFreeEntryControllerBean extends CoreBillEntryB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7be918be-1d4e-48c7-bab6-1e290c91140c"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentFreeEntryCollection retValue = (RentFreeEntryCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentFreeEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

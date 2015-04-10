@@ -105,6 +105,30 @@ public class AbstractTenancyRoomPayListEntryInfo extends com.kingdee.eas.fdc.bas
     {
         put("tenBill", item);
     }
+    /**
+     * Object:房间付款计划分录's 备注property 
+     */
+    public String getRemark()
+    {
+        return getString("remark");
+    }
+    public void setRemark(String item)
+    {
+        setString("remark", item);
+    }
+    /**
+     * Object:房间付款计划分录's 是否托收property 
+     */
+    public com.kingdee.eas.fdc.propertymgmt.DeductFlagEnum getCollectionFlag()
+    {
+        return com.kingdee.eas.fdc.propertymgmt.DeductFlagEnum.getEnum(getString("collectionFlag"));
+    }
+    public void setCollectionFlag(com.kingdee.eas.fdc.propertymgmt.DeductFlagEnum item)
+    {
+		if (item != null) {
+        setString("collectionFlag", item.getValue());
+		}
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("31D11A7E");

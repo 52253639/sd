@@ -43,6 +43,7 @@ public class TENRevHelper {
 	public static SelectorItemCollection getSelectorItemCollection(RevListTypeEnum revListType){
 		SelectorItemCollection sels = new SelectorItemCollection();
 		sels.add("*");
+		sels.add("moneyDefine.*");
 		if (RevListTypeEnum.tenRoomRev.equals(revListType)) {
 			sels.add("tenRoom.roomLongNum");
 			//by tim_gao 加入合同显示

@@ -39,6 +39,7 @@ import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
+import com.kingdee.eas.fdc.merch.common.KDTableHelper;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
@@ -160,10 +161,11 @@ public class SelectRevListUI extends AbstractSelectRevListUI
     	hasSelectedIds = (Set) getValue(KEY_HAS_SELECTED_IDS);
     	loadAppRevListTable(appRevMap, tblAppRev);
     	
-    	tblAppRev.getGroupManager().setGroup(true);
-			
-    	tblAppRev.getColumn("leaseSeq").setGroup(true);
-    	tblAppRev.getColumn("leaseSeq").setMergeable(true);
+    	String[] fields=new String[tblAppRev.getColumnCount()];
+		for(int i=0;i<tblAppRev.getColumnCount();i++){
+			fields[i]=tblAppRev.getColumnKey(i);
+		}
+		KDTableHelper.setSortedColumn(tblAppRev,fields);
     	
     	loadAppRevListTable(dirRevList, tblDirRev);
     	loadAppRevListTable(preRevList, tblPreRev);
@@ -207,7 +209,17 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 		if (RevBillTypeEnum.gathering.equals(revBillType) && MoneySysTypeEnum.ManageSys.equals(((MoneySysTypeEnum)getValue(KEY_MONEYSYSTYPE)))) {
 			this.btnTransfer.setEnabled(false);
 		}
-    	
+		if(this.getUIContext().get("isInvoice")!=null){
+			String isInvoice = this.getUIContext().get("isInvoice").toString();
+        	if(isInvoice.equals("true")){
+        		this.tabbedPanel.removeAll();
+        		this.tabbedPanel.add(tblAppRev,"Ó¦ÊÕÃ÷Ï¸");
+        		this.btnRev.setVisible(false);
+            	this.btnRefundment.setVisible(false);
+            	this.btnTransfer.setVisible(false);
+            	this.btnAdjust.setVisible(false);
+        	}
+		}
     }
     
     private void initFormaxTable(boolean isShowAppColOfPreRev)
@@ -217,6 +229,9 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 		this.tblAppRev.getColumn(COL_APP_AMOUNT).getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 		this.tblAppRev.getColumn(COL_HAS_REV_AMOUNT).setEditor(CRMClientHelper.getKDTDefaultCellEditor());
 		this.tblAppRev.getColumn(COL_HAS_REV_AMOUNT).getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		
+		this.tblAppRev.getColumn("invoiceAmount").setEditor(CRMClientHelper.getKDTDefaultCellEditor());
+		this.tblAppRev.getColumn("invoiceAmount").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 
 		this.tblPreRev.checkParsed();
 		this.tblPreRev.getColumn(COL_APP_AMOUNT).setEditor(CRMClientHelper.getKDTDefaultCellEditor());
@@ -330,12 +345,24 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 	
 	private void setLockActRevAmount(IRevListInfo revListInfo,IRow row)
 	{
-		if(!revListInfo.isIsCanRevBeyond()){
-			BigDecimal remainAppAmount = CRMHelper.getBigDecimal(revListInfo.getFinalAppAmount());
-			BigDecimal allRemainAMount = CRMHelper.getBigDecimal(revListInfo.getAllRemainAmount());
-			if(allRemainAMount.compareTo(remainAppAmount) >= 0)	{
-				row.getStyleAttributes().setBackground(KEY_LOCKED_ROW);
-				row.getStyleAttributes().setLocked(true);
+		if(this.getUIContext().get("isInvoice")!=null){
+			String isInvoice = this.getUIContext().get("isInvoice").toString();
+        	if(isInvoice.equals("true")){
+        		BigDecimal appAmount = CRMHelper.getBigDecimal(revListInfo.getAppAmount());
+				BigDecimal invoiceAmount = CRMHelper.getBigDecimal(revListInfo.getInvoiceAmount());
+				if(invoiceAmount.compareTo(appAmount) >= 0)	{
+					row.getStyleAttributes().setBackground(KEY_LOCKED_ROW);
+					row.getStyleAttributes().setLocked(true);
+				}
+        	}
+		}else{
+			if(!revListInfo.isIsCanRevBeyond()){
+				BigDecimal remainAppAmount = CRMHelper.getBigDecimal(revListInfo.getFinalAppAmount());
+				BigDecimal allRemainAMount = CRMHelper.getBigDecimal(revListInfo.getAllRemainAmount());
+				if(allRemainAMount.compareTo(remainAppAmount) >= 0)	{
+					row.getStyleAttributes().setBackground(KEY_LOCKED_ROW);
+					row.getStyleAttributes().setLocked(true);
+				}
 			}
 		}
 	}
@@ -440,6 +467,7 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 			}else if(revListInfo instanceof TenBillOtherPayInfo){
 				setColValue(row, "leaseSeq", ((TenBillOtherPayInfo)revListInfo).getLeaseSeq()==0?null:((TenBillOtherPayInfo)revListInfo).getLeaseSeq());
 			}
+			setColValue(row, "invoiceAmount", revListInfo.getInvoiceAmount());
 			setColValue(row, COL_IS_SELECTED, Boolean.FALSE);
 			setColValue(row, COL_MONEY_DEFINE, revListInfo.getMoneyDefine());
 			setColValue(row, COL_APP_AMOUNT, revListInfo.getAppAmount());
@@ -485,7 +513,7 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 				loadAppRevListTable(revList,table,Color.WHITE);
 			}else if(FDCReceivingBillEditUI.KEY_TENOTHERPAYLIST.equals(str))
 			{
-				loadAppRevListTable(revList,table,Color.YELLOW);
+				loadAppRevListTable(revList,table,Color.WHITE);
 			}else{
 				loadAppRevListTable(revList,table, Color.WHITE);
 			}
