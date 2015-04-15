@@ -212,7 +212,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _addToSysCustomer(Context ctx, String id) throws BOSException, EASBizException;
+    protected void _addToSysCustomer(Context ctx, String id) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void blankOut(Context ctx, List idList) throws BOSException
     {
@@ -230,7 +233,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _blankOut(Context ctx, List idList) throws BOSException;
+    protected void _blankOut(Context ctx, List idList) throws BOSException
+    {    	
+        return;
+    }
 
     public void pickUp(Context ctx, List idList) throws BOSException
     {
@@ -248,7 +254,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _pickUp(Context ctx, List idList) throws BOSException;
+    protected void _pickUp(Context ctx, List idList) throws BOSException
+    {    	
+        return;
+    }
 
     public void modifyName(Context ctx, FDCCustomerInfo fdccustomer) throws BOSException
     {
@@ -266,7 +275,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _modifyName(Context ctx, IObjectValue fdccustomer) throws BOSException;
+    protected void _modifyName(Context ctx, IObjectValue fdccustomer) throws BOSException
+    {    	
+        return;
+    }
 
     public void signImportantTrack(Context ctx, List idList) throws BOSException
     {
@@ -284,7 +296,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _signImportantTrack(Context ctx, List idList) throws BOSException;
+    protected void _signImportantTrack(Context ctx, List idList) throws BOSException
+    {    	
+        return;
+    }
 
     public void cancelImportantTrack(Context ctx, List idList) throws BOSException
     {
@@ -302,7 +317,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _cancelImportantTrack(Context ctx, List idList) throws BOSException;
+    protected void _cancelImportantTrack(Context ctx, List idList) throws BOSException
+    {    	
+        return;
+    }
 
     public void switchTo(Context ctx, List idList, String salesmanId) throws BOSException
     {
@@ -320,7 +338,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _switchTo(Context ctx, List idList, String salesmanId) throws BOSException;
+    protected void _switchTo(Context ctx, List idList, String salesmanId) throws BOSException
+    {    	
+        return;
+    }
 
     public void addToSysCustomer(Context ctx, String id, List list) throws BOSException, EASBizException
     {
@@ -341,7 +362,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _addToSysCustomer(Context ctx, String id, List list) throws BOSException, EASBizException;
+    protected void _addToSysCustomer(Context ctx, String id, List list) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public Map verifySave(Context ctx, FDCCustomerInfo model) throws BOSException, EASBizException
     {
@@ -364,7 +388,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract Map _verifySave(Context ctx, IObjectValue model) throws BOSException, EASBizException;
+    protected Map _verifySave(Context ctx, IObjectValue model) throws BOSException, EASBizException
+    {    	
+        return null;
+    }
 
     public void setStatus(Context ctx, List idList) throws BOSException
     {
@@ -382,7 +409,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _setStatus(Context ctx, List idList) throws BOSException;
+    protected void _setStatus(Context ctx, List idList) throws BOSException
+    {    	
+        return;
+    }
 
     public Map verifySave(Context ctx, IObjectValue model, boolean isSingle) throws BOSException, EASBizException
     {
@@ -405,7 +435,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract Map _verifySave(Context ctx, IObjectValue model, boolean isSingle) throws BOSException, EASBizException;
+    protected Map _verifySave(Context ctx, IObjectValue model, boolean isSingle) throws BOSException, EASBizException
+    {    	
+        return null;
+    }
 
     public void updateTenancyBill(Context ctx, String fdcCustID) throws BOSException, EASBizException
     {
@@ -426,7 +459,10 @@ public abstract class AbstractFDCCustomerControllerBean extends DataBaseControll
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _updateTenancyBill(Context ctx, String fdcCustID) throws BOSException, EASBizException;
+    protected void _updateTenancyBill(Context ctx, String fdcCustID) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public DataBaseCollection getDataBaseCollection (Context ctx) throws BOSException
     {

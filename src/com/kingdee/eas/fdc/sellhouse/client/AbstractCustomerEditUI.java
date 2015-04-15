@@ -116,6 +116,8 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
     protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtZb;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFirstDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contClassify;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRemark;
     protected com.kingdee.bos.ctrl.swing.KDComboBox boxCustomerType;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7salesman;
@@ -179,6 +181,9 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
     protected com.kingdee.bos.ctrl.swing.KDTextField txtZz;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtArea;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFirstDate;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtClassify;
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane2;
+    protected com.kingdee.bos.ctrl.swing.KDTextArea txtRemark;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblInsider;
     protected com.kingdee.bos.ctrl.swing.KDContainer containSaleRecord;
     protected com.kingdee.bos.ctrl.swing.KDContainer containSaleCommerce;
@@ -352,6 +357,8 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.txtZb = new com.kingdee.bos.ctrl.swing.KDTextArea();
         this.contFirstDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contClassify = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contRemark = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.boxCustomerType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.f7salesman = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -415,6 +422,9 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         this.txtZz = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtArea = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.pkFirstDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.prmtClassify = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.kDScrollPane2 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
+        this.txtRemark = new com.kingdee.bos.ctrl.swing.KDTextArea();
         this.tblInsider = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.containSaleRecord = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.containSaleCommerce = new com.kingdee.bos.ctrl.swing.KDContainer();
@@ -518,6 +528,8 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         this.kDLabel1.setName("kDLabel1");
         this.txtZb.setName("txtZb");
         this.contFirstDate.setName("contFirstDate");
+        this.contClassify.setName("contClassify");
+        this.contRemark.setName("contRemark");
         this.boxCustomerType.setName("boxCustomerType");
         this.txtNumber.setName("txtNumber");
         this.f7salesman.setName("f7salesman");
@@ -581,6 +593,9 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         this.txtZz.setName("txtZz");
         this.txtArea.setName("txtArea");
         this.pkFirstDate.setName("pkFirstDate");
+        this.prmtClassify.setName("prmtClassify");
+        this.kDScrollPane2.setName("kDScrollPane2");
+        this.txtRemark.setName("txtRemark");
         this.tblInsider.setName("tblInsider");
         this.containSaleRecord.setName("containSaleRecord");
         this.containSaleCommerce.setName("containSaleCommerce");
@@ -933,6 +948,14 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         this.contFirstDate.setBoundLabelText(resHelper.getString("contFirstDate.boundLabelText"));		
         this.contFirstDate.setBoundLabelLength(100);		
         this.contFirstDate.setBoundLabelUnderline(true);
+        // contClassify		
+        this.contClassify.setBoundLabelText(resHelper.getString("contClassify.boundLabelText"));		
+        this.contClassify.setBoundLabelLength(100);		
+        this.contClassify.setBoundLabelUnderline(true);
+        // contRemark		
+        this.contRemark.setBoundLabelText(resHelper.getString("contRemark.boundLabelText"));		
+        this.contRemark.setBoundLabelUnderline(true);		
+        this.contRemark.setBoundLabelLength(100);
         // boxCustomerType		
         this.boxCustomerType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.sellhouse.CustomerTypeEnum").toArray());		
         this.boxCustomerType.setSelectedIndex(0);
@@ -1234,6 +1257,11 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         // txtArea		
         this.txtArea.setDataType(1);
         // pkFirstDate
+        // prmtClassify		
+        this.prmtClassify.setQueryInfo("com.kingdee.eas.fdc.market.app.ChannelTypeTreeQuery");
+        // kDScrollPane2
+        // txtRemark		
+        this.txtRemark.setMaxLength(255);
         // tblInsider
 		String tblInsiderStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"insider\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"insiderCode\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"vipLevel\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"requestDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"bizDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"insiderRemove\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"insiderHortation\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{insider}</t:Cell><t:Cell>$Resource{insiderCode}</t:Cell><t:Cell>$Resource{vipLevel}</t:Cell><t:Cell>$Resource{requestDate}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{insiderRemove}</t:Cell><t:Cell>$Resource{insiderHortation}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
@@ -1577,8 +1605,8 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         panelBaseInfo.add(lcBookedPlace, new KDLayout.Constraints(838, 333, 290, 19, 0));
         lcLastTrackDate.setBounds(new Rectangle(862, 239, 290, 19));
         panelBaseInfo.add(lcLastTrackDate, new KDLayout.Constraints(862, 239, 290, 19, 0));
-        kDTabbedPane1.setBounds(new Rectangle(7, 328, 981, 264));
-        panelBaseInfo.add(kDTabbedPane1, new KDLayout.Constraints(7, 328, 981, 264, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDTabbedPane1.setBounds(new Rectangle(7, 381, 981, 218));
+        panelBaseInfo.add(kDTabbedPane1, new KDLayout.Constraints(7, 381, 981, 218, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contEnterpriceProperty.setBounds(new Rectangle(700, 120, 290, 19));
         panelBaseInfo.add(contEnterpriceProperty, new KDLayout.Constraints(700, 120, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contEnterpriceSize.setBounds(new Rectangle(865, 212, 290, 19));
@@ -1633,8 +1661,8 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         panelBaseInfo.add(kDLabelContainer5, new KDLayout.Constraints(355, 284, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDLabelContainer6.setBounds(new Rectangle(355, 261, 290, 19));
         panelBaseInfo.add(kDLabelContainer6, new KDLayout.Constraints(355, 261, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        kDLabelContainer7.setBounds(new Rectangle(700, 261, 290, 19));
-        panelBaseInfo.add(kDLabelContainer7, new KDLayout.Constraints(700, 261, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDLabelContainer7.setBounds(new Rectangle(14, 284, 290, 19));
+        panelBaseInfo.add(kDLabelContainer7, new KDLayout.Constraints(14, 284, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDLabelContainer8.setBounds(new Rectangle(700, 284, 290, 19));
         panelBaseInfo.add(kDLabelContainer8, new KDLayout.Constraints(700, 284, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         kDLabelContainer9.setBounds(new Rectangle(197, 261, 108, 19));
@@ -1647,10 +1675,14 @@ public abstract class AbstractCustomerEditUI extends com.kingdee.eas.framework.c
         panelBaseInfo.add(kDLabelContainer12, new KDLayout.Constraints(700, 165, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         kDLabel1.setBounds(new Rectangle(700, 188, 317, 19));
         panelBaseInfo.add(kDLabel1, new KDLayout.Constraints(700, 188, 317, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        txtZb.setBounds(new Rectangle(700, 207, 290, 48));
-        panelBaseInfo.add(txtZb, new KDLayout.Constraints(700, 207, 290, 48, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        txtZb.setBounds(new Rectangle(700, 207, 290, 73));
+        panelBaseInfo.add(txtZb, new KDLayout.Constraints(700, 207, 290, 73, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contFirstDate.setBounds(new Rectangle(699, 54, 290, 19));
         panelBaseInfo.add(contFirstDate, new KDLayout.Constraints(699, 54, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contClassify.setBounds(new Rectangle(355, 120, 290, 19));
+        panelBaseInfo.add(contClassify, new KDLayout.Constraints(355, 120, 290, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRemark.setBounds(new Rectangle(15, 307, 631, 69));
+        panelBaseInfo.add(contRemark, new KDLayout.Constraints(15, 307, 631, 69, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //lcCustomerType
         lcCustomerType.setBoundEditor(boxCustomerType);
         //lcCustomerNumber
@@ -1773,6 +1805,12 @@ containLinkman.getContentPane().setLayout(new BorderLayout(0, 0));        contai
         kDLabelContainer12.setBoundEditor(txtArea);
         //contFirstDate
         contFirstDate.setBoundEditor(pkFirstDate);
+        //contClassify
+        contClassify.setBoundEditor(prmtClassify);
+        //contRemark
+        contRemark.setBoundEditor(kDScrollPane2);
+        //kDScrollPane2
+        kDScrollPane2.getViewport().add(txtRemark, null);
         //panelCustomer
 panelCustomer.setLayout(new BorderLayout(0, 0));        panelCustomer.add(tblInsider, BorderLayout.CENTER);
         //panelSale
@@ -2011,7 +2049,9 @@ containTenCommerce.getContentPane().setLayout(new BorderLayout(0, 0));        co
 		dataBinder.registerBinding("level", com.kingdee.eas.fdc.sellhouse.CommerceLevelInfo.class, this.prmtLevel, "data");
 		dataBinder.registerBinding("zz", String.class, this.txtZz, "text");
 		dataBinder.registerBinding("area", java.math.BigDecimal.class, this.txtArea, "value");
-		dataBinder.registerBinding("firstDate", java.util.Date.class, this.pkFirstDate, "value");		
+		dataBinder.registerBinding("firstDate", java.util.Date.class, this.pkFirstDate, "value");
+		dataBinder.registerBinding("classify", com.kingdee.eas.fdc.market.ChannelTypeInfo.class, this.prmtClassify, "data");
+		dataBinder.registerBinding("remark", String.class, this.txtRemark, "text");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -2134,7 +2174,9 @@ containTenCommerce.getContentPane().setLayout(new BorderLayout(0, 0));        co
 		getValidateHelper().registerBindProperty("level", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("zz", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("area", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("firstDate", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("firstDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("classify", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("remark", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -2528,6 +2570,16 @@ containTenCommerce.getContentPane().setLayout(new BorderLayout(0, 0));        co
         sic.add(new SelectorItemInfo("zz"));
         sic.add(new SelectorItemInfo("area"));
         sic.add(new SelectorItemInfo("firstDate"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("classify.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("classify.id"));
+        	sic.add(new SelectorItemInfo("classify.number"));
+        	sic.add(new SelectorItemInfo("classify.name"));
+		}
+        sic.add(new SelectorItemInfo("remark"));
         return sic;
     }        
     	

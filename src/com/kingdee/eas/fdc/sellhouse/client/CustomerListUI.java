@@ -605,7 +605,7 @@ public class CustomerListUI extends AbstractCustomerListUI {
 		UIContext uiContext = new UIContext(ui);
 
 		// 创建UI对象并显示
-		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(ImportExcelFDCCustomerUI.class.getName(), uiContext, null);
+		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(com.kingdee.eas.fdc.tenancy.client.ImportExcelFDCCustomerUI.class.getName(), uiContext, null);
 		uiWindow.show();
 	}
 

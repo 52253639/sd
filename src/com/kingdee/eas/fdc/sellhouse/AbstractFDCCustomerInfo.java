@@ -832,6 +832,28 @@ public class AbstractFDCCustomerInfo extends com.kingdee.eas.framework.DataBaseI
     {
         setDate("firstDate", item);
     }
+    /**
+     * Object: 客户 's 媒体渠道 property 
+     */
+    public com.kingdee.eas.fdc.market.ChannelTypeInfo getClassify()
+    {
+        return (com.kingdee.eas.fdc.market.ChannelTypeInfo)get("classify");
+    }
+    public void setClassify(com.kingdee.eas.fdc.market.ChannelTypeInfo item)
+    {
+        put("classify", item);
+    }
+    /**
+     * Object:客户's 备注property 
+     */
+    public String getRemark()
+    {
+        return getString("remark");
+    }
+    public void setRemark(String item)
+    {
+        setString("remark", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("682588A8");

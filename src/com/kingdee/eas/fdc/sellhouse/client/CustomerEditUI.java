@@ -512,6 +512,23 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 			EntityViewInfo saleManView = CommerceHelper.getPermitSalemanView(this.editData.getProject());
 			this.f7salesman.setEntityViewInfo(saleManView);	
 			this.f7CustomerManager.setEntityViewInfo(saleManView);
+			
+			EntityViewInfo evi= new EntityViewInfo();
+			filter = new FilterInfo();
+			
+			filter.getFilterItems().add(new FilterItemInfo("statrusing",Boolean.TRUE));
+			filter.getFilterItems().add(new FilterItemInfo("CU.id",SysContext.getSysContext().getCurrentCtrlUnit().getId().toString()));
+			evi.setFilter(filter);
+			
+			HashMap ctx=new HashMap();
+			ctx.put("EntityViewInfo", evi);
+			ctx.put("EnableMultiSelection", new Boolean(false));
+			ctx.put("HasCUDefaultFilter", new Boolean(true));
+			this.prmtClassify.setQueryInfo("com.kingdee.eas.fdc.market.app.ChannelTypeQuery");	
+			this.prmtClassify.setDisplayFormat("$name$");		
+	        this.prmtClassify.setEditFormat("$number$");		
+		    this.prmtClassify.setCommitFormat("$number$");
+		    this.prmtClassify.setEntityViewInfo(evi);
 	}
 	public void getQuestionPaperAnswer() throws Exception{
 		KDTable tblQuestion = this.tblQuestion;

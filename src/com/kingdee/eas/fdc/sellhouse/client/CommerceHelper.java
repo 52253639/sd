@@ -76,6 +76,9 @@ import com.kingdee.eas.base.permission.UserFactory;
 import com.kingdee.eas.base.permission.UserInfo;
 import com.kingdee.eas.base.uiframe.client.NewMainFrame;
 import com.kingdee.eas.base.uiframe.client.UIModelDialog;
+import com.kingdee.eas.basedata.assistant.CityCollection;
+import com.kingdee.eas.basedata.assistant.CityFactory;
+import com.kingdee.eas.basedata.assistant.CityInfo;
 import com.kingdee.eas.basedata.assistant.CountryCollection;
 import com.kingdee.eas.basedata.assistant.CountryFactory;
 import com.kingdee.eas.basedata.assistant.CountryInfo;
@@ -94,12 +97,17 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.fdc.basecrm.CRMConstants;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.ProductTypeCollection;
 import com.kingdee.eas.fdc.basedata.ProductTypeFactory;
 import com.kingdee.eas.fdc.basedata.ProductTypeInfo;
+import com.kingdee.eas.fdc.invite.supplier.CurrencyEnum;
+import com.kingdee.eas.fdc.market.ChannelTypeCollection;
+import com.kingdee.eas.fdc.market.ChannelTypeFactory;
+import com.kingdee.eas.fdc.market.ChannelTypeInfo;
 import com.kingdee.eas.fdc.sellhouse.AreaRequirementCollection;
 import com.kingdee.eas.fdc.sellhouse.AreaRequirementFactory;
 import com.kingdee.eas.fdc.sellhouse.AreaRequirementInfo;
@@ -110,6 +118,9 @@ import com.kingdee.eas.fdc.sellhouse.BuyHouseReasonCollection;
 import com.kingdee.eas.fdc.sellhouse.BuyHouseReasonFactory;
 import com.kingdee.eas.fdc.sellhouse.BuyHouseReasonInfo;
 import com.kingdee.eas.fdc.sellhouse.CertifacateNameEnum;
+import com.kingdee.eas.fdc.sellhouse.CommerceChanceAssistantCollection;
+import com.kingdee.eas.fdc.sellhouse.CommerceChanceAssistantFactory;
+import com.kingdee.eas.fdc.sellhouse.CommerceChanceAssistantInfo;
 import com.kingdee.eas.fdc.sellhouse.CommerceChanceCollection;
 import com.kingdee.eas.fdc.sellhouse.CommerceChanceFactory;
 import com.kingdee.eas.fdc.sellhouse.CommerceIntentionEnum;
@@ -789,7 +800,15 @@ public class CommerceHelper {
 		}
 		return mapCustomerTypeEnum;
 	}
-	
+	public static Map getCurrencyMap() {
+		Map mapCurrencyEnum = new HashMap();
+		List enumlist = CurrencyEnum.getEnumList();
+		for(int j=0;j<enumlist.size();j++) {
+			CurrencyEnum trackEnum = (CurrencyEnum)enumlist.get(j);
+			mapCurrencyEnum.put(trackEnum.getAlias().trim(),trackEnum);
+		}
+		return mapCurrencyEnum;
+	}
 	
 	/**
 	 * 房屋户型  RoomModelQuery
@@ -813,7 +832,27 @@ public class CommerceHelper {
 		}
 		return mapRoomModel;
 	}
-	
+	public static Map getLevelMap()  throws BOSException{    	
+		Map	mapLevel = new HashMap();    
+		EntityViewInfo view = new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		filter.getFilterItems().add(
+				new FilterItemInfo("type.id",
+						CRMConstants.COMMERCECHANCE_LEVEL_ID,
+						CompareType.EQUALS));
+		SelectorItemCollection selector = new SelectorItemCollection();
+		selector.add("id");
+		selector.add("name");
+		view.setSelector(selector);
+		view.setFilter(filter);
+		CommerceChanceAssistantCollection thisColl = CommerceChanceAssistantFactory.getRemoteInstance().getCommerceChanceAssistantCollection(view);
+		for(int i=0;i<thisColl.size();i++) {
+			CommerceChanceAssistantInfo thisInfo = thisColl.get(i);
+			mapLevel.put(thisInfo.getName().trim(),thisInfo);
+		}
+		
+		return mapLevel;
+	}
 	/**
 	 * 省市  ProvinceQuery
 	 * @return mapProvince
@@ -833,7 +872,21 @@ public class CommerceHelper {
 		
 		return mapProvince;
 	}
-	
+	public static Map getCityMap()  throws BOSException{    	
+		Map	mapCity = new HashMap();    
+		EntityViewInfo view = new EntityViewInfo();
+		SelectorItemCollection selector = new SelectorItemCollection();
+		selector.add("id");
+		selector.add("name");
+		view.setSelector(selector);
+		CityCollection thisColl = CityFactory.getRemoteInstance().getCityCollection(view);
+		for(int i=0;i<thisColl.size();i++) {
+			CityInfo thisInfo = thisColl.get(i);
+			mapCity.put(thisInfo.getName().trim(),thisInfo);
+		}
+		
+		return mapCity;
+	}
 	
 	
 	/**
@@ -1080,7 +1133,7 @@ public class CommerceHelper {
 		Map mapSellProject = new HashMap();   
 		try {
 			FDCSQLBuilder builder = new FDCSQLBuilder();	
-			builder.appendSql("select fid,fname_l2 from t_she_sellProject");
+			builder.appendSql("select fid,fname_l2 from t_she_sellProject where flevel=1");
 			IRowSet tableSet = builder.executeQuery();
 			while (tableSet.next()) {
 				String FID = tableSet.getString("FID");
@@ -1098,9 +1151,21 @@ public class CommerceHelper {
 		
 		return mapSellProject;
 	}
+	public static Map getClassifyMap() throws BOSException{    	
+		Map mapClassify = new HashMap();   
+		EntityViewInfo view= new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
 		
-	
-	
+		filter.getFilterItems().add(new FilterItemInfo("statrusing",Boolean.TRUE));
+		filter.getFilterItems().add(new FilterItemInfo("CU.id",SysContext.getSysContext().getCurrentCtrlUnit().getId().toString()));
+		view.setFilter(filter);
+		ChannelTypeCollection thisColl = ChannelTypeFactory.getRemoteInstance().getChannelTypeCollection(view);
+		for(int i=0;i<thisColl.size();i++) {
+			ChannelTypeInfo thisInfo = thisColl.get(i);
+			mapClassify.put(thisInfo.getName().trim(),thisInfo);
+		}		
+		return mapClassify;
+	}
 	public static Map getPermitUserMap(SellProjectInfo sp,UserInfo saleMan) throws BOSException{
 		String permitSaleManIsSql = null;
 		try {
@@ -1150,9 +1215,12 @@ public class CommerceHelper {
 	public static UserInfo getUserMapByNumber(SellProjectInfo sp,String saleMan) throws BOSException{
 		String permitSaleManIsSql = null;
 		try {
-			UserInfo sqlUserInfo = new UserInfo();
-			sqlUserInfo.setNumber(saleMan);
-			permitSaleManIsSql =getPermitSaleManIdSql(sp,sqlUserInfo);
+			UserCollection thisColl = UserFactory.getRemoteInstance().getUserCollection("select * from where number='"+saleMan+"'");
+			if(thisColl.size()>0){
+				permitSaleManIsSql =getPermitSaleManIdSql(sp,thisColl.get(0));
+			}else{
+				permitSaleManIsSql="'null'";
+			}
 		} catch (EASBizException e) {
 			e.printStackTrace();
 			SysUtil.abort();
