@@ -68,6 +68,8 @@ import com.kingdee.eas.basedata.org.AdminOrgUnitFactory;
 import com.kingdee.eas.basedata.org.CUBDControlFactory;
 import com.kingdee.eas.basedata.org.CUBDControlInfo;
 import com.kingdee.eas.basedata.org.CompanyOrgUnitInfo;
+import com.kingdee.eas.basedata.org.CtrlUnitCollection;
+import com.kingdee.eas.basedata.org.CtrlUnitFactory;
 import com.kingdee.eas.basedata.org.CtrlUnitInfo;
 import com.kingdee.eas.basedata.org.OrgConstants;
 import com.kingdee.eas.basedata.org.PurchaseOrgUnitCollection;
@@ -1310,17 +1312,11 @@ public class SupplierStockControllerBean extends AbstractSupplierStockController
 		SelectorItemCollection sel = new SelectorItemCollection();
 		sel.add("id");
 		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("isSealUp", Boolean.FALSE));
-		filter.getFilterItems().add(new FilterItemInfo("name", "%ÀúÊ·%",CompareType.NOTLIKE));
-		filter.getFilterItems().add(new FilterItemInfo("number", "G%",CompareType.LIKE));
-		filter.getFilterItems().add(new FilterItemInfo("number", "3%",CompareType.LIKE));
-		filter.getFilterItems().add(new FilterItemInfo("number", "B%",CompareType.LIKE));
-		filter.getFilterItems().add(new FilterItemInfo("number", "A",CompareType.EQUALS));
-		filter.setMaskString("#0 and #1 and (#2 or #3 or #4 or #5)");
+		filter.getFilterItems().add(new FilterItemInfo("id", OrgConstants.SYS_CU_ID,CompareType.NOTEQUALS));
 		view.setFilter(filter);
 		view.setSelector(sel);
 		
-		AdminOrgUnitCollection orgColl = AdminOrgUnitFactory.getLocalInstance(ctx).getAdminOrgUnitCollection(view);
+		CtrlUnitCollection orgColl = CtrlUnitFactory.getLocalInstance(ctx).getCtrlUnitCollection(view);
 		for (int i = 0; i < orgColl.size(); i++) {
 			if(cuId.equals(orgColl.get(i).getId().toString())){
 				continue;

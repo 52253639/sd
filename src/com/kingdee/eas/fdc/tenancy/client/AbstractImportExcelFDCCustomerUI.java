@@ -134,7 +134,8 @@ public abstract class AbstractImportExcelFDCCustomerUI extends com.kingdee.eas.f
         this.contInvaluidCount.setBoundLabelUnderline(true);
         // txtFilePath
         // comboImportType		
-        this.comboImportType.addItems(resHelper.getArray("comboImportType.items"));
+        this.comboImportType.addItems(resHelper.getArray("comboImportType.items"));		
+        this.comboImportType.setEnabled(false);
         // txtExcelCount		
         this.txtExcelCount.setPrecision(0);
         // txtInvaluidCount		
@@ -182,8 +183,8 @@ public abstract class AbstractImportExcelFDCCustomerUI extends com.kingdee.eas.f
         this.add(contImportType, new KDLayout.Constraints(10, 37, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
         contExcelTotalNum.setBounds(new Rectangle(526, 8, 270, 19));
         this.add(contExcelTotalNum, new KDLayout.Constraints(526, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
-        contInvaluidCount.setBounds(new Rectangle(367, 37, 270, 19));
-        this.add(contInvaluidCount, new KDLayout.Constraints(367, 37, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
+        contInvaluidCount.setBounds(new Rectangle(526, 37, 270, 19));
+        this.add(contInvaluidCount, new KDLayout.Constraints(526, 37, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
         //contFilePath
         contFilePath.setBoundEditor(txtFilePath);
         //contImportType

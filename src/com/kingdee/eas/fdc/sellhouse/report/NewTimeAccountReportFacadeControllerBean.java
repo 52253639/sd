@@ -384,7 +384,7 @@ public class NewTimeAccountReportFacadeControllerBean extends AbstractNewTimeAcc
     	if(isLock){
         	sb.append(" (t1.compensateAccount+max(case t1.name when 'sign' then round(t1.preAccount,2) else 0 end) - max(case t1.name when 'quitSign' then round(t1.preAccount,2) else 0 end))compensateTotalAccount,(t1.compensateArea+max(case t1.name when 'sign' then round(t1.preArea,2) else 0 end) - max(case t1.name when 'quitSign' then round(t1.preArea,2) else 0 end))compensateTotalArea,");
     	}else{
-        	sb.append(" (t1.compensateAccount+max(case t1.name when 'sign' then round(t1.preAccount,2) else 0 end))compensateTotalAccount,t1.signBackAccount,(t1.compensateArea+max(case t1.name when 'sign' then round(t1.preArea,2) else 0 end))compensateTotalArea,");
+        	sb.append(" (t1.compensateAccount+max(case t1.name when 'sign' then round(t1.preAccount,2) else 0 end))compensateTotalAccount,(t1.compensateArea+max(case t1.name when 'sign' then round(t1.preArea,2) else 0 end))compensateTotalArea,");
     	}
     	getSelectSql(sb,"monthSign",isLock,"quitMonthSign");
     	getSelectSql(sb,"yearSign",isLock,"quitYearSign");

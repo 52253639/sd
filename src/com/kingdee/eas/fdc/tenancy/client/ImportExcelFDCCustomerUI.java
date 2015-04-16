@@ -398,12 +398,14 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 								abort();
 							}
 						  FDCCustomerFactory.getRemoteInstance().addnew(thisInfo); //IObjectPK ioPk = 
-						row.getCell("importStatus").setValue("保存成功,新增数据");
+						  row.getCell("importStatus").setValue("保存成功,新增数据");
 					  }catch(Exception ee) {
-						  this.setRowStyleLockStatus(row,"保存失败,新增数据 \r\n");		
+						  this.setRowStyleLockStatus(row,"保存失败,新增数据 \r\n");
+						  break;
 					  }
 					}else{
-						this.setRowStyleLockStatus(row,"保存失败,新增数据 \r\n"+"编码为空");	
+						this.setRowStyleLockStatus(row,"保存失败,新增数据 \r\n"+"编码为空");
+						break;
 					}
 					hasChanged = true;
 				}

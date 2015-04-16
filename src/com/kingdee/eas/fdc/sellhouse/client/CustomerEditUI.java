@@ -377,11 +377,11 @@ public class CustomerEditUI extends AbstractCustomerEditUI
 				}
 			}		
 			String fdcCustomerID = this.editData.getId().toString();
-			if(!hasUpdatePermission(fdcCustomerID))
-			{
-				MsgBox.showInfo("对该客户没有修改权!");
-				this.abort();
-			}
+//			if(!hasUpdatePermission(fdcCustomerID))
+//			{
+//				MsgBox.showInfo("对该客户没有修改权!");
+//				this.abort();
+//			}
 			if(CustomerShareUI.hasSharePermission(fdcCustomerID))
 			{
 				this.actionCustomerShare.setEnabled(true);

@@ -85,6 +85,7 @@ import com.kingdee.bos.ui.face.ItemAction;
 import com.kingdee.bos.ui.face.UIException;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.base.permission.UserInfo;
 import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.assistant.CurrencyInfo;
@@ -609,14 +610,14 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.btnAddAttachRes.setEnabled(false);
 			this.btnRemoveAttachRes.setEnabled(false);
 
+			this.btnAddOtherPaylist.setEnabled(false);
+			this.btnDelOtherPaylist.setEnabled(false);
+			
 			this.btnAddIncrease.setEnabled(false);
 			this.btnRmIncrease.setEnabled(false);
 			this.btnAddFree.setEnabled(false);
 			this.btnRmFree.setEnabled(false);
 			
-			this.btnAddOtherPaylist.setEnabled(false);
-			this.btnDelOtherPaylist.setEnabled(false);
-
 			// 只允许在察看状态下才能进行押金结转
 			this.actionCarryForward.setEnabled(true);
 
@@ -633,14 +634,15 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.btnAddAttachRes.setEnabled(true);
 			this.btnRemoveAttachRes.setEnabled(true);
 
+			this.btnAddOtherPaylist.setEnabled(isEdit);
+			this.btnDelOtherPaylist.setEnabled(isEdit);
+			this.tblOtherPayList.setEnabled(isEdit);
+			
 //			this.btnAddIncrease.setEnabled(true);
 //			this.btnRmIncrease.setEnabled(true);
 			this.btnAddFree.setEnabled(true);
 			this.btnRmFree.setEnabled(true);
 			
-			this.btnAddOtherPaylist.setEnabled(true);
-			this.btnDelOtherPaylist.setEnabled(true);
-
 			this.actionCarryForward.setEnabled(false);
 
 			for (int i = 0; i < tabMiddle.getTabCount(); i++) {
@@ -1186,7 +1188,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		//更新租金设置Table
 		//		updateTblRentSetRow();
 	}
-
+	boolean isEdit=false;
 	/** 初始化控件基础属性,主要设置菜单,控件可否编辑(且状态不会变化) */
 	private void initControl() {
 		this.pkStartDate.setRequired(true);
@@ -1262,6 +1264,20 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				}
 			};
 			this.spinChargeOffsetDays.addChangeListener(spinChargeOffsetDaysChangeListener);
+		}
+		
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("ISOTHEREDIT", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			
+			if(hmAllParam.get("ISOTHEREDIT")!=null&&Boolean.valueOf(hmAllParam.get("ISOTHEREDIT").toString()).booleanValue()){
+				isEdit=true;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
 		}
 	}
 

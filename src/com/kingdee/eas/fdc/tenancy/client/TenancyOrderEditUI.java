@@ -9,10 +9,12 @@ import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
@@ -21,6 +23,8 @@ import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.metadata.entity.SelectorItemInfo;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.eas.base.param.ParamControlFactory;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
@@ -89,6 +93,8 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		if (rooms == null || rooms.size() < 1)
 			return;
 
+		
+		
 		// 过滤不符合要求的房间
 		RoomCollection okRooms = new RoomCollection();
 		StringBuffer buff = new StringBuffer();
@@ -106,9 +112,11 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 				MsgBox.showInfo(room.getName() + " 没有租赁属性!");
 				return;
 			}
-			if (room.getStandardRent()==null || room.getStandardRent().compareTo(new BigDecimal(0))==0) {
-				MsgBox.showInfo(room.getName() + " 未定价或者定价为0!");
-				return;
+			if(isEdit){
+				if (room.getStandardRent()==null || room.getStandardRent().compareTo(new BigDecimal(0))==0) {
+					MsgBox.showInfo(room.getName() + " 未定价或者定价为0!");
+					return;
+				}
 			}
 			if (this.allRoomList.contains(room.getId())) {
 				buff.append("房间:" + room.getName() + "已经在列表里了!\n");
@@ -334,7 +342,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		this.txtTotalRoomNum.setValue(new BigDecimal(this.kdtRoom.getRowCount()));
 		this.txtAveragePrice.setValue(avgPrice);
 	}
-
+	boolean isEdit=false;
 	public void onLoad() throws Exception {
 		sellPro = (SellProjectInfo) this.getUIContext().get("sellProject");
 
@@ -391,6 +399,19 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 		//by tim_gao 小数点后精度3位
 		this.txtTotalArea.setPrecision(3);
 		
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("ISMUSTPRICE", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			
+			if(hmAllParam.get("ISMUSTPRICE")!=null&&Boolean.valueOf(hmAllParam.get("ISMUSTPRICE").toString()).booleanValue()){
+				isEdit=true;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void actionAddNew_actionPerformed(ActionEvent e) throws Exception {
