@@ -86,6 +86,8 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
     protected com.kingdee.bos.ctrl.swing.KDContainer contMode;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSrcAmount;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contInviteType;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNeedPerson;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNeedDept;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker kDDateCreateTime;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtamount;
@@ -204,6 +206,8 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtModel;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtSrcAmount;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtInviteType;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtNeedPerson;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtNeedDept;
     protected com.kingdee.bos.ctrl.swing.KDContainer kDContainer1;
     protected com.kingdee.bos.ctrl.swing.KDSplitPane kDSplitPane1;
     protected com.kingdee.bos.ctrl.swing.KDContainer contPayItem;
@@ -425,6 +429,8 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.contMode = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.contSrcAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contInviteType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contNeedPerson = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contNeedDept = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDDateCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtamount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
@@ -543,6 +549,8 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.prmtModel = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtSrcAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.prmtInviteType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtNeedPerson = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtNeedDept = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.kDContainer1 = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.kDSplitPane1 = new com.kingdee.bos.ctrl.swing.KDSplitPane();
         this.contPayItem = new com.kingdee.bos.ctrl.swing.KDContainer();
@@ -609,6 +617,8 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.contMode.setName("contMode");
         this.contSrcAmount.setName("contSrcAmount");
         this.contInviteType.setName("contInviteType");
+        this.contNeedPerson.setName("contNeedPerson");
+        this.contNeedDept.setName("contNeedDept");
         this.kDDateCreateTime.setName("kDDateCreateTime");
         this.txtNumber.setName("txtNumber");
         this.txtamount.setName("txtamount");
@@ -727,6 +737,8 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.prmtModel.setName("prmtModel");
         this.txtSrcAmount.setName("txtSrcAmount");
         this.prmtInviteType.setName("prmtInviteType");
+        this.prmtNeedPerson.setName("prmtNeedPerson");
+        this.prmtNeedDept.setName("prmtNeedDept");
         this.kDContainer1.setName("kDContainer1");
         this.kDSplitPane1.setName("kDSplitPane1");
         this.contPayItem.setName("contPayItem");
@@ -957,6 +969,14 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.contInviteType.setBoundLabelText(resHelper.getString("contInviteType.boundLabelText"));		
         this.contInviteType.setBoundLabelLength(100);		
         this.contInviteType.setBoundLabelUnderline(true);
+        // contNeedPerson		
+        this.contNeedPerson.setBoundLabelText(resHelper.getString("contNeedPerson.boundLabelText"));		
+        this.contNeedPerson.setBoundLabelLength(100);		
+        this.contNeedPerson.setBoundLabelUnderline(true);
+        // contNeedDept		
+        this.contNeedDept.setBoundLabelText(resHelper.getString("contNeedDept.boundLabelText"));		
+        this.contNeedDept.setBoundLabelLength(100);		
+        this.contNeedDept.setBoundLabelUnderline(true);
         // kDDateCreateTime		
         this.kDDateCreateTime.setTimeEnabled(true);		
         this.kDDateCreateTime.setVisible(true);
@@ -1787,6 +1807,20 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.prmtInviteType.setDisplayFormat("$name$");		
         this.prmtInviteType.setCommitFormat("$number$");		
         this.prmtInviteType.setRequired(true);
+        // prmtNeedPerson		
+        this.prmtNeedPerson.setQueryInfo("com.kingdee.eas.basedata.person.app.PersonQuery");		
+        this.prmtNeedPerson.setDisplayFormat("$name$");		
+        this.prmtNeedPerson.setEditFormat("$number$");		
+        this.prmtNeedPerson.setCommitFormat("$number$");		
+        this.prmtNeedPerson.setRequired(true);		
+        this.prmtNeedPerson.setDefaultF7UIName("com.kingdee.eas.basedata.person.client.PersonF7UI");
+        // prmtNeedDept		
+        this.prmtNeedDept.setDisplayFormat("$name$");		
+        this.prmtNeedDept.setEditFormat("$number");		
+        this.prmtNeedDept.setDefaultF7UIName("com.kingdee.eas.basedata.org.client.f7.AdminF7");		
+        this.prmtNeedDept.setCommitFormat("$number$");		
+        this.prmtNeedDept.setEditable(true);		
+        this.prmtNeedDept.setRequired(true);
         // kDContainer1		
         this.kDContainer1.setEnableActive(false);
         // kDSplitPane1		
@@ -2071,8 +2105,8 @@ this.setLayout(new BorderLayout(0, 0));
         tabPanel.add(ecoItemPanel, resHelper.getString("ecoItemPanel.constraints"));
         //mainPanel
         mainPanel.setLayout(new KDLayout());
-        mainPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 697));        contCreateTime.setBounds(new Rectangle(631, 416, 276, 19));
-        mainPanel.add(contCreateTime, new KDLayout.Constraints(631, 416, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        mainPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 697));        contCreateTime.setBounds(new Rectangle(631, 446, 276, 19));
+        mainPanel.add(contCreateTime, new KDLayout.Constraints(631, 446, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contNumber.setBounds(new Rectangle(531, 31, 470, 19));
         mainPanel.add(contNumber, new KDLayout.Constraints(531, 31, 470, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contamount.setBounds(new Rectangle(320, 119, 276, 19));
@@ -2089,8 +2123,8 @@ this.setLayout(new BorderLayout(0, 0));
         mainPanel.add(contpartC, new KDLayout.Constraints(7, 97, 470, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contcontractName.setBounds(new Rectangle(7, 53, 471, 19));
         mainPanel.add(contcontractName, new KDLayout.Constraints(7, 53, 471, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        kDTabbedPane1.setBounds(new Rectangle(0, 447, 1000, 243));
-        mainPanel.add(kDTabbedPane1, new KDLayout.Constraints(0, 447, 1000, 243, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDTabbedPane1.setBounds(new Rectangle(0, 476, 1000, 214));
+        mainPanel.add(kDTabbedPane1, new KDLayout.Constraints(0, 476, 1000, 214, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contExRate.setBounds(new Rectangle(320, 219, 276, 19));
         mainPanel.add(contExRate, new KDLayout.Constraints(320, 219, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLocalAmount.setBounds(new Rectangle(7, 241, 276, 19));
@@ -2101,8 +2135,8 @@ this.setLayout(new BorderLayout(0, 0));
         mainPanel.add(contCurrency, new KDLayout.Constraints(7, 219, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contRespPerson.setBounds(new Rectangle(7, 285, 276, 19));
         mainPanel.add(contRespPerson, new KDLayout.Constraints(7, 285, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCreator.setBounds(new Rectangle(320, 416, 276, 19));
-        mainPanel.add(contCreator, new KDLayout.Constraints(320, 416, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCreator.setBounds(new Rectangle(320, 446, 276, 19));
+        mainPanel.add(contCreator, new KDLayout.Constraints(320, 446, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contOrg.setBounds(new Rectangle(7, 9, 470, 19));
         mainPanel.add(contOrg, new KDLayout.Constraints(7, 9, 470, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contProj.setBounds(new Rectangle(531, 9, 470, 19));
@@ -2119,30 +2153,34 @@ this.setLayout(new BorderLayout(0, 0));
         mainPanel.add(contAmtBig, new KDLayout.Constraints(320, 241, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDLabelContainer1.setBounds(new Rectangle(320, 263, 276, 19));
         mainPanel.add(kDLabelContainer1, new KDLayout.Constraints(320, 263, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCreateOrg.setBounds(new Rectangle(7, 416, 276, 19));
-        mainPanel.add(contCreateOrg, new KDLayout.Constraints(7, 416, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDes.setBounds(new Rectangle(7, 373, 900, 41));
-        mainPanel.add(contDes, new KDLayout.Constraints(7, 373, 900, 41, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCreateOrg.setBounds(new Rectangle(7, 446, 276, 19));
+        mainPanel.add(contCreateOrg, new KDLayout.Constraints(7, 446, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDes.setBounds(new Rectangle(7, 395, 900, 49));
+        mainPanel.add(contDes, new KDLayout.Constraints(7, 395, 900, 49, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDPanel1.setBounds(new Rectangle(7, 119, 276, 88));
         mainPanel.add(kDPanel1, new KDLayout.Constraints(7, 119, 276, 88, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contRespDept.setBounds(new Rectangle(320, 285, 276, 19));
         mainPanel.add(contRespDept, new KDLayout.Constraints(320, 285, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contsignDate.setBounds(new Rectangle(940, 391, 223, 19));
         mainPanel.add(contsignDate, new KDLayout.Constraints(940, 391, 223, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contOrgType.setBounds(new Rectangle(320, 329, 276, 19));
-        mainPanel.add(contOrgType, new KDLayout.Constraints(320, 329, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contcontractSource.setBounds(new Rectangle(7, 307, 276, 19));
-        mainPanel.add(contcontractSource, new KDLayout.Constraints(7, 307, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contContractWFType.setBounds(new Rectangle(7, 329, 276, 19));
-        mainPanel.add(contContractWFType, new KDLayout.Constraints(7, 329, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAttachment.setBounds(new Rectangle(631, 175, 368, 172));
-        mainPanel.add(contAttachment, new KDLayout.Constraints(631, 175, 368, 172, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contOrgType.setBounds(new Rectangle(320, 351, 276, 19));
+        mainPanel.add(contOrgType, new KDLayout.Constraints(320, 351, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contcontractSource.setBounds(new Rectangle(7, 329, 276, 19));
+        mainPanel.add(contcontractSource, new KDLayout.Constraints(7, 329, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contContractWFType.setBounds(new Rectangle(7, 351, 276, 19));
+        mainPanel.add(contContractWFType, new KDLayout.Constraints(7, 351, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contAttachment.setBounds(new Rectangle(631, 175, 368, 192));
+        mainPanel.add(contAttachment, new KDLayout.Constraints(631, 175, 368, 192, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contMode.setBounds(new Rectangle(631, 119, 368, 50));
         mainPanel.add(contMode, new KDLayout.Constraints(631, 119, 368, 50, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contSrcAmount.setBounds(new Rectangle(320, 307, 276, 19));
-        mainPanel.add(contSrcAmount, new KDLayout.Constraints(320, 307, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contInviteType.setBounds(new Rectangle(7, 351, 276, 19));
-        mainPanel.add(contInviteType, new KDLayout.Constraints(7, 351, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSrcAmount.setBounds(new Rectangle(320, 329, 276, 19));
+        mainPanel.add(contSrcAmount, new KDLayout.Constraints(320, 329, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contInviteType.setBounds(new Rectangle(7, 373, 276, 19));
+        mainPanel.add(contInviteType, new KDLayout.Constraints(7, 373, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNeedPerson.setBounds(new Rectangle(7, 307, 276, 19));
+        mainPanel.add(contNeedPerson, new KDLayout.Constraints(7, 307, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNeedDept.setBounds(new Rectangle(320, 307, 276, 19));
+        mainPanel.add(contNeedDept, new KDLayout.Constraints(320, 307, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contCreateTime
         contCreateTime.setBoundEditor(kDDateCreateTime);
         //contNumber
@@ -2306,7 +2344,7 @@ this.setLayout(new BorderLayout(0, 0));
         pnlDetail.getViewport().add(tblDetail, null);
         //pnlCost
         pnlCost.setLayout(new KDLayout());
-        pnlCost.putClientProperty("OriginalBounds", new Rectangle(0, 0, 999, 210));        tblCost.setBounds(new Rectangle(10, 10, 965, 247));
+        pnlCost.putClientProperty("OriginalBounds", new Rectangle(0, 0, 999, 181));        tblCost.setBounds(new Rectangle(10, 10, 965, 247));
         pnlCost.add(tblCost, new KDLayout.Constraints(10, 10, 965, 247, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
         //panelInvite
 panelInvite.setLayout(new BorderLayout(0, 0));        panelInvite.add(tblInvite, BorderLayout.CENTER);
@@ -2380,6 +2418,10 @@ contMode.getContentPane().setLayout(new BorderLayout(0, 0));        contMode.get
         contSrcAmount.setBoundEditor(txtSrcAmount);
         //contInviteType
         contInviteType.setBoundEditor(prmtInviteType);
+        //contNeedPerson
+        contNeedPerson.setBoundEditor(prmtNeedPerson);
+        //contNeedDept
+        contNeedDept.setBoundEditor(prmtNeedDept);
         //ecoItemPanel
 ecoItemPanel.setLayout(new BorderLayout(0, 0));        ecoItemPanel.add(kDContainer1, BorderLayout.CENTER);
         //kDContainer1
@@ -2655,6 +2697,8 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
 		dataBinder.registerBinding("model", com.kingdee.eas.base.attachment.AttachmentInfo.class, this.prmtModel, "data");
 		dataBinder.registerBinding("srcAmount", java.math.BigDecimal.class, this.txtSrcAmount, "value");
 		dataBinder.registerBinding("inviteType", com.kingdee.eas.fdc.basedata.InviteTypeInfo.class, this.prmtInviteType, "data");
+		dataBinder.registerBinding("needPerson", com.kingdee.eas.basedata.person.PersonInfo.class, this.prmtNeedPerson, "data");
+		dataBinder.registerBinding("needDept", com.kingdee.eas.basedata.org.AdminOrgUnitInfo.class, this.prmtNeedDept, "data");
 		dataBinder.registerBinding("payItems", com.kingdee.eas.fdc.contract.ContractPayItemInfo.class, this.tblEconItem, "userObject");
 		dataBinder.registerBinding("payItems.payItemDate", java.util.Date.class, this.tblEconItem, "date.text");
 		dataBinder.registerBinding("payItems.payCondition", String.class, this.tblEconItem, "payCondition.text");
@@ -2875,6 +2919,8 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
 		getValidateHelper().registerBindProperty("model", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("srcAmount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("inviteType", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("needPerson", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("needDept", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("payItems", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("payItems.payItemDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("payItems.payCondition", ValidateHelper.ON_SAVE);    
@@ -3360,6 +3406,24 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
         	sic.add(new SelectorItemInfo("inviteType.id"));
         	sic.add(new SelectorItemInfo("inviteType.number"));
         	sic.add(new SelectorItemInfo("inviteType.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("needPerson.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("needPerson.id"));
+        	sic.add(new SelectorItemInfo("needPerson.number"));
+        	sic.add(new SelectorItemInfo("needPerson.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("needDept.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("needDept.id"));
+        	sic.add(new SelectorItemInfo("needDept.number"));
+        	sic.add(new SelectorItemInfo("needDept.name"));
 		}
 		if(selectorAll.equalsIgnoreCase("true"))
 		{

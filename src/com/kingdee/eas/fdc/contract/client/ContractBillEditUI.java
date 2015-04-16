@@ -786,6 +786,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		objectValue.setId(BOSUuid.create(objectValue.getBOSType()));
 		objectValue.setCreator(SysContext.getSysContext().getCurrentUserInfo());
 		objectValue.setRespPerson(SysContext.getSysContext().getCurrentUserInfo().getPerson());
+		objectValue.setNeedPerson(SysContext.getSysContext().getCurrentUserInfo().getPerson());
 		PersonInfo person = SysContext.getSysContext().getCurrentUserInfo().getPerson();
 		objectValue.setRespPerson(person);
 		AdminOrgUnitInfo adminInfo = null;
@@ -812,6 +813,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		}
 		
 		objectValue.setRespDept(adminInfo);
+		objectValue.setNeedDept(adminInfo);
 		objectValue.setCreateDept(adminInfo);
 		objectValue.setCreateTime(new Timestamp(serverDate.getTime()));
 		objectValue.setSignDate(serverDate);
@@ -2120,6 +2122,11 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		FDCClientUtils.setRespDeptF7(prmtCreateOrg, this,
 				canSelectOtherOrgPerson ? null : cuId);
 		FDCClientUtils.setPersonF7(prmtRespPerson, this,
+				canSelectOtherOrgPerson ? null : cuId);
+		
+		FDCClientUtils.setRespDeptF7(prmtNeedDept, this,
+				canSelectOtherOrgPerson ? null : cuId);
+		FDCClientUtils.setPersonF7(prmtNeedPerson, this,
 				canSelectOtherOrgPerson ? null : cuId);
 
 		actionAddLine.setEnabled(false);
@@ -4854,6 +4861,8 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		FDCClientVerifyHelper.verifyEmpty(this, prmtlandDeveloper);
 		FDCClientVerifyHelper.verifyEmpty(this, prmtRespDept);
 		FDCClientVerifyHelper.verifyEmpty(this, prmtRespPerson);
+		FDCClientVerifyHelper.verifyEmpty(this, prmtNeedDept);
+		FDCClientVerifyHelper.verifyEmpty(this, prmtNeedPerson);
 		FDCClientVerifyHelper.verifyEmpty(this, prmtContractWFType);
 		FDCClientVerifyHelper.verifyEmpty(this, cbOrgType);
 		if(this.prmtInviteType.isEnabled()){
