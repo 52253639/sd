@@ -112,7 +112,7 @@ public class TenancyOrderEditUI extends AbstractTenancyOrderEditUI {
 				MsgBox.showInfo(room.getName() + " 没有租赁属性!");
 				return;
 			}
-			if(isEdit){
+			if(!isEdit){
 				if (room.getStandardRent()==null || room.getStandardRent().compareTo(new BigDecimal(0))==0) {
 					MsgBox.showInfo(room.getName() + " 未定价或者定价为0!");
 					return;
