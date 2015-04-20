@@ -5871,16 +5871,16 @@
             <alias>permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].alias</alias>
             <description>permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].description</description>
             <type>OTHER</type>
-            <groupName>EAS系统.199房地产.50采购招标管理.2采购管理.3报表管理.20采购报表</groupName>
+            <groupName>EAS系统.199房地产.50采购招标管理.2采购管理.3报表管理.20采购指标表</groupName>
             <group>permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].group</group>
             <userDefined>true</userDefined>
             <bizRefs>
                 <bizRef>
-                    <id>15464147-2dcf-47b5-8a94-3dc4f6402564</id>
+                    <id>88834aba-4874-4ad7-a32d-8168b4ba2327</id>
                     <userDefined>true</userDefined>
                     <metadataRef>
-                        <package>com.kingdee.eas.custom.fdcrptcz</package>
-                        <name>Copy_checkRptUI</name>
+                        <package>com.kingdee.eas.fdc.invite.client</package>
+                        <name>InviteIndexReportUI</name>
                         <bosType>uioj</bosType>
                     </metadataRef>
                     <bizPropertys>
@@ -5890,27 +5890,24 @@
                         </bizProperty>
                     </bizPropertys>
                 </bizRef>
+            </bizRefs>
+        </permissionItem>
+        <permissionItem>
+            <innerID>9b3df4e2-ff48-40ad-8e5b-ba83e8e652d3PERMITEM</innerID>
+            <name>inviteDetailReport_view</name>
+            <alias>permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].alias</alias>
+            <description>permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].description</description>
+            <type>OTHER</type>
+            <groupName>EAS系统.199房地产.50采购招标管理.2采购管理.3报表管理.20采购指标明细表</groupName>
+            <group>permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].group</group>
+            <userDefined>true</userDefined>
+            <bizRefs>
                 <bizRef>
-                    <id>95ad5b46-6258-4b84-bbda-fb80ef245c64</id>
+                    <id>551da9a5-7c89-4bd2-9922-83a4e85d70dd</id>
                     <userDefined>true</userDefined>
                     <metadataRef>
-                        <package>com.kingdee.eas.custom.fdcrptcz</package>
-                        <name>checkRptUI</name>
-                        <bosType>uioj</bosType>
-                    </metadataRef>
-                    <bizPropertys>
-                        <bizProperty>
-                            <property>ActionOnLoad</property>
-                            <userDefined>true</userDefined>
-                        </bizProperty>
-                    </bizPropertys>
-                </bizRef>
-                <bizRef>
-                    <id>9628aceb-4ddf-4b74-a9bf-87227caba854</id>
-                    <userDefined>true</userDefined>
-                    <metadataRef>
-                        <package>com.kingdee.eas.custom.fdcrptcz</package>
-                        <name>checkRptUITotal</name>
+                        <package>com.kingdee.eas.fdc.invite.client</package>
+                        <name>InviteIndexDetailReportUI</name>
                         <bosType>uioj</bosType>
                     </metadataRef>
                     <bizPropertys>
@@ -7272,6 +7269,12 @@
             <id>32ff2e89-294a-44b6-8b0e-c07e9009fe2dPERMITEM</id>
             <referedItem>
                 <key name="innerID" value="32ff2e89-294a-44b6-8b0e-c07e9009fe2dPERMITEM" />
+            </referedItem>
+        </dependence>
+        <dependence>
+            <id>9b3df4e2-ff48-40ad-8e5b-ba83e8e652d3PERMITEM</id>
+            <referedItem>
+                <key name="innerID" value="9b3df4e2-ff48-40ad-8e5b-ba83e8e652d3PERMITEM" />
             </referedItem>
         </dependence>
     </dependences>
@@ -11101,17 +11104,45 @@
             <lang locale="zh_HK" value="EAS系統.房地產.採購招標管理.基礎資料.採購類別" />
             <lang locale="zh_TW" value="EAS系統.房地產.採購招標管理.基礎資料.採購類別" />
         </rs>
+        <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="考核指标明细表查看" />
+            <lang locale="zh_HK" value="考核指標明細表查看" />
+            <lang locale="zh_TW" value="考核指標明細表查看" />
+        </rs>
+        <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="考核指标明细表查看" />
+            <lang locale="zh_HK" value="考核指標明細表查看" />
+            <lang locale="zh_TW" value="考核指標明細表查看" />
+        </rs>
+        <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].extendedProperty.orgRelation">
+            <lang locale="en_US" value="CostCenter" />
+            <lang locale="zh_CN" value="CostCenter" />
+            <lang locale="zh_TW" value="CostCenter" />
+        </rs>
+        <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].extendedProperty.permItemType">
+            <lang locale="en_US" value="20" />
+            <lang locale="zh_CN" value="20" />
+            <lang locale="zh_TW" value="20" />
+        </rs>
+        <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteDetailReport_view].group">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="EAS系统.房地产.采购招标管理.采购管理.报表管理.采购指标明细表" />
+            <lang locale="zh_HK" value="EAS系統.房地產.採購招標管理.採購管理.報表管理.採購指標明細表" />
+            <lang locale="zh_TW" value="EAS系統.房地產.採購招標管理.採購管理.報表管理.採購指標明細表" />
+        </rs>
         <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_CN" value="采购报表权限" />
-            <lang locale="zh_HK" value="採購報表許可權" />
-            <lang locale="zh_TW" value="採購報表許可權" />
+            <lang locale="zh_CN" value="考核指标表查看" />
+            <lang locale="zh_HK" value="考核指標表查看" />
+            <lang locale="zh_TW" value="考核指標表查看" />
         </rs>
         <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].description">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_CN" value="采购报表权限" />
-            <lang locale="zh_HK" value="採購報表許可權" />
-            <lang locale="zh_TW" value="採購報表許可權" />
+            <lang locale="zh_CN" value="考核指标表查看" />
+            <lang locale="zh_HK" value="考核指標表查看" />
+            <lang locale="zh_TW" value="考核指標表查看" />
         </rs>
         <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].extendedProperty.orgRelation">
             <lang locale="en_US" value="CostCenter" />
@@ -11125,9 +11156,9 @@
         </rs>
         <rs key="permission[.fdc_cifiInvite].permissionItems.permissionItem[inviteReport_view].group">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_CN" value="EAS系统.房地产.采购招标管理.采购管理.报表管理.采购报表" />
-            <lang locale="zh_HK" value="EAS系統.房地產.採購招標管理.採購管理.報表管理.採購報表" />
-            <lang locale="zh_TW" value="EAS系統.房地產.採購招標管理.採購管理.報表管理.採購報表" />
+            <lang locale="zh_CN" value="EAS系统.房地产.采购招标管理.采购管理.报表管理.采购指标表" />
+            <lang locale="zh_HK" value="EAS系統.房地產.採購招標管理.採購管理.報表管理.採購指標表" />
+            <lang locale="zh_TW" value="EAS系統.房地產.採購招標管理.採購管理.報表管理.採購指標表" />
         </rs>
     </resource>
 </permission>
