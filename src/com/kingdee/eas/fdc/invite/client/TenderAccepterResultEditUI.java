@@ -75,6 +75,8 @@ import com.kingdee.eas.fdc.invite.InviteFixHeadCollection;
 import com.kingdee.eas.fdc.invite.InviteFixHeadFactory;
 import com.kingdee.eas.fdc.invite.InviteFixHeadInfo;
 import com.kingdee.eas.fdc.invite.InviteFixInfo;
+import com.kingdee.eas.fdc.invite.InviteProjectEntriesCollection;
+import com.kingdee.eas.fdc.invite.InviteProjectEntriesFactory;
 import com.kingdee.eas.fdc.invite.InviteTenderPlanningCollection;
 import com.kingdee.eas.fdc.invite.InviteTenderPlanningInfo;
 import com.kingdee.eas.fdc.invite.MaterialSampleCollection;
@@ -113,6 +115,10 @@ public class TenderAccepterResultEditUI extends AbstractTenderAccepterResultEdit
 		
 		loadEntry();
 		try {
+			InviteProjectEntriesCollection col=InviteProjectEntriesFactory.getRemoteInstance().getInviteProjectEntriesCollection("select programmingContract.amount from where parent.id='"+this.editData.getInviteProject().getId().toString()+"'");
+			if(col.size()>0&&col.get(0).getProgrammingContract()!=null){
+				this.txtAmount.setValue(col.get(0).getProgrammingContract().getAmount());
+			}
 			loadRecordTable();
 		} catch (BOSException e) {
 			this.handleException(e);

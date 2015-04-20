@@ -7,8 +7,9 @@ import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,13 +24,12 @@ import javax.swing.event.TreeSelectionEvent;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
-import com.kingdee.bos.ui.face.CoreUIObject;
-import com.kingdee.bos.ui.face.IUIWindow;
-import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
+import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
+import com.kingdee.bos.ctrl.kdf.table.KDTMergeManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
@@ -38,30 +38,28 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDTree;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
-import com.kingdee.bos.dao.IObjectValue;
-import com.kingdee.eas.base.param.ParamControlFactory;
+import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.bos.ui.face.IUIWindow;
+import com.kingdee.bos.ui.face.UIFactory;
+import com.kingdee.bos.ui.face.UIRuleUtil;
 import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
-import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
-import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
-import com.kingdee.eas.fdc.basedata.ChangeTypeCollection;
 import com.kingdee.eas.fdc.basedata.CurProjectInfo;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.client.ProjectTreeBuilder;
 import com.kingdee.eas.fdc.contract.DynamicCostControlFacadeFactory;
-import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
-import com.kingdee.eas.framework.report.util.DefaultKDTableInsertHandler;
-import com.kingdee.eas.framework.report.util.KDTableInsertHandler;
 import com.kingdee.eas.framework.report.util.KDTableUtil;
 import com.kingdee.eas.framework.report.util.RptParams;
 import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.jdbc.rowset.IRowSet;
 
 /**
  * output class name
@@ -103,7 +101,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 		
 		for(int i=0;i<tblMain.getColumnCount();i++){
 			String key=tblMain.getColumnKey(i);
-			if(key.equals("amount")||key.indexOf("Amount")>0||key.indexOf("CONFIRM")>0||key.equals("absolute")||key.equals("rate")||key.equals("changeRate")){
+			if(key.equals("amount")||key.indexOf("Amount")>0||key.indexOf("CONFIRM")>0||key.equals("absolute")||key.equals("rate")||key.equals("changeRate")||key.equals("payRate")){
 				CRMClientHelper.changeTableNumberFormat(tblMain,key);
 			}
 			if(params.getObject("fromDate")==null&&params.getObject("toDate")==null){
@@ -112,8 +110,6 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 				}
 			}
 		}
-		CRMClientHelper.changeTableNumberFormat(tblMain,"buildPrice");
-		CRMClientHelper.changeTableNumberFormat(tblMain,"salePrice");
 		Set indexSet = new HashSet();
 		for(int i=0;i<tblMain.getRowCount();i++){
 			boolean isDelete=true;
@@ -162,6 +158,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 		});
 		tblMain.getColumn("rate").setRenderer(render_scale);
 		tblMain.getColumn("changeRate").setRenderer(render_scale);
+		tblMain.getColumn("payRate").setRenderer(render_scale);
 	}
 	public void tableDataRequest(KDTDataRequestEvent kdtdatarequestevent) {
 		if(isQuery) return;
@@ -193,6 +190,15 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
                      List changeTypeCol=(ArrayList)rpt.getObject("changeTypeCol");
                      tblMain.setRefresh(false);
          	         int max=1;
+         	         
+         	         // ad by shilei
+         	        IColumn column = tblMain.addColumn(6);
+         	       column.setKey("unitName");
+         	      column.setWidth(200);
+         	       tblMain.getHeadRow(0).getCell("unitName").setValue("同合作单位");
+         	       tblMain.getHeadRow(1).getCell("unitName").setValue("同合作单位");
+         	       tblMain.getHeadRow(2).getCell("unitName").setValue("同合作单位");
+         	       tblMain.getHeadMergeManager().mergeBlock(0, 6,2, 6); 
          	         
          	         Map isAddRow=new HashMap();
                      if(rs!=null){
@@ -227,10 +233,14 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
              	        	 BigDecimal totalUNCONFIRM=FDCHelper.ZERO;
              	        	 BigDecimal estimateAmount=rs.getBigDecimal("estimateAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("estimateAmount");
              	        	 BigDecimal settleAmount=rs.getBigDecimal("settleAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("settleAmount");
+             	        	 BigDecimal settleAdjustAmount=FDCHelper.ZERO;
              	        	 BigDecimal unContractAmount=FDCHelper.ZERO;
              	        	 BigDecimal dynamicTotalAmount=FDCHelper.ZERO;
              	        	 BigDecimal happenedAmount=FDCHelper.ZERO;
-             	        	 
+             	        	 BigDecimal payAmount=rs.getBigDecimal("payAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("payAmount");
+             	        	 Boolean isContract=rs.getBoolean("isContract", false);
+             	       	 	 Boolean isSettle=rs.getBoolean("isSettle",false);
+             	       	     if(isSettle)estimateAmount=FDCHelper.ZERO;
              	        	 IRow row=null;
              	        	 if(isAddRow.containsKey(id)){
              	        		 row=(IRow) isAddRow.get(id);
@@ -266,27 +276,32 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
             	        	 }
             	        	 row.getCell("estimateAmount").setValue(FDCHelper.subtract(row.getCell("estimateAmount").getValue(), estimateAmount));
             	        	 row.getCell("settleAmount").setValue(FDCHelper.subtract(row.getCell("settleAmount").getValue(), settleAmount));
+            	        	 row.getCell("payAmount").setValue(FDCHelper.subtract(row.getCell("payAmount").getValue(), payAmount));
             	        	 
             	        	 setColor(row.getCell("estimateAmount"));
     	        			 setColor(row.getCell("settleAmount"));
             	        	 if(isLeaf==1){
-            	        		 if(contractAmount.compareTo(FDCHelper.ZERO)>0){
-            	        			 unContractAmount=FDCHelper.ZERO;
-                	        		 if(settleAmount.compareTo(FDCHelper.ZERO)>0){
-                	        			 dynamicTotalAmount=settleAmount.add(contractWTAmount);
-                	        			 happenedAmount=settleAmount.add(contractWTAmount);
-                	        		 }else{
-                	        			 dynamicTotalAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM).add(estimateAmount);
-                	        			 happenedAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM);
-                	        		 }
-                	        	 }else{
-                	        		 unContractAmount=amount.subtract(contractWTAmount);
-                	        		 dynamicTotalAmount=amount;
-                	        	 }
+            	        		 if(isContract){
+            	           			 unContractAmount=FDCHelper.ZERO;
+            	            	 }else{
+            	            		 unContractAmount=amount.subtract(contractWTAmount);
+            	            	 }
+            	           		 if(isSettle){
+            	           			 dynamicTotalAmount=settleAmount.add(contractWTAmount);
+            	           			 happenedAmount=settleAmount.add(contractWTAmount);
+            	           			 settleAdjustAmount=settleAmount.subtract(contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM));
+            	           		 }else{
+            	           			 if(isContract){
+            	           				dynamicTotalAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM).add(estimateAmount);
+            	           			 }else{
+            	           				dynamicTotalAmount=amount;
+            	           			 }
+            	           			 happenedAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM);
+            	           			 settleAdjustAmount=FDCHelper.ZERO;
+            	           		 }
+            	           		 row.getCell("settleAdjustAmount").setValue(FDCHelper.subtract(row.getCell("settleAdjustAmount").getValue(), settleAdjustAmount));
             	        		 row.getCell("unContractAmount").setValue(FDCHelper.subtract(row.getCell("unContractAmount").getValue(), unContractAmount));
                 	        	 row.getCell("dynamicTotalAmount").setValue(FDCHelper.subtract(row.getCell("dynamicTotalAmount").getValue(), dynamicTotalAmount));
-                	        	 row.getCell("buildPrice").setValue(FDCHelper.divide(row.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalBuildArea"),2,BigDecimal.ROUND_HALF_UP));
-                	        	 row.getCell("salePrice").setValue(FDCHelper.divide(row.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalSellArea"),2,BigDecimal.ROUND_HALF_UP));
                 	        	 row.getCell("happenedAmount").setValue(FDCHelper.subtract(row.getCell("happenedAmount").getValue(), happenedAmount));
             	        	 
                 	        	 setColor(row.getCell("unContractAmount"));
@@ -298,9 +313,11 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
             	        	 row.getCell("changeRate").getStyleAttributes().setFontColor(Color.BLACK);
             	        	 row.getCell("absolute").getStyleAttributes().setFontColor(Color.BLACK);
             	        	 row.getCell("rate").getStyleAttributes().setFontColor(Color.BLACK);
+            	        	 row.getCell("payRate").getStyleAttributes().setFontColor(Color.BLACK);
             	        	 row.getCell("changeRate").setValue(FDCHelper.ZERO);
             	        	 row.getCell("absolute").setValue(FDCHelper.ZERO);
         	        		 row.getCell("rate").setValue(FDCHelper.ZERO);
+        	        		 row.getCell("payRate").setValue(FDCHelper.ZERO);
             	        	 sumMap.put(number, row);
             	        	 
             	        	 if(number.indexOf(".")>0){
@@ -329,11 +346,10 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
                  	        			 }
                  	        			 prow.getCell("estimateAmount").setValue(FDCHelper.subtract(prow.getCell("estimateAmount").getValue(), estimateAmount));
                  	        			 prow.getCell("settleAmount").setValue(FDCHelper.subtract(prow.getCell("settleAmount").getValue(), settleAmount));
+                 	        			 prow.getCell("settleAdjustAmount").setValue(FDCHelper.subtract(prow.getCell("settleAdjustAmount").getValue(), settleAdjustAmount));
+                 	        			 prow.getCell("payAmount").setValue(FDCHelper.subtract(prow.getCell("payAmount").getValue(), payAmount));
                  	        			 prow.getCell("unContractAmount").setValue(FDCHelper.subtract(prow.getCell("unContractAmount").getValue(), unContractAmount));
                 	        			 prow.getCell("dynamicTotalAmount").setValue(FDCHelper.subtract(prow.getCell("dynamicTotalAmount").getValue(), dynamicTotalAmount));
-                	        			 prow.getCell("buildPrice").setValue(FDCHelper.divide(prow.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalBuildArea"),2,BigDecimal.ROUND_HALF_UP));
-                        	        	 prow.getCell("salePrice").setValue(FDCHelper.divide(prow.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalSellArea"),2,BigDecimal.ROUND_HALF_UP));
-                        	        	
                 	        			 prow.getCell("happenedAmount").setValue(FDCHelper.subtract(prow.getCell("happenedAmount").getValue(), happenedAmount));
                  	        		
                 	        			 setColor(prow.getCell("estimateAmount"));
@@ -397,11 +413,17 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
     	 BigDecimal totalUNCONFIRM=FDCHelper.ZERO;
     	 BigDecimal estimateAmount=rs.getBigDecimal("estimateAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("estimateAmount");
     	 BigDecimal settleAmount=rs.getBigDecimal("settleAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("settleAmount");
+    	 BigDecimal settleAdjustAmount=FDCHelper.ZERO;
     	 BigDecimal unContractAmount=FDCHelper.ZERO;
     	 BigDecimal dynamicTotalAmount=FDCHelper.ZERO;
     	 BigDecimal happenedAmount=FDCHelper.ZERO;
-    	 
+    	 BigDecimal payAmount=rs.getBigDecimal("payAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("payAmount");
+    	 BigDecimal totalAmount=FDCHelper.ZERO;
+    	 Boolean isContract=rs.getBoolean("isContract", false);
+     	 Boolean isSettle=rs.getBoolean("isSettle",false);
+     	 if(isSettle)estimateAmount=FDCHelper.ZERO;
     	 IRow row=tblMain.addRow();
+    	 
     	 isAddRow.put(id, row);
     	 if(getUIContext().get("levelNumber")!=null){
     		row.setTreeLevel(level-Integer.parseInt(getUIContext().get("levelNumber").toString()));
@@ -432,6 +454,23 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
        	 row.getCell("supplyAmount").setValue(supplyAmount);
        	 row.getCell("contractWTAmount").setValue(contractWTAmount);
        	 
+       	 
+       //add by shilei 
+    	 try {
+    		 
+    		if(!UIRuleUtil.getString(row.getCell("isLeaf").getValue()).equals("0")&&
+    				(contractAmount.compareTo(BigDecimal.ZERO)!=0||contractWTAmount.compareTo(BigDecimal.ZERO)!=0))
+    		{
+    			String unitName = getContractPayUnit(id);
+    			row.getCell("unitName").setValue(unitName);
+    		}
+		} catch (BOSException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+       	 
+       	 
        	 for(int i=0;i<changeTypeCol.size();i++){
        		 String key=changeTypeCol.get(i).toString();
        		 String mapKey=id+key;
@@ -450,25 +489,38 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
        	 }
        	 row.getCell("estimateAmount").setValue(estimateAmount);
        	 row.getCell("settleAmount").setValue(settleAmount);
+       	 row.getCell("payAmount").setValue(payAmount);
        	 if(isLeaf==1){
-       		 if(contractAmount.compareTo(FDCHelper.ZERO)>0){
+       		 if(isContract){
        			 unContractAmount=FDCHelper.ZERO;
-        		 if(settleAmount.compareTo(FDCHelper.ZERO)>0){
-        			 dynamicTotalAmount=settleAmount.add(contractWTAmount);
-        			 happenedAmount=settleAmount.add(contractWTAmount);
-        		 }else{
-        			 dynamicTotalAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM).add(estimateAmount);
-        			 happenedAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM);
-        		 }
         	 }else{
         		 unContractAmount=amount.subtract(contractWTAmount);
-        		 dynamicTotalAmount=amount;
         	 }
+       		 totalAmount=FDCHelper.ZERO;
+       		 if(isSettle){
+       			 dynamicTotalAmount=settleAmount.add(contractWTAmount);
+       			 happenedAmount=settleAmount.add(contractWTAmount);
+       			 totalAmount=settleAmount.add(contractWTAmount);
+       			 settleAdjustAmount=settleAmount.subtract(contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM));
+       		 }else{
+       			 if(isContract){
+       				dynamicTotalAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM).add(estimateAmount);
+       			 }else{
+       				dynamicTotalAmount=amount;
+       			 }
+       			 happenedAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM);
+       			 totalAmount=contractAmount.add(contractWTAmount);
+       			 settleAdjustAmount=FDCHelper.ZERO;
+       		 }
+       		 row.getCell("settleAdjustAmount").setValue(settleAdjustAmount);
+       		 row.getCell("totalAmount").setValue(totalAmount);
+       		 if(totalAmount.compareTo(FDCHelper.ZERO)==0){
+       			 row.getCell("payRate").setValue(FDCHelper.ZERO);
+	       	 }else{
+	       		 row.getCell("payRate").setValue(payAmount.divide(totalAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+	       	 }
        		 row.getCell("unContractAmount").setValue(unContractAmount);
         	 row.getCell("dynamicTotalAmount").setValue(dynamicTotalAmount);
-        	 row.getCell("buildPrice").setValue(FDCHelper.divide(row.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalBuildArea"),2,BigDecimal.ROUND_HALF_UP));
-        	 row.getCell("salePrice").setValue(FDCHelper.divide(row.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalSellArea"),2,BigDecimal.ROUND_HALF_UP));
-        	
         	 row.getCell("happenedAmount").setValue(happenedAmount);
         	 if(contractAmount.add(supplyAmount).compareTo(FDCHelper.ZERO)==0){
         		 row.getCell("changeRate").setValue(FDCHelper.ZERO);
@@ -550,6 +602,21 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
         			 }else{
         				 prow.getCell("settleAmount").setValue(settleAmount);
         			 }
+        			 if(prow.getCell("settleAdjustAmount").getValue()!=null){
+        				 prow.getCell("settleAdjustAmount").setValue(((BigDecimal)prow.getCell("settleAdjustAmount").getValue()).add(settleAdjustAmount));
+        			 }else{
+        				 prow.getCell("settleAdjustAmount").setValue(settleAdjustAmount);
+        			 }
+        			 if(prow.getCell("totalAmount").getValue()!=null){
+        				 prow.getCell("totalAmount").setValue(((BigDecimal)prow.getCell("totalAmount").getValue()).add(totalAmount));
+        			 }else{
+        				 prow.getCell("totalAmount").setValue(totalAmount);
+        			 }
+        			 if(prow.getCell("payAmount").getValue()!=null){
+        				 prow.getCell("payAmount").setValue(((BigDecimal)prow.getCell("payAmount").getValue()).add(payAmount));
+        			 }else{
+        				 prow.getCell("payAmount").setValue(payAmount);
+        			 }
         			 if(prow.getCell("unContractAmount").getValue()!=null){
         				 prow.getCell("unContractAmount").setValue(((BigDecimal)prow.getCell("unContractAmount").getValue()).add(unContractAmount));
         			 }else{
@@ -560,9 +627,6 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
         			 }else{
         				 prow.getCell("dynamicTotalAmount").setValue(dynamicTotalAmount);
         			 }
-        			 prow.getCell("buildPrice").setValue(FDCHelper.divide(prow.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalBuildArea"),2,BigDecimal.ROUND_HALF_UP));
-    	        	 prow.getCell("salePrice").setValue(FDCHelper.divide(prow.getCell("dynamicTotalAmount").getValue(), rs.getBigDecimal("ftotalSellArea"),2,BigDecimal.ROUND_HALF_UP));
-    	        	
         			 if(prow.getCell("happenedAmount").getValue()!=null){
         				 prow.getCell("happenedAmount").setValue(((BigDecimal)prow.getCell("happenedAmount").getValue()).add(happenedAmount));
         			 }else{
@@ -572,6 +636,11 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
         				 prow.getCell("changeRate").setValue(FDCHelper.ZERO);
                 	 }else{
                 		 prow.getCell("changeRate").setValue((sumTotalCONFIRM.add(sumTotalUNCONFIRM)).divide(FDCHelper.add(prow.getCell("contractAmount").getValue(), prow.getCell("supplyAmount").getValue()), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+                	 }
+        			 if(((BigDecimal)prow.getCell("totalAmount").getValue()).compareTo(FDCHelper.ZERO)==0){
+        				 prow.getCell("payRate").setValue(FDCHelper.ZERO);
+                	 }else{
+                		 prow.getCell("payRate").setValue(((BigDecimal)prow.getCell("payAmount").getValue()).divide((BigDecimal)prow.getCell("totalAmount").getValue(), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
                 	 }
         			 BigDecimal sumAmount=(BigDecimal)prow.getCell("amount").getValue();
         			 BigDecimal sumDynamicTotalAmount=(BigDecimal)prow.getCell("dynamicTotalAmount").getValue();
@@ -587,6 +656,11 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
      	        	 }else{
      	        		 prow.getCell("rate").setValue((sumAmount.subtract(sumDynamicTotalAmount)).divide(sumAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
      	        	 }
+     	        	 if(totalAmount.compareTo(FDCHelper.ZERO)==0){
+     	       			 row.getCell("payRate").setValue(FDCHelper.ZERO);
+     		       	 }else{
+     		       		 row.getCell("payRate").setValue(payAmount.divide(totalAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+     		       	 }
      	        	 if(((BigDecimal)prow.getCell("rate").getValue()).compareTo(FDCHelper.ZERO)<0){
       	        		 prow.getCell("rate").getStyleAttributes().setFontColor(Color.RED);
     	        	 }else{
@@ -607,6 +681,35 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
          }
         return max;
 	}
+	
+	
+	private String getContractPayUnit(String pcId) throws BOSException, SQLException
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append(" select a.fname_l2 from");
+		sb.append(" (");
+		sb.append(" select min(a.FCreateTime),a.FProgrammingContract,b.fname_l2 from T_CON_ContractBill a");
+		sb.append(" left join t_bd_supplier b on b.fid=a.FPartBID");
+		sb.append(" where a.fContractPropert!='SUPPLY' and a.fstate='4AUDITTED' group by a.FProgrammingContract,b.fname_l2");
+		sb.append(" union all");
+		sb.append(" select min(a.FCreateTime),FProgrammingContract,case b.fname_l2 when '' then c.fname_l2 else b.fname_l2 end fname_l2 from T_CON_ContractWithoutText a");
+		sb.append(" left join t_bd_supplier b on b.fid=a.FReceiveUnitID");
+		sb.append(" left join t_bd_person c on c.fid= a.FPersonId");
+		sb.append(" where a.fstate='4AUDITTED' group by a.FProgrammingContract,case b.fname_l2 when '' then c.fname_l2 else b.fname_l2 end");
+		sb.append(" ) a");
+		sb.append(" where a.FProgrammingContract ='"+pcId+"'");
+		
+		String unitName = "";
+		IRowSet rowset = new FDCSQLBuilder().appendSql(sb.toString()).executeQuery();
+		while(rowset.next())
+		{
+			unitName = rowset.getString(1)!=null?rowset.getString(1):"";
+			break;
+		}
+			
+		return unitName;
+	}
+	
 	protected void buildOrgTree() throws Exception{
 		ProjectTreeBuilder projectTreeBuilder = new ProjectTreeBuilder();
 		projectTreeBuilder.build(this, this.treeMain, actionOnLoad);
@@ -629,8 +732,8 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
         	}else{
         		params.setObject("curProject", null);
         	}
+    		query();
     	}
-    	query();
 	}
 	protected void treeMain_valueChanged(TreeSelectionEvent e) throws Exception {
 		this.refresh();
@@ -658,7 +761,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 		if (e.getType() == KDTStyleConstants.BODY_ROW && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
 			IRow row=this.tblMain.getRow(e.getRowIndex());
 			Object amount=row.getCell(e.getColIndex()).getValue();
-			if(amount==null||!(amount instanceof BigDecimal)||((BigDecimal)amount).compareTo(FDCHelper.ZERO)==0
+			if(amount==null||!(amount instanceof BigDecimal)
 					||(params.getObject("fromDate")!=null&&params.getObject("toDate")!=null)){
 				return;
 			}

@@ -51,6 +51,7 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
     protected com.kingdee.bos.ctrl.swing.KDTabbedPane parentPanel;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRange;
     protected com.kingdee.bos.ctrl.swing.KDTabbedPane entryPanel;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAmount;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtRecord;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane4;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtSpecial;
@@ -63,6 +64,7 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
     protected com.kingdee.bos.ctrl.swing.KDScrollPane reportPanel;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane changInviteTypeApplication;
     protected com.kingdee.bos.ctrl.swing.KDComboBox combRange;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtAmount;
     protected com.kingdee.eas.fdc.invite.TenderAccepterResultInfo editData = null;
     /**
      * output class constructor
@@ -129,6 +131,7 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
         this.parentPanel = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.contRange = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.entryPanel = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
+        this.contAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kdtRecord = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.kDScrollPane4 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.txtSpecial = new com.kingdee.bos.ctrl.swing.KDTextArea();
@@ -141,11 +144,13 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
         this.reportPanel = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.changInviteTypeApplication = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.combRange = new com.kingdee.bos.ctrl.swing.KDComboBox();
+        this.txtAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.contRecord.setName("contRecord");
         this.contSpecial.setName("contSpecial");
         this.parentPanel.setName("parentPanel");
         this.contRange.setName("contRange");
         this.entryPanel.setName("entryPanel");
+        this.contAmount.setName("contAmount");
         this.kdtRecord.setName("kdtRecord");
         this.kDScrollPane4.setName("kDScrollPane4");
         this.txtSpecial.setName("txtSpecial");
@@ -158,6 +163,7 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
         this.reportPanel.setName("reportPanel");
         this.changInviteTypeApplication.setName("changInviteTypeApplication");
         this.combRange.setName("combRange");
+        this.txtAmount.setName("txtAmount");
         // CoreUI		
         this.setMinimumSize(new Dimension(1000,600));		
         this.setPreferredSize(new Dimension(1000,600));		
@@ -251,6 +257,10 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
         this.contRange.setBoundLabelLength(100);		
         this.contRange.setBoundLabelUnderline(true);
         // entryPanel
+        // contAmount		
+        this.contAmount.setBoundLabelText(resHelper.getString("contAmount.boundLabelText"));		
+        this.contAmount.setBoundLabelLength(100);		
+        this.contAmount.setBoundLabelUnderline(true);
         // kdtRecord
 		String kdtRecordStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup /><t:Head /></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
 		
@@ -283,6 +293,10 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
         // combRange		
         this.combRange.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.invite.RangeEnum").toArray());		
         this.combRange.setRequired(true);
+        // txtAmount		
+        this.txtAmount.setDataType(1);		
+        this.txtAmount.setPrecision(2);		
+        this.txtAmount.setEnabled(false);
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -340,6 +354,8 @@ public abstract class AbstractTenderAccepterResultEditUI extends com.kingdee.eas
         this.add(contRange, new KDLayout.Constraints(10, 27, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         entryPanel.setBounds(new Rectangle(10, 122, 973, 141));
         this.add(entryPanel, new KDLayout.Constraints(10, 122, 973, 141, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contAmount.setBounds(new Rectangle(413, 26, 270, 19));
+        this.add(contAmount, new KDLayout.Constraints(413, 26, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contCreator
         contCreator.setBoundEditor(prmtCreator);
         //contCreateTime
@@ -375,6 +391,8 @@ contRecord.getContentPane().setLayout(new BorderLayout(0, 0));        contRecord
         parentPanel.add(changInviteTypeApplication, resHelper.getString("changInviteTypeApplication.constraints"));
         //contRange
         contRange.setBoundEditor(combRange);
+        //contAmount
+        contAmount.setBoundEditor(txtAmount);
 
     }
 
@@ -396,9 +414,13 @@ contRecord.getContentPane().setLayout(new BorderLayout(0, 0));        contRecord
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -459,6 +481,7 @@ contRecord.getContentPane().setLayout(new BorderLayout(0, 0));        contRecord
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -490,8 +513,11 @@ contRecord.getContentPane().setLayout(new BorderLayout(0, 0));        contRecord
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -514,6 +540,7 @@ contRecord.getContentPane().setLayout(new BorderLayout(0, 0));        contRecord
         this.toolBar.add(btnWorkFlowG);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnSignature);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(btnCreateFrom);
@@ -673,13 +700,41 @@ contRecord.getContentPane().setLayout(new BorderLayout(0, 0));        contRecord
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
-        sic.add(new SelectorItemInfo("creator.*"));
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("createTime"));
-        sic.add(new SelectorItemInfo("auditor.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("auditor.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("auditor.id"));
+        	sic.add(new SelectorItemInfo("auditor.number"));
+        	sic.add(new SelectorItemInfo("auditor.name"));
+		}
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("auditTime"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("respDept.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("respDept.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("respDept.id"));
+        	sic.add(new SelectorItemInfo("respDept.number"));
+        	sic.add(new SelectorItemInfo("respDept.name"));
+		}
         sic.add(new SelectorItemInfo("inviteProject.name"));
         sic.add(new SelectorItemInfo("specialNote"));
         sic.add(new SelectorItemInfo("compareAim"));

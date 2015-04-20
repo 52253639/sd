@@ -101,7 +101,6 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    initColoum(header,col,"contractAmount",120,false);
 	    initColoum(header,col,"supplyAmount",120,false);
 	    initColoum(header,col,"contractWTAmount",120,false);
-	   
 	    
 	    StringBuffer sb = new StringBuffer();
 		CurProjectInfo curProject = (CurProjectInfo) params.getObject("curProject");
@@ -116,9 +115,9 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 		RptRowSet rs = executeQuery(sb.toString(), null,ctx);
 		List changeTypeCol=new ArrayList();
 		
-	    Object[] one=new Object[19+rs.getRowCount()*2];
-	    Object[] two=new Object[19+rs.getRowCount()*2];
-	    Object[] three=new Object[19+rs.getRowCount()*2];
+	    Object[] one=new Object[23+rs.getRowCount()*2];
+	    Object[] two=new Object[23+rs.getRowCount()*2];
+	    Object[] three=new Object[23+rs.getRowCount()*2];
 	    
 	    String balance="";
 	    if(params.getObject("fromDate")!=null&&params.getObject("toDate")!=null){
@@ -130,9 +129,9 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    one[3]="合约规划编码";
 	    one[4]="合约规划名称";
 	    one[5]="规划金额(元)";
-	    one[6]="合同/无文本合同"+balance;
-	    one[7]="合同/无文本合同"+balance;
-	    one[8]="合同/无文本合同"+balance;
+	    one[6]="合同/无文本合同(A)"+balance;
+	    one[7]="合同/无文本合同(A)"+balance;
+	    one[8]="合同/无文本合同(A)"+balance;
 	    
 	    two[0]="id";
 	    two[1]="isLeaf";
@@ -140,9 +139,9 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    two[3]="合约规划编码";
 	    two[4]="合约规划名称";
 	    two[5]="规划金额(元)";
-	    two[6]="合同/无文本合同"+balance;
-	    two[7]="合同/无文本合同"+balance;
-	    two[8]="合同/无文本合同"+balance;
+	    two[6]="合同/无文本合同(A)"+balance;
+	    two[7]="合同/无文本合同(A)"+balance;
+	    two[8]="合同/无文本合同(A)"+balance;
 	    
 	    three[0]="id";
 	    three[1]="isLeaf";
@@ -163,8 +162,8 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    	
 	    	String str=rs.getString("name");
 	    	
-	    	one[k]="合同变动"+balance;
-			one[k+1]="合同变动"+balance;
+	    	one[k]="合同变动(B)"+balance;
+			one[k+1]="合同变动(B)"+balance;
 			
 			two[k]=str+balance;
 			two[k+1]=str+balance;
@@ -176,6 +175,8 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 		}
 	    initColoum(header,col,"unContractAmount",140,false);
     	initColoum(header,col,"estimateAmount",140,false);
+    	initColoum(header,col,"settleAdjustAmount",140,false);
+    	initColoum(header,col,"dynamicTotalAmount",160,false);
     	initColoum(header,col,"settleAmount",140,false);
     	if(!balance.equals("")){
     		initColoum(header,col,"changeRate",140,true);
@@ -183,50 +184,66 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     		initColoum(header,col,"changeRate",140,false);
     	}
     	initColoum(header,col,"happenedAmount",140,false);
-    	initColoum(header,col,"dynamicTotalAmount",140,false);
-    	initColoum(header,col,"buildPrice",140,false);
-    	initColoum(header,col,"salePrice",140,false);
     	if(!balance.equals("")){
     		initColoum(header,col,"absolute",100,true);
         	initColoum(header,col,"rate",100,true);
+        	initColoum(header,col,"payAmount",140,true);
+        	initColoum(header,col,"payRate",140,true);
     	}else{
     		initColoum(header,col,"absolute",100,false);
         	initColoum(header,col,"rate",100,false);
+        	initColoum(header,col,"payAmount",140,false);
+        	initColoum(header,col,"payRate",140,false);
     	}
+    	initColoum(header,col,"totalAmount",140,true);
+    	initColoum(header,col,"isContract",140,true);
+    	initColoum(header,col,"isSettle",140,true);
     	
-	    one[k]="未签合同"+balance;
-		one[k+1]="预估合同变动"+balance;
-		one[k+2]="合同结算金额"+balance;
-		one[k+3]="变更签证比例"+balance;
-		one[k+4]="已发生金额"+balance;
-		one[k+5]="动态成本总额"+balance;
-		one[k+6]="建筑单方";
-		one[k+7]="可售单方";
+	    one[k]="未签合同(C)"+balance;
+		one[k+1]="预估合同变动(D)"+balance;
+		one[k+2]="结算调整(E)"+balance;
+		one[k+3]="动态成本总额(A+B+C+D+E)"+balance;
+		one[k+4]="合同结算金额"+balance;
+		one[k+5]="变更签证比例"+balance;
+		one[k+6]="已发生金额"+balance;
+		one[k+7]="变化值";
 		one[k+8]="变化值";
-		one[k+9]="变化值";
+		one[k+9]="累计实付金额";
+		one[k+10]="累计实付比例(%)";
+		one[k+11]="totalAmount";
+		one[k+12]="isContract";
+		one[k+13]="isSettle";
 		
-		two[k]="未签合同"+balance;
-		two[k+1]="预估合同变动"+balance;
-		two[k+2]="合同结算金额"+balance;
-		two[k+3]="变更签证比例"+balance;
-		two[k+4]="已发生金额"+balance;
-		two[k+5]="动态成本总额"+balance;
-		two[k+6]="建筑单方";
-		two[k+7]="可售单方";
+		two[k]="未签合同(C)"+balance;
+		two[k+1]="预估合同变动(D)"+balance;
+		two[k+2]="结算调整(E)"+balance;
+		two[k+3]="动态成本总额(A+B+C+D+E)"+balance;
+		two[k+4]="合同结算金额"+balance;
+		two[k+5]="变更签证比例"+balance;
+		two[k+6]="已发生金额"+balance;
+		two[k+7]="变化值";
 		two[k+8]="变化值";
-		two[k+9]="变化值";
+		two[k+9]="累计实付金额";
+		two[k+10]="累计实付比例(%)";
+		two[k+11]="totalAmount";
+		two[k+12]="isContract";
+		two[k+13]="isSettle";
 		
-		three[k]="未签合同"+balance;
-		three[k+1]="预估合同变动"+balance;
-		three[k+2]="合同结算金额"+balance;
-		three[k+3]="变更签证比例"+balance;
-		three[k+4]="已发生金额"+balance;
-		three[k+5]="动态成本总额"+balance;
-		three[k+6]="建筑单方";
-		three[k+7]="可售单方";
-		three[k+8]="绝对值";
-		three[k+9]="比例(%)";
-	        
+		three[k]="未签合同(C)"+balance;
+		three[k+1]="预估合同变动(D)"+balance;
+		three[k+2]="结算调整(E)"+balance;
+		three[k+3]="动态成本总额(A+B+C+D+E)"+balance;
+		three[k+4]="合同结算金额"+balance;
+		three[k+5]="变更签证比例"+balance;
+		three[k+6]="已发生金额"+balance;
+		three[k+7]="绝对值";
+		three[k+8]="比例(%)";
+		three[k+9]="累计实付金额";
+		three[k+10]="累计实付比例(%)";
+		three[k+11]="totalAmount";
+		three[k+12]="isContract";
+		three[k+13]="isSettle";
+		
 		header.setLabels(new Object[][]{one,two,three},true);
 	    params.setObject("header", header);
 	    params.setObject("changeTypeCol", changeTypeCol);
@@ -243,8 +260,6 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     		RptRowSet toRowset = executeQuery(getSql(ctx,params), null, from, len, ctx);
     		params.setObject("toRowset", toRowset);
     		params.setObject("toChangeMap", getChangeMap(ctx,params));
-    		
-    		
     	}else{
     		RptRowSet rowSet = executeQuery(getSql(ctx,params), null, from, len, ctx);
     		params.setObject("rowset", rowSet);
@@ -279,7 +294,7 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 			
 			sb.append(" union all select changeType.fnumber ctNumber,cb.FChangeTypeID ctId,contract.FProgrammingContract pcId,0 CONFIRM,sum(cb.famount) UNCONFIRM from T_CON_ContractChangeBill cb");  
 			sb.append(" left join t_con_contractBill contract on contract.fid=cb.FContractBillID left join T_CON_ProgrammingContract pc on pc.fid=contract.FProgrammingContract left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_CON_ContractChangeSettleBill changeSettle on changeSettle.FConChangeBillID=cb.fid");
-			sb.append(" left join T_FDC_ChangeType changeType on changeType.fid=cb.FChangeTypeID where cb.fstate in('8VISA','4AUDITTED','7ANNOUNCE')");
+			sb.append(" left join T_FDC_ChangeType changeType on changeType.fid=cb.FChangeTypeID where cb.fstate in('4AUDITTED','7ANNOUNCE')");
 			if(curProject!=null){
 	    		sb.append(" and pro.fprojectID ='"+curProject.getId().toString()+"'");
 	    	}else{
@@ -287,7 +302,24 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    	}
 			if(auditDate!=null){
 				sb.append(" and cb.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
-				sb.append(" or (changeSettle.fauditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} or changeSettle.fauditTime is null)");
+//				sb.append(" or (changeSettle.fauditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} or changeSettle.fauditTime is null)");
+	    	}
+			if(longNumber!=null){
+	    		sb.append(" and pc.FLongNumber like '"+longNumber+"%'");
+	    	}
+			sb.append(" group by changeType.fnumber,cb.FChangeTypeID,contract.FProgrammingContract");
+			
+			sb.append(" union all select changeType.fnumber ctNumber,cb.FChangeTypeID ctId,contract.FProgrammingContract pcId,0 CONFIRM,sum(cb.famount) UNCONFIRM from T_CON_ContractChangeBill cb");  
+			sb.append(" left join t_con_contractBill contract on contract.fid=cb.FContractBillID left join T_CON_ProgrammingContract pc on pc.fid=contract.FProgrammingContract left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_CON_ContractChangeSettleBill changeSettle on changeSettle.FConChangeBillID=cb.fid");
+			sb.append(" left join T_FDC_ChangeType changeType on changeType.fid=cb.FChangeTypeID where cb.fstate in('8VISA')");
+			if(curProject!=null){
+	    		sb.append(" and pro.fprojectID ='"+curProject.getId().toString()+"'");
+	    	}else{
+	    		sb.append(" and pro.fprojectID = 'null'");
+	    	}
+			if(auditDate!=null){
+//				sb.append(" and cb.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
+				sb.append(" and (changeSettle.fauditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} or changeSettle.fauditTime is null)");
 	    	}
 			if(longNumber!=null){
 	    		sb.append(" and pc.FLongNumber like '"+longNumber+"%'");
@@ -381,9 +413,9 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     	Date auditDate=(Date)params.getObject("auditDate");
     	StringBuffer sb = new StringBuffer();
     	sb.append(" select pc.fid id,(case when isLeaf.fparentid is not null then 0 else 1 end) isLeaf,pc.flevel levelNumber,pc.FLongNumber number,pc.fname_l2 name,pc.famount amount,");
-    	sb.append(" (isnull(contract.famount,0)-isnull(supply.famount,0)) contractAmount,supply.famount supplyAmount,contractWT.famount contractWTAmount,estimate.famount estimateAmount,settle.famount settleAmount,t.ftotalBuildArea,t.ftotalSellArea");
+    	sb.append(" (isnull(contract.famount,0)-isnull(supply.famount,0)) contractAmount,supply.famount supplyAmount,contractWT.famount contractWTAmount,estimate.famount estimateAmount,settle.famount settleAmount,pay.payAmount payAmount,contract.isContract,settle.isSettle,contractWT.isContractWT,contractType.fid contractTypeId,contractType.fnumber contractTypeNumber,contractType.fname_l2 contractTypeName");
     	sb.append(" from T_CON_ProgrammingContract pc left join T_CON_Programming pro on pro.fid=pc.FProgrammingID");
-    	sb.append(" left join (select famount,fProgrammingContract from t_con_contractBill where fContractPropert!='SUPPLY' and fstate='4AUDITTED'");
+    	sb.append(" left join (select 'true' isContract,t.FProgrammingContract,sum(t.famount) famount from(select famount,fProgrammingContract from t_con_contractBill where fContractPropert!='SUPPLY' and fstate='4AUDITTED'");
     	if(auditDate!=null){
     		sb.append(" and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
@@ -391,8 +423,8 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     	if(auditDate!=null){
     		sb.append(" and contract.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
-    	sb.append(" group by entry.fProgrammingContractId) contract on contract.fProgrammingContract=pc.fid");
-    	sb.append(" left join (select sum(famount) famount,fProgrammingContract from t_con_contractBill where fContractPropert='SUPPLY' and fstate='4AUDITTED'");
+    	sb.append(" group by entry.fProgrammingContractId)t group by t.FProgrammingContract) contract on contract.fProgrammingContract=pc.fid");
+    	sb.append(" left join (select t.FProgrammingContract,sum(t.famount) famount from(select sum(famount) famount,fProgrammingContract from t_con_contractBill where fContractPropert='SUPPLY' and fstate='4AUDITTED'");
     	if(auditDate!=null){
     		sb.append(" and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
@@ -401,13 +433,13 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     	if(auditDate!=null){
     		sb.append(" and contract.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
-    	sb.append(" group by entry.fProgrammingContractId) supply on supply.fProgrammingContract=pc.fid");
-    	sb.append(" left join (select sum(case when pay.contractbillId is null then cwt.famount else pay.payAmount end) famount,cwt.fProgrammingContract from T_CON_ContractWithoutText cwt left join (select sum(flocalAmount) payAmount,fcontractbillId contractbillId from t_cas_paymentBill where fbillstatus=15 group by fcontractbillId) pay on pay.contractbillId=cwt.fid where cwt.fstate='4AUDITTED'");
+    	sb.append(" group by entry.fProgrammingContractId)t group by t.FProgrammingContract) supply on supply.fProgrammingContract=pc.fid");
+    	sb.append(" left join (select 'true' isContractWT,sum(case when pay.contractbillId is null then cwt.famount else pay.payAmount end) famount,cwt.fProgrammingContract from T_CON_ContractWithoutText cwt left join (select sum(flocalAmount) payAmount,fcontractbillId contractbillId from t_cas_paymentBill where fbillstatus=15 group by fcontractbillId) pay on pay.contractbillId=cwt.fid where cwt.fstate='4AUDITTED'");
     	if(auditDate!=null){
     		sb.append(" and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
     	sb.append(" group by fProgrammingContract) contractWT on contractWT.fProgrammingContract=pc.fid");
-    	sb.append(" left join (select sum(settlement.fcurSettlePrice) famount,contract.fProgrammingContract from T_CON_ContractSettlementBill settlement left join t_con_contractBill contract on contract.fid=settlement.FContractBillID where settlement.fstate='4AUDITTED'");
+    	sb.append(" left join (select 'true' isSettle,t.FProgrammingContract,sum(t.famount) famount from(select sum(settlement.fcurSettlePrice) famount,contract.fProgrammingContract from T_CON_ContractSettlementBill settlement left join t_con_contractBill contract on contract.fid=settlement.FContractBillID where settlement.fstate='4AUDITTED'");
     	if(auditDate!=null){
     		sb.append(" and settlement.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
@@ -417,7 +449,7 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     		sb.append(" and settlement.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
     	sb.append(" group by entry.fProgrammingContractId");
-    	sb.append(" )settle on settle.fProgrammingContract=pc.fid");
+    	sb.append(" )t group by t.FProgrammingContract)settle on settle.fProgrammingContract=pc.fid");
     	if(auditDate!=null){
     		sb.append(" left join (select festimateAmount famount,ec.fprogrammingContractID fProgrammingContract from T_CON_ContractEstimateChange ec");
     		sb.append(" left join (select max(fauditTime) fauditTime,fprogrammingContractID from T_CON_ContractEstimateChange where fstate='4AUDITTED' and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} group by fprogrammingContractID) t on t.fprogrammingContractID=ec.fprogrammingContractID and t.fauditTime=ec.fauditTime");
@@ -429,9 +461,17 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     		}
     	}
     	sb.append(" )estimate on estimate.fProgrammingContract=pc.fid");
+    	sb.append(" left join (select t.FProgrammingContract,sum(t.payAmount) payAmount from(select bill.FProgrammingContract,pay.FAmount payAmount from t_cas_paymentbill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractbillid where pay.fbillstatus=15");
+    	if(auditDate!=null){
+    		sb.append(" and pay.fpayDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
+    	}
+    	sb.append(" union all select bill.FProgrammingContract,pay.FAmount payAmount from t_cas_paymentbill pay left join t_con_contractbill bill on bill.fid=pay.fcontractbillid where pay.fbillstatus=15");
+    	if(auditDate!=null){
+    		sb.append(" and pay.fpayDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
+    	}
+    	sb.append(" ) t group by t.FProgrammingContract) pay on pay.fProgrammingContract=pc.fid");
     	sb.append(" left join (select distinct fparentid from T_CON_ProgrammingContract) isLeaf on isLeaf.fparentid=pc.fid");
     	sb.append(" left join T_FDC_ContractType contractType on contractType.fid=pc.fcontractTypeId");
-    	sb.append(" left join (select ftotalBuildArea,ftotalSellArea,FProjectID from T_AIM_PlanIndex planIndex left join T_AIM_MeasureCost measure on measure.fid=planIndex.FHeadID where FIsLastVersion=1 and fstate='4AUDITTED') t on t.FProjectID=pro.fprojectID");
     	sb.append(" where pro.FIsLatest=1 and pro.fstate='4AUDITTED'");
     	if(contractType!=null&&contractType.length>0){
     		sb.append(" and (contractType.fisCost is null");
@@ -470,7 +510,6 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 			RptRowSet rs = (RptRowSet)params.getObject("rowset");
 	        Map sumMap=new HashMap();
 	        Map changeMap=(HashMap)params.getObject("changeMap");
-	        List changeTypeCol=(ArrayList)params.getObject("changeTypeCol");
 	        DynamicCostControlPhotoCollection col=new DynamicCostControlPhotoCollection();
 	        while(rs.next()){
 	        	 String curProjectId=curProjectCol.get(p).getId().toString();
@@ -495,7 +534,9 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	        	 BigDecimal unContractAmount=FDCHelper.ZERO;
 	        	 BigDecimal dynamicTotalAmount=FDCHelper.ZERO;
 	        	 BigDecimal happenedAmount=FDCHelper.ZERO;
-	        	 
+	        	 Boolean isContract=rs.getBoolean("isContract", false);
+ 	       	 	 Boolean isSettle=rs.getBoolean("isSettle",false);
+ 	       	     if(isSettle)estimateAmount=FDCHelper.ZERO;
 	        	 DynamicCostControlPhotoInfo info=new DynamicCostControlPhotoInfo();
 	        	
 	        	 info.setCurProjectId(BOSUuid.read(curProjectId));
@@ -546,19 +587,22 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 		       	 info.setSettleAmount(settleAmount);
 		       	 
 		       	 if(isLeaf==1){
-		       		 if(contractAmount.compareTo(FDCHelper.ZERO)>0){
+		       		if(isContract){
 		       			 unContractAmount=FDCHelper.ZERO;
-		        		 if(settleAmount.compareTo(FDCHelper.ZERO)>0){
-		        			 dynamicTotalAmount=settleAmount.add(contractWTAmount);
-		        			 happenedAmount=settleAmount.add(contractWTAmount);
-		        		 }else{
-		        			 dynamicTotalAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM).add(estimateAmount);
-		        			 happenedAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM);
-		        		 }
 		        	 }else{
 		        		 unContractAmount=amount.subtract(contractWTAmount);
-		        		 dynamicTotalAmount=amount;
 		        	 }
+		       		 if(isSettle){
+		       			 dynamicTotalAmount=settleAmount.add(contractWTAmount);
+		       			 happenedAmount=settleAmount.add(contractWTAmount);
+		       		 }else{
+		       			if(isContract){
+	           				dynamicTotalAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM).add(estimateAmount);
+	           			 }else{
+	           				dynamicTotalAmount=amount;
+	           			 }
+		       			 happenedAmount=contractAmount.add(supplyAmount).add(contractWTAmount).add(totalCONFIRM).add(totalUNCONFIRM);
+		       		 }
 		       		 info.setUnContractAmount(unContractAmount);
 		       		 info.setDynamicTotalAmount(dynamicTotalAmount);
 		       		 info.setHappenedAmount(happenedAmount);
@@ -646,11 +690,12 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 					
 					seq=seq+1;
 					
-					ProgrammingContractInfo pcInfo=ProgrammingContractFactory.getLocalInstance(ctx).getProgrammingContractInfo(new ObjectUuidPK(info.getPcId()),sel);
-		       		if(!(pcInfo.getBalance()!=null&&info.getAbsolute()!=null&&pcInfo.getBalance().compareTo(info.getAbsolute())==0)){
-		       			pcInfo.setBalance(info.getAbsolute());
-		       			ProgrammingContractFactory.getLocalInstance(ctx).updatePartial(pcInfo, sel);
-		       		}
+//					ProgrammingContractInfo pcInfo=ProgrammingContractFactory.getLocalInstance(ctx).getProgrammingContractInfo(new ObjectUuidPK(info.getPcId()),sel);
+//		       		BigDecimal balance=FDCHelper.subtract(info.getAmount(), info.getHappenedAmount());
+//					if(!(pcInfo.getBalance()!=null&&balance!=null&&pcInfo.getBalance().compareTo(balance)==0)){
+//		       			pcInfo.setBalance(balance);
+//		       			ProgrammingContractFactory.getLocalInstance(ctx).updatePartial(pcInfo, sel);
+//		       		}
 				}else{
 					for(int j=i+1;j<col.size();j++){
 						DynamicCostControlPhotoInfo ninfo=col.get(j);
@@ -669,11 +714,12 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 						DynamicCostControlPhoto.addnew(info);
 						seq=seq+1;
 						
-						ProgrammingContractInfo pcInfo=ProgrammingContractFactory.getLocalInstance(ctx).getProgrammingContractInfo(new ObjectUuidPK(info.getPcId()),sel);
-			       		if(!(pcInfo.getBalance()!=null&&info.getAbsolute()!=null&&pcInfo.getBalance().compareTo(info.getAbsolute())==0)){
-			       			pcInfo.setBalance(info.getAbsolute());
-			       			ProgrammingContractFactory.getLocalInstance(ctx).updatePartial(pcInfo, sel);
-			       		}
+//						ProgrammingContractInfo pcInfo=ProgrammingContractFactory.getLocalInstance(ctx).getProgrammingContractInfo(new ObjectUuidPK(info.getPcId()),sel);
+//						BigDecimal balance=FDCHelper.subtract(info.getAmount(), info.getHappenedAmount());
+//						if(!(pcInfo.getBalance()!=null&&balance!=null&&pcInfo.getBalance().compareTo(balance)==0)){
+//			       			pcInfo.setBalance(balance);
+//			       			ProgrammingContractFactory.getLocalInstance(ctx).updatePartial(pcInfo, sel);
+//			       		}
 					}
 				}
 			}

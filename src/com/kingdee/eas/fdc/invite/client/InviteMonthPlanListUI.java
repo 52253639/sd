@@ -341,9 +341,7 @@ public class InviteMonthPlanListUI extends AbstractInviteMonthPlanListUI
 		FDCClientHelper.addSqlMenu(this, this.menuEdit);
 		buildOrgTree();
 		DefaultKingdeeTreeNode orgRoot = (DefaultKingdeeTreeNode) ((TreeModel) this.treeOrg.getModel()).getRoot();
-		DefaultKingdeeTreeNode node = this.findNode(orgRoot, this.currentOrg.getId().toString());
-		this.removeAllBrotherNode(node);
-		this.treeOrg.setSelectionNode(node);
+		this.treeOrg.setSelectionRow(0);
 		this.treeOrg.expandAllNodes(true, orgRoot);
 		
 		this.tblMain.setColumnMoveable(true);
@@ -353,16 +351,6 @@ public class InviteMonthPlanListUI extends AbstractInviteMonthPlanListUI
 		tHelper = new TablePreferencesHelper(this);
 		
 	    tblMain.getColumn("version").getStyleAttributes().setNumberFormat("0.0");
-	}
-
-	public void removeAllBrotherNode(DefaultKingdeeTreeNode node) {
-		DefaultKingdeeTreeNode parent = (DefaultKingdeeTreeNode) node.getParent();
-		if (parent == null) {
-			return;
-		}
-		this.treeOrg.removeAllChildrenFromParent(parent);
-		this.treeOrg.addNodeInto(node, parent);
-		this.removeAllBrotherNode(parent);
 	}
 	protected void setActionState() {
 

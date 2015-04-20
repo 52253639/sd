@@ -63,6 +63,8 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
 	    initColoum(header,col,"inviteType",100,false);
 	    initColoum(header,col,"storageNumber",100,false);
 	    initColoum(header,col,"name",250,false);
+	    initColoum(header,col,"contractor",100,false);
+	    initColoum(header,col,"contractorPhone",100,false);
 	    initColoum(header,col,"isPass",100,false);
 	    initColoum(header,col,"quaLevel",100,false);
 	    initColoum(header,col,"levelSetUpId",100,true);
@@ -87,13 +89,13 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
 	    initColoum(header,col,"lypgDate",100,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
-	    			"id","序号","所属组织","采购类别","供应商入库编码","供应商名称","是否合格","资质等级","levelSetUpId","供应商级别","供应商等级","服务区域","实际承包人","kcId","考察得分","入库日期",
+	    			"id","序号","所属组织","采购类别","供应商入库编码","供应商名称","项目负责人","项目负责人","是否合格","资质等级","levelSetUpId","供应商级别","供应商等级","服务区域","实际承包人","kcId","考察得分","入库日期",
 	    			"参投立项名称","lyzhId","履约综合评估","履约综合评估日期",
 	    			"合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态"
 	    		}
 	    		,
 	    		{
-	    			"id","序号","所属组织","采购类别","供应商入库编码","供应商名称","是否合格","资质等级","levelSetUpId","供应商级别","供应商等级","服务区域","实际承包人","kcId","考察得分","入库日期",
+	    			"id","序号","所属组织","采购类别","供应商入库编码","供应商名称","实际承包人","联系电话","是否合格","资质等级","levelSetUpId","供应商级别","供应商等级","服务区域","实际承包人","kcId","考察得分","入库日期",
 	    			"参投立项名称","lyzhId","履约综合评估","履约综合评估日期",
 	    			"工程项目","contractId","合同名称","项目经理","阶段","lypgId","履约评估得分","履约评估日期"
 	    		}
@@ -273,7 +275,7 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
     	boolean isAllContract=params.getBoolean("isAllContract");
 
     	StringBuffer sb = new StringBuffer();
-    	sb.append(" select supplier.fid id,'' seq,purchaseOrgUnit.fname_l2 purchaseOrgUnit,inviteType.fname_l2 inviteType,supplier.fstorageNumber storageNumber,supplier.fname_l2 name,supplier.fisPass,quaLevel.fname_l2 quaLevel,jb.id levelSetUpId,levelSetUp.fname_l2 levelSetUp,grade.fname_l2 grade,supplier.fsplArea splArea,");
+    	sb.append(" select supplier.fid id,'' seq,purchaseOrgUnit.fname_l2 purchaseOrgUnit,inviteType.fname_l2 inviteType,supplier.fstorageNumber storageNumber,supplier.fname_l2 name,supplier.fcontractor contractor,supplier.fcontractorPhone contractorPhone,supplier.fisPass,quaLevel.fname_l2 quaLevel,jb.id levelSetUpId,levelSetUp.fname_l2 levelSetUp,grade.fname_l2 grade,supplier.fsplArea splArea,");
     	sb.append(" supplier.fcontractor contractor,kc.id kcId,kc.score kcScore,supplier.fstorageDate storageDate,'' inviteName,lyzh.id lyzhId,lyzh.score lyzhScore,");
     	sb.append(" lyzh.auditTime lyzhDate,contract.curProject curProject,contract.contractId contractId,contract.contractName contractName,contract.manager manager,(case when contract.stage is null then '未签合同' else contract.stage end) stage,contract.lypgId lypgId,contract.lypgScore lypgScore,contract.lypgDate lypgDate");
     	sb.append(" from T_FDC_SupplierStock supplier left join T_INV_InviteType inviteType on inviteType.fid=supplier.finviteTypeId");
