@@ -129,6 +129,7 @@ import com.kingdee.eas.base.codingrule.CodingRuleException;
 import com.kingdee.eas.base.codingrule.CodingRuleManagerFactory;
 import com.kingdee.eas.base.codingrule.ICodingRuleManager;
 import com.kingdee.eas.base.commonquery.BooleanEnum;
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.base.permission.PermissionFactory;
 import com.kingdee.eas.basedata.assistant.CurrencyInfo;
 import com.kingdee.eas.basedata.assistant.ExchangeRateInfo;
@@ -299,6 +300,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 	private boolean isShowCharge = false;
 	//房地产业务系统正文管理是否启用审批笔迹留痕功能
 	boolean isUseWriteMark=FDCUtils.getDefaultFDCParamByKey(null,null, FDCConstants.FDC_PARAM_WRITEMARK);
+	boolean isNeed=false;
 	
 	//补充合同可以选择提交状态的主合同
 	private boolean isSupply = false;
@@ -2404,6 +2406,23 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		this.chkMenuItemSubmitAndAddNew.setSelected(false);
 		
 		txtDes.setMaxLength(1000);
+		
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISNEED", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISNEED")!=null){
+				isNeed=Boolean.parseBoolean(hmAllParam.get("FDC_ISNEED").toString());
+			}else{
+				isNeed=false;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		this.contNeedDept.setVisible(isNeed);
+		this.contNeedPerson.setVisible(isNeed);
 	}
 
 	//业务日期变化引起,期间的变化
@@ -4861,8 +4880,10 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		FDCClientVerifyHelper.verifyEmpty(this, prmtlandDeveloper);
 		FDCClientVerifyHelper.verifyEmpty(this, prmtRespDept);
 		FDCClientVerifyHelper.verifyEmpty(this, prmtRespPerson);
-		FDCClientVerifyHelper.verifyEmpty(this, prmtNeedDept);
-		FDCClientVerifyHelper.verifyEmpty(this, prmtNeedPerson);
+		if(isNeed){
+			FDCClientVerifyHelper.verifyEmpty(this, prmtNeedDept);
+			FDCClientVerifyHelper.verifyEmpty(this, prmtNeedPerson);
+		}
 		FDCClientVerifyHelper.verifyEmpty(this, prmtContractWFType);
 		FDCClientVerifyHelper.verifyEmpty(this, cbOrgType);
 		if(this.prmtInviteType.isEnabled()){
