@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import javax.swing.tree.TreeNode;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
@@ -37,6 +39,7 @@ import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
+import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDPanel;
@@ -63,6 +66,7 @@ import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.RevBillTypeEnum;
 import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basecrm.client.FDCReceivingBillEditUI;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
@@ -96,10 +100,12 @@ import com.kingdee.eas.fdc.sellhouse.PlanisphereTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.RoomCollection;
 import com.kingdee.eas.fdc.sellhouse.RoomFactory;
 import com.kingdee.eas.fdc.sellhouse.RoomInfo;
+import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SubareaInfo;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.EffectImageAndPlanisphereInfo;
+import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.fdc.sellhouse.client.ISolidSideImageListener;
 import com.kingdee.eas.fdc.sellhouse.client.RoomEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.RoomSourceEditUI;
@@ -336,6 +342,13 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 		this.planeRadioBtn.setVisible(false);
 		this.effectRadioBtn.setVisible(false);
 		this.actionReceiveBill.setVisible(false);
+//		this.actionKeepRoom.setVisible(false);
+		
+		this.btnKeepRoom.setText("封存");
+		this.btnSpecial.setVisible(false);
+		
+		this.menuBiz.setVisible(false);
+		this.actionImportData.setVisible(false);
 	}
 	
 	public void actionLocate_actionPerformed(ActionEvent e) throws Exception {
@@ -445,77 +458,22 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 	protected void initTable()
 	{
 		this.tblTenStat.checkParsed();
-		this.tblTenStat
-		.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);	
+		this.tblTenStat.setEnabled(false);
+		this.tblTenStat.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);	
 
-		KDTextField textField = new KDTextField();
-		textField.setMaxLength(80);
-		ICellEditor txtEditor = new KDTDefaultCellEditor(textField);
-		this.tblTenStat.getColumn("tenType").setEditor(txtEditor);
-
-		textField = new KDTextField();
-		textField.setMaxLength(80);
-		txtEditor = new KDTDefaultCellEditor(textField);
-		this.tblTenStat.getColumn("allArea").getStyleAttributes()
-		.setHorizontalAlign(HorizontalAlignment.RIGHT);
-		this.tblTenStat.getColumn("allArea").setEditor(txtEditor);
-
-		textField = new KDTextField();
-		textField.setMaxLength(80);
-		txtEditor = new KDTDefaultCellEditor(textField);
-		this.tblTenStat.getColumn("tenArea").getStyleAttributes()
-		.setHorizontalAlign(HorizontalAlignment.RIGHT);
-		this.tblTenStat.getColumn("tenArea").setEditor(txtEditor);
-
-		textField = new KDTextField();
-		textField.setMaxLength(80);
-		txtEditor = new KDTDefaultCellEditor(textField);
-		this.tblTenStat.getColumn("alreadyArea").getStyleAttributes()
-		.setHorizontalAlign(HorizontalAlignment.RIGHT);
-		this.tblTenStat.getColumn("alreadyArea").setEditor(txtEditor);
-
-		KDFormattedTextField formattedTextField = new KDFormattedTextField(
-				KDFormattedTextField.DECIMAL);
-		formattedTextField.setPrecision(2);
-		formattedTextField.setSupportedEmpty(true);
-		formattedTextField.setNegatived(false);
-		ICellEditor numberEditor = new KDTDefaultCellEditor(formattedTextField);
-		this.tblTenStat.getColumn("ten").setEditor(
-				numberEditor);
-		this.tblTenStat.getColumn("ten").getStyleAttributes()
-		.setHorizontalAlign(HorizontalAlignment.RIGHT);
-		this.tblTenStat.getColumn("ten").getStyleAttributes()
-		.setNumberFormat(FDCHelper.getNumberFtm(2));
-
-		this.tblTenStat.getColumn("appAmount").setEditor(
-				numberEditor);
-		this.tblTenStat.getColumn("appAmount").getStyleAttributes()
-		.setHorizontalAlign(HorizontalAlignment.RIGHT);
-		this.tblTenStat.getColumn("appAmount").getStyleAttributes()
-		.setNumberFormat(FDCHelper.getNumberFtm(2));
-
-		this.tblTenStat.getColumn("actAmount").setEditor(
-				numberEditor);
-		this.tblTenStat.getColumn("actAmount").getStyleAttributes()
-		.setHorizontalAlign(HorizontalAlignment.RIGHT);
-		this.tblTenStat.getColumn("actAmount").getStyleAttributes()
-		.setNumberFormat(FDCHelper.getNumberFtm(2));
-
-
-		this.tblTenStat.getColumn("tenType").getStyleAttributes()
-		.setLocked(true);
-		this.tblTenStat.getColumn("allArea").getStyleAttributes()
-		.setLocked(true);
-		this.tblTenStat.getColumn("tenArea").getStyleAttributes()
-		.setLocked(true);
-		this.tblTenStat.getColumn("alreadyArea").getStyleAttributes()
-		.setLocked(true);
-		this.tblTenStat.getColumn("ten").getStyleAttributes()
-		.setLocked(true);
-		this.tblTenStat.getColumn("appAmount").getStyleAttributes()
-		.setLocked(true);
-		this.tblTenStat.getColumn("actAmount").getStyleAttributes()
-		.setLocked(true);
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				if(o==null){
+					return null;
+				}else{
+					String str = o.toString();
+					return str + "%";
+				}
+				
+			}
+		});
+		this.tblTenStat.getColumn("ten").setRenderer(render_scale);
 	}
 
 	public void initControl()
@@ -619,52 +577,33 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 		//未放租
 		if (TenancyStateEnum.unTenancy.equals(state) || state == null)
 		{
-			this.actionCancelTenancy.setEnabled(false);
-			this.actionHandleTenancy.setEnabled(false);
 			this.actionApplyTenancy.setEnabled(false);
-			this.actionContinueTenancy.setEnabled(false);
-			this.actionRejiggerTenancy.setEnabled(false);
-			this.actionQuitTenancy.setEnabled(false);
+			this.actionHandleTenancy.setEnabled(false);
 			this.actionKeepRoom.setEnabled(false);
-			this.actionChangeName.setEnabled(false);
+			this.actionCancelTenancy.setEnabled(false);
 		} //如果是放租状态的
-		else if (TenancyStateEnum.waitTenancy.equals(state) || TenancyStateEnum.sincerObligate.equals(state))
+		else if (TenancyStateEnum.waitTenancy.equals(state))
 		{
-			this.btnKeepRoom.setText("保留");
-			this.actionCancelTenancy.setEnabled(true);
-			this.actionHandleTenancy.setEnabled(true);
 			this.actionApplyTenancy.setEnabled(true);
-			this.actionReceiveBill.setEnabled(true);
-			this.actionContinueTenancy.setEnabled(false);
-			this.actionRejiggerTenancy.setEnabled(false);
-			this.actionQuitTenancy.setEnabled(false);
-			this.actionChangeName.setEnabled(false);
+			this.actionHandleTenancy.setEnabled(true);
 			this.actionKeepRoom.setEnabled(true);
+			this.actionCancelTenancy.setEnabled(true);
 		}
 		//已租 
 		else if (TenancyStateEnum.newTenancy.equals(state) ||
 				TenancyStateEnum.continueTenancy.equals(state) ||
-				TenancyStateEnum.enlargeTenancy.equals(state))
-		{
-			this.actionCancelTenancy.setEnabled(false);
-			this.actionHandleTenancy.setEnabled(true);
-			this.actionApplyTenancy.setEnabled(true);
-			this.actionContinueTenancy.setEnabled(true);
-			this.actionRejiggerTenancy.setEnabled(true);
-			this.actionQuitTenancy.setEnabled(true);
-			this.actionChangeName.setEnabled(true);
-			this.actionReceiveBill.setEnabled(true);
-			this.actionKeepRoom.setEnabled(false);
-		} //如果房间是保留的状态 
-		else if (TenancyStateEnum.keepTenancy.equals(state))
-		{
-			this.btnKeepRoom.setEnabled(true);
-			this.btnKeepRoom.setText("取消保留");
-			this.actionReceiveBill.setEnabled(true);
-			this.actionCancelTenancy.setEnabled(false);
-			this.actionHandleTenancy.setEnabled(false);
+				TenancyStateEnum.enlargeTenancy.equals(state)){
 			this.actionApplyTenancy.setEnabled(false);
-			this.actionContinueTenancy.setEnabled(false);
+			this.actionHandleTenancy.setEnabled(false);
+			this.actionKeepRoom.setEnabled(false);
+			this.actionCancelTenancy.setEnabled(false);
+		} //如果房间是保留的状态 
+		else if (TenancyStateEnum.keepTenancy.equals(state) || TenancyStateEnum.sincerObligate.equals(state))
+		{
+			this.actionApplyTenancy.setEnabled(false);
+			this.actionHandleTenancy.setEnabled(false);
+			this.actionKeepRoom.setEnabled(false);
+			this.actionCancelTenancy.setEnabled(false);
 		}
 	}
 
@@ -753,7 +692,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 				if (phInfo != null) {
 					
 					if(phInfo.getPtype().equals(PlanisphereTypeEnum.PicBuildPlane)) {
-						this.kDSplitPane1.setDividerLocation(550);
+						this.kDSplitPane1.setDividerLocation(800);
 						this.kDScrollPane1.setVisible(true);
 					}else {
 						this.kDSplitPane1.setDividerLocation(this.kDSplitPane1.getWidth());
@@ -900,7 +839,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 						this.getAppAmount(buildProMap,builder4);
 					}
 				} else {
-					this.kDSplitPane1.setDividerLocation(550);
+					this.kDSplitPane1.setDividerLocation(800);
 					this.kDScrollPane1.setVisible(true);
 					DefaultKingdeeTreeNode newNode = (DefaultKingdeeTreeNode)node.clone();
 					CommerceHelper.cloneTree(newNode,node);
@@ -916,7 +855,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 					this.getAppAmount(buildProMap,this.getTenancyIDSet(object));
 				}
 			}else{
-				this.kDSplitPane1.setDividerLocation(550);
+				this.kDSplitPane1.setDividerLocation(800);
 				this.kDScrollPane1.setVisible(true);
 				DefaultKingdeeTreeNode newNode = (DefaultKingdeeTreeNode)node.clone();
 				CommerceHelper.cloneTree(newNode,node);
@@ -924,12 +863,52 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 				CommerceHelper.removePlanisphereNode(newNode);
 				SHEHelper.fillRoomTableByNode(this.tblMain,newNode, MoneySysTypeEnum.TenancySys, null,setting);
 				Object object = node.getUserObject();
-				this.tblTenStat.removeRows();
-				Map buildProMap = new HashMap();
-				this.getRow(buildProMap, this.getAllSql(object));
-				this.getRowSet(buildProMap,this.getTenStateSql(object));
-				this.getRecAmount(buildProMap,this.getRecAmountSql(object));
-				this.getAppAmount(buildProMap,this.getTenancyIDSet(object));
+//				this.tblTenStat.removeRows();
+//				Map buildProMap = new HashMap();
+//				this.getRow(buildProMap, this.getAllSql(object));
+//				this.getRowSet(buildProMap,this.getTenStateSql(object));
+//				this.getRecAmount(buildProMap,this.getRecAmountSql(object));
+//				this.getAppAmount(buildProMap,this.getTenancyIDSet(object));
+				
+				if(object instanceof BuildingInfo)
+				{
+					BuildingInfo building = (BuildingInfo)object;
+					FDCSQLBuilder builder = new FDCSQLBuilder();
+					builder.appendSql("select sp.fname_l2 sellProject,head.fname_l2 building,fseq floor,farea area from t_she_buildingAreaEntry entry left join t_she_building head on head.fid=entry.fheadId left join t_she_sellProject sp on sp.fid=head.fsellProjectid where head.fid='"+building.getId().toString()+"' order by entry.fseq");
+					IRowSet rs=builder.executeQuery();
+					try {
+						this.tblTenStat.setVisible(true);
+						this.tblTenStat.removeRows();
+						while(rs.next()){
+							IRow row=tblTenStat.addRow();
+							int floor=rs.getInt("floor");
+							row.getCell("sellProject").setValue(rs.getString("sellProject"));
+							row.getCell("building").setValue(rs.getString("building"));
+							row.getCell("floor").setValue(Integer.valueOf(floor));
+							row.getCell("totalArea").setValue(rs.getBigDecimal("area"));
+							
+							
+							FDCSQLBuilder builder1 = new FDCSQLBuilder();
+							builder1.appendSql("select sum(ftenancyArea) alreadyArea from t_she_room where ftenancyState in('NewTenancy','ContinueTenancy','EnlargeTenancy') and fbuildingid='"+building.getId().toString()+"' and ffloor="+floor);
+							IRowSet rs1=builder1.executeQuery();
+							while(rs1.next()){
+								row.getCell("alreadyArea").setValue(rs1.getBigDecimal("alreadyArea"));
+								BigDecimal ten=FDCHelper.multiply(FDCHelper.divide(row.getCell("alreadyArea").getValue(), row.getCell("totalArea").getValue(), 4, BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
+								row.getCell("ten").setValue(ten);
+							}
+							tblTenStat.getMergeManager().mergeBlock(0, 0, floor-1, 0);
+							tblTenStat.getMergeManager().mergeBlock(0, 1, floor-1, 1);
+						}
+						if(tblTenStat.getRowCount()>0){
+							spnlTenancy.setDividerLocation(400);
+						}
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}else{
+					tblTenStat.setVisible(false);
+					
+				}
 			}
 			//RoomStateColorUI.insertUIToScrollPanel(this.kDScrollPane1);
 		}
@@ -1040,7 +1019,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 				SellProjectInfo prj=(SellProjectInfo)node.getUserObject();
 	    		FilterInfo filter=new FilterInfo();
 	    		filter.getFilterItems().add(new FilterItemInfo("type",EffectImageEnum.PIC_BUILDING_VALUE));
-	    		filter.getFilterItems().add(new FilterItemInfo("sellProject.id",prj.getId().toString()));
+	    		filter.getFilterItems().add(new FilterItemInfo("sellProject.id",SHEManageHelper.getStringFromSet(FDCTreeHelper.getAllObjectIdMap(node, "SellProject").keySet()),CompareType.INNER));
 	    		setEffectImagePanelView(getEffectImageInfo(filter));
 			}
 			//选择分区时
@@ -1860,7 +1839,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 					//先保留4位再乘100再除1保留2位这样是为了精度问题
 					BigDecimal tenRate =  alreadyArea.divide(area,4,BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)).divide(new BigDecimal(1), 2,BigDecimal.ROUND_HALF_UP);
 					String tenArea2 = tenCount2+"/"+tenArea+"m2";
-					thisRow.getCell("tenArea").setValue(tenArea2);
+					thisRow.getCell("totalArea").setValue(tenArea2);
 					thisRow.getCell("alreadyArea").setValue(alreadyCount +"/"+alreadyArea+"m2");
 					thisRow.getCell("ten").setValue(tenRate+"%");
 				}
@@ -1929,7 +1908,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 			uiWindow.show();
 		} else if (TenancyStateEnum.keepTenancy.equals(tenancyState))
 		{
-			int result = MsgBox.showConfirm2("是否确定取消保留该房间？");
+			int result = MsgBox.showConfirm2("是否确定取消已封存该房间？");
 			if (result != MsgBox.YES)
 			{
 				SysUtil.abort();

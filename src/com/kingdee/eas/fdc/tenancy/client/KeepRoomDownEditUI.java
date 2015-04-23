@@ -226,7 +226,7 @@ public class KeepRoomDownEditUI extends AbstractKeepRoomDownEditUI
 			this.abort();
 		}
 		if (TenancyStateEnum.keepTenancy.equals(room.getTenancyState())) {
-			MsgBox.showInfo(room.getNumber() + " “—±£¡Ù!");
+			MsgBox.showInfo(room.getNumber() + " “—∑‚¥Ê!");
 			this.abort();
 		}
 	}
@@ -279,6 +279,7 @@ public class KeepRoomDownEditUI extends AbstractKeepRoomDownEditUI
     	super.onLoad();
     	
     	TenancyClientHelper.hideButton(hideItemActions);
+    	this.actionCopy.setVisible(false);
     }
     protected OrgType getMainBizOrgType()
     {

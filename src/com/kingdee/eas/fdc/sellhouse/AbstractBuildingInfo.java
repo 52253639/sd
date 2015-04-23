@@ -18,6 +18,7 @@ public class AbstractBuildingInfo extends com.kingdee.eas.fdc.basedata.FDCDataBa
         super(pkField);
         put("roomDes", new com.kingdee.eas.fdc.sellhouse.RoomDesCollection());
         put("banBasedataEntryList", new com.kingdee.eas.fdc.sellhouse.BanBasedataEntryListCollection());
+        put("areaEntry", new com.kingdee.eas.fdc.sellhouse.BuildingAreaEntryCollection());
         put("units", new com.kingdee.eas.fdc.sellhouse.BuildingUnitCollection());
         put("roomModels", new com.kingdee.eas.fdc.sellhouse.RoomModelCollection());
         put("floorEntry", new com.kingdee.eas.fdc.sellhouse.BuildingFloorEntryCollection());
@@ -480,6 +481,13 @@ public class AbstractBuildingInfo extends com.kingdee.eas.fdc.basedata.FDCDataBa
     public com.kingdee.eas.fdc.sellhouse.BanBasedataEntryListCollection getBanBasedataEntryList()
     {
         return (com.kingdee.eas.fdc.sellhouse.BanBasedataEntryListCollection)get("banBasedataEntryList");
+    }
+    /**
+     * Object: Â¥¶° 's Â¥²ãÃæ»ý·ÖÂ¼ property 
+     */
+    public com.kingdee.eas.fdc.sellhouse.BuildingAreaEntryCollection getAreaEntry()
+    {
+        return (com.kingdee.eas.fdc.sellhouse.BuildingAreaEntryCollection)get("areaEntry");
     }
     public BOSObjectType getBOSType()
     {

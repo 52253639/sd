@@ -6,21 +6,27 @@ package com.kingdee.eas.fdc.sellhouse.client;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.EventListener;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
 
 import org.apache.log4j.Logger;
 
@@ -30,8 +36,14 @@ import com.kingdee.bos.ctrl.kdf.servertable.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
+import com.kingdee.bos.ctrl.swing.KDComboBox;
+import com.kingdee.bos.ctrl.swing.KDDatePicker;
 import com.kingdee.bos.ctrl.swing.KDFileChooser;
+import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
+import com.kingdee.bos.ctrl.swing.KDPromptBox;
+import com.kingdee.bos.ctrl.swing.KDTextField;
 import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
+import com.kingdee.bos.ctrl.swing.event.DataChangeListener;
 import com.kingdee.bos.ctrl.swing.util.CtrlCommonConstant;
 import com.kingdee.bos.ctrl.swing.util.SimpleFileFilter;
 import com.kingdee.bos.dao.IObjectPK;
@@ -429,7 +441,6 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 			this.actionEdit.setEnabled(true);
 			this.actionRemove.setEnabled(true);
 		}
-	
 		loadRoomBill(room);
 	}
 
@@ -594,17 +605,14 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 		room.setNewPossStd((RoomAssistantInfo)this.f7PosseStd.getValue());
 		room.setNewProduceRemark((RoomAssistantInfo)this.f7ProductDetail.getValue());
 		room.setNewSight((RoomAssistantInfo)this.f7Sight.getValue());
-		//拼装number
-		if(null!=room.getBuilding()){
+		
+		if(room.getBuilding()!=null&&room.getBuildUnit()!=null){
 			try {
-				room = SHEHelper.getAssembleNumber(room);
+				SHEHelper.getLongCodeRoom(room);
 			} catch (BOSException e) {
-				// TODO Auto-generated catch block
-			logger.warn("拼装房间编码失败！");
-			FDCMsgBox.showWarning("拼装房间编码失败！");
+				e.printStackTrace();
 			}
 		}
-
 	}
 
 	private void setImage() {
@@ -1174,7 +1182,7 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 		super.actionSubmit_actionPerformed(e);
 
 //		this.setOprtState(OprtState.VIEW);
-		this.setOprtState(OprtState.ADDNEW);
+//		this.setOprtState(OprtState.ADDNEW);
 
 		// this.storeFields();
 		// this.initOldData(this.editData);
@@ -1222,12 +1230,21 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 
 	protected void verifyInput(ActionEvent e) throws Exception {
 		super.verifyInput(e);
-		if (StringUtils.isEmpty(this.txtName.getText())) {
-			MsgBox.showInfo("房源不能为空!");
+//		if (StringUtils.isEmpty(this.txtName.getText())) {
+//			MsgBox.showInfo("房间名称不能为空!");
+//			this.abort();
+//		}
+//		if(StringUtils.isEmpty(this.txthoursnumber.getText())){
+//			MsgBox.showInfo("房源编号不能为空");
+//			this.abort();
+//		}
+		if(StringUtils.isEmpty(this.txtDisplayName.getText())){
+			MsgBox.showInfo("房号不能为空");
 			this.abort();
 		}
-		if(StringUtils.isEmpty(this.txthoursnumber.getText())){
-			MsgBox.showInfo("房源编号不能为空");
+		if(this.prmtBuildUnit.getValue()==null){
+			MsgBox.showInfo("单元不能为空");
+			this.abort();
 		}
 		RoomInfo room = (RoomInfo) this.editData;
 		FilterInfo filter = new FilterInfo();
@@ -1489,8 +1506,8 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 //		updateAppArea();
 //	}
 
-	protected void f7BuildingFloor_dataChanged(DataChangeEvent e) throws Exception {/*
-																					 */
+	protected void f7BuildingFloor_dataChanged(DataChangeEvent e) throws Exception {
+		
 	}
 	
 	 /**
@@ -1649,5 +1666,4 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 			}
     	}
     }
-    
 }

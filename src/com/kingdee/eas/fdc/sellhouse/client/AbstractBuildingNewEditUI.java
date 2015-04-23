@@ -77,6 +77,7 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSellCertifiDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStructureDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBanBasedataEntry;
+    protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtEntry;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtProjectNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtProjectName;
@@ -153,6 +154,7 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         this.contSellCertifiDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStructureDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contBanBasedataEntry = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kdtEntry = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.txtProjectNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtProjectName = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -209,6 +211,7 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         this.contSellCertifiDate.setName("contSellCertifiDate");
         this.contStructureDate.setName("contStructureDate");
         this.contBanBasedataEntry.setName("contBanBasedataEntry");
+        this.kdtEntry.setName("kdtEntry");
         this.txtProjectNumber.setName("txtProjectNumber");
         this.txtNumber.setName("txtNumber");
         this.txtProjectName.setName("txtProjectName");
@@ -235,7 +238,7 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         this.pkStructureDate.setName("pkStructureDate");
         this.prmtBanBasedataEntry.setName("prmtBanBasedataEntry");
         // CoreUI		
-        this.setPreferredSize(new Dimension(650,350));		
+        this.setPreferredSize(new Dimension(650,500));		
         this.btnCopy.setEnabled(false);		
         this.btnCopy.setVisible(false);
         // tabPanel
@@ -312,7 +315,8 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         // kDLabelContainer2		
         this.kDLabelContainer2.setBoundLabelText(resHelper.getString("kDLabelContainer2.boundLabelText"));		
         this.kDLabelContainer2.setBoundLabelLength(100);		
-        this.kDLabelContainer2.setBoundLabelUnderline(true);
+        this.kDLabelContainer2.setBoundLabelUnderline(true);		
+        this.kDLabelContainer2.setVisible(false);
         // kDLabelContainer1		
         this.kDLabelContainer1.setBoundLabelText(resHelper.getString("kDLabelContainer1.boundLabelText"));		
         this.kDLabelContainer1.setBoundLabelLength(100);		
@@ -374,6 +378,13 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         this.contBanBasedataEntry.setBoundLabelText(resHelper.getString("contBanBasedataEntry.boundLabelText"));		
         this.contBanBasedataEntry.setBoundLabelLength(100);		
         this.contBanBasedataEntry.setBoundLabelUnderline(true);
+        // kdtEntry
+		String kdtEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection locked=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"floor\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"area\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{floor}</t:Cell><t:Cell>$Resource{area}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		
+        this.kdtEntry.setFormatXml(resHelper.translateString("kdtEntry",kdtEntryStrXML));
+
+        
+
         // txtProjectNumber
         // txtNumber
         // txtProjectName
@@ -518,11 +529,11 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 650, 350));
+        this.setBounds(new Rectangle(10, 10, 650, 500));
         this.setLayout(new KDLayout());
-        this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 650, 350));
-        tabPanel.setBounds(new Rectangle(10, 19, 629, 308));
-        this.add(tabPanel, new KDLayout.Constraints(10, 19, 629, 308, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 650, 500));
+        tabPanel.setBounds(new Rectangle(8, 5, 629, 487));
+        this.add(tabPanel, new KDLayout.Constraints(8, 5, 629, 487, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //tabPanel
         tabPanel.add(tabBuildingInfo, resHelper.getString("tabBuildingInfo.constraints"));
         //tabBuildingInfo
@@ -534,7 +545,7 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         tabBuildingInfo.add(contProjectName, null);
         contName.setBounds(new Rectangle(341, 32, 270, 19));
         tabBuildingInfo.add(contName, null);
-        contSubarea.setBounds(new Rectangle(462, 364, 270, 19));
+        contSubarea.setBounds(new Rectangle(532, 415, 270, 19));
         tabBuildingInfo.add(contSubarea, null);
         contFloorCount.setBounds(new Rectangle(7, 186, 270, 19));
         tabBuildingInfo.add(contFloorCount, null);
@@ -542,17 +553,17 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         tabBuildingInfo.add(contJoinInDate, null);
         contCompleteDate.setBounds(new Rectangle(341, 120, 270, 19));
         tabBuildingInfo.add(contCompleteDate, null);
-        contConstructPart.setBounds(new Rectangle(376, 377, 270, 19));
+        contConstructPart.setBounds(new Rectangle(534, 354, 270, 19));
         tabBuildingInfo.add(contConstructPart, null);
         contBuildingHeight.setBounds(new Rectangle(7, 164, 270, 19));
         tabBuildingInfo.add(contBuildingHeight, null);
-        contBuildingTerraArea.setBounds(new Rectangle(240, 342, 230, 19));
+        contBuildingTerraArea.setBounds(new Rectangle(542, 430, 230, 19));
         tabBuildingInfo.add(contBuildingTerraArea, null);
         contBuildingStructure.setBounds(new Rectangle(7, 76, 270, 19));
         tabBuildingInfo.add(contBuildingStructure, null);
         contProductType.setBounds(new Rectangle(341, 54, 270, 19));
         tabBuildingInfo.add(contProductType, null);
-        contAdministrativeNumber.setBounds(new Rectangle(339, 381, 270, 19));
+        contAdministrativeNumber.setBounds(new Rectangle(480, 399, 270, 19));
         tabBuildingInfo.add(contAdministrativeNumber, null);
         contBuildingProperty.setBounds(new Rectangle(341, 76, 270, 19));
         tabBuildingInfo.add(contBuildingProperty, null);
@@ -584,6 +595,8 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         tabBuildingInfo.add(contStructureDate, null);
         contBanBasedataEntry.setBounds(new Rectangle(7, 54, 270, 19));
         tabBuildingInfo.add(contBanBasedataEntry, null);
+        kdtEntry.setBounds(new Rectangle(6, 265, 605, 186));
+        tabBuildingInfo.add(kdtEntry, null);
         //contProjectNumber
         contProjectNumber.setBoundEditor(txtProjectNumber);
         //contNumber
@@ -653,9 +666,13 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -693,6 +710,7 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -711,8 +729,11 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnReset);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnSave);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -866,6 +887,10 @@ public abstract class AbstractBuildingNewEditUI extends com.kingdee.eas.framewor
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
 

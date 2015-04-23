@@ -17,6 +17,7 @@ import com.kingdee.eas.fdc.tenancy.SinObligateRoomsEntryCollection;
 import com.kingdee.eas.fdc.tenancy.SinObligateRoomsEntryInfo;
 import com.kingdee.eas.fdc.tenancy.SincerObligateInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyStateEnum;
+import com.kingdee.util.NumericExceptionSubItem;
 
 public class SincerObligateControllerBean extends AbstractSincerObligateControllerBean
 {
@@ -36,6 +37,8 @@ public class SincerObligateControllerBean extends AbstractSincerObligateControll
 		sels = new SelectorItemCollection();
 		sels.add("bizState");
 		this.updatePartial(ctx, sinGateInfo, sels);
+		
+		_execute(ctx,billId.toString());
     }
     protected void _unAudit(Context ctx, BOSUuid billId) throws BOSException,
     		EASBizException {
@@ -66,6 +69,9 @@ public class SincerObligateControllerBean extends AbstractSincerObligateControll
 			sinEntryInfo.setTenRoomState(TenancyStateEnum.sincerObligate);
 			RoomInfo room = sinEntryInfo.getRoom();
 			sinEntryColl.add(sinEntryInfo);
+			if(!TenancyStateEnum.waitTenancy.equals(room.getTenancyState())){
+				throw new EASBizException(new NumericExceptionSubItem("100","房间"+room.getName()+"不是待租状态，不能进行执行操作！"));
+			}
 			room.setTenancyState(TenancyStateEnum.sincerObligate);
 			sels = new SelectorItemCollection();
 			sels.add("tenancyState");

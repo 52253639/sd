@@ -72,15 +72,18 @@ public class PaymentAdvicePrintListUI extends AbstractPaymentAdvicePrintListUI
 		kDWorkButton3.setIcon(EASResource.getIcon("imgTbtn_notice"));//通知开票
 		btnPrint.setIcon(EASResource.getIcon("imgTbtn_print"));
 		btnPrintPreview.setIcon(EASResource.getIcon("imgTbtn_preview"));
-		btnPrint.setVisible(false);
-		btnPrintPreview.setVisible(false);
+		actionPrint.setVisible(false);
+		actionPrintPreview.setVisible(false);
 		initTable(this.tblMain);
 		fillTable();
 		SimpleKDTSortManager.setTableSortable(tblMain);
-		this.setUITitle("付款/催款通知");
+		this.setUITitle("催款通知");
 		//by tim_gao 计租面积为，小数点后3位
-		this.tblMain.getColumn("tarea").getStyleAttributes()
-		.setNumberFormat(FDCHelper.getNumberFtm(3));
+		this.tblMain.getColumn("tarea").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("tarea").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(3));
+		
+		this.tblMain.getColumn("startDate").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("endDate").getStyleAttributes().setHided(true);
 		
 	}
 	//通知开票***
@@ -443,9 +446,9 @@ public class PaymentAdvicePrintListUI extends AbstractPaymentAdvicePrintListUI
 				for(Iterator iter=filter.getFilterItems().iterator();iter.hasNext();){
 					FilterItemInfo item=(FilterItemInfo)iter.next();
 					//项目
-					if("sellProject.name".equalsIgnoreCase(item.getPropertyName())){
-						param.put("sellProject",item.getCompareValue().toString());
-					}
+//					if("sellProject.name".equalsIgnoreCase(item.getPropertyName())){
+//						param.put("sellProject",item.getCompareValue().toString());
+//					}
 					//客户
 					if ("customer.id".equalsIgnoreCase(item.getPropertyName())) {
 						if (item.getCompareValue() != null) {

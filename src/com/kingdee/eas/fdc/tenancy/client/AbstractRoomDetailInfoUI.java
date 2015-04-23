@@ -186,57 +186,71 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
         // contApportionArea		
         this.contApportionArea.setBoundLabelText(resHelper.getString("contApportionArea.boundLabelText"));		
         this.contApportionArea.setBoundLabelLength(50);		
-        this.contApportionArea.setBoundLabelUnderline(true);
+        this.contApportionArea.setBoundLabelUnderline(true);		
+        this.contApportionArea.setVisible(false);
         // contBalconyArea		
         this.contBalconyArea.setBoundLabelText(resHelper.getString("contBalconyArea.boundLabelText"));		
         this.contBalconyArea.setBoundLabelLength(50);		
-        this.contBalconyArea.setBoundLabelUnderline(true);
+        this.contBalconyArea.setBoundLabelUnderline(true);		
+        this.contBalconyArea.setVisible(false);
         // contFloorHeight		
         this.contFloorHeight.setBoundLabelText(resHelper.getString("contFloorHeight.boundLabelText"));		
         this.contFloorHeight.setBoundLabelLength(50);		
-        this.contFloorHeight.setBoundLabelUnderline(true);
+        this.contFloorHeight.setBoundLabelUnderline(true);		
+        this.contFloorHeight.setVisible(false);
         // contFace		
         this.contFace.setBoundLabelText(resHelper.getString("contFace.boundLabelText"));		
         this.contFace.setBoundLabelLength(50);		
-        this.contFace.setBoundLabelUnderline(true);
+        this.contFace.setBoundLabelUnderline(true);		
+        this.contFace.setVisible(false);
         // contOutlook		
         this.contOutlook.setBoundLabelText(resHelper.getString("contOutlook.boundLabelText"));		
         this.contOutlook.setBoundLabelLength(50);		
-        this.contOutlook.setBoundLabelUnderline(true);
+        this.contOutlook.setBoundLabelUnderline(true);		
+        this.contOutlook.setVisible(false);
         // contRoomModel		
         this.contRoomModel.setBoundLabelText(resHelper.getString("contRoomModel.boundLabelText"));		
         this.contRoomModel.setBoundLabelLength(50);		
-        this.contRoomModel.setBoundLabelUnderline(true);
+        this.contRoomModel.setBoundLabelUnderline(true);		
+        this.contRoomModel.setVisible(false);
         // contBuildingProperty		
         this.contBuildingProperty.setBoundLabelText(resHelper.getString("contBuildingProperty.boundLabelText"));		
         this.contBuildingProperty.setBoundLabelLength(50);		
-        this.contBuildingProperty.setBoundLabelUnderline(true);
+        this.contBuildingProperty.setBoundLabelUnderline(true);		
+        this.contBuildingProperty.setVisible(false);
         // contHouseProperty		
         this.contHouseProperty.setBoundLabelText(resHelper.getString("contHouseProperty.boundLabelText"));		
         this.contHouseProperty.setBoundLabelLength(50);		
-        this.contHouseProperty.setBoundLabelUnderline(true);
-        // kDSeparator5
+        this.contHouseProperty.setBoundLabelUnderline(true);		
+        this.contHouseProperty.setVisible(false);
+        // kDSeparator5		
+        this.kDSeparator5.setVisible(false);
         // tabBizInfo
         // contActualBuildingArea		
         this.contActualBuildingArea.setBoundLabelText(resHelper.getString("contActualBuildingArea.boundLabelText"));		
         this.contActualBuildingArea.setBoundLabelLength(50);		
-        this.contActualBuildingArea.setBoundLabelUnderline(true);
+        this.contActualBuildingArea.setBoundLabelUnderline(true);		
+        this.contActualBuildingArea.setVisible(false);
         // contActualRoomArea		
         this.contActualRoomArea.setBoundLabelText(resHelper.getString("contActualRoomArea.boundLabelText"));		
         this.contActualRoomArea.setBoundLabelUnderline(true);		
-        this.contActualRoomArea.setBoundLabelLength(50);
+        this.contActualRoomArea.setBoundLabelLength(50);		
+        this.contActualRoomArea.setVisible(false);
         // contRoomState		
         this.contRoomState.setBoundLabelText(resHelper.getString("contRoomState.boundLabelText"));		
         this.contRoomState.setBoundLabelLength(50);		
-        this.contRoomState.setBoundLabelUnderline(true);
+        this.contRoomState.setBoundLabelUnderline(true);		
+        this.contRoomState.setVisible(false);
         // contStandardRentType		
         this.contStandardRentType.setBoundLabelText(resHelper.getString("contStandardRentType.boundLabelText"));		
         this.contStandardRentType.setBoundLabelLength(50);		
-        this.contStandardRentType.setBoundLabelUnderline(true);
+        this.contStandardRentType.setBoundLabelUnderline(true);		
+        this.contStandardRentType.setVisible(false);
         // contStandardRent		
         this.contStandardRent.setBoundLabelText(resHelper.getString("contStandardRent.boundLabelText"));		
         this.contStandardRent.setBoundLabelLength(50);		
-        this.contStandardRent.setBoundLabelUnderline(true);
+        this.contStandardRent.setBoundLabelUnderline(true);		
+        this.contStandardRent.setVisible(false);
         // contTenancyArea		
         this.contTenancyArea.setBoundLabelText(resHelper.getString("contTenancyArea.boundLabelText"));		
         this.contTenancyArea.setBoundLabelLength(50);		
@@ -318,12 +332,12 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
         this.setBounds(new Rectangle(10, 10, 320, 659));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 320, 659));
-        contBuildingArea.setBounds(new Rectangle(11, 40, 138, 19));
-        this.add(contBuildingArea, new KDLayout.Constraints(11, 40, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomArea.setBounds(new Rectangle(167, 42, 138, 19));
-        this.add(contRoomArea, new KDLayout.Constraints(167, 42, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contApportionArea.setBounds(new Rectangle(10, 89, 138, 19));
-        this.add(contApportionArea, new KDLayout.Constraints(10, 89, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contBuildingArea.setBounds(new Rectangle(13, 34, 293, 17));
+        this.add(contBuildingArea, new KDLayout.Constraints(13, 34, 293, 17, 0));
+        contRoomArea.setBounds(new Rectangle(13, 55, 293, 19));
+        this.add(contRoomArea, new KDLayout.Constraints(13, 55, 293, 19, 0));
+        contApportionArea.setBounds(new Rectangle(172, 69, 138, 19));
+        this.add(contApportionArea, new KDLayout.Constraints(172, 69, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contBalconyArea.setBounds(new Rectangle(167, 91, 138, 19));
         this.add(contBalconyArea, new KDLayout.Constraints(167, 91, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contFloorHeight.setBounds(new Rectangle(10, 152, 138, 19));
@@ -340,22 +354,22 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
         this.add(contHouseProperty, new KDLayout.Constraints(167, 201, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         kDSeparator5.setBounds(new Rectangle(7, 146, 308, 10));
         this.add(kDSeparator5, new KDLayout.Constraints(7, 146, 308, 10, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        tabBizInfo.setBounds(new Rectangle(3, 282, 314, 364));
-        this.add(tabBizInfo, new KDLayout.Constraints(3, 282, 314, 364, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        contActualBuildingArea.setBounds(new Rectangle(10, 65, 138, 19));
-        this.add(contActualBuildingArea, new KDLayout.Constraints(10, 65, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contActualRoomArea.setBounds(new Rectangle(167, 67, 138, 19));
-        this.add(contActualRoomArea, new KDLayout.Constraints(167, 67, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        tabBizInfo.setBounds(new Rectangle(3, 111, 314, 536));
+        this.add(tabBizInfo, new KDLayout.Constraints(3, 111, 314, 536, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contActualBuildingArea.setBounds(new Rectangle(168, 123, 138, 19));
+        this.add(contActualBuildingArea, new KDLayout.Constraints(168, 123, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contActualRoomArea.setBounds(new Rectangle(177, 107, 138, 19));
+        this.add(contActualRoomArea, new KDLayout.Constraints(177, 107, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contRoomState.setBounds(new Rectangle(167, 252, 138, 19));
         this.add(contRoomState, new KDLayout.Constraints(167, 252, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contStandardRentType.setBounds(new Rectangle(167, 227, 138, 19));
         this.add(contStandardRentType, new KDLayout.Constraints(167, 227, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contStandardRent.setBounds(new Rectangle(10, 227, 138, 19));
         this.add(contStandardRent, new KDLayout.Constraints(10, 227, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTenancyArea.setBounds(new Rectangle(10, 118, 138, 19));
-        this.add(contTenancyArea, new KDLayout.Constraints(10, 118, 138, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomInfo.setBounds(new Rectangle(13, 14, 293, 17));
-        this.add(contRoomInfo, new KDLayout.Constraints(13, 14, 293, 17, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contTenancyArea.setBounds(new Rectangle(13, 80, 293, 17));
+        this.add(contTenancyArea, new KDLayout.Constraints(13, 80, 293, 17, 0));
+        contRoomInfo.setBounds(new Rectangle(13, 13, 293, 17));
+        this.add(contRoomInfo, new KDLayout.Constraints(13, 13, 293, 17, 0));
         //contBuildingArea
         contBuildingArea.setBoundEditor(txtBuildingArea);
         //contRoomArea
@@ -409,9 +423,13 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -449,6 +467,7 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -467,8 +486,11 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnReset);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnSave);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -573,6 +595,10 @@ public abstract class AbstractRoomDetailInfoUI extends com.kingdee.eas.framework
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
 

@@ -59,4 +59,14 @@ public abstract class AbstractTenancyControlUIHandler extends com.kingdee.eas.fr
 	}
 	protected void _handleActionChangeName(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionPriceChange(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionPriceChange(request,response,context);
+	}
+	protected void _handleActionPriceChange(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionCustomerChangeName(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionCustomerChangeName(request,response,context);
+	}
+	protected void _handleActionCustomerChangeName(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

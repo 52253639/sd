@@ -285,7 +285,7 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		this.actionPrintBill.setVisible(false);
 		this.actionPrintPreviewBill.setVisible(false);
 		this.actionReceiveBill.setVisible(false);
-//		this.actionRefundment.setVisible(false);
+		this.actionRefundment.setVisible(false);
 		this.actionRepairStartDate.setVisible(false);
 	}
     

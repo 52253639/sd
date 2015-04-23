@@ -44,26 +44,27 @@ public class RoomStateColorUI extends AbstractRoomStateColorUI
 		this.kDLabel2.setOpaque(true);
 		this.kDLabel2.setText("      ´ý×â");
 
-		this.kDLabel3.setBackground(setting.getKeepTenancyColor());
+		this.kDLabel3.setBackground(setting.getNewTenancyColor());
 		this.kDLabel3.setOpaque(true);
-		this.kDLabel3.setText("      ±£Áô");
+		this.kDLabel3.setText("      ÐÂ×â");
 		
-		this.kDLabel4.setBackground(setting.getNewTenancyColor());
+		this.kDLabel4.setBackground(setting.getContinueTenancyColor());
 		this.kDLabel4.setOpaque(true);
-		this.kDLabel4.setText("      ÐÂ×â");
+		this.kDLabel4.setText("      Ðø×â");
 		
-		this.kDLabel5.setBackground(setting.getContinueTenancyColor());
+//		this.kDLabel6.setBackground(setting.getEnlargeTenancyColor());
+//		this.kDLabel6.setOpaque(true);
+//		this.kDLabel6.setText("      À©×â");
+		
+		this.kDLabel5.setBackground(setting.getSincerObliColor());
 		this.kDLabel5.setOpaque(true);
-		this.kDLabel5.setText("      Ðø×â");
+		this.kDLabel5.setText("      Ô¤Áô");
 		
-		this.kDLabel6.setBackground(setting.getEnlargeTenancyColor());
+		this.kDLabel6.setBackground(setting.getKeepTenancyColor());
 		this.kDLabel6.setOpaque(true);
-		this.kDLabel6.setText("      À©×â");
+		this.kDLabel6.setText("      ·â´æ");
 		
-		this.kDLabel8.setBackground(setting.getSincerObliColor());
-		this.kDLabel8.setOpaque(true);
-		this.kDLabel8.setText("      Ô¤Áô");
-
+		kDLabel8.setVisible(false);
 	}
 
 	public static void insertUIToScrollPanel(KDScrollPane panel)

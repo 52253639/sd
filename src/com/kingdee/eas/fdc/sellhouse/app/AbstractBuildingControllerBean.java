@@ -52,10 +52,13 @@ public abstract class AbstractBuildingControllerBean extends FDCDataBaseControll
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-0009c0a812cc"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BuildingInfo retValue = (BuildingInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (BuildingInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -74,10 +77,13 @@ public abstract class AbstractBuildingControllerBean extends FDCDataBaseControll
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-000ac0a812cc"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BuildingInfo retValue = (BuildingInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (BuildingInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -96,10 +102,13 @@ public abstract class AbstractBuildingControllerBean extends FDCDataBaseControll
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-000bc0a812cc"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BuildingInfo retValue = (BuildingInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (BuildingInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -118,10 +127,13 @@ public abstract class AbstractBuildingControllerBean extends FDCDataBaseControll
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-000cc0a812cc"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BuildingCollection retValue = (BuildingCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (BuildingCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -138,10 +150,13 @@ public abstract class AbstractBuildingControllerBean extends FDCDataBaseControll
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-000dc0a812cc"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BuildingCollection retValue = (BuildingCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (BuildingCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -158,10 +173,13 @@ public abstract class AbstractBuildingControllerBean extends FDCDataBaseControll
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("bd4a2701-0113-1000-e000-000ec0a812cc"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BuildingCollection retValue = (BuildingCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (BuildingCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

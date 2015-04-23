@@ -114,7 +114,8 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 		this.tblMain.getColumn("id").getStyleAttributes().setHided(true);
 		this.tblMain.getDataRequestManager().setDataRequestMode(KDTDataRequestManager.REAL_MODE);
 		this.tblMain.getColumn("receptionType.name").setRequired(true);
-		
+		this.tblMain.getColumn("level.name").setRequired(true);
+		this.tblMain.getColumn("firstDate").setRequired(true);
 		comboImportType.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//遍历所有记录校验 
@@ -797,6 +798,9 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
     		}else if(level instanceof CommerceChanceAssistantInfo) {
     			customer.setLevel((CommerceChanceAssistantInfo)level);
     		}        		
+    	}else{
+			setRowStyleLockStatus(row,"‘商机级别’必须录入！\r\n");
+			return;      		
     	}
     	Object receptionType = row.getCell("receptionType.name").getValue();
     	if(receptionType!=null) {
@@ -827,12 +831,15 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 				} catch (ParseException e) {
 					e.printStackTrace();					
 				}        			
-    		}else{
+    		}else {
     			setRowStyleLockStatus(row,"‘首次接洽时间’无法识别！正确格式为'yyyy-MM-dd'\r\n");
-    			return;		
+    			return;
     		}
-    	}else if(firstDate instanceof Date) {
+    	}else if(firstDate!=null&&firstDate instanceof Date){
     		customer.setFirstDate((Date)firstDate);
+    	}else {
+    		setRowStyleLockStatus(row,"‘首次接洽时间’不能为空！\r\n");
+			return;
     	}  
     	String phone  = (String)row.getCell("phone").getValue();
     	if(phone==null)  {
@@ -955,13 +962,12 @@ public class ImportExcelFDCCustomerUI extends AbstractImportExcelFDCCustomerUI
 					e.printStackTrace();					
 				}        			
     		}else{
-    			setRowStyleLockStatus(row,"‘首次接洽时间’无法识别！正确格式为'yyyy-MM-dd'\r\n");
+    			setRowStyleLockStatus(row,"‘成立日期’无法识别！正确格式为'yyyy-MM-dd'\r\n");
     			return;		
     		}
-    	}else if(clrq instanceof Date) {
-    		customer.setClrq((Date)clrq);
-    	} 
-    	
+    	}else if(clrq!=null && clrq instanceof Date){
+			customer.setClrq((Date)clrq);
+		}
     	try {
     		if(row.getCell("zczj").getValue()!=null){
     			BigDecimal zczj = new BigDecimal(row.getCell("zczj").getValue().toString());

@@ -18,7 +18,7 @@ public class AbstractKeepRoomDownInfo extends com.kingdee.eas.framework.BillBase
         super(pkField);
     }
     /**
-     * Object: 保留租赁房 's 房间 property 
+     * Object: 房间封存 's 房间 property 
      */
     public com.kingdee.eas.fdc.sellhouse.RoomInfo getRoom()
     {
@@ -29,7 +29,7 @@ public class AbstractKeepRoomDownInfo extends com.kingdee.eas.framework.BillBase
         put("room", item);
     }
     /**
-     * Object:保留租赁房's 取消保留时间property 
+     * Object:房间封存's 取消保留时间property 
      */
     public java.util.Date getCancelDate()
     {

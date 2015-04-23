@@ -85,11 +85,14 @@ public class SincerObligateListUI extends AbstractSincerObligateListUI
 
 		this.actionUnAudit.setVisible(false);
 		this.actionAudit.setEnabled(true);
-		this.actionBlankOut.setEnabled(true);
+		this.actionBlankOut.setEnabled(false);
 		this.actionExecute.setEnabled(true);
 		this.actionCancelSincer.setEnabled(true);
-		this.actionToTenancy.setEnabled(true);
+		this.actionToTenancy.setEnabled(false);
 		this.actionAuditResult.setVisible(false);
+		
+		this.actionReceiveBill.setEnabled(false);
+		this.actionBlankOut.setVisible(false);
 	}
 	protected void tblMain_tableSelectChanged(KDTSelectEvent e)
 			throws Exception {

@@ -85,10 +85,10 @@ public class RoomDetailInfoUI extends AbstractRoomDetailInfoUI
 
 		// 业务   i.	按照业务日期显示租赁合同
 		addBizTable(room);
-		// 应收   b)	应收-对于新租,续租,扩租的房间显示   i.	显示该房间当前合同的付款明细		
-		addPlanPayTable(room);
-		// 实收   i.	显示房间的所有收款单.按照业务日期排列.
-		addActPayTable(room);
+//		// 应收   b)	应收-对于新租,续租,扩租的房间显示   i.	显示该房间当前合同的付款明细		
+//		addPlanPayTable(room);
+//		// 实收   i.	显示房间的所有收款单.按照业务日期排列.
+//		addActPayTable(room);
 	}
 
 

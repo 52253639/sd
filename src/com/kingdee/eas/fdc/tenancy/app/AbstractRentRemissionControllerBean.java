@@ -51,10 +51,13 @@ public abstract class AbstractRentRemissionControllerBean extends TenBillBaseCon
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("60b3429a-4cd6-4584-be17-e1ae42de33d1"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentRemissionInfo retValue = (RentRemissionInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentRemissionInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -73,10 +76,13 @@ public abstract class AbstractRentRemissionControllerBean extends TenBillBaseCon
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("faf9f2c9-7030-43df-a9ab-5205c0c34783"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentRemissionInfo retValue = (RentRemissionInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentRemissionInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -95,10 +101,13 @@ public abstract class AbstractRentRemissionControllerBean extends TenBillBaseCon
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("b23fdf16-f8e1-4e60-a34d-d9a3fd843293"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentRemissionInfo retValue = (RentRemissionInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentRemissionInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -117,10 +126,13 @@ public abstract class AbstractRentRemissionControllerBean extends TenBillBaseCon
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7cc1530e-959e-4d1f-be91-4938fe697406"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentRemissionCollection retValue = (RentRemissionCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentRemissionCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -137,10 +149,13 @@ public abstract class AbstractRentRemissionControllerBean extends TenBillBaseCon
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ff905b1f-8542-4fc0-928a-de907e89a3b0"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentRemissionCollection retValue = (RentRemissionCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentRemissionCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -157,10 +172,13 @@ public abstract class AbstractRentRemissionControllerBean extends TenBillBaseCon
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("6e7c1324-5762-43d6-9d37-ee54c4ccb20a"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RentRemissionCollection retValue = (RentRemissionCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RentRemissionCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

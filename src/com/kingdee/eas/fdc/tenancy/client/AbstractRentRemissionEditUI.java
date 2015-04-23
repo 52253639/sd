@@ -58,6 +58,7 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSellProject;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAdd;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnDel;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRemark;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
@@ -67,6 +68,8 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCustomerName;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtLeaseCount;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtSellProject;
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane1;
+    protected com.kingdee.bos.ctrl.swing.KDTextArea txtRemark;
     protected com.kingdee.eas.fdc.tenancy.RentRemissionInfo editData = null;
     protected ActionAdd actionAdd = null;
     protected ActionDel actionDel = null;
@@ -109,6 +112,7 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.contSellProject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.btnAdd = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnDel = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.contRemark = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -118,6 +122,8 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.txtCustomerName = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtLeaseCount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.prmtSellProject = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.kDScrollPane1 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
+        this.txtRemark = new com.kingdee.bos.ctrl.swing.KDTextArea();
         this.contNumber.setName("contNumber");
         this.contBizDate.setName("contBizDate");
         this.contName.setName("contName");
@@ -130,6 +136,7 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.contSellProject.setName("contSellProject");
         this.btnAdd.setName("btnAdd");
         this.btnDel.setName("btnDel");
+        this.contRemark.setName("contRemark");
         this.txtNumber.setName("txtNumber");
         this.pkBizDate.setName("pkBizDate");
         this.txtName.setName("txtName");
@@ -139,6 +146,8 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.txtCustomerName.setName("txtCustomerName");
         this.txtLeaseCount.setName("txtLeaseCount");
         this.prmtSellProject.setName("prmtSellProject");
+        this.kDScrollPane1.setName("kDScrollPane1");
+        this.txtRemark.setName("txtRemark");
         // CoreUI		
         this.btnAudit.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_audit"));		
         this.menuItemAudit.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_audit"));
@@ -175,7 +184,7 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.contLeaseCount.setBoundLabelLength(100);		
         this.contLeaseCount.setBoundLabelUnderline(true);
         // kdtEntry
-		String kdtEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol5\"><c:NumberFormat>#,##0.00;-#,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol6\"><c:NumberFormat>&amp;double</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"leaseSeq\" t:width=\"70\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"roomName\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"moneyDefine\" t:width=\"180\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"startDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"endDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"appAmount\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol5\" /><t:Column t:key=\"remisionAmount\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol6\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" t:styleID=\"sCol7\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{leaseSeq}</t:Cell><t:Cell>$Resource{roomName}</t:Cell><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{remisionAmount}</t:Cell><t:Cell>$Resource{id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String kdtEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol5\"><c:NumberFormat>#,##0.00;-#,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol6\"><c:NumberFormat>#,##0.00;-#,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol8\"><c:Protection locked=\"true\" /><c:NumberFormat>#,##0.00;-#,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"leaseSeq\" t:width=\"70\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"roomName\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"moneyDefine\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"startDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"endDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"appAmount\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol5\" /><t:Column t:key=\"remisionAmount\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol6\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" t:styleID=\"sCol7\" /><t:Column t:key=\"aftAppAmount\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol8\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{leaseSeq}</t:Cell><t:Cell>$Resource{roomName}</t:Cell><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{remisionAmount}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{aftAppAmount}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.kdtEntry.setFormatXml(resHelper.translateString("kdtEntry",kdtEntryStrXML));
         this.kdtEntry.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
@@ -200,6 +209,10 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         // btnDel
         this.btnDel.setAction((IItemAction)ActionProxyFactory.getProxy(actionDel, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnDel.setText(resHelper.getString("btnDel.text"));
+        // contRemark		
+        this.contRemark.setBoundLabelText(resHelper.getString("contRemark.boundLabelText"));		
+        this.contRemark.setBoundLabelLength(100);		
+        this.contRemark.setBoundLabelUnderline(true);
         // txtNumber		
         this.txtNumber.setRequired(true);		
         this.txtNumber.setMaxLength(44);
@@ -236,6 +249,8 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.prmtSellProject.setCommitFormat("$number$");		
         this.prmtSellProject.setEditFormat("$number$");		
         this.prmtSellProject.setDisplayFormat("$name$");
+        // kDScrollPane1
+        // txtRemark
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -278,14 +293,16 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.add(contCustomerName, null);
         contLeaseCount.setBounds(new Rectangle(313, 68, 270, 19));
         this.add(contLeaseCount, null);
-        kdtEntry.setBounds(new Rectangle(10, 131, 880, 458));
+        kdtEntry.setBounds(new Rectangle(10, 252, 880, 337));
         this.add(kdtEntry, null);
         contSellProject.setBounds(new Rectangle(617, 68, 270, 19));
         this.add(contSellProject, null);
-        btnAdd.setBounds(new Rectangle(692, 100, 66, 19));
+        btnAdd.setBounds(new Rectangle(692, 222, 66, 19));
         this.add(btnAdd, null);
-        btnDel.setBounds(new Rectangle(822, 100, 66, 19));
+        btnDel.setBounds(new Rectangle(822, 222, 66, 19));
         this.add(btnDel, null);
+        contRemark.setBounds(new Rectangle(10, 106, 878, 92));
+        this.add(contRemark, null);
         //contNumber
         contNumber.setBoundEditor(txtNumber);
         //contBizDate
@@ -304,6 +321,10 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         contLeaseCount.setBoundEditor(txtLeaseCount);
         //contSellProject
         contSellProject.setBoundEditor(prmtSellProject);
+        //contRemark
+        contRemark.setBoundEditor(kDScrollPane1);
+        //kDScrollPane1
+        kDScrollPane1.getViewport().add(txtRemark, null);
 
     }
 
@@ -325,9 +346,13 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -388,6 +413,7 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -419,8 +445,11 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -444,6 +473,7 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnCreateFrom);
         this.toolBar.add(btnCopyFrom);
@@ -478,7 +508,8 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
 		dataBinder.registerBinding("tenancy", com.kingdee.eas.fdc.tenancy.TenancyBillInfo.class, this.prmtTenancy, "data");
 		dataBinder.registerBinding("roomName", String.class, this.txtRoomName, "text");
 		dataBinder.registerBinding("leaseCount", java.math.BigDecimal.class, this.txtLeaseCount, "value");
-		dataBinder.registerBinding("sellProject", com.kingdee.eas.fdc.sellhouse.SellProjectInfo.class, this.prmtSellProject, "data");		
+		dataBinder.registerBinding("sellProject", com.kingdee.eas.fdc.crm.basedata.SellProjectInfo.class, this.prmtSellProject, "data");
+		dataBinder.registerBinding("remark", String.class, this.txtRemark, "text");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -544,7 +575,8 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
 		getValidateHelper().registerBindProperty("tenancy", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("roomName", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("leaseCount", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("sellProject", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("sellProject", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("remark", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -582,13 +614,35 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("bizDate"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("tenancy.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("tenancy.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("tenancy.id"));
+        	sic.add(new SelectorItemInfo("tenancy.number"));
+        	sic.add(new SelectorItemInfo("tenancy.name"));
+        	sic.add(new SelectorItemInfo("tenancy.tenancyName"));
+		}
         sic.add(new SelectorItemInfo("roomName"));
         sic.add(new SelectorItemInfo("leaseCount"));
-        sic.add(new SelectorItemInfo("sellProject.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("sellProject.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("sellProject.id"));
+        	sic.add(new SelectorItemInfo("sellProject.number"));
+        	sic.add(new SelectorItemInfo("sellProject.name"));
+		}
+        sic.add(new SelectorItemInfo("remark"));
         return sic;
     }        
     	

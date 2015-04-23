@@ -1603,7 +1603,7 @@ public class TenancyRentBillEditUI extends AbstractTenancyRentBillEditUI {
 				return;
 			}
 			if (TenancyStateEnum.keepTenancy.equals(room.getTenancyState())) {
-				MsgBox.showInfo(room.getName() + " “—±£¡Ù!");
+				MsgBox.showInfo(room.getName() + " “—∑‚¥Ê!");
 				return;
 			}
 			if (TenancyStateEnum.sincerObligate.equals(room.getTenancyState())) {

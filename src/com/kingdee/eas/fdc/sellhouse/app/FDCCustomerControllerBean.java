@@ -506,6 +506,7 @@ public class FDCCustomerControllerBean extends
 			}else{
 				FilterInfo filter = new FilterInfo();
 				filter.getFilterItems().add(new FilterItemInfo("name", customer.getName()));
+				filter.getFilterItems().add(new FilterItemInfo("project.id", customer.getProject().getId().toString()));
 				//如果是修改,则ID不为空，排除自己
 				if(customer.getId()!=null)
 					filter.getFilterItems().add(new FilterItemInfo("id", customer.getId().toString(),CompareType.NOTEQUALS));
@@ -557,6 +558,9 @@ public class FDCCustomerControllerBean extends
 		        	throw new EASBizException(new NumericExceptionSubItem("000","联系电话只能输入数字,多个电话号码之间用;分隔!"));
 		        }else{
 		        	FilterInfo filter = getPhonesFilter(customer);
+		        	FilterInfo tmp = new FilterInfo();
+		        	tmp.getFilterItems().add(new FilterItemInfo("project.id", customer.getProject().getId().toString()));
+					filter.mergeFilter(tmp, "and");
 		        	SelectorItemCollection sel = new SelectorItemCollection();
 					sel.add(new SelectorItemInfo("name"));
 					sel.add(new SelectorItemInfo("lastTrackDate"));
@@ -779,6 +783,7 @@ public class FDCCustomerControllerBean extends
 			}else{
 				FilterInfo filter = new FilterInfo();
 				filter.getFilterItems().add(new FilterItemInfo("name", customer.getName()));
+				filter.getFilterItems().add(new FilterItemInfo("project.id", customer.getProject().getId().toString()));
 				//如果是修改,则ID不为空，排除自己
 				if(customer.getId()!=null)
 					filter.getFilterItems().add(new FilterItemInfo("id", customer.getId().toString(),CompareType.NOTEQUALS));
@@ -830,6 +835,10 @@ public class FDCCustomerControllerBean extends
 		        	throw new EASBizException(new NumericExceptionSubItem("000","联系电话只能输入数字,多个电话号码之间用;分隔!"));
 		        }else{
 		        	FilterInfo filter = getPhonesFilter(customer);
+		        	FilterInfo tmp = new FilterInfo();
+		        	tmp.getFilterItems().add(new FilterItemInfo("project.id", customer.getProject().getId().toString()));
+					filter.mergeFilter(tmp, "and");
+					
 		        	SelectorItemCollection sel = new SelectorItemCollection();
 					sel.add(new SelectorItemInfo("name"));
 					sel.add(new SelectorItemInfo("lastTrackDate"));
@@ -891,6 +900,11 @@ public class FDCCustomerControllerBean extends
 				FilterInfo nameFilter = new FilterInfo();
 				nameFilter.getFilterItems().add(new FilterItemInfo("name",customer.getName()));
 				filter.mergeFilter(nameFilter, "and");
+				
+				FilterInfo tmp = new FilterInfo();
+	        	tmp.getFilterItems().add(new FilterItemInfo("project.id", customer.getProject().getId().toString()));
+				filter.mergeFilter(tmp, "and");
+				
 	        	SelectorItemCollection sel = new SelectorItemCollection();
 				sel.add(new SelectorItemInfo("name"));
 				sel.add(new SelectorItemInfo("lastTrackDate"));

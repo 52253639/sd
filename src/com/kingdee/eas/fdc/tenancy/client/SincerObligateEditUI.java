@@ -324,21 +324,7 @@ public class SincerObligateEditUI extends AbstractSincerObligateEditUI
 		this.spinFreeDays.setModel(model);
 		model = new SpinnerNumberModel(0, 0, 100000, 1);
 		this.spinObligateDateCount.setModel(model);
-		ChangeListener spinTermLengthChangeListener = null;
-
 		
-		spinTermLengthChangeListener = new javax.swing.event.ChangeListener() {
-			public void stateChanged(javax.swing.event.ChangeEvent e) {
-				try {
-					spinTermLength_stateChanged(e);
-				} catch (Exception exc) {
-					handUIException(exc);
-				} finally {
-				}
-			}
-		};
-		this.spinTermLength.addChangeListener(spinTermLengthChangeListener);
-	
 		setSincerPayListVisable();
 	}
 
@@ -709,7 +695,7 @@ public class SincerObligateEditUI extends AbstractSincerObligateEditUI
 				return;
 			}
 			if (TenancyStateEnum.keepTenancy.equals(room.getTenancyState())) {
-				MsgBox.showInfo(room.getNumber() + " “—±£¡Ù!");
+				MsgBox.showInfo(room.getNumber() + " “—∑‚¥Ê!");
 				return;
 			}
 			if (isExist(room)) {
@@ -990,7 +976,7 @@ public class SincerObligateEditUI extends AbstractSincerObligateEditUI
 		return cellEditor;
 	}
 
-	private void spinTermLength_stateChanged(ChangeEvent e) throws Exception {
+	protected void spinTermLength_stateChanged(ChangeEvent e) throws Exception {
 		updateTotalRent();
 	}
 

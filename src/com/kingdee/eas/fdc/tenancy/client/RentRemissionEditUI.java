@@ -186,6 +186,8 @@ public class RentRemissionEditUI extends AbstractRentRemissionEditUI {
 						}
 						row.getCell("startDate").setUserObject(info);
 
+						row.getCell("aftAppAmount").setValue(FDCHelper.subtract(row.getCell("appAmount").getValue(), row.getCell("remisionAmount").getValue()));
+						
 					}
 					this.kdtEntry.getMergeManager().mergeBlock(0, 0, this.kdtEntry.getRowCount() - 1, 1, KDTMergeManager.FREE_MERGE);
 				}
@@ -500,6 +502,7 @@ public class RentRemissionEditUI extends AbstractRentRemissionEditUI {
 				this.abort();
 			}
 		}
+		row.getCell("aftAppAmount").setValue(FDCHelper.subtract(appAmount, remisionAmount));
 	}
 	protected void verifyInput(ActionEvent e) throws Exception {
 		veryfyRemission();

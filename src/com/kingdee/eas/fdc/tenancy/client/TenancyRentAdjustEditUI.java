@@ -658,7 +658,7 @@ public class TenancyRentAdjustEditUI extends AbstractTenancyRentAdjustEditUI
 //				return;
 //			}
 //			if (TenancyStateEnum.keepTenancy.equals(room.getTenancyState())) {
-//				MsgBox.showInfo(room.getNumber() + " 已保留!");
+//				MsgBox.showInfo(room.getNumber() + " 已封存!");
 //				return;
 //			}if (TenancyStateEnum.sincerObligate.equals(room.getTenancyState())) {
 //				MsgBox.showInfo(room.getNumber() + " 已预留!");

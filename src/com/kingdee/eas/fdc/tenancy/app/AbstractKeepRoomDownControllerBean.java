@@ -50,12 +50,15 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public KeepRoomDownInfo getKeepRoomDownInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("f0a73fc2-cdb3-47ed-8c86-9d7c7fa7b634"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("4e3aa5b5-3ba7-4b0f-88b7-9802c150f985"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             KeepRoomDownInfo retValue = (KeepRoomDownInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (KeepRoomDownInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -72,12 +75,15 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public KeepRoomDownInfo getKeepRoomDownInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("a01e4bd0-32d1-4cc7-9339-56e9f6c59cf4"), new Object[]{ctx, pk, selector});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("df588dc6-5182-4d1b-aaaf-452bc93fb29c"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             KeepRoomDownInfo retValue = (KeepRoomDownInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (KeepRoomDownInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -94,12 +100,15 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public KeepRoomDownInfo getKeepRoomDownInfo(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3d7b9ac6-b1a4-4386-a791-ca55f383ebfe"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("eeba94b6-12fe-49c0-ab4b-45c6ccf25fc7"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             KeepRoomDownInfo retValue = (KeepRoomDownInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (KeepRoomDownInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -116,12 +125,15 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public KeepRoomDownCollection getKeepRoomDownCollection(Context ctx) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("59ffdebd-78d5-4e4a-9f14-7763418fa609"), new Object[]{ctx});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("721ec9e7-ae1c-4cb5-b933-1f3206f08b41"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             KeepRoomDownCollection retValue = (KeepRoomDownCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (KeepRoomDownCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -136,12 +148,15 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public KeepRoomDownCollection getKeepRoomDownCollection(Context ctx, EntityViewInfo view) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("fc3d0a16-64c0-4f80-ae27-5166db7a9be0"), new Object[]{ctx, view});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("8d772660-9f31-48b3-9bf2-58011bf97854"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             KeepRoomDownCollection retValue = (KeepRoomDownCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (KeepRoomDownCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -156,12 +171,15 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public KeepRoomDownCollection getKeepRoomDownCollection(Context ctx, String oql) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("297d567e-b4a4-4108-81ac-36043fa9ec34"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("c33a71e9-1d66-4714-9bbf-84475f2c8b80"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             KeepRoomDownCollection retValue = (KeepRoomDownCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (KeepRoomDownCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -176,9 +194,11 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
     public void cancelKeepRoom(Context ctx, String roomId) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3382f631-5da0-4629-812a-a5bb17166eff"), new Object[]{ctx, roomId});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("5be47056-75d0-4642-9b19-572600153b5b"), new Object[]{ctx, roomId});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _cancelKeepRoom(ctx, roomId);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -187,7 +207,10 @@ public abstract class AbstractKeepRoomDownControllerBean extends BillBaseControl
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _cancelKeepRoom(Context ctx, String roomId) throws BOSException;
+    protected void _cancelKeepRoom(Context ctx, String roomId) throws BOSException
+    {    	
+        return;
+    }
 
     public BillBaseCollection getBillBaseCollection (Context ctx) throws BOSException
     {

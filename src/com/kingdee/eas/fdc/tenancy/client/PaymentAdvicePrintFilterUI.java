@@ -97,7 +97,7 @@ public class PaymentAdvicePrintFilterUI extends AbstractPaymentAdvicePrintFilter
     public void onLoad() throws Exception {
     	super.onLoad();
     	this.sellProject.setRequired(true);
-		this.setUITitle("付款/催款通知");
+		this.setUITitle("催款通知");
     	lackDates.setVisible(false);
     	if (!isLoaded ) {
 			init();
@@ -105,6 +105,9 @@ public class PaymentAdvicePrintFilterUI extends AbstractPaymentAdvicePrintFilter
 		}
 		isLoaded = true;
 		this.contComment.setVisible(false);
+		
+		this.isAudit.setVisible(false);
+		this.contSellProject.setVisible(false);
 		
 	}
   
@@ -300,11 +303,11 @@ public class PaymentAdvicePrintFilterUI extends AbstractPaymentAdvicePrintFilter
     }
   
     public boolean verify() {
-		if(sellProject.getValue() == null){
-			MsgBox.showInfo("项目不能为空");
-			sellProject.requestFocus();
-			return false;
-		}
+//		if(sellProject.getValue() == null){
+//			MsgBox.showInfo("项目不能为空");
+//			sellProject.requestFocus();
+//			return false;
+//		}
 		//备注不相等则更新数据库
 //		if(!(this.comment.getText().equals(this.Areacomment))){
 //			FDCSQLBuilder builder = new FDCSQLBuilder();
@@ -324,7 +327,6 @@ public class PaymentAdvicePrintFilterUI extends AbstractPaymentAdvicePrintFilter
 //				MsgBox.showInfo("结束日期必須大于开始日期!");
 //				return false;
 //			}
-		
 		
 		return true;
 	}
@@ -505,15 +507,15 @@ public class PaymentAdvicePrintFilterUI extends AbstractPaymentAdvicePrintFilter
 	   FDCCustomerParams para = new FDCCustomerParams(getCustomerParams());
 	   FilterInfo filter = new FilterInfo();
 	   //项目
-	   if (para.isNotNull("sellProject")) {
-			try {
-				filter.getFilterItems().add(new FilterItemInfo("sellProject.name", SellProjectFactory.getRemoteInstance().getSellProjectInfo(new ObjectUuidPK(para.getString("sellProject"))).getName()));
-			} catch (Exception e) {
-				this.handUIException(e);
-			}
-		} else {//如果没有选择工程项目，给出提示
-			MsgBox.showError(this, "请选择工程项目");
-		}
+//	   if (para.isNotNull("sellProject")) {
+//			try {
+//				filter.getFilterItems().add(new FilterItemInfo("sellProject.name", SellProjectFactory.getRemoteInstance().getSellProjectInfo(new ObjectUuidPK(para.getString("sellProject"))).getName()));
+//			} catch (Exception e) {
+//				this.handUIException(e);
+//			}
+//		} else {//如果没有选择工程项目，给出提示
+//			MsgBox.showError(this, "请选择工程项目");
+//		}
 	   //客户ID
 	   if (para.isNotNull("customer.id")) {
 			filter.getFilterItems().add(new FilterItemInfo("customer.id", FDCHelper.getSetByArray(para.getStringArray("customer.id")), CompareType.INCLUDE));

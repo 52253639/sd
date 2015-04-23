@@ -117,7 +117,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql(" lm.freliefamount as reliefLiquidated, ")
 		.appendSql(" isnull(tbop.fappamount,0)-isnull(tbop.factrevamount,0) as unPayLiquidated, t5.fid as spid,")
 		
-		.appendSql(" t4.fname contractname,t4.fid contractid,t3.fdisplayname  roomname,t4.FtenancyState state,t5.fname_l2 projectname ")
+		.appendSql(" t4.fname contractname,t4.fid contractid,t3.fname_l2 roomname,t4.FtenancyState state,t5.fname_l2 projectname ")
 		.appendSql(" 	,t8.fname_l2 as moneyname,t8.fid as moneyid,t3.FTenancyArea tarea ")
 		.appendSql(" 			from  T_TEN_TenancyRoomPayListEntry t1   ")
 		.appendSql(" 				left join T_TEN_TenancyRoomEntry t2 on t1.ftenroomID =t2.FID ")
@@ -163,7 +163,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 				
 		.appendSql("				from T_TEN_TenBillOtherPay t1  ")
 		.appendSql("				left join (  ")
-		.appendSql("				select tenancyBill.fnumber,tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.fname ,tenancyBill.fstate,tenancyBill.FtenancyState  ")
+		.appendSql("				select tenancyBill.fnumber,tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.ftenRoomsDes fname ,tenancyBill.fstate,tenancyBill.FtenancyState  ")
 		.appendSql("				 from T_TEN_TenancyBill tenancyBill  ")
 		.appendSql("					where tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid  ")
 		.appendSql("				 from T_TEN_TenancyCustomerEntry tenancyCustomerEntry   ")
@@ -269,15 +269,15 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 					Date appdate = rs.getDate("appdate");
 					String contractname = rs.getString("contractname");
 					String roomname ="";
-					if(rs.getString("contractname")!=null){
-						if(rs.getString("contractname").equals(rs.getString("roomname"))){
-							roomname="";
-						}else{
-							roomname= rs.getString("roomname");
-						}
-					}else{
+//					if(rs.getString("contractname")!=null){
+//						if(rs.getString("contractname").equals(rs.getString("roomname"))){
+//							roomname="";
+//						}else{
+//							roomname= rs.getString("roomname");
+//						}
+//					}else{
 						roomname= rs.getString("roomname");
-					}
+//					}
 					
 					String state = rs.getString("state");
 					String projectname = rs.getString("projectname");
@@ -392,7 +392,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql("  from( ")
 		.appendSql(" 	select 'acterPay'||t1.fid  id,t1.FStartdate startdate,t1.fenddate enddate,t1.fappdate appdate,t1.fappamount appamount,t1.fActrevamount ")
 		.appendSql(" 	actamount,t1.FHasTransferredAmount tamount,t1.FHasRefundmentAmount ramount,t1.FHasAdjustedAmount aamount, " )
-		.appendSql(" t4.fname contractname,t4.fid contractid,t3.fdisplayname  roomname,t4.FtenancyState state,t5.fname_l2 projectname ")
+		.appendSql(" t4.fname contractname,t4.fid contractid,t3.fname_l2  roomname,t4.FtenancyState state,t5.fname_l2 projectname ")
 		.appendSql(" 	,t8.fname_l2 as moneyname,t8.fid as moneyid,t3.FTenancyArea tarea ")
 		.appendSql(" 			from  T_TEN_TenancyRoomPayListEntry t1   ")
 		.appendSql(" 				left join T_TEN_TenancyRoomEntry t2 on t1.ftenroomID =t2.FID ")
@@ -421,7 +421,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql("			,t2.FtenancyState state,t5.fname_l2 projectname,t8.fname_l2  moneyname,t8.fid as moneyid,-1 tarea ")
 		.appendSql("				from T_TEN_TenBillOtherPay t1  ")
 		.appendSql("				left join (  ")
-		.appendSql("				select tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.fname ,tenancyBill.fstate,tenancyBill.FtenancyState  ")
+		.appendSql("				select tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.ftenRoomsDes fname ,tenancyBill.fstate,tenancyBill.FtenancyState  ")
 		.appendSql("				 from T_TEN_TenancyBill tenancyBill  ")
 		.appendSql("					where tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid  ")
 		.appendSql("				 from T_TEN_TenancyCustomerEntry tenancyCustomerEntry   ")

@@ -693,7 +693,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		headRow.getCell(C_PAYS_APP_PAY_DATE).setValue("应收日期");
 
 		for (int i = 0; i < tenancyRooms.size(); i++) {
-			String roomNum = tenancyRooms.get(i).getRoom().getNumber();
+			String roomNum = tenancyRooms.get(i).getRoom().getName();
 			headRow.getCell(PREFIX_C_PAYS_ROOM + i + POSTFIX_C_PAYS_APP_AMOUNT).setValue(roomNum);
 			headRow.getCell(PREFIX_C_PAYS_ROOM + i + POSTFIX_C_PAYS_ACT_AMOUNT).setValue(roomNum);
 			headRow.getCell(PREFIX_C_PAYS_ROOM + i + POSTFIX_C_PAYS_ACT_PAY_DATE).setValue(roomNum);

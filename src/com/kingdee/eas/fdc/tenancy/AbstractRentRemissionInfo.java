@@ -91,6 +91,28 @@ public class AbstractRentRemissionInfo extends com.kingdee.eas.fdc.tenancy.TenBi
     {
         put("sellProject", item);
     }
+    /**
+     * Object:租金减免's 备注property 
+     */
+    public String getRemark()
+    {
+        return getString("remark");
+    }
+    public void setRemark(String item)
+    {
+        setString("remark", item);
+    }
+    /**
+     * Object: 租金减免 's 批量单ID property 
+     */
+    public com.kingdee.eas.fdc.tenancy.BatchRentRemissionInfo getBatchBill()
+    {
+        return (com.kingdee.eas.fdc.tenancy.BatchRentRemissionInfo)get("batchBill");
+    }
+    public void setBatchBill(com.kingdee.eas.fdc.tenancy.BatchRentRemissionInfo item)
+    {
+        put("batchBill", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("DADF01B7");

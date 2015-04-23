@@ -67,10 +67,21 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contname;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox chkIsByAgency;
     protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel1;
-    protected com.kingdee.bos.ctrl.swing.KDPanel panelRoom;
-    protected com.kingdee.bos.ctrl.swing.KDPanel panelCustomer;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreateTime;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreator;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalRoomStandardRent;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalRoomDealRent;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalBuildingArea;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewRoomInfo;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAddRoom;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRemoveRoom;
+    protected com.kingdee.bos.ctrl.swing.KDContainer panelRoom;
+    protected com.kingdee.bos.ctrl.swing.KDContainer panelCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewCustInfo;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnNewCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAddCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRemoveCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDContainer panelTotal;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboTenancyType;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkTenancyDate;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7OldContract;
@@ -100,23 +111,14 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinChargeOffsetDays;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtLeaseCount;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
-    protected com.kingdee.bos.ctrl.kdf.table.KDTable tblRoom;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalRoomStandardRent;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalRoomDealRent;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalBuildingArea;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewRoomInfo;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAddRoom;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRemoveRoom;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7Creator;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalRoomStandardRent;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalRoomDealRent;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalBuildingArea;
+    protected com.kingdee.bos.ctrl.kdf.table.KDTable tblRoom;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblCustomer;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnNewCustomer;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAddCustomer;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRemoveCustomer;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewCustInfo;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7Creator;
+    protected com.kingdee.bos.ctrl.kdf.table.KDTable tblTotal;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSpecialClause;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer conttenRevBank;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardTotalRent;
@@ -260,6 +262,10 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.eas.fdc.tenancy.TenancyBillInfo editData = null;
     protected ActionCarryForward actionCarryForward = null;
     protected ActionAddCollectProtocol actionAddCollectProtocol = null;
+    protected ActionAddRoom actionAddRoom = null;
+    protected ActionRemoveRoom actionRemoveRoom = null;
+    protected ActionAddCustomer actionAddCustomer = null;
+    protected ActionRemoveCustomer actionRemoveCustomer = null;
     /**
      * output class constructor
      */
@@ -345,6 +351,22 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.actionAddCollectProtocol = new ActionAddCollectProtocol(this);
         getActionManager().registerAction("actionAddCollectProtocol", actionAddCollectProtocol);
          this.actionAddCollectProtocol.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionAddRoom
+        this.actionAddRoom = new ActionAddRoom(this);
+        getActionManager().registerAction("actionAddRoom", actionAddRoom);
+         this.actionAddRoom.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionRemoveRoom
+        this.actionRemoveRoom = new ActionRemoveRoom(this);
+        getActionManager().registerAction("actionRemoveRoom", actionRemoveRoom);
+         this.actionRemoveRoom.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionAddCustomer
+        this.actionAddCustomer = new ActionAddCustomer(this);
+        getActionManager().registerAction("actionAddCustomer", actionAddCustomer);
+         this.actionAddCustomer.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionRemoveCustomer
+        this.actionRemoveCustomer = new ActionRemoveCustomer(this);
+        getActionManager().registerAction("actionRemoveCustomer", actionRemoveCustomer);
+         this.actionRemoveCustomer.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.tabbedPaneContract = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.tabbedPaneRoom = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.panelTenancyRoomInfo = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -366,10 +388,21 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contname = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.chkIsByAgency = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.kDPanel1 = new com.kingdee.bos.ctrl.swing.KDPanel();
-        this.panelRoom = new com.kingdee.bos.ctrl.swing.KDPanel();
-        this.panelCustomer = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.contCreateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contCreator = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contTotalRoomStandardRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contTotalRoomDealRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contTotalBuildingArea = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.btnViewRoomInfo = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnAddRoom = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnRemoveRoom = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.panelRoom = new com.kingdee.bos.ctrl.swing.KDContainer();
+        this.panelCustomer = new com.kingdee.bos.ctrl.swing.KDContainer();
+        this.btnViewCustInfo = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnNewCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnAddCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnRemoveCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.panelTotal = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.comboTenancyType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.pkTenancyDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.f7OldContract = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -399,23 +432,14 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.spinChargeOffsetDays = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.txtLeaseCount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.tblRoom = new com.kingdee.bos.ctrl.kdf.table.KDTable();
-        this.contTotalRoomStandardRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contTotalRoomDealRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contTotalBuildingArea = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.btnViewRoomInfo = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.btnAddRoom = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.btnRemoveRoom = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.f7Creator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtTotalRoomStandardRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtTotalRoomDealRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtTotalBuildingArea = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.tblRoom = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.tblCustomer = new com.kingdee.bos.ctrl.kdf.table.KDTable();
-        this.btnNewCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.btnAddCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.btnRemoveCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.btnViewCustInfo = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.f7Creator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.tblTotal = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.contSpecialClause = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.conttenRevBank = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStandardTotalRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -577,10 +601,21 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contname.setName("contname");
         this.chkIsByAgency.setName("chkIsByAgency");
         this.kDPanel1.setName("kDPanel1");
-        this.panelRoom.setName("panelRoom");
-        this.panelCustomer.setName("panelCustomer");
         this.contCreateTime.setName("contCreateTime");
         this.contCreator.setName("contCreator");
+        this.contTotalRoomStandardRent.setName("contTotalRoomStandardRent");
+        this.contTotalRoomDealRent.setName("contTotalRoomDealRent");
+        this.contTotalBuildingArea.setName("contTotalBuildingArea");
+        this.btnViewRoomInfo.setName("btnViewRoomInfo");
+        this.btnAddRoom.setName("btnAddRoom");
+        this.btnRemoveRoom.setName("btnRemoveRoom");
+        this.panelRoom.setName("panelRoom");
+        this.panelCustomer.setName("panelCustomer");
+        this.btnViewCustInfo.setName("btnViewCustInfo");
+        this.btnNewCustomer.setName("btnNewCustomer");
+        this.btnAddCustomer.setName("btnAddCustomer");
+        this.btnRemoveCustomer.setName("btnRemoveCustomer");
+        this.panelTotal.setName("panelTotal");
         this.comboTenancyType.setName("comboTenancyType");
         this.pkTenancyDate.setName("pkTenancyDate");
         this.f7OldContract.setName("f7OldContract");
@@ -610,23 +645,14 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.spinChargeOffsetDays.setName("spinChargeOffsetDays");
         this.txtLeaseCount.setName("txtLeaseCount");
         this.pkStartDate.setName("pkStartDate");
-        this.tblRoom.setName("tblRoom");
-        this.contTotalRoomStandardRent.setName("contTotalRoomStandardRent");
-        this.contTotalRoomDealRent.setName("contTotalRoomDealRent");
-        this.contTotalBuildingArea.setName("contTotalBuildingArea");
-        this.btnViewRoomInfo.setName("btnViewRoomInfo");
-        this.btnAddRoom.setName("btnAddRoom");
-        this.btnRemoveRoom.setName("btnRemoveRoom");
+        this.pkCreateTime.setName("pkCreateTime");
+        this.f7Creator.setName("f7Creator");
         this.txtTotalRoomStandardRent.setName("txtTotalRoomStandardRent");
         this.txtTotalRoomDealRent.setName("txtTotalRoomDealRent");
         this.txtTotalBuildingArea.setName("txtTotalBuildingArea");
+        this.tblRoom.setName("tblRoom");
         this.tblCustomer.setName("tblCustomer");
-        this.btnNewCustomer.setName("btnNewCustomer");
-        this.btnAddCustomer.setName("btnAddCustomer");
-        this.btnRemoveCustomer.setName("btnRemoveCustomer");
-        this.btnViewCustInfo.setName("btnViewCustInfo");
-        this.pkCreateTime.setName("pkCreateTime");
-        this.f7Creator.setName("f7Creator");
+        this.tblTotal.setName("tblTotal");
         this.contSpecialClause.setName("contSpecialClause");
         this.conttenRevBank.setName("conttenRevBank");
         this.contStandardTotalRent.setName("contStandardTotalRent");
@@ -843,10 +869,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         });
         // kDPanel1		
         this.kDPanel1.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(new Color(255,255,255),new Color(148,145,140)), resHelper.getString("kDPanel1.border.title")));
-        // panelRoom		
-        this.panelRoom.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(new Color(255,255,255),new Color(148,145,140)), resHelper.getString("panelRoom.border.title")));
-        // panelCustomer		
-        this.panelCustomer.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(new Color(255,255,255),new Color(148,145,140)), resHelper.getString("panelCustomer.border.title")));
         // contCreateTime		
         this.contCreateTime.setBoundLabelText(resHelper.getString("contCreateTime.boundLabelText"));		
         this.contCreateTime.setBoundLabelLength(100);		
@@ -859,6 +881,141 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contCreator.setBoundLabelUnderline(true);		
         this.contCreator.setBoundLabelAlignment(7);		
         this.contCreator.setVisible(true);
+        // contTotalRoomStandardRent		
+        this.contTotalRoomStandardRent.setBoundLabelText(resHelper.getString("contTotalRoomStandardRent.boundLabelText"));		
+        this.contTotalRoomStandardRent.setBoundLabelLength(100);		
+        this.contTotalRoomStandardRent.setBoundLabelUnderline(true);		
+        this.contTotalRoomStandardRent.setVisible(false);		
+        this.contTotalRoomStandardRent.setBoundLabelAlignment(7);		
+        this.contTotalRoomStandardRent.setFont(new java.awt.Font("Dialog",1,9));		
+        this.contTotalRoomStandardRent.setForeground(new java.awt.Color(255,0,0));
+        // contTotalRoomDealRent		
+        this.contTotalRoomDealRent.setBoundLabelText(resHelper.getString("contTotalRoomDealRent.boundLabelText"));		
+        this.contTotalRoomDealRent.setBoundLabelLength(100);		
+        this.contTotalRoomDealRent.setBoundLabelUnderline(true);		
+        this.contTotalRoomDealRent.setVisible(false);		
+        this.contTotalRoomDealRent.setBoundLabelAlignment(7);		
+        this.contTotalRoomDealRent.setFont(new java.awt.Font("Dialog",1,9));		
+        this.contTotalRoomDealRent.setForeground(new java.awt.Color(255,0,0));
+        // contTotalBuildingArea		
+        this.contTotalBuildingArea.setBoundLabelText(resHelper.getString("contTotalBuildingArea.boundLabelText"));		
+        this.contTotalBuildingArea.setBoundLabelLength(100);		
+        this.contTotalBuildingArea.setBoundLabelUnderline(true);		
+        this.contTotalBuildingArea.setVisible(false);		
+        this.contTotalBuildingArea.setBoundLabelAlignment(7);		
+        this.contTotalBuildingArea.setFont(new java.awt.Font("Dialog",1,9));		
+        this.contTotalBuildingArea.setForeground(new java.awt.Color(255,0,0));
+        // btnViewRoomInfo		
+        this.btnViewRoomInfo.setText(resHelper.getString("btnViewRoomInfo.text"));		
+        this.btnViewRoomInfo.setVisible(false);
+        this.btnViewRoomInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnViewRoomInfo_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // btnAddRoom		
+        this.btnAddRoom.setText(resHelper.getString("btnAddRoom.text"));		
+        this.btnAddRoom.setVisible(false);
+        this.btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnAddRoom_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // btnRemoveRoom		
+        this.btnRemoveRoom.setText(resHelper.getString("btnRemoveRoom.text"));		
+        this.btnRemoveRoom.setVisible(false);
+        this.btnRemoveRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnRemoveRoom_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // panelRoom		
+        this.panelRoom.setTitle(resHelper.getString("panelRoom.title"));
+        // panelCustomer		
+        this.panelCustomer.setTitle(resHelper.getString("panelCustomer.title"));
+        // btnViewCustInfo		
+        this.btnViewCustInfo.setText(resHelper.getString("btnViewCustInfo.text"));		
+        this.btnViewCustInfo.setVisible(false);
+        this.btnViewCustInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnViewCustInfo_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // btnNewCustomer		
+        this.btnNewCustomer.setText(resHelper.getString("btnNewCustomer.text"));		
+        this.btnNewCustomer.setVisible(false);
+        this.btnNewCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnAddNewCustomer_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // btnAddCustomer		
+        this.btnAddCustomer.setText(resHelper.getString("btnAddCustomer.text"));		
+        this.btnAddCustomer.setVisible(false);
+        this.btnAddCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnAddCustomer_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // btnRemoveCustomer		
+        this.btnRemoveCustomer.setText(resHelper.getString("btnRemoveCustomer.text"));		
+        this.btnRemoveCustomer.setVisible(false);
+        this.btnRemoveCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnRemoveCustomer_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
+        // panelTotal		
+        this.panelTotal.setTitle(resHelper.getString("panelTotal.title"));
         // comboTenancyType		
         this.comboTenancyType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.TenancyContractTypeEnum").toArray());
         // pkTenancyDate
@@ -1061,90 +1218,18 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
                 }
             }
         });
-        // tblRoom
-		String tblRoomStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol3\"><c:NumberFormat>#,##0.000</c:NumberFormat></c:Style><c:Style id=\"sCol7\"><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol11\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol13\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol14\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol15\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol16\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol17\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol18\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"tenRoomState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" /><t:Column t:key=\"room\" t:width=\"250\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"floor\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"buildingArea\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"standardRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"standardRentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"standardRentPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"dayPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"dealRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"dealRentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"dealRentPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"flagAtTerm\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" t:styleID=\"sCol11\" /><t:Column t:key=\"des\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"fitment\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" t:styleID=\"sCol13\" /><t:Column t:key=\"roomModel\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" t:styleID=\"sCol14\" /><t:Column t:key=\"direction\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /><t:Column t:key=\"actDeliverDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" t:styleID=\"sCol16\" /><t:Column t:key=\"actQuitDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" t:styleID=\"sCol17\" /><t:Column t:key=\"roomEntryId\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol18\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{tenRoomState}</t:Cell><t:Cell>$Resource{room}</t:Cell><t:Cell>$Resource{floor}</t:Cell><t:Cell>$Resource{buildingArea}</t:Cell><t:Cell>$Resource{standardRent}</t:Cell><t:Cell>$Resource{standardRentType}</t:Cell><t:Cell>$Resource{standardRentPrice}</t:Cell><t:Cell>$Resource{dayPrice}</t:Cell><t:Cell>$Resource{dealRent}</t:Cell><t:Cell>$Resource{dealRentType}</t:Cell><t:Cell>$Resource{dealRentPrice}</t:Cell><t:Cell>$Resource{flagAtTerm}</t:Cell><t:Cell>$Resource{des}</t:Cell><t:Cell>$Resource{fitment}</t:Cell><t:Cell>$Resource{roomModel}</t:Cell><t:Cell>$Resource{direction}</t:Cell><t:Cell>$Resource{actDeliverDate}</t:Cell><t:Cell>$Resource{actQuitDate}</t:Cell><t:Cell>$Resource{roomEntryId}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
-		
-        this.tblRoom.setFormatXml(resHelper.translateString("tblRoom",tblRoomStrXML));
-        this.tblRoom.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
-            public void editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) {
-                try {
-                    tblRoom_editStopped(e);
-                } catch(Exception exc) {
-                    handUIException(exc);
-                }
-            }
-        });
-
-                this.tblRoom.putBindContents("editData",new String[] {"","","","","","","","","","","","","","","","","","","roomEntryId"});
-
-
-        this.tblRoom.checkParsed();
-        // contTotalRoomStandardRent		
-        this.contTotalRoomStandardRent.setBoundLabelText(resHelper.getString("contTotalRoomStandardRent.boundLabelText"));		
-        this.contTotalRoomStandardRent.setBoundLabelLength(100);		
-        this.contTotalRoomStandardRent.setBoundLabelUnderline(true);		
-        this.contTotalRoomStandardRent.setVisible(true);		
-        this.contTotalRoomStandardRent.setBoundLabelAlignment(7);		
-        this.contTotalRoomStandardRent.setFont(new java.awt.Font("Dialog",1,9));		
-        this.contTotalRoomStandardRent.setForeground(new java.awt.Color(255,0,0));
-        // contTotalRoomDealRent		
-        this.contTotalRoomDealRent.setBoundLabelText(resHelper.getString("contTotalRoomDealRent.boundLabelText"));		
-        this.contTotalRoomDealRent.setBoundLabelLength(100);		
-        this.contTotalRoomDealRent.setBoundLabelUnderline(true);		
-        this.contTotalRoomDealRent.setVisible(true);		
-        this.contTotalRoomDealRent.setBoundLabelAlignment(7);		
-        this.contTotalRoomDealRent.setFont(new java.awt.Font("Dialog",1,9));		
-        this.contTotalRoomDealRent.setForeground(new java.awt.Color(255,0,0));
-        // contTotalBuildingArea		
-        this.contTotalBuildingArea.setBoundLabelText(resHelper.getString("contTotalBuildingArea.boundLabelText"));		
-        this.contTotalBuildingArea.setBoundLabelLength(100);		
-        this.contTotalBuildingArea.setBoundLabelUnderline(true);		
-        this.contTotalBuildingArea.setVisible(true);		
-        this.contTotalBuildingArea.setBoundLabelAlignment(7);		
-        this.contTotalBuildingArea.setFont(new java.awt.Font("Dialog",1,9));		
-        this.contTotalBuildingArea.setForeground(new java.awt.Color(255,0,0));
-        // btnViewRoomInfo		
-        this.btnViewRoomInfo.setText(resHelper.getString("btnViewRoomInfo.text"));
-        this.btnViewRoomInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnViewRoomInfo_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
-        // btnAddRoom		
-        this.btnAddRoom.setText(resHelper.getString("btnAddRoom.text"));
-        this.btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnAddRoom_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
-        // btnRemoveRoom		
-        this.btnRemoveRoom.setText(resHelper.getString("btnRemoveRoom.text"));
-        this.btnRemoveRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnRemoveRoom_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
+        // pkCreateTime		
+        this.pkCreateTime.setEnabled(false);		
+        this.pkCreateTime.setVisible(true);
+        // f7Creator		
+        this.f7Creator.setEnabled(false);		
+        this.f7Creator.setVisible(true);		
+        this.f7Creator.setEditable(true);		
+        this.f7Creator.setDisplayFormat("$name$");		
+        this.f7Creator.setEditFormat("$number$");		
+        this.f7Creator.setCommitFormat("$number$");		
+        this.f7Creator.setRequired(false);		
+        this.f7Creator.setQueryInfo("com.kingdee.eas.base.permission.app.F7UserQuery");
         // txtTotalRoomStandardRent		
         this.txtTotalRoomStandardRent.setVisible(true);		
         this.txtTotalRoomStandardRent.setHorizontalAlignment(2);		
@@ -1175,6 +1260,24 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.txtTotalBuildingArea.setPrecision(3);		
         this.txtTotalBuildingArea.setRequired(false);		
         this.txtTotalBuildingArea.setEnabled(true);
+        // tblRoom
+		String tblRoomStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol3\"><c:NumberFormat>#,##0.000</c:NumberFormat></c:Style><c:Style id=\"sCol7\"><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol11\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol13\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol14\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol15\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol16\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol17\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol18\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"tenRoomState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" /><t:Column t:key=\"room\" t:width=\"250\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"floor\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"buildingArea\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"standardRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"standardRentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"standardRentPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"dayPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"dealRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"dealRentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"dealRentPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"flagAtTerm\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" t:styleID=\"sCol11\" /><t:Column t:key=\"des\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"fitment\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" t:styleID=\"sCol13\" /><t:Column t:key=\"roomModel\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" t:styleID=\"sCol14\" /><t:Column t:key=\"direction\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /><t:Column t:key=\"actDeliverDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" t:styleID=\"sCol16\" /><t:Column t:key=\"actQuitDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" t:styleID=\"sCol17\" /><t:Column t:key=\"roomEntryId\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol18\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{tenRoomState}</t:Cell><t:Cell>$Resource{room}</t:Cell><t:Cell>$Resource{floor}</t:Cell><t:Cell>$Resource{buildingArea}</t:Cell><t:Cell>$Resource{standardRent}</t:Cell><t:Cell>$Resource{standardRentType}</t:Cell><t:Cell>$Resource{standardRentPrice}</t:Cell><t:Cell>$Resource{dayPrice}</t:Cell><t:Cell>$Resource{dealRent}</t:Cell><t:Cell>$Resource{dealRentType}</t:Cell><t:Cell>$Resource{dealRentPrice}</t:Cell><t:Cell>$Resource{flagAtTerm}</t:Cell><t:Cell>$Resource{des}</t:Cell><t:Cell>$Resource{fitment}</t:Cell><t:Cell>$Resource{roomModel}</t:Cell><t:Cell>$Resource{direction}</t:Cell><t:Cell>$Resource{actDeliverDate}</t:Cell><t:Cell>$Resource{actQuitDate}</t:Cell><t:Cell>$Resource{roomEntryId}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		
+        this.tblRoom.setFormatXml(resHelper.translateString("tblRoom",tblRoomStrXML));
+        this.tblRoom.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
+            public void editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) {
+                try {
+                    tblRoom_editStopped(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
+
+                this.tblRoom.putBindContents("editData",new String[] {"","","","","","","","","","","","","","","","","","","roomEntryId"});
+
+
+        this.tblRoom.checkParsed();
         // tblCustomer
 		String tblCustomerStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol2\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol3\"><c:Protection locked=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol6\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"propertyPercent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"customer\" t:width=\"250\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"postalcode\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol2\" /><t:Column t:key=\"phone\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol3\" /><t:Column t:key=\"certificateName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol4\" /><t:Column t:key=\"certificateNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol5\" /><t:Column t:key=\"mailAddress\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol6\" /><t:Column t:key=\"bookDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"des\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{propertyPercent}</t:Cell><t:Cell>$Resource{customer}</t:Cell><t:Cell>$Resource{postalcode}</t:Cell><t:Cell>$Resource{phone}</t:Cell><t:Cell>$Resource{certificateName}</t:Cell><t:Cell>$Resource{certificateNumber}</t:Cell><t:Cell>$Resource{mailAddress}</t:Cell><t:Cell>$Resource{bookDate}</t:Cell><t:Cell>$Resource{des}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
@@ -1202,74 +1305,14 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         
 
         this.tblCustomer.checkParsed();
-        // btnNewCustomer		
-        this.btnNewCustomer.setText(resHelper.getString("btnNewCustomer.text"));
-        this.btnNewCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnAddNewCustomer_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
-        // btnAddCustomer		
-        this.btnAddCustomer.setText(resHelper.getString("btnAddCustomer.text"));
-        this.btnAddCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnAddCustomer_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
-        // btnRemoveCustomer		
-        this.btnRemoveCustomer.setText(resHelper.getString("btnRemoveCustomer.text"));
-        this.btnRemoveCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnRemoveCustomer_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
-        // btnViewCustInfo		
-        this.btnViewCustInfo.setText(resHelper.getString("btnViewCustInfo.text"));
-        this.btnViewCustInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    btnViewCustInfo_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
-        // pkCreateTime		
-        this.pkCreateTime.setEnabled(false);		
-        this.pkCreateTime.setVisible(true);
-        // f7Creator		
-        this.f7Creator.setEnabled(false);		
-        this.f7Creator.setVisible(true);		
-        this.f7Creator.setEditable(true);		
-        this.f7Creator.setDisplayFormat("$name$");		
-        this.f7Creator.setEditFormat("$number$");		
-        this.f7Creator.setCommitFormat("$number$");		
-        this.f7Creator.setRequired(false);		
-        this.f7Creator.setQueryInfo("com.kingdee.eas.base.permission.app.F7UserQuery");
+        // tblTotal
+		String tblTotalStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		
+        this.tblTotal.setFormatXml(resHelper.translateString("tblTotal",tblTotalStrXML));
+
+        
+
+        this.tblTotal.checkParsed();
         // contSpecialClause		
         this.contSpecialClause.setBoundLabelText(resHelper.getString("contSpecialClause.boundLabelText"));		
         this.contSpecialClause.setBoundLabelLength(100);		
@@ -1661,7 +1704,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
             }
         });
         // tblRentSet
-		String tblRentSetStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol2\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol6\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"room\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"deposit\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"firstRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol2\" /><t:Column t:key=\"tenancyModel\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"rentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol4\" /><t:Column t:key=\"discount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol5\" /><t:Column t:key=\"exRentAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol6\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{room}</t:Cell><t:Cell>$Resource{deposit}</t:Cell><t:Cell>$Resource{firstRent}</t:Cell><t:Cell>$Resource{tenancyModel}</t:Cell><t:Cell>$Resource{rentType}</t:Cell><t:Cell>$Resource{discount}</t:Cell><t:Cell>$Resource{exRentAmount}</t:Cell></t:Row><t:Row t:name=\"header2\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{room_Row2}</t:Cell><t:Cell>$Resource{deposit_Row2}</t:Cell><t:Cell>$Resource{firstRent_Row2}</t:Cell><t:Cell>$Resource{tenancyModel_Row2}</t:Cell><t:Cell>$Resource{rentType_Row2}</t:Cell><t:Cell>$Resource{discount_Row2}</t:Cell><t:Cell>$Resource{exRentAmount_Row2}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		String tblRentSetStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol2\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol6\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"room\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"deposit\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"firstRent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol2\" /><t:Column t:key=\"tenancyModel\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"rentType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"discount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol5\" /><t:Column t:key=\"exRentAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol6\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{room}</t:Cell><t:Cell>$Resource{deposit}</t:Cell><t:Cell>$Resource{firstRent}</t:Cell><t:Cell>$Resource{tenancyModel}</t:Cell><t:Cell>$Resource{rentType}</t:Cell><t:Cell>$Resource{discount}</t:Cell><t:Cell>$Resource{exRentAmount}</t:Cell></t:Row><t:Row t:name=\"header2\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{room_Row2}</t:Cell><t:Cell>$Resource{deposit_Row2}</t:Cell><t:Cell>$Resource{firstRent_Row2}</t:Cell><t:Cell>$Resource{tenancyModel_Row2}</t:Cell><t:Cell>$Resource{rentType_Row2}</t:Cell><t:Cell>$Resource{discount_Row2}</t:Cell><t:Cell>$Resource{exRentAmount_Row2}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblRentSet.setFormatXml(resHelper.translateString("tblRentSet",tblRentSetStrXML));
         this.tblRentSet.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
@@ -2304,30 +2347,52 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         tabbedPaneContract.add(panelCommissionSetting, resHelper.getString("panelCommissionSetting.constraints"));
         //kDPanel2
         kDPanel2.setLayout(new KDLayout());
-        kDPanel2.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        contTenancyType.setBounds(new Rectangle(18, 0, 236, 19));
-        kDPanel2.add(contTenancyType, new KDLayout.Constraints(18, 0, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTenancyDate.setBounds(new Rectangle(18, 28, 236, 19));
-        kDPanel2.add(contTenancyDate, new KDLayout.Constraints(18, 28, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contOldContract.setBounds(new Rectangle(314, 0, 236, 19));
-        kDPanel2.add(contOldContract, new KDLayout.Constraints(314, 0, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contNumber.setBounds(new Rectangle(314, 28, 236, 19));
-        kDPanel2.add(contNumber, new KDLayout.Constraints(314, 28, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contChangeDes.setBounds(new Rectangle(610, 0, 236, 19));
-        kDPanel2.add(contChangeDes, new KDLayout.Constraints(610, 0, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contname.setBounds(new Rectangle(610, 28, 236, 19));
-        kDPanel2.add(contname, new KDLayout.Constraints(610, 28, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDPanel2.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        contTenancyType.setBounds(new Rectangle(11, 4, 236, 19));
+        kDPanel2.add(contTenancyType, new KDLayout.Constraints(11, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTenancyDate.setBounds(new Rectangle(11, 26, 236, 19));
+        kDPanel2.add(contTenancyDate, new KDLayout.Constraints(11, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contOldContract.setBounds(new Rectangle(313, 4, 236, 19));
+        kDPanel2.add(contOldContract, new KDLayout.Constraints(313, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNumber.setBounds(new Rectangle(313, 26, 236, 19));
+        kDPanel2.add(contNumber, new KDLayout.Constraints(313, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contChangeDes.setBounds(new Rectangle(610, 4, 236, 19));
+        kDPanel2.add(contChangeDes, new KDLayout.Constraints(610, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contname.setBounds(new Rectangle(610, 26, 236, 19));
+        kDPanel2.add(contname, new KDLayout.Constraints(610, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         chkIsByAgency.setBounds(new Rectangle(906, 0, 102, 19));
         kDPanel2.add(chkIsByAgency, new KDLayout.Constraints(906, 0, 102, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDPanel1.setBounds(new Rectangle(5, 59, 1008, 110));
-        kDPanel2.add(kDPanel1, new KDLayout.Constraints(5, 59, 1008, 110, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        panelRoom.setBounds(new Rectangle(5, 180, 1008, 216));
-        kDPanel2.add(panelRoom, new KDLayout.Constraints(5, 180, 1008, 216, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        panelCustomer.setBounds(new Rectangle(7, 407, 1002, 154));
-        kDPanel2.add(panelCustomer, new KDLayout.Constraints(7, 407, 1002, 154, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDPanel1.setBounds(new Rectangle(-3, 49, 1008, 94));
+        kDPanel2.add(kDPanel1, new KDLayout.Constraints(-3, 49, 1008, 94, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contCreateTime.setBounds(new Rectangle(426, 566, 270, 19));
         kDPanel2.add(contCreateTime, new KDLayout.Constraints(426, 566, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contCreator.setBounds(new Rectangle(8, 565, 270, 19));
         kDPanel2.add(contCreator, new KDLayout.Constraints(8, 565, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTotalRoomStandardRent.setBounds(new Rectangle(15, 181, 240, 19));
+        kDPanel2.add(contTotalRoomStandardRent, new KDLayout.Constraints(15, 181, 240, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTotalRoomDealRent.setBounds(new Rectangle(259, 185, 240, 19));
+        kDPanel2.add(contTotalRoomDealRent, new KDLayout.Constraints(259, 185, 240, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTotalBuildingArea.setBounds(new Rectangle(513, 181, 240, 19));
+        kDPanel2.add(contTotalBuildingArea, new KDLayout.Constraints(513, 181, 240, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnViewRoomInfo.setBounds(new Rectangle(761, 183, 107, 19));
+        kDPanel2.add(btnViewRoomInfo, new KDLayout.Constraints(761, 183, 107, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnAddRoom.setBounds(new Rectangle(867, 178, 67, 19));
+        kDPanel2.add(btnAddRoom, new KDLayout.Constraints(867, 178, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnRemoveRoom.setBounds(new Rectangle(940, 181, 67, 19));
+        kDPanel2.add(btnRemoveRoom, new KDLayout.Constraints(940, 181, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        panelRoom.setBounds(new Rectangle(1, 352, 999, 86));
+        kDPanel2.add(panelRoom, new KDLayout.Constraints(1, 352, 999, 86, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        panelCustomer.setBounds(new Rectangle(1, 441, 999, 120));
+        kDPanel2.add(panelCustomer, new KDLayout.Constraints(1, 441, 999, 120, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        btnViewCustInfo.setBounds(new Rectangle(678, 380, 111, 19));
+        kDPanel2.add(btnViewCustInfo, new KDLayout.Constraints(678, 380, 111, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnNewCustomer.setBounds(new Rectangle(789, 382, 83, 19));
+        kDPanel2.add(btnNewCustomer, new KDLayout.Constraints(789, 382, 83, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnAddCustomer.setBounds(new Rectangle(868, 385, 67, 19));
+        kDPanel2.add(btnAddCustomer, new KDLayout.Constraints(868, 385, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnRemoveCustomer.setBounds(new Rectangle(935, 389, 67, 19));
+        kDPanel2.add(btnRemoveCustomer, new KDLayout.Constraints(935, 389, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        panelTotal.setBounds(new Rectangle(1, 144, 999, 205));
+        kDPanel2.add(panelTotal, new KDLayout.Constraints(1, 144, 999, 205, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //contTenancyType
         contTenancyType.setBoundEditor(comboTenancyType);
         //contTenancyDate
@@ -2343,24 +2408,24 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contname.setBoundEditor(txtName);
         //kDPanel1
         kDPanel1.setLayout(new KDLayout());
-        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(5, 59, 1008, 110));        contRentStartType.setBounds(new Rectangle(11, 71, 236, 19));
-        kDPanel1.add(contRentStartType, new KDLayout.Constraints(11, 71, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contFlagAtTerm.setBounds(new Rectangle(259, 71, 236, 19));
-        kDPanel1.add(contFlagAtTerm, new KDLayout.Constraints(259, 71, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contChargeDateType.setBounds(new Rectangle(507, 42, 236, 19));
-        kDPanel1.add(contChargeDateType, new KDLayout.Constraints(507, 42, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contFirstLeaseType.setBounds(new Rectangle(11, 42, 236, 19));
-        kDPanel1.add(contFirstLeaseType, new KDLayout.Constraints(11, 42, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(-3, 49, 1008, 94));        contRentStartType.setBounds(new Rectangle(11, 58, 236, 19));
+        kDPanel1.add(contRentStartType, new KDLayout.Constraints(11, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contFlagAtTerm.setBounds(new Rectangle(259, 58, 236, 19));
+        kDPanel1.add(contFlagAtTerm, new KDLayout.Constraints(259, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contChargeDateType.setBounds(new Rectangle(507, 36, 236, 19));
+        kDPanel1.add(contChargeDateType, new KDLayout.Constraints(507, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contFirstLeaseType.setBounds(new Rectangle(11, 36, 236, 19));
+        kDPanel1.add(contFirstLeaseType, new KDLayout.Constraints(11, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contEndDate.setBounds(new Rectangle(259, 14, 236, 19));
         kDPanel1.add(contEndDate, new KDLayout.Constraints(259, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDescription.setBounds(new Rectangle(507, 71, 484, 19));
-        kDPanel1.add(contDescription, new KDLayout.Constraints(507, 71, 484, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contFristRevDate.setBounds(new Rectangle(259, 42, 236, 19));
-        kDPanel1.add(contFristRevDate, new KDLayout.Constraints(259, 42, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDescription.setBounds(new Rectangle(507, 58, 484, 19));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(507, 58, 484, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contFristRevDate.setBounds(new Rectangle(259, 36, 236, 19));
+        kDPanel1.add(contFristRevDate, new KDLayout.Constraints(259, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLeaseTime.setBounds(new Rectangle(507, 14, 236, 19));
         kDPanel1.add(contLeaseTime, new KDLayout.Constraints(507, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contChargeOffsetDays.setBounds(new Rectangle(756, 42, 236, 19));
-        kDPanel1.add(contChargeOffsetDays, new KDLayout.Constraints(756, 42, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contChargeOffsetDays.setBounds(new Rectangle(756, 36, 236, 19));
+        kDPanel1.add(contChargeOffsetDays, new KDLayout.Constraints(756, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contLeaseCount.setBounds(new Rectangle(756, 14, 236, 19));
         kDPanel1.add(contLeaseCount, new KDLayout.Constraints(756, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contStartDate.setBounds(new Rectangle(11, 14, 236, 19));
@@ -2387,44 +2452,22 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contLeaseCount.setBoundEditor(txtLeaseCount);
         //contStartDate
         contStartDate.setBoundEditor(pkStartDate);
-        //panelRoom
-        panelRoom.setLayout(new KDLayout());
-        panelRoom.putClientProperty("OriginalBounds", new Rectangle(5, 180, 1008, 216));        tblRoom.setBounds(new Rectangle(10, 89, 982, 111));
-        panelRoom.add(tblRoom, new KDLayout.Constraints(10, 89, 982, 111, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        contTotalRoomStandardRent.setBounds(new Rectangle(14, 42, 240, 19));
-        panelRoom.add(contTotalRoomStandardRent, new KDLayout.Constraints(14, 42, 240, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTotalRoomDealRent.setBounds(new Rectangle(259, 42, 240, 19));
-        panelRoom.add(contTotalRoomDealRent, new KDLayout.Constraints(259, 42, 240, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTotalBuildingArea.setBounds(new Rectangle(503, 42, 240, 19));
-        panelRoom.add(contTotalBuildingArea, new KDLayout.Constraints(503, 42, 240, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnViewRoomInfo.setBounds(new Rectangle(750, 42, 107, 19));
-        panelRoom.add(btnViewRoomInfo, new KDLayout.Constraints(750, 42, 107, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnAddRoom.setBounds(new Rectangle(860, 42, 67, 19));
-        panelRoom.add(btnAddRoom, new KDLayout.Constraints(860, 42, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnRemoveRoom.setBounds(new Rectangle(929, 42, 67, 19));
-        panelRoom.add(btnRemoveRoom, new KDLayout.Constraints(929, 42, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        //contCreateTime
+        contCreateTime.setBoundEditor(pkCreateTime);
+        //contCreator
+        contCreator.setBoundEditor(f7Creator);
         //contTotalRoomStandardRent
         contTotalRoomStandardRent.setBoundEditor(txtTotalRoomStandardRent);
         //contTotalRoomDealRent
         contTotalRoomDealRent.setBoundEditor(txtTotalRoomDealRent);
         //contTotalBuildingArea
         contTotalBuildingArea.setBoundEditor(txtTotalBuildingArea);
+        //panelRoom
+panelRoom.getContentPane().setLayout(new BorderLayout(0, 0));        panelRoom.getContentPane().add(tblRoom, BorderLayout.CENTER);
         //panelCustomer
-        panelCustomer.setLayout(new KDLayout());
-        panelCustomer.putClientProperty("OriginalBounds", new Rectangle(7, 407, 1002, 154));        tblCustomer.setBounds(new Rectangle(10, 34, 978, 100));
-        panelCustomer.add(tblCustomer, new KDLayout.Constraints(10, 34, 978, 100, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnNewCustomer.setBounds(new Rectangle(768, 12, 83, 19));
-        panelCustomer.add(btnNewCustomer, new KDLayout.Constraints(768, 12, 83, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnAddCustomer.setBounds(new Rectangle(854, 12, 67, 19));
-        panelCustomer.add(btnAddCustomer, new KDLayout.Constraints(854, 12, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnRemoveCustomer.setBounds(new Rectangle(923, 12, 67, 19));
-        panelCustomer.add(btnRemoveCustomer, new KDLayout.Constraints(923, 12, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnViewCustInfo.setBounds(new Rectangle(654, 12, 111, 19));
-        panelCustomer.add(btnViewCustInfo, new KDLayout.Constraints(654, 12, 111, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        //contCreateTime
-        contCreateTime.setBoundEditor(pkCreateTime);
-        //contCreator
-        contCreator.setBoundEditor(f7Creator);
+panelCustomer.getContentPane().setLayout(new BorderLayout(0, 0));        panelCustomer.getContentPane().add(tblCustomer, BorderLayout.CENTER);
+        //panelTotal
+panelTotal.getContentPane().setLayout(new BorderLayout(0, 0));        panelTotal.getContentPane().add(tblTotal, BorderLayout.CENTER);
         //panelContractInfo
         panelContractInfo.setLayout(new KDLayout());
         panelContractInfo.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        contSpecialClause.setBounds(new Rectangle(588, 398, 270, 19));
@@ -2555,14 +2598,14 @@ containerRentSet.getContentPane().setLayout(new BorderLayout(0, 0));        cont
         contRentFreeBill.setBoundEditor(prmtRentFreeBill);
         //panelPayList
         panelPayList.setLayout(new KDLayout());
-        panelPayList.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        tblPayList.setBounds(new Rectangle(5, 34, 899, 506));
-        panelPayList.add(tblPayList, new KDLayout.Constraints(5, 34, 899, 506, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnDelPayList.setBounds(new Rectangle(821, 11, 77, 19));
-        panelPayList.add(btnDelPayList, new KDLayout.Constraints(821, 11, 77, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnAddPayList.setBounds(new Rectangle(743, 11, 76, 19));
-        panelPayList.add(btnAddPayList, new KDLayout.Constraints(743, 11, 76, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnInsert.setBounds(new Rectangle(666, 11, 76, 19));
-        panelPayList.add(btnInsert, new KDLayout.Constraints(666, 11, 76, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        panelPayList.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        tblPayList.setBounds(new Rectangle(4, 34, 991, 554));
+        panelPayList.add(tblPayList, new KDLayout.Constraints(4, 34, 991, 554, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        btnDelPayList.setBounds(new Rectangle(916, 11, 77, 19));
+        panelPayList.add(btnDelPayList, new KDLayout.Constraints(916, 11, 77, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        btnAddPayList.setBounds(new Rectangle(838, 11, 76, 19));
+        panelPayList.add(btnAddPayList, new KDLayout.Constraints(838, 11, 76, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnInsert.setBounds(new Rectangle(761, 11, 76, 19));
+        panelPayList.add(btnInsert, new KDLayout.Constraints(761, 11, 76, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         chkIsFreeContract.setBounds(new Rectangle(7, 11, 151, 19));
         panelPayList.add(chkIsFreeContract, new KDLayout.Constraints(7, 11, 151, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //panelProperty
@@ -2602,12 +2645,12 @@ panelProperty.setLayout(new BorderLayout(0, 0));        panelProperty.add(tabMid
         contAgentDes.setBoundEditor(txtAgentDes);
         //pnlOtherPayList
         pnlOtherPayList.setLayout(new KDLayout());
-        pnlOtherPayList.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        tblOtherPayList.setBounds(new Rectangle(5, 48, 992, 536));
-        pnlOtherPayList.add(tblOtherPayList, new KDLayout.Constraints(5, 48, 992, 536, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnAddOtherPaylist.setBounds(new Rectangle(819, 11, 79, 19));
-        pnlOtherPayList.add(btnAddOtherPaylist, new KDLayout.Constraints(819, 11, 79, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        pnlOtherPayList.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        tblOtherPayList.setBounds(new Rectangle(5, 36, 992, 548));
+        pnlOtherPayList.add(tblOtherPayList, new KDLayout.Constraints(5, 36, 992, 548, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        btnAddOtherPaylist.setBounds(new Rectangle(827, 11, 81, 19));
+        pnlOtherPayList.add(btnAddOtherPaylist, new KDLayout.Constraints(827, 11, 81, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         btnDelOtherPaylist.setBounds(new Rectangle(912, 11, 81, 19));
-        pnlOtherPayList.add(btnDelOtherPaylist, new KDLayout.Constraints(912, 11, 81, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        pnlOtherPayList.add(btnDelOtherPaylist, new KDLayout.Constraints(912, 11, 81, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //panelLiquidated
         panelLiquidated.setLayout(null);        chkIsAccLiquidated.setBounds(new Rectangle(29, 18, 140, 19));
         panelLiquidated.add(chkIsAccLiquidated, null);
@@ -2912,9 +2955,9 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		dataBinder.registerBinding("chargeOffsetDays", int.class, this.spinChargeOffsetDays, "value");
 		dataBinder.registerBinding("leaseCount", java.math.BigDecimal.class, this.txtLeaseCount, "value");
 		dataBinder.registerBinding("startDate", java.util.Date.class, this.pkStartDate, "value");
-		dataBinder.registerBinding("tenancyRoomList.roomEntryId", String.class, this.tblRoom, "roomEntryId.text");
 		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.f7Creator, "data");
+		dataBinder.registerBinding("tenancyRoomList.roomEntryId", String.class, this.tblRoom, "roomEntryId.text");
 		dataBinder.registerBinding("specialClause", String.class, this.txtSpecialClause, "text");
 		dataBinder.registerBinding("payeeBank", com.kingdee.eas.basedata.assistant.BankInfo.class, this.f7TenRevBank, "data");
 		dataBinder.registerBinding("standardTotalRent", java.math.BigDecimal.class, this.txtStandardTotalRent, "value");
@@ -3094,9 +3137,9 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		getValidateHelper().registerBindProperty("chargeOffsetDays", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("leaseCount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("startDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyRoomList.roomEntryId", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyRoomList.roomEntryId", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("specialClause", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("payeeBank", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("standardTotalRent", ValidateHelper.ON_SAVE);    
@@ -3152,6 +3195,60 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
      */
     protected void chkIsByAgency_actionPerformed(java.awt.event.ActionEvent e) throws Exception
     {
+    }
+
+    /**
+     * output btnViewRoomInfo_actionPerformed method
+     */
+    protected void btnViewRoomInfo_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output btnAddRoom_actionPerformed method
+     */
+    protected void btnAddRoom_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+        //write your code here
+    }
+
+    /**
+     * output btnRemoveRoom_actionPerformed method
+     */
+    protected void btnRemoveRoom_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+        //write your code here
+    }
+
+    /**
+     * output btnViewCustInfo_actionPerformed method
+     */
+    protected void btnViewCustInfo_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output btnAddNewCustomer_actionPerformed method
+     */
+    protected void btnAddNewCustomer_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+        //write your code here
+    }
+
+    /**
+     * output btnAddCustomer_actionPerformed method
+     */
+    protected void btnAddCustomer_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+        //write your code here
+    }
+
+    /**
+     * output btnRemoveCustomer_actionPerformed method
+     */
+    protected void btnRemoveCustomer_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+        //write your code here
     }
 
     /**
@@ -3225,29 +3322,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     }
 
     /**
-     * output btnViewRoomInfo_actionPerformed method
-     */
-    protected void btnViewRoomInfo_actionPerformed(java.awt.event.ActionEvent e) throws Exception
-    {
-    }
-
-    /**
-     * output btnAddRoom_actionPerformed method
-     */
-    protected void btnAddRoom_actionPerformed(java.awt.event.ActionEvent e) throws Exception
-    {
-        //write your code here
-    }
-
-    /**
-     * output btnRemoveRoom_actionPerformed method
-     */
-    protected void btnRemoveRoom_actionPerformed(java.awt.event.ActionEvent e) throws Exception
-    {
-        //write your code here
-    }
-
-    /**
      * output tblCustomerInfo_editStopped method
      */
     protected void tblCustomerInfo_editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) throws Exception
@@ -3259,37 +3333,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
      * output tblCustomer_tableClicked method
      */
     protected void tblCustomer_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
-    {
-    }
-
-    /**
-     * output btnAddNewCustomer_actionPerformed method
-     */
-    protected void btnAddNewCustomer_actionPerformed(java.awt.event.ActionEvent e) throws Exception
-    {
-        //write your code here
-    }
-
-    /**
-     * output btnAddCustomer_actionPerformed method
-     */
-    protected void btnAddCustomer_actionPerformed(java.awt.event.ActionEvent e) throws Exception
-    {
-        //write your code here
-    }
-
-    /**
-     * output btnRemoveCustomer_actionPerformed method
-     */
-    protected void btnRemoveCustomer_actionPerformed(java.awt.event.ActionEvent e) throws Exception
-    {
-        //write your code here
-    }
-
-    /**
-     * output btnViewCustInfo_actionPerformed method
-     */
-    protected void btnViewCustInfo_actionPerformed(java.awt.event.ActionEvent e) throws Exception
     {
     }
 
@@ -3644,7 +3687,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         sic.add(new SelectorItemInfo("chargeOffsetDays"));
         sic.add(new SelectorItemInfo("leaseCount"));
         sic.add(new SelectorItemInfo("startDate"));
-    	sic.add(new SelectorItemInfo("tenancyRoomList.roomEntryId"));
         sic.add(new SelectorItemInfo("createTime"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
@@ -3655,6 +3697,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         	sic.add(new SelectorItemInfo("creator.number"));
         	sic.add(new SelectorItemInfo("creator.name"));
 		}
+    	sic.add(new SelectorItemInfo("tenancyRoomList.roomEntryId"));
         sic.add(new SelectorItemInfo("specialClause"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
@@ -3814,6 +3857,38 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     public void actionAddCollectProtocol_actionPerformed(ActionEvent e) throws Exception
     {
     }
+    	
+
+    /**
+     * output actionAddRoom_actionPerformed method
+     */
+    public void actionAddRoom_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionRemoveRoom_actionPerformed method
+     */
+    public void actionRemoveRoom_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionAddCustomer_actionPerformed method
+     */
+    public void actionAddCustomer_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionRemoveCustomer_actionPerformed method
+     */
+    public void actionRemoveCustomer_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
 	public RequestContext prepareActionSubmit(IItemAction itemAction) throws Exception {
 			RequestContext request = super.prepareActionSubmit(itemAction);		
 		if (request != null) {
@@ -3880,6 +3955,50 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 	public boolean isPrepareActionAddCollectProtocol() {
     	return false;
     }
+	public RequestContext prepareActionAddRoom(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionAddRoom() {
+    	return false;
+    }
+	public RequestContext prepareActionRemoveRoom(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionRemoveRoom() {
+    	return false;
+    }
+	public RequestContext prepareActionAddCustomer(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionAddCustomer() {
+    	return false;
+    }
+	public RequestContext prepareActionRemoveCustomer(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionRemoveCustomer() {
+    	return false;
+    }
 
     /**
      * output ActionCarryForward class
@@ -3938,6 +4057,126 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionAddCollectProtocol", "actionAddCollectProtocol_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionAddRoom class
+     */     
+    protected class ActionAddRoom extends ItemAction {     
+    
+        public ActionAddRoom()
+        {
+            this(null);
+        }
+
+        public ActionAddRoom(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionAddRoom.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAddRoom.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAddRoom.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionAddRoom", "actionAddRoom_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionRemoveRoom class
+     */     
+    protected class ActionRemoveRoom extends ItemAction {     
+    
+        public ActionRemoveRoom()
+        {
+            this(null);
+        }
+
+        public ActionRemoveRoom(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionRemoveRoom.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionRemoveRoom.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionRemoveRoom.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionRemoveRoom", "actionRemoveRoom_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionAddCustomer class
+     */     
+    protected class ActionAddCustomer extends ItemAction {     
+    
+        public ActionAddCustomer()
+        {
+            this(null);
+        }
+
+        public ActionAddCustomer(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionAddCustomer.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAddCustomer.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAddCustomer.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionAddCustomer", "actionAddCustomer_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionRemoveCustomer class
+     */     
+    protected class ActionRemoveCustomer extends ItemAction {     
+    
+        public ActionRemoveCustomer()
+        {
+            this(null);
+        }
+
+        public ActionRemoveCustomer(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionRemoveCustomer.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionRemoveCustomer.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionRemoveCustomer.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionRemoveCustomer", "actionRemoveCustomer_actionPerformed", e);
         }
     }
 

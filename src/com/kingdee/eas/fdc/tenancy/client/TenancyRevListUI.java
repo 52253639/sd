@@ -179,6 +179,8 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entries.revAmount"});
 		
 		this.tblMain.getColumn("isCreateBill").getStyleAttributes().setHided(true);
+		
+		this.btnRefundment.setIcon(EASResource.getIcon("imgTbtn_refuse"));
 	}
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);
@@ -1171,4 +1173,37 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
 		getTenancyBillList();
 	}
+	public void actionRefundment_actionPerformed(ActionEvent e) throws Exception {
+		int rowIndex = this.kdtTenancy.getSelectManager().getActiveRowIndex();
+		String id="'null'";
+		if(rowIndex>=0){
+			IRow row = this.kdtTenancy.getRow(rowIndex);
+			id = (String) row.getCell("id").getValue();
+		}else{
+			FDCMsgBox.showWarning(this,"请选择租赁合同进行退款操作！");
+			return;
+		}
+    	SelectorItemCollection sels = new SelectorItemCollection();
+		sels.add("*");
+		sels.add("sellProject.*");
+    	TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id), sels);
+//    	TenancyBillStateEnum tenState = tenBill.getTenancyState();
+//    	if(!TenancyBillStateEnum.Expiration.equals(tenState) && !TenancyBillStateEnum.BlankOut.equals(tenState)){
+//    		MsgBox.showInfo("只有终止或作废状态的的合同才能退款！");
+//			abort();
+//    	}
+    	
+    	UIContext uiContext = new UIContext(this);
+    	uiContext.put(FDCReceivingBillEditUI.KEY_REV_BIZ_TYPE, RevBizTypeEnum.tenancy);
+    	uiContext.put(FDCReceivingBillEditUI.KEY_REV_BILL_TYPE, RevBillTypeEnum.refundment);
+    	uiContext.put(FDCReceivingBillEditUI.KEY_SELL_PROJECT, tenBill.getSellProject());
+    	uiContext.put(FDCReceivingBillEditUI.KEY_TENANCY_BILL, tenBill);
+    	uiContext.put(FDCReceivingBillEditUI.KEY_IS_LOCK_BILL_TYPE, Boolean.TRUE);
+    	IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB)
+				.create(TENReceivingBillEditUI.class.getName(), uiContext, null,
+						"ADDNEW");
+		uiWindow.show();
+		
+		this.refresh(null);
+    }
 }

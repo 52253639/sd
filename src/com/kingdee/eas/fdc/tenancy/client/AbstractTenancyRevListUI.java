@@ -53,12 +53,14 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnCreateBill;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnTDPrint;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnTDPrintPreview;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRefundment;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemBatchReceieving;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemUpdateSubject;
     protected ActionTDPrint actionTDPrint = null;
     protected ActionTDPrintPreview actionTDPrintPreview = null;
     protected ActionUpdateSubject actionUpdateSubject = null;
     protected ActionCreateBill actionCreateBill = null;
+    protected ActionRefundment actionRefundment = null;
     /**
      * output class constructor
      */
@@ -134,6 +136,10 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.actionCreateBill = new ActionCreateBill(this);
         getActionManager().registerAction("actionCreateBill", actionCreateBill);
          this.actionCreateBill.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionRefundment
+        this.actionRefundment = new ActionRefundment(this);
+        getActionManager().registerAction("actionRefundment", actionRefundment);
+         this.actionRefundment.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.cbIsAll = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.kDSplitPane1 = new com.kingdee.bos.ctrl.swing.KDSplitPane();
         this.kdtTenancy = new com.kingdee.bos.ctrl.kdf.table.KDTable();
@@ -141,6 +147,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.btnCreateBill = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnTDPrint = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnTDPrintPreview = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnRefundment = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemBatchReceieving = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemUpdateSubject = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.cbIsAll.setName("cbIsAll");
@@ -150,6 +157,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.btnCreateBill.setName("btnCreateBill");
         this.btnTDPrint.setName("btnTDPrint");
         this.btnTDPrintPreview.setName("btnTDPrintPreview");
+        this.btnRefundment.setName("btnRefundment");
         this.menuItemBatchReceieving.setName("menuItemBatchReceieving");
         this.menuItemUpdateSubject.setName("menuItemUpdateSubject");
         // CoreUI
@@ -224,6 +232,9 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.btnTDPrintPreview.setText(resHelper.getString("btnTDPrintPreview.text"));		
         this.btnTDPrintPreview.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_preview"));		
         this.btnTDPrintPreview.setToolTipText(resHelper.getString("btnTDPrintPreview.toolTipText"));
+        // btnRefundment
+        this.btnRefundment.setAction((IItemAction)ActionProxyFactory.getProxy(actionRefundment, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnRefundment.setText(resHelper.getString("btnRefundment.text"));
         // menuItemBatchReceieving
         this.menuItemBatchReceieving.setAction((IItemAction)ActionProxyFactory.getProxy(actionBatchReceiving, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemBatchReceieving.setText(resHelper.getString("menuItemBatchReceieving.text"));		
@@ -436,6 +447,7 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         this.toolBar.add(btnClearInvoice);
         this.toolBar.add(btnTDPrint);
         this.toolBar.add(btnTDPrintPreview);
+        this.toolBar.add(btnRefundment);
 
 
     }
@@ -626,6 +638,14 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
     public void actionCreateBill_actionPerformed(ActionEvent e) throws Exception
     {
     }
+    	
+
+    /**
+     * output actionRefundment_actionPerformed method
+     */
+    public void actionRefundment_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
 	public RequestContext prepareActionRemove(IItemAction itemAction) throws Exception {
 			RequestContext request = super.prepareActionRemove(itemAction);		
 		if (request != null) {
@@ -701,6 +721,17 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
     }
 	
 	public boolean isPrepareActionCreateBill() {
+    	return false;
+    }
+	public RequestContext prepareActionRefundment(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionRefundment() {
     	return false;
     }
 
@@ -824,6 +855,36 @@ public abstract class AbstractTenancyRevListUI extends com.kingdee.eas.fdc.basec
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractTenancyRevListUI.this, "ActionCreateBill", "actionCreateBill_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionRefundment class
+     */     
+    protected class ActionRefundment extends ItemAction {     
+    
+        public ActionRefundment()
+        {
+            this(null);
+        }
+
+        public ActionRefundment(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionRefundment.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionRefundment.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionRefundment.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyRevListUI.this, "ActionRefundment", "actionRefundment_actionPerformed", e);
         }
     }
 

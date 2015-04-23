@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Point;
+import java.awt.font.TextAttribute;
 import java.io.File;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.AttributedString;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -2036,7 +2038,9 @@ public class SHEHelper {
 				} else if (setting.getAttachDisType() == 2) {
 
 				}
-
+				if(TenancyStateEnum.keepTenancy.equals(room.getTenancyState())){
+					cell.getStyleAttributes().setStrikeThrough(true);
+				}
 				if (isVirtual) {
 					/** 现根据具体的房间状态和对应的认购单信息来确定房间显示待售还是已售。
 					 */

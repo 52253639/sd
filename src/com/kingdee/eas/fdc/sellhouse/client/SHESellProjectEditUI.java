@@ -568,6 +568,9 @@ public class SHESellProjectEditUI extends AbstractSHESellProjectEditUI {
 		if (fullOrginfo != null) {
 			info.setOrgUnit(fullOrginfo);
 		}
+		if(info.getParent()!=null){
+			info.setIsForTen(info.getParent().isIsForTen());
+		}
 		info.setIsForSHE(true);
 		return info;
 	}

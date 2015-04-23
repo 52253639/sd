@@ -199,6 +199,25 @@ public abstract class AbstractPaymentAdvicePrintFilterUI extends com.kingdee.eas
             }
         });
         // contract
+        this.contract.addSelectorListener(new com.kingdee.bos.ctrl.swing.event.SelectorListener() {
+            public void willShow(com.kingdee.bos.ctrl.swing.event.SelectorEvent e) {
+                try {
+                    contract_willShow(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
+        this.contract.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent e) {
+                try {
+                    contract_mousePressed(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
         // customer
         // dateTo
         // kDScrollPane1
@@ -234,9 +253,9 @@ public abstract class AbstractPaymentAdvicePrintFilterUI extends com.kingdee.eas
         this.setLayout(null);
         contSellProject.setBounds(new Rectangle(17, 42, 270, 19));
         this.add(contSellProject, null);
-        contTenancyBill.setBounds(new Rectangle(17, 102, 270, 19));
+        contTenancyBill.setBounds(new Rectangle(17, 72, 270, 19));
         this.add(contTenancyBill, null);
-        contCustomer.setBounds(new Rectangle(17, 72, 270, 19));
+        contCustomer.setBounds(new Rectangle(17, 102, 270, 19));
         this.add(contCustomer, null);
         contAppDate2.setBounds(new Rectangle(17, 192, 270, 19));
         this.add(contAppDate2, null);
@@ -388,6 +407,20 @@ public abstract class AbstractPaymentAdvicePrintFilterUI extends com.kingdee.eas
      * output sellProject_dataChanged method
      */
     protected void sellProject_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output contract_mousePressed method
+     */
+    protected void contract_mousePressed(java.awt.event.MouseEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output contract_willShow method
+     */
+    protected void contract_willShow(com.kingdee.bos.ctrl.swing.event.SelectorEvent e) throws Exception
     {
     }
 

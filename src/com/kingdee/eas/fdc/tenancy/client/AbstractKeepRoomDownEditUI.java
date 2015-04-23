@@ -51,11 +51,11 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer3;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer4;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer5;
+    protected com.kingdee.bos.ctrl.swing.KDButton btChooseRoom;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtRoom;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtOperator;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker dateBizDate;
-    protected com.kingdee.bos.ctrl.swing.KDButton btChooseRoom;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtOperator;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane1;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtAreaDescription;
     protected com.kingdee.eas.fdc.tenancy.KeepRoomDownInfo editData = null;
@@ -141,11 +141,11 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         this.kDLabelContainer3 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDLabelContainer4 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDLabelContainer5 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.btChooseRoom = new com.kingdee.bos.ctrl.swing.KDButton();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtRoom = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtOperator = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.dateBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.btChooseRoom = new com.kingdee.bos.ctrl.swing.KDButton();
+        this.txtOperator = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.kDScrollPane1 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.txtAreaDescription = new com.kingdee.bos.ctrl.swing.KDTextArea();
         this.kDLabelContainer1.setName("kDLabelContainer1");
@@ -153,11 +153,11 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         this.kDLabelContainer3.setName("kDLabelContainer3");
         this.kDLabelContainer4.setName("kDLabelContainer4");
         this.kDLabelContainer5.setName("kDLabelContainer5");
+        this.btChooseRoom.setName("btChooseRoom");
         this.txtNumber.setName("txtNumber");
         this.txtRoom.setName("txtRoom");
-        this.txtOperator.setName("txtOperator");
         this.dateBizDate.setName("dateBizDate");
-        this.btChooseRoom.setName("btChooseRoom");
+        this.txtOperator.setName("txtOperator");
         this.kDScrollPane1.setName("kDScrollPane1");
         this.txtAreaDescription.setName("txtAreaDescription");
         // CoreUI
@@ -181,14 +181,9 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         this.kDLabelContainer5.setBoundLabelText(resHelper.getString("kDLabelContainer5.boundLabelText"));		
         this.kDLabelContainer5.setBoundLabelLength(100);		
         this.kDLabelContainer5.setBoundLabelUnderline(true);
-        // txtNumber
-        // txtRoom		
-        this.txtRoom.setEnabled(false);
-        // txtOperator		
-        this.txtOperator.setEnabled(false);
-        // dateBizDate
         // btChooseRoom		
-        this.btChooseRoom.setText(resHelper.getString("btChooseRoom.text"));
+        this.btChooseRoom.setText(resHelper.getString("btChooseRoom.text"));		
+        this.btChooseRoom.setVisible(false);
         this.btChooseRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 beforeActionPerformed(e);
@@ -201,6 +196,13 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
                 }
             }
         });
+        // txtNumber		
+        this.txtNumber.setRequired(true);
+        // txtRoom		
+        this.txtRoom.setEnabled(false);
+        // dateBizDate
+        // txtOperator		
+        this.txtOperator.setEnabled(false);
         // kDScrollPane1
         // txtAreaDescription		
         this.txtAreaDescription.setMaxLength(300);
@@ -210,6 +212,18 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
 
 
     }
+
+	public com.kingdee.bos.ctrl.swing.KDToolBar[] getUIMultiToolBar(){
+		java.util.List list = new java.util.ArrayList();
+		com.kingdee.bos.ctrl.swing.KDToolBar[] bars = super.getUIMultiToolBar();
+		if (bars != null) {
+			list.addAll(java.util.Arrays.asList(bars));
+		}
+		return (com.kingdee.bos.ctrl.swing.KDToolBar[])list.toArray(new com.kingdee.bos.ctrl.swing.KDToolBar[list.size()]);
+	}
+
+
+
 
     /**
      * output initUIContentLayout method
@@ -253,6 +267,7 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
     {
         this.menuBar.add(menuFile);
         this.menuBar.add(menuEdit);
+        this.menuBar.add(MenuService);
         this.menuBar.add(menuView);
         this.menuBar.add(menuBiz);
         this.menuBar.add(menuTable1);
@@ -262,9 +277,13 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -274,6 +293,8 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
+        menuFile.add(kDSeparator6);
+        menuFile.add(menuItemSendMail);
         menuFile.add(kDSeparator3);
         menuFile.add(menuItemExitCurrent);
         //menuSubmitOption
@@ -284,12 +305,19 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         menuEdit.add(menuItemEdit);
         menuEdit.add(menuItemRemove);
         menuEdit.add(kDSeparator4);
+        menuEdit.add(menuItemReset);
         menuEdit.add(separator1);
         menuEdit.add(menuItemCreateFrom);
         menuEdit.add(menuItemCreateTo);
         menuEdit.add(menuItemCopyFrom);
         menuEdit.add(separatorEdit1);
+        menuEdit.add(menuItemEnterToNextRow);
         menuEdit.add(separator2);
+        //MenuService
+        MenuService.add(MenuItemKnowStore);
+        MenuService.add(MenuItemAnwser);
+        MenuService.add(SepratorService);
+        MenuService.add(MenuItemRemoteAssist);
         //menuView
         menuView.add(menuItemFirst);
         menuView.add(menuItemPre);
@@ -298,6 +326,8 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         menuView.add(separator3);
         menuView.add(menuItemTraceUp);
         menuView.add(menuItemTraceDown);
+        menuView.add(kDSeparator7);
+        menuView.add(menuItemLocate);
         //menuBiz
         menuBiz.add(menuItemCancelCancel);
         menuBiz.add(menuItemCancel);
@@ -305,12 +335,14 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         menuBiz.add(menuItemDelVoucher);
         //menuTable1
         menuTable1.add(menuItemAddLine);
+        menuTable1.add(menuItemCopyLine);
         menuTable1.add(menuItemInsertLine);
         menuTable1.add(menuItemRemoveLine);
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -342,8 +374,11 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -367,6 +402,7 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnCreateFrom);
         this.toolBar.add(btnCopyFrom);
@@ -374,6 +410,7 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         this.toolBar.add(separatorFW5);
         this.toolBar.add(separatorFW8);
         this.toolBar.add(btnAddLine);
+        this.toolBar.add(btnCopyLine);
         this.toolBar.add(btnInsertLine);
         this.toolBar.add(btnRemoveLine);
         this.toolBar.add(separatorFW6);
@@ -385,6 +422,7 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         this.toolBar.add(btnWFViewdoProccess);
         this.toolBar.add(btnWFViewSubmitProccess);
         this.toolBar.add(btnNextPerson);
+
 
     }
 
@@ -431,7 +469,7 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
     protected void removeByPK(IObjectPK pk) throws Exception {
     	IObjectValue editData = this.editData;
     	super.removeByPK(pk);
-    	recycleNumberByOrg(editData,"NONE",editData.getString("number"));
+    	recycleNumberByOrg(editData,"Sale",editData.getString("number"));
     }
     
     protected void recycleNumberByOrg(IObjectValue editData,String orgType,String number) {
@@ -457,6 +495,7 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
         }
     }
     protected void setAutoNumberByOrg(String orgType) {
+    	if (editData == null) return;
 		if (editData.getNumber() == null) {
             try {
             	String companyID = null;
@@ -486,18 +525,22 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
             }
         }
     }
+			protected com.kingdee.eas.basedata.org.OrgType getMainBizOrgType() {
+			return com.kingdee.eas.basedata.org.OrgType.getEnum("Sale");
+		}
+
 
     /**
      * output loadFields method
      */
     public void loadFields()
     {
-        		setAutoNumberByOrg("NONE");
+        		setAutoNumberByOrg("Sale");
         dataBinder.loadFields();
     }
 		protected void setOrgF7(KDBizPromptBox f7,com.kingdee.eas.basedata.org.OrgType orgType) throws Exception
 		{
-			com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer oufip=(com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer)com.kingdee.bos.ctrl.extendcontrols.ext.FilterInfoProducerFactory.getOrgUnitFilterInfoProducer(orgType);
+			com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer oufip = new com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer(orgType);
 			oufip.getModel().setIsCUFilter(true);
 			f7.setFilterInfoProducer(oufip);
 		}
@@ -545,6 +588,10 @@ public abstract class AbstractKeepRoomDownEditUI extends com.kingdee.eas.framewo
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
     	

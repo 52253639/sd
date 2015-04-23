@@ -34,4 +34,9 @@ public abstract class AbstractTenancyRevListUIHandler extends com.kingdee.eas.fd
 	}
 	protected void _handleActionCreateBill(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionRefundment(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionRefundment(request,response,context);
+	}
+	protected void _handleActionRefundment(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

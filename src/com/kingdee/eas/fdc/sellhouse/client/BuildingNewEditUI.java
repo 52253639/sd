@@ -4,6 +4,7 @@
 package com.kingdee.eas.fdc.sellhouse.client;
 
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -23,6 +24,8 @@ import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDefaultCellEditor;
 import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
+import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
+import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDTextField;
 import com.kingdee.bos.ctrl.swing.StringUtils;
 import com.kingdee.bos.ctrl.swing.util.CtrlCommonConstant;
@@ -46,6 +49,7 @@ import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basecrm.client.FDCSysContext;
 import com.kingdee.eas.fdc.basedata.BanBasedataCollection;
 import com.kingdee.eas.fdc.basedata.BanBasedataEntryInfo;
@@ -63,6 +67,7 @@ import com.kingdee.eas.fdc.basedata.SchedulePlanEntryInfo;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.BanBasedataEntryListInfo;
+import com.kingdee.eas.fdc.sellhouse.BuildingAreaEntryInfo;
 import com.kingdee.eas.fdc.sellhouse.BuildingFactory;
 import com.kingdee.eas.fdc.sellhouse.BuildingFloorEntryCollection;
 import com.kingdee.eas.fdc.sellhouse.BuildingFloorEntryFactory;
@@ -256,25 +261,25 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(
 				new FilterItemInfo("building.id", buildingId));
-		try {
-			if (RoomDesFactory.getRemoteInstance().exists(filter)
-					|| RoomFactory.getRemoteInstance().exists(filter)) {
-				if (!isShowNoEditWar) {
-					MsgBox.showInfo("已经建立了房间或房间定义,将锁定相关属性!");
-				}
-				this.comboCodingType.setEnabled(false);
-				this.spiFloorCount.setEnabled(false);
-				this.spSubFloor.setEnabled(false);
-			
-				this.isShowNoEditWar = true;
-				
-				
-			}
-		} catch (EASBizException e) {
-			this.handleException(e);
-		} catch (BOSException e) {
-			this.handleException(e);
-		}
+//		try {
+//			if (RoomDesFactory.getRemoteInstance().exists(filter)
+//					|| RoomFactory.getRemoteInstance().exists(filter)) {
+//				if (!isShowNoEditWar) {
+//					MsgBox.showInfo("已经建立了房间或房间定义,将锁定相关属性!");
+//				}
+//				this.comboCodingType.setEnabled(false);
+//				this.spiFloorCount.setEnabled(false);
+//				this.spSubFloor.setEnabled(false);
+//			
+//				this.isShowNoEditWar = true;
+//				
+//				
+//			}
+//		} catch (EASBizException e) {
+//			this.handleException(e);
+//		} catch (BOSException e) {
+//			this.handleException(e);
+//		}
 	}
 
 	public void setOprtState(String oprtType) {
@@ -341,7 +346,7 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 		this.txtBuildingTerraArea.setSupportedEmpty(true);
 		this.txtBuildingTerraArea.setNegatived(false);
 		
-		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 1000, 1);
+		SpinnerNumberModel model = new SpinnerNumberModel(1, 0, 1000, 1);
 		this.spiFloorCount.setModel(model);
 		model = new SpinnerNumberModel(0, 0, 100, 1);
 	
@@ -352,6 +357,18 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 		this.spSubFloor.setRequired(true);
 
 		this.prmtBanBasedataEntry.setEnabledMultiSelection(true);
+		
+		this.kdtEntry.checkParsed();
+		KDFormattedTextField formattedTextField = new KDFormattedTextField(KDFormattedTextField.DECIMAL);
+		formattedTextField.setPrecision(2);
+		formattedTextField.setSupportedEmpty(true);
+		formattedTextField.setNegatived(false);
+		ICellEditor cellEditor = new KDTDefaultCellEditor(formattedTextField);
+		this.kdtEntry.getColumn("area").setEditor(cellEditor);
+		this.kdtEntry.getColumn("area").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
+		this.kdtEntry.getColumn("area").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		
+		this.kdtEntry.getColumn("floor").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
 	}
 
 	public void actionSubmit_actionPerformed(ActionEvent e) throws Exception {
@@ -497,6 +514,14 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 		}else{
 			this.prmtBanBasedataEntry.setValue(null);
 		}
+		this.kdtEntry.removeRows();
+		for(int i=0;i<buildingInfo.getAreaEntry().size();i++){
+			IRow row=this.kdtEntry.addRow();
+			row.setUserObject(buildingInfo.getAreaEntry().get(i));
+			row.getCell("area").setValue(buildingInfo.getAreaEntry().get(i).getArea());
+			row.getCell("floor").setValue(i+1);
+		}
+		CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"area"});
 	}
 	
 	private BuildingFloorEntryCollection getBuildingFloorEntryColl(BuildingInfo building)
@@ -633,6 +658,14 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 			}
 		}
 		buildingInfo.setDescription(entryStr);
+		
+		buildingInfo.getAreaEntry().clear();
+		for(int i=0;i<this.kdtEntry.getRowCount();i++){
+			IRow row=this.kdtEntry.getRow(i);
+			BuildingAreaEntryInfo areaEntry=(BuildingAreaEntryInfo) row.getUserObject();
+			areaEntry.setArea((BigDecimal) row.getCell("area").getValue());
+			buildingInfo.getAreaEntry().add(areaEntry);
+		}
 	}
 
 	protected IObjectValue createNewData() {
@@ -667,7 +700,7 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 //		buildingInfo.setSubarea(subarea);
 //		buildingInfo.setCodingType(CodingTypeEnum.FloorNum);
 		buildingInfo.setUnitCount(0);
-		buildingInfo.setFloorCount(1);
+		buildingInfo.setFloorCount(0);
 		buildingInfo.setSubFloorCount(0);
 //		buildingInfo.setCustomerLiftCount(0);
 //		buildingInfo.setCargoLiftCount(0);
@@ -763,6 +796,7 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 		selectors.add("banBasedataEntry.productType.*");
 		selectors.add("banBasedataEntry.*");
 		selectors.add("banBasedataEntryList.banBasedataEntry.*");
+		selectors.add("areaEntry.*");
 		return selectors;
 	}
 
@@ -865,8 +899,14 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 	}
 	protected void spiFloorCount_stateChanged(ChangeEvent e) throws Exception
 	{
-		 int downCount = ((Integer)this.spSubFloor.getValue()).intValue();
-		 int upCount = ((Integer)this.spiFloorCount.getValue()).intValue();
+		 int count = ((Integer)this.spiFloorCount.getValue()).intValue();
+		 this.kdtEntry.removeRows();
+		 for(int i=0;i<count;i++){
+			 IRow row=this.kdtEntry.addRow();
+			 row.getCell("floor").setValue(i+1);
+			 row.setUserObject(new BuildingAreaEntryInfo());
+		 }
+		 CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"area"});
 	}
 	
 	  /**

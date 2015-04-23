@@ -5,6 +5,7 @@ package com.kingdee.eas.fdc.tenancy.client;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -100,6 +101,8 @@ import com.kingdee.eas.cp.bc.BizCollUtil;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillCollection;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
+import com.kingdee.eas.fdc.basecrm.RevListInfo;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.CurProjectInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
@@ -121,6 +124,7 @@ import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.RoomCollection;
 import com.kingdee.eas.fdc.sellhouse.RoomFactory;
 import com.kingdee.eas.fdc.sellhouse.RoomInfo;
+import com.kingdee.eas.fdc.sellhouse.RoomSellStateEnum;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SubareaInfo;
 import com.kingdee.eas.fdc.sellhouse.ToIntegerTypeEnum;
@@ -373,6 +377,62 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}else{
 			this.prmtRentFreeBill.setEnabled(false);
 		}
+		
+		this.tblTotal.checkParsed();
+		this.tblOtherPayList.getSelectManager().setSelectMode(KDTSelectManager.CELL_SELECT);
+		this.tblOtherPayList.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
+
+		KDFormattedTextField formattedTextField = new KDFormattedTextField(KDFormattedTextField.BIGDECIMAL_TYPE);
+		formattedTextField.setSupportedEmpty(true);
+		formattedTextField.setPrecision(2);
+		formattedTextField.setNegatived(false);
+		ICellEditor numberEditor = new KDTDefaultCellEditor(formattedTextField);
+		this.tblTotal.getColumn("appAmount").setEditor(numberEditor);
+		this.tblTotal.getColumn("appAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
+		this.tblTotal.getColumn("appAmount").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		
+		this.tblTotal.getColumn("actRevAmount").setEditor(numberEditor);
+		this.tblTotal.getColumn("actRevAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
+		this.tblTotal.getColumn("actRevAmount").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		this.tblTotal.getColumn("actRevAmount").getStyleAttributes().setLocked(true);
+
+		TenBillOtherPayCollection otherPayList = new TenBillOtherPayCollection();
+		for (int i = 0; i < tenBill.getOtherPayList().size(); i++) {
+			TenBillOtherPayInfo entry=tenBill.getOtherPayList().get(i);
+			otherPayList.add(entry);
+		}
+		if(tenBill.getTenancyRoomList().size()>0){
+			for (int i = 0; i < tenBill.getTenancyRoomList().get(0).getPayList().size(); i++) {
+				TenancyRoomPayListEntryInfo tenOtherInfo = tenBill.getTenancyRoomList().get(0).getRoomPayList().get(i);
+				TenBillOtherPayInfo entry=new TenBillOtherPayInfo();
+				entry.setMoneyDefine(tenOtherInfo.getMoneyDefine());
+				entry.setAppAmount(tenOtherInfo.getAppAmount());
+				entry.setActRevAmount(tenOtherInfo.getActRevAmount());
+				otherPayList.add(entry);
+			}
+		}
+		CRMHelper.sortCollection(otherPayList, "moneyDefine.number", true);
+		
+		this.tblTotal.removeRows();
+		Map addRow=new HashMap();
+		for (int i = 0; i < otherPayList.size(); i++) {
+			TenBillOtherPayInfo entry=otherPayList.get(i);
+			if(entry.getMoneyDefine()!=null){
+				if(addRow.containsKey(entry.getMoneyDefine().getNumber())){
+					IRow row=(IRow) addRow.get(entry.getMoneyDefine().getNumber());
+					row.getCell("appAmount").setValue(FDCHelper.add(row.getCell("appAmount").getValue(), entry.getAppAmount()));
+					row.getCell("actRevAmount").setValue(FDCHelper.add(row.getCell("actRevAmount").getValue(), entry.getActRevAmount()));
+				}else{
+					IRow row=this.tblTotal.addRow();
+					row.getCell("moneyDefine").setValue(entry.getMoneyDefine().getName());
+					row.getCell("appAmount").setValue(entry.getAppAmount());
+					row.getCell("actRevAmount").setValue(entry.getActRevAmount());
+					addRow.put(entry.getMoneyDefine().getNumber(), row);
+				}
+			}
+		}
+		CRMClientHelper.getFootRow(this.tblTotal, new String[]{"appAmount","actRevAmount"});
+		
 		attachListeners();	
 	}
 	/**
@@ -540,26 +600,26 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		if (TenancyContractTypeEnum.ContinueTenancy.equals(tenType)) {
 			this.pkStartDate.setEnabled(false);// 起始日期只能是原合同结束日期
 			this.tblCustomer.getStyleAttributes().setLocked(true);
-			this.btnAddCustomer.setEnabled(false);
+			this.actionAddCustomer.setEnabled(false);
 			this.btnNewCustomer.setEnabled(false);
-			this.btnRemoveCustomer.setEnabled(false);
+			this.actionRemoveCustomer.setEnabled(false);
 
 		}
 
 		// 改租
 		if (TenancyContractTypeEnum.RejiggerTenancy.equals(tenType)) {
 			this.tblCustomer.getStyleAttributes().setLocked(true);
-			this.btnAddCustomer.setEnabled(false);
+			this.actionAddCustomer.setEnabled(false);
 			this.btnNewCustomer.setEnabled(false);
-			this.btnRemoveCustomer.setEnabled(false);
+			this.actionRemoveCustomer.setEnabled(false);
 		}
 
 		// 转名
 		if (TenancyContractTypeEnum.ChangeName.equals(tenType)) {
 			this.tblRoom.getStyleAttributes().setLocked(true);
 			this.tblAttachRes.getStyleAttributes().setLocked(true);
-			this.btnAddRoom.setEnabled(false);
-			this.btnRemoveRoom.setEnabled(false);
+			this.actionAddRoom.setEnabled(false);
+			this.actionRemoveRoom.setEnabled(false);
 			this.btnAddAttachRes.setEnabled(false);
 			this.btnRemoveAttachRes.setEnabled(false);
 			this.comboChargeDateType.setEnabled(false);
@@ -572,11 +632,11 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.tblRoom.getStyleAttributes().setLocked(true);
 			this.tblAttachRes.getStyleAttributes().setLocked(true);
 			this.tblCustomer.getStyleAttributes().setLocked(true);
-			this.btnAddCustomer.setEnabled(false);
+			this.actionAddCustomer.setEnabled(false);
 			this.btnNewCustomer.setEnabled(false);
-			this.btnRemoveCustomer.setEnabled(false);
-			this.btnAddRoom.setEnabled(false);
-			this.btnRemoveRoom.setEnabled(false);
+			this.actionRemoveCustomer.setEnabled(false);
+			this.actionAddRoom.setEnabled(false);
+			this.actionRemoveRoom.setEnabled(false);
 			this.btnAddAttachRes.setEnabled(false);
 			this.btnRemoveAttachRes.setEnabled(false);
 			this.comboChargeDateType.setEnabled(false);
@@ -602,11 +662,11 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	/** 根据操作状态来设置相关控件的状态 */
 	private void initControlByOprtState() {
 		if (this.getOprtState().equals("VIEW") || this.getOprtState().equals("FINDVIEW")) {
-			this.btnAddCustomer.setEnabled(false);
+			this.actionAddCustomer.setEnabled(false);
 			this.btnNewCustomer.setEnabled(false);
-			this.btnAddRoom.setEnabled(false);
-			this.btnRemoveCustomer.setEnabled(false);
-			this.btnRemoveRoom.setEnabled(false);
+			this.actionAddRoom.setEnabled(false);
+			this.actionRemoveCustomer.setEnabled(false);
+			this.actionRemoveRoom.setEnabled(false);
 			this.btnAddAttachRes.setEnabled(false);
 			this.btnRemoveAttachRes.setEnabled(false);
 
@@ -626,11 +686,11 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				ui.setEditable(false);
 			}
 		} else {
-			this.btnAddCustomer.setEnabled(true);
+			this.actionAddCustomer.setEnabled(true);
 			this.btnNewCustomer.setEnabled(true);
-			this.btnRemoveCustomer.setEnabled(true);
-			this.btnAddRoom.setEnabled(true);
-			this.btnRemoveRoom.setEnabled(true);
+			this.actionRemoveCustomer.setEnabled(true);
+			this.actionAddRoom.setEnabled(true);
+			this.actionRemoveRoom.setEnabled(true);
 			this.btnAddAttachRes.setEnabled(true);
 			this.btnRemoveAttachRes.setEnabled(true);
 
@@ -676,7 +736,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		//add by yangfan
 		initLiquidatedTable();
 		tabbedPaneContract.remove(panelContractInfo);
-		tabbedPaneContract.remove(panelLiquidated);
 		tabbedPaneContract.remove(kDPaneLongContract);
 		btnViewRoomInfo.setVisible(false);
 		btnViewCustInfo.setVisible(false);
@@ -718,7 +777,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.actionAttachment.setVisible(true);
 		//滞纳金比例 ,总成交租金进行 隐藏 2010.12.14 xin_wang
 		this.contLateFeeAmount.setVisible(false);
-//		this.contTotalRoomDealRent.setVisible(false);
 		//由租售项目的属性来确认是否显示物业页签 2010.12.14 xin_wang
 		SellProjectInfo sellProject = (SellProjectInfo)this.f7SellProject.getValue();
 		if(sellProject!=null){
@@ -890,8 +948,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblRentSet.getColumn(C_RENT_FIRST_RENT).getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 
 		this.tblRentSet.getColumn(C_RENT_TENANCY_MODEL).setEditor(createComboCellEditor(TenancyModeEnum.getEnumList()));
-		
+		this.tblRentSet.getColumn(C_RENT_TENANCY_MODEL).getStyleAttributes().setLocked(true);
 		this.tblRentSet.getColumn(C_RENT_RENT_TYPE).setEditor(createComboCellEditor(RentTypeEnum.getEnumList()));
+		this.tblRentSet.getColumn(C_RENT_RENT_TYPE).getStyleAttributes().setLocked(true);
 
 		this.tblIncrease.getColumn(C_INC_INCREASE_DATE).setEditor(createDateCellEditor());
 		this.tblIncrease.getColumn(C_INC_INCREASE_DATE).getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
@@ -948,8 +1007,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 		btnAddIncrease = initWorkBtn1(actionAddIncrease, "imgTbtn_sortstandard", this.containerIncrease, "添加");
 		btnRmIncrease = initWorkBtn1(actionRmIncrease, "imgTbtn_sortstandard", this.containerIncrease, "删除");
-		btnAddIncrease.setEnabled(false);
-		btnRmIncrease.setEnabled(false);
+		
 		btnAddFree = initWorkBtn1(actionAddFree, "imgTbtn_sortstandard", this.containerFree, "添加");
 		btnRmFree = initWorkBtn1(actionRmFree, "imgTbtn_sortstandard", this.containerFree, "删除");
 		
@@ -1091,26 +1149,26 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		tenRoom.setTenRoomState(TenancyStateEnum.newTenancy);
 
 		// 获得长编码 //该长编码可能要在Room上加字段,此处直接从房间信息上getLongNumber
-		StringBuffer sbRoomLongNum = new StringBuffer();
-		BuildingInfo building = room.getBuilding();
-		SellProjectInfo sellPro = (building == null) ? null : building.getSellProject();
+//		StringBuffer sbRoomLongNum = new StringBuffer();
+//		BuildingInfo building = room.getBuilding();
+//		SellProjectInfo sellPro = (building == null) ? null : building.getSellProject();
+//
+//		final String spitStr = "-";
+//		if (sellPro != null) {
+//			sbRoomLongNum.append(sellPro.getName());
+//			sbRoomLongNum.append(spitStr);
+//		}
+//		if (building != null) {
+//			sbRoomLongNum.append(building.getName());
+//			sbRoomLongNum.append(spitStr);
+//		}
+//		if (room.getUnit() != 0) {
+//			sbRoomLongNum.append(room.getUnit());
+//			sbRoomLongNum.append(spitStr);
+//		}
+//		sbRoomLongNum.append(room.getNumber());
 
-		final String spitStr = "-";
-		if (sellPro != null) {
-			sbRoomLongNum.append(sellPro.getName());
-			sbRoomLongNum.append(spitStr);
-		}
-		if (building != null) {
-			sbRoomLongNum.append(building.getName());
-			sbRoomLongNum.append(spitStr);
-		}
-		if (room.getUnit() != 0) {
-			sbRoomLongNum.append(room.getUnit());
-			sbRoomLongNum.append(spitStr);
-		}
-		sbRoomLongNum.append(room.getNumber());
-
-		tenRoom.setRoomLongNum(sbRoomLongNum.toString());
+		tenRoom.setRoomLongNum(room.getName());
 
 		return tenRoom;
 	}
@@ -1140,7 +1198,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		row.setUserObject(tenancyRoom);
 
 		row.getCell(C_ROOM_TEN_ROOM_STATE).setValue(tenancyRoom.getTenRoomState());
-		row.getCell(C_ROOM_ROOM).setValue(tenancyRoom.getRoomLongNum());
+		row.getCell(C_ROOM_ROOM).setValue(tenancyRoom.getRoom().getName());
 
 		row.getCell(C_ROOM_STANDARD_RENT).setValue(tenancyRoom.getStandardRoomRent());
 		row.getCell(C_ROOM_STANDARD_RENT_TYPE).setValue(tenancyRoom.getStandardRentType());
@@ -1354,6 +1412,19 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblRoom.getColumn(C_ROOM_ACT_DELIVER_DATE).getStyleAttributes().setLocked(true);
 		this.tblRoom.getColumn(C_ROOM_ACT_QUIT_DATE).getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
 		this.tblRoom.getColumn(C_ROOM_ACT_QUIT_DATE).getStyleAttributes().setLocked(true);
+		
+		KDWorkButton btnAddRowinfo = new KDWorkButton();
+		KDWorkButton btnDeleteRowinfo = new KDWorkButton();
+
+		this.actionAddRoom.putValue("SmallIcon", EASResource.getIcon("imgTbtn_addline"));
+		btnAddRowinfo = (KDWorkButton)this.panelRoom.add(this.actionAddRoom);
+		btnAddRowinfo.setText("添加");
+		btnAddRowinfo.setSize(new Dimension(140, 19));
+
+		this.actionRemoveRoom.putValue("SmallIcon", EASResource.getIcon("imgTbtn_deleteline"));
+		btnDeleteRowinfo = (KDWorkButton) panelRoom.add(this.actionRemoveRoom);
+		btnDeleteRowinfo.setText("删除");
+		btnDeleteRowinfo.setSize(new Dimension(140, 19));
 	}
 
 
@@ -1415,6 +1486,19 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		// setCustomerInfoEnable(true);
 		
 		this.tblCustomer.getColumn(C_CUS_CUSTOMER).getStyleAttributes().setFontColor(Color.BLUE);
+		
+		KDWorkButton btnAddRowinfo = new KDWorkButton();
+		KDWorkButton btnDeleteRowinfo = new KDWorkButton();
+
+		this.actionAddCustomer.putValue("SmallIcon", EASResource.getIcon("imgTbtn_addline"));
+		btnAddRowinfo = (KDWorkButton)this.panelCustomer.add(this.actionAddCustomer);
+		btnAddRowinfo.setText("添加");
+		btnAddRowinfo.setSize(new Dimension(140, 19));
+
+		this.actionRemoveCustomer.putValue("SmallIcon", EASResource.getIcon("imgTbtn_deleteline"));
+		btnDeleteRowinfo = (KDWorkButton) panelCustomer.add(this.actionRemoveCustomer);
+		btnDeleteRowinfo.setText("删除");
+		btnDeleteRowinfo.setSize(new Dimension(140, 19));
 	}
 	/**
 	 * 初始化违约金方案设置 add by yangfan
@@ -2747,14 +2831,14 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		headRow.getCell(C_PAYS_APP_PAY_DATE).setValue("应收日期");
 
 		for (int i = 0; i < tenancyRooms.size(); i++) {
-			String roomNum = tenancyRooms.get(i).getRoom().getNumber();
+			String roomNum = tenancyRooms.get(i).getRoom().getName();
 			headRow.getCell(PREFIX_C_PAYS_ROOM + i + POSTFIX_C_PAYS_APP_AMOUNT).setValue(roomNum);
 			headRow.getCell(PREFIX_C_PAYS_ROOM + i + POSTFIX_C_PAYS_ACT_AMOUNT).setValue(roomNum);
 			headRow.getCell(PREFIX_C_PAYS_ROOM + i + POSTFIX_C_PAYS_ACT_PAY_DATE).setValue(roomNum);
 		}
 
 		for (int i = 0; i < tenAttachReses.size(); i++) {
-			String attNum = tenAttachReses.get(i).getAttachResource().getNumber();
+			String attNum = tenAttachReses.get(i).getAttachResource().getName();
 			headRow.getCell(PREFIX_C_PAYS_ATTACH_RES + i + POSTFIX_C_PAYS_APP_AMOUNT).setValue(attNum);
 			headRow.getCell(PREFIX_C_PAYS_ATTACH_RES + i + POSTFIX_C_PAYS_ACT_AMOUNT).setValue(attNum);
 			headRow.getCell(PREFIX_C_PAYS_ATTACH_RES + i + POSTFIX_C_PAYS_ACT_PAY_DATE).setValue(attNum);
@@ -3277,7 +3361,14 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				tenancyMode = tenRoom.getTenancyModel();
 			}
 			row.getCell(C_RENT_TENANCY_MODEL).setValue(tenancyMode);
-			row.getCell(C_RENT_RENT_TYPE).setValue(tenRoom.getDealRentType());
+			RentTypeEnum rentType = RentTypeEnum.RentByMonth;
+			if(tenRoom.getDealRentType() != null)
+			{
+				rentType=tenRoom.getDealRentType();
+			}else{
+				tenRoom.setDealRentType(rentType);
+			}
+			row.getCell(C_RENT_RENT_TYPE).setValue(rentType);
 //			row.getCell(C_RENT_DEPOSIT).setValue(tenRoom.getDepositAmount());
 			row.getCell(C_RENT_FIRST_RENT).setValue(tenRoom.getFirstPayAmount());
 			if(tenRoom.getDepositAmount()!=null)
@@ -3619,11 +3710,13 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				tenRoom.setTenancyModel(tenancyMode);
 			}
 			row.getCell(C_RENT_TENANCY_MODEL).setValue(tenancyMode);	
-			//			RentTypeEnum rentType = RentTypeEnum.RentByMonth;
-			//			if(tenRoom.getDealRentType() != null)
-			//			{
-			RentTypeEnum rentType = tenRoom.getDealRentType();
-			//}
+			RentTypeEnum rentType = RentTypeEnum.RentByMonth;
+			if(tenRoom.getDealRentType() != null)
+			{
+				rentType=tenRoom.getDealRentType();
+			}else{
+				tenRoom.setDealRentType(rentType);
+			}
 			row.getCell(C_RENT_RENT_TYPE).setValue(rentType);
 //			row.getCell(C_RENT_DEPOSIT).setValue(tenRoom.getDepositAmount());
 			row.getCell(C_RENT_FIRST_RENT).setValue(tenRoom.getFirstPayAmount());
@@ -4589,7 +4682,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}
 	}
 
-	protected void btnAddRoom_actionPerformed(ActionEvent e) throws Exception {
+	public void actionAddRoom_actionPerformed(ActionEvent e) throws Exception {
 		if(this.tblRoom.getRowCount()>0){
 			MsgBox.showInfo(this, "只能选择一套房间！");
 			this.abort();
@@ -4627,10 +4720,13 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				MsgBox.showInfo(this, "房间" + room.getNumber() + "未放租，不能出租！");
 				this.abort();
 			}
-			
+			if(TenancyStateEnum.sincerObligate.equals(room.getTenancyState())){
+				MsgBox.showInfo(this,"房间已经被预留，请先进行取消预留操作！");
+				this.abort();
+			}
 			if(TenancyStateEnum.keepTenancy.equals(room.getTenancyState()))
 			{
-				MsgBox.showInfo(this, "房间" + room.getNumber() + "已保留，不能出租！");
+				MsgBox.showInfo(this, "房间" + room.getNumber() + "已封存，不能出租！");
 				this.abort();
 			}
 			
@@ -4848,8 +4944,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 
 	}
 
-	protected void btnAddCustomer_actionPerformed(ActionEvent e) throws Exception {
-		super.btnAddCustomer_actionPerformed(e);
+	public void actionAddCustomer_actionPerformed(ActionEvent e) throws Exception {
+		super.actionAddCustomer_actionPerformed(e);
 		int activeRowIndex = this.tblCustomer.getSelectManager().getActiveRowIndex();
 		IRow row = null;
 		if (activeRowIndex == -1) {
@@ -4978,7 +5074,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}
 	}
 
-	protected void btnRemoveRoom_actionPerformed(ActionEvent e) throws Exception {
+	public void actionRemoveRoom_actionPerformed(ActionEvent e) throws Exception {
 		//删除房间列表上的纪录
 		int activeRowIndex = this.tblRoom.getSelectManager().getActiveRowIndex();
 		if (activeRowIndex == -1) {
@@ -5022,8 +5118,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		updatePayListInfo();
 	}
 
-	protected void btnRemoveCustomer_actionPerformed(ActionEvent e) throws Exception {
-		super.btnRemoveCustomer_actionPerformed(e);
+	public void actionRemoveCustomer_actionPerformed(ActionEvent e) throws Exception {
+		super.actionRemoveCustomer_actionPerformed(e);
 		removeRow(this.tblCustomer);
 	}
 
@@ -5296,6 +5392,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			for (int i = 0; i < rooms.size(); i++) {
 				RoomInfo room = rooms.get(i);
 				//TODO 如果支持多个房间的租赁，这多个房间还必须是同一个项目的.
+				if(TenancyStateEnum.sincerObligate.equals(room.getTenancyState())){
+					MsgBox.showInfo(this,"房间已经被预留，请先进行取消预留操作！");
+					this.abort();
+				}
 				if (i == 0) {
 					SellProjectInfo sellProject = room.getBuilding().getSellProject();
 					tenancyBill.setSellProject(sellProject);
@@ -6325,8 +6425,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.btnDelPayList.setEnabled(isFreeContract);
 		TenancyContractTypeEnum currentTenancyType = getCurrentTenancyType();
 		if(!TenancyContractTypeEnum.ChangeName.equals(currentTenancyType)){
-			this.btnAddRoom.setEnabled(!isFreeContract);
-			this.btnRemoveRoom.setEnabled(!isFreeContract);
+			this.actionAddRoom.setEnabled(!isFreeContract);
+			this.actionRemoveRoom.setEnabled(!isFreeContract);
 		}
 		
 

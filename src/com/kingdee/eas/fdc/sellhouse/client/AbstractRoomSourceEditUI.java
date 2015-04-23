@@ -1073,8 +1073,38 @@ public abstract class AbstractRoomSourceEditUI extends com.kingdee.eas.framework
         this.prmtBuildUnit.setCommitFormat("$number$");		
         this.prmtBuildUnit.setEditFormat("$number$");		
         this.prmtBuildUnit.setDisplayFormat("$name$");
+        this.prmtBuildUnit.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
+            public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
+                try {
+                    prmtBuildUnit_dataChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
         // spiFloor
+        this.spiFloor.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent e) {
+                try {
+                    spiFloor_stateChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
         // spiSerialNumber
+        this.spiSerialNumber.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent e) {
+                try {
+                    spiSerialNumber_stateChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
         // txtBuildingArea		
         this.txtBuildingArea.setDataType(1);
         // txtRoomArea		
@@ -1146,7 +1176,8 @@ public abstract class AbstractRoomSourceEditUI extends com.kingdee.eas.framework
         this.f7Noise1.setDisplayFormat("$name$");		
         this.f7Noise1.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.F7RoomAssistantQuery");
         // txtName		
-        this.txtName.setRequired(true);
+        this.txtName.setRequired(true);		
+        this.txtName.setEnabled(false);
         // prmtBuildStruct1		
         this.prmtBuildStruct1.setDisplayFormat("$name$");		
         this.prmtBuildStruct1.setEditFormat("$number$");		
@@ -1170,7 +1201,8 @@ public abstract class AbstractRoomSourceEditUI extends com.kingdee.eas.framework
         });
         // txtPlanBuildingArea		
         this.txtPlanBuildingArea.setDataType(1);
-        // txtDisplayName
+        // txtDisplayName		
+        this.txtDisplayName.setRequired(true);
         // comboHouseProperty		
         this.comboHouseProperty.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.sellhouse.HousePropertyEnum").toArray());
         // txtIbasement
@@ -1178,7 +1210,8 @@ public abstract class AbstractRoomSourceEditUI extends com.kingdee.eas.framework
         // txtInsside
         // txtIbameasured
         // txthoursnumber		
-        this.txthoursnumber.setRequired(true);
+        this.txthoursnumber.setRequired(true);		
+        this.txthoursnumber.setEnabled(false);
         // txtApportionArea		
         this.txtApportionArea.setDataType(1);
         // kDLabelContainer2		
@@ -1542,9 +1575,13 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(scPanel, BorderL
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -1582,6 +1619,7 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(scPanel, BorderL
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -1600,9 +1638,12 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(scPanel, BorderL
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
         this.toolBar.add(btnReset);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
         this.toolBar.add(btnRemove);
@@ -1725,6 +1766,27 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(scPanel, BorderL
     }
 
     /**
+     * output prmtBuildUnit_dataChanged method
+     */
+    protected void prmtBuildUnit_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output spiFloor_stateChanged method
+     */
+    protected void spiFloor_stateChanged(javax.swing.event.ChangeEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output spiSerialNumber_stateChanged method
+     */
+    protected void spiSerialNumber_stateChanged(javax.swing.event.ChangeEvent e) throws Exception
+    {
+    }
+
+    /**
      * output txtActualBuildingArea_actionPerformed method
      */
     protected void txtActualBuildingArea_actionPerformed(java.awt.event.ActionEvent e) throws Exception
@@ -1766,6 +1828,10 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(scPanel, BorderL
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
     	

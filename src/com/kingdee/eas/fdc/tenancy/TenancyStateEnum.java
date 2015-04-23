@@ -13,13 +13,13 @@ import com.kingdee.util.enums.StringEnum;
  */
 public class TenancyStateEnum extends StringEnum
 {
-    public static final String UNTENANCY_VALUE = "UNTenancy";
-    public static final String WAITTENANCY_VALUE = "WaitTenancy";
-    public static final String KEEPTENANCY_VALUE = "KeepTenancy";
-    public static final String NEWTENANCY_VALUE = "NewTenancy";
-    public static final String CONTINUETENANCY_VALUE = "ContinueTenancy";
-    public static final String ENLARGETENANCY_VALUE = "EnlargeTenancy";
-    public static final String SINCEROBLIGATE_VALUE = "SincerObligate";
+    public static final String UNTENANCY_VALUE = "UNTenancy";//alias=Î´·Å×â
+    public static final String WAITTENANCY_VALUE = "WaitTenancy";//alias=´ý×â
+    public static final String KEEPTENANCY_VALUE = "KeepTenancy";//alias=·â´æ
+    public static final String NEWTENANCY_VALUE = "NewTenancy";//alias=ÐÂ×â
+    public static final String CONTINUETENANCY_VALUE = "ContinueTenancy";//alias=Ðø×â
+    public static final String ENLARGETENANCY_VALUE = "EnlargeTenancy";//alias=À©×â
+    public static final String SINCEROBLIGATE_VALUE = "SincerObligate";//alias=³ÏÒâÔ¤Áô
 
     public static final TenancyStateEnum unTenancy = new TenancyStateEnum("unTenancy", UNTENANCY_VALUE);
     public static final TenancyStateEnum waitTenancy = new TenancyStateEnum("waitTenancy", WAITTENANCY_VALUE);
