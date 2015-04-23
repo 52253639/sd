@@ -1215,7 +1215,15 @@ public class NewSHERevBillEditUI extends AbstractNewSHERevBillEditUI
 
 	protected void kdtEntrys_editStopped(KDTEditEvent e) throws Exception {
     	if(e.getType()!=1)  return;
-    	if(e.getColIndex()==this.kdtEntrys.getColumnIndex("invoiceType")){
+    	if(e.getColIndex()==this.kdtEntrys.getColumnIndex("moneyDefine")){
+    		MoneyDefineInfo md=(MoneyDefineInfo) this.kdtEntrys.getRow(e.getRowIndex()).getCell("moneyDefine").getValue();
+    		if(md!=null&&this.prmtroom.getValue()==null){
+    			if(!md.getMoneyType().equals(MoneyTypeEnum.PreMoney)&&!md.getMoneyType().equals(MoneyTypeEnum.SinPur)){
+    				FDCMsgBox.showWarning(this,"无房间只能收诚意金或者预收款！");
+    				this.kdtEntrys.getRow(e.getRowIndex()).getCell("moneyDefine").setValue(null);
+    			}
+    		}
+    	}else if(e.getColIndex()==this.kdtEntrys.getColumnIndex("invoiceType")){
     		if(this.kdtEntrys.getRow(e.getRowIndex()).getCell("invoiceType").getValue()!=null){
     			InvoiceTypeEnum type=(InvoiceTypeEnum)this.kdtEntrys.getRow(e.getRowIndex()).getCell("invoiceType").getValue();
     			if(type.equals(InvoiceTypeEnum.INVOICE)){
