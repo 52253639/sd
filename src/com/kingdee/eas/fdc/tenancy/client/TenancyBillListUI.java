@@ -213,17 +213,17 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		menuItem1.setIcon(EASResource.getIcon("imgTbtn_releasebymdanduser"));
 		this.btnSpecial.addAssistMenuItem(menuItem1);
 
-		KDMenuItem menuItem4 = new KDMenuItem();
-		menuItem4.setAction(this.actionRejiggerTenancy);
-		menuItem4.setText("改租申请");
-		menuItem4.setIcon(EASResource.getIcon("imgTbtn_distributeuser"));
-		this.btnSpecial.addAssistMenuItem(menuItem4);
-
-		KDMenuItem menuItem2 = new KDMenuItem();
-		menuItem2.setAction(this.actionChangeName);
-		menuItem2.setText("转名申请");
-		menuItem2.setIcon(EASResource.getIcon("imgTbtn_persondistribute"));
-		this.btnSpecial.addAssistMenuItem(menuItem2);
+//		KDMenuItem menuItem4 = new KDMenuItem();
+//		menuItem4.setAction(this.actionRejiggerTenancy);
+//		menuItem4.setText("改租申请");
+//		menuItem4.setIcon(EASResource.getIcon("imgTbtn_distributeuser"));
+//		this.btnSpecial.addAssistMenuItem(menuItem4);
+//
+//		KDMenuItem menuItem2 = new KDMenuItem();
+//		menuItem2.setAction(this.actionChangeName);
+//		menuItem2.setText("转名申请");
+//		menuItem2.setIcon(EASResource.getIcon("imgTbtn_persondistribute"));
+//		this.btnSpecial.addAssistMenuItem(menuItem2);
 		
 //		KDMenuItem menuItem5 = new KDMenuItem();
 //		menuItem5.setAction(this.actionPriceChange);

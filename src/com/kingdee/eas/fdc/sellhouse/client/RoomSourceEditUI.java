@@ -79,6 +79,7 @@ import com.kingdee.eas.fdc.basecrm.client.FDCSysContext;
 import com.kingdee.eas.fdc.basecrm.client.NewCommerceHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
+import com.kingdee.eas.fdc.basedata.ProductTypeFactory;
 import com.kingdee.eas.fdc.basedata.ProductTypeInfo;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.BankPaymentInfo;
@@ -680,6 +681,15 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 					this.prmtBuildUnit.setValue(unitInfo);
 				}
 //			}
+			if(buildingInfo.getProductType()!=null){
+				try {
+					roomInfo.setProductType(ProductTypeFactory.getRemoteInstance().getProductTypeInfo(new ObjectUuidPK(buildingInfo.getProductType().getId())));
+				} catch (EASBizException e) {
+					e.printStackTrace();
+				} catch (BOSException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		roomInfo.setFloor(1);
 		roomInfo.setSerialNumber(1);

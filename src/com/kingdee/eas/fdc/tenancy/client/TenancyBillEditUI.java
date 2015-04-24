@@ -737,6 +737,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		initLiquidatedTable();
 		tabbedPaneContract.remove(panelContractInfo);
 		tabbedPaneContract.remove(kDPaneLongContract);
+		tabbedPaneContract.remove(panelCommissionSetting);
 		btnViewRoomInfo.setVisible(false);
 		btnViewCustInfo.setVisible(false);
 		btnNewCustomer.setVisible(false);

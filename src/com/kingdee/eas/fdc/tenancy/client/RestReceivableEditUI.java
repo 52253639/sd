@@ -114,6 +114,11 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 		initMoneyDefineCol();
 		kdtEntrys_detailPanel.setTitle("应收明细");
 		handleCodingRule();
+		
+		this.chkMenuItemSubmitAndAddNew.setVisible(false);
+		this.chkMenuItemSubmitAndAddNew.setSelected(false);
+		this.chkMenuItemSubmitAndPrint.setVisible(false);
+		this.chkMenuItemSubmitAndPrint.setSelected(false);
 	}
 	
 	/**
@@ -532,13 +537,13 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 	protected void verifyInput(ActionEvent e) throws Exception {
 		//super.verifyInput(e);
 		// 校验单据头
-		//String number = editData.getNumber();
-		///if ((number == null || number.trim().length() <= 0)&&this.txtNumber.isEnabled()) {
-			///showMsg("单据编号");
-		///}
-		///if(this.txtNumber.isEnabled()){
-		///verifyNumber();
-		//}
+		String number = this.txtNumber.getText();
+		if ((number == null || number.trim().length() <= 0)&&this.txtNumber.isEnabled()) {
+			showMsg("单据编号");
+		}
+		if(this.txtNumber.isEnabled()){
+			verifyNumber();
+		}
 		Date bizDate = editData.getBizDate();
 		if (bizDate == null) {
 			showMsg("业务日期");

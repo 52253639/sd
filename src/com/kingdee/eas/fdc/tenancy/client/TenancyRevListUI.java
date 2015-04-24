@@ -103,6 +103,7 @@ import com.kingdee.eas.fdc.tenancy.TenancyHelper;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
 import com.kingdee.eas.fi.cas.IReceivingBill;
+import com.kingdee.eas.fi.cas.PaymentBillFactory;
 import com.kingdee.eas.fi.cas.ReceivingBillCollection;
 import com.kingdee.eas.fi.cas.ReceivingBillFactory;
 import com.kingdee.eas.fi.cas.client.CasReceivingBillUI;
@@ -612,7 +613,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			return;
 		}
 		checkIsSupply(id);
-		checkCreateBillStatus(id,"所选收款单中已生成出纳收款单，不允许修改操作！");
+		checkCreateBillStatus(id,"所选收款单中已生成出纳收付款单，不允许修改操作！");
 		super.actionEdit_actionPerformed(e);
 	}
 
@@ -637,7 +638,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			return;
 		}
 		checkIsSupply(id);
-		checkCreateBillStatus(id,"所选收款单中已生成出纳收款单，不允许删除操作！");
+		checkCreateBillStatus(id,"所选收款单中已生成出纳收付款单，不允许删除操作！");
 		super.actionRemove_actionPerformed(e);
 	}
 
@@ -969,10 +970,10 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		BizEnumValueDTO bizDTO=(BizEnumValueDTO)row.getCell("revBillType").getValue();
 		
 		if(bizDTO.getName().equals("transfer")){
-			FDCMsgBox.showWarning(this, "转款类型的收款单不能生成出纳收款单!");
+			FDCMsgBox.showWarning(this, "转款类型的收款单不能生成出纳收付款单!");
 			SysUtil.abort();
 		}/*else if(bizDTO.getName().equals("adjust")){
-			FDCMsgBox.showWarning(this, "调整类型的收款单不能生成出纳收款单!");
+			FDCMsgBox.showWarning(this, "调整类型的收款单不能生成出纳收付款单!");
 			SysUtil.abort();
 		}*/
 	}
@@ -1002,20 +1003,20 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 					
 					boolean result = findBillFromCasPaymentBillbyId(idList);
 					if(!result){
-						MsgBox.showWarning(this,"已经生成出纳收款单，不允许重复生成！");
+						MsgBox.showWarning(this,"已经生成出纳收付款单，不允许重复生成！");
 						SysUtil.abort();
 					}
 				}
 				try{
 					FDCReceivingBillFactory.getRemoteInstance().createCashBill(idList, false);
-					MsgBox.showWarning(this, "出纳收款单生成成功！");
+					MsgBox.showWarning(this, "出纳收付款单生成成功！");
 					SysUtil.abort();
 				}catch(Exception ex){
 					if(ex instanceof BOSException&&ex.getMessage().startsWith("科目不按指定币别核算")){
 						MsgBox.showWarning(this, "科目不按指定币别核算，请选择其它币别！");
 						SysUtil.abort();
-					}else if(ex instanceof BOSException&&ex.getMessage().startsWith("生成出纳收款单失败")){
-						MsgBox.showWarning(this, "生成出纳收款单失败！");
+					}else if(ex instanceof BOSException&&ex.getMessage().startsWith("生成出纳收付款单失败")){
+						MsgBox.showWarning(this, "生成出纳收付款单失败！");
 						SysUtil.abort();
 					}
 				}
@@ -1086,7 +1087,7 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			}
 			
 			if(result){
-				MsgBox.showWarning(this, "已生成凭证，不能生成出纳收款单！");
+				MsgBox.showWarning(this, "已生成凭证，不能生成出纳收付款单！");
 				SysUtil.abort();
 			}
 	}
@@ -1150,23 +1151,15 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 	}
 	private void checkCreateBillStatus(String id,String msg){
 		try {
-			IReceivingBill rece = ReceivingBillFactory.getRemoteInstance();
-			EntityViewInfo evi = new EntityViewInfo();
-			FilterInfo filterInfo = new FilterInfo();
-			filterInfo.getFilterItems().add(new FilterItemInfo("sourceBillId", id, CompareType.EQUALS));
-			evi.setFilter(filterInfo);
-			SelectorItemCollection coll = new SelectorItemCollection();
-			coll.add(new SelectorItemInfo("sourceBillId"));
-			coll.add(new SelectorItemInfo("billStatus"));
-			evi.setSelector(coll);
-			ReceivingBillCollection collection = rece.getReceivingBillCollection(evi);
-			if(collection!=null && collection.size()>0){
-				//result = true;
+			if(ReceivingBillFactory.getRemoteInstance().exists("select id from where sourceBillId='"+id+"'")
+					||PaymentBillFactory.getRemoteInstance().exists("select id from where sourceBillId='"+id+"'")){
 				MsgBox.showWarning(this, msg);
 				SysUtil.abort();
 			}
 			} catch (BOSException e) {
-				logger.error(e.getMessage()+"获取是否已生成出纳收款单状态失败!");
+				logger.error(e.getMessage()+"获取是否已生成出纳收付款单状态失败!");
+			} catch (EASBizException e) {
+				logger.error(e.getMessage()+"获取是否已生成出纳收付款单状态失败!");
 			}
 			
 	}
