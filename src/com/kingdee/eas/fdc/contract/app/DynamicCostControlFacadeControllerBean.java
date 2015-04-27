@@ -367,8 +367,8 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     		sb.append(" and pro.fprojectID = 'null'");
     	}
 		if(auditDate!=null){
-    		sb.append(" and cb.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
-    		sb.append(" or (confirmSplit.auditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} or confirmSplit.cbId is null)");
+    		sb.append(" and (cb.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
+    		sb.append(" or (confirmSplit.auditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} or confirmSplit.cbId is null))");
     	}else{
     		sb.append(" and confirmSplit.cbId is null");
     	}
@@ -419,7 +419,7 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
     	if(auditDate!=null){
     		sb.append(" and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}
-    	sb.append(" union all select sum(entry.famount) famount,entry.fProgrammingContractId fProgrammingContract from T_CON_ContractPCSplitBillEntry entry left join T_CON_ContractPCSplitBill split on split.fid=entry.fheadId left join t_con_contractBill contract on contract.fid=split.fcontractBillId where split.fcontractBillId is not null");
+    	sb.append(" union all select sum(entry.famount) famount,entry.fProgrammingContractId fProgrammingContract from T_CON_ContractPCSplitBillEntry entry left join T_CON_ContractPCSplitBill split on split.fid=entry.fheadId left join t_con_contractBill contract on contract.fid=split.fcontractBillId where contract.fContractPropert!='SUPPLY' and split.fcontractBillId is not null");
     	if(auditDate!=null){
     		sb.append(" and contract.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}

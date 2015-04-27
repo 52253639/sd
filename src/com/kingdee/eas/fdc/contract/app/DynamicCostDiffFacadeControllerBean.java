@@ -107,7 +107,7 @@ public class DynamicCostDiffFacadeControllerBean extends AbstractDynamicCostDiff
     	sb.append(" from T_CON_ProgrammingContract pc left join T_CON_Programming pro on pro.fid=pc.FProgrammingID");
     	sb.append(" left join (select 'true' isContract,t.FProgrammingContract,sum(t.famount) famount from(select famount,fProgrammingContract from t_con_contractBill where fContractPropert!='SUPPLY' and fstate='4AUDITTED'");
     	sb.append(" and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(date))+ "'}");
-    	sb.append(" union all select sum(entry.famount)famount,entry.fProgrammingContractId fProgrammingContract from T_CON_ContractPCSplitBillEntry entry left join T_CON_ContractPCSplitBill split on split.fid=entry.fheadId left join t_con_contractBill contract on contract.fid=split.fcontractBillId where split.fcontractBillId is not null");
+    	sb.append(" union all select sum(entry.famount)famount,entry.fProgrammingContractId fProgrammingContract from T_CON_ContractPCSplitBillEntry entry left join T_CON_ContractPCSplitBill split on split.fid=entry.fheadId left join t_con_contractBill contract on contract.fid=split.fcontractBillId where contract.fContractPropert!='SUPPLY' and split.fcontractBillId is not null");
     	sb.append(" and contract.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(date))+ "'}");
     	sb.append(" group by entry.fProgrammingContractId)t group by t.FProgrammingContract) contract on contract.fProgrammingContract=pc.fid");
     	sb.append(" left join (select t.FProgrammingContract,sum(t.famount) famount from(select sum(famount) famount,fProgrammingContract from t_con_contractBill where fContractPropert='SUPPLY' and fstate='4AUDITTED'");
@@ -150,8 +150,8 @@ public class DynamicCostDiffFacadeControllerBean extends AbstractDynamicCostDiff
 		sb.append(" left join T_CON_ContractChangeBill cb on cb.fid=split.fContractChangeBillId");
 		sb.append(" left join (select entry.fProgrammingContractId pcId,changeSettle.FConChangeBillID cbId,changeSettle.fauditTime auditTime from T_CON_ContractPCSplitBillEntry entry left join T_CON_ContractPCSplitBill split on split.fid=entry.fheadId");  
 		sb.append(" left join T_CON_ContractChangeSettleBill changeSettle on changeSettle.fid=split.fContractChangeSettleBillId where split.fcontractChangeSettleBillId is not null  ) confirmSplit on confirmSplit.cbId=cb.fId and confirmSplit.pcId=entry.fProgrammingContractId where split.fcontractChangeBillId is not null");
-		sb.append(" and cb.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(date))+ "'}");
-		sb.append(" or (confirmSplit.auditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(date))+ "'} or confirmSplit.cbId is null)");
+		sb.append(" and (cb.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(date))+ "'}");
+		sb.append(" or (confirmSplit.auditTime>={ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(date))+ "'} or confirmSplit.cbId is null))");
 		sb.append(" group by entry.fProgrammingContractId");
 		sb.append(" )t group by t.FProgrammingContract) UNCONFIRM on UNCONFIRM.FProgrammingContract=pc.fid");
     	sb.append(" left join (select distinct fparentid from T_CON_ProgrammingContract) isLeaf on isLeaf.fparentid=pc.fid");

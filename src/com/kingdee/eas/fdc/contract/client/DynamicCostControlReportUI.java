@@ -104,10 +104,8 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 			if(key.equals("amount")||key.indexOf("Amount")>0||key.indexOf("CONFIRM")>0||key.equals("absolute")||key.equals("rate")||key.equals("changeRate")||key.equals("payRate")){
 				CRMClientHelper.changeTableNumberFormat(tblMain,key);
 			}
-			if(params.getObject("fromDate")==null&&params.getObject("toDate")==null){
-				if(key.equals("contractAmount")||key.equals("supplyAmount")||key.equals("contractWTAmount")||key.indexOf("CONFIRM")>0||key.equals("estimateAmount")||key.equals("settleAmount")){
-					tblMain.getColumn(i).getStyleAttributes().setFontColor(Color.BLUE);
-				}
+			if(key.equals("contractAmount")||key.equals("supplyAmount")||key.equals("contractWTAmount")||key.indexOf("CONFIRM")>0||key.equals("estimateAmount")||key.equals("settleAmount")){
+				tblMain.getColumn(i).getStyleAttributes().setFontColor(Color.BLUE);
 			}
 		}
 		Set indexSet = new HashSet();
@@ -164,7 +162,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 		if(isQuery) return;
 		isQuery=true;
 		DefaultKingdeeTreeNode treeNode = (DefaultKingdeeTreeNode)this.treeMain.getLastSelectedPathComponent();
-    	if(treeNode!=null||this.getUIContext().get("title")!=null){
+    	if(treeNode!=null||isThrough){
     		Window win = SwingUtilities.getWindowAncestor(this);
             LongTimeDialog dialog = null;
             if(win instanceof Frame){
@@ -738,21 +736,28 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 	protected void treeMain_valueChanged(TreeSelectionEvent e) throws Exception {
 		this.refresh();
 	}
+	boolean isThrough=false;
 	public void onLoad() throws Exception {
+		if(this.getUIContext().get("title")!=null){
+			isThrough=true;
+		}
 		isOnLoad=true;
 		setShowDialogOnLoad(false);
 		tblMain.getStyleAttributes().setLocked(true);
 		super.onLoad();
+		if(!isThrough){
+			buildOrgTree();
+		}
 		tblMain.getSelectManager().setSelectMode(KDTSelectManager.MULTIPLE_CELL_SELECT);
 		this.actionPrint.setVisible(false);
 		this.actionPrintPreview.setVisible(false);
-		if(this.getUIContext().get("title")!=null){
+		isOnLoad=false;
+		
+		if(isThrough){
 			kDTreeView1.setVisible(false);
 			this.setUITitle(this.getUIContext().get("title").toString());
-		}else{
-			buildOrgTree();
+			query();
 		}
-		isOnLoad=false;
 		this.actionQuery.setVisible(false);
 		this.refresh();
 	}
@@ -761,8 +766,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
 		if (e.getType() == KDTStyleConstants.BODY_ROW && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
 			IRow row=this.tblMain.getRow(e.getRowIndex());
 			Object amount=row.getCell(e.getColIndex()).getValue();
-			if(amount==null||!(amount instanceof BigDecimal)
-					||(params.getObject("fromDate")!=null&&params.getObject("toDate")!=null)){
+			if(amount==null||!(amount instanceof BigDecimal)){
 				return;
 			}
 			String uiClass=null;

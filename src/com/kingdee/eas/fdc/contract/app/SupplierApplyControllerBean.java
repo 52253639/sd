@@ -96,7 +96,18 @@ public class SupplierApplyControllerBean extends AbstractSupplierApplyController
 		CtrlUnitInfo cu = new CtrlUnitInfo();
 		cu.setId(BOSUuid.read(OrgConstants.DEF_CU_ID));
 		
-		CSSPGroupInfo groupInfo = null;
+		CSSPGroupInfo groupInfo =null;
+		SupplierGroupDetailInfo Gdinfo = null;
+		CSSPGroupCollection groupCol = CSSPGroupFactory.getLocalInstance(ctx).getCSSPGroupCollection("select number,name,groupStandard.id from where groupStandard.id='00000000-0000-0000-0000-000000000001BC122A7F' and cu.id='"+OrgConstants.DEF_CU_ID+"'");
+		if(groupCol.size()>0){
+			supplier.setBrowseGroup(groupInfo);
+    		
+    		Gdinfo = new SupplierGroupDetailInfo();
+    		Gdinfo.setSupplierGroup(groupInfo);
+    		Gdinfo.setSupplierGroupFullName(groupInfo.getName());
+    		Gdinfo.setSupplierGroupStandard(groupInfo.getGroupStandard());
+    		supplier.getSupplierGroupDetails().add(Gdinfo);
+		}
 		
 		EntityViewInfo view = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
@@ -130,9 +141,10 @@ public class SupplierApplyControllerBean extends AbstractSupplierApplyController
 		}else{
 			groupInfo = sheGroupCol.get(0);
 		}
-		supplier.setBrowseGroup(groupInfo);
-		
-		SupplierGroupDetailInfo Gdinfo = new SupplierGroupDetailInfo();
+		if(supplier.getBrowseGroup()!=null){
+			supplier.setBrowseGroup(groupInfo);
+		}
+		Gdinfo = new SupplierGroupDetailInfo();
 		Gdinfo.setSupplierGroup(groupInfo);
 		Gdinfo.setSupplierGroupFullName(groupInfo.getName());
 		Gdinfo.setSupplierGroupStandard(groupInfo.getGroupStandard());

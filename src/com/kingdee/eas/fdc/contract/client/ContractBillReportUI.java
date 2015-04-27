@@ -260,13 +260,6 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	         }else{
          	        	tblMain.repaint();
          	         }
-         	         
-         	        tblMain.getColumn("amount1").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount2").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount3").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount4").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount5").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount6").getStyleAttributes().setHided(true);
                  }
             }
             );
@@ -308,40 +301,6 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 		setShowDialogOnLoad(false);
 		tblMain.getStyleAttributes().setLocked(true);
 		super.onLoad();
-		
-		kDSplitPane1.setBounds(new Rectangle(8, 16, 999, 586));
-        this.add(kDSplitPane1, new KDLayout.Constraints(8, 16, 999, 586, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-		//add by shilei
-        final KDCheckBox isView = new KDCheckBox();
-        isView.setBounds(new Rectangle(168, 0, 50, 20));
-        isView.setText("是否显示分期金额");
-        this.add(isView, new KDLayout.Constraints(168, 0, 50, 20, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        isView.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {
-				if(!isView.isSelected())
-				{
-					tblMain.getColumn("amount1").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount2").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount3").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount4").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount5").getStyleAttributes().setHided(true);
-					tblMain.getColumn("amount6").getStyleAttributes().setHided(true);
-				}
-				else
-				{
-					tblMain.getColumn("amount1").getStyleAttributes().setHided(false);
-					tblMain.getColumn("amount2").getStyleAttributes().setHided(false);
-					tblMain.getColumn("amount3").getStyleAttributes().setHided(false);
-					tblMain.getColumn("amount4").getStyleAttributes().setHided(false);
-					tblMain.getColumn("amount5").getStyleAttributes().setHided(false);
-					tblMain.getColumn("amount6").getStyleAttributes().setHided(false);
-				}
-			}
-        	
-        });
-        
-        
 		if(!isThrough){
 			buildOrgTree();
 		}

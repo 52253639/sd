@@ -99,7 +99,7 @@ public class ContractEstimateBillReportFacadeControllerBean extends AbstractCont
     	sb.append(" left join T_FDC_ContractType contractType on contractType.fid=contract.fcontractTypeId");
     	if(auditDate!=null){
     		sb.append(" left join (select max(fauditTime) fauditTime,fprogrammingContractID from T_CON_ContractEstimateChange where fstate='4AUDITTED' and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} group by fprogrammingContractID) t on t.fprogrammingContractID=ec.fprogrammingContractID and t.fauditTime=ec.fauditTime");
-    		sb.append(" where (contract.fcontractPropert!='SUPPLY' or contract.fid is null) and t.fauditTime is not null and fstate='4AUDITTED' and ec.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
+    		sb.append(" where (contract.fcontractPropert!='SUPPLY' or contract.fid is null) and t.fauditTime is not null and ec.fstate='4AUDITTED' and ec.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}else{
     		sb.append(" where (contract.fcontractPropert!='SUPPLY' or contract.fid is null) and ec.fstate='4AUDITTED' and ec.fisLastest=1");
     	}
@@ -141,7 +141,7 @@ public class ContractEstimateBillReportFacadeControllerBean extends AbstractCont
     	sb.append(" left join T_FDC_ContractType contractType on contractType.fid=contract.fcontractTypeId");
     	if(auditDate!=null){
     		sb.append(" left join (select max(fauditTime) fauditTime,fprogrammingContractID from T_CON_ContractEstimateChange where fstate='4AUDITTED' and fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'} group by fprogrammingContractID) t on t.fprogrammingContractID=ec.fprogrammingContractID and t.fauditTime=ec.fauditTime");
-    		sb.append(" where (contract.fcontractPropert!='SUPPLY' or contract.fid is null) and t.fauditTime is not null and fstate='4AUDITTED' and ec.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
+    		sb.append(" where (contract.fcontractPropert!='SUPPLY' or contract.fid is null) and t.fauditTime is not null and ec.fstate='4AUDITTED' and ec.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	}else{
     		sb.append(" where (contract.fcontractPropert!='SUPPLY' or contract.fid is null) and ec.fstate='4AUDITTED' and ec.fisLastest=1");
     	}

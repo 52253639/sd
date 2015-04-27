@@ -68,39 +68,20 @@ public class ContractChangeBillReportFacadeControllerBean extends AbstractContra
 	    
 	    initColoum(header,col,"changeContent",100,false);
 	    initColoum(header,col,"cbAmount",100,false);
-	    Boolean isClick=(Boolean)params.getObject("isClick");
-    	if(isClick!=null&&isClick){
-    		initColoum(header,col,"amount1",100,true);
-    	    initColoum(header,col,"amount2",100,true);
-    	    initColoum(header,col,"amount3",100,true);
-    	    initColoum(header,col,"amount4",100,true);
-    	    initColoum(header,col,"amount5",100,true);
-    	    initColoum(header,col,"amount6",100,true);
-    	}else{
-    		initColoum(header,col,"amount1",100,false);
-    	    initColoum(header,col,"amount2",100,false);
-    	    initColoum(header,col,"amount3",100,false);
-    	    initColoum(header,col,"amount4",100,false);
-    	    initColoum(header,col,"amount5",100,false);
-    	    initColoum(header,col,"amount6",100,false);
-    	}
+		initColoum(header,col,"amount1",100,false);
+	    initColoum(header,col,"amount2",100,false);
+	    initColoum(header,col,"amount3",100,false);
+	    initColoum(header,col,"amount4",100,false);
+	    initColoum(header,col,"amount5",100,false);
+	    initColoum(header,col,"amount6",100,false);
 	    initColoum(header,col,"UNCONFIRM",100,false);
 	    initColoum(header,col,"CONFIRM",100,false);
-	    if(isClick!=null&&isClick){
-    		initColoum(header,col,"amount7",100,true);
-    	    initColoum(header,col,"amount8",100,true);
-    	    initColoum(header,col,"amount9",100,true);
-    	    initColoum(header,col,"amount10",100,true);
-    	    initColoum(header,col,"amount11",100,true);
-    	    initColoum(header,col,"amount12",100,true);
-    	}else{
-    		initColoum(header,col,"amount7",100,false);
-    	    initColoum(header,col,"amount8",100,false);
-    	    initColoum(header,col,"amount9",100,false);
-    	    initColoum(header,col,"amount10",100,false);
-    	    initColoum(header,col,"amount11",100,false);
-    	    initColoum(header,col,"amount12",100,false);
-    	}
+		initColoum(header,col,"amount7",100,false);
+	    initColoum(header,col,"amount8",100,false);
+	    initColoum(header,col,"amount9",100,false);
+	    initColoum(header,col,"amount10",100,false);
+	    initColoum(header,col,"amount11",100,false);
+	    initColoum(header,col,"amount12",100,false);
 	    initColoum(header,col,"confirmCopies",100,false);
 	    
 	    initColoum(header,col,"caBizDate",100,false);

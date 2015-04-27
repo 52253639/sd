@@ -63,22 +63,12 @@ public class ContractSettleBillReportFacadeControllerBean extends AbstractContra
 	    initColoum(header,col,"settleNumber",100,false);
 	    initColoum(header,col,"constructPrice",100,false);
 	    initColoum(header,col,"settleAmount",100,false);
-	    Boolean isClick=(Boolean)params.getObject("isClick");
-    	if(isClick!=null&&isClick){
-    		initColoum(header,col,"amount1",100,true);
-    	    initColoum(header,col,"amount2",100,true);
-    	    initColoum(header,col,"amount3",100,true);
-    	    initColoum(header,col,"amount4",100,true);
-    	    initColoum(header,col,"amount5",100,true);
-    	    initColoum(header,col,"amount6",100,true);
-    	}else{
-    		initColoum(header,col,"amount1",100,false);
-    	    initColoum(header,col,"amount2",100,false);
-    	    initColoum(header,col,"amount3",100,false);
-    	    initColoum(header,col,"amount4",100,false);
-    	    initColoum(header,col,"amount5",100,false);
-    	    initColoum(header,col,"amount6",100,false);
-    	}
+		initColoum(header,col,"amount1",100,false);
+	    initColoum(header,col,"amount2",100,false);
+	    initColoum(header,col,"amount3",100,false);
+	    initColoum(header,col,"amount4",100,false);
+	    initColoum(header,col,"amount5",100,false);
+	    initColoum(header,col,"amount6",100,false);
 	    initColoum(header,col,"balance",100,false);
 	    initColoum(header,col,"rate",100,false);
 	    initColoum(header,col,"createDate",100,false);
