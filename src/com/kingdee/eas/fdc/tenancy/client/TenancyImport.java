@@ -26,6 +26,7 @@ import com.kingdee.eas.fdc.sellhouse.RoomModelFactory;
 import com.kingdee.eas.fdc.sellhouse.SellProjectFactory;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SightRequirementFactory;
+import com.kingdee.eas.fdc.tenancy.DealAmountEntryFactory;
 import com.kingdee.eas.fdc.tenancy.DealAmountEntryInfo;
 import com.kingdee.eas.fdc.tenancy.FlagAtTermEnum;
 import com.kingdee.eas.fdc.tenancy.FreeTenancyTypeEnum;
@@ -67,7 +68,7 @@ public class TenancyImport {
 			}
 		}
 		//房间分录
-		String sql1="select * from where  roomLongNum is  null and room is not null";
+		String sql1="select *,tenancy.startDate,tenancy.endDate from where  roomLongNum is  null and room is not null";
 		TenancyRoomEntryCollection epColl =getTenancyRoomEntryCol(sql1);
 		for(int i=0;i<epColl.size();i++){
 			TenancyRoomEntryInfo tenancyRoom=epColl.get(i);
@@ -329,6 +330,7 @@ public class TenancyImport {
 			tenRoom.setBuildingArea(buildingArea);
 			//租金
 			tenRoom.setDealRoomRent(room.getStandardRent());
+			
 			//成交租金单价
 			
 			if(room.getStandardRent()!=null&&buildingArea!=null){
@@ -382,22 +384,22 @@ public class TenancyImport {
 			SellProjectInfo sellPro = (building == null) ? null : building.getSellProject();
 			sellPro = SellProjectFactory.getRemoteInstance().getSellProjectInfo(new ObjectUuidPK(sellPro.getId().toString()));
 			
-			final String spitStr = "-";
-			if (sellPro != null) {
-				sbRoomLongNum.append(sellPro.getName());
-				sbRoomLongNum.append(spitStr);
-			}
-			if (building != null) {
-				sbRoomLongNum.append(building.getName());
-				sbRoomLongNum.append(spitStr);
-			}
-			if (room.getUnit() != 0) {
-				sbRoomLongNum.append(room.getUnit());
-				sbRoomLongNum.append(spitStr);
-			}
-			sbRoomLongNum.append(room.getNumber());
+//			final String spitStr = "-";
+//			if (sellPro != null) {
+//				sbRoomLongNum.append(sellPro.getName());
+//				sbRoomLongNum.append(spitStr);
+//			}
+//			if (building != null) {
+//				sbRoomLongNum.append(building.getName());
+//				sbRoomLongNum.append(spitStr);
+//			}
+//			if (room.getUnit() != 0) {
+//				sbRoomLongNum.append(room.getUnit());
+//				sbRoomLongNum.append(spitStr);
+//			}
+//			sbRoomLongNum.append(room.getNumber());
 	
-			tenRoom.setRoomLongNum(sbRoomLongNum.toString());
+			tenRoom.setRoomLongNum(room.getName());
 		} catch (EASBizException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

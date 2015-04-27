@@ -4,12 +4,16 @@
 package com.kingdee.eas.fdc.tenancy.client;
 
 import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreeNode;
 
@@ -22,6 +26,7 @@ import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.ctrl.swing.KDMenuItem;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.IQueryExecutor;
@@ -37,6 +42,8 @@ import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.base.commonquery.QuerySolutionInfo;
 import com.kingdee.eas.base.commonquery.UserPreferenceData;
+import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
+import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -50,8 +57,15 @@ import com.kingdee.eas.fdc.basecrm.client.FDCReceivingBillEditUI;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
+import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.sellhouse.BaseTransactionInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.TransactionStateEnum;
+import com.kingdee.eas.fdc.sellhouse.client.PrePurchaseManageEditUI;
+import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
+import com.kingdee.eas.fdc.sellhouse.client.SignManageEditUI;
 import com.kingdee.eas.fdc.tenancy.HandleStateEnum;
 import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
@@ -63,8 +77,11 @@ import com.kingdee.eas.fdc.tenancy.TenancyContractTypeEnum;
 import com.kingdee.eas.fdc.tenancy.TenancyHelper;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
+import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.tools.datatask.DatataskMode;
 import com.kingdee.eas.tools.datatask.DatataskParameter;
 import com.kingdee.eas.tools.datatask.client.DatataskCaller;
+import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
 import com.kingdee.util.StringUtils;
@@ -74,18 +91,15 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
     private static final Logger logger = CoreUIObject.getLogger(TenancyBillListUI.class);
     
 	public void actionImport_actionPerformed(ActionEvent e) throws Exception {
-		super.actionImport_actionPerformed(e);
-		String strSolutionName ="eas.fdc.tenancy.TenancyImport";
+		String strSolutionName ="eas.fdc.tenancy.TenancyBill";
 		DatataskCaller task = new DatataskCaller();
 		task.setParentComponent(this);
 		DatataskParameter param = new DatataskParameter();
 		String solutionName = strSolutionName;
 		param.solutionName = solutionName;
-		param.alias = kDWorkButton1.getText();
 		ArrayList paramList = new ArrayList();
 		paramList.add(param);
-		task.invoke(paramList, 0, true);
-		
+		task.invoke(paramList, DatataskMode.UPDATE, true);
 	}
 	public void actionImportSql_actionPerformed(ActionEvent e) throws Exception {
 		super.actionImportSql_actionPerformed(e);
@@ -168,7 +182,7 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		this.treeMain.setModel(SHEHelper.getSellProjectTree(this.actionOnLoad,MoneySysTypeEnum.TenancySys));
 		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
 		
-		this.tblMain.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
+		this.tblMain.getSelectManager().setSelectMode(KDTSelectManager.MULTIPLE_ROW_SELECT);
 		
 		setColumnNumberFormat("leaseCount");
 		this.tblMain.getColumn("leaseTime").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
@@ -205,7 +219,7 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
    
 	public void onLoad() throws Exception {
 		this.menuSpecial.setIcon(EASResource.getIcon("imgTbtn_disassemble"));
-		this.kDWorkButton1.setIcon(EASResource.getIcon("imgTbtn_inputoutput"));//导出模板导入数据
+		this.kDWorkButton1.setIcon(EASResource.getIcon("imgTbtn_input"));//导出模板导入数据
 		this.kDWorkButton2.setIcon(EASResource.getIcon("imgTbtn_emend"));//修改导入数据
 		KDMenuItem menuItem1 = new KDMenuItem();
 		menuItem1.setAction(this.actionContinueTenancy);
@@ -279,7 +293,7 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		JButton tblPrintPreviewBill = this.toolBar.add(this.actionPrintPreviewBill);
 		tblPrintPreviewBill.setIcon(this.btnPrintPreview.getIcon());
 		this.actionImport.setVisible(true);
-		this.actionImportSql.setVisible(true);
+		this.actionImportSql.setVisible(false);
 		
 		
 		this.actionPrintBill.setVisible(false);
@@ -287,8 +301,73 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		this.actionReceiveBill.setVisible(false);
 		this.actionRefundment.setVisible(false);
 		this.actionRepairStartDate.setVisible(false);
+		
+		KDWorkButton btnMultiSubmit=new KDWorkButton();
+		btnMultiSubmit.setText("批量提交");
+		btnMultiSubmit.setIcon(EASResource.getIcon("imgTbtn_submit"));
+		this.toolBar.add(btnMultiSubmit);
+		btnMultiSubmit.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+	                beforeActionPerformed(e);
+	                try {
+	                	btnMultiSubmit_actionPerformed(e);
+	                } catch (Exception exc) {
+	                    handUIException(exc);
+	                } finally {
+	                    afterActionPerformed(e);
+	                }
+	            }
+	        });
 	}
-    
+	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
+		checkSelected();
+		   Window win = SwingUtilities.getWindowAncestor(this);
+	       LongTimeDialog dialog = null;
+	       if(win instanceof Frame)
+	           dialog = new LongTimeDialog((Frame)win);
+	       else
+	       if(win instanceof Dialog)
+	           dialog = new LongTimeDialog((Dialog)win);
+	       
+	       dialog.setLongTimeTask(new ILongTimeTask() {
+	           public Object exec()
+	               throws Exception
+	           {
+	        	   TenancyImport.tenancyUpdata();
+	        	   ArrayList id = getSelectedIdValues();
+	        	   for(int i = 0; i < id.size(); i++){
+        			   UIContext uiContext = new UIContext(this);
+        			   uiContext.put("ID", id.get(i).toString());
+        			   TenancyBillEditUI ui=(TenancyBillEditUI) UIFactoryHelper.initUIObject(TenancyBillEditUI.class.getName(), uiContext, null,OprtState.EDIT);
+        			   TenancyBillStateEnum state = ((TenancyBillInfo)ui.getEditData()).getTenancyState();
+        			   FDCClientUtils.checkBillInWorkflow(ui, ui.getEditData().getId().toString());
+        				
+        			   if(state==null||!(TenancyBillStateEnum.Saved.equals(state)||TenancyBillStateEnum.Submitted.equals(state))){
+        					MsgBox.showWarning("单据不是保存或者提交状态，不能进行提交操作！");
+        					SysUtil.abort();
+        			   }
+        			   ui.loadFields();
+        			   ui.updatePayListInfo();
+        			   ui.storeFields();
+        			   ui.verifyInput(null);
+        			   ui.runSubmit();
+        			   ui.destroyWindow();
+        		   }
+	               return new Boolean(true);
+	           }
+	           public void afterExec(Object result)
+	               throws Exception
+	           {
+	        	   FDCMsgBox.showWarning("操作成功！");
+	           }
+	       });
+       dialog.show();
+       try {
+		this.refreshList();
+	} catch (Exception e1) {
+		e1.printStackTrace();
+	}
+   }
     public void actionPrintBill_actionPerformed(ActionEvent e) throws Exception {
     	ArrayList idList = new ArrayList();
     	this.checkSelected();
@@ -340,60 +419,68 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 
 	/** 审批 */
     public void actionAudit_actionPerformed(ActionEvent e) throws Exception {
-    	super.actionAudit_actionPerformed(e);
-    	String id = getSelectedTenancyId();
-    	TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id));
-    	TenancyBillStateEnum tenState = tenBill.getTenancyState();
-    	if(!TenancyBillStateEnum.Submitted.equals(tenState)){
-    		MsgBox.showInfo(this, "只有已提交的合同才能审批！");
-    		this.abort();
-    	}
-    	TenancyBillFactory.getRemoteInstance().audit(BOSUuid.read(id));
+    	checkSelected();
+		ArrayList idList = getSelectedIdValues();
+		for(int i = 0; i < idList.size(); i++){
+			String id = idList.get(i).toString();
+	    	TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id));
+	    	TenancyBillStateEnum tenState = tenBill.getTenancyState();
+	    	if(!TenancyBillStateEnum.Submitted.equals(tenState)){
+	    		MsgBox.showInfo(this, "只有已提交的合同才能审批！");
+	    		this.abort();
+	    	}
+	    	TenancyBillFactory.getRemoteInstance().audit(BOSUuid.read(id));
+		}
+		FDCClientUtils.showOprtOK(this);
     	this.refresh(null);
     }
     
     /** 反审批TODO */
     public void actionUnAudit_actionPerformed(ActionEvent e) throws Exception {
-		String id = getSelectedTenancyId();
-		TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id));
-		TenancyContractTypeEnum tenType = tenBill.getTenancyType();
+    	checkSelected();
+		ArrayList idList = getSelectedIdValues();
+		for(int i = 0; i < idList.size(); i++){
+			String id = idList.get(i).toString();
+			TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(id));
+			TenancyContractTypeEnum tenType = tenBill.getTenancyType();
 
-		if (OtherBillFactory.getRemoteInstance().exists("select id from where tenancyBill.id='"+id+"'")) {
-			MsgBox.showInfo(this, "存在其他合同，禁止反审批操作！");
-			this.abort();
-		}
-		
-		if (!tenType.equals(TenancyContractTypeEnum.NewTenancy)) {
-			MsgBox.showInfo(this, "只有新租合同才允许反审批！");
-			this.abort();
-		}
-		
-		if(!TenancyBillStateEnum.Audited.equals(tenBill.getTenancyState())){
-			MsgBox.showInfo(this, "只有审批状态的合同才允许反审批！");
-			this.abort();
-		}
-		
-		boolean isjiaojie = false;
-		TenancyRoomEntryCollection list = tenBill.getTenancyRoomList();
-		for (int i = 0; i < list.size(); i++) {
-			TenancyRoomEntryInfo entry = list.get(i);
-			if (!entry.getHandleState().equals(HandleStateEnum.NoHandleRoom)) {
-				isjiaojie = true;
-				break;
+			if (OtherBillFactory.getRemoteInstance().exists("select id from where tenancyBill.id='"+id+"'")) {
+				MsgBox.showInfo(this, "存在其他合同，禁止反审批操作！");
+				this.abort();
+			}
+			
+			if (!tenType.equals(TenancyContractTypeEnum.NewTenancy)) {
+				MsgBox.showInfo(this, "只有新租合同才允许反审批！");
+				this.abort();
+			}
+			
+			if(!TenancyBillStateEnum.Audited.equals(tenBill.getTenancyState())){
+				MsgBox.showInfo(this, "只有审批状态的合同才允许反审批！");
+				this.abort();
+			}
+			boolean isjiaojie = false;
+			TenancyRoomEntryCollection list = tenBill.getTenancyRoomList();
+			for (int j = 0; j < list.size(); j++) {
+				TenancyRoomEntryInfo entry = list.get(j);
+				if (!entry.getHandleState().equals(HandleStateEnum.NoHandleRoom)) {
+					isjiaojie = true;
+					break;
+				}
+			}
+			FilterInfo info = new FilterInfo();
+			info.appendFilterItem("tenancyObj.id", tenBill.getId());
+			EntityViewInfo view = new EntityViewInfo();
+			view.setFilter(info);
+			FDCReceivingBillCollection c = FDCReceivingBillFactory.getRemoteInstance().getFDCReceivingBillCollection(view);
+			if (isjiaojie = false || c.size() == 0) {
+				TenancyBillFactory.getRemoteInstance().antiAudit(tenBill.getId());
+			} else {
+				MsgBox.showInfo(this, "只有未交接房间、未收款的新租合同才允许反审批！");
+				this.abort();
 			}
 		}
-		FilterInfo info = new FilterInfo();
-		info.appendFilterItem("tenancyObj.id", tenBill.getId());
-		EntityViewInfo view = new EntityViewInfo();
-		view.setFilter(info);
-		FDCReceivingBillCollection c = FDCReceivingBillFactory.getRemoteInstance().getFDCReceivingBillCollection(view);
-		if (isjiaojie = false || c.size() == 0) {
-			TenancyBillFactory.getRemoteInstance().antiAudit(tenBill.getId());
-			MsgBox.showInfo(this, "反审批成功！");
-			this.refresh(null);
-		} else {
-			MsgBox.showInfo(this, "只有未交接房间、未收款的新租合同才允许反审批！");
-		}
+		FDCClientUtils.showOprtOK(this);
+		this.refresh(null);
 	}
     
     /** 续租 */

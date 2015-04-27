@@ -445,7 +445,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 	private void spinLeaseTime_stateChanged(ChangeEvent e) throws Exception {
 		updatePayListInfo();
 	}
-	private void updatePayListInfo() throws BOSException
+	public void updatePayListInfo() throws BOSException
 	{		
 		RentCountTypeEnum rentCountType = this.editData.getTenancyBill().getRentCountType();
 		int daysPerYear = this.editData.getTenancyBill().getDaysPerYear();

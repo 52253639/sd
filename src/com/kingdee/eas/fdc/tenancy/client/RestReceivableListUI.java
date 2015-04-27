@@ -21,6 +21,7 @@ import com.kingdee.eas.fdc.tenancy.RestReceivableFactory;
 import com.kingdee.eas.fdc.tenancy.RestReceivableInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.ICoreBase;
+import com.kingdee.eas.tools.datatask.DatataskMode;
 import com.kingdee.eas.tools.datatask.DatataskParameter;
 import com.kingdee.eas.tools.datatask.client.DatataskCaller;
 import com.kingdee.eas.util.SysUtil;
@@ -163,16 +164,15 @@ public class RestReceivableListUI extends AbstractRestReceivableListUI {
 	 * √Ë ˆ£∫µº»Î yangfan add
 	 */
 	public void actionImport_actionPerformed(ActionEvent e) throws Exception {
-		String strSolutionName ="eas.fdc.tenancy.restReceivable";
+		String strSolutionName ="eas.fdc.tenancy.RestReceivable";
 		DatataskCaller task = new DatataskCaller();
 		task.setParentComponent(this);
 		DatataskParameter param = new DatataskParameter();
 		String solutionName = strSolutionName;
 		param.solutionName = solutionName;
-//		param.alias = btnImport.getText();
 		ArrayList paramList = new ArrayList();
 		paramList.add(param);
-		task.invoke(paramList, 0, true);
+		task.invoke(paramList, DatataskMode.UPDATE, true);
 	}
 
 	/**

@@ -441,7 +441,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	 * @param TenancyRoomEntryCollection
 	 * 
 	 */
-	private void loadTblRentSetbyTrans(TenancyRoomEntryCollection tenRooms){
+	public void loadTblRentSetbyTrans(TenancyRoomEntryCollection tenRooms){
 		Iterator it = tenRooms.iterator();
 		this.tblRentSet.removeRows();
 		while(it.hasNext()){
@@ -2817,7 +2817,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	 * 修改租赁起始时间,结束时间,计租期间长度,免租天数,免租日是否计入租期 修改收租日类型,收租日偏移天数} 这些操作均需要执行该更新操作
 	 * @throws BOSException
 	 * */
-	private void updatePayListInfo() throws BOSException {
+	public void updatePayListInfo() throws BOSException {
 		updatePayListInfo(this.chkIsFreeContract.isSelected());
 	}
 

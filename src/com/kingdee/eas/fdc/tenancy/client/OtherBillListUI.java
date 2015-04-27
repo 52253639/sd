@@ -3,6 +3,9 @@
  */
 package com.kingdee.eas.fdc.tenancy.client;
 
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,9 +38,12 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.IQueryExecutor;
+import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
+import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -61,6 +67,9 @@ import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.ICoreBase;
 import com.kingdee.eas.framework.batchHandler.UtilRequest;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
+import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.tools.datatask.DatataskParameter;
+import com.kingdee.eas.tools.datatask.client.DatataskCaller;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
@@ -102,7 +111,100 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 		this.actionClearInvoice.setVisible(false);
 		
 		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entry.amount"});
+		
+		KDWorkButton btnImport=new KDWorkButton();
+		btnImport.setText("导入");
+		btnImport.setIcon(EASResource.getIcon("imgTbtn_input"));
+		this.toolBar.add(btnImport);
+		btnImport.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+	                beforeActionPerformed(e);
+	                try {
+	                	btnImport_actionPerformed(e);
+	                } catch (Exception exc) {
+	                    handUIException(exc);
+	                } finally {
+	                    afterActionPerformed(e);
+	                }
+	            }
+	        });
+		KDWorkButton btnMultiSubmit=new KDWorkButton();
+		btnMultiSubmit.setText("批量提交");
+		btnMultiSubmit.setIcon(EASResource.getIcon("imgTbtn_submit"));
+		this.toolBar.add(btnMultiSubmit);
+		btnMultiSubmit.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+	                beforeActionPerformed(e);
+	                try {
+	                	btnMultiSubmit_actionPerformed(e);
+	                } catch (Exception exc) {
+	                    handUIException(exc);
+	                } finally {
+	                    afterActionPerformed(e);
+	                }
+	            }
+	        });
 	}
+	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
+		checkSelected();
+		   Window win = SwingUtilities.getWindowAncestor(this);
+	       LongTimeDialog dialog = null;
+	       if(win instanceof Frame)
+	           dialog = new LongTimeDialog((Frame)win);
+	       else
+	       if(win instanceof Dialog)
+	           dialog = new LongTimeDialog((Dialog)win);
+	       
+	       dialog.setLongTimeTask(new ILongTimeTask() {
+	           public Object exec()
+	               throws Exception
+	           {
+	        	   TenancyImport.tenancyUpdata();
+	        	   ArrayList id = getSelectedIdValues();
+	        	   for(int i = 0; i < id.size(); i++){
+        			   UIContext uiContext = new UIContext(this);
+        			   uiContext.put("ID", id.get(i).toString());
+        			   OtherBillEditUI ui=(OtherBillEditUI) UIFactoryHelper.initUIObject(OtherBillEditUI.class.getName(), uiContext, null,OprtState.EDIT);
+        			   FDCBillStateEnum state = ((OtherBillInfo)ui.getEditData()).getState();
+        			   FDCClientUtils.checkBillInWorkflow(ui, ui.getEditData().getId().toString());
+        				
+        			   if(state==null||!(FDCBillStateEnum.SAVED.equals(state)||FDCBillStateEnum.SUBMITTED.equals(state))){
+        					MsgBox.showWarning("单据不是保存或者提交状态，不能进行提交操作！");
+        					SysUtil.abort();
+        			   }
+        			   ui.loadFields();
+        			   ui.updatePayListInfo();
+        			   ui.storeFields();
+        			   ui.verifyInputForSubmint();
+        			   ui.runSubmit();
+        			   ui.destroyWindow();
+        		   }
+	               return new Boolean(true);
+	           }
+	           public void afterExec(Object result)
+	               throws Exception
+	           {
+	        	   FDCMsgBox.showWarning("操作成功！");
+	           }
+	       });
+       dialog.show();
+       try {
+		this.refreshList();
+	} catch (Exception e1) {
+		e1.printStackTrace();
+	}
+   }
+    public void btnImport_actionPerformed(ActionEvent e) throws Exception {
+    	String strSolutionName ="eas.fdc.tenancy.OtherBill";
+		DatataskCaller task = new DatataskCaller();
+		task.setParentComponent(this);
+		DatataskParameter param = new DatataskParameter();
+		String solutionName = strSolutionName;
+		param.solutionName = solutionName;
+		ArrayList paramList = new ArrayList();
+		paramList.add(param);
+		task.invoke(paramList, 0, true);
+    }
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);
 		CRMClientHelper.getFootRow(tblMain, new String[]{"entry.amount"});
