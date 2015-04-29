@@ -633,6 +633,9 @@ public abstract class BaseTransactionEditUI extends AbstractBaseTransactionEditU
 //			e.printStackTrace();
 //		}
 		this.txtAgioDes.setMaxLength(255);
+		this.prmtCreator.setDisplayFormat("$name$");
+		this.prmtAuditor.setDisplayFormat("$name$");
+		this.prmtModifier.setDisplayFormat("$name$");
 	}
 	/**
 	 * 设置控件格式

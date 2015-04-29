@@ -582,10 +582,10 @@ public class ContractPayPlanEditUI extends AbstractContractPayPlanEditUI
 			}
 			sum=FDCHelper.add(sum, this.kdtEntry.getRow(i).getCell("payAmount").getValue());
 		}
-		if(sum.compareTo(FDCHelper.toBigDecimal(this.txtLastAmount.getBigDecimalValue(),2))>0){
-			FDCMsgBox.showWarning(this,"合同付款计划总额之和不能大于合同最新造价！");
-			SysUtil.abort();
-		}
+//		if(sum.compareTo(FDCHelper.toBigDecimal(this.txtLastAmount.getBigDecimalValue(),2))>0){
+//			FDCMsgBox.showWarning(this,"合同付款计划总额之和不能大于合同最新造价！");
+//			SysUtil.abort();
+//		}
 	}
 	public void actionALine_actionPerformed(ActionEvent e) throws Exception {
 		int year=0;
