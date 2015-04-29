@@ -89,7 +89,7 @@ public class TimeAccountReportFilterUI extends AbstractTimeAccountReportFilterUI
 		super.onLoad();
 		this.pkFromDate.setValue(null);
 		this.pkToDate.setValue(null);
-		this.cbIsLock.setSelected(true);
+		this.cbIsLock.setSelected(false);
 		this.cbIsAll.setSelected(true);
 		this.cbIsFitment.setSelected(true);
 	}
