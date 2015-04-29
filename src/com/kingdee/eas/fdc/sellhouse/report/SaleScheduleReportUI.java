@@ -236,11 +236,11 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
                      while(onLoadRS.next()){
                     	 if(onLoadMap.containsKey(onLoadRS.getString("company"))){
                 			 IRow row=(IRow) onLoadMap.get(onLoadRS.getString("company"));
-                        	 row.getCell("act").setValue(onLoadRS.getBigDecimal("monthAmount"));
-                        	 row.getCell("yearAct").setValue(onLoadRS.getBigDecimal("yearAmount"));
+                        	 row.getCell("act").setValue(onLoadRS.getBigDecimal("amount"));
+                        	 row.getCell("yearAct").setValue(onLoadRS.getBigDecimal("amount"));
                         	 
-                        	 totalOnLoadMonthAmount=FDCHelper.add(totalOnLoadMonthAmount, onLoadRS.getBigDecimal("monthAmount"));
-                        	 totalOnLoadYearAmount=FDCHelper.add(totalOnLoadYearAmount, onLoadRS.getBigDecimal("yearAmount"));
+                        	 totalOnLoadMonthAmount=FDCHelper.add(totalOnLoadMonthAmount, onLoadRS.getBigDecimal("amount"));
+                        	 totalOnLoadYearAmount=FDCHelper.add(totalOnLoadYearAmount, onLoadRS.getBigDecimal("amount"));
                 		 }
                 	 }
                      if(totoalSignRow!=null){
@@ -347,7 +347,8 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
     	
 		StringBuilder sb = new StringBuilder();
 		sb.append(" select pre.fid from t_she_signManage pre ");
-		sb.append(" where pre.fbizState in('SignApple','SignAudit')");
+		sb.append(" where pre.fbizState in('ChangeNameAuditing','QuitRoomAuditing','ChangeRoomAuditing','SignApple','SignAudit')");
+		sb.append(" and NOT EXISTS (select tt.fnewId from t_she_changeManage tt where tt.fstate in('2SUBMITTED','3AUDITTING') and pre.fid=tt.fnewId )");
 		if(type==0){
     		if(fromDate!=null){
     			sb.append(" and pre.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
@@ -356,9 +357,9 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
     			sb.append(" and pre.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
     		}
     	}else if(type==1){
-    		if(fromDate!=null){
-    			sb.append(" and pre.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
-    			sb.append(" and pre.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");
+    		if(toDate!=null){
+    			sb.append(" and pre.fbusAdscriptionDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstYearDate(toDate)))+ "'}");
+    			sb.append(" and pre.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
     		}
     	}
     	if(orgId!=null){
@@ -381,7 +382,7 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		
     	sb.append(" select entry.fid id from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	sb.append(" left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
-    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fnumber not in('01','12','16','17','18','19','20','21','22','23','24')");
+    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount')");
     	if(type==0){
     		if(fromDate!=null){
     			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
@@ -390,9 +391,9 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
     			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
     		}
     	}else if(type==1){
-    		if(fromDate!=null){
-    			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstDayOfMonth(fromDate)))+ "'}");
-    			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(FDCDateHelper.getLastDayOfMonth(fromDate)))+ "'}");
+    		if(toDate!=null){
+    			sb.append(" and revBill.fbizDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(FDCDateHelper.getFirstYearDate(toDate)))+ "'}");
+    			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
     		}
     	}
     	if(orgId!=null){
