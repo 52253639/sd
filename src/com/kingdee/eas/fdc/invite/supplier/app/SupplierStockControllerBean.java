@@ -1226,6 +1226,7 @@ public class SupplierStockControllerBean extends AbstractSupplierStockController
         		SupplierGroupDetailInfo Gdinfo = null;
         		CSSPGroupCollection groupCol = CSSPGroupFactory.getLocalInstance(ctx).getCSSPGroupCollection("select number,name,groupStandard.id from where groupStandard.id='00000000-0000-0000-0000-000000000001BC122A7F' and cu.id='"+OrgConstants.DEF_CU_ID+"'");
         		if(groupCol.size()>0){
+        			groupInfo=groupCol.get(0);
         			supplier.setBrowseGroup(groupInfo);
             		
             		Gdinfo = new SupplierGroupDetailInfo();
