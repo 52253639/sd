@@ -3,19 +3,25 @@
  */
 package com.kingdee.eas.fdc.contract.client;
 
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import javax.swing.Action;
+import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
@@ -35,9 +41,12 @@ import com.kingdee.bos.workflow.service.ormrpc.EnactmentServiceFactory;
 import com.kingdee.bos.workflow.service.ormrpc.IEnactmentService;
 import com.kingdee.eas.base.commonquery.client.CommonQueryDialog;
 import com.kingdee.eas.base.commonquery.client.CustomerQueryPanel;
+import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
+import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.org.FullOrgUnitInfo;
 import com.kingdee.eas.basedata.org.OrgStructureInfo;
 import com.kingdee.eas.common.EASBizException;
+import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
@@ -48,6 +57,7 @@ import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.IFDCBill;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.FDCSplitClientHelper;
 import com.kingdee.eas.fdc.contract.ChangeAuditBillCollection;
 import com.kingdee.eas.fdc.contract.ChangeAuditBillFactory;
@@ -64,10 +74,17 @@ import com.kingdee.eas.fdc.contract.FDCUtils;
 import com.kingdee.eas.fdc.contract.IChangeAuditBill;
 import com.kingdee.eas.fdc.contract.SupplierContentEntryCollection;
 import com.kingdee.eas.fdc.contract.SupplierContentEntryFactory;
+import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
+import com.kingdee.eas.fdc.tenancy.client.OtherBillEditUI;
+import com.kingdee.eas.fdc.tenancy.client.TenancyImport;
 import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.eas.framework.CoreBillBaseInfo;
 import com.kingdee.eas.framework.ICoreBase;
+import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.tools.datatask.DatataskMode;
+import com.kingdee.eas.tools.datatask.DatataskParameter;
+import com.kingdee.eas.tools.datatask.client.DatataskCaller;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
@@ -524,8 +541,76 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 			actionAheadDisPatch.setVisible(false);
 			actionAheadDisPatch.setEnabled(false);
 		}
+		this.actionImportData.setVisible(true);
+		this.actionExportData.setVisible(true);
+		this.menuItemExportData.setText("下发单位导入");
+		this.menuItemExportData.setIcon(EASResource.getIcon("imgTbtn_input"));
 		
-	}	
+		KDWorkButton btnMultiSubmit=new KDWorkButton();
+		btnMultiSubmit.setText("批量提交");
+		btnMultiSubmit.setIcon(EASResource.getIcon("imgTbtn_submit"));
+		this.toolBar.add(btnMultiSubmit);
+		btnMultiSubmit.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+	                beforeActionPerformed(e);
+	                try {
+	                	btnMultiSubmit_actionPerformed(e);
+	                } catch (Exception exc) {
+	                    handUIException(exc);
+	                } finally {
+	                    afterActionPerformed(e);
+	                }
+	            }
+	        });
+	}
+	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
+		checkSelected();
+		   Window win = SwingUtilities.getWindowAncestor(this);
+	       LongTimeDialog dialog = null;
+	       if(win instanceof Frame)
+	           dialog = new LongTimeDialog((Frame)win);
+	       else
+	       if(win instanceof Dialog)
+	           dialog = new LongTimeDialog((Dialog)win);
+	       
+	       dialog.setLongTimeTask(new ILongTimeTask() {
+	           public Object exec()
+	               throws Exception
+	           {
+	        	   TenancyImport.tenancyUpdata();
+	        	   ArrayList id = getSelectedIdValues();
+	        	   for(int i = 0; i < id.size(); i++){
+        			   UIContext uiContext = new UIContext(this);
+        			   uiContext.put("ID", id.get(i).toString());
+        			   ChangeAuditEditUI ui=(ChangeAuditEditUI) UIFactoryHelper.initUIObject(ChangeAuditEditUI.class.getName(), uiContext, null,OprtState.EDIT);
+        			   ChangeBillStateEnum state = ((ChangeAuditBillInfo)ui.getEditData()).getChangeState();
+        			   FDCClientUtils.checkBillInWorkflow(ui, ui.getEditData().getId().toString());
+        				
+        			   if(state==null||!(ChangeBillStateEnum.Saved.equals(state)||ChangeBillStateEnum.Submit.equals(state))){
+        					MsgBox.showWarning("单据不是保存或者提交状态，不能进行提交操作！");
+        					SysUtil.abort();
+        			   }
+        			   ui.loadFields();
+        			   ui.verifyInputForSave();
+        			   ui.verfySuppEntrys();
+        			   ui.runSubmit();
+        			   ui.destroyWindow();
+        		   }
+	               return new Boolean(true);
+	           }
+	           public void afterExec(Object result)
+	               throws Exception
+	           {
+	        	   FDCMsgBox.showWarning("操作成功！");
+	           }
+	       });
+       dialog.show();
+       try {
+		this.refreshList();
+	} catch (Exception e1) {
+		e1.printStackTrace();
+	}
+   }
 	protected void updateButtonStatus() {}	
 	
 	protected void tblMain_tableSelectChanged(KDTSelectEvent e)
@@ -593,7 +678,7 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 	}
 	protected void execQuery() {
 		super.execQuery();
-		this.getMainQuery().setFilter(new FilterInfo());
+//		this.getMainQuery().setFilter(new FilterInfo());
 	}
 	protected CommonQueryDialog initCommonQueryDialog() {
 		if (commonQueryDialog == null) {
@@ -665,5 +750,47 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 			abort();
 		}
         super.actionEdit_actionPerformed(e);
+    }
+	public void actionImportData_actionPerformed(ActionEvent e) throws Exception {
+		DatataskCaller task = new DatataskCaller();
+        task.setParentComponent(this);
+        ArrayList list = this.getImportParam();
+        
+        if (list != null)
+        {
+            task.invoke(list, DatataskMode.ImpMode,true,true);
+        }
+        actionRefresh_actionPerformed(e);
+	}
+	protected ArrayList getImportParam(){	
+		Hashtable hs = new Hashtable();
+		
+		DatataskParameter param = new DatataskParameter();
+		param.setContextParam(hs);//
+        param.solutionName = getSolutionName();      
+        param.alias = getDatataskAlias();
+        
+        ArrayList paramList = new ArrayList();
+        paramList.add(param);
+        return paramList;
+    }
+	
+	protected String getSolutionName(){
+    	return "eas.fdc.contract.ChangeAudit";
+    }
+    protected String getDatataskAlias(){
+    	return "变更审批单";
+    }
+    public void actionExportData_actionPerformed(ActionEvent e) throws Exception{
+    	String strSolutionName ="eas.fdc.contract.ChangeAuditBillContract";
+		DatataskCaller task = new DatataskCaller();
+		task.setParentComponent(this);
+		DatataskParameter param = new DatataskParameter();
+		String solutionName = strSolutionName;
+		param.solutionName = solutionName;
+		ArrayList paramList = new ArrayList();
+		paramList.add(param);
+		task.invoke(paramList, DatataskMode.ImpMode, true,true);
+        actionRefresh_actionPerformed(e);
     }
 }

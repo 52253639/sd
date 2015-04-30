@@ -1863,7 +1863,7 @@ public class ContractChangeBillEditUI extends AbstractContractChangeBillEditUI
 		String boId = null;
 		if(this.editData.getId() == null){
 			return;
-		}else{
+		}else if(this.editData.getChangeAudit()!=null){
 			boId = this.editData.getChangeAudit().getId().toString();
 		}
 		

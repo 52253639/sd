@@ -3962,7 +3962,7 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 		}
 	}
 
-	private void verfySuppEntrys(){
+	public void verfySuppEntrys(){
 		if (getSecondTable().getExpandedRowCount()<=0){
 			if(isOfferAndConstrReq){
 				return;//中渝模式可不录
