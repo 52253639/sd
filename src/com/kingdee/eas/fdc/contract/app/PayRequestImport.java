@@ -230,6 +230,7 @@ public class PayRequestImport extends AbstractDataTransmission{
 			info.setPrjAllReqAmt(entry.getRequestAmount());
 			info.setProjectPriceInContract(entry.getRequestAmount());
 			info.setProjectPriceInContractOri(entry.getRequestAmount());
+			info.setCompletePrjAmt(entry.getRequestAmount());
 			info.setCurPaid(entry.getRequestAmount());
 			info.setCurPaidOriginal(entry.getRequestAmount());
 		} catch (BOSException e) {
