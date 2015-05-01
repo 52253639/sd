@@ -745,7 +745,7 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 		String id = (String) row.getCell(this.getKeyFieldName()).getValue();
 		ChangeAuditBillInfo info = ChangeAuditBillFactory.getRemoteInstance().getChangeAuditBillInfo(new ObjectUuidPK(BOSUuid.read(id)));
 
-		if (!info.getState().equals(FDCBillStateEnum.SAVED) && !info.getState().equals(FDCBillStateEnum.SUBMITTED)) {
+		if (!info.getChangeState().equals(ChangeBillStateEnum.Saved) && !info.getChangeState().equals(ChangeBillStateEnum.Submit)) {
 			MsgBox.showWarning(this, "您当前选择的单据的状态不适合修改操作！");
 			abort();
 		}
@@ -769,7 +769,6 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 		param.setContextParam(hs);//
         param.solutionName = getSolutionName();      
         param.alias = getDatataskAlias();
-        
         ArrayList paramList = new ArrayList();
         paramList.add(param);
         return paramList;

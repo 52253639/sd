@@ -1552,8 +1552,7 @@ protected void tblMain_tableSelectChanged(
     }
     
     protected String getDatataskAlias(){
-    	//return "合同单据";
-    	return "合同录入";
+    	return "合同";
     } 
 	public void actionEditPerson_actionPerformed(ActionEvent e) throws Exception {
 		checkSelected();

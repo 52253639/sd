@@ -1703,8 +1703,8 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 		else if(editData.getChangeState() == ChangeBillStateEnum.Register){
 			actionSave.setEnabled(false);
 		}
-		if(editData.getChangeState().equals(ChangeBillStateEnum.Register)||
-				editData.getChangeState().equals(ChangeBillStateEnum.Saved)){
+		if(editData.getChangeState()==ChangeBillStateEnum.Register||
+				editData.getChangeState()==ChangeBillStateEnum.Saved){
 			actionRegister.setEnabled(true);
 		}else{
 			actionRegister.setEnabled(false);
