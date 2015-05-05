@@ -121,11 +121,11 @@ abstract class AbstractFDCVoucherEntryCreator implements IFDCVoucherEntryCreator
 	}
 	
 	public void createEntrys(Map param) throws BOSException, EASBizException{
-//		Map dataMap = init(param);
-//		IObjectCollection costEntrys=createCostEntrys(dataMap);
-//		IObjectCollection payEntry=createPayEntrys(dataMap);
-//		save(dataMap,costEntrys,payEntry);
-//		afterCreateEntrys(param);
+		Map dataMap = init(param);
+		IObjectCollection costEntrys=createCostEntrys(dataMap);
+		IObjectCollection payEntry=createPayEntrys(dataMap);
+		save(dataMap,costEntrys,payEntry);
+		afterCreateEntrys(param);
 	}
 
 	public void afterCreateEntrys(Map param){
