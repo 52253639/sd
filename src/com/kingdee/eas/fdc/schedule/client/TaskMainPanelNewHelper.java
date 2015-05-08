@@ -38,24 +38,29 @@ import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
+import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.metadata.entity.SorterItemCollection;
 import com.kingdee.bos.metadata.entity.SorterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.base.param.util.ParamManager;
+import com.kingdee.eas.basedata.org.AdminOrgUnitFactory;
 import com.kingdee.eas.basedata.org.AdminOrgUnitInfo;
 import com.kingdee.eas.basedata.org.CtrlUnitInfo;
 import com.kingdee.eas.basedata.org.FullOrgUnitInfo;
 import com.kingdee.eas.basedata.org.OrgType;
 import com.kingdee.eas.basedata.org.OrgUnitInfo;
+import com.kingdee.eas.basedata.person.PersonFactory;
 import com.kingdee.eas.basedata.person.PersonInfo;
 import com.kingdee.eas.common.EASBizException;
+import com.kingdee.eas.fdc.basedata.ContractWFEntryInfo;
 import com.kingdee.eas.fdc.basedata.CurProjectInfo;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.contract.ContractWFTypeInfo;
 import com.kingdee.eas.fdc.schedule.AchievementTypeInfo;
 import com.kingdee.eas.fdc.schedule.CheckNodeCollection;
 import com.kingdee.eas.fdc.schedule.CheckNodeFactory;
@@ -65,6 +70,10 @@ import com.kingdee.eas.fdc.schedule.FDCScheduleTaskDependCollection;
 import com.kingdee.eas.fdc.schedule.FDCScheduleTaskDependInfo;
 import com.kingdee.eas.fdc.schedule.FDCScheduleTaskFactory;
 import com.kingdee.eas.fdc.schedule.FDCScheduleTaskInfo;
+import com.kingdee.eas.fdc.schedule.HelpDeptEntryCollection;
+import com.kingdee.eas.fdc.schedule.HelpDeptEntryInfo;
+import com.kingdee.eas.fdc.schedule.HelpPersonEntryCollection;
+import com.kingdee.eas.fdc.schedule.HelpPersonEntryInfo;
 import com.kingdee.eas.fdc.schedule.ProjectSpecialInfo;
 import com.kingdee.eas.fdc.schedule.RESchTaskTypeEnum;
 import com.kingdee.eas.fdc.schedule.ScheduleBizTypeInfo;
@@ -161,8 +170,10 @@ public class TaskMainPanelNewHelper implements ITaskPanelHelper {
 		taskProperties.prmtDutyDep.setEditable(false);
 		taskProperties.prmtDutyPerson.setEditable(false);
 		taskProperties.prmtHelpDep.setEditable(false);
+		taskProperties.prmtHelpDep.setEnabledMultiSelection(true);
 		taskProperties.prmtQualityAppraisePerson.setEditable(false);
 		taskProperties.prmtHelpPerson.setEditable(false);
+		taskProperties.prmtHelpPerson.setEnabledMultiSelection(true);
 		taskProperties.prmtRiskChargePerson.setEditable(false);
 		taskProperties.prmtTaskCalendar.setEditable(false);
 		taskProperties.prmtTaskGuide.setEditable(false);		
@@ -925,20 +936,45 @@ public class TaskMainPanelNewHelper implements ITaskPanelHelper {
 		// "实际开工日期
 		fdcScheduleTask.setActualStartDate((Date) taskProperties.pkRealityStart
 				.getValue());
-		// 协助人
-		fdcScheduleTask
-				.setHelpPerson((PersonInfo) taskProperties.prmtHelpPerson
-						.getValue());
-		// 协助部门
-		// TODO 过滤为行政组织
-		if (taskProperties.prmtHelpDep.getValue() != null
-				&& taskProperties.prmtHelpDep.getValue() instanceof AdminOrgUnitInfo) {
-			fdcScheduleTask
-					.setHelpDept(((AdminOrgUnitInfo) taskProperties.prmtHelpDep
-							.getValue()).castToFullOrgUnitInfo());
-		} else {
-			fdcScheduleTask.setHelpDept(null);
+		
+		fdcScheduleTask.getHelpPersonEntry().clear();
+		if(taskProperties.prmtHelpPerson.getValue() != null){
+			Object value[] = (Object[])taskProperties.prmtHelpPerson.getValue();
+			for(int i = 0; i < value.length; i++){
+				if(value[i] != null && (value[i] instanceof PersonInfo)){
+					HelpPersonEntryInfo entry = new HelpPersonEntryInfo();
+					entry.setPerson((PersonInfo)value[i]);
+					fdcScheduleTask.getHelpPersonEntry().add(entry);
+				}
+			}
 		}
+		fdcScheduleTask.getHelpDeptEntry().clear();
+		if(taskProperties.prmtHelpDep.getValue() != null){
+			Object value[] = (Object[])taskProperties.prmtHelpDep.getValue();
+			for(int i = 0; i < value.length; i++){
+				if(value[i] != null){
+					HelpDeptEntryInfo entry = new HelpDeptEntryInfo();
+					if(value[i] instanceof FullOrgUnitInfo){
+						entry.setDept((FullOrgUnitInfo)value[i]);
+					}
+					fdcScheduleTask.getHelpDeptEntry().add(entry);
+				}
+			}
+		}
+//		// 协助人
+//		fdcScheduleTask
+//				.setHelpPerson((PersonInfo) taskProperties.prmtHelpPerson
+//						.getValue());
+//		// 协助部门
+//		// TODO 过滤为行政组织
+//		if (taskProperties.prmtHelpDep.getValue() != null
+//				&& taskProperties.prmtHelpDep.getValue() instanceof AdminOrgUnitInfo) {
+//			fdcScheduleTask
+//					.setHelpDept(((AdminOrgUnitInfo) taskProperties.prmtHelpDep
+//							.getValue()).castToFullOrgUnitInfo());
+//		} else {
+//			fdcScheduleTask.setHelpDept(null);
+//		}
 		// 风险负责人
 		fdcScheduleTask
 				.setRiskResPerson((PersonInfo) taskProperties.prmtRiskChargePerson
@@ -995,10 +1031,14 @@ public class TaskMainPanelNewHelper implements ITaskPanelHelper {
 		}
 		
 		if(taskProperties.prmtHelpDep.getValue() != null){
-			selectTask.getCustomValues().setValue(GanttTreeTableModelExt.strColHelpDep, taskProperties.prmtHelpDep.getValue());
+			selectTask.getCustomValues().setValue(GanttTreeTableModelExt.strColHelpDep, taskProperties.prmtHelpDep.getText());
+		}else{
+			selectTask.getCustomValues().setValue(GanttTreeTableModelExt.strColHelpDep, null);
 		}
 		if(taskProperties.prmtHelpPerson.getValue() != null){
-			selectTask.getCustomValues().setValue(GanttTreeTableModelExt.strColHelpPerson, taskProperties.prmtHelpPerson.getValue());
+			selectTask.getCustomValues().setValue(GanttTreeTableModelExt.strColHelpPerson, taskProperties.prmtHelpPerson.getText());
+		}else{
+			selectTask.getCustomValues().setValue(GanttTreeTableModelExt.strColHelpPerson, null);
 		}
 		
 		
@@ -1582,13 +1622,25 @@ public class TaskMainPanelNewHelper implements ITaskPanelHelper {
 		taskProperties.cbPriorityLevel.addItem(language.getText("low"));
 		taskProperties.cbPriorityLevel.addItem(language.getText("normal"));
 		taskProperties.cbPriorityLevel.addItem(language.getText("hight"));
-		taskProperties.cbPriorityLevel.setSelectedIndex(fdcScheudleTask
-				.getPriority());
+		taskProperties.cbPriorityLevel.setSelectedIndex(fdcScheudleTask.getPriority());
 
+		HelpPersonEntryCollection pcol= fdcScheudleTask.getHelpPersonEntry();
+		Object helpPerson[] = new Object[pcol.size()];
+		for(int i = 0; i < pcol.size(); i++){
+			HelpPersonEntryInfo person=pcol.get(i);
+			helpPerson[i]=person.getPerson();
+		}
+		HelpDeptEntryCollection dcol=fdcScheudleTask.getHelpDeptEntry();
+		Object helpDept[] = new Object[dcol.size()];
+		for(int i = 0; i < dcol.size(); i++){
+			HelpDeptEntryInfo orgUnit=dcol.get(i);
+			helpDept[i]=orgUnit.getDept();
+		}
+		
 		// 协助人
-		taskProperties.prmtHelpPerson.setValue(fdcScheudleTask.getHelpPerson());
+		taskProperties.prmtHelpPerson.setValue(helpPerson);
 		// 协助部门
-		taskProperties.prmtHelpDep.setValue(fdcScheudleTask.getHelpDept());
+		taskProperties.prmtHelpDep.setValue(helpDept);
 		// 完成情况(完成进度)
 		if (FDCHelper.isEmpty(fdcScheudleTask.getComplete())) {
 			fdcScheudleTask.setComplete(new BigDecimal(0));

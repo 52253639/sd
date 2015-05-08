@@ -135,11 +135,20 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 		SelectorItemCollection itemCollection=new SelectorItemCollection();
 		itemCollection.add("suppEntry");
 		itemCollection.add("suppEntry.contractChange.contractBill.isCoseSplit");
-		ChangeAuditBillInfo	info=ChangeAuditBillFactory.getRemoteInstance().getChangeAuditBillInfo(new ObjectUuidPK(getSelectedKeyValue()),itemCollection);
-    		if(info!=null){
+		itemCollection.add("changeState");
+		checkSelected();
+		ArrayList id = getSelectedIdValues();
+		for(int i = 0; i < id.size(); i++){
+			FDCClientUtils.checkBillInWorkflow(this, id.get(i).toString());
+			ChangeAuditBillInfo	info=ChangeAuditBillFactory.getRemoteInstance().getChangeAuditBillInfo(new ObjectUuidPK(getSelectedKeyValue()),itemCollection);
+			if(info!=null){
+				if (!info.getChangeState().equals(ChangeBillStateEnum.Saved) && !info.getChangeState().equals(ChangeBillStateEnum.Submit)) {
+					MsgBox.showWarning(this, "您当前选择的单据的状态不适合删除操作！");
+					abort();
+				}
     			boolean isCostSplit =false;
-    			for(int i=0;i<info.getSuppEntry().size();i++){
-    				ContractChangeBillInfo entryInfo = info.getSuppEntry().get(i).getContractChange();
+    			for(int j=0;j<info.getSuppEntry().size();j++){
+    				ContractChangeBillInfo entryInfo = info.getSuppEntry().get(j).getContractChange();
     				if(entryInfo!=null&&entryInfo.getContractBill()!=null&&entryInfo.getContractBill().isIsCoseSplit()){
     					isCostSplit = FDCSplitClientHelper.isBillSplited(entryInfo.getId().toString(), "t_con_conchangesplit", "FContractChangeID");
     					if(isCostSplit){
@@ -158,11 +167,6 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
     				SysUtil.abort();
     			}
     		}
-    		
-		checkSelected();
-		ArrayList id = getSelectedIdValues();
-		for(int i = 0; i < id.size(); i++){
-			FDCClientUtils.checkBillInWorkflow(this, id.get(i).toString());
 		}
 		super.actionRemove_actionPerformed(e);
 	}

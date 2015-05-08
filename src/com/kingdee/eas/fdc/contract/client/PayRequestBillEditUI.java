@@ -6,6 +6,7 @@ package com.kingdee.eas.fdc.contract.client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.math.BigDecimal;
@@ -1583,6 +1584,7 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 	}
 
 	protected void storeBgEntryTable() {
+		BigDecimal amount=FDCHelper.ZERO;
 		editData.getBgEntry().clear();
 		for (int i = 0; i < this.kdtBgEntry.getRowCount(); i++) {
 			IRow row = this.kdtBgEntry.getRow(i);
@@ -1594,7 +1596,22 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 			entry.setAmount((BigDecimal) row.getCell("amount").getValue());
 			entry.setBgItem((BgItemInfo) row.getCell("bgItem").getValue());
 			editData.getBgEntry().add(entry);
+			
+			amount=FDCHelper.add(amount,row.getCell("requestAmount").getValue());
 		}
+//		Object cell = bindCellMap.get(PayRequestBillContants.CURPAID);
+//		if (cell != null && cell instanceof ICell) {
+//			this.kdtEntrys.getRow(rowIndex).getCell(columnIndex).setValue(amount);
+//			KDTEditEvent ee = new KDTEditEvent(cell);
+//			ee.setColIndex(columnIndex);
+//			ee.setRowIndex(rowIndex);
+//			ee.setValue(amount);
+//			try {
+//				this.kdtEntrys_editStopped(ee);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 
 	protected void initBgEntryTable() {
@@ -1753,7 +1770,7 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 		if (this.kdtBgEntry.getColumnKey(e.getColIndex()).equals("requestAmount") || this.kdtBgEntry.getColumnKey(e.getColIndex()).equals("amount")) {
 			Object cell = bindCellMap.get(PayRequestBillContants.CURPAID);
 			if (cell != null && cell instanceof ICell) {
-				BigDecimal amount = TableUtils.getColumnValueSum(this.kdtBgEntry, "amount");
+				BigDecimal amount = TableUtils.getColumnValueSum(this.kdtBgEntry, "requestAmount");
 				this.kdtEntrys.getRow(rowIndex).getCell(columnIndex).setValue(amount);
 				e.setColIndex(columnIndex);
 				e.setRowIndex(rowIndex);
@@ -1807,7 +1824,7 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 				this.kdtBgEntry.removeRow(top);
 				Object cell = bindCellMap.get(PayRequestBillContants.CURPAID);
 				if (cell != null && cell instanceof ICell) {
-					BigDecimal amount = TableUtils.getColumnValueSum(this.kdtBgEntry, "amount");
+					BigDecimal amount = TableUtils.getColumnValueSum(this.kdtBgEntry, "requestAmount");
 					this.kdtEntrys.getRow(rowIndex).getCell(columnIndex).setValue(amount);
 					setAmountChange(amount);
 					calAllCompletePrjAmt();
@@ -2127,7 +2144,7 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 			if (cell != null && cell instanceof ICell) {
 				this.kdtEntrys.getRow(rowIndex).getCell(columnIndex).getStyleAttributes().setLocked(true);
 
-				BigDecimal amount = TableUtils.getColumnValueSum(this.kdtBgEntry, "amount");
+				BigDecimal amount = TableUtils.getColumnValueSum(this.kdtBgEntry, "requestAmount");
 				this.kdtEntrys.getRow(rowIndex).getCell(columnIndex).setValue(amount);
 				KDTEditEvent ee = new KDTEditEvent(cell);
 				ee.setColIndex(columnIndex);
@@ -7891,4 +7908,9 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 			}
 		}
 	}
+	public void initUIContentLayout() {
+		super.initUIContentLayout();
+		kDPanel1.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1013, 850));
+	}
+	
 }

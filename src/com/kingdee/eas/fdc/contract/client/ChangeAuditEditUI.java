@@ -4260,8 +4260,13 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 		SelectorItemCollection itemCollection=new SelectorItemCollection();
 		itemCollection.add("suppEntry");
 		itemCollection.add("suppEntry.contractChange.contractBill.isCoseSplit");
+		itemCollection.add("changeState");
 		ChangeAuditBillInfo	info=ChangeAuditBillFactory.getRemoteInstance().getChangeAuditBillInfo(new ObjectUuidPK(id),itemCollection);
     		if(info!=null){
+    			if (!info.getChangeState().equals(ChangeBillStateEnum.Saved) && !info.getChangeState().equals(ChangeBillStateEnum.Submit)) {
+    				MsgBox.showWarning(this, "您当前选择的单据的状态不适合删除操作！");
+    				abort();
+    			}
     			boolean isCostSplit =false;
     			for(int i=0;i<info.getSuppEntry().size();i++){
     				ContractChangeBillInfo entryInfo = info.getSuppEntry().get(i).getContractChange();

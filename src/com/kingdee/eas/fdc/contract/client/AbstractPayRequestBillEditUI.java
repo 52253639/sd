@@ -799,8 +799,7 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
             }
         });
         // kDPanel1		
-        this.kDPanel1.setMinimumSize(new Dimension(1013,850));		
-        this.kDPanel1.setMaximumSize(new Dimension(1013,850));		
+        this.kDPanel1.setMinimumSize(new Dimension(8,5));		
         this.kDPanel1.setPreferredSize(new Dimension(1013,850));
         // contpaymentRequestBillNumber		
         this.contpaymentRequestBillNumber.setBoundLabelText(resHelper.getString("contpaymentRequestBillNumber.boundLabelText"));		
@@ -1647,7 +1646,7 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
         kDScrollPane1.getViewport().add(kDPanel1, null);
         //kDPanel1
         kDPanel1.setLayout(new KDLayout());
-        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1013, 850));        kDSeparator6.setBounds(new Rectangle(7, 52, 995, 10));
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1, 1));        kDSeparator6.setBounds(new Rectangle(7, 52, 995, 10));
         kDPanel1.add(kDSeparator6, new KDLayout.Constraints(7, 52, 995, 10, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contpaymentRequestBillNumber.setBounds(new Rectangle(5, 5, 270, 19));
         kDPanel1.add(contpaymentRequestBillNumber, new KDLayout.Constraints(5, 5, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));

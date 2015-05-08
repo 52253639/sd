@@ -1,0 +1,27 @@
+/**
+ * output package name
+ */
+package com.kingdee.eas.fdc.schedule.app;
+
+import com.kingdee.bos.Context;
+import com.kingdee.eas.framework.batchHandler.RequestContext;
+import com.kingdee.eas.framework.batchHandler.ResponseContext;
+
+
+/**
+ * output class name
+ */
+public abstract class AbstractCopyScheduleUIHandler extends com.kingdee.eas.framework.app.CoreUIHandler
+
+{
+	public void handleActionSave(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionSave(request,response,context);
+	}
+	protected void _handleActionSave(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionSaveExit(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionSaveExit(request,response,context);
+	}
+	protected void _handleActionSaveExit(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+}

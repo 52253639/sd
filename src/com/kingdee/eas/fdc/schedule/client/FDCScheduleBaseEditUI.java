@@ -1513,15 +1513,23 @@ public  class FDCScheduleBaseEditUI extends AbstractFDCScheduleBaseEditUI implem
 	   	actionBatChangeRespDept.setVisible(isShow);
 	   	actionBatChangeRespDept.setEnabled(isEdit);
 	   	
-	    this.actionZoomCenter.setVisible(true);
-	    this.menuItemZoomCenter.setEnabled(true);
-		this.btnZoomCenter.setEnabled(true);
-	    this.actionZoomCenter.setEnabled(true);
-		this.actionZoomIn.setVisible(true);
-		this.actionZoomOut.setVisible(true);
-		this.actionZoomLeft.setVisible(true);
-		this.actionZoomRight.setVisible(true);
-		
+//	    this.actionZoomCenter.setVisible(true);
+//	    this.menuItemZoomCenter.setEnabled(true);
+//		this.btnZoomCenter.setEnabled(true);
+//	    this.actionZoomCenter.setEnabled(true);
+//		this.actionZoomIn.setVisible(true);
+//		this.actionZoomOut.setVisible(true);
+//		this.actionZoomLeft.setVisible(true);
+//		this.actionZoomRight.setVisible(true);
+	   	
+		this.actionZoomCenter.setVisible(false);
+		this.btnZoomCenter.setVisible(false);
+		this.actionZoomIn.setVisible(false);
+		this.btnZoomIn.setVisible(false);
+		this.actionZoomOut.setVisible(false);
+		this.btnZoomOut.setVisible(false);
+		this.actionGraphOption.setVisible(false);
+		this.menuView.setVisible(false);
 	}
 
 	/**

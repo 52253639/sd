@@ -60,6 +60,38 @@ public class ContractWithoutTextPrintDataProvider extends FDCBillDataProvider {
 				e.printStackTrace();
 			}
 			return iRowSet;
+		}else if (ds.getID().equalsIgnoreCase("FEEENTRY")) {
+			IRowSet iRowSet = null;
+			try {
+				IQueryExecutor exec = QueryExecutorFactory.getRemoteInstance(new MetaDataPK("com.kingdee.eas.fdc.contract.app.FeeEntryPrintQuery"));
+				exec.option().isAutoTranslateEnum = true;
+				EntityViewInfo ev = new EntityViewInfo();
+				FilterInfo filter = new FilterInfo();
+				filter.getFilterItems().add(new FilterItemInfo("head.id", billId));
+				ev.setFilter(filter);
+				exec.setObjectView(ev);
+				iRowSet = exec.executeQuery();
+				iRowSet.beforeFirst();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return iRowSet;
+		}else if (ds.getID().equalsIgnoreCase("TRAENTRY")) {
+			IRowSet iRowSet = null;
+			try {
+				IQueryExecutor exec = QueryExecutorFactory.getRemoteInstance(new MetaDataPK("com.kingdee.eas.fdc.contract.app.TraEntryPrintQuery"));
+				exec.option().isAutoTranslateEnum = true;
+				EntityViewInfo ev = new EntityViewInfo();
+				FilterInfo filter = new FilterInfo();
+				filter.getFilterItems().add(new FilterItemInfo("head.id", billId));
+				ev.setFilter(filter);
+				exec.setObjectView(ev);
+				iRowSet = exec.executeQuery();
+				iRowSet.beforeFirst();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return iRowSet;
 		}else if (ds.getID().equalsIgnoreCase("AttachmentQuery")) {
 			// 合同履约保证金及返还部分
 			IRowSet iRowSet = null;

@@ -784,30 +784,7 @@ protected void tblMain_tableSelectChanged(
 				}
 			}
 			uiContext.put("projectId", projId);
-			
-			if(typeId!=null)
-			{
-				try {
-					ContractTypeInfo contractTypeInfo = ContractTypeFactory.getRemoteInstance().getContractTypeInfo(new ObjectUuidPK(typeId));
-					
-					if(contractTypeInfo.getLongNumber().indexOf("07YX")>=0)
-					{
-						MsgBox.showWarning("营销类合同必须由立项单发起，不允许直接新增！");
-						SysUtil.abort();
-					}
-					else
-					{
-						uiContext.put("contractTypeId", typeId);
-					}
-				} catch (EASBizException e1) {
-					e1.printStackTrace();
-				} catch (BOSException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
-			else
-				uiContext.put("contractTypeId", null);
+			uiContext.put("contractTypeId", typeId);
 		}
 	}
 

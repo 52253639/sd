@@ -128,6 +128,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.FDCConstants;
+import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.PaymentTypeCollection;
@@ -141,6 +142,7 @@ import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCClientVerifyHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCContractParamUI;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
 import com.kingdee.eas.fdc.basedata.util.TableUtils;
 import com.kingdee.eas.fdc.contract.ConSplitExecStateEnum;
 import com.kingdee.eas.fdc.contract.ContractBillFactory;
@@ -154,6 +156,8 @@ import com.kingdee.eas.fdc.contract.ContractWithoutTextBgEntryInfo;
 import com.kingdee.eas.fdc.contract.ContractWithoutTextFactory;
 import com.kingdee.eas.fdc.contract.ContractWithoutTextInfo;
 import com.kingdee.eas.fdc.contract.FDCUtils;
+import com.kingdee.eas.fdc.contract.FeeEntryInfo;
+import com.kingdee.eas.fdc.contract.FeeTypeEnum;
 import com.kingdee.eas.fdc.contract.PayContentTypeInfo;
 import com.kingdee.eas.fdc.contract.PayReqUtils;
 import com.kingdee.eas.fdc.contract.PayRequestBillBgEntryCollection;
@@ -161,6 +165,7 @@ import com.kingdee.eas.fdc.contract.PayRequestBillBgEntryInfo;
 import com.kingdee.eas.fdc.contract.PayRequestBillCollection;
 import com.kingdee.eas.fdc.contract.PayRequestBillFactory;
 import com.kingdee.eas.fdc.contract.PayRequestBillInfo;
+import com.kingdee.eas.fdc.contract.TraEntryInfo;
 import com.kingdee.eas.fdc.contract.UrgentDegreeEnum;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractFactory;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
@@ -260,7 +265,7 @@ public class ContractWithoutTextEditUI extends
 		}
 		return canSelectOtherOrgPerson;
 	}
-
+	boolean isFeeTraEntry=false;
 	/**
 	 * output class constructor
 	 */
@@ -339,6 +344,7 @@ public class ContractWithoutTextEditUI extends
 //		objectValue.setSignDate(this.serverDate);
 
 		objectValue.setSourceType(SourceTypeEnum.ADDNEW);
+		objectValue.setFeeType(FeeTypeEnum.FEE);
 		
 		objectValue.setIsCostSplit(true);
 		objectValue.setConSplitExecState(ConSplitExecStateEnum.COMMON);
@@ -590,6 +596,29 @@ public class ContractWithoutTextEditUI extends
 		btnAttachment = (KDWorkButton) this.contAttachment.add(this.actionAttachment);
 		btnAttachment.setText("附件管理");
 		btnAttachment.setSize(new Dimension(140, 19));
+		
+		
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISFEETRAENTRY", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISFEETRAENTRY")!=null){
+				isFeeTraEntry=Boolean.parseBoolean(hmAllParam.get("FDC_ISFEETRAENTRY").toString());
+			}else{
+				isFeeTraEntry=false;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		if(!isFeeTraEntry){
+			this.cbFeeType.setSelectedItem(null);
+			this.contFeeType.setVisible(false);
+		}else{
+			this.cbFeeType.setRequired(true);
+		}
+		cbFeeType_itemStateChanged(null);
 	}
 	protected Set getCostedDeptIdSet(CompanyOrgUnitInfo com) throws EASBizException, BOSException{
 		if(com==null) return null;
@@ -647,6 +676,7 @@ public class ContractWithoutTextEditUI extends
 		}
 	}
 	protected void storeBgEntryTable(){
+		BigDecimal amount=FDCHelper.ZERO;
 		editData.getBgEntry().clear();
     	for(int i=0;i<this.kdtBgEntry.getRowCount();i++){
     		IRow row = this.kdtBgEntry.getRow(i);
@@ -658,7 +688,10 @@ public class ContractWithoutTextEditUI extends
     		entry.setAmount((BigDecimal)row.getCell("amount").getValue());
     		entry.setBgItem((BgItemInfo)row.getCell("bgItem").getValue());
     		editData.getBgEntry().add(entry);
+    		
+    		amount=FDCHelper.add(amount,row.getCell("requestAmount").getValue());
     	}
+    	this.txtamount.setValue(amount);
 	}
 	protected void initBgEntryTable(){
 		KDWorkButton btnAddRowinfo=new KDWorkButton();
@@ -735,6 +768,37 @@ public class ContractWithoutTextEditUI extends
 		this.kdtBgEntry.getColumn("bgItem").setEditor(f7Editor);
 		this.kdtBgEntry.getColumn("bgItem").getStyleAttributes().setLocked(true);
 		this.kdtBgEntry.getColumn("bgItem").getStyleAttributes().setHided(true);
+		
+		
+		this.actionAddLine.putValue("SmallIcon", EASResource.getIcon("imgTbtn_addline"));
+		btnAddRowinfo = (KDWorkButton)this.contFeeEntry.add(this.actionAddLine);
+		btnAddRowinfo.setText("新增行");
+		btnAddRowinfo.setSize(new Dimension(140, 19));
+		
+		this.actionInsertLine.putValue("SmallIcon", EASResource.getIcon("imgTbtn_insert"));
+		btnInsertRowinfo = (KDWorkButton)this.contFeeEntry.add(this.actionInsertLine);
+		btnInsertRowinfo.setText("插入行");
+		btnInsertRowinfo.setSize(new Dimension(140, 19));
+		
+		this.actionRemoveLine.putValue("SmallIcon", EASResource.getIcon("imgTbtn_deleteline"));
+		btnDeleteRowinfo = (KDWorkButton)this.contFeeEntry.add(this.actionRemoveLine);
+		btnDeleteRowinfo.setText("删除行");
+		btnDeleteRowinfo.setSize(new Dimension(140, 19));
+		
+		this.actionAddLine.putValue("SmallIcon", EASResource.getIcon("imgTbtn_addline"));
+		btnAddRowinfo = (KDWorkButton)this.contTraEntry.add(this.actionAddLine);
+		btnAddRowinfo.setText("新增行");
+		btnAddRowinfo.setSize(new Dimension(140, 19));
+		
+		this.actionInsertLine.putValue("SmallIcon", EASResource.getIcon("imgTbtn_insert"));
+		btnInsertRowinfo = (KDWorkButton)this.contTraEntry.add(this.actionInsertLine);
+		btnInsertRowinfo.setText("插入行");
+		btnInsertRowinfo.setSize(new Dimension(140, 19));
+		
+		this.actionRemoveLine.putValue("SmallIcon", EASResource.getIcon("imgTbtn_deleteline"));
+		btnDeleteRowinfo = (KDWorkButton)this.contTraEntry.add(this.actionRemoveLine);
+		btnDeleteRowinfo.setText("删除行");
+		btnDeleteRowinfo.setSize(new Dimension(140, 19));
 	}
 
 	protected void kdtBgEntry_editStopped(KDTEditEvent e) throws Exception {
@@ -780,7 +844,7 @@ public class ContractWithoutTextEditUI extends
 			getBgAmount();
 		}
 		if(this.kdtBgEntry.getColumnKey(e.getColIndex()).equals("requestAmount")||this.kdtBgEntry.getColumnKey(e.getColIndex()).equals("amount")){
-			BigDecimal amount =TableUtils.getColumnValueSum(this.kdtBgEntry, "amount");
+			BigDecimal amount =TableUtils.getColumnValueSum(this.kdtBgEntry, "requestAmount");
 			this.txtamount.setValue(amount);
 			TableUtils.getFootRow(this.kdtBgEntry,new String[]{"requestAmount","amount"});
 		}
@@ -791,44 +855,120 @@ public class ContractWithoutTextEditUI extends
 	}
 
 	public void actionAddLine_actionPerformed(ActionEvent e) throws Exception {
-		IRow row=this.kdtBgEntry.addRow();
-		ContractWithoutTextBgEntryInfo entry=new ContractWithoutTextBgEntryInfo();
-		row.setUserObject(entry);
+		if(this.kDTabbedPane1.getSelectedComponent().equals(this.contBgEntry)){
+			IRow row=this.kdtBgEntry.addRow();
+			ContractWithoutTextBgEntryInfo entry=new ContractWithoutTextBgEntryInfo();
+			row.setUserObject(entry);
+		}else if(this.kDTabbedPane1.getSelectedComponent().equals(this.contFeeEntry)){
+			IRow row=this.kdtFeeEntry.addRow();
+			FeeEntryInfo entry=new FeeEntryInfo();
+			row.setUserObject(entry);
+		}else if(this.kDTabbedPane1.getSelectedComponent().equals(this.contTraEntry)){
+			IRow row=this.kdtTraEntry.addRow();
+			TraEntryInfo entry=new TraEntryInfo();
+			row.setUserObject(entry);
+		}
 	}
 	public void actionInsertLine_actionPerformed(ActionEvent e) throws Exception {
-		 IRow row = null;
-		 if(this.kdtBgEntry.getSelectManager().size() > 0){
-			 int top = this.kdtBgEntry.getSelectManager().get().getTop();
-			 if(isTableColumnSelected(this.kdtBgEntry))
-				 row = this.kdtBgEntry.addRow();
-			 else
-				 row = this.kdtBgEntry.addRow(top);
-	     }else{
-	    	 row = this.kdtBgEntry.addRow();
-	     }
-		 ContractWithoutTextBgEntryInfo entry=new ContractWithoutTextBgEntryInfo();
-		 row.setUserObject(entry);
+		if(this.kDTabbedPane1.getSelectedComponent().equals(this.contBgEntry)){
+			 IRow row = null;
+			 if(this.kdtBgEntry.getSelectManager().size() > 0){
+				 int top = this.kdtBgEntry.getSelectManager().get().getTop();
+				 if(isTableColumnSelected(this.kdtBgEntry))
+					 row = this.kdtBgEntry.addRow();
+				 else
+					 row = this.kdtBgEntry.addRow(top);
+		     }else{
+		    	 row = this.kdtBgEntry.addRow();
+		     }
+			 ContractWithoutTextBgEntryInfo entry=new ContractWithoutTextBgEntryInfo();
+			 row.setUserObject(entry);
+		}else if(this.kDTabbedPane1.getSelectedComponent().equals(this.contFeeEntry)){
+			 IRow row = null;
+			 if(this.kdtFeeEntry.getSelectManager().size() > 0){
+				 int top = this.kdtFeeEntry.getSelectManager().get().getTop();
+				 if(isTableColumnSelected(this.kdtFeeEntry))
+					 row = this.kdtFeeEntry.addRow();
+				 else
+					 row = this.kdtFeeEntry.addRow(top);
+		     }else{
+		    	 row = this.kdtFeeEntry.addRow();
+		     }
+			 FeeEntryInfo entry=new FeeEntryInfo();
+			 row.setUserObject(entry);
+		}else if(this.kDTabbedPane1.getSelectedComponent().equals(this.contTraEntry)){
+			 IRow row = null;
+			 if(this.kdtTraEntry.getSelectManager().size() > 0){
+				 int top = this.kdtTraEntry.getSelectManager().get().getTop();
+				 if(isTableColumnSelected(this.kdtTraEntry))
+					 row = this.kdtTraEntry.addRow();
+				 else
+					 row = this.kdtTraEntry.addRow(top);
+		     }else{
+		    	 row = this.kdtTraEntry.addRow();
+		     }
+			 TraEntryInfo entry=new TraEntryInfo();
+			 row.setUserObject(entry);
+		}
 	}
 	public void actionRemoveLine_actionPerformed(ActionEvent e) throws Exception {
-		if(this.kdtBgEntry.getSelectManager().size() == 0 || isTableColumnSelected(this.kdtBgEntry)){
-            FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
-            return;
-        }
-        if(FDCMsgBox.isYes(FDCMsgBox.showConfirm2(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Confirm_Delete")))){
-            int top = this.kdtBgEntry.getSelectManager().get().getBeginRow();
-            int bottom = this.kdtBgEntry.getSelectManager().get().getEndRow();
-            for(int i = top; i <= bottom; i++){
-                if(this.kdtBgEntry.getRow(top) == null)
-                {
-                    FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
-                    return;
-                }
-                this.kdtBgEntry.removeRow(top);
-                BigDecimal amount =TableUtils.getColumnValueSum(this.kdtBgEntry, "amount");
-    			this.txtamount.setValue(amount);
-                TableUtils.getFootRow(this.kdtBgEntry,new String[]{"requestAmount","amount"});
-            }
-        }
+		if(this.kDTabbedPane1.getSelectedComponent().equals(this.contBgEntry)){
+			if(this.kdtBgEntry.getSelectManager().size() == 0 || isTableColumnSelected(this.kdtBgEntry)){
+	            FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
+	            return;
+	        }
+	        if(FDCMsgBox.isYes(FDCMsgBox.showConfirm2(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Confirm_Delete")))){
+	            int top = this.kdtBgEntry.getSelectManager().get().getBeginRow();
+	            int bottom = this.kdtBgEntry.getSelectManager().get().getEndRow();
+	            for(int i = top; i <= bottom; i++){
+	                if(this.kdtBgEntry.getRow(top) == null)
+	                {
+	                    FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
+	                    return;
+	                }
+	                this.kdtBgEntry.removeRow(top);
+	                BigDecimal amount =TableUtils.getColumnValueSum(this.kdtBgEntry, "requestAmount");
+	    			this.txtamount.setValue(amount);
+	                TableUtils.getFootRow(this.kdtBgEntry,new String[]{"requestAmount","amount"});
+	            }
+	        }
+		}else if(this.kDTabbedPane1.getSelectedComponent().equals(this.contFeeEntry)){
+			if(this.kdtFeeEntry.getSelectManager().size() == 0 || isTableColumnSelected(this.kdtFeeEntry)){
+	            FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
+	            return;
+	        }
+	        if(FDCMsgBox.isYes(FDCMsgBox.showConfirm2(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Confirm_Delete")))){
+	            int top = this.kdtFeeEntry.getSelectManager().get().getBeginRow();
+	            int bottom = this.kdtFeeEntry.getSelectManager().get().getEndRow();
+	            for(int i = top; i <= bottom; i++){
+	                if(this.kdtFeeEntry.getRow(top) == null)
+	                {
+	                    FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
+	                    return;
+	                }
+	                this.kdtFeeEntry.removeRow(top);
+	                TableUtils.getFootRow(this.kdtBgEntry,new String[]{"amount"});
+	            }
+	        }
+		}else if(this.kDTabbedPane1.getSelectedComponent().equals(this.contTraEntry)){
+			if(this.kdtTraEntry.getSelectManager().size() == 0 || isTableColumnSelected(this.kdtTraEntry)){
+	            FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
+	            return;
+	        }
+	        if(FDCMsgBox.isYes(FDCMsgBox.showConfirm2(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Confirm_Delete")))){
+	            int top = this.kdtTraEntry.getSelectManager().get().getBeginRow();
+	            int bottom = this.kdtTraEntry.getSelectManager().get().getEndRow();
+	            for(int i = top; i <= bottom; i++){
+	                if(this.kdtTraEntry.getRow(top) == null)
+	                {
+	                    FDCMsgBox.showInfo(this, EASResource.getString("com.kingdee.eas.framework.FrameWorkResource.Msg_NoneEntry"));
+	                    return;
+	                }
+	                this.kdtTraEntry.removeRow(top);
+	                TableUtils.getFootRow(this.kdtTraEntry,new String[]{"days","airFee","carFee","cityFee","otherFee","persons","liveDays","liveFee","allowance","other","total"});
+	            }
+	        }
+		}
 	}
 	protected void prmtCostedCompany_dataChanged(DataChangeEvent e) throws Exception {
 		EntityViewInfo view=new EntityViewInfo();
@@ -1093,7 +1233,7 @@ public class ContractWithoutTextEditUI extends
 			this.prmtCostedCompany.setEnabled(true);
 			this.prmtCostedDept.setEnabled(true);
 			
-			BigDecimal amount =TableUtils.getColumnValueSum(this.kdtBgEntry, "amount");
+			BigDecimal amount =TableUtils.getColumnValueSum(this.kdtBgEntry, "requestAmount");
 			this.txtamount.setValue(amount);
 			this.txtamount.setEnabled(false);
 			
@@ -1415,6 +1555,15 @@ public class ContractWithoutTextEditUI extends
 			this.editData.setReceiveUnit(null);
 		}
 		this.storeBgEntryTable();
+		
+		if(FeeTypeEnum.FEE.equals(cbFeeType.getSelectedItem())){
+			this.kdtTraEntry.removeRows();
+		}else if(FeeTypeEnum.TRA.equals(cbFeeType.getSelectedItem())){
+			this.kdtFeeEntry.removeRows();
+		}else{
+			this.kdtTraEntry.removeRows();
+			this.kdtFeeEntry.removeRows();
+		}
 		super.storeFields();
 	}
     protected void beforeStoreFields(ActionEvent e) throws Exception {
@@ -1980,6 +2129,9 @@ public class ContractWithoutTextEditUI extends
 		
 		this.loadBgEntryTable();
 		TableUtils.getFootRow(this.kdtBgEntry,new String[]{"requestAmount","amount"});
+		TableUtils.getFootRow(this.kdtFeeEntry,new String[]{"amount"});
+		TableUtils.getFootRow(this.kdtTraEntry,new String[]{"days","airFee","carFee","cityFee","otherFee","persons","liveDays","liveFee","allowance","other","total"});
+        
 		setSaveActionStatus();
 		if(getOprtState()==OprtState.ADDNEW){		
 			this.menuBiz.setVisible(false);
@@ -2370,6 +2522,30 @@ public class ContractWithoutTextEditUI extends
 							}
 						}
 					}
+				}
+			}
+		}
+		if(isFeeTraEntry){
+			FDCClientVerifyHelper.verifyEmpty(this, this.cbFeeType);
+			if(FeeTypeEnum.FEE.equals(this.cbFeeType.getSelectedItem())){
+				if(this.kdtFeeEntry.getRowCount()==0){
+					FDCMsgBox.showWarning(this,"费用明细不能为空！");
+					SysUtil.abort();
+				}
+				BigDecimal total =TableUtils.getColumnValueSum(this.kdtFeeEntry, "amount");
+				if(this.txtamount.getBigDecimalValue().compareTo(total)!=0){
+					FDCMsgBox.showWarning(this,"费用明细的合计金额不等于原币金额！");
+					SysUtil.abort();
+				}
+			}else if(FeeTypeEnum.TRA.equals(this.cbFeeType.getSelectedItem())){
+				if(this.kdtTraEntry.getRowCount()==0){
+					FDCMsgBox.showWarning(this,"费用明细不能为空！");
+					SysUtil.abort();
+				}
+				BigDecimal total =TableUtils.getColumnValueSum(this.kdtTraEntry, "total");
+				if(this.txtamount.getBigDecimalValue().compareTo(total)!=0){
+					FDCMsgBox.showWarning(this,"费用明细的合计金额不等于原币金额！");
+					SysUtil.abort();
 				}
 			}
 		}
@@ -3719,5 +3895,44 @@ public class ContractWithoutTextEditUI extends
 				}
 			}
 		}
+	}
+	protected void cbFeeType_itemStateChanged(ItemEvent e) throws Exception {
+		this.kDTabbedPane1.removeAll();
+		this.kDTabbedPane1.add(this.contBgEntry,"费用清单");
+		if(FeeTypeEnum.FEE.equals(cbFeeType.getSelectedItem())){
+			this.kDTabbedPane1.add(this.contFeeEntry,"费用明细");
+		}else if(FeeTypeEnum.TRA.equals(cbFeeType.getSelectedItem())){
+			this.kDTabbedPane1.add(this.contTraEntry,"费用明细");
+		}
+	}
+	protected void kdtFeeEntry_editStopped(KDTEditEvent e) throws Exception {
+		if(this.kdtFeeEntry.getColumnKey(e.getColIndex()).equals("amount")){
+			TableUtils.getFootRow(this.kdtFeeEntry,new String[]{"amount"});
+		}
+	}
+	protected void kdtTraEntry_editStopped(KDTEditEvent e) throws Exception {
+		if(this.kdtTraEntry.getColumnKey(e.getColIndex()).equals("startDate")||this.kdtTraEntry.getColumnKey(e.getColIndex()).equals("endDate")){
+			Date startDate=(Date) this.kdtTraEntry.getRow(e.getRowIndex()).getCell("startDate").getValue();
+			Date endDate=(Date) this.kdtTraEntry.getRow(e.getRowIndex()).getCell("endDate").getValue();
+			if(startDate!=null&&endDate!=null){
+				if(startDate.after(endDate)){
+					FDCMsgBox.showWarning(this,"开始日期不能晚于结束日期");
+					this.kdtTraEntry.getRow(e.getRowIndex()).getCell(e.getColIndex()).setValue(e.getOldValue());
+				}else{
+					this.kdtTraEntry.getRow(e.getRowIndex()).getCell("days").setValue(FDCDateHelper.getDiffDays(startDate, endDate));
+				}
+			}
+		}else{
+			BigDecimal airFee=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("airFee").getValue());
+			BigDecimal carFee=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("carFee").getValue());
+			BigDecimal cityFee=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("cityFee").getValue());
+			BigDecimal otherFee=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("otherFee").getValue());
+			BigDecimal liveFee=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("liveFee").getValue());
+			BigDecimal allowance=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("allowance").getValue());
+			BigDecimal other=FDCHelper.toBigDecimal(this.kdtTraEntry.getRow(e.getRowIndex()).getCell("other").getValue());
+			BigDecimal total=airFee.add(carFee).add(cityFee).add(otherFee).add(liveFee).add(allowance).add(other);
+			this.kdtTraEntry.getRow(e.getRowIndex()).getCell("total").setValue(total);
+		}
+		TableUtils.getFootRow(this.kdtTraEntry,new String[]{"days","airFee","carFee","cityFee","otherFee","persons","liveDays","liveFee","allowance","other","total"});
 	}
 }

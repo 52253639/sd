@@ -6,6 +6,7 @@ package com.kingdee.eas.fdc.invite.supplier.client;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.event.*;
 import java.util.EventListener;
 import java.util.HashMap;
