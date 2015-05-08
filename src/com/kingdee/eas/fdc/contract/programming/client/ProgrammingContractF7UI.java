@@ -5,11 +5,13 @@ package com.kingdee.eas.fdc.contract.programming.client;
 
 import java.awt.event.ActionEvent;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTSortManager;
@@ -17,6 +19,8 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.eas.base.param.ParamControlFactory;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
@@ -64,6 +68,24 @@ public class ProgrammingContractF7UI extends AbstractProgrammingContractF7UI
 		btnConfirm.setEnabled(true);
 		btnExit.setEnabled(true);
 		tblMain.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
+		
+		Boolean isDisplay=true;
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISDISPLAYPCAMOUNT", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISDISPLAYPCAMOUNT")!=null){
+				isDisplay=Boolean.parseBoolean(hmAllParam.get("FDC_ISDISPLAYPCAMOUNT").toString());
+			}else{
+				isDisplay=true;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		tblMain.getColumn("amount").getStyleAttributes().setHided(!isDisplay);
+		tblMain.getColumn("balance").getStyleAttributes().setHided(!isDisplay);
 	}
     
     public void onShow() throws Exception {

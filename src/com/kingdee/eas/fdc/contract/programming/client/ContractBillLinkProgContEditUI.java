@@ -5,6 +5,7 @@ package com.kingdee.eas.fdc.contract.programming.client;
 
 import java.awt.event.*;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -25,6 +26,7 @@ import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.ctrl.swing.event.DataChangeListener;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.basedata.org.FullOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -193,6 +195,23 @@ public class ContractBillLinkProgContEditUI extends AbstractContractBillLinkProg
 				return false;
 			}
 		});
+		
+		Boolean isDisplay=true;
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISDISPLAYPCAMOUNT", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISDISPLAYPCAMOUNT")!=null){
+				isDisplay=Boolean.parseBoolean(hmAllParam.get("FDC_ISDISPLAYPCAMOUNT").toString());
+			}else{
+				isDisplay=true;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		this.kDLabelContainer2.setVisible(isDisplay);
     }
 	/**
 	 * 关联有框架合约时，在查看或编辑时把数据写入

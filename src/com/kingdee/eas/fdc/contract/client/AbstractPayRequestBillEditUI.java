@@ -162,8 +162,10 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtPayContentType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contcompletePrjAmt;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAllCompletePrjAmt;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCompleteRate;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtcompletePrjAmt;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtAllCompletePrjAmt;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtCompleteRate;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblAttachement;
     protected com.kingdee.bos.ctrl.swing.KDComboBox cmbAttachment;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnTaoPrint;
@@ -464,8 +466,10 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
         this.prmtPayContentType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contcompletePrjAmt = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contAllCompletePrjAmt = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contCompleteRate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtcompletePrjAmt = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtAllCompletePrjAmt = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtCompleteRate = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.tblAttachement = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.cmbAttachment = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.btnTaoPrint = new com.kingdee.bos.ctrl.swing.KDWorkButton();
@@ -608,8 +612,10 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
         this.prmtPayContentType.setName("prmtPayContentType");
         this.contcompletePrjAmt.setName("contcompletePrjAmt");
         this.contAllCompletePrjAmt.setName("contAllCompletePrjAmt");
+        this.contCompleteRate.setName("contCompleteRate");
         this.txtcompletePrjAmt.setName("txtcompletePrjAmt");
         this.txtAllCompletePrjAmt.setName("txtAllCompletePrjAmt");
+        this.txtCompleteRate.setName("txtCompleteRate");
         this.tblAttachement.setName("tblAttachement");
         this.cmbAttachment.setName("cmbAttachment");
         this.btnTaoPrint.setName("btnTaoPrint");
@@ -1430,6 +1436,11 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
         this.contAllCompletePrjAmt.setBoundLabelUnderline(true);		
         this.contAllCompletePrjAmt.setBoundLabelLength(120);		
         this.contAllCompletePrjAmt.setEnabled(false);
+        // contCompleteRate		
+        this.contCompleteRate.setBoundLabelText(resHelper.getString("contCompleteRate.boundLabelText"));		
+        this.contCompleteRate.setBoundLabelUnderline(true);		
+        this.contCompleteRate.setBoundLabelLength(120);		
+        this.contCompleteRate.setEnabled(false);
         // txtcompletePrjAmt		
         this.txtcompletePrjAmt.setDataType(1);
         this.txtcompletePrjAmt.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
@@ -1445,6 +1456,9 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
         // txtAllCompletePrjAmt		
         this.txtAllCompletePrjAmt.setDataType(1);		
         this.txtAllCompletePrjAmt.setEnabled(false);
+        // txtCompleteRate		
+        this.txtCompleteRate.setDataType(1);		
+        this.txtCompleteRate.setEnabled(false);
         // tblAttachement
 		String tblAttachementStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sTable\"><c:Alignment horizontal=\"left\" /><c:Protection locked=\"true\" /></c:Style><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol2\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol3\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"2\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\" t:styleID=\"sTable\"><t:ColumnGroup><t:Column t:key=\"seq\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"name\" t:width=\"400\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"type\" t:width=\"80\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" t:styleID=\"sCol2\" /><t:Column t:key=\"date\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" t:styleID=\"sCol4\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{seq}</t:Cell><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{type}</t:Cell><t:Cell>$Resource{date}</t:Cell><t:Cell>$Resource{id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
@@ -1744,8 +1758,8 @@ public abstract class AbstractPayRequestBillEditUI extends com.kingdee.eas.fdc.b
         kDPanel1.add(btnViewBudget, new KDLayout.Constraints(890, 294, 100, 21, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         kDContainer1.setBounds(new Rectangle(370, 290, 298, 134));
         kDPanel1.add(kDContainer1, new KDLayout.Constraints(370, 290, 298, 134, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAttachment.setBounds(new Rectangle(690, 290, 315, 134));
-        kDPanel1.add(contAttachment, new KDLayout.Constraints(690, 290, 315, 134, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contAttachment.setBounds(new Rectangle(674, 290, 331, 134));
+        kDPanel1.add(contAttachment, new KDLayout.Constraints(674, 290, 331, 134, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contpaymentRequestBillNumber
         contpaymentRequestBillNumber.setBoundEditor(txtPaymentRequestBillNumber);
         //contOrg
@@ -1823,14 +1837,19 @@ contBgEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contBgEnt
         //contPayContentType
         contPayContentType.setBoundEditor(prmtPayContentType);
         //kDContainer1
-        kDContainer1.getContentPane().setLayout(null);        contcompletePrjAmt.setBounds(new Rectangle(17, 14, 270, 19));
-        kDContainer1.getContentPane().add(contcompletePrjAmt, null);
+        kDContainer1.getContentPane().setLayout(new KDLayout());
+        kDContainer1.getContentPane().putClientProperty("OriginalBounds", new Rectangle(370, 290, 298, 134));        contcompletePrjAmt.setBounds(new Rectangle(17, 14, 270, 19));
+        kDContainer1.getContentPane().add(contcompletePrjAmt, new KDLayout.Constraints(17, 14, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contAllCompletePrjAmt.setBounds(new Rectangle(17, 36, 270, 19));
-        kDContainer1.getContentPane().add(contAllCompletePrjAmt, null);
+        kDContainer1.getContentPane().add(contAllCompletePrjAmt, new KDLayout.Constraints(17, 36, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contCompleteRate.setBounds(new Rectangle(17, 58, 270, 19));
+        kDContainer1.getContentPane().add(contCompleteRate, new KDLayout.Constraints(17, 58, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //contcompletePrjAmt
         contcompletePrjAmt.setBoundEditor(txtcompletePrjAmt);
         //contAllCompletePrjAmt
         contAllCompletePrjAmt.setBoundEditor(txtAllCompletePrjAmt);
+        //contCompleteRate
+        contCompleteRate.setBoundEditor(txtCompleteRate);
         //contAttachment
 contAttachment.getContentPane().setLayout(new BorderLayout(0, 0));        contAttachment.getContentPane().add(tblAttachement, BorderLayout.CENTER);
         //lblAttachmentContainer

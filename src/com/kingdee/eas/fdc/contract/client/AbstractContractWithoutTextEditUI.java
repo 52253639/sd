@@ -1691,8 +1691,8 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
         this.add(txtPayPlanValue, new KDLayout.Constraints(720, 552, 151, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contAttachment.setBounds(new Rectangle(730, 300, 270, 113));
         this.add(contAttachment, new KDLayout.Constraints(730, 300, 270, 113, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDTabbedPane1.setBounds(new Rectangle(15, 302, 626, 243));
-        this.add(kDTabbedPane1, new KDLayout.Constraints(15, 302, 626, 243, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDTabbedPane1.setBounds(new Rectangle(15, 300, 712, 248));
+        this.add(kDTabbedPane1, new KDLayout.Constraints(15, 300, 712, 248, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDScrollPane1.setBounds(new Rectangle(729, 439, 270, 107));
         this.add(kDScrollPane1, new KDLayout.Constraints(729, 439, 270, 107, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contFeeType.setBounds(new Rectangle(371, 255, 270, 19));

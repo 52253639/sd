@@ -5797,13 +5797,14 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 
 		actionPaymentPlan.setVisible(false);
 		actionPaymentPlan.setVisible(false);
-		if ((isSeparate && contractBill != null && contractBill.isIsCoseSplit()) || this.isAutoComplete) {
-			txtcompletePrjAmt.setRequired(false);
-			contcompletePrjAmt.setVisible(false);
-			contpaymentProportion.setVisible(false);
-			contAllCompletePrjAmt.setVisible(false);
-			contAllPaymentProportion.setVisible(false);
-		}
+//		if ((isSeparate && contractBill != null && contractBill.isIsCoseSplit()) || this.isAutoComplete) {
+//			txtcompletePrjAmt.setRequired(false);
+//			contcompletePrjAmt.setVisible(false);
+//			contpaymentProportion.setVisible(false);
+//			contAllCompletePrjAmt.setVisible(false);
+//			contAllPaymentProportion.setVisible(false);
+//			contCompleteRate.setVisible(false);
+//		}
 		menuItemViewMaterialConfirm.setText(menuItemViewMaterialConfirm.getText() + "(M)");
 		menuItemViewMaterialConfirm.setMnemonic('M');
 
@@ -6698,6 +6699,8 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 			txtAllPaymentProportion.setValue(FDCHelper.divide(prjAllReqAmt, txtAllCompletePrjAmt.getBigDecimalValue(), 4, BigDecimal.ROUND_HALF_UP).multiply(FDCHelper.ONE_HUNDRED));
 
 		}
+		
+		this.txtCompleteRate.setValue(FDCHelper.multiply(FDCHelper.divide(this.txtAllCompletePrjAmt.getBigDecimalValue(), this.editData.getLatestPrice(), 4, BigDecimal.ROUND_HALF_UP),new BigDecimal(100)));
 	}
 
 	private void calAllCompletePrjAmt() {
