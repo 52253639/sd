@@ -56,10 +56,13 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c8cc3442-010d-1000-e000-0002c0a813e8"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             MeasureCostInfo retValue = (MeasureCostInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (MeasureCostInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -78,10 +81,13 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c8cc3442-010d-1000-e000-0003c0a813e8"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             MeasureCostInfo retValue = (MeasureCostInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (MeasureCostInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -100,10 +106,13 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c8cc3442-010d-1000-e000-0004c0a813e8"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             MeasureCostCollection retValue = (MeasureCostCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (MeasureCostCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -120,10 +129,13 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c8cc3442-010d-1000-e000-0005c0a813e8"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             MeasureCostCollection retValue = (MeasureCostCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (MeasureCostCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -140,10 +152,13 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c8cc3442-010d-1000-e000-0006c0a813e8"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             MeasureCostCollection retValue = (MeasureCostCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (MeasureCostCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -160,10 +175,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("113e9d97-0115-1000-e000-003fc0a81296"), new Object[]{ctx, id, orgId});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             String retValue = (String)_storeFromTemplate(ctx, id, orgId);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (String)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -181,7 +198,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("2052b811-0115-1000-e000-0013c0a81296"), new Object[]{ctx, id, new Boolean(isTemplate)});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _storeToTmplate(ctx, id, isTemplate);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -200,7 +219,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("b2743eb2-0115-1000-e000-0004c0a81296"), new Object[]{ctx, id, new Boolean(isTemplate)});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _storeToTemplate(ctx, id, isTemplate);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -219,7 +240,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("460896f2-0116-1000-e000-0052c0a81296"), new Object[]{ctx, id});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _exportIndex(ctx, id);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -238,7 +261,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("871249d1-0117-1000-e000-0014c0a81296"), new Object[]{ctx, measureId, projectId});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _exportAimCost(ctx, measureId, projectId);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -257,10 +282,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("87b22af1-0118-1000-e000-0004c0a812a0"), new Object[]{ctx, templateId, orgId});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             MeasureCostInfo retValue = (MeasureCostInfo)_getMeasureFromTemplate(ctx, templateId, orgId);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (MeasureCostInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -278,10 +305,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0e17c96c-011a-1000-e000-0004c0a812a0"), new Object[]{ctx, params});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             Map retValue = (Map)_getImportData(ctx, params);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (Map)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -299,10 +328,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7565b7b2-f126-4d1b-9c1b-7a50e88d9801"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             Object retValue = (Object)_getTemplateDataStream(ctx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (Object)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -320,10 +351,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("1fdd33fd-0f81-4060-9aa3-d629fbd174b1"), new Object[]{ctx, params});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             Map retValue = (Map)_getMeasureRptData(ctx, params);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (Map)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -341,7 +374,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f8a371c9-6988-47ef-b666-6651c22efe3b"), new Object[]{ctx, measureId, targetPrjId});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _reverseWriteProject(ctx, measureId, targetPrjId);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -360,7 +395,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e3a0bc37-dab8-46ca-b21b-525577b4de78"), new Object[]{ctx, measureId});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _costSycMeasureIncome(ctx, measureId);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -379,7 +416,9 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("28c09fad-6431-4bb4-9242-7a1f99f24dc7"), new Object[]{ctx, param});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _sysProduct(ctx, param);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -398,10 +437,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ac8a403c-9da9-4557-ad00-49b3a1870bef"), new Object[]{ctx, billid, costaccountLongNumber, projectid});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             double retValue = (double)_getIncreaseRate(ctx, billid, costaccountLongNumber, projectid);
             svcCtx.setMethodReturnValue(new Double(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return ((Double)svcCtx.getMethodReturnValue()).doubleValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -416,10 +457,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ac24ab80-565f-452b-acb0-760d5145a0e3"), new Object[]{ctx, billId});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BigDecimal retValue = (BigDecimal)_getTotalCostAccount(ctx, billId);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (BigDecimal)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -437,10 +480,12 @@ public abstract class AbstractMeasureCostControllerBean extends FDCBillControlle
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("36a778e8-18e3-451d-9356-e73345fdf716"), new Object[]{ctx, billId});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             BigDecimal retValue = (BigDecimal)_getLastTotalCostAccount(ctx, billId);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (BigDecimal)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;

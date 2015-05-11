@@ -46,16 +46,20 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractAimCostVersionCompareUI extends com.kingdee.eas.fdc.basedata.client.FDCRptBaseUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractAimCostVersionCompareUI.class);
+    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel2;
+    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel1;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer conBaseVer;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer conCompareVer;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtBaseVer;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCompareVer;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox chkAimCost;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox chkBuildArea;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox chkSellArea;
     protected com.kingdee.bos.ctrl.swing.KDButton btnOK;
-    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel2;
-    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel1;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel2;
+    protected com.kingdee.bos.ctrl.swing.KDLabel up;
+    protected com.kingdee.bos.ctrl.swing.KDLabel down;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtBaseVer;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCompareVer;
     /**
      * output class constructor
      */
@@ -90,26 +94,34 @@ public abstract class AbstractAimCostVersionCompareUI extends com.kingdee.eas.fd
          this.actionMoveTree.addService(new com.kingdee.eas.framework.client.service.PermissionService());
          this.actionMoveTree.addService(new com.kingdee.eas.framework.client.service.NetFunctionService());
          this.actionMoveTree.addService(new com.kingdee.eas.framework.client.service.UserMonitorService());
+        this.kDPanel2 = new com.kingdee.bos.ctrl.swing.KDPanel();
+        this.kDPanel1 = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.conBaseVer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.conCompareVer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.prmtBaseVer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.prmtCompareVer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.chkAimCost = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.chkBuildArea = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.chkSellArea = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.btnOK = new com.kingdee.bos.ctrl.swing.KDButton();
-        this.kDPanel2 = new com.kingdee.bos.ctrl.swing.KDPanel();
-        this.kDPanel1 = new com.kingdee.bos.ctrl.swing.KDPanel();
+        this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDLabel2 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.up = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.down = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.prmtBaseVer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtCompareVer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.kDPanel2.setName("kDPanel2");
+        this.kDPanel1.setName("kDPanel1");
         this.conBaseVer.setName("conBaseVer");
         this.conCompareVer.setName("conCompareVer");
-        this.prmtBaseVer.setName("prmtBaseVer");
-        this.prmtCompareVer.setName("prmtCompareVer");
         this.chkAimCost.setName("chkAimCost");
         this.chkBuildArea.setName("chkBuildArea");
         this.chkSellArea.setName("chkSellArea");
         this.btnOK.setName("btnOK");
-        this.kDPanel2.setName("kDPanel2");
-        this.kDPanel1.setName("kDPanel1");
+        this.kDLabel1.setName("kDLabel1");
+        this.kDLabel2.setName("kDLabel2");
+        this.up.setName("up");
+        this.down.setName("down");
+        this.prmtBaseVer.setName("prmtBaseVer");
+        this.prmtCompareVer.setName("prmtCompareVer");
         // CoreUI
 		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"true\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"acctNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"acctName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"19\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{acctNumber}</t:Cell><t:Cell>$Resource{acctName}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
 		
@@ -118,6 +130,9 @@ public abstract class AbstractAimCostVersionCompareUI extends com.kingdee.eas.fd
                 this.tblMain.putBindContents("mainQuery",new String[] {"","",""});
 
 
+        // kDPanel2
+        // kDPanel1		
+        this.kDPanel1.setPreferredSize(new Dimension(10,80));
         // conBaseVer		
         this.conBaseVer.setBoundLabelText(resHelper.getString("conBaseVer.boundLabelText"));		
         this.conBaseVer.setBoundLabelLength(100);		
@@ -126,12 +141,6 @@ public abstract class AbstractAimCostVersionCompareUI extends com.kingdee.eas.fd
         this.conCompareVer.setBoundLabelText(resHelper.getString("conCompareVer.boundLabelText"));		
         this.conCompareVer.setBoundLabelLength(100);		
         this.conCompareVer.setBoundLabelUnderline(true);
-        // prmtBaseVer		
-        this.prmtBaseVer.setQueryInfo("com.kingdee.eas.fdc.aimcost.app.AIMCostF7Query");		
-        this.prmtBaseVer.setRequired(true);
-        // prmtCompareVer		
-        this.prmtCompareVer.setQueryInfo("com.kingdee.eas.fdc.aimcost.app.AIMCostF7Query");		
-        this.prmtCompareVer.setRequired(true);
         // chkAimCost		
         this.chkAimCost.setText(resHelper.getString("chkAimCost.text"));
         // chkBuildArea		
@@ -152,9 +161,18 @@ public abstract class AbstractAimCostVersionCompareUI extends com.kingdee.eas.fd
                 }
             }
         });
-        // kDPanel2
-        // kDPanel1		
-        this.kDPanel1.setPreferredSize(new Dimension(10,80));
+        // kDLabel1		
+        this.kDLabel1.setText(resHelper.getString("kDLabel1.text"));
+        // kDLabel2		
+        this.kDLabel2.setText(resHelper.getString("kDLabel2.text"));
+        // up
+        // down
+        // prmtBaseVer		
+        this.prmtBaseVer.setQueryInfo("com.kingdee.eas.fdc.aimcost.app.AIMCostF7Query");		
+        this.prmtBaseVer.setRequired(true);
+        // prmtCompareVer		
+        this.prmtCompareVer.setQueryInfo("com.kingdee.eas.fdc.aimcost.app.AIMCostF7Query");		
+        this.prmtCompareVer.setRequired(true);
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -206,6 +224,14 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(tblMain, BorderL
         kDPanel1.add(chkSellArea, new KDLayout.Constraints(241, 45, 85, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
         btnOK.setBounds(new Rectangle(657, 11, 73, 21));
         kDPanel1.add(btnOK, new KDLayout.Constraints(657, 11, 73, 21, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
+        kDLabel1.setBounds(new Rectangle(354, 45, 34, 19));
+        kDPanel1.add(kDLabel1, new KDLayout.Constraints(354, 45, 34, 19, 0));
+        kDLabel2.setBounds(new Rectangle(464, 45, 34, 19));
+        kDPanel1.add(kDLabel2, new KDLayout.Constraints(464, 45, 34, 19, 0));
+        up.setBounds(new Rectangle(394, 45, 64, 19));
+        kDPanel1.add(up, new KDLayout.Constraints(394, 45, 64, 19, 0));
+        down.setBounds(new Rectangle(504, 45, 64, 19));
+        kDPanel1.add(down, new KDLayout.Constraints(504, 45, 64, 19, 0));
         //conBaseVer
         conBaseVer.setBoundEditor(prmtBaseVer);
         //conCompareVer
@@ -230,10 +256,14 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(tblMain, BorderL
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(menuItemImportData);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemExportData);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(separatorFile1);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(MenuItemAttachment);
         menuFile.add(kDSeparator1);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
@@ -262,6 +292,7 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(tblMain, BorderL
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuTools
         menuTools.add(menuMail);
         menuTools.add(menuItemStartWorkFlow);
@@ -288,8 +319,11 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(tblMain, BorderL
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnView);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnRemove);
         this.toolBar.add(btnRefresh);
         this.toolBar.add(btnQuery);
@@ -393,6 +427,10 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(tblMain, BorderL
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
     	

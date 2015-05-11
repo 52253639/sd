@@ -53,6 +53,10 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer1;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contMeasureStage;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer versionType;
+    protected com.kingdee.bos.ctrl.swing.KDLabel contUp;
+    protected com.kingdee.bos.ctrl.swing.KDLabel up;
+    protected com.kingdee.bos.ctrl.swing.KDLabel contDown;
+    protected com.kingdee.bos.ctrl.swing.KDLabel down;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtVersionNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtVersionName;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtProject;
@@ -77,6 +81,9 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
     protected ActionImportTemplate actionImportTemplate = null;
     protected ActionExportAllToExcel actionExportAllToExcel = null;
     protected ActionImportData actionImportData = null;
+    protected ActionCompare actionCompare = null;
+    protected ActionImportConstructTable actionImportConstructTable = null;
+    protected ActionExportConstructTable actionExportConstructTable = null;
     /**
      * output class constructor
      */
@@ -205,6 +212,18 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         this.actionImportData = new ActionImportData(this);
         getActionManager().registerAction("actionImportData", actionImportData);
          this.actionImportData.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionCompare
+        this.actionCompare = new ActionCompare(this);
+        getActionManager().registerAction("actionCompare", actionCompare);
+         this.actionCompare.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionImportConstructTable
+        this.actionImportConstructTable = new ActionImportConstructTable(this);
+        getActionManager().registerAction("actionImportConstructTable", actionImportConstructTable);
+         this.actionImportConstructTable.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionExportConstructTable
+        this.actionExportConstructTable = new ActionExportConstructTable(this);
+        getActionManager().registerAction("actionExportConstructTable", actionExportConstructTable);
+         this.actionExportConstructTable.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.plTables = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.contVersionNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDLabelContainer2 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -212,6 +231,10 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         this.kDLabelContainer1 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contMeasureStage = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.versionType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contUp = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.up = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.contDown = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.down = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.txtVersionNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtVersionName = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.prmtProject = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -236,6 +259,10 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         this.kDLabelContainer1.setName("kDLabelContainer1");
         this.contMeasureStage.setName("contMeasureStage");
         this.versionType.setName("versionType");
+        this.contUp.setName("contUp");
+        this.up.setName("up");
+        this.contDown.setName("contDown");
+        this.down.setName("down");
         this.txtVersionNumber.setName("txtVersionNumber");
         this.txtVersionName.setName("txtVersionName");
         this.prmtProject.setName("prmtProject");
@@ -315,6 +342,12 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         this.versionType.setBoundLabelText(resHelper.getString("versionType.boundLabelText"));		
         this.versionType.setBoundLabelLength(100);		
         this.versionType.setBoundLabelUnderline(true);
+        // contUp		
+        this.contUp.setText(resHelper.getString("contUp.text"));
+        // up
+        // contDown		
+        this.contDown.setText(resHelper.getString("contDown.text"));
+        // down
         // txtVersionNumber
         // txtVersionName		
         this.txtVersionName.setRequired(true);
@@ -412,20 +445,28 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         this.setBounds(new Rectangle(10, 10, 1013, 629));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1013, 629));
-        plTables.setBounds(new Rectangle(10, 64, 995, 556));
-        this.add(plTables, new KDLayout.Constraints(10, 64, 995, 556, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        contVersionNumber.setBounds(new Rectangle(372, 41, 270, 19));
-        this.add(contVersionNumber, new KDLayout.Constraints(372, 41, 270, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        kDLabelContainer2.setBounds(new Rectangle(735, 41, 270, 19));
-        this.add(kDLabelContainer2, new KDLayout.Constraints(735, 41, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDLabelContainer3.setBounds(new Rectangle(735, 14, 270, 19));
-        this.add(kDLabelContainer3, new KDLayout.Constraints(735, 14, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDLabelContainer1.setBounds(new Rectangle(372, 14, 270, 19));
-        this.add(kDLabelContainer1, new KDLayout.Constraints(372, 14, 270, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contMeasureStage.setBounds(new Rectangle(10, 14, 270, 19));
-        this.add(contMeasureStage, new KDLayout.Constraints(10, 14, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        versionType.setBounds(new Rectangle(10, 41, 270, 19));
-        this.add(versionType, new KDLayout.Constraints(10, 41, 270, 19, KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        plTables.setBounds(new Rectangle(10, 78, 995, 547));
+        this.add(plTables, new KDLayout.Constraints(10, 78, 995, 547, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contVersionNumber.setBounds(new Rectangle(372, 30, 270, 19));
+        this.add(contVersionNumber, new KDLayout.Constraints(372, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabelContainer2.setBounds(new Rectangle(735, 30, 270, 19));
+        this.add(kDLabelContainer2, new KDLayout.Constraints(735, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDLabelContainer3.setBounds(new Rectangle(735, 8, 270, 19));
+        this.add(kDLabelContainer3, new KDLayout.Constraints(735, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDLabelContainer1.setBounds(new Rectangle(372, 8, 270, 19));
+        this.add(kDLabelContainer1, new KDLayout.Constraints(372, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contMeasureStage.setBounds(new Rectangle(10, 8, 270, 19));
+        this.add(contMeasureStage, new KDLayout.Constraints(10, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        versionType.setBounds(new Rectangle(10, 30, 270, 19));
+        this.add(versionType, new KDLayout.Constraints(10, 30, 270, 19, KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contUp.setBounds(new Rectangle(735, 54, 34, 19));
+        this.add(contUp, new KDLayout.Constraints(735, 54, 34, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        up.setBounds(new Rectangle(773, 54, 64, 19));
+        this.add(up, new KDLayout.Constraints(773, 54, 64, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDown.setBounds(new Rectangle(860, 54, 34, 19));
+        this.add(contDown, new KDLayout.Constraints(860, 54, 34, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        down.setBounds(new Rectangle(895, 54, 64, 19));
+        this.add(down, new KDLayout.Constraints(895, 54, 64, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contVersionNumber
         contVersionNumber.setBoundEditor(txtVersionNumber);
         //kDLabelContainer2
@@ -457,9 +498,13 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuItemImportData);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(menuItemExportAll);
         menuFile.add(menuSubmitOption);
         menuFile.add(rMenuItemSubmit);
@@ -502,6 +547,7 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -520,8 +566,11 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnImportTemplate);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSave);
         this.toolBar.add(btnSubmit);
@@ -654,6 +703,10 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
     	
@@ -756,6 +809,30 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
      * output actionImportData_actionPerformed method
      */
     public void actionImportData_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionCompare_actionPerformed method
+     */
+    public void actionCompare_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionImportConstructTable_actionPerformed method
+     */
+    public void actionImportConstructTable_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionExportConstructTable_actionPerformed method
+     */
+    public void actionExportConstructTable_actionPerformed(ActionEvent e) throws Exception
     {
     }
 	public RequestContext prepareActionSave(IItemAction itemAction) throws Exception {
@@ -888,6 +965,39 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
     }
 	
 	public boolean isPrepareActionImportData() {
+    	return false;
+    }
+	public RequestContext prepareActionCompare(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionCompare() {
+    	return false;
+    }
+	public RequestContext prepareActionImportConstructTable(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionImportConstructTable() {
+    	return false;
+    }
+	public RequestContext prepareActionExportConstructTable(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionExportConstructTable() {
     	return false;
     }
 
@@ -1070,6 +1180,96 @@ public abstract class AbstractAimMeasureCostEditUI extends com.kingdee.eas.frame
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractAimMeasureCostEditUI.this, "ActionImportData", "actionImportData_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionCompare class
+     */     
+    protected class ActionCompare extends ItemAction {     
+    
+        public ActionCompare()
+        {
+            this(null);
+        }
+
+        public ActionCompare(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionCompare.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionCompare.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionCompare.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractAimMeasureCostEditUI.this, "ActionCompare", "actionCompare_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionImportConstructTable class
+     */     
+    protected class ActionImportConstructTable extends ItemAction {     
+    
+        public ActionImportConstructTable()
+        {
+            this(null);
+        }
+
+        public ActionImportConstructTable(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionImportConstructTable.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionImportConstructTable.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionImportConstructTable.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractAimMeasureCostEditUI.this, "ActionImportConstructTable", "actionImportConstructTable_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionExportConstructTable class
+     */     
+    protected class ActionExportConstructTable extends ItemAction {     
+    
+        public ActionExportConstructTable()
+        {
+            this(null);
+        }
+
+        public ActionExportConstructTable(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionExportConstructTable.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionExportConstructTable.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionExportConstructTable.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractAimMeasureCostEditUI.this, "ActionExportConstructTable", "actionExportConstructTable_actionPerformed", e);
         }
     }
 

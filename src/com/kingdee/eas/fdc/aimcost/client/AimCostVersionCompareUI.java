@@ -3,6 +3,7 @@
  */
 package com.kingdee.eas.fdc.aimcost.client;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -115,6 +116,10 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 		prmtCompareVer.setEnabledMultiSelection(true);
 		prmtCompareVer.setSelectorCollection(selectors);
 		clear();
+		up.setOpaque(true);
+		up.setBackground(new Color(248,171,166));
+		down.setOpaque(true);
+		down.setBackground(new Color(163,207,98));
 	}
 	private void clear(){
 		prmtBaseVer.setValue(null);
@@ -294,16 +299,39 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 					row.getCell(diffID+"_aim").setValue(FDCNumberHelper.subtract(row.getCell(verId+"_aim").getValue(), row.getCell(baseId+"_aim").getValue()));
 					row.getCell(diffRate+"_aim").setValue(FDCNumberHelper.divide(row.getCell(diffID+"_aim").getValue(),row.getCell(baseId+"_aim").getValue(),
 							                              4, BigDecimal.ROUND_HALF_UP));
+					if(row.getCell(diffID+"_aim").getValue()!=null){
+						if(((BigDecimal)row.getCell(diffID+"_aim").getValue()).compareTo(FDCHelper.ZERO)>0){
+							row.getStyleAttributes().setBackground(up.getBackground());
+						}else if(((BigDecimal)row.getCell(diffID+"_aim").getValue()).compareTo(FDCHelper.ZERO)<0){
+							row.getStyleAttributes().setBackground(down.getBackground());
+						}
+					}
 				}
 				if(isBuildSelect()){
 					row.getCell(diffID+"_build").setValue(FDCNumberHelper.subtract(row.getCell(verId+"_build").getValue(), row.getCell(baseId+"_build").getValue()));
 					row.getCell(diffRate+"_build").setValue(FDCNumberHelper.divide(row.getCell(diffID+"_build").getValue(),row.getCell(baseId+"_build").getValue(),
 							                              4, BigDecimal.ROUND_HALF_UP));
+					
+					if(row.getCell(diffID+"_build").getValue()!=null){
+						if(((BigDecimal)row.getCell(diffID+"_build").getValue()).compareTo(FDCHelper.ZERO)>0){
+							row.getStyleAttributes().setBackground(up.getBackground());
+						}else if(((BigDecimal)row.getCell(diffID+"_build").getValue()).compareTo(FDCHelper.ZERO)<0){
+							row.getStyleAttributes().setBackground(down.getBackground());
+						}
+					}
 				}
 				if(isSellSelect()){
 					row.getCell(diffID+"_sell").setValue(FDCNumberHelper.subtract(row.getCell(verId+"_sell").getValue(), row.getCell(baseId+"_sell").getValue()));
 					row.getCell(diffRate+"_sell").setValue(FDCNumberHelper.divide(row.getCell(diffID+"_sell").getValue(),row.getCell(baseId+"_sell").getValue(),
 							                              4, BigDecimal.ROUND_HALF_UP));
+				
+					if(row.getCell(diffID+"_sell").getValue()!=null){
+						if(((BigDecimal)row.getCell(diffID+"_sell").getValue()).compareTo(FDCHelper.ZERO)>0){
+							row.getStyleAttributes().setBackground(up.getBackground());
+						}else if(((BigDecimal)row.getCell(diffID+"_sell").getValue()).compareTo(FDCHelper.ZERO)<0){
+							row.getStyleAttributes().setBackground(down.getBackground());
+						}
+					}
 				}
 			}
 			
@@ -452,7 +480,11 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 		if(true){
 			IColumn col=tblMain.addColumn();
 			col.setKey(info.getId().toString()+"_aim");
-			tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber());
+			if(info.getVersionName()!=null){
+				tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber()+"_"+info.getVersionName());
+			}else{
+				tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber());
+			}
 			tblMain.getHeadRow(1).getCell(col.getKey()).setValue("目标成本");
 			setId(col.getKey(), info);
 			if(info.getId().toString().equals(diffRate)){
@@ -468,7 +500,11 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 		if(isBuildSelect()){
 			IColumn col=tblMain.addColumn();
 			col.setKey(info.getId().toString()+"_build");
-			tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber());
+			if(info.getVersionName()!=null){
+				tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber()+"_"+info.getVersionName());
+			}else{
+				tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber());
+			}
 			tblMain.getHeadRow(1).getCell(col.getKey()).setValue("建筑单方");
 			setId(col.getKey(), info);
 			if(info.getId().toString().equals(diffRate)){
@@ -481,7 +517,11 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 		if(isSellSelect()){
 			IColumn col=tblMain.addColumn();
 			col.setKey(info.getId().toString()+"_sell");
-			tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber());
+			if(info.getVersionName()!=null){
+				tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber()+"_"+info.getVersionName());
+			}else{
+				tblMain.getHeadRow(0).getCell(col.getKey()).setValue(info.getVersionNumber());
+			}
 			tblMain.getHeadRow(1).getCell(col.getKey()).setValue("可售单方");
 			setId(col.getKey(), info);
 			if(info.getId().toString().equals(diffRate)){

@@ -44,4 +44,19 @@ public abstract class AbstractAimMeasureCostEditUIHandler extends com.kingdee.ea
 	}
 	protected void _handleActionImportData(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionCompare(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionCompare(request,response,context);
+	}
+	protected void _handleActionCompare(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionImportConstructTable(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionImportConstructTable(request,response,context);
+	}
+	protected void _handleActionImportConstructTable(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
+	public void handleActionExportConstructTable(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionExportConstructTable(request,response,context);
+	}
+	protected void _handleActionExportConstructTable(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

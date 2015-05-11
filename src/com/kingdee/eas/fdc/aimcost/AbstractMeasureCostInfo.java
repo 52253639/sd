@@ -17,6 +17,7 @@ public class AbstractMeasureCostInfo extends com.kingdee.eas.fdc.basedata.FDCBil
     {
         super(pkField);
         put("constrEntrys", new com.kingdee.eas.fdc.aimcost.ConstructPlanIndexEntryCollection());
+        put("compareEntry", new com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection());
         put("costEntry", new com.kingdee.eas.fdc.aimcost.MeasureEntryCollection());
     }
     /**
@@ -177,6 +178,13 @@ public class AbstractMeasureCostInfo extends com.kingdee.eas.fdc.basedata.FDCBil
 		if (item != null) {
         setString("versionType", item.getValue());
 		}
+    }
+    /**
+     * Object: 成本测算 's 调整原因 property 
+     */
+    public com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection getCompareEntry()
+    {
+        return (com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection)get("compareEntry");
     }
     public BOSObjectType getBOSType()
     {

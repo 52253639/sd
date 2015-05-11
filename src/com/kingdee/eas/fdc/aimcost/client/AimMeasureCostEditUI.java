@@ -5,6 +5,10 @@ package com.kingdee.eas.fdc.aimcost.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -14,6 +18,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.EventListener;
 import java.util.HashMap;
@@ -27,18 +32,24 @@ import java.util.Set;
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeModel;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.common.variant.Variant;
+import com.kingdee.bos.ctrl.excel.io.kds.KDSBookToBook;
+import com.kingdee.bos.ctrl.excel.model.struct.Sheet;
 import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.ctrl.extendcontrols.KDCommonPromptDialog;
 import com.kingdee.bos.ctrl.kdf.export.ExportManager;
 import com.kingdee.bos.ctrl.kdf.export.KDTables2KDSBook;
 import com.kingdee.bos.ctrl.kdf.export.KDTables2KDSBookVO;
 import com.kingdee.bos.ctrl.kdf.kds.KDSBook;
+import com.kingdee.bos.ctrl.kdf.read.POIXlsReader;
+import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDefaultCellEditor;
@@ -48,18 +59,22 @@ import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent;
+import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
 import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
 import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDComboBox;
+import com.kingdee.bos.ctrl.swing.KDContainer;
 import com.kingdee.bos.ctrl.swing.KDFileChooser;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDPanel;
 import com.kingdee.bos.ctrl.swing.KDPromptBox;
 import com.kingdee.bos.ctrl.swing.KDScrollPane;
+import com.kingdee.bos.ctrl.swing.KDSplitPane;
 import com.kingdee.bos.ctrl.swing.KDTabbedPane;
 import com.kingdee.bos.ctrl.swing.KDTextArea;
 import com.kingdee.bos.ctrl.swing.KDTextField;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.ctrl.swing.event.DataChangeListener;
 import com.kingdee.bos.ctrl.swing.event.SelectorEvent;
@@ -86,8 +101,17 @@ import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.bos.workflow.ProcessInstInfo;
 import com.kingdee.bos.workflow.service.ormrpc.EnactmentServiceFactory;
 import com.kingdee.bos.workflow.service.ormrpc.IEnactmentService;
+import com.kingdee.eas.base.attachment.AttachmentFactory;
+import com.kingdee.eas.base.attachment.AttachmentFtpFacadeFactory;
+import com.kingdee.eas.base.attachment.AttachmentInfo;
+import com.kingdee.eas.base.attachment.BoAttchAssoCollection;
+import com.kingdee.eas.base.attachment.BoAttchAssoFactory;
+import com.kingdee.eas.base.attachment.BoAttchAssoInfo;
+import com.kingdee.eas.base.attachment.IAttachment;
+import com.kingdee.eas.base.attachment.util.FileGetter;
 import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.base.permission.UserInfo;
+import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.base.permission.client.util.PermissionHelper;
 import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.assistant.MeasureUnitInfo;
@@ -98,22 +122,29 @@ import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.aimcost.ConstructPlanIndexEntryInfo;
+import com.kingdee.eas.fdc.aimcost.CostIndexConfigInfo;
+import com.kingdee.eas.fdc.aimcost.CostIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.CustomPlanIndexEntryCollection;
 import com.kingdee.eas.fdc.aimcost.CustomPlanIndexEntryInfo;
+import com.kingdee.eas.fdc.aimcost.MeasureCostCompareInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureCostFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureCostInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureEntryCollection;
+import com.kingdee.eas.fdc.aimcost.MeasureEntryFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureEntryInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryCollection;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexCollection;
+import com.kingdee.eas.fdc.aimcost.PlanIndexEntryCollection;
+import com.kingdee.eas.fdc.aimcost.PlanIndexEntryFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexInfo;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostCollection;
 import com.kingdee.eas.fdc.aimcost.VersionTypeEnum;
+import com.kingdee.eas.fdc.basecrm.CRMHelper;
 import com.kingdee.eas.fdc.basedata.AcctAccreditHelper;
 import com.kingdee.eas.fdc.basedata.ApportionTypeEnum;
 import com.kingdee.eas.fdc.basedata.ApportionTypeInfo;
@@ -153,11 +184,16 @@ import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCUIWeightWorker;
 import com.kingdee.eas.fdc.basedata.client.IFDCWork;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContracCostInfo;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
+import com.kingdee.eas.fdc.invite.InviteTypeInfo;
 import com.kingdee.eas.fdc.migrate.BOSUuidHelper;
+import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fi.gl.GlUtils;
 import com.kingdee.eas.framework.ICoreBase;
 import com.kingdee.eas.framework.client.CoreUI;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
+import com.kingdee.eas.ma.budget.client.LongTimeDialog;
 import com.kingdee.eas.tools.datatask.DatataskMode;
 import com.kingdee.eas.tools.datatask.DatataskParameter;
 import com.kingdee.eas.tools.datatask.client.DatataskCaller;
@@ -375,8 +411,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					entry.setProgram((String)row.getCell("program").getValue());
 					entry.setDesc((String)row.getCell("desc").getValue());
 					entry.setChangeReason((String)row.getCell("changeReason").getValue());
-					entry.setDescription((String) row.getCell("description")
-							.getValue());
+					entry.setDescription((String) row.getCell("description").getValue());
 					if(entry.getCostAccount().getType()==CostAccountTypeEnum.SIX){
 						Object splitType=splitTypeMap.get(entry.getCostAccount().getId().toString());
 						if(splitType!=null){
@@ -394,6 +429,19 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		if(cost!=null&&cost.getId()!=null){
 			cost.setIsLastVersion(isLastVersion(cost.getId().toString()));
 		}
+		
+		if(isHasCompareEntry){
+			Object[] key = compareTables.keySet().toArray(); 
+			for (int k = 0; k < key.length; k++) {
+				String productKey=key[k].toString();
+				KDTable table=(KDTable) compareTables.get(productKey);
+				for(int i=0;i<table.getRowCount();i++){
+					MeasureCostCompareInfo entry=(MeasureCostCompareInfo) table.getRow(i).getUserObject();
+					entry.setReason((String)table.getRow(i).getCell("reason").getValue());
+				}
+			}
+		}
+    		
 	}
 
 	protected void initWorkButton() {
@@ -524,6 +572,11 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		return MeasureCostFactory.getRemoteInstance();
 	}
 	KDTextArea measureDes = null;
+	KDTable tblAttachement= null;
+	boolean isHasCompareEntry=false;
+	Map compareTables = null;
+	Map totalColor = null;
+	KDTabbedPane tabCompareEntry=null;
 //	KDPanel indexPanel = null;
 //	AimIndexUI aimIdexUI  = null;
 	private void addPanel() throws Exception {
@@ -543,16 +596,100 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		
 		tables = new ArrayList();
-		KDTable table =null;// new KDTable();
 		//添加测算说明
+		KDSplitPane splitPane=new KDSplitPane();
 		KDScrollPane  panel = new KDScrollPane();
 		measureDes = new KDTextArea();
 		measureDes.setMaxLength(50000);
 		panel.setViewportView(measureDes);
 		measureDes.setText(((MeasureCostInfo)this.editData).getMeasureDescription());
-		this.plTables.add(panel, "测算说明");
+		
+		tblAttachement=new KDTable();
+		tblAttachement.addKDTMouseListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener() {
+	            public void tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) {
+	                try {
+	                    tblAttachement_tableClicked(e);
+	                } catch (Exception exc) {
+	                    handUIException(exc);
+	                } finally {
+	                }
+	            }
+	        });
+		tblAttachement.checkParsed();
+		tblAttachement.addHeadRow();
+		tblAttachement.setEnabled(false);
+		IColumn name=tblAttachement.addColumn();
+		name.setKey("name");
+		tblAttachement.getHeadRow(0).getCell("name").setValue("名称");
+		name.setWidth(300);
+		
+		IColumn id=tblAttachement.addColumn();
+		id.setKey("id");
+		tblAttachement.getHeadRow(0).getCell("id").setValue("id");
+		id.getStyleAttributes().setHided(true);
+		
+		this.fillAttachmnetTable();
+		
+		KDContainer contDes=new KDContainer();
+		contDes.setLayout(new BorderLayout(0, 0)); 
+		contDes.add(panel,BorderLayout.CENTER);
+		
+		KDContainer contAttach=new KDContainer();
+		contAttach.getContentPane().setLayout(new BorderLayout(0, 0));        
+		contAttach.getContentPane().add(tblAttachement, BorderLayout.CENTER);
+		
+		splitPane.add(contDes, "left");
+		splitPane.add(contAttach,"right");
+		this.plTables.add(splitPane, "测算说明&附件管理");
+		splitPane.setDividerLocation(1000);
+		
+		KDWorkButton btnAttachment = new KDWorkButton();
+		this.actionAttachment.putValue("SmallIcon", EASResource.getIcon("imgTbtn_affixmanage"));
+		this.actionAttachment.setVisible(true);
+		btnAttachment = (KDWorkButton) contAttach.add(this.actionAttachment);
+		btnAttachment.setText("附件管理");
+		btnAttachment.setSize(new Dimension(140, 19));
+		
+		tabCompareEntry=new KDTabbedPane();
+		KDContainer contCompareEntry=new KDContainer();
+		contCompareEntry.getContentPane().setLayout(new BorderLayout(0, 0)); 
+		contCompareEntry.getContentPane().add(tabCompareEntry,BorderLayout.CENTER);
+		
+		Boolean isEditVersion=(Boolean)getUIContext().get("isEditVersion");
+    	if(isEditVersion!=null){
+    		if(isEditVersion.booleanValue()){
+    			((MeasureCostInfo)this.editData).getCompareEntry().clear();
+    			isHasCompareEntry=true;
+    		}
+		}else{
+			if(((MeasureCostInfo)this.editData).getVersionType().equals(VersionTypeEnum.AdjustVersion)){
+				isHasCompareEntry=true;
+			}
+		}
+    	if(isHasCompareEntry){
+    		compareTables=new HashMap();
+    		loadCompareEntry((MeasureCostInfo)this.editData);
+			this.plTables.add(contCompareEntry, "调整原因");
+		}
+    	up.setOpaque(true);
+		up.setBackground(new Color(248,171,166));
+		down.setOpaque(true);
+		down.setBackground(new Color(163,207,98));
+		
+		this.contUp.setVisible(isHasCompareEntry);
+		this.contDown.setVisible(isHasCompareEntry);
+		this.up.setVisible(isHasCompareEntry);
+		this.down.setVisible(isHasCompareEntry);
+		
+    	
+		KDWorkButton btnCompare = new KDWorkButton();
+		this.actionCompare.putValue("SmallIcon", EASResource.getIcon("imgTbtn_input"));
+		btnCompare = (KDWorkButton) contCompareEntry.add(this.actionCompare);
+		btnCompare.setText("提取");
+		btnCompare.setSize(new Dimension(140, 19));
 		
 		//添加汇总表及规划指标表
+		KDTable table =null;// new KDTable();
 		measureCollectTable=new MeasureCollectTable(this);
 		table=measureCollectTable.getTable();
 		this.tables.add(table);
@@ -568,7 +705,24 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		
 		table = planIndexTable.getConstructTable();
 		this.tables.add(table);
-		this.plTables.add(table,"建造标准");
+		
+		KDContainer constructTable=new KDContainer();
+		constructTable.getContentPane().setLayout(new BorderLayout(0, 0));        
+		constructTable.getContentPane().add(table, BorderLayout.CENTER);
+		
+		KDWorkButton btnImportExcel=new KDWorkButton();
+		this.actionImportConstructTable.putValue("SmallIcon", EASResource.getIcon("imgTbtn_input"));
+		btnImportExcel = (KDWorkButton)constructTable.add(this.actionImportConstructTable);
+		btnImportExcel.setText("导入");
+		btnImportExcel.setSize(new Dimension(140, 19));
+		
+		KDWorkButton btnExportExcel=new KDWorkButton();
+		this.actionExportConstructTable.putValue("SmallIcon", EASResource.getIcon("imgTbtn_output"));
+		btnExportExcel = (KDWorkButton)constructTable.add(this.actionExportConstructTable);
+		btnExportExcel.setText("导出");
+		btnExportExcel.setSize(new Dimension(140, 19));
+		
+		this.plTables.add(constructTable,"建造标准");
 		
 		//成本关键指标表
 //		indexPanel = new KDPanel();
@@ -1145,6 +1299,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		sels.add("constrEntrys.productType.*");
 		
 		sels.add("creator.*");
+		sels.add("compareEntry.*");
 		return sels;
 	}
 
@@ -1263,7 +1418,24 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		row.getCell("program").setValue(info.getProgram());
 		row.getCell("desc").setValue(info.getDesc());
 		row.getCell("changeReason").setValue(info.getChangeReason());
+		Boolean isEditVersion=(Boolean)getUIContext().get("isEditVersion");
+    	if(isEditVersion!=null){
+    		if(isEditVersion.booleanValue()){
+    			info.setDescription(null);
+    		}
+    	}
 		row.getCell("description").setValue(info.getDescription());
+		if(isHasCompareEntry){
+			if("upred".equals(info.getDescription())){
+				table.getRow(row.getRowIndex()-1).getStyleAttributes().setBackground(up.getBackground());
+			}else if("red".equals(info.getDescription())){
+				row.getStyleAttributes().setBackground(up.getBackground());
+			}else if("upgreen".equals(info.getDescription())){
+				table.getRow(row.getRowIndex()-1).getStyleAttributes().setBackground(down.getBackground());
+			}else if("green".equals(info.getDescription())){
+				row.getStyleAttributes().setBackground(down.getBackground());
+			}
+		}
 		setTemplateMeasureCostF7Editor(table, row);
 	}
 	
@@ -1371,6 +1543,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
     			}
     		}
     	}
+    	this.btnAttachment.setVisible(false);
 	}
 
 	private void editVersion() throws BOSException, SQLException {
@@ -1485,14 +1658,19 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		plTables.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
 				Object obj=plTables.getClientProperty("oldIndex");
+				int i=2;
+				if(isHasCompareEntry){
+					i=3;
+				}
 				if(obj instanceof Integer){
-					if(((Integer)obj).intValue()==2){
+					if(((Integer)obj).intValue() ==i){
 						refreshAllMeasureTable();
 					}
 				}
 				plTables.putClientProperty("oldIndex", new  Integer(plTables.getSelectedIndex()));
-				if(plTables.getSelectedIndex()==1){
+				if(plTables.getSelectedIndex()==i-1){
 					measureCollectTable.refresh();
+					setTotalColor();
 				}
 			}
 			
@@ -1947,19 +2125,25 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	}
 
 	public void actionAddRow_actionPerformed(ActionEvent arg0) throws Exception {
+		int ii=1;
+		if(this.isHasCompareEntry){
+			ii=2;
+		}
 		if(this.plTables.getSelectedIndex()==0){
 			return;
 		}
-		
 		if(this.plTables.getSelectedIndex()==1){
 			return;
 		}
-		if(this.plTables.getSelectedIndex()==2){
+		if(this.plTables.getSelectedIndex()==ii){
+			return;
+		}
+		if(this.plTables.getSelectedIndex()==ii+1){
 			planIndexTable.addRow(arg0);
 			return;
 		}
 		
-		if(this.plTables.getSelectedIndex()==3){
+		if(this.plTables.getSelectedIndex()==ii+2){
 			planIndexTable.addConstrIndexRow(arg0);
 			return;
 		}
@@ -1967,7 +2151,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			return;
 //		}
 		
-		if(this.plTables.getSelectedIndex()==4){
+		if(this.plTables.getSelectedIndex()==ii+3){
 			Object v = prmtProjectType.getValue();
 			if(v==null){
 				MsgBox.showWarning(this, "六类公摊测算必须先设置项目系列");
@@ -1976,7 +2160,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		
 		int selectIndex = this.plTables.getSelectedIndex();
-		KDTable table = (KDTable) this.tables.get(selectIndex-1);
+		KDTable table = (KDTable) this.tables.get(selectIndex-2);
 		if (table.getRowCount() == 0) {
 			return;
 		}
@@ -2189,17 +2373,24 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 
 	public void actionDeleteRow_actionPerformed(ActionEvent arg0)
 			throws Exception {
+		int ii=1;
+		if(this.isHasCompareEntry){
+			ii=2;
+		}
 		if(this.plTables.getSelectedIndex()==0){
 			return;
 		}
 		if(this.plTables.getSelectedIndex()==1){
 			return;
 		}
-		if(this.plTables.getSelectedIndex()==2){
+		if(this.plTables.getSelectedIndex()==ii){
+			return;
+		}
+		if(this.plTables.getSelectedIndex()==ii+1){
 			planIndexTable.deleteRow(arg0);
 			return;
 		}
-		if(this.plTables.getSelectedIndex()==3){
+		if(this.plTables.getSelectedIndex()==ii+2){
 			planIndexTable.deleteConstrIndexRow(arg0);
 			return;
 		}
@@ -2208,7 +2399,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			return;
 //		}
 		int selectIndex = this.plTables.getSelectedIndex();
-		KDTable table = (KDTable) this.tables.get(selectIndex - 1);
+		KDTable table = (KDTable) this.tables.get(selectIndex - 2);
 		KDTSelectManager selectManager = table.getSelectManager();
 		if (selectManager == null || selectManager.size() == 0) {
 			return;
@@ -2703,6 +2894,40 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		confirmVersionOnly();
 		
+		if(isHasCompareEntry){
+			Map verAllCompare=new HashMap();
+			compare(new MeasureCostInfo(),verAllCompare);
+			
+			Object[] key = compareTables.keySet().toArray(); 
+			for (int k = 0; k < key.length; k++) {
+				String productKey=key[k].toString();
+				if("汇总".equals(productKey))continue;
+				KDTable table=(KDTable) compareTables.get(productKey);
+				for(int i=0;i<table.getRowCount();i++){
+					String costAccount=(String)table.getRow(i).getCell("costAccount").getValue();
+					String content=(String)table.getRow(i).getCell("content").getValue();
+					String reson=(String)table.getRow(i).getCell("reason").getValue();
+					if(reson == null||"".equals(reson.trim())){
+						FDCMsgBox.showWarning(this,productKey+" 第"+(i+1)+"行调整原因不能为空！");
+						SysUtil.abort();
+					}
+					if(verAllCompare.containsKey(productKey+costAccount)){
+						if(!content.equals(verAllCompare.get(productKey+costAccount).toString())){
+							FDCMsgBox.showWarning(this,"请先进行调整原因提取操作！");
+							SysUtil.abort();
+						}else{
+							verAllCompare.remove(productKey+costAccount);
+						}
+					}
+				}
+			}
+			if(verAllCompare.size()>0){
+				FDCMsgBox.showWarning(this,"请先进行调整原因提取操作！");
+				SysUtil.abort();
+			}
+		}
+	
+		
 		super.actionSubmit_actionPerformed(e);
 		//提交了之后要将"导入模板"灰掉 ，只有在新增单据的时候允许使用"导入模板"   by Cassiel_peng   2009-8-19
 		
@@ -2761,9 +2986,14 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	}
 
 	public void actionPrint_actionPerformed(ActionEvent e) throws Exception {
-		KDTable table = (KDTable) this.tables.get(this.plTables
-				.getSelectedIndex());
-		table.getPrintManager().print();
+		int i=1;
+		if(this.isHasCompareEntry){
+			i=2;
+		}
+		if(this.plTables.getSelectedIndex()-i>=0){
+			KDTable table = (KDTable) this.tables.get(this.plTables.getSelectedIndex()-i);
+			table.getPrintManager().print();
+		}
 	}
 
 	/**
@@ -2774,7 +3004,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			KDTable table=(KDTable)tables.get(i);
 			refreshMeasureTable(table);
 		}
-
 	}
 	
 	private void refreshMeasureTable(KDTable table){
@@ -2808,11 +3037,15 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		
 	}
-	public void actionPrintPreview_actionPerformed(ActionEvent e)
-			throws Exception {
-		KDTable table = (KDTable) this.tables.get(this.plTables
-				.getSelectedIndex());
-		table.getPrintManager().printPreview();
+	public void actionPrintPreview_actionPerformed(ActionEvent e)throws Exception {
+		int i=1;
+		if(this.isHasCompareEntry){
+			i=2;
+		}
+		if(this.plTables.getSelectedIndex()-i>=0){
+			KDTable table = (KDTable) this.tables.get(this.plTables.getSelectedIndex()-i);
+			table.getPrintManager().printPreview();
+		}
 	}
 	
 	/**
@@ -3307,7 +3540,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		});
         if(!getOprtState().equals(OprtState.ADDNEW) && !getOprtState().equals(OprtState.EDIT)){
         	for(int i=0;i<tables.size();i++){
-        		if(i==2) continue;
+//        		if(i==2) continue;
         		((KDTable)tables.get(i)).getStyleAttributes().setLocked(true);
         		if(i>2){
         			ICellEditor editor =((KDTable)tables.get(i)).getColumn("workload").getEditor();
@@ -3318,8 +3551,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
         			if(editor!=null&&editor.getComponent()!=null){
         				editor.getComponent().setEnabled(false);
         			}
-
-        			
         		}
         	}
 //        	actionAddRow.setVisible(false);
@@ -3327,6 +3558,9 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //        	actionDeleteRow.setVisible(false);
         	actionDeleteRow.setEnabled(false);
         	
+        	measureDes.setEnabled(false);
+        	this.actionImportConstructTable.setEnabled(false);
+        	this.actionCompare.setEnabled(false);
         }
         //工程项目不让选择，必须新增的时候带过来，否者请重新生成
         this.prmtProject.setEnabled(false);
@@ -4002,8 +4236,525 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			productTypeMap.put(info.getName(),info);
 		}
 	}
-	
-	public void actionAddNew_actionPerformed(ActionEvent e) throws Exception {
-		super.actionAddNew_actionPerformed(e);
+	protected void tblAttachement_tableClicked(KDTMouseEvent e)throws Exception {
+		if(e.getType() == 1 && e.getButton() == 1 && e.getClickCount() == 2){
+			IRow row  =  tblAttachement.getRow(e.getRowIndex());
+			getFileGetter();
+			Object selectObj= row.getCell("id").getValue();
+			if(selectObj!=null){
+				String attachId=selectObj.toString();
+				fileGetter.viewAttachment(attachId);
+			}
+		}
+	}
+	private  FileGetter fileGetter;
+	private  FileGetter getFileGetter() throws Exception {
+        if (fileGetter == null)
+            fileGetter = new FileGetter((IAttachment) AttachmentFactory.getRemoteInstance(), AttachmentFtpFacadeFactory.getRemoteInstance());
+        return fileGetter;
+    }
+	public void fillAttachmnetTable() throws EASBizException, BOSException {
+		this.tblAttachement.removeRows();
+		String boId = null;
+		if (this.editData.getId() == null) {
+			return;
+		} else {
+			boId = this.editData.getId().toString();
+		}
+		if (boId != null) {
+			SelectorItemCollection sic = new SelectorItemCollection();
+			sic.add(new SelectorItemInfo("id"));
+			sic.add(new SelectorItemInfo("attachment.id"));
+			sic.add(new SelectorItemInfo("attachment.name"));
+			sic.add(new SelectorItemInfo("attachment.createTime"));
+			sic.add(new SelectorItemInfo("attachment.attachID"));
+			sic.add(new SelectorItemInfo("attachment.beizhu"));
+			sic.add(new SelectorItemInfo("assoType"));
+			sic.add(new SelectorItemInfo("boID"));
+
+			FilterInfo filter = new FilterInfo();
+			filter.getFilterItems().add(new FilterItemInfo("boID", boId));
+			EntityViewInfo evi = new EntityViewInfo();
+			evi.getSorter().add(new SorterItemInfo("boID"));
+			evi.getSorter().add(new SorterItemInfo("attachment.name"));
+			evi.setFilter(filter);
+			evi.setSelector(sic);
+			BoAttchAssoCollection cols = null;
+			try {
+				cols = BoAttchAssoFactory.getRemoteInstance().getBoAttchAssoCollection(evi);
+			} catch (BOSException e) {
+				e.printStackTrace();
+			}
+			boolean flag = false;
+			if (cols != null && cols.size() > 0) {
+				for (Iterator it = cols.iterator(); it.hasNext();) {
+					BoAttchAssoInfo boaInfo = (BoAttchAssoInfo)it.next();
+					AttachmentInfo attachment = boaInfo.getAttachment();
+					IRow row = tblAttachement.addRow();
+					row.getCell("id").setValue(attachment.getId().toString());
+					row.getCell("name").setValue(attachment.getName());
+				}
+			}
+		}
+	}
+	public void actionAttachment_actionPerformed(ActionEvent e)throws Exception {
+		super.actionAttachment_actionPerformed(e);
+		fillAttachmnetTable();
+	}
+	public KDTable initCompareTable(String productType){
+		KDTable tblCompareEntry=new KDTable();
+		tblCompareEntry.checkParsed();
+		tblCompareEntry.addHeadRow();
+		IColumn costAccount=tblCompareEntry.addColumn();
+		costAccount.setKey("costAccount");
+		tblCompareEntry.getHeadRow(0).getCell("costAccount").setValue("调整成本科目");
+		costAccount.setWidth(400);
+		costAccount.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_DISABLE_BG_COLOR);
+		costAccount.getStyleAttributes().setLocked(true);
+		
+		IColumn content=tblCompareEntry.addColumn();
+		content.setKey("content");
+		tblCompareEntry.getHeadRow(0).getCell("content").setValue("调整内容");
+		content.setWidth(300);
+		content.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_DISABLE_BG_COLOR);
+		content.getStyleAttributes().setLocked(true);
+		
+		IColumn reason=tblCompareEntry.addColumn();
+		reason.setKey("reason");
+		tblCompareEntry.getHeadRow(0).getCell("reason").setValue("调整原因");
+		reason.setWidth(500);
+		if(productType.equals("汇总")){
+			reason.getStyleAttributes().setHided(true);
+		}
+		reason.setRequired(true);
+		if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
+			reason.getStyleAttributes().setLocked(false);
+		}else{
+			reason.getStyleAttributes().setLocked(true);
+		}
+		
+		tabCompareEntry.add(tblCompareEntry,productType);
+		compareTables.put(productType, tblCompareEntry);
+		return tblCompareEntry;
+	}
+	public void setTotalColor(){
+		if(this.measureCollectTable==null)return;
+		for(int j=0;j<this.measureCollectTable.getTable().getRowCount();j++){
+			String longNumber=(String) this.measureCollectTable.getTable().getRow(j).getCell("acctNumber").getValue();
+			if(totalColor.containsKey(longNumber)){
+				if(totalColor.get(longNumber).toString().indexOf("增加")>0){
+					this.measureCollectTable.getTable().getRow(j).getStyleAttributes().setBackground(up.getBackground());
+				}else{
+					this.measureCollectTable.getTable().getRow(j).getStyleAttributes().setBackground(down.getBackground());
+				}
+			}else{
+				this.measureCollectTable.getTable().getRow(j).getStyleAttributes().setBackground(Color.WHITE);
+			}
+		}
+	}
+	public void loadCompareEntry(MeasureCostInfo info){
+		totalColor=new HashMap();
+		CRMHelper.sortCollection(info.getCompareEntry(), "costAccount", true);
+		for(int i=0;i<info.getCompareEntry().size();i++){
+			MeasureCostCompareInfo entry=info.getCompareEntry().get(i);
+			String productType=entry.getProductType();
+			KDTable table=(KDTable) compareTables.get(productType);
+			if(table==null){
+				table=initCompareTable(productType);
+			}
+			IRow row=table.addRow();
+			row.setUserObject(entry);
+			row.getCell("costAccount").setValue(entry.getCostAccount());
+			row.getCell("content").setValue(entry.getContent());
+			row.getCell("reason").setValue(entry.getReason());
+			
+			if(productType.equals("汇总")){
+				totalColor.put(entry.getCostAccount().split("     ")[0], entry.getContent());
+			}
+		}
+		Object[] key = compareTables.keySet().toArray(); 
+		for (int k = 0; k < key.length; k++) {
+			String productKey=key[k].toString();
+			KDTable table=(KDTable) compareTables.get(productKey);
+			if(table.getRowCount()==0){
+				tabCompareEntry.remove(table);
+				compareTables.remove(productKey);
+			}
+		}
+	}
+	public void compare(MeasureCostInfo info,Map map) throws SQLException, BOSException{
+		Map reasonMap=new HashMap();
+		Object[] key = compareTables.keySet().toArray(); 
+		for (int k = 0; k < key.length; k++) {
+			String productKey=key[k].toString();
+			KDTable table=(KDTable) compareTables.get(productKey);
+			for(int i=0;i<table.getRowCount();i++){
+				if(table.getRow(i).getCell("costAccount").getValue()==null) continue;
+				String costAccount=table.getRow(i).getCell("costAccount").getValue().toString();
+				String reason=(String)table.getRow(i).getCell("reason").getValue();
+				reasonMap.put(productKey+costAccount, reason);
+			}
+		}
+		
+		info.getCompareEntry().clear();
+		Map totalMap=new HashMap();
+		Map entryMap=new HashMap();
+		Map colorMap=new HashMap();
+		Map storeColorMap=new HashMap();
+		for(int i=3;i<tables.size();i++){
+			KDTable table=(KDTable) tables.get(i);
+			ProductTypeInfo product = (ProductTypeInfo) table.getHeadRow(0).getUserObject();
+			String productKey="六类公摊及期间费";
+			if(product!=null)productKey=product.getName();
+			for (int j = 0; j < table.getRowCount(); j++) {
+				IRow row = table.getRow(j);
+				if (row.getUserObject() instanceof MeasureEntryInfo) {
+					row.getCell("description").setValue(null);
+					boolean isEmpty=true;
+					for(int k=3;k<table.getColumnCount();k++){
+						if(!FDCHelper.isEmpty(row.getCell(k).getValue())){
+							isEmpty=false;
+							break;
+						}
+					}
+					if(isEmpty){
+						continue;
+					}
+					MeasureEntryInfo entry = (MeasureEntryInfo) row.getUserObject();
+					if(row.getCell(0).getUserObject()==null){
+						row=table.getRow(j-1);
+					}
+					entry.setCostAmount((BigDecimal) row.getCell("sumPrice").getValue());
+					entry.setProduct(product);
+					
+					if(entry.getCostAmount()==null||entry.getCostAmount().compareTo(FDCHelper.ZERO)<=0)continue;
+					String longNumber=entry.getCostAccount().getLongNumber().replaceAll("!", "\\.");
+					String name=entry.getCostAccount().getName();
+					if(entry.getCostAccount()!=null&&entry.getCostAccount().isIsLeaf()){
+						if(entryMap.containsKey(productKey+longNumber)){
+							continue;
+						}else{
+							entryMap.put(productKey+longNumber, entry);
+							colorMap.put(productKey+longNumber, row);
+							storeColorMap.put(productKey+longNumber, table.getRow(j));
+							totalMap.put(longNumber+"     "+name, FDCHelper.add(totalMap.get(longNumber+"     "+name), entry.getCostAmount()));
+						}
+					}
+				}
+			}
+		}
+		String id=null;
+		Boolean isEditVersion=(Boolean)getUIContext().get("isEditVersion");
+    	if(isEditVersion!=null){
+    		if(isEditVersion.booleanValue()){
+    			if(this.editData.getId()==null){
+    				id=((MeasureCostInfo)this.editData).getSrcMeasureCostId();
+    			}else{
+    				id=this.editData.getId().toString();
+    			}
+    		}
+		}else{
+			if(((MeasureCostInfo)this.editData).getVersionType().equals(VersionTypeEnum.AdjustVersion)){
+				id=((MeasureCostInfo)this.editData).getSrcMeasureCostId();
+			}
+		}
+		FDCSQLBuilder _builder = new FDCSQLBuilder();
+		_builder.appendSql(" select costAccount.flongNumber longNumber,costAccount.fname_l2 name,sum(entry.fcostAmount) costAmount from T_AIM_MeasureEntry entry ");
+		_builder.appendSql(" left join T_FDC_CostAccount costAccount on costAccount.fid=entry.fcostAccountId");
+		_builder.appendSql(" left join T_FDC_ProductType product on product.fid=entry.fproductId");
+		_builder.appendSql(" where costAccount.fisLeaf=1 and entry.fheadId='"+id+"'");
+		_builder.appendSql(" group by costAccount.flongNumber,costAccount.fname_l2");
+		IRowSet rowSet = _builder.executeQuery();
+		while(rowSet.next()){
+			String longNumber = rowSet.getString("longNumber").replaceAll("!", "\\.");
+			String name=rowSet.getString("name");
+			BigDecimal srcAmount=rowSet.getBigDecimal("costAmount");
+			String content=null;
+			MeasureCostCompareInfo entry=null;
+			if(totalMap.get(longNumber+"     "+name)!=null){
+				BigDecimal nowAmount=(BigDecimal) totalMap.get(longNumber+"     "+name);
+				if(nowAmount.compareTo(srcAmount)!=0){
+					entry=new MeasureCostCompareInfo();
+					entry.setProductType("汇总");
+					entry.setCostAccount(longNumber+"     "+name);
+					if(nowAmount.compareTo(srcAmount)>0){
+						content="成本增加"+FDCHelper.toBigDecimal(nowAmount.subtract(srcAmount),2)+"元";
+					}else{
+						content="成本减少"+FDCHelper.toBigDecimal(srcAmount.subtract(nowAmount),2)+"元";
+					}
+					entry.setContent(content);
+					entry.setReason((String) reasonMap.get("汇总"+longNumber+"     "+name));
+					info.getCompareEntry().add(entry);
+				}
+				totalMap.remove(longNumber+"     "+name);
+			}else if(srcAmount.compareTo(FDCHelper.ZERO)!=0){
+				entry=new MeasureCostCompareInfo();
+				entry.setProductType("汇总");
+				entry.setCostAccount(longNumber+"     "+name);
+				content="成本减少"+FDCHelper.toBigDecimal(srcAmount,2)+"元";
+				entry.setContent(content);
+				entry.setReason((String) reasonMap.get("汇总"+longNumber+"     "+name));
+				info.getCompareEntry().add(entry);
+			}
+		}
+		Object[] totalKey = totalMap.keySet().toArray(); 
+		for (int k = 0; k < totalKey.length; k++) {
+			MeasureCostCompareInfo entry=new MeasureCostCompareInfo();
+			entry.setProductType("汇总");
+			entry.setCostAccount((String) totalKey[k]);
+			String content="成本增加"+FDCHelper.toBigDecimal(totalMap.get(totalKey[k]),2)+"元";
+			entry.setContent(content);
+			entry.setReason((String) reasonMap.get("汇总"+totalKey[k]));
+			info.getCompareEntry().add(entry);
+		}
+		_builder = new FDCSQLBuilder();
+		_builder.appendSql(" select costAccount.flongNumber longNumber,costAccount.fname_l2 name,product.fname_l2 productKey,sum(entry.fcostAmount) costAmount from T_AIM_MeasureEntry entry ");
+		_builder.appendSql(" left join T_FDC_CostAccount costAccount on costAccount.fid=entry.fcostAccountId");
+		_builder.appendSql(" left join T_FDC_ProductType product on product.fid=entry.fproductId");
+		_builder.appendSql(" where costAccount.fisLeaf=1 and entry.fheadId='"+id+"'");
+		_builder.appendSql(" group by costAccount.flongNumber,costAccount.fname_l2,product.fname_l2");
+		rowSet = _builder.executeQuery();
+		while(rowSet.next()){
+			String productKey="六类公摊及期间费";
+			if(rowSet.getString("productKey")!=null)productKey=rowSet.getString("productKey");
+			String longNumber = rowSet.getString("longNumber").replaceAll("!", "\\.");
+			String name=rowSet.getString("name");
+			BigDecimal srcAmount=rowSet.getBigDecimal("costAmount");
+			String content=null;
+			MeasureCostCompareInfo entry=null;
+			if(entryMap.get(productKey+longNumber)!=null){
+				MeasureEntryInfo nowMEntry=(MeasureEntryInfo) entryMap.get(productKey+longNumber);
+				BigDecimal nowAmount=nowMEntry.getCostAmount();
+				if(nowAmount.compareTo(srcAmount)!=0){
+					entry=new MeasureCostCompareInfo();
+					entry.setProductType(productKey);
+					entry.setCostAccount(longNumber+"     "+name);
+					if(nowAmount.compareTo(srcAmount)>0){
+						content="成本增加"+FDCHelper.toBigDecimal(nowAmount.subtract(srcAmount),2)+"元";
+						if(((IRow)storeColorMap.get(productKey+longNumber)).getCell(0).getUserObject()==null){
+							((IRow)storeColorMap.get(productKey+longNumber)).getCell("description").setValue("upred");
+						}else{
+							((IRow)storeColorMap.get(productKey+longNumber)).getCell("description").setValue("red");
+						}
+						((IRow)colorMap.get(productKey+longNumber)).getStyleAttributes().setBackground(up.getBackground());
+					}else{
+						content="成本减少"+FDCHelper.toBigDecimal(srcAmount.subtract(nowAmount),2)+"元";
+						if(((IRow)storeColorMap.get(productKey+longNumber)).getCell(0).getUserObject()==null){
+							((IRow)storeColorMap.get(productKey+longNumber)).getCell("description").setValue("upgreen");
+						}else{
+							((IRow)storeColorMap.get(productKey+longNumber)).getCell("description").setValue("green");
+						}
+						((IRow)colorMap.get(productKey+longNumber)).getStyleAttributes().setBackground(down.getBackground());
+					}
+					entry.setContent(content);
+					entry.setReason((String) reasonMap.get(productKey+longNumber+"     "+name));
+					info.getCompareEntry().add(entry);
+					
+					map.put(entry.getProductType()+entry.getCostAccount(), entry.getContent());
+				}
+				entryMap.remove(productKey+longNumber);
+			}else if(srcAmount.compareTo(FDCHelper.ZERO)!=0){
+				entry=new MeasureCostCompareInfo();
+				entry.setProductType(productKey);
+				entry.setCostAccount(longNumber+"     "+name);
+				content="成本减少"+FDCHelper.toBigDecimal(srcAmount,2)+"元";
+				entry.setContent(content);
+				entry.setReason((String) reasonMap.get(productKey+longNumber+"     "+name));
+				info.getCompareEntry().add(entry);
+				
+				map.put(entry.getProductType()+entry.getCostAccount(), entry.getContent());
+			}
+		}
+		Object[] entryKey = entryMap.keySet().toArray(); 
+		for (int k = 0; k < entryKey.length; k++) {
+			MeasureEntryInfo nowMEntry=(MeasureEntryInfo) entryMap.get(entryKey[k]);
+			String nowNumber=nowMEntry.getCostAccount().getLongNumber().replaceAll("!", "\\.");
+			String nowName=nowMEntry.getCostAccount().getName();
+			String productKey="六类公摊及期间费";
+			if(nowMEntry.getProduct()!=null)productKey=nowMEntry.getProduct().getName();
+			
+			MeasureCostCompareInfo entry=new MeasureCostCompareInfo();
+			entry.setProductType(productKey);
+			entry.setCostAccount(nowNumber+"     "+nowName);
+			String content="成本增加"+FDCHelper.toBigDecimal(nowMEntry.getCostAmount(),2)+"元";
+			if(((IRow)storeColorMap.get(productKey+nowNumber)).getCell(0).getUserObject()==null){
+				((IRow)storeColorMap.get(productKey+nowNumber)).getCell("description").setValue("upred");
+			}else{
+				((IRow)storeColorMap.get(productKey+nowNumber)).getCell("description").setValue("red");
+			}
+			((IRow)colorMap.get(productKey+nowNumber)).getStyleAttributes().setBackground(up.getBackground());
+			entry.setContent(content);
+			entry.setReason((String) reasonMap.get(productKey+nowNumber+"     "+nowName.trim()));
+			info.getCompareEntry().add(entry);
+			
+			map.put(entry.getProductType()+entry.getCostAccount(), entry.getContent());
+		}
+	}
+	public void actionCompare_actionPerformed(ActionEvent e) throws Exception {
+		MeasureCostInfo info=(MeasureCostInfo) this.editData;
+		compare(info,new HashMap());
+		
+		tabCompareEntry.removeAll();
+		compareTables=new HashMap();
+		
+		String id=null;
+		Boolean isEditVersion=(Boolean)getUIContext().get("isEditVersion");
+    	if(isEditVersion!=null){
+    		if(isEditVersion.booleanValue()){
+    			if(this.editData.getId()==null){
+    				id=((MeasureCostInfo)this.editData).getSrcMeasureCostId();
+    			}else{
+    				id=this.editData.getId().toString();
+    			}
+    		}
+		}else{
+			if(((MeasureCostInfo)this.editData).getVersionType().equals(VersionTypeEnum.AdjustVersion)){
+				id=((MeasureCostInfo)this.editData).getSrcMeasureCostId();
+			}
+		}
+		PlanIndexEntryCollection ptCol=PlanIndexEntryFactory.getRemoteInstance().getPlanIndexEntryCollection("select product.name from where parent.headId='"+id+"' and product.id is not null");
+		initCompareTable("汇总");
+		initCompareTable("六类公摊及期间费");
+		for(int i=0;i<ptCol.size();i++){
+			initCompareTable(ptCol.get(i).getProduct().getName());
+		}
+		loadCompareEntry(info);
+	}
+	public void actionExportConstructTable_actionPerformed(ActionEvent e)throws Exception {
+		ExportManager exportM = new ExportManager();
+        String path = null;
+        File tempFile = File.createTempFile("eastemp",".xls");
+        path = tempFile.getCanonicalPath();
+
+        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[1];
+        
+    	KDTable table = planIndexTable.getConstructTable();
+        tablesVO[0] = new KDTables2KDSBookVO(table);
+        String title = "建造标准";
+        title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
+		tablesVO[0].setTableName(title);
+		
+        KDSBook book = null;
+        book = KDTables2KDSBook.getInstance().exportKDTablesToKDSBook(tablesVO,true,true);
+        exportM.exportToExcel(book, path);
+        
+		KDFileChooser fileChooser = new KDFileChooser();
+		fileChooser.setFileSelectionMode(0);
+		fileChooser.setMultiSelectionEnabled(false);
+		fileChooser.setSelectedFile(new File("建造标准.xls"));
+		int result = fileChooser.showSaveDialog(this);
+		if (result == KDFileChooser.APPROVE_OPTION){
+			File dest = fileChooser.getSelectedFile();
+			try{
+				File src = new File(path);
+				if (dest.exists())
+					dest.delete();
+				src.renameTo(dest);
+				FDCMsgBox.showInfo("导出成功！");
+				KDTMenuManager.openFileInExcel(dest.getAbsolutePath());
+			}
+			catch (Exception e3)
+			{
+				handUIException(e3);
+			}
+		}
+		tempFile.delete();
+	}
+	private String path =null;
+	public void actionImportConstructTable_actionPerformed(ActionEvent e)throws Exception {
+		path = SHEHelper.showExcelSelectDlg(this);
+		if (path == null) {
+			return;
+		}
+		Window win = SwingUtilities.getWindowAncestor(this);
+        LongTimeDialog dialog = null;
+        if(win instanceof Frame){
+        	dialog = new LongTimeDialog((Frame)win);
+        }else if(win instanceof Dialog){
+        	dialog = new LongTimeDialog((Dialog)win);
+        }
+        if(dialog==null){
+        	dialog = new LongTimeDialog(new Frame());
+        }
+        dialog.setLongTimeTask(new ILongTimeTask() {
+			public void afterExec(Object arg0) throws Exception {
+				Boolean bol=(Boolean)arg0;
+				if(bol){
+					FDCMsgBox.showInfo("导入成功！");
+				}
+			}
+			public Object exec() throws Exception {
+				boolean bol=importExcelToTable(path,planIndexTable.getConstructTable());
+				return bol;
+			}
+    	}
+	    );
+	    dialog.show();
+	}
+	private boolean importExcelToTable(String fileName, KDTable table) throws Exception {
+		KDSBook kdsbook = null;
+		try {
+			kdsbook = POIXlsReader.parse2(fileName);
+		} catch (Exception e) {
+			e.printStackTrace();
+			FDCMsgBox.showWarning(this,"读EXCEL出错,EXCEl格式不匹配！");
+			return false;
+		}
+		if (kdsbook == null) {
+			return false;
+		}
+		for(int i=0;i<KDSBookToBook.traslate(kdsbook).getSheetCount();i++){
+			Sheet excelSheet = KDSBookToBook.traslate(kdsbook).getSheet(i);
+	        	
+            String title = "建造标准";
+            if(excelSheet.getSheetName().equals(title)){
+            	Map e_colNameMap = new HashMap();
+        		int e_maxRow = excelSheet.getMaxRowIndex();
+        		int e_maxColumn = excelSheet.getMaxColIndex();
+        		for (int col = 0; col <= e_maxColumn; col++) {
+        			String excelColName = excelSheet.getCell(0, col, true).getText();
+        			e_colNameMap.put(excelColName, new Integer(col));
+        		}
+        		for (int col = 0; col< table.getColumnCount(); col++) {
+        			if (table.getColumn(col).getStyleAttributes().isHided()) {
+        				continue;
+        			}
+        			String colName = (String) table.getHeadRow(0).getCell(col).getValue();
+        			Integer colInt = (Integer) e_colNameMap.get(colName);
+        			if (colInt == null) {
+        				FDCMsgBox.showWarning(this,title+"  表头结构不一致！表格上的关键列:" + colName + "在EXCEL中没有出现！");
+        				return false;
+        			}
+        		}
+        		table.removeRows();
+        		for (int rowIndex = 1; rowIndex <= e_maxRow; rowIndex++) {
+        			IRow row = table.addRow();
+        			CostIndexEntryInfo entry = new CostIndexEntryInfo();
+        			entry.setId(BOSUuid.create(entry.getBOSType()));
+        			entry.setConfig((CostIndexConfigInfo) table.getUserObject());
+        			row.setUserObject(entry);
+        			for (int col = 0; col < table.getColumnCount(); col++) {
+        				if (table.getColumn(col).getStyleAttributes().isHided()) {
+	        				continue;
+	        			}
+        				ICell tblCell = row.getCell(col);
+        				String colName = (String) table.getHeadRow(0).getCell(col).getValue();
+        				Integer colInt = (Integer) e_colNameMap.get(colName);
+
+        				if (colInt == null) {
+        					continue;
+        				}
+        				Variant cellRawVal = excelSheet.getCell(rowIndex, colInt.intValue(), true).getValue();
+        				if (Variant.isNull(cellRawVal)) {
+        					continue;
+        				}
+        				String colValue = cellRawVal.toString();
+    					tblCell.setValue(colValue);
+        			}
+        		}
+            	break;
+            }
+		}
+		return true;
 	}
 }
