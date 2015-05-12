@@ -968,7 +968,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblFree.getColumn(C_FREE_END_DATE).getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
 		this.tblFree.getColumn(C_FREE_TENANCY_TYPE).setEditor(createComboCellEditor(FreeTenancyTypeEnum.getEnumList()));
 		this.tblFree.getColumn(C_FREE_DES).setEditor(createTxtCellEditor(255, true));
-		this.tblFree.setEnabled(false);
 		
 		ItemAction actionAddIncrease = new ItemAction() {
 			public void actionPerformed(ActionEvent e) {
@@ -1015,6 +1014,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		
 		btnAddFree.setVisible(isFreeAdd);
 		btnRmFree.setVisible(isFreeAdd);
+		this.tblFree.setEnabled(isFreeAdd);
 		
 		contRentFreeBill.setVisible(!isFreeAdd);
 	}

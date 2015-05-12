@@ -328,15 +328,15 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 			}
 			if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("act")){
 				if(type.equals("销售收入")){
-					toBaseTransaction(1,orgId);
-				}else if(type.equals("回笼资金")){
-					toSheRevBill(1,orgId);
-				}
-			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yearAct")){
-				if(type.equals("销售收入")){
 					toBaseTransaction(0,orgId);
 				}else if(type.equals("回笼资金")){
 					toSheRevBill(0,orgId);
+				}
+			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yearAct")){
+				if(type.equals("销售收入")){
+					toBaseTransaction(1,orgId);
+				}else if(type.equals("回笼资金")){
+					toSheRevBill(1,orgId);
 				}
 			}
 		}
