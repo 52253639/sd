@@ -50,6 +50,7 @@ import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
@@ -108,7 +109,8 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 		this.kdtEntry.checkParsed();
 		this.kdtEntry.getSelectManager().setSelectMode(KDTSelectManager.CELL_SELECT);
 		this.kdtEntry.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
-
+		this.kdtEntry.setEnabled(false);
+		
 		KDFormattedTextField formattedTextField = new KDFormattedTextField(KDFormattedTextField.BIGDECIMAL_TYPE);
 		formattedTextField.setSupportedEmpty(true);
 		formattedTextField.setPrecision(2);
@@ -121,7 +123,6 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 		this.kdtEntry.getColumn("actRevAmount").setEditor(numberEditor);
 		this.kdtEntry.getColumn("actRevAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 		this.kdtEntry.getColumn("actRevAmount").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		this.kdtEntry.getColumn("actRevAmount").getStyleAttributes().setLocked(true);
 
 		try {
 			SelectorItemCollection sic=new SelectorItemCollection();
@@ -165,6 +166,7 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 					}
 				}
 			}
+			CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"appAmount","actRevAmount"});
 		} catch (EASBizException e) {
 			e.printStackTrace();
 		} catch (BOSException e) {
