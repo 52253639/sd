@@ -524,15 +524,15 @@ public class OtherBillListUI extends AbstractOtherBillListUI
     }
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
 		checkSelected();
-		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
-		IRow row = this.tblMain.getRow(rowIndex);
-		String id = (String) row.getCell(this.getKeyFieldName()).getValue();
-		
-		checkBeforeEditOrRemove("cantRemove",id);
-		
+		ArrayList id = getSelectedIdValues();
+		for(int i = 0; i < id.size(); i++){
+			checkBeforeEditOrRemove("cantRemove",id.get(i).toString());
+		}
 		if(confirmRemove()){
-			((IOtherBill)getBizInterface()).delete(new ObjectUuidPK(id));
-			MsgBox.showInfo(this, "É¾³ý³É¹¦£¡");
+			for(int i = 0; i < id.size(); i++){
+				((IOtherBill)getBizInterface()).delete(new ObjectUuidPK(id.get(i).toString()));
+			}
+			FDCClientUtils.showOprtOK(this);
 			this.refresh(null);
 		}
 	}

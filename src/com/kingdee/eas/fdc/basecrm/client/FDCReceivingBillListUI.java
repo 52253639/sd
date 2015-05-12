@@ -86,6 +86,7 @@ import com.kingdee.eas.fdc.sellhouse.client.MakeOutReceiptUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEReceivingBillEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEReceivingBillListUI;
+import com.kingdee.eas.fdc.tenancy.client.DepositDealBillEditUI;
 import com.kingdee.eas.fdc.tenancy.client.InvoiceBillEditUI;
 import com.kingdee.eas.fdc.tenancy.client.OtherBillEditUI;
 import com.kingdee.eas.fdc.tenancy.client.TENReceivingBillListUI;
@@ -198,7 +199,8 @@ public class FDCReceivingBillListUI extends AbstractFDCReceivingBillListUI
     
     protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK, EntityViewInfo viewInfo) {
     	if(this.getEditUIName().equals(InvoiceBillEditUI.class.getName())||
-    			this.getEditUIName().equals(OtherBillEditUI.class.getName())){
+    			this.getEditUIName().equals(OtherBillEditUI.class.getName())||
+    				this.getEditUIName().equals(DepositDealBillEditUI.class.getName())){
     		return super.getQueryExecutor(queryPK, viewInfo);	
     	}
 		try {

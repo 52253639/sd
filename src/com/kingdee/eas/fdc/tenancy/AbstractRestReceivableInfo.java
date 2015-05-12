@@ -20,14 +20,14 @@ public class AbstractRestReceivableInfo extends com.kingdee.eas.framework.CoreBi
         put("otherPayList", new com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection());
     }
     /**
-     * Object: 其他应收 's 分录 property 
+     * Object: K其他应收 's 分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.RestReceivableEntryCollection getEntrys()
     {
         return (com.kingdee.eas.fdc.tenancy.RestReceivableEntryCollection)get("entrys");
     }
     /**
-     * Object:其他应收's 是否生成凭证property 
+     * Object:K其他应收's 是否生成凭证property 
      */
     public boolean isFivouchered()
     {
@@ -38,7 +38,7 @@ public class AbstractRestReceivableInfo extends com.kingdee.eas.framework.CoreBi
         setBoolean("Fivouchered", item);
     }
     /**
-     * Object: 其他应收 's 租赁合同 property 
+     * Object: K其他应收 's 租赁合同 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyBillInfo getTenancyBill()
     {
@@ -49,7 +49,7 @@ public class AbstractRestReceivableInfo extends com.kingdee.eas.framework.CoreBi
         put("tenancyBill", item);
     }
     /**
-     * Object:其他应收's 单据状态property 
+     * Object:K其他应收's 单据状态property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum getBillState()
     {
@@ -62,7 +62,7 @@ public class AbstractRestReceivableInfo extends com.kingdee.eas.framework.CoreBi
 		}
     }
     /**
-     * Object:其他应收's 审核日期property 
+     * Object:K其他应收's 审核日期property 
      */
     public java.util.Date getAuditDate()
     {
@@ -73,7 +73,7 @@ public class AbstractRestReceivableInfo extends com.kingdee.eas.framework.CoreBi
         setDate("auditDate", item);
     }
     /**
-     * Object: 其他应收 's 其它应收条目 property 
+     * Object: K其他应收 's 其它应收条目 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection getOtherPayList()
     {

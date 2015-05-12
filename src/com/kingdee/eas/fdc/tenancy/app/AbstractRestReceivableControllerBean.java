@@ -21,16 +21,17 @@ import com.kingdee.eas.framework.exception.EASMultiException;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 
 import java.lang.String;
-import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.dao.IObjectPK;
+import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.framework.CoreBillBaseCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.eas.fdc.tenancy.RestReceivableInfo;
 import com.kingdee.eas.framework.app.CoreBillBaseControllerBean;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.framework.ObjectBaseCollection;
-import com.kingdee.bos.metadata.entity.SelectorItemCollection;
-import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.fdc.tenancy.RestReceivableCollection;
 
 
@@ -51,10 +52,13 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("15733509-fa92-4c16-ad84-c5d1e59b8d46"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RestReceivableCollection retValue = (RestReceivableCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RestReceivableCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -71,10 +75,13 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("3add228d-cc2b-4d33-aaf2-87fd89f59745"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RestReceivableCollection retValue = (RestReceivableCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RestReceivableCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -91,10 +98,13 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0e4f44f0-699f-47c7-b7db-272dabc4a3e1"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RestReceivableCollection retValue = (RestReceivableCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RestReceivableCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -111,10 +121,13 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ad14ed22-7d87-4f16-878e-a50f4a59bcbb"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RestReceivableInfo retValue = (RestReceivableInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RestReceivableInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -133,10 +146,13 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7d323bfb-b1a2-4446-a718-989f50a55cf5"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RestReceivableInfo retValue = (RestReceivableInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RestReceivableInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -155,10 +171,13 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("aa8bfa7f-2623-4b82-98ee-eb17480979f2"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RestReceivableInfo retValue = (RestReceivableInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RestReceivableInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -170,6 +189,102 @@ public abstract class AbstractRestReceivableControllerBean extends CoreBillBaseC
     protected IObjectValue _getValue(Context ctx, String oql) throws BOSException, EASBizException
     {
         return super._getValue(ctx, oql);
+    }
+
+    public void setAuditting(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("ee477103-1c00-4596-a978-1d19ef0ee040"), new Object[]{ctx, billId});
+            invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
+            _setAuditting(ctx, billId);
+            }
+            invokeServiceAfter(svcCtx);
+        } catch (BOSException ex) {
+            this.setRollbackOnly();
+            throw ex;
+        } catch (EASBizException ex0) {
+            this.setRollbackOnly();
+            throw ex0;
+        } finally {
+            super.cleanUpServiceState();
+        }
+    }
+    protected void _setAuditting(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {    	
+        return;
+    }
+
+    public void setSubmit(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("44a5371d-9551-4f5a-8076-494174c7a8df"), new Object[]{ctx, billId});
+            invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
+            _setSubmit(ctx, billId);
+            }
+            invokeServiceAfter(svcCtx);
+        } catch (BOSException ex) {
+            this.setRollbackOnly();
+            throw ex;
+        } catch (EASBizException ex0) {
+            this.setRollbackOnly();
+            throw ex0;
+        } finally {
+            super.cleanUpServiceState();
+        }
+    }
+    protected void _setSubmit(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {    	
+        return;
+    }
+
+    public void audit(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3803ce41-7412-4cc9-bb07-6db68c028e35"), new Object[]{ctx, billId});
+            invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
+            _audit(ctx, billId);
+            }
+            invokeServiceAfter(svcCtx);
+        } catch (BOSException ex) {
+            this.setRollbackOnly();
+            throw ex;
+        } catch (EASBizException ex0) {
+            this.setRollbackOnly();
+            throw ex0;
+        } finally {
+            super.cleanUpServiceState();
+        }
+    }
+    protected void _audit(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {    	
+        return;
+    }
+
+    public void unAudit(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3f4b806d-c51c-4bd6-924b-27b16006ced1"), new Object[]{ctx, billId});
+            invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
+            _unAudit(ctx, billId);
+            }
+            invokeServiceAfter(svcCtx);
+        } catch (BOSException ex) {
+            this.setRollbackOnly();
+            throw ex;
+        } catch (EASBizException ex0) {
+            this.setRollbackOnly();
+            throw ex0;
+        } finally {
+            super.cleanUpServiceState();
+        }
+    }
+    protected void _unAudit(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {    	
+        return;
     }
 
     public CoreBillBaseCollection getCoreBillBaseCollection (Context ctx) throws BOSException

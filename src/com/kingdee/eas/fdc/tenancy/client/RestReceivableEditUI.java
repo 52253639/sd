@@ -50,6 +50,7 @@ import com.kingdee.eas.fdc.basedata.IFDCBill;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
+import com.kingdee.eas.fdc.contract.client.ContractClientUtils;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
@@ -208,7 +209,9 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 	protected IObjectValue createNewDetailData(KDTable table) {
 		return null;
 	}
+	private static final String CANTEDIT = "cantEdit";
 
+	private static final String CANTREMOVE = "cantRemove";
 	public void actionEdit_actionPerformed(ActionEvent e) throws Exception {
 		if (editData.getId() == null) {
 			MsgBox.showInfo(this, "请先保存单据！");
@@ -218,6 +221,7 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 			MsgBox.showInfo(this, "单据已审核，不能编辑！");
 			abort();
 		}
+		checkBeforeEditOrRemove(CANTEDIT);
 		super.actionEdit_actionPerformed(e);
 	}
 
@@ -244,6 +248,10 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 		if(!flag){
 			MsgBox.showInfo(this, "存在已经收款的分录，无法删除");
 			abort();
+		}
+		checkBeforeEditOrRemove(CANTREMOVE);
+		if(editData.getId()!=null){
+			FDCClientUtils.checkBillInWorkflow(this, editData.getId().toString());
 		}
 		super.actionRemove_actionPerformed(e);
 	}
@@ -334,7 +342,14 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 				SysUtil.abort();
 			}
 	}
-	
+	protected void checkBeforeEditOrRemove(String warning) {
+		TenancyBillStateEnum state = this.editData.getBillState();
+		if (state != null
+				&& (state == TenancyBillStateEnum.Auditing || state == TenancyBillStateEnum.Audited )) {
+			MsgBox.showWarning(this, ContractClientUtils.getRes(warning));
+			SysUtil.abort();
+		}
+	}
 	/**
 	 * 单据状态的检查
 	 * @param id

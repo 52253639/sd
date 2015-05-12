@@ -148,6 +148,7 @@ import com.kingdee.eas.fdc.tenancy.CommisionStandardEnum;
 import com.kingdee.eas.fdc.tenancy.DateEnum;
 import com.kingdee.eas.fdc.tenancy.DealAmountEntryCollection;
 import com.kingdee.eas.fdc.tenancy.DealAmountEntryInfo;
+import com.kingdee.eas.fdc.tenancy.DepositDealBillFactory;
 import com.kingdee.eas.fdc.tenancy.EquipmentEntryCollection;
 import com.kingdee.eas.fdc.tenancy.EquipmentEntryInfo;
 import com.kingdee.eas.fdc.tenancy.FirstLeaseTypeEnum;
@@ -379,8 +380,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}
 		
 		this.tblTotal.checkParsed();
-		this.tblOtherPayList.getSelectManager().setSelectMode(KDTSelectManager.CELL_SELECT);
-		this.tblOtherPayList.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
+		this.tblTotal.getSelectManager().setSelectMode(KDTSelectManager.CELL_SELECT);
+		this.tblTotal.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
 
 		KDFormattedTextField formattedTextField = new KDFormattedTextField(KDFormattedTextField.BIGDECIMAL_TYPE);
 		formattedTextField.setSupportedEmpty(true);
@@ -6008,7 +6009,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			MsgBox.showInfo(this, "存在其他合同，禁止反审批操作！");
 			this.abort();
 		}
-		
+		if (DepositDealBillFactory.getRemoteInstance().exists("select id from where tenancyBill.id='"+id+"'")) {
+			MsgBox.showInfo(this, "存在押金处理申请单，禁止反审批操作！");
+			this.abort();
+		}
 		if (!tenType.equals(TenancyContractTypeEnum.NewTenancy)) {
 			MsgBox.showInfo(this, "只有新租合同才允许反审批！");
 			this.abort();

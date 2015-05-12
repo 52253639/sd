@@ -364,7 +364,7 @@ public abstract class TenBillBaseEditUI extends AbstractTenBillBaseEditUI {
 		FDCBillStateEnum state = getTenBillBaseInfo().getState();
 		if (state != null
 				&& (state == FDCBillStateEnum.AUDITTING || state == FDCBillStateEnum.AUDITTED || state == FDCBillStateEnum.CANCEL )) {
-			MsgBox.showWarning(this, ContractClientUtils.getRes("cantEdit"));
+			MsgBox.showWarning(this, ContractClientUtils.getRes(warning));
 			SysUtil.abort();
 		}
 	}

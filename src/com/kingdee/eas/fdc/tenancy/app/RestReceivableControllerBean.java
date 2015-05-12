@@ -8,7 +8,9 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.Context;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
+import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.base.codingrule.CodingRuleException;
 import com.kingdee.eas.base.codingrule.CodingRuleManagerFactory;
 import com.kingdee.eas.base.codingrule.ICodingRuleManager;
@@ -17,6 +19,7 @@ import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.sellhouse.app.DataBaseCodeRuleHelper;
 import com.kingdee.eas.fdc.tenancy.RestReceivableInfo;
+import com.kingdee.eas.fdc.tenancy.TenBillBaseInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.DataBaseInfo;
 import com.kingdee.eas.util.app.ContextUtil;
@@ -86,6 +89,55 @@ public class RestReceivableControllerBean extends AbstractRestReceivableControll
 		sic.add("entrys.id");
 		sic.add("entrys.tenancyBillEntry.id");
 		return sic;
+	}
+	protected void _audit(Context ctx, BOSUuid billId) throws BOSException,
+			EASBizException {
+		UserInfo auditor = ContextUtil.getCurrentUserInfo(ctx);
+		Date auditDate = new Date(System.currentTimeMillis());
+		
+		RestReceivableInfo restRev = this.getRestReceivableInfo(ctx, new ObjectUuidPK(billId));
+		restRev.setAuditor(auditor);
+		restRev.setAuditDate(auditDate);
+		restRev.setBillState(TenancyBillStateEnum.Audited);
+		
+		//add by yangfan
+		for (int i = 0; i < restRev.getOtherPayList().size(); i++) {
+			if (restRev.getOtherPayList().get(i).getHead() == null) {
+				restRev.getOtherPayList().get(i).setHead(
+						restRev.getTenancyBill());
+			}
+		}
+		this.updatePartial(ctx, restRev, getUpdateSIC());
+	}
+
+	protected void _setAuditting(Context ctx, BOSUuid billId)throws BOSException, EASBizException {
+		RestReceivableInfo bill = new RestReceivableInfo();
+
+		bill.setId(billId);
+		bill.setBillState(TenancyBillStateEnum.Auditing);
+		SelectorItemCollection selector = new SelectorItemCollection();
+		selector.add("billState");
+
+		_updatePartial(ctx, bill, selector);
+	}
+	protected void _setSubmit(Context ctx, BOSUuid billId) throws BOSException,
+			EASBizException {
+		RestReceivableInfo bill = new RestReceivableInfo();
+
+		bill.setId(billId);
+		bill.setBillState(TenancyBillStateEnum.Submitted);
+		SelectorItemCollection selector = new SelectorItemCollection();
+		selector.add("billState");
+
+		_updatePartial(ctx, bill, selector);
+	}
+	protected void _unAudit(Context ctx, BOSUuid billId) throws BOSException,
+			EASBizException {
+		RestReceivableInfo restRev = (RestReceivableInfo)this.getRestReceivableInfo(ctx, new ObjectUuidPK(billId));
+		restRev.setAuditor(null);
+		restRev.setAuditDate(null);
+		restRev.setBillState(TenancyBillStateEnum.Submitted);
+		this.updatePartial(ctx, restRev, getUpdateSIC());
 	}
 
 	protected void _passAudit(Context ctx, IObjectPK pk, IObjectValue model)

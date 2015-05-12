@@ -81,6 +81,7 @@ import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basecrm.client.FDCReceivingBillEditUI;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
+import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineFactory;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
@@ -92,6 +93,7 @@ import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.HandleStateEnum;
+import com.kingdee.eas.fdc.tenancy.IInvoiceBill;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
 import com.kingdee.eas.fdc.tenancy.RentStartTypeEnum;
 import com.kingdee.eas.fdc.tenancy.TenancyBillCollection;
@@ -622,28 +624,28 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 	}
 
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
-		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
-		if (rowIndex == -1) {
-			MsgBox.showInfo("请选择行!");
-			return;
+		checkSelected();
+		SelectorItemCollection sels = new SelectorItemCollection();
+		sels.add("id");
+		sels.add("billStatus");
+		ArrayList id = getSelectedIdValues();
+		for(int i = 0; i < id.size(); i++){
+			checkIsSupply(id.get(i).toString());
+			checkCreateBillStatus(id.get(i).toString(),"所选收款单中已生成出纳收付款单，不允许删除操作！");
+			
+			FDCReceivingBillInfo rev = FDCReceivingBillFactory.getRemoteInstance().getFDCReceivingBillInfo(new ObjectUuidPK(BOSUuid.read(id.get(i).toString())),sels);
+			if(!RevBillStatusEnum.SUBMIT.equals(rev.getBillStatus())){
+				MsgBox.showInfo("提交状态的单据才能删除！");
+				this.abort();
+			}
 		}
-		IRow row = this.tblMain.getRow(rowIndex);
-		// BizEnumValueInfo revBillTypeInfo = (BizEnumValueInfo) row.getCell(
-		// "revBillType").getValue();
-		// if(RevBillTypeEnum.TRANSFER_VALUE.equals(revBillTypeInfo.getValue()))
-		// {
-		// MsgBox.showInfo("转款单不允许删除");
-		// this.abort();
-		// }
-
-		String id = (String) row.getCell("id").getValue();
-		if (id == null) {
-			MsgBox.showInfo("行id为空!");
-			return;
+		if(confirmRemove()){
+			for(int i = 0; i < id.size(); i++){
+				FDCReceivingBillFactory.getRemoteInstance().delete(BOSUuid.read(id.get(i).toString()), getHandleClazzName());
+			}
+			FDCClientUtils.showOprtOK(this);
+			this.refresh(null);
 		}
-		checkIsSupply(id);
-		checkCreateBillStatus(id,"所选收款单中已生成出纳收付款单，不允许删除操作！");
-		super.actionRemove_actionPerformed(e);
 	}
 
 	// 判断是否是代收

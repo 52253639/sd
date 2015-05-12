@@ -5,18 +5,25 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
+import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
 import com.kingdee.bos.ctrl.reportone.r1.print.designer.gui.ScriptViewer.Action;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.IRestReceivable;
+import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
 import com.kingdee.eas.fdc.tenancy.RestReceivableFactory;
 import com.kingdee.eas.fdc.tenancy.RestReceivableInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
@@ -57,7 +64,28 @@ public class RestReceivableListUI extends AbstractRestReceivableListUI {
 		}
 		tblMain.getColumn("auditDate").getStyleAttributes().setHided(true);
 	}
-
+	 public TenancyBillStateEnum getBizState(String id) throws EASBizException, BOSException, Exception{
+	    	if(id==null) return null;
+	    	SelectorItemCollection sels =new SelectorItemCollection();
+	    	sels.add("billState");
+	    	return ((RestReceivableInfo)getBizInterface().getValue(new ObjectUuidPK(id),sels)).getBillState();
+	    }
+	protected void checkBeforeEditOrRemove(String warning,String id) throws EASBizException, BOSException, Exception {
+    	//检查是否在工作流中
+		FDCClientUtils.checkBillInWorkflow(this, id);
+		
+		TenancyBillStateEnum state = getBizState(id);
+		
+		if (!TenancyBillStateEnum.Submitted.equals(state)&&!TenancyBillStateEnum.Saved.equals(state)) {
+			if(warning.equals("cantEdit")){
+				FDCMsgBox.showWarning("单据不是保存或者提交状态，不能进行修改操作！");
+				SysUtil.abort();
+			}else{
+				FDCMsgBox.showWarning("单据不是保存或者提交状态，不能进行删除操作！");
+				SysUtil.abort();
+			}
+		}
+	}
 	protected void initWorkButton() {
 		super.initWorkButton();
 		this.actionAudit.putValue(Action.SMALL_ICON, EASResource
@@ -96,15 +124,11 @@ public class RestReceivableListUI extends AbstractRestReceivableListUI {
 	}
 
 	public void actionEdit_actionPerformed(ActionEvent e) throws Exception {
-		if(KDTableUtil.getSelectedRow(tblMain) == null){
-			MsgBox.showInfo(this, "请先选中行！");
-			return;
-		}
-		RestReceivableInfo editData = getSelectedData();
-		if(TenancyBillStateEnum.Audited.equals(editData.getBillState())){
-			MsgBox.showInfo(this,"单据已审核，不能编辑！");
-			abort();
-		}
+		checkSelected();
+		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
+		IRow row = this.tblMain.getRow(rowIndex);
+		String id = (String) row.getCell(this.getKeyFieldName()).getValue();
+		checkBeforeEditOrRemove("cantEdit",id);
 		super.actionEdit_actionPerformed(e);
 	}
 
@@ -132,6 +156,11 @@ public class RestReceivableListUI extends AbstractRestReceivableListUI {
 			MsgBox.showInfo(this, "存在已经收款的分录，无法删除");
 			abort();
 		}
+		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
+		IRow row = this.tblMain.getRow(rowIndex);
+		String id = (String) row.getCell(this.getKeyFieldName()).getValue();
+		
+		checkBeforeEditOrRemove("cantRemove",id);
 		super.actionRemove_actionPerformed(e);
 	}
 

@@ -47,27 +47,27 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractRestReceivableEditUI.class);
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreator;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreateTime;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker kDDateCreateTime;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLastUpdateUser;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtLastUpdateUser;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLastUpdateTime;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker kDDateLastUpdateTime;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNumber;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBizDate;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditor;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAuditor;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtEntrys;
 	protected com.kingdee.eas.framework.client.multiDetail.DetailPanel kdtEntrys_detailPanel = null;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contauditDate;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkauditDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer1;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker kDDateCreateTime;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtLastUpdateUser;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker kDDateLastUpdateTime;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane1;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtDescription;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer1;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAuditor;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkauditDate;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtTenancyBill;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAudit;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnUnAudit;
@@ -108,9 +108,11 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         _tempStr = resHelper.getString("ActionSubmit.NAME");
         actionSubmit.putValue(ItemAction.NAME, _tempStr);
         this.actionSubmit.setBindWorkFlow(true);
+        this.actionSubmit.setExtendProperty("canForewarn", "true");
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.NetFunctionService());
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.UserMonitorService());
+         this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.ForewarnService());
         //actionPrint
         actionPrint.setEnabled(true);
         actionPrint.setDaemonRun(false);
@@ -148,79 +150,79 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         getActionManager().registerAction("actionUnAudit", actionUnAudit);
          this.actionUnAudit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.contCreator = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contCreateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.kDDateCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.contLastUpdateUser = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.prmtLastUpdateUser = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contLastUpdateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.kDDateLastUpdateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.contBizDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contAuditor = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.prmtAuditor = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.kdtEntrys = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.contauditDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.pkauditDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.kDLabelContainer1 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.kDDateCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.prmtLastUpdateUser = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.kDDateLastUpdateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.kDScrollPane1 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextArea();
-        this.kDLabelContainer1 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.prmtAuditor = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.pkauditDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.prmtTenancyBill = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.btnAudit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnUnAudit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemAudit = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemUnAudit = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.contCreator.setName("contCreator");
-        this.prmtCreator.setName("prmtCreator");
         this.contCreateTime.setName("contCreateTime");
-        this.kDDateCreateTime.setName("kDDateCreateTime");
         this.contLastUpdateUser.setName("contLastUpdateUser");
-        this.prmtLastUpdateUser.setName("prmtLastUpdateUser");
         this.contLastUpdateTime.setName("contLastUpdateTime");
-        this.kDDateLastUpdateTime.setName("kDDateLastUpdateTime");
         this.contNumber.setName("contNumber");
-        this.txtNumber.setName("txtNumber");
         this.contBizDate.setName("contBizDate");
-        this.pkBizDate.setName("pkBizDate");
         this.contDescription.setName("contDescription");
         this.contAuditor.setName("contAuditor");
-        this.prmtAuditor.setName("prmtAuditor");
         this.kdtEntrys.setName("kdtEntrys");
         this.contauditDate.setName("contauditDate");
-        this.pkauditDate.setName("pkauditDate");
+        this.kDLabelContainer1.setName("kDLabelContainer1");
+        this.prmtCreator.setName("prmtCreator");
+        this.kDDateCreateTime.setName("kDDateCreateTime");
+        this.prmtLastUpdateUser.setName("prmtLastUpdateUser");
+        this.kDDateLastUpdateTime.setName("kDDateLastUpdateTime");
+        this.txtNumber.setName("txtNumber");
+        this.pkBizDate.setName("pkBizDate");
         this.kDScrollPane1.setName("kDScrollPane1");
         this.txtDescription.setName("txtDescription");
-        this.kDLabelContainer1.setName("kDLabelContainer1");
+        this.prmtAuditor.setName("prmtAuditor");
+        this.pkauditDate.setName("pkauditDate");
         this.prmtTenancyBill.setName("prmtTenancyBill");
         this.btnAudit.setName("btnAudit");
         this.btnUnAudit.setName("btnUnAudit");
         this.menuItemAudit.setName("menuItemAudit");
         this.menuItemUnAudit.setName("menuItemUnAudit");
         // CoreUI		
+        this.btnTraceUp.setVisible(false);		
+        this.btnTraceDown.setVisible(false);		
+        this.btnCreateTo.setVisible(true);		
         this.btnAddLine.setVisible(false);		
         this.btnInsertLine.setVisible(false);		
         this.btnRemoveLine.setVisible(false);		
-        this.btnTraceUp.setVisible(false);		
-        this.btnTraceDown.setVisible(false);		
         this.btnAuditResult.setVisible(false);		
-        this.menuItemCopyFrom.setVisible(false);		
         this.separator1.setVisible(false);		
+        this.menuItemCreateTo.setVisible(true);		
+        this.menuItemCopyFrom.setVisible(false);		
         this.separator3.setVisible(false);		
         this.menuItemTraceUp.setVisible(false);		
         this.menuItemTraceDown.setVisible(false);		
-        this.menuItemViewSubmitProccess.setVisible(false);		
-        this.menuItemViewDoProccess.setVisible(false);		
-        this.menuItemAuditResult.setVisible(false);		
         this.menuTable1.setVisible(false);		
         this.menuItemAddLine.setVisible(false);		
         this.menuItemInsertLine.setVisible(false);		
         this.menuItemRemoveLine.setVisible(false);		
         this.menuWorkflow.setVisible(false);		
-        this.btnCreateTo.setVisible(true);		
-        this.menuItemCreateTo.setVisible(true);
+        this.menuItemViewSubmitProccess.setVisible(false);		
+        this.menuItemViewDoProccess.setVisible(false);		
+        this.menuItemAuditResult.setVisible(false);
         // contCreator		
         this.contCreator.setBoundLabelText(resHelper.getString("contCreator.boundLabelText"));		
         this.contCreator.setBoundLabelLength(100);		
@@ -229,11 +231,6 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.contCreator.setBoundLabelAlignment(7);		
         this.contCreator.setVisible(true);		
         this.contCreator.setForeground(new java.awt.Color(0,0,0));
-        // prmtCreator		
-        this.prmtCreator.setEnabled(false);		
-        this.prmtCreator.setVisible(true);		
-        this.prmtCreator.setForeground(new java.awt.Color(0,0,0));		
-        this.prmtCreator.setRequired(false);
         // contCreateTime		
         this.contCreateTime.setBoundLabelText(resHelper.getString("contCreateTime.boundLabelText"));		
         this.contCreateTime.setBoundLabelLength(100);		
@@ -241,32 +238,18 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.contCreateTime.setBoundLabelAlignment(7);		
         this.contCreateTime.setVisible(true);		
         this.contCreateTime.setForeground(new java.awt.Color(0,0,0));
-        // kDDateCreateTime		
-        this.kDDateCreateTime.setEnabled(false);		
-        this.kDDateCreateTime.setVisible(true);		
-        this.kDDateCreateTime.setForeground(new java.awt.Color(0,0,0));		
-        this.kDDateCreateTime.setRequired(false);
         // contLastUpdateUser		
         this.contLastUpdateUser.setBoundLabelText(resHelper.getString("contLastUpdateUser.boundLabelText"));		
         this.contLastUpdateUser.setBoundLabelLength(100);		
         this.contLastUpdateUser.setBoundLabelUnderline(true);		
         this.contLastUpdateUser.setBoundLabelAlignment(7);		
         this.contLastUpdateUser.setForeground(new java.awt.Color(0,0,0));
-        // prmtLastUpdateUser		
-        this.prmtLastUpdateUser.setEnabled(false);		
-        this.prmtLastUpdateUser.setForeground(new java.awt.Color(0,0,0));		
-        this.prmtLastUpdateUser.setRequired(false);
         // contLastUpdateTime		
         this.contLastUpdateTime.setBoundLabelText(resHelper.getString("contLastUpdateTime.boundLabelText"));		
         this.contLastUpdateTime.setBoundLabelLength(100);		
         this.contLastUpdateTime.setBoundLabelUnderline(true);		
         this.contLastUpdateTime.setBoundLabelAlignment(7);		
         this.contLastUpdateTime.setForeground(new java.awt.Color(0,0,0));
-        // kDDateLastUpdateTime		
-        this.kDDateLastUpdateTime.setTimeEnabled(true);		
-        this.kDDateLastUpdateTime.setEnabled(false);		
-        this.kDDateLastUpdateTime.setForeground(new java.awt.Color(0,0,0));		
-        this.kDDateLastUpdateTime.setRequired(false);
         // contNumber		
         this.contNumber.setBoundLabelText(resHelper.getString("contNumber.boundLabelText"));		
         this.contNumber.setBoundLabelLength(100);		
@@ -274,13 +257,6 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.contNumber.setBoundLabelAlignment(7);		
         this.contNumber.setVisible(true);		
         this.contNumber.setForeground(new java.awt.Color(0,0,0));
-        // txtNumber		
-        this.txtNumber.setMaxLength(80);		
-        this.txtNumber.setVisible(true);		
-        this.txtNumber.setEnabled(true);		
-        this.txtNumber.setHorizontalAlignment(2);		
-        this.txtNumber.setForeground(new java.awt.Color(0,0,0));		
-        this.txtNumber.setRequired(true);
         // contBizDate		
         this.contBizDate.setBoundLabelText(resHelper.getString("contBizDate.boundLabelText"));		
         this.contBizDate.setBoundLabelLength(100);		
@@ -288,11 +264,6 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.contBizDate.setBoundLabelAlignment(7);		
         this.contBizDate.setVisible(true);		
         this.contBizDate.setForeground(new java.awt.Color(0,0,0));
-        // pkBizDate		
-        this.pkBizDate.setVisible(true);		
-        this.pkBizDate.setEnabled(true);		
-        this.pkBizDate.setForeground(new java.awt.Color(0,0,0));		
-        this.pkBizDate.setRequired(true);
         // contDescription		
         this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
         this.contDescription.setBoundLabelLength(100);		
@@ -307,13 +278,10 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.contAuditor.setBoundLabelAlignment(7);		
         this.contAuditor.setVisible(true);		
         this.contAuditor.setForeground(new java.awt.Color(0,0,0));
-        // prmtAuditor		
-        this.prmtAuditor.setEnabled(false);		
-        this.prmtAuditor.setVisible(true);		
-        this.prmtAuditor.setForeground(new java.awt.Color(0,0,0));		
-        this.prmtAuditor.setRequired(false);
-        // kdtEntrys		
-        this.kdtEntrys.setFormatXml(resHelper.getString("kdtEntrys.formatXml"));
+        // kdtEntrys
+		String kdtEntrysStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol2\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol3\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol4\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol5\"><c:NumberFormat>0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol6\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol7\"><c:Protection locked=\"true\" /><c:NumberFormat>0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol8\"><c:Protection locked=\"true\" /><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"moneyDefine\" t:width=\"120\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"1\" /><t:Column t:key=\"appDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"2\" t:styleID=\"sCol2\" /><t:Column t:key=\"startDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"endDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" t:styleID=\"sCol4\" /><t:Column t:key=\"appAmount\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"currency\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol6\" /><t:Column t:key=\"actRevAmount\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"actRevDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" t:styleID=\"sCol8\" /><t:Column t:key=\"remark\" t:width=\"255\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{appDate}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{currency}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell><t:Cell>$Resource{actRevDate}</t:Cell><t:Cell>$Resource{remark}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		
+        this.kdtEntrys.setFormatXml(resHelper.translateString("kdtEntrys",kdtEntrysStrXML));
         this.kdtEntrys.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
             public void editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) {
                 try {
@@ -328,6 +296,18 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 
 
         this.kdtEntrys.checkParsed();
+        final KDBizPromptBox kdtEntrys_moneyDefine_PromptBox = new KDBizPromptBox();
+        kdtEntrys_moneyDefine_PromptBox.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.MoneyDefineQuery");
+        kdtEntrys_moneyDefine_PromptBox.setVisible(true);
+        kdtEntrys_moneyDefine_PromptBox.setEditable(true);
+        kdtEntrys_moneyDefine_PromptBox.setDisplayFormat("$number$");
+        kdtEntrys_moneyDefine_PromptBox.setEditFormat("$number$");
+        kdtEntrys_moneyDefine_PromptBox.setCommitFormat("$number$");
+        KDTDefaultCellEditor kdtEntrys_moneyDefine_CellEditor = new KDTDefaultCellEditor(kdtEntrys_moneyDefine_PromptBox);
+        this.kdtEntrys.getColumn("moneyDefine").setEditor(kdtEntrys_moneyDefine_CellEditor);
+        ObjectValueRender kdtEntrys_moneyDefine_OVR = new ObjectValueRender();
+        kdtEntrys_moneyDefine_OVR.setFormat(new BizDataFormat("$name$"));
+        this.kdtEntrys.getColumn("moneyDefine").setRenderer(kdtEntrys_moneyDefine_OVR);
         KDDatePicker kdtEntrys_startDate_DatePicker = new KDDatePicker();
         kdtEntrys_startDate_DatePicker.setName("kdtEntrys_startDate_DatePicker");
         kdtEntrys_startDate_DatePicker.setVisible(true);
@@ -364,21 +344,57 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.contauditDate.setVisible(true);		
         this.contauditDate.setBoundLabelAlignment(7);		
         this.contauditDate.setForeground(new java.awt.Color(0,0,0));
+        // kDLabelContainer1		
+        this.kDLabelContainer1.setBoundLabelText(resHelper.getString("kDLabelContainer1.boundLabelText"));		
+        this.kDLabelContainer1.setBoundLabelLength(100);		
+        this.kDLabelContainer1.setBoundLabelUnderline(true);
+        // prmtCreator		
+        this.prmtCreator.setEnabled(false);		
+        this.prmtCreator.setVisible(true);		
+        this.prmtCreator.setForeground(new java.awt.Color(0,0,0));		
+        this.prmtCreator.setRequired(false);
+        // kDDateCreateTime		
+        this.kDDateCreateTime.setEnabled(false);		
+        this.kDDateCreateTime.setVisible(true);		
+        this.kDDateCreateTime.setForeground(new java.awt.Color(0,0,0));		
+        this.kDDateCreateTime.setRequired(false);
+        // prmtLastUpdateUser		
+        this.prmtLastUpdateUser.setEnabled(false);		
+        this.prmtLastUpdateUser.setForeground(new java.awt.Color(0,0,0));		
+        this.prmtLastUpdateUser.setRequired(false);
+        // kDDateLastUpdateTime		
+        this.kDDateLastUpdateTime.setTimeEnabled(true);		
+        this.kDDateLastUpdateTime.setEnabled(false);		
+        this.kDDateLastUpdateTime.setForeground(new java.awt.Color(0,0,0));		
+        this.kDDateLastUpdateTime.setRequired(false);
+        // txtNumber		
+        this.txtNumber.setMaxLength(80);		
+        this.txtNumber.setVisible(true);		
+        this.txtNumber.setEnabled(true);		
+        this.txtNumber.setHorizontalAlignment(2);		
+        this.txtNumber.setForeground(new java.awt.Color(0,0,0));		
+        this.txtNumber.setRequired(true);
+        // pkBizDate		
+        this.pkBizDate.setVisible(true);		
+        this.pkBizDate.setEnabled(true);		
+        this.pkBizDate.setForeground(new java.awt.Color(0,0,0));		
+        this.pkBizDate.setRequired(true);
+        // kDScrollPane1
+        // txtDescription		
+        this.txtDescription.setMaxLength(255);
+        // prmtAuditor		
+        this.prmtAuditor.setEnabled(false);		
+        this.prmtAuditor.setVisible(true);		
+        this.prmtAuditor.setForeground(new java.awt.Color(0,0,0));		
+        this.prmtAuditor.setRequired(false);
         // pkauditDate		
         this.pkauditDate.setVisible(true);		
         this.pkauditDate.setRequired(false);		
         this.pkauditDate.setEnabled(false);		
         this.pkauditDate.setForeground(new java.awt.Color(0,0,0));
-        // kDScrollPane1
-        // txtDescription		
-        this.txtDescription.setMaxLength(255);
-        // kDLabelContainer1		
-        this.kDLabelContainer1.setBoundLabelText(resHelper.getString("kDLabelContainer1.boundLabelText"));		
-        this.kDLabelContainer1.setBoundLabelLength(100);		
-        this.kDLabelContainer1.setBoundLabelUnderline(true);
         // prmtTenancyBill		
-        this.prmtTenancyBill.setDisplayFormat("$number$");		
-        this.prmtTenancyBill.setEditFormat("$number$");		
+        this.prmtTenancyBill.setDisplayFormat("$name$");		
+        this.prmtTenancyBill.setEditFormat("$name$");		
         this.prmtTenancyBill.setCommitFormat("$number$");		
         this.prmtTenancyBill.setQueryInfo("com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery");		
         this.prmtTenancyBill.setRequired(true);
@@ -404,6 +420,18 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 
 
     }
+
+	public com.kingdee.bos.ctrl.swing.KDToolBar[] getUIMultiToolBar(){
+		java.util.List list = new java.util.ArrayList();
+		com.kingdee.bos.ctrl.swing.KDToolBar[] bars = super.getUIMultiToolBar();
+		if (bars != null) {
+			list.addAll(java.util.Arrays.asList(bars));
+		}
+		return (com.kingdee.bos.ctrl.swing.KDToolBar[])list.toArray(new com.kingdee.bos.ctrl.swing.KDToolBar[list.size()]);
+	}
+
+
+
 
     /**
      * output initUIContentLayout method
@@ -469,6 +497,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
     {
         this.menuBar.add(menuFile);
         this.menuBar.add(menuEdit);
+        this.menuBar.add(MenuService);
         this.menuBar.add(menuView);
         this.menuBar.add(menuBiz);
         this.menuBar.add(menuTable1);
@@ -478,9 +507,13 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -490,6 +523,8 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
+        menuFile.add(kDSeparator6);
+        menuFile.add(menuItemSendMail);
         menuFile.add(kDSeparator3);
         menuFile.add(menuItemExitCurrent);
         //menuSubmitOption
@@ -500,12 +535,19 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         menuEdit.add(menuItemEdit);
         menuEdit.add(menuItemRemove);
         menuEdit.add(kDSeparator4);
+        menuEdit.add(menuItemReset);
         menuEdit.add(separator1);
         menuEdit.add(menuItemCreateFrom);
         menuEdit.add(menuItemCreateTo);
         menuEdit.add(menuItemCopyFrom);
         menuEdit.add(separatorEdit1);
+        menuEdit.add(menuItemEnterToNextRow);
         menuEdit.add(separator2);
+        //MenuService
+        MenuService.add(MenuItemKnowStore);
+        MenuService.add(MenuItemAnwser);
+        MenuService.add(SepratorService);
+        MenuService.add(MenuItemRemoteAssist);
         //menuView
         menuView.add(menuItemFirst);
         menuView.add(menuItemPre);
@@ -514,6 +556,8 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         menuView.add(separator3);
         menuView.add(menuItemTraceUp);
         menuView.add(menuItemTraceDown);
+        menuView.add(kDSeparator7);
+        menuView.add(menuItemLocate);
         //menuBiz
         menuBiz.add(menuItemCancelCancel);
         menuBiz.add(menuItemCancel);
@@ -523,12 +567,14 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         menuBiz.add(menuItemUnAudit);
         //menuTable1
         menuTable1.add(menuItemAddLine);
+        menuTable1.add(menuItemCopyLine);
         menuTable1.add(menuItemInsertLine);
         menuTable1.add(menuItemRemoveLine);
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -560,8 +606,11 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -585,6 +634,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnCreateFrom);
         this.toolBar.add(btnCopyFrom);
@@ -592,6 +642,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.toolBar.add(separatorFW5);
         this.toolBar.add(separatorFW8);
         this.toolBar.add(btnAddLine);
+        this.toolBar.add(btnCopyLine);
         this.toolBar.add(btnInsertLine);
         this.toolBar.add(btnRemoveLine);
         this.toolBar.add(separatorFW6);
@@ -606,20 +657,14 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         this.toolBar.add(btnAudit);
         this.toolBar.add(btnUnAudit);
 
+
     }
 
 	//Regiester control's property binding.
 	private void registerBindings(){
-		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.prmtCreator, "data");
-		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.kDDateCreateTime, "value");
-		dataBinder.registerBinding("lastUpdateUser", com.kingdee.eas.base.permission.UserInfo.class, this.prmtLastUpdateUser, "data");
-		dataBinder.registerBinding("lastUpdateTime", java.sql.Timestamp.class, this.kDDateLastUpdateTime, "value");
-		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
-		dataBinder.registerBinding("bizDate", java.util.Date.class, this.pkBizDate, "value");
-		dataBinder.registerBinding("auditor", com.kingdee.eas.base.permission.UserInfo.class, this.prmtAuditor, "data");
 		dataBinder.registerBinding("otherPayList", com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo.class, this.kdtEntrys, "userObject");
 		dataBinder.registerBinding("otherPayList.id", com.kingdee.bos.util.BOSUuid.class, this.kdtEntrys, "id.text");
-		dataBinder.registerBinding("otherPayList.moneyDefine", com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo.class, this.kdtEntrys, "moneyDefine.text");
+		dataBinder.registerBinding("otherPayList.moneyDefine", com.kingdee.eas.fdc.crm.basedata.MoneyDefineInfo.class, this.kdtEntrys, "moneyDefine.text");
 		dataBinder.registerBinding("otherPayList.startDate", java.util.Date.class, this.kdtEntrys, "startDate.text");
 		dataBinder.registerBinding("otherPayList.endDate", java.util.Date.class, this.kdtEntrys, "endDate.text");
 		dataBinder.registerBinding("otherPayList.appAmount", java.math.BigDecimal.class, this.kdtEntrys, "appAmount.text");
@@ -628,8 +673,15 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 		dataBinder.registerBinding("otherPayList.actRevDate", java.util.Date.class, this.kdtEntrys, "actRevDate.text");
 		dataBinder.registerBinding("otherPayList.description", String.class, this.kdtEntrys, "remark.text");
 		dataBinder.registerBinding("otherPayList.appDate", java.util.Date.class, this.kdtEntrys, "appDate.text");
-		dataBinder.registerBinding("auditDate", java.util.Date.class, this.pkauditDate, "value");
+		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.prmtCreator, "data");
+		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.kDDateCreateTime, "value");
+		dataBinder.registerBinding("lastUpdateUser", com.kingdee.eas.base.permission.UserInfo.class, this.prmtLastUpdateUser, "data");
+		dataBinder.registerBinding("lastUpdateTime", java.sql.Timestamp.class, this.kDDateLastUpdateTime, "value");
+		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
+		dataBinder.registerBinding("bizDate", java.util.Date.class, this.pkBizDate, "value");
 		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
+		dataBinder.registerBinding("auditor", com.kingdee.eas.base.permission.UserInfo.class, this.prmtAuditor, "data");
+		dataBinder.registerBinding("auditDate", java.util.Date.class, this.pkauditDate, "value");
 		dataBinder.registerBinding("tenancyBill", com.kingdee.eas.fdc.tenancy.TenancyBillInfo.class, this.prmtTenancyBill, "data");		
 	}
 	//Regiester UI State
@@ -680,7 +732,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
     protected void removeByPK(IObjectPK pk) throws Exception {
     	IObjectValue editData = this.editData;
     	super.removeByPK(pk);
-    	recycleNumberByOrg(editData,"NONE",editData.getString("number"));
+    	recycleNumberByOrg(editData,"Sale",editData.getString("number"));
     }
     
     protected void recycleNumberByOrg(IObjectValue editData,String orgType,String number) {
@@ -706,6 +758,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
         }
     }
     protected void setAutoNumberByOrg(String orgType) {
+    	if (editData == null) return;
 		if (editData.getNumber() == null) {
             try {
             	String companyID = null;
@@ -735,18 +788,22 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
             }
         }
     }
+			protected com.kingdee.eas.basedata.org.OrgType getMainBizOrgType() {
+			return com.kingdee.eas.basedata.org.OrgType.getEnum("Sale");
+		}
+
 
     /**
      * output loadFields method
      */
     public void loadFields()
     {
-        		setAutoNumberByOrg("NONE");
+        		setAutoNumberByOrg("Sale");
         dataBinder.loadFields();
     }
 		protected void setOrgF7(KDBizPromptBox f7,com.kingdee.eas.basedata.org.OrgType orgType) throws Exception
 		{
-			com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer oufip=(com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer)com.kingdee.bos.ctrl.extendcontrols.ext.FilterInfoProducerFactory.getOrgUnitFilterInfoProducer(orgType);
+			com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer oufip = new com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer(orgType);
 			oufip.getModel().setIsCUFilter(true);
 			f7.setFilterInfoProducer(oufip);
 		}
@@ -764,13 +821,6 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 	 */
 	protected void registerValidator() {
     	getValidateHelper().setCustomValidator( getValidator() );
-		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("lastUpdateUser", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("lastUpdateTime", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("bizDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("auditor", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("otherPayList", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("otherPayList.id", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("otherPayList.moneyDefine", ValidateHelper.ON_SAVE);    
@@ -782,8 +832,15 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 		getValidateHelper().registerBindProperty("otherPayList.actRevDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("otherPayList.description", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("otherPayList.appDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("auditDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("lastUpdateUser", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("lastUpdateTime", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("bizDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("auditor", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("auditDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyBill", ValidateHelper.ON_SAVE);    		
 	}
 
@@ -815,30 +872,84 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
-        sic.add(new SelectorItemInfo("creator.*"));
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("otherPayList.*"));
+		}
+		else{
+		}
+    	sic.add(new SelectorItemInfo("otherPayList.id"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("otherPayList.moneyDefine.*"));
+		}
+		else{
+	    	sic.add(new SelectorItemInfo("otherPayList.moneyDefine.id"));
+			sic.add(new SelectorItemInfo("otherPayList.moneyDefine.name"));
+        	sic.add(new SelectorItemInfo("otherPayList.moneyDefine.number"));
+		}
+    	sic.add(new SelectorItemInfo("otherPayList.startDate"));
+    	sic.add(new SelectorItemInfo("otherPayList.endDate"));
+    	sic.add(new SelectorItemInfo("otherPayList.appAmount"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("otherPayList.currency.*"));
+		}
+		else{
+	    	sic.add(new SelectorItemInfo("otherPayList.currency.id"));
+			sic.add(new SelectorItemInfo("otherPayList.currency.name"));
+        	sic.add(new SelectorItemInfo("otherPayList.currency.number"));
+		}
+    	sic.add(new SelectorItemInfo("otherPayList.actRevAmount"));
+    	sic.add(new SelectorItemInfo("otherPayList.actRevDate"));
+    	sic.add(new SelectorItemInfo("otherPayList.description"));
+    	sic.add(new SelectorItemInfo("otherPayList.appDate"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("createTime"));
-        sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("lastUpdateUser.id"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.number"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.name"));
+		}
         sic.add(new SelectorItemInfo("lastUpdateTime"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("bizDate"));
-        sic.add(new SelectorItemInfo("auditor.*"));
-        sic.add(new SelectorItemInfo("otherPayList.*"));
-//        sic.add(new SelectorItemInfo("otherPayList.number"));
-    sic.add(new SelectorItemInfo("otherPayList.id"));
-        sic.add(new SelectorItemInfo("otherPayList.moneyDefine.*"));
-//        sic.add(new SelectorItemInfo("otherPayList.moneyDefine.number"));
-    sic.add(new SelectorItemInfo("otherPayList.startDate"));
-    sic.add(new SelectorItemInfo("otherPayList.endDate"));
-    sic.add(new SelectorItemInfo("otherPayList.appAmount"));
-        sic.add(new SelectorItemInfo("otherPayList.currency.*"));
-//        sic.add(new SelectorItemInfo("otherPayList.currency.number"));
-    sic.add(new SelectorItemInfo("otherPayList.actRevAmount"));
-    sic.add(new SelectorItemInfo("otherPayList.actRevDate"));
-    sic.add(new SelectorItemInfo("otherPayList.description"));
-    sic.add(new SelectorItemInfo("otherPayList.appDate"));
-        sic.add(new SelectorItemInfo("auditDate"));
         sic.add(new SelectorItemInfo("description"));
-        sic.add(new SelectorItemInfo("tenancyBill.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("auditor.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("auditor.id"));
+        	sic.add(new SelectorItemInfo("auditor.number"));
+        	sic.add(new SelectorItemInfo("auditor.name"));
+		}
+        sic.add(new SelectorItemInfo("auditDate"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("tenancyBill.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("tenancyBill.id"));
+        	sic.add(new SelectorItemInfo("tenancyBill.number"));
+        	sic.add(new SelectorItemInfo("tenancyBill.name"));
+		}
         return sic;
     }        
     	
@@ -857,15 +968,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
      */
     public void actionPrint_actionPerformed(ActionEvent e) throws Exception
     {
-        ArrayList idList = new ArrayList();
-    	if (editData != null && !StringUtils.isEmpty(editData.getString("id"))) {
-    		idList.add(editData.getString("id"));
-    	}
-        if (idList == null || idList.size() == 0 || getTDQueryPK() == null || getTDFileName() == null)
-            return;
-        com.kingdee.bos.ctrl.kdf.data.impl.BOSQueryDelegate data = new com.kingdee.eas.framework.util.CommonDataProvider(idList,getTDQueryPK());
-        com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
-        appHlp.print(getTDFileName(), data, javax.swing.SwingUtilities.getWindowAncestor(this));
+        super.actionPrint_actionPerformed(e);
     }
     	
 
@@ -874,15 +977,7 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
      */
     public void actionPrintPreview_actionPerformed(ActionEvent e) throws Exception
     {
-        ArrayList idList = new ArrayList();
-        if (editData != null && !StringUtils.isEmpty(editData.getString("id"))) {
-    		idList.add(editData.getString("id"));
-    	}
-        if (idList == null || idList.size() == 0 || getTDQueryPK() == null || getTDFileName() == null)
-            return;
-        com.kingdee.bos.ctrl.kdf.data.impl.BOSQueryDelegate data = new com.kingdee.eas.framework.util.CommonDataProvider(idList,getTDQueryPK());
-        com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
-        appHlp.printPreview(getTDFileName(), data, javax.swing.SwingUtilities.getWindowAncestor(this));
+        super.actionPrintPreview_actionPerformed(e);
     }
     	
 
@@ -900,20 +995,76 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
     public void actionUnAudit_actionPerformed(ActionEvent e) throws Exception
     {
     }
+	public RequestContext prepareActionSubmit(IItemAction itemAction) throws Exception {
+			RequestContext request = super.prepareActionSubmit(itemAction);		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionSubmit() {
+    	return false;
+    }
+	public RequestContext prepareActionPrint(IItemAction itemAction) throws Exception {
+			RequestContext request = super.prepareActionPrint(itemAction);		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionPrint() {
+    	return false;
+    }
+	public RequestContext prepareActionPrintPreview(IItemAction itemAction) throws Exception {
+			RequestContext request = super.prepareActionPrintPreview(itemAction);		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionPrintPreview() {
+    	return false;
+    }
+	public RequestContext prepareActionAudit(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionAudit() {
+    	return false;
+    }
+	public RequestContext prepareActionUnAudit(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionUnAudit() {
+    	return false;
+    }
 
     /**
      * output ActionAudit class
-     */
-    protected class ActionAudit extends ItemAction
-    {
+     */     
+    protected class ActionAudit extends ItemAction {     
+    
         public ActionAudit()
         {
             this(null);
         }
 
         public ActionAudit(IUIObject uiObject)
-        {
-            super(uiObject);
+        {     
+		super(uiObject);     
+        
             String _tempStr = null;
             _tempStr = resHelper.getString("ActionAudit.SHORT_DESCRIPTION");
             this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
@@ -932,17 +1083,18 @@ public abstract class AbstractRestReceivableEditUI extends com.kingdee.eas.frame
 
     /**
      * output ActionUnAudit class
-     */
-    protected class ActionUnAudit extends ItemAction
-    {
+     */     
+    protected class ActionUnAudit extends ItemAction {     
+    
         public ActionUnAudit()
         {
             this(null);
         }
 
         public ActionUnAudit(IUIObject uiObject)
-        {
-            super(uiObject);
+        {     
+		super(uiObject);     
+        
             String _tempStr = null;
             _tempStr = resHelper.getString("ActionUnAudit.SHORT_DESCRIPTION");
             this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);

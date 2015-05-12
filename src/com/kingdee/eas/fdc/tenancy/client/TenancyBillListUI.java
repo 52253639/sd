@@ -66,6 +66,7 @@ import com.kingdee.eas.fdc.sellhouse.client.PrePurchaseManageEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SignManageEditUI;
+import com.kingdee.eas.fdc.tenancy.DepositDealBillFactory;
 import com.kingdee.eas.fdc.tenancy.HandleStateEnum;
 import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
 import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
@@ -448,7 +449,10 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 				MsgBox.showInfo(this, "存在其他合同，禁止反审批操作！");
 				this.abort();
 			}
-			
+			if (DepositDealBillFactory.getRemoteInstance().exists("select id from where tenancyBill.id='"+id+"'")) {
+				MsgBox.showInfo(this, "存在押金处理申请单，禁止反审批操作！");
+				this.abort();
+			}
 			if (!tenType.equals(TenancyContractTypeEnum.NewTenancy)) {
 				MsgBox.showInfo(this, "只有新租合同才允许反审批！");
 				this.abort();

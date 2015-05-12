@@ -3,11 +3,11 @@
  */
 package com.kingdee.eas.fdc.tenancy.client;
 
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 import javax.swing.JDialog;
 import javax.swing.SwingUtilities;
@@ -22,7 +22,6 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
-import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
@@ -30,7 +29,6 @@ import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.bos.ctrl.kdf.servertable.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
-import com.kingdee.bos.ctrl.kdf.table.KDTSelectBlock;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
@@ -41,15 +39,13 @@ import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.IQueryExecutor;
+import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
+import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
-import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
-import com.kingdee.eas.fdc.basecrm.FDCReceivingBillInfo;
-import com.kingdee.eas.fdc.basecrm.RevBillStatusEnum;
-import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
@@ -58,12 +54,9 @@ import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.IDepositDealBill;
-import com.kingdee.eas.fdc.tenancy.IInvoiceBill;
+import com.kingdee.eas.fdc.tenancy.DepositDealBillFactory;
+import com.kingdee.eas.fdc.tenancy.DepositDealBillInfo;
 import com.kingdee.eas.fdc.tenancy.IOtherBill;
-import com.kingdee.eas.fdc.tenancy.InvoiceBillFactory;
-import com.kingdee.eas.fdc.tenancy.InvoiceBillInfo;
-import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
-import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyBillFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
@@ -71,7 +64,7 @@ import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.batchHandler.UtilRequest;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
-import com.kingdee.eas.tools.datatask.DatataskMode;
+import com.kingdee.eas.ma.budget.client.LongTimeDialog;
 import com.kingdee.eas.tools.datatask.DatataskParameter;
 import com.kingdee.eas.tools.datatask.client.DatataskCaller;
 import com.kingdee.eas.util.SysUtil;
@@ -81,10 +74,10 @@ import com.kingdee.eas.util.client.MsgBox;
 /**
  * output class name
  */
-public class InvoiceBillListUI extends AbstractInvoiceBillListUI
+public class DepositDealBillListUI extends AbstractDepositDealBillListUI
 {
-    private static final Logger logger = CoreUIObject.getLogger(InvoiceBillListUI.class);
-    public InvoiceBillListUI() throws Exception
+    private static final Logger logger = CoreUIObject.getLogger(DepositDealBillListUI.class);
+    public DepositDealBillListUI() throws Exception
     {
         super();
     }
@@ -96,6 +89,7 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		super.onLoad();
 		tblMain.getSelectManager().setSelectMode(
 				KDTSelectManager.MULTIPLE_ROW_SELECT);
+		this.actionTraceDown.setVisible(false);
 		this.actionAdjust.setVisible(false);
 		this.treeMain.setSelectionRow(0);
 		
@@ -105,30 +99,21 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		
 		this.actionBatchReceiving.setVisible(false);
 		this.actionReceive.setVisible(false);
+		this.actionVoucher.setVisible(false);
+		this.actionDelVoucher.setVisible(false);
 		this.actionCanceReceive.setVisible(false);
 		this.actionReceipt.setVisible(false);
 		this.actionRetakeReceipt.setVisible(false);
 		this.actionCreateInvoice.setVisible(false);
 		this.actionClearInvoice.setVisible(false);
 		
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entry.amount"});
-	}
+    }
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);
-		CRMClientHelper.getFootRow(tblMain, new String[]{"appAmount","actRevAmount","entry.amount"});
+		CRMClientHelper.getFootRow(tblMain, new String[]{"entry.amount"});
 	}
 
 	protected void setColGroups() {
-		setColGroup("type");
-		setColGroup("number");
-		setColGroup("amount");
-		setColGroup("fiVouchered");
-		setColGroup("state");
-		setColGroup("description");
-		setColGroup("creator.name");
-		setColGroup("createTime");
-		setColGroup("auditor.name");
-		setColGroup("auditTime");
 	}
 
 	protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK,EntityViewInfo viewInfo) {
@@ -176,7 +161,7 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 	}
 
 	public void setUITitle(String title) {
-		super.setUITitle("票据管理序时簿");
+		super.setUITitle("押金处理申请单序时簿");
 	}
 
 	protected void prepareUIContext(UIContext uiContext, ActionEvent e) {
@@ -249,7 +234,7 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 	}
 
 	protected String getEditUIName() {
-		return InvoiceBillEditUI.class.getName();
+		return DepositDealBillEditUI.class.getName();
 	}
 	protected MoneySysTypeEnum getSystemType() {
 		return MoneySysTypeEnum.TenancySys;
@@ -374,20 +359,19 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 			ee.printStackTrace();
 		}
 	}
-	 public InvoiceBillInfo getInfo(String id) throws EASBizException, BOSException, Exception{
+	 public FDCBillStateEnum getBizState(String id) throws EASBizException, BOSException, Exception{
 	    	if(id==null) return null;
 	    	SelectorItemCollection sels =new SelectorItemCollection();
 	    	sels.add("state");
-	    	sels.add("fiVouchered");
-	    	return ((InvoiceBillInfo)getBizInterface().getValue(new ObjectUuidPK(id),sels));
+	    	return ((DepositDealBillInfo)getBizInterface().getValue(new ObjectUuidPK(id),sels)).getState();
 	    }
 	protected void checkBeforeEditOrRemove(String warning,String id) throws EASBizException, BOSException, Exception {
     	//检查是否在工作流中
 		FDCClientUtils.checkBillInWorkflow(this, id);
 		
-		InvoiceBillInfo info = getInfo(id);
+		FDCBillStateEnum state = getBizState(id);
 		
-		if (!FDCBillStateEnum.SUBMITTED.equals(info.getState())&&!FDCBillStateEnum.SAVED.equals(info.getState())) {
+		if (!FDCBillStateEnum.SUBMITTED.equals(state)&&!FDCBillStateEnum.SAVED.equals(state)) {
 			if(warning.equals("cantEdit")){
 				FDCMsgBox.showWarning("单据不是保存或者提交状态，不能进行修改操作！");
 				SysUtil.abort();
@@ -438,14 +422,14 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		}
 		if(confirmRemove()){
 			for(int i = 0; i < id.size(); i++){
-				((IInvoiceBill)getBizInterface()).delete(new ObjectUuidPK(id.get(i).toString()));
+				((IDepositDealBill)getBizInterface()).delete(new ObjectUuidPK(id.get(i).toString()));
 			}
 			FDCClientUtils.showOprtOK(this);
 			this.refresh(null);
 		}
 	}
 	protected ICoreBase getBizInterface() throws Exception {
-		return InvoiceBillFactory.getRemoteInstance();
+		return DepositDealBillFactory.getRemoteInstance();
     }
 	public void actionAudit_actionPerformed(ActionEvent e) throws Exception {
 		checkSelected();
@@ -453,11 +437,11 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		for(int i = 0; i < id.size(); i++){
 			FDCClientUtils.checkBillInWorkflow(this, id.get(i).toString());
 	    	
-			if (!FDCBillStateEnum.SUBMITTED.equals(getInfo(id.get(i).toString()).getState())) {
+			if (!FDCBillStateEnum.SUBMITTED.equals(getBizState(id.get(i).toString()))) {
 				FDCMsgBox.showWarning("单据不是提交状态，不能进行审批操作！");
 				return;
 			}
-			((IInvoiceBill)getBizInterface()).audit(BOSUuid.read(id.get(i).toString()));
+			((IDepositDealBill)getBizInterface()).audit(BOSUuid.read(id.get(i).toString()));
 		}
 		FDCClientUtils.showOprtOK(this);
 		this.refresh(null);
@@ -471,27 +455,14 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		for(int i = 0; i < id.size(); i++){
 			FDCClientUtils.checkBillInWorkflow(this, id.get(i).toString());
 	    	
-			if (!FDCBillStateEnum.AUDITTED.equals(getInfo(id.get(i).toString()).getState())) {
+			if (!FDCBillStateEnum.AUDITTED.equals(getBizState(id.get(i).toString()))) {
 				FDCMsgBox.showWarning("单据不是审批状态，不能进行反审批操作！");
 				return;
 			}
-			((IInvoiceBill)getBizInterface()).unAudit(BOSUuid.read(id.get(i).toString()));
+			((IDepositDealBill)getBizInterface()).unAudit(BOSUuid.read(id.get(i).toString()));
 		}
 		FDCClientUtils.showOprtOK(this);
 		this.refresh(null);
-	}
-	public void actionVoucher_actionPerformed(ActionEvent e) throws Exception {
-		checkSelected();
-		ArrayList id = getSelectedIdValues();
-		for(int i = 0; i < id.size(); i++){
-			FDCClientUtils.checkBillInWorkflow(this, id.get(i).toString());
-	    	
-			if (!FDCBillStateEnum.AUDITTED.equals(getInfo(id.get(i).toString()).getState())) {
-				FDCMsgBox.showWarning("单据不是审批状态，不能进行生成凭证操作！");
-				return;
-			}
-		}
-		super.actionVoucher_actionPerformed(e);
 	}
 	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
 		getTenancyBillList();

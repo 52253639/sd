@@ -131,7 +131,7 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
     	
     	sb.append(" select 'rev' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	sb.append(" left join t_org_baseUnit org on org.fid=revBill.fsaleOrgUnitId left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
-    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount')");
+    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount') and md.fname_l2!='¶¨½ð'");
 		if(toDate!=null){
 			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}

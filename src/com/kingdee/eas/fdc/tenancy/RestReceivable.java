@@ -19,6 +19,7 @@ import com.kingdee.bos.Context;
 import com.kingdee.eas.fdc.tenancy.app.*;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.bos.framework.*;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.framework.ICoreBillBase;
 
 public class RestReceivable extends CoreBillBase implements IRestReceivable
@@ -120,6 +121,58 @@ public class RestReceivable extends CoreBillBase implements IRestReceivable
     {
         try {
             return getController().getRestReceivableInfo(getContext(), oql);
+        }
+        catch(RemoteException err) {
+            throw new EJBRemoteException(err);
+        }
+    }
+    /**
+     *设置审批中-User defined method
+     *@param billId billId
+     */
+    public void setAuditting(BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            getController().setAuditting(getContext(), billId);
+        }
+        catch(RemoteException err) {
+            throw new EJBRemoteException(err);
+        }
+    }
+    /**
+     *设置提交-User defined method
+     *@param billId billId
+     */
+    public void setSubmit(BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            getController().setSubmit(getContext(), billId);
+        }
+        catch(RemoteException err) {
+            throw new EJBRemoteException(err);
+        }
+    }
+    /**
+     *审批-User defined method
+     *@param billId billId
+     */
+    public void audit(BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            getController().audit(getContext(), billId);
+        }
+        catch(RemoteException err) {
+            throw new EJBRemoteException(err);
+        }
+    }
+    /**
+     *反审批-User defined method
+     *@param billId billId
+     */
+    public void unAudit(BOSUuid billId) throws BOSException, EASBizException
+    {
+        try {
+            getController().unAudit(getContext(), billId);
         }
         catch(RemoteException err) {
             throw new EJBRemoteException(err);
