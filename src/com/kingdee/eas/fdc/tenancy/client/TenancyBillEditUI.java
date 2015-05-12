@@ -1013,8 +1013,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		btnAddFree = initWorkBtn1(actionAddFree, "imgTbtn_sortstandard", this.containerFree, "添加");
 		btnRmFree = initWorkBtn1(actionRmFree, "imgTbtn_sortstandard", this.containerFree, "删除");
 		
-		btnAddFree.setVisible(false);
-		btnRmFree.setVisible(false);
+		btnAddFree.setVisible(isFreeAdd);
+		btnRmFree.setVisible(isFreeAdd);
+		
+		contRentFreeBill.setVisible(!isFreeAdd);
 	}
 
 	private KDTDefaultCellEditor createDateCellEditor() {
@@ -1249,6 +1251,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		//		updateTblRentSetRow();
 	}
 	boolean isEdit=false;
+	boolean isFreeAdd=false;
 	/** 初始化控件基础属性,主要设置菜单,控件可否编辑(且状态不会变化) */
 	private void initControl() {
 		this.pkStartDate.setRequired(true);
@@ -1326,13 +1329,18 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.spinChargeOffsetDays.addChangeListener(spinChargeOffsetDaysChangeListener);
 		}
 		
-		HashMap hmParamIn = new HashMap();
-		hmParamIn.put("ISOTHEREDIT", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
 		try {
+			HashMap hmParamIn = new HashMap();
+			hmParamIn.put("ISOTHEREDIT", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
+			hmParamIn.put("ISFREEADD", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
+		
 			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
 			
 			if(hmAllParam.get("ISOTHEREDIT")!=null&&Boolean.valueOf(hmAllParam.get("ISOTHEREDIT").toString()).booleanValue()){
 				isEdit=true;
+			}
+			if(hmAllParam.get("ISFREEADD")!=null&&Boolean.valueOf(hmAllParam.get("ISFREEADD").toString()).booleanValue()){
+				isFreeAdd=true;
 			}
 		} catch (EASBizException e) {
 			e.printStackTrace();
