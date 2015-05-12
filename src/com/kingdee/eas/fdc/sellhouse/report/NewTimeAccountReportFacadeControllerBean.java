@@ -121,7 +121,7 @@ public class NewTimeAccountReportFacadeControllerBean extends AbstractNewTimeAcc
 	    initColoum(header,col,"monthSignBackAccount",140,false);
 	    initColoum(header,col,"yearSignBackAccount",140,false);
 	    initColoum(header,col,"accSignBackAccount",140,false);
-	    initColoum(header,col,"onLoadAmount",140,false);
+	    initColoum(header,col,"onLoadAmount",140,true);
 //	    initColoum(header,col,"quitSignArea",100,false);
 //	    initColoum(header,col,"quitSignAccount",140,false);
 //	    initColoum(header,col,"quitSignAverage",100,false);
