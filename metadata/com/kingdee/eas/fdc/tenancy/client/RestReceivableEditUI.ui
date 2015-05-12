@@ -2479,9 +2479,10 @@
             <isBindWorkFlow>true</isBindWorkFlow>
             <herited>true</herited>
             <daemonRun>false</daemonRun>
-            <actionExtendProperty />
+            <actionExtendProperty>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ExtendProperty&gt;&lt;item key="canForewarn" value="true" /&gt;&lt;/ExtendProperty&gt;</actionExtendProperty>
             <services>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;root&gt;&lt;service class="com.kingdee.eas.framework.client.service.PermissionService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.NetFunctionService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.UserMonitorService" /&gt;&lt;/root&gt;</services>
+&lt;root&gt;&lt;service class="com.kingdee.eas.framework.client.service.PermissionService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.NetFunctionService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.UserMonitorService" /&gt;&lt;service class="com.kingdee.eas.framework.client.service.ForewarnService" /&gt;&lt;/root&gt;</services>
             <userDefined>false</userDefined>
             <userDefinedLogic />
             <oprtIntent />
@@ -2496,15 +2497,7 @@
             <className>ActionPrint</className>
             <name>uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrint].name</name>
             <enabled>true</enabled>
-            <actionPerformed>ArrayList idList = new ArrayList();
-    	if (editData != null &amp;&amp; !StringUtils.isEmpty(editData.getString("id"))) {
-    		idList.add(editData.getString("id"));
-    	}
-        if (idList == null || idList.size() == 0 || getTDQueryPK() == null || getTDFileName() == null)
-            return;
-        com.kingdee.bos.ctrl.kdf.data.impl.BOSQueryDelegate data = new com.kingdee.eas.framework.util.CommonDataProvider(idList,getTDQueryPK());
-        com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
-        appHlp.print(getTDFileName(), data, javax.swing.SwingUtilities.getWindowAncestor(this));</actionPerformed>
+            <actionPerformed />
             <beforeActionPerformed />
             <afterActionPerformed />
             <finallyActionPerformed />
@@ -2534,15 +2527,7 @@
             <className>ActionPrintPreview</className>
             <name>uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrintPreview].name</name>
             <enabled>true</enabled>
-            <actionPerformed>ArrayList idList = new ArrayList();
-        if (editData != null &amp;&amp; !StringUtils.isEmpty(editData.getString("id"))) {
-    		idList.add(editData.getString("id"));
-    	}
-        if (idList == null || idList.size() == 0 || getTDQueryPK() == null || getTDFileName() == null)
-            return;
-        com.kingdee.bos.ctrl.kdf.data.impl.BOSQueryDelegate data = new com.kingdee.eas.framework.util.CommonDataProvider(idList,getTDQueryPK());
-        com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
-        appHlp.printPreview(getTDFileName(), data, javax.swing.SwingUtilities.getWindowAncestor(this));</actionPerformed>
+            <actionPerformed />
             <beforeActionPerformed />
             <afterActionPerformed />
             <finallyActionPerformed />
@@ -2630,1457 +2615,1218 @@
     </actions>
     <resource>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionAudit].longDescription">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionAudit].name">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionAudit].shortDescription">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionAudit].smallIcon">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrintPreview].longDescription">
-            <lang locale="zh_CN" value="打印预览" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="列印預覽" />
+            <lang locale="zh_CN" value="打印预览" />
             <lang locale="zh_TW" value="列印預覽" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrintPreview].name">
-            <lang locale="zh_CN" value="打印预览" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="列印預覽" />
+            <lang locale="zh_CN" value="打印预览" />
             <lang locale="zh_TW" value="列印預覽" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrintPreview].shortDescription">
-            <lang locale="zh_CN" value="打印预览" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="列印預覽" />
+            <lang locale="zh_CN" value="打印预览" />
             <lang locale="zh_TW" value="列印預覽" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrintPreview].smallIcon">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrint].longDescription">
-            <lang locale="zh_CN" value="打印" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="列印" />
+            <lang locale="zh_CN" value="打印" />
             <lang locale="zh_TW" value="列印" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrint].name">
-            <lang locale="zh_CN" value="打印" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="列印" />
+            <lang locale="zh_CN" value="打印" />
             <lang locale="zh_TW" value="列印" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrint].shortDescription">
-            <lang locale="zh_CN" value="打印" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="列印" />
+            <lang locale="zh_CN" value="打印" />
             <lang locale="zh_TW" value="列印" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionPrint].smallIcon">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionSubmit].longDescription">
-            <lang locale="zh_CN" value="提交" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="提交" />
+            <lang locale="zh_CN" value="提交" />
             <lang locale="zh_TW" value="提交" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionSubmit].name">
-            <lang locale="zh_CN" value="提交" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="提交" />
+            <lang locale="zh_CN" value="提交" />
             <lang locale="zh_TW" value="提交" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionSubmit].shortDescription">
-            <lang locale="zh_CN" value="提交" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="提交" />
+            <lang locale="zh_CN" value="提交" />
             <lang locale="zh_TW" value="提交" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionSubmit].smallIcon">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionUnAudit].longDescription">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionUnAudit].name">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionUnAudit].shortDescription">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].actions.action[actionUnAudit].smallIcon">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].alias">
-            <lang locale="zh_CN" value="其他应收" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="其他應收" />
+            <lang locale="zh_CN" value="其他应收" />
             <lang locale="zh_TW" value="其他應收" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[CoreUI].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[MenuItemVoucher].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAddLine].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAddLine].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAddNew].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAttachment].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAuditResult].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAuditResult].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAudit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAudit].properties.property[action].value">
-            <lang locale="zh_CN" value="actionAudit" />
             <lang locale="en_US" value="actionAudit" />
-            <lang locale="zh_HK" value="actionAudit" />
+            <lang locale="zh_CN" value="actionAudit" />
             <lang locale="zh_TW" value="actionAudit" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnAudit].properties.property[text].value">
-            <lang locale="zh_CN" value="审批" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="審批" />
+            <lang locale="zh_CN" value="审批" />
             <lang locale="zh_TW" value="審批" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCancelCancel].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCancel].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCopyFrom].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCopy].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCreateFrom].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCreateTo].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnCreateTo].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnDelVoucher].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnEdit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnFirst].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnInsertLine].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnInsertLine].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnLast].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnMultiapprove].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnNextPerson].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnNext].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnPageSetup].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnPre].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnPrintPreview].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnPrint].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnRemoveLine].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnRemoveLine].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnRemove].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnReset].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnSave].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnSignature].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnSubmit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnTraceDown].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnTraceDown].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnTraceUp].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnTraceUp].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnUnAudit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnUnAudit].properties.property[action].value">
-            <lang locale="zh_CN" value="actionUnAudit" />
             <lang locale="en_US" value="actionUnAudit" />
-            <lang locale="zh_HK" value="actionUnAudit" />
+            <lang locale="zh_CN" value="actionUnAudit" />
             <lang locale="zh_TW" value="actionUnAudit" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnUnAudit].properties.property[text].value">
-            <lang locale="zh_CN" value="反审批" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="反審批" />
+            <lang locale="zh_CN" value="反审批" />
             <lang locale="zh_TW" value="反審批" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnViewSignature].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnVoucher].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnWFViewSubmitProccess].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnWFViewdoProccess].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[btnWorkFlowG].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="审核人" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="審核人" />
+            <lang locale="zh_CN" value="审核人" />
             <lang locale="zh_TW" value="審核人" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contAuditor].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="业务日期" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="業務日期" />
+            <lang locale="zh_CN" value="业务日期" />
             <lang locale="zh_TW" value="業務日期" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contBizDate].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="制单日期" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="制單日期" />
+            <lang locale="zh_CN" value="制单日期" />
             <lang locale="zh_TW" value="制單日期" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreateTime].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="制单人" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="制單人" />
+            <lang locale="zh_CN" value="制单人" />
             <lang locale="zh_TW" value="制單人" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contCreator].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="备注" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="備註" />
+            <lang locale="zh_CN" value="备注" />
             <lang locale="zh_TW" value="備註" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contDescription].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateTime].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateTime].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateTime].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateTime].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="最后修改时间" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="最後修改時間" />
+            <lang locale="zh_CN" value="最后修改时间" />
             <lang locale="zh_TW" value="最後修改時間" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateTime].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateTime].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateUser].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateUser].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateUser].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateUser].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="最后修改者" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="最後修改者" />
+            <lang locale="zh_CN" value="最后修改者" />
             <lang locale="zh_TW" value="最後修改者" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateUser].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contLastUpdateUser].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="单据编号" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="單據編號" />
+            <lang locale="zh_CN" value="单据编号" />
             <lang locale="zh_TW" value="單據編號" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contNumber].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].properties.property[boundLabelAlignment].value">
-            <lang locale="zh_CN" value="7" />
             <lang locale="en_US" value="7" />
-            <lang locale="zh_HK" value="7" />
+            <lang locale="zh_CN" value="7" />
             <lang locale="zh_TW" value="7" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="审核日期" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="審核日期" />
+            <lang locale="zh_CN" value="审核日期" />
             <lang locale="zh_TW" value="審核日期" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[contauditDate].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateCreateTime].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateCreateTime].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateCreateTime].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateCreateTime].properties.property[required].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateCreateTime].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateLastUpdateTime].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateLastUpdateTime].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateLastUpdateTime].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateLastUpdateTime].properties.property[required].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDDateLastUpdateTime].properties.property[timeEnabled].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDLabelContainer1].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDLabelContainer1].properties.property[boundLabelLength].value">
-            <lang locale="zh_CN" value="100" />
             <lang locale="en_US" value="100" />
-            <lang locale="zh_HK" value="100" />
+            <lang locale="zh_CN" value="100" />
             <lang locale="zh_TW" value="100" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDLabelContainer1].properties.property[boundLabelText].value">
-            <lang locale="zh_CN" value="租赁合同" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="租賃合同" />
+            <lang locale="zh_CN" value="租赁合同" />
             <lang locale="zh_TW" value="租賃合同" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDLabelContainer1].properties.property[boundLabelUnderline].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kDScrollPane1].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kdtEntrys].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kdtEntrys].extendedProperty.buildDetail">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[kdtEntrys].properties.property[formatXml].value">
-            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol8&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;moneyDefine&quot; t:width=&quot;120&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;appDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;endDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;appAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;currency&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;actRevAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;actRevDate&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; t:styleID=&quot;sCol8&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;255&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;款项名称&lt;/t:Cell&gt;&lt;t:Cell&gt;应收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;开始日期&lt;/t:Cell&gt;&lt;t:Cell&gt;结束日期&lt;/t:Cell&gt;&lt;t:Cell&gt;应收金额&lt;/t:Cell&gt;&lt;t:Cell&gt;币别&lt;/t:Cell&gt;&lt;t:Cell&gt;实收金额&lt;/t:Cell&gt;&lt;t:Cell&gt;实收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;备注&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
             <lang locale="en_US" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles /&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
-            <lang locale="zh_HK" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol8&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;moneyDefine&quot; t:width=&quot;120&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;appDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;endDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;appAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;currency&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;actRevAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;actRevDate&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; t:styleID=&quot;sCol8&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;255&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;款項名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;應收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;開始日期&lt;/t:Cell&gt;&lt;t:Cell&gt;結束日期&lt;/t:Cell&gt;&lt;t:Cell&gt;應收金額&lt;/t:Cell&gt;&lt;t:Cell&gt;幣別&lt;/t:Cell&gt;&lt;t:Cell&gt;實收金額&lt;/t:Cell&gt;&lt;t:Cell&gt;實收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;備註&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
+            <lang locale="zh_CN" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol8&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;moneyDefine&quot; t:width=&quot;120&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;appDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;endDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;appAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;currency&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;actRevAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;actRevDate&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; t:styleID=&quot;sCol8&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;255&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;款项名称&lt;/t:Cell&gt;&lt;t:Cell&gt;应收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;开始日期&lt;/t:Cell&gt;&lt;t:Cell&gt;结束日期&lt;/t:Cell&gt;&lt;t:Cell&gt;应收金额&lt;/t:Cell&gt;&lt;t:Cell&gt;币别&lt;/t:Cell&gt;&lt;t:Cell&gt;实收金额&lt;/t:Cell&gt;&lt;t:Cell&gt;实收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;备注&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
             <lang locale="zh_TW" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;DocRoot xmlns:c=&quot;http://www.kingdee.com/Common&quot; xmlns:f=&quot;http://www.kingdee.com/Form&quot; xmlns:t=&quot;http://www.kingdee.com/Table&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.kingdee.com/KDF KDFSchema.xsd&quot; version=&quot;0.0&quot;&gt;&lt;Styles&gt;&lt;c:Style id=&quot;sCol0&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol2&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol3&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol4&quot;&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol5&quot;&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol6&quot;&gt;&lt;c:Protection hidden=&quot;true&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol7&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;0.00&lt;/c:NumberFormat&gt;&lt;c:Alignment horizontal=&quot;right&quot; /&gt;&lt;/c:Style&gt;&lt;c:Style id=&quot;sCol8&quot;&gt;&lt;c:Protection locked=&quot;true&quot; /&gt;&lt;c:NumberFormat&gt;yyyy-MM-dd&lt;/c:NumberFormat&gt;&lt;/c:Style&gt;&lt;/Styles&gt;&lt;Table id=&quot;KDTable&quot;&gt;&lt;t:Sheet name=&quot;sheet1&quot;&gt;&lt;t:Table t:selectMode=&quot;15&quot; t:mergeMode=&quot;0&quot; t:dataRequestMode=&quot;0&quot; t:pageRowCount=&quot;100&quot;&gt;&lt;t:ColumnGroup&gt;&lt;t:Column t:key=&quot;id&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;0&quot; t:styleID=&quot;sCol0&quot; /&gt;&lt;t:Column t:key=&quot;moneyDefine&quot; t:width=&quot;120&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;1&quot; /&gt;&lt;t:Column t:key=&quot;appDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;2&quot; t:styleID=&quot;sCol2&quot; /&gt;&lt;t:Column t:key=&quot;startDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;3&quot; t:styleID=&quot;sCol3&quot; /&gt;&lt;t:Column t:key=&quot;endDate&quot; t:width=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;4&quot; t:styleID=&quot;sCol4&quot; /&gt;&lt;t:Column t:key=&quot;appAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;true&quot; t:index=&quot;5&quot; t:styleID=&quot;sCol5&quot; /&gt;&lt;t:Column t:key=&quot;currency&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;6&quot; t:styleID=&quot;sCol6&quot; /&gt;&lt;t:Column t:key=&quot;actRevAmount&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;7&quot; t:styleID=&quot;sCol7&quot; /&gt;&lt;t:Column t:key=&quot;actRevDate&quot; t:width=&quot;100&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;8&quot; t:styleID=&quot;sCol8&quot; /&gt;&lt;t:Column t:key=&quot;remark&quot; t:width=&quot;255&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot; t:moveable=&quot;true&quot; t:group=&quot;false&quot; t:required=&quot;false&quot; t:index=&quot;9&quot; /&gt;&lt;/t:ColumnGroup&gt;&lt;t:Head&gt;&lt;t:Row t:name=&quot;header&quot; t:height=&quot;-1&quot; t:mergeable=&quot;true&quot; t:resizeable=&quot;true&quot;&gt;&lt;t:Cell&gt;id&lt;/t:Cell&gt;&lt;t:Cell&gt;款項名稱&lt;/t:Cell&gt;&lt;t:Cell&gt;應收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;開始日期&lt;/t:Cell&gt;&lt;t:Cell&gt;結束日期&lt;/t:Cell&gt;&lt;t:Cell&gt;應收金額&lt;/t:Cell&gt;&lt;t:Cell&gt;幣別&lt;/t:Cell&gt;&lt;t:Cell&gt;實收金額&lt;/t:Cell&gt;&lt;t:Cell&gt;實收日期&lt;/t:Cell&gt;&lt;t:Cell&gt;備註&lt;/t:Cell&gt;&lt;/t:Row&gt;&lt;/t:Head&gt;&lt;/t:Table&gt;&lt;t:SheetOptions&gt;&lt;t:MergeBlocks&gt;&lt;t:Head /&gt;&lt;/t:MergeBlocks&gt;&lt;/t:SheetOptions&gt;&lt;/t:Sheet&gt;&lt;/Table&gt;&lt;/DocRoot&gt; " />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAddLine].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAddLine].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAuditResult].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAuditResult].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAudit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAudit].properties.property[action].value">
-            <lang locale="zh_CN" value="actionAudit" />
             <lang locale="en_US" value="actionAudit" />
-            <lang locale="zh_HK" value="actionAudit" />
+            <lang locale="zh_CN" value="actionAudit" />
             <lang locale="zh_TW" value="actionAudit" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAudit].properties.property[icon].value">
-            <lang locale="zh_CN" value="imgTbtn_audit" />
             <lang locale="en_US" value="imgTbtn_audit" />
-            <lang locale="zh_HK" value="imgTbtn_audit" />
+            <lang locale="zh_CN" value="imgTbtn_audit" />
             <lang locale="zh_TW" value="imgTbtn_audit" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemAudit].properties.property[text].value">
-            <lang locale="zh_CN" value="审批" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="審批" />
+            <lang locale="zh_CN" value="审批" />
             <lang locale="zh_TW" value="審批" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemCancelCancel].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemCancel].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemCopyFrom].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemCopyFrom].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemCreateTo].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemCreateTo].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemDelVoucher].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemInsertLine].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemInsertLine].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemRemoveLine].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemRemoveLine].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemTraceDown].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemTraceDown].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemTraceUp].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemTraceUp].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemUnAudit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemUnAudit].properties.property[action].value">
-            <lang locale="zh_CN" value="actionUnAudit" />
             <lang locale="en_US" value="actionUnAudit" />
-            <lang locale="zh_HK" value="actionUnAudit" />
+            <lang locale="zh_CN" value="actionUnAudit" />
             <lang locale="zh_TW" value="actionUnAudit" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemUnAudit].properties.property[icon].value">
-            <lang locale="zh_CN" value="imgTbtn_unaudit" />
             <lang locale="en_US" value="imgTbtn_unaudit" />
-            <lang locale="zh_HK" value="imgTbtn_unaudit" />
+            <lang locale="zh_CN" value="imgTbtn_unaudit" />
             <lang locale="zh_TW" value="imgTbtn_unaudit" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemUnAudit].properties.property[text].value">
-            <lang locale="zh_CN" value="反审批" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="反審批" />
+            <lang locale="zh_CN" value="反审批" />
             <lang locale="zh_TW" value="反審批" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemViewDoProccess].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemViewDoProccess].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemViewSubmitProccess].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuItemViewSubmitProccess].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuTable1].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuTable1].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuWorkflow].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[menuWorkflow].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkBizDate].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkBizDate].properties.property[enabled].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkBizDate].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkBizDate].properties.property[required].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkBizDate].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkauditDate].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkauditDate].extendedProperty.addedByBIM">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkauditDate].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkauditDate].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkauditDate].properties.property[required].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[pkauditDate].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtAuditor].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtAuditor].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtAuditor].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtAuditor].properties.property[required].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtAuditor].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtCreator].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtCreator].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtCreator].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtCreator].properties.property[required].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtCreator].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtLastUpdateUser].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtLastUpdateUser].properties.property[enabled].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtLastUpdateUser].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtLastUpdateUser].properties.property[required].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="false" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtTenancyBill].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtTenancyBill].properties.property[commitFormat].value">
-            <lang locale="zh_CN" value="$number$" />
             <lang locale="en_US" value="$number$" />
-            <lang locale="zh_HK" value="$number$" />
+            <lang locale="zh_CN" value="$number$" />
             <lang locale="zh_TW" value="$number$" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtTenancyBill].properties.property[displayFormat].value">
-            <lang locale="zh_CN" value="$name$" />
             <lang locale="en_US" value="$name$" />
-            <lang locale="zh_HK" value="$name$" />
+            <lang locale="zh_CN" value="$name$" />
             <lang locale="zh_TW" value="$name$" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtTenancyBill].properties.property[editFormat].value">
-            <lang locale="zh_CN" value="$name$" />
             <lang locale="en_US" value="$name$" />
-            <lang locale="zh_HK" value="$name$" />
+            <lang locale="zh_CN" value="$name$" />
             <lang locale="zh_TW" value="$name$" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtTenancyBill].properties.property[queryInfo].value">
-            <lang locale="zh_CN" value="com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery" />
             <lang locale="en_US" value="com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery" />
-            <lang locale="zh_HK" value="com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery" />
+            <lang locale="zh_CN" value="com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery" />
             <lang locale="zh_TW" value="com.kingdee.eas.fdc.tenancy.app.TenancyBillQuery" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[prmtTenancyBill].properties.property[required].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separator1].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separator1].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separator3].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separator3].properties.property[visible].value">
-            <lang locale="zh_CN" value="false" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="false" />
+            <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW1].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW2].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW3].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW4].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW5].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW6].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW7].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW8].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[separatorFW9].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtDescription].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtDescription].properties.property[maxLength].value">
-            <lang locale="zh_CN" value="255" />
             <lang locale="en_US" value="255" />
-            <lang locale="zh_HK" value="255" />
+            <lang locale="zh_CN" value="255" />
             <lang locale="zh_TW" value="255" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].properties.property[enabled].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].properties.property[foreground].value">
-            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="en_US" value="r=0,g=0,b=0" />
-            <lang locale="zh_HK" value="r=0,g=0,b=0" />
+            <lang locale="zh_CN" value="r=0,g=0,b=0" />
             <lang locale="zh_TW" value="r=0,g=0,b=0" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].properties.property[horizontalAlignment].value">
-            <lang locale="zh_CN" value="2" />
             <lang locale="en_US" value="2" />
-            <lang locale="zh_HK" value="2" />
+            <lang locale="zh_CN" value="2" />
             <lang locale="zh_TW" value="2" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].properties.property[maxLength].value">
-            <lang locale="zh_CN" value="80" />
             <lang locale="en_US" value="80" />
-            <lang locale="zh_HK" value="80" />
+            <lang locale="zh_CN" value="80" />
             <lang locale="zh_TW" value="80" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].properties.property[required].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].components.component[txtNumber].properties.property[visible].value">
-            <lang locale="zh_CN" value="true" />
             <lang locale="en_US" value="true" />
-            <lang locale="zh_HK" value="true" />
+            <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].description">
-            <lang locale="zh_CN" value="多分录基础单据模板编辑界面" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="多分錄基礎單據範本編輯介面" />
+            <lang locale="zh_CN" value="多分录基础单据模板编辑界面" />
             <lang locale="zh_TW" value="多分錄基礎單據範本編輯介面" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].extendedProperty.bimTemplateType">
+            <lang locale="en_US" value="MCoreBillBase" />
             <lang locale="zh_CN" value="MCoreBillBase" />
             <lang locale="zh_TW" value="MCoreBillBase" />
-            <lang locale="en_US" value="MCoreBillBase" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].extendedProperty.bimUIType">
+            <lang locale="en_US" value="EditUI" />
             <lang locale="zh_CN" value="EditUI" />
             <lang locale="zh_TW" value="EditUI" />
-            <lang locale="en_US" value="EditUI" />
         </rs>
         <rs key="uiObject[com.kingdee.eas.fdc.tenancy.client.RestReceivableEditUI].title">
-            <lang locale="zh_CN" value="其他应收" />
             <lang locale="en_US" value="null" />
-            <lang locale="zh_HK" value="其他應收" />
+            <lang locale="zh_CN" value="其他应收" />
             <lang locale="zh_TW" value="其他應收" />
         </rs>
     </resource>
