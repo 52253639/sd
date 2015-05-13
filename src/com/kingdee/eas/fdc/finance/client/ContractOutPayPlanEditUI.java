@@ -177,8 +177,6 @@ public class ContractOutPayPlanEditUI extends AbstractContractOutPayPlanEditUI
 		
 //		this.btnSubmit.setText("提交&审批");
 //		this.btnSubmit.setToolTipText("提交&审批");
-		this.txtLastAmount.setVisible(false);
-		this.contLastAmount.setVisible(false);
 //		this.txtVersion.setPrecision(1);
 		
 //		String cuId=SysContext.getSysContext().getCurrentCtrlUnit().getId().toString();
@@ -220,7 +218,6 @@ public class ContractOutPayPlanEditUI extends AbstractContractOutPayPlanEditUI
 		
 		if(this.editData.getContract()!=null){
 			this.txtContractInfo.setText(this.editData.getContract().getNumber() + " " + editData.getContract().getName());
-			this.txtProj.setText(this.editData.getContract().getCurProject().getDisplayName());
 			this.txtOrg.setText(this.editData.getContract().getOrgUnit().getDisplayName());
 			this.txtContractAmount.setValue(this.editData.getContract().getAmount());
 			
@@ -279,10 +276,19 @@ public class ContractOutPayPlanEditUI extends AbstractContractOutPayPlanEditUI
 				this.txtTotalAmount.setValue(actPayAmount);
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (BOSException e) {
-				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				UIContext uiContext = new UIContext(this);
+				uiContext.put("ID", editData.getContract().getId().toString());
+				ContractBillEditUI ui = (ContractBillEditUI) UIFactoryHelper.initUIObject(ContractBillEditUI.class.getName(), uiContext, null,OprtState.VIEW);
+				this.contract.setViewportView(ui);
+				this.contract.setKeyBoardControl(true);
+				this.contract.setEnabled(false);
+			} catch (UIException e) {
 				e.printStackTrace();
 			}
 		}

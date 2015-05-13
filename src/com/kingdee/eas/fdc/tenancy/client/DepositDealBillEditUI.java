@@ -129,7 +129,7 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 			sic.add("otherPayList.*");
 			sic.add("otherPayList.moneyDefine.*");
 			sic.add("tenancyRoomList.*");
-			sic.add("tenancyRoomList.moneyDefine*");
+			sic.add("tenancyRoomList.moneyDefine.*");
 			TenancyBillInfo tenBill = TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(this.editData.getTenancyBill().getId()), sic);
 			TenBillOtherPayCollection otherPayList = new TenBillOtherPayCollection();
 			for (int i = 0; i < tenBill.getOtherPayList().size(); i++) {

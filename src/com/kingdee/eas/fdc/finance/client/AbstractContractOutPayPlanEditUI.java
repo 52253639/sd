@@ -46,37 +46,36 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.fdc.basedata.client.FDCBillEditUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractContractOutPayPlanEditUI.class);
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNumber;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractInfo;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBizDate;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalAmount;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractAmount;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contOrg;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contProj;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLastAmount;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreator;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditor;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreateTime;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditTime;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAmount;
+    protected com.kingdee.bos.ctrl.swing.KDTabbedPane panelAll;
+    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel1;
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane contract;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contGCL;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtContractInfo;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalAmount;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtContractAmount;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtOrg;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtProj;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtLastAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditTime;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreateTime;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditor;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreator;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contOrg;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBizDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractInfo;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNumber;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtGCL;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtAmount;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkAuditTime;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAuditor;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane1;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtDescription;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAuditor;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkAuditTime;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtAmount;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtGCL;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtOrg;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtContractAmount;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalAmount;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtContractInfo;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemPublish;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemRevise;
     protected com.kingdee.eas.fdc.finance.ContractOutPayPlanInfo editData = null;
@@ -132,75 +131,73 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.actionRLine = new ActionRLine(this);
         getActionManager().registerAction("actionRLine", actionRLine);
          this.actionRLine.addService(new com.kingdee.eas.framework.client.service.PermissionService());
-        this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contContractInfo = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contBizDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contTotalAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contContractAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contOrg = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contProj = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contLastAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contCreator = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contAuditor = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contCreateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contAuditTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.panelAll = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
+        this.kDPanel1 = new com.kingdee.bos.ctrl.swing.KDPanel();
+        this.contract = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.contGCL = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtContractInfo = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.txtTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
-        this.txtContractAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
-        this.txtOrg = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtProj = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtLastAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.contAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contAuditTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contCreateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contAuditor = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contCreator = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contOrg = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contContractAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contTotalAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contBizDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contContractInfo = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.txtGCL = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.pkAuditTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.prmtAuditor = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.kDScrollPane1 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextArea();
-        this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.prmtAuditor = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.pkAuditTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.txtAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
-        this.txtGCL = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtOrg = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtContractAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.txtContractInfo = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.menuItemPublish = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemRevise = new com.kingdee.bos.ctrl.swing.KDMenuItem();
-        this.contNumber.setName("contNumber");
-        this.contContractInfo.setName("contContractInfo");
-        this.contBizDate.setName("contBizDate");
-        this.contTotalAmount.setName("contTotalAmount");
-        this.contContractAmount.setName("contContractAmount");
-        this.contOrg.setName("contOrg");
-        this.contProj.setName("contProj");
-        this.contLastAmount.setName("contLastAmount");
-        this.contDescription.setName("contDescription");
-        this.contCreator.setName("contCreator");
-        this.contAuditor.setName("contAuditor");
-        this.contCreateTime.setName("contCreateTime");
-        this.contAuditTime.setName("contAuditTime");
-        this.contAmount.setName("contAmount");
+        this.panelAll.setName("panelAll");
+        this.kDPanel1.setName("kDPanel1");
+        this.contract.setName("contract");
         this.contGCL.setName("contGCL");
-        this.txtNumber.setName("txtNumber");
-        this.txtContractInfo.setName("txtContractInfo");
-        this.pkBizDate.setName("pkBizDate");
-        this.txtTotalAmount.setName("txtTotalAmount");
-        this.txtContractAmount.setName("txtContractAmount");
-        this.txtOrg.setName("txtOrg");
-        this.txtProj.setName("txtProj");
-        this.txtLastAmount.setName("txtLastAmount");
+        this.contAmount.setName("contAmount");
+        this.contAuditTime.setName("contAuditTime");
+        this.contCreateTime.setName("contCreateTime");
+        this.contAuditor.setName("contAuditor");
+        this.contCreator.setName("contCreator");
+        this.contDescription.setName("contDescription");
+        this.contOrg.setName("contOrg");
+        this.contContractAmount.setName("contContractAmount");
+        this.contTotalAmount.setName("contTotalAmount");
+        this.contBizDate.setName("contBizDate");
+        this.contContractInfo.setName("contContractInfo");
+        this.contNumber.setName("contNumber");
+        this.txtGCL.setName("txtGCL");
+        this.txtAmount.setName("txtAmount");
+        this.pkAuditTime.setName("pkAuditTime");
+        this.pkCreateTime.setName("pkCreateTime");
+        this.prmtAuditor.setName("prmtAuditor");
+        this.prmtCreator.setName("prmtCreator");
         this.kDScrollPane1.setName("kDScrollPane1");
         this.txtDescription.setName("txtDescription");
-        this.prmtCreator.setName("prmtCreator");
-        this.prmtAuditor.setName("prmtAuditor");
-        this.pkCreateTime.setName("pkCreateTime");
-        this.pkAuditTime.setName("pkAuditTime");
-        this.txtAmount.setName("txtAmount");
-        this.txtGCL.setName("txtGCL");
+        this.txtOrg.setName("txtOrg");
+        this.txtContractAmount.setName("txtContractAmount");
+        this.txtTotalAmount.setName("txtTotalAmount");
+        this.pkBizDate.setName("pkBizDate");
+        this.txtContractInfo.setName("txtContractInfo");
+        this.txtNumber.setName("txtNumber");
         this.menuItemPublish.setName("menuItemPublish");
         this.menuItemRevise.setName("menuItemRevise");
         // CoreUI		
         this.setBorder(null);		
-        this.setPreferredSize(new Dimension(700,329));		
+        this.setPreferredSize(new Dimension(1013,629));		
         this.btnCopy.setVisible(false);		
         this.btnCopy.setEnabled(false);		
         this.menuItemCopy.setVisible(false);		
@@ -235,29 +232,39 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.menuItemMultiapprove.setVisible(false);		
         this.btnCalculator.setVisible(false);		
         this.btnCalculator.setEnabled(false);
-        // contNumber		
-        this.contNumber.setBoundLabelText(resHelper.getString("contNumber.boundLabelText"));		
-        this.contNumber.setBoundLabelLength(100);		
-        this.contNumber.setBoundLabelUnderline(true);
-        // contContractInfo		
-        this.contContractInfo.setBoundLabelText(resHelper.getString("contContractInfo.boundLabelText"));		
-        this.contContractInfo.setBoundLabelLength(100);		
-        this.contContractInfo.setBoundLabelUnderline(true);		
-        this.contContractInfo.setEnabled(false);
-        // contBizDate		
-        this.contBizDate.setBoundLabelText(resHelper.getString("contBizDate.boundLabelText"));		
-        this.contBizDate.setBoundLabelLength(100);		
-        this.contBizDate.setBoundLabelUnderline(true);
-        // contTotalAmount		
-        this.contTotalAmount.setBoundLabelText(resHelper.getString("contTotalAmount.boundLabelText"));		
-        this.contTotalAmount.setBoundLabelLength(100);		
-        this.contTotalAmount.setBoundLabelUnderline(true);		
-        this.contTotalAmount.setEnabled(false);
-        // contContractAmount		
-        this.contContractAmount.setBoundLabelText(resHelper.getString("contContractAmount.boundLabelText"));		
-        this.contContractAmount.setBoundLabelLength(100);		
-        this.contContractAmount.setBoundLabelUnderline(true);		
-        this.contContractAmount.setEnabled(false);
+        // panelAll
+        // kDPanel1
+        // contract
+        // contGCL		
+        this.contGCL.setBoundLabelText(resHelper.getString("contGCL.boundLabelText"));		
+        this.contGCL.setBoundLabelLength(100);		
+        this.contGCL.setBoundLabelUnderline(true);		
+        this.contGCL.setEnabled(false);
+        // contAmount		
+        this.contAmount.setBoundLabelText(resHelper.getString("contAmount.boundLabelText"));		
+        this.contAmount.setBoundLabelLength(100);		
+        this.contAmount.setBoundLabelUnderline(true);		
+        this.contAmount.setEnabled(false);
+        // contAuditTime		
+        this.contAuditTime.setBoundLabelText(resHelper.getString("contAuditTime.boundLabelText"));		
+        this.contAuditTime.setBoundLabelLength(100);		
+        this.contAuditTime.setBoundLabelUnderline(true);
+        // contCreateTime		
+        this.contCreateTime.setBoundLabelText(resHelper.getString("contCreateTime.boundLabelText"));		
+        this.contCreateTime.setBoundLabelUnderline(true);		
+        this.contCreateTime.setBoundLabelLength(100);
+        // contAuditor		
+        this.contAuditor.setBoundLabelText(resHelper.getString("contAuditor.boundLabelText"));		
+        this.contAuditor.setBoundLabelUnderline(true);		
+        this.contAuditor.setBoundLabelLength(100);
+        // contCreator		
+        this.contCreator.setBoundLabelText(resHelper.getString("contCreator.boundLabelText"));		
+        this.contCreator.setBoundLabelLength(100);		
+        this.contCreator.setBoundLabelUnderline(true);
+        // contDescription		
+        this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
+        this.contDescription.setBoundLabelLength(100);		
+        this.contDescription.setBoundLabelUnderline(true);
         // contOrg		
         this.contOrg.setBoundLabelText(resHelper.getString("contOrg.boundLabelText"));		
         this.contOrg.setBoundLabelLength(100);		
@@ -265,91 +272,43 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.contOrg.setBoundLabelAlignment(7);		
         this.contOrg.setVisible(true);		
         this.contOrg.setEnabled(false);
-        // contProj		
-        this.contProj.setBoundLabelText(resHelper.getString("contProj.boundLabelText"));		
-        this.contProj.setBoundLabelLength(100);		
-        this.contProj.setBoundLabelUnderline(true);		
-        this.contProj.setBoundLabelAlignment(7);		
-        this.contProj.setVisible(true);		
-        this.contProj.setEnabled(false);
-        // contLastAmount		
-        this.contLastAmount.setBoundLabelText(resHelper.getString("contLastAmount.boundLabelText"));		
-        this.contLastAmount.setEnabled(false);		
-        this.contLastAmount.setBoundLabelLength(100);		
-        this.contLastAmount.setBoundLabelUnderline(true);
-        // contDescription		
-        this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
-        this.contDescription.setBoundLabelLength(100);		
-        this.contDescription.setBoundLabelUnderline(true);
-        // contCreator		
-        this.contCreator.setBoundLabelText(resHelper.getString("contCreator.boundLabelText"));		
-        this.contCreator.setBoundLabelLength(100);		
-        this.contCreator.setBoundLabelUnderline(true);
-        // contAuditor		
-        this.contAuditor.setBoundLabelText(resHelper.getString("contAuditor.boundLabelText"));		
-        this.contAuditor.setBoundLabelUnderline(true);		
-        this.contAuditor.setBoundLabelLength(100);
-        // contCreateTime		
-        this.contCreateTime.setBoundLabelText(resHelper.getString("contCreateTime.boundLabelText"));		
-        this.contCreateTime.setBoundLabelUnderline(true);		
-        this.contCreateTime.setBoundLabelLength(100);
-        // contAuditTime		
-        this.contAuditTime.setBoundLabelText(resHelper.getString("contAuditTime.boundLabelText"));		
-        this.contAuditTime.setBoundLabelLength(100);		
-        this.contAuditTime.setBoundLabelUnderline(true);
-        // contAmount		
-        this.contAmount.setBoundLabelText(resHelper.getString("contAmount.boundLabelText"));		
-        this.contAmount.setBoundLabelLength(100);		
-        this.contAmount.setBoundLabelUnderline(true);		
-        this.contAmount.setEnabled(false);
-        // contGCL		
-        this.contGCL.setBoundLabelText(resHelper.getString("contGCL.boundLabelText"));		
-        this.contGCL.setBoundLabelLength(100);		
-        this.contGCL.setBoundLabelUnderline(true);		
-        this.contGCL.setEnabled(false);
-        // txtNumber		
-        this.txtNumber.setRequired(true);
-        // txtContractInfo		
-        this.txtContractInfo.setEnabled(false);
-        // pkBizDate		
-        this.pkBizDate.setRequired(true);
-        // txtTotalAmount		
-        this.txtTotalAmount.setEnabled(false);		
-        this.txtTotalAmount.setDataType(1);		
-        this.txtTotalAmount.setPrecision(2);
-        // txtContractAmount		
-        this.txtContractAmount.setEnabled(false);		
-        this.txtContractAmount.setDataType(1);		
-        this.txtContractAmount.setPrecision(2);
-        // txtOrg		
-        this.txtOrg.setMaxLength(80);		
-        this.txtOrg.setVisible(true);		
-        this.txtOrg.setEnabled(false);		
-        this.txtOrg.setHorizontalAlignment(2);		
-        this.txtOrg.setRequired(false);		
-        this.txtOrg.setEditable(false);
-        // txtProj		
-        this.txtProj.setMaxLength(80);		
-        this.txtProj.setVisible(true);		
-        this.txtProj.setEnabled(false);		
-        this.txtProj.setHorizontalAlignment(2);		
-        this.txtProj.setRequired(false);		
-        this.txtProj.setEditable(false);
-        // txtLastAmount		
-        this.txtLastAmount.setEnabled(false);		
-        this.txtLastAmount.setPrecision(2);		
-        this.txtLastAmount.setDataType(1);
-        // kDScrollPane1
-        // txtDescription		
-        this.txtDescription.setMaxLength(500);
-        // prmtCreator		
-        this.prmtCreator.setEnabled(false);		
-        this.prmtCreator.setVisible(true);		
-        this.prmtCreator.setEditable(true);		
-        this.prmtCreator.setDisplayFormat("$name$");		
-        this.prmtCreator.setEditFormat("$number$");		
-        this.prmtCreator.setCommitFormat("$number$");		
-        this.prmtCreator.setRequired(false);
+        // contContractAmount		
+        this.contContractAmount.setBoundLabelText(resHelper.getString("contContractAmount.boundLabelText"));		
+        this.contContractAmount.setBoundLabelLength(100);		
+        this.contContractAmount.setBoundLabelUnderline(true);		
+        this.contContractAmount.setEnabled(false);
+        // contTotalAmount		
+        this.contTotalAmount.setBoundLabelText(resHelper.getString("contTotalAmount.boundLabelText"));		
+        this.contTotalAmount.setBoundLabelLength(100);		
+        this.contTotalAmount.setBoundLabelUnderline(true);		
+        this.contTotalAmount.setEnabled(false);
+        // contBizDate		
+        this.contBizDate.setBoundLabelText(resHelper.getString("contBizDate.boundLabelText"));		
+        this.contBizDate.setBoundLabelLength(100);		
+        this.contBizDate.setBoundLabelUnderline(true);
+        // contContractInfo		
+        this.contContractInfo.setBoundLabelText(resHelper.getString("contContractInfo.boundLabelText"));		
+        this.contContractInfo.setBoundLabelLength(100);		
+        this.contContractInfo.setBoundLabelUnderline(true);		
+        this.contContractInfo.setEnabled(false);
+        // contNumber		
+        this.contNumber.setBoundLabelText(resHelper.getString("contNumber.boundLabelText"));		
+        this.contNumber.setBoundLabelLength(100);		
+        this.contNumber.setBoundLabelUnderline(true);
+        // txtGCL		
+        this.txtGCL.setEnabled(false);		
+        this.txtGCL.setDataType(1);		
+        this.txtGCL.setPrecision(2);
+        // txtAmount		
+        this.txtAmount.setDataType(1);		
+        this.txtAmount.setPrecision(2);		
+        this.txtAmount.setRequired(true);
+        // pkAuditTime		
+        this.pkAuditTime.setVisible(true);		
+        this.pkAuditTime.setEnabled(false);
+        // pkCreateTime		
+        this.pkCreateTime.setEnabled(false);		
+        this.pkCreateTime.setVisible(true);
         // prmtAuditor		
         this.prmtAuditor.setEnabled(false);		
         this.prmtAuditor.setVisible(true);		
@@ -358,20 +317,38 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.prmtAuditor.setEditFormat("$number$");		
         this.prmtAuditor.setCommitFormat("$number$");		
         this.prmtAuditor.setRequired(false);
-        // pkCreateTime		
-        this.pkCreateTime.setEnabled(false);		
-        this.pkCreateTime.setVisible(true);
-        // pkAuditTime		
-        this.pkAuditTime.setVisible(true);		
-        this.pkAuditTime.setEnabled(false);
-        // txtAmount		
-        this.txtAmount.setDataType(1);		
-        this.txtAmount.setPrecision(2);		
-        this.txtAmount.setRequired(true);
-        // txtGCL		
-        this.txtGCL.setEnabled(false);		
-        this.txtGCL.setDataType(1);		
-        this.txtGCL.setPrecision(2);
+        // prmtCreator		
+        this.prmtCreator.setEnabled(false);		
+        this.prmtCreator.setVisible(true);		
+        this.prmtCreator.setEditable(true);		
+        this.prmtCreator.setDisplayFormat("$name$");		
+        this.prmtCreator.setEditFormat("$number$");		
+        this.prmtCreator.setCommitFormat("$number$");		
+        this.prmtCreator.setRequired(false);
+        // kDScrollPane1
+        // txtDescription		
+        this.txtDescription.setMaxLength(500);
+        // txtOrg		
+        this.txtOrg.setMaxLength(80);		
+        this.txtOrg.setVisible(true);		
+        this.txtOrg.setEnabled(false);		
+        this.txtOrg.setHorizontalAlignment(2);		
+        this.txtOrg.setRequired(false);		
+        this.txtOrg.setEditable(false);
+        // txtContractAmount		
+        this.txtContractAmount.setEnabled(false);		
+        this.txtContractAmount.setDataType(1);		
+        this.txtContractAmount.setPrecision(2);
+        // txtTotalAmount		
+        this.txtTotalAmount.setEnabled(false);		
+        this.txtTotalAmount.setDataType(1);		
+        this.txtTotalAmount.setPrecision(2);
+        // pkBizDate		
+        this.pkBizDate.setRequired(true);
+        // txtContractInfo		
+        this.txtContractInfo.setEnabled(false);
+        // txtNumber		
+        this.txtNumber.setRequired(true);
         // menuItemPublish		
         this.menuItemPublish.setText(resHelper.getString("menuItemPublish.text"));
         // menuItemRevise		
@@ -400,70 +377,68 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 700, 329));
-        this.setLayout(null);
-        contNumber.setBounds(new Rectangle(31, 31, 270, 19));
-        this.add(contNumber, null);
-        contContractInfo.setBounds(new Rectangle(31, 66, 270, 19));
-        this.add(contContractInfo, null);
-        contBizDate.setBounds(new Rectangle(31, 101, 270, 19));
-        this.add(contBizDate, null);
-        contTotalAmount.setBounds(new Rectangle(31, 136, 270, 19));
-        this.add(contTotalAmount, null);
-        contContractAmount.setBounds(new Rectangle(391, 66, 270, 19));
-        this.add(contContractAmount, null);
-        contOrg.setBounds(new Rectangle(391, 31, 270, 19));
-        this.add(contOrg, null);
-        contProj.setBounds(new Rectangle(1205, -17, 270, 19));
-        this.add(contProj, null);
-        contLastAmount.setBounds(new Rectangle(1205, 5, 270, 19));
-        this.add(contLastAmount, null);
-        contDescription.setBounds(new Rectangle(31, 171, 630, 51));
-        this.add(contDescription, null);
-        contCreator.setBounds(new Rectangle(31, 238, 270, 19));
-        this.add(contCreator, null);
-        contAuditor.setBounds(new Rectangle(31, 274, 270, 19));
-        this.add(contAuditor, null);
-        contCreateTime.setBounds(new Rectangle(391, 238, 270, 19));
-        this.add(contCreateTime, null);
-        contAuditTime.setBounds(new Rectangle(391, 274, 270, 19));
-        this.add(contAuditTime, null);
-        contAmount.setBounds(new Rectangle(391, 101, 270, 19));
-        this.add(contAmount, null);
-        contGCL.setBounds(new Rectangle(391, 136, 270, 19));
-        this.add(contGCL, null);
-        //contNumber
-        contNumber.setBoundEditor(txtNumber);
-        //contContractInfo
-        contContractInfo.setBoundEditor(txtContractInfo);
-        //contBizDate
-        contBizDate.setBoundEditor(pkBizDate);
-        //contTotalAmount
-        contTotalAmount.setBoundEditor(txtTotalAmount);
-        //contContractAmount
-        contContractAmount.setBoundEditor(txtContractAmount);
-        //contOrg
-        contOrg.setBoundEditor(txtOrg);
-        //contProj
-        contProj.setBoundEditor(txtProj);
-        //contLastAmount
-        contLastAmount.setBoundEditor(txtLastAmount);
+        this.setBounds(new Rectangle(10, 10, 1013, 628));
+this.setLayout(new BorderLayout(0, 0));
+        this.add(panelAll, BorderLayout.CENTER);
+        //panelAll
+        panelAll.add(kDPanel1, resHelper.getString("kDPanel1.constraints"));
+        panelAll.add(contract, resHelper.getString("contract.constraints"));
+        //kDPanel1
+        kDPanel1.setLayout(new KDLayout());
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 595));        contGCL.setBounds(new Rectangle(557, 155, 270, 19));
+        kDPanel1.add(contGCL, new KDLayout.Constraints(557, 155, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contAmount.setBounds(new Rectangle(557, 111, 270, 19));
+        kDPanel1.add(contAmount, new KDLayout.Constraints(557, 111, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contAuditTime.setBounds(new Rectangle(557, 539, 270, 19));
+        kDPanel1.add(contAuditTime, new KDLayout.Constraints(557, 539, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contCreateTime.setBounds(new Rectangle(557, 491, 270, 19));
+        kDPanel1.add(contCreateTime, new KDLayout.Constraints(557, 491, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contAuditor.setBounds(new Rectangle(128, 539, 270, 19));
+        kDPanel1.add(contAuditor, new KDLayout.Constraints(128, 539, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCreator.setBounds(new Rectangle(128, 491, 270, 19));
+        kDPanel1.add(contCreator, new KDLayout.Constraints(128, 491, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDescription.setBounds(new Rectangle(128, 199, 700, 164));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(128, 199, 700, 164, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contOrg.setBounds(new Rectangle(557, 23, 270, 19));
+        kDPanel1.add(contOrg, new KDLayout.Constraints(557, 23, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contContractAmount.setBounds(new Rectangle(557, 67, 270, 19));
+        kDPanel1.add(contContractAmount, new KDLayout.Constraints(557, 67, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contTotalAmount.setBounds(new Rectangle(128, 155, 270, 19));
+        kDPanel1.add(contTotalAmount, new KDLayout.Constraints(128, 155, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contBizDate.setBounds(new Rectangle(128, 111, 270, 19));
+        kDPanel1.add(contBizDate, new KDLayout.Constraints(128, 111, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contContractInfo.setBounds(new Rectangle(128, 67, 270, 19));
+        kDPanel1.add(contContractInfo, new KDLayout.Constraints(128, 67, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNumber.setBounds(new Rectangle(128, 23, 270, 19));
+        kDPanel1.add(contNumber, new KDLayout.Constraints(128, 23, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        //contGCL
+        contGCL.setBoundEditor(txtGCL);
+        //contAmount
+        contAmount.setBoundEditor(txtAmount);
+        //contAuditTime
+        contAuditTime.setBoundEditor(pkAuditTime);
+        //contCreateTime
+        contCreateTime.setBoundEditor(pkCreateTime);
+        //contAuditor
+        contAuditor.setBoundEditor(prmtAuditor);
+        //contCreator
+        contCreator.setBoundEditor(prmtCreator);
         //contDescription
         contDescription.setBoundEditor(kDScrollPane1);
         //kDScrollPane1
         kDScrollPane1.getViewport().add(txtDescription, null);
-        //contCreator
-        contCreator.setBoundEditor(prmtCreator);
-        //contAuditor
-        contAuditor.setBoundEditor(prmtAuditor);
-        //contCreateTime
-        contCreateTime.setBoundEditor(pkCreateTime);
-        //contAuditTime
-        contAuditTime.setBoundEditor(pkAuditTime);
-        //contAmount
-        contAmount.setBoundEditor(txtAmount);
-        //contGCL
-        contGCL.setBoundEditor(txtGCL);
+        //contOrg
+        contOrg.setBoundEditor(txtOrg);
+        //contContractAmount
+        contContractAmount.setBoundEditor(txtContractAmount);
+        //contTotalAmount
+        contTotalAmount.setBoundEditor(txtTotalAmount);
+        //contBizDate
+        contBizDate.setBoundEditor(pkBizDate);
+        //contContractInfo
+        contContractInfo.setBoundEditor(txtContractInfo);
+        //contNumber
+        contNumber.setBoundEditor(txtNumber);
 
     }
 
@@ -643,14 +618,14 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
 
 	//Regiester control's property binding.
 	private void registerBindings(){
-		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
-		dataBinder.registerBinding("bizDate", java.util.Date.class, this.pkBizDate, "value");
-		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
-		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.prmtCreator, "data");
-		dataBinder.registerBinding("auditor", com.kingdee.eas.base.permission.UserInfo.class, this.prmtAuditor, "data");
-		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
+		dataBinder.registerBinding("amount", java.math.BigDecimal.class, this.txtAmount, "value");
 		dataBinder.registerBinding("auditTime", java.util.Date.class, this.pkAuditTime, "value");
-		dataBinder.registerBinding("amount", java.math.BigDecimal.class, this.txtAmount, "value");		
+		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
+		dataBinder.registerBinding("auditor", com.kingdee.eas.base.permission.UserInfo.class, this.prmtAuditor, "data");
+		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.prmtCreator, "data");
+		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
+		dataBinder.registerBinding("bizDate", java.util.Date.class, this.pkBizDate, "value");
+		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -710,14 +685,14 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
 	 */
 	protected void registerValidator() {
     	getValidateHelper().setCustomValidator( getValidator() );
-		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("bizDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("auditor", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("amount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("auditTime", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("amount", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("auditor", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("bizDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -745,18 +720,9 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
 		if(StringUtils.isEmpty(selectorAll)){
 			selectorAll = "true";
 		}
-        sic.add(new SelectorItemInfo("number"));
-        sic.add(new SelectorItemInfo("bizDate"));
-        sic.add(new SelectorItemInfo("description"));
-		if(selectorAll.equalsIgnoreCase("true"))
-		{
-			sic.add(new SelectorItemInfo("creator.*"));
-		}
-		else{
-        	sic.add(new SelectorItemInfo("creator.id"));
-        	sic.add(new SelectorItemInfo("creator.number"));
-        	sic.add(new SelectorItemInfo("creator.name"));
-		}
+        sic.add(new SelectorItemInfo("amount"));
+        sic.add(new SelectorItemInfo("auditTime"));
+        sic.add(new SelectorItemInfo("createTime"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
 			sic.add(new SelectorItemInfo("auditor.*"));
@@ -766,9 +732,18 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         	sic.add(new SelectorItemInfo("auditor.number"));
         	sic.add(new SelectorItemInfo("auditor.name"));
 		}
-        sic.add(new SelectorItemInfo("createTime"));
-        sic.add(new SelectorItemInfo("auditTime"));
-        sic.add(new SelectorItemInfo("amount"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
+        sic.add(new SelectorItemInfo("description"));
+        sic.add(new SelectorItemInfo("bizDate"));
+        sic.add(new SelectorItemInfo("number"));
         return sic;
     }        
     	

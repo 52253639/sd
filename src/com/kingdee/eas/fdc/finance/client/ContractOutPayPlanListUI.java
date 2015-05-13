@@ -367,6 +367,6 @@ public class ContractOutPayPlanListUI extends AbstractContractOutPayPlanListUI
 	@Override
 	protected String getEditUIModal() {
 		// TODO Auto-generated method stub
-		return UIFactoryName.MODEL;
+		return UIFactoryName.NEWTAB;
 	}
 }
