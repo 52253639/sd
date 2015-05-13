@@ -68,10 +68,10 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
 	    initColoum(header,col,"isPass",100,false);
 	    initColoum(header,col,"quaLevel",100,false);
 	    initColoum(header,col,"levelSetUpId",100,true);
-	    initColoum(header,col,"levelSetUp",100,false);
-	    initColoum(header,col,"grade",100,false);
+	    initColoum(header,col,"levelSetUp",100,true);
+	    initColoum(header,col,"grade",100,true);
 	    initColoum(header,col,"splArea",100,false);
-	    initColoum(header,col,"contractor",100,false);
+	    initColoum(header,col,"contractor",100,true);
 	    initColoum(header,col,"kcId",100,true);
 	    initColoum(header,col,"kcScore",100,false);
 	    initColoum(header,col,"storageDate",100,false);
@@ -82,22 +82,23 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
 	    initColoum(header,col,"curProject",100,false);
 	    initColoum(header,col,"contractId",100,true);
 	    initColoum(header,col,"contractName",100,false);
-	    initColoum(header,col,"manager",100,false);
+	    initColoum(header,col,"contractAmount",100,false);
+	    initColoum(header,col,"manager",100,true);
 	    initColoum(header,col,"stage",100,false);
 	    initColoum(header,col,"lypgId",100,true);
-	    initColoum(header,col,"lypgScore",100,false);
-	    initColoum(header,col,"lypgDate",100,false);
+	    initColoum(header,col,"lypgScore",100,true);
+	    initColoum(header,col,"lypgDate",100,true);
 	    header.setLabels(new Object[][]{ 
 	    		{
 	    			"id","序号","所属组织","采购类别","供应商入库编码","供应商名称","项目负责人","项目负责人","是否合格","资质等级","levelSetUpId","供应商级别","供应商等级","服务区域","实际承包人","kcId","考察得分","入库日期",
 	    			"参投立项名称","lyzhId","履约综合评估","履约综合评估日期",
-	    			"合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态"
+	    			"合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态","合作状态"
 	    		}
 	    		,
 	    		{
 	    			"id","序号","所属组织","采购类别","供应商入库编码","供应商名称","实际承包人","联系电话","是否合格","资质等级","levelSetUpId","供应商级别","供应商等级","服务区域","实际承包人","kcId","考察得分","入库日期",
 	    			"参投立项名称","lyzhId","履约综合评估","履约综合评估日期",
-	    			"工程项目","contractId","合同名称","项目经理","阶段","lypgId","履约评估得分","履约评估日期"
+	    			"工程项目","contractId","合同名称","合同金额","项目经理","阶段","lypgId","履约评估得分","履约评估日期"
 	    		}
 	    },true);
 	    params.setObject("header", header);
@@ -277,7 +278,7 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
     	StringBuffer sb = new StringBuffer();
     	sb.append(" select supplier.fid id,'' seq,purchaseOrgUnit.fname_l2 purchaseOrgUnit,inviteType.fname_l2 inviteType,supplier.fstorageNumber storageNumber,supplier.fname_l2 name,supplier.fcontractor contractor,supplier.fcontractorPhone contractorPhone,supplier.fisPass,quaLevel.fname_l2 quaLevel,jb.id levelSetUpId,levelSetUp.fname_l2 levelSetUp,grade.fname_l2 grade,supplier.fsplArea splArea,");
     	sb.append(" supplier.fcontractor contractor,kc.id kcId,kc.score kcScore,supplier.fstorageDate storageDate,'' inviteName,lyzh.id lyzhId,lyzh.score lyzhScore,");
-    	sb.append(" lyzh.auditTime lyzhDate,contract.curProject curProject,contract.contractId contractId,contract.contractName contractName,contract.manager manager,(case when contract.stage is null then '未签合同' else contract.stage end) stage,contract.lypgId lypgId,contract.lypgScore lypgScore,contract.lypgDate lypgDate");
+    	sb.append(" lyzh.auditTime lyzhDate,contract.curProject curProject,contract.contractId contractId,contract.contractName contractName,contract.amount contractAmount,'' manager,(case when contract.stage is null then '未签合同' else contract.stage end) stage,'' lypgId,'' lypgScore,'' lypgDate");
     	sb.append(" from T_FDC_SupplierStock supplier left join T_INV_InviteType inviteType on inviteType.fid=supplier.finviteTypeId");
     	sb.append(" left join T_GYS_QuaLevel quaLevel on quaLevel.fid=supplier.FQuaLevelId");
     	sb.append(" left join T_GYS_LevelSetUp levelSetUp on levelSetUp.fid=supplier.FLevelId");
@@ -288,11 +289,11 @@ public class SupplierStockReportFacadeControllerBean extends AbstractSupplierSto
 //    	sb.append(" left join (select gather.fid id,gather.fsupplierId,gather.famount score,gather.fbizDate auditTime from T_GYS_SupplierReviewGather gather left join(select gather.fsupplierId,max(gather.fbizDate) fbizDate from T_GYS_SupplierReviewGather gather left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('003','004') and gather.fstate='4AUDITTED' group by gather.fsupplierId) gather1 on gather1.fsupplierId=gather.fsupplierId left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('003','004') and gather.fstate='4AUDITTED' and gather1.fbizDate=gather.fbizDate)lypg on lypg.fsupplierId=supplier.fid");
     	sb.append(" left join (select gather.fid id,gather.fsupplierId,gather.fbizDate auditTime from T_GYS_SupplierReviewGather gather left join(select gather.fsupplierId,max(gather.fbizDate) fbizDate from T_GYS_SupplierReviewGather gather left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('006','007') and gather.fstate='4AUDITTED' group by gather.fsupplierId) gather1 on gather1.fsupplierId=gather.fsupplierId left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('006','007') and gather.fstate='4AUDITTED' and gather1.fbizDate=gather.fbizDate)jb on jb.fsupplierId=supplier.fid");
 //    	sb.append(" left join (select qualifyEntry.fsupplierId,inviteProject.fname name from T_INV_SupplierQualifyEntry qualifyEntry left join T_INV_SupplierQualify qualify on qualify.fid=qualifyEntry.FParentID left join T_INV_InviteProject inviteProject on qualify.finviteProjectId=inviteProject.fid where qualify.fstate='4AUDITTED') invite on invite.fsupplierId=supplier.fid");
-    	if(isAllContract){
-    		sb.append(" left join (select gather.fid lypgId,gather.famount lypgScore,gather.fbizDate lypgDate,rgEntry.fmanager manager,contract.fid contractId,contract.fname contractName,contract.FPartBID supplierId,(case when contract.FHasSettled=1 then '已结算' else '未结算' end) stage,curProject.fid curProjectId,curProject.fname_l2 curProject from t_con_contractBill contract left join T_FDC_ContractType ct on ct.fid=contract.FContractTypeID left join T_GYS_SRGContractEntry rgEntry on rgEntry.fcontractBillId=contract.fid left join T_GYS_SupplierReviewGather gather on rgEntry.fheadId=gather.fid left join(select gather.fsupplierId,max(gather.fbizDate) fbizDate from T_GYS_SupplierReviewGather gather left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('003','004') and gather.fstate='4AUDITTED' group by gather.fsupplierId) gather1 on gather1.fsupplierId=gather.fsupplierId left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId left join t_fdc_curProject curProject on curProject.fid=contract.fcurprojectid where contract.fstate='4AUDITTED' and gather1.fbizDate=gather.fbizDate and ((type.fnumber in('003','004') and gather.fstate='4AUDITTED') or rgEntry.fid is null) and ct.fname_l2 !='备案类合同') contract on contract.supplierId=supplier.FSysSupplierID");
-    	}else{
-    		sb.append(" left join (select gather.fid lypgId,gather.famount lypgScore,gather.fbizDate lypgDate,rgEntry.fmanager manager,contract.fid contractId,contract.fname contractName,gather.fsupplierId supplierId,(case when contract.FHasSettled=1 then '已结算' else '未结算' end) stage,curProject.fid curProjectId,curProject.fname_l2 curProject from T_GYS_SRGContractEntry rgEntry left join T_GYS_SupplierReviewGather gather on rgEntry.fheadId=gather.fid left join(select rgEntry.fcontractBillId,gather.fsupplierId,max(gather.fbizDate) fbizDate from T_GYS_SupplierReviewGather gather left join T_GYS_SRGContractEntry rgEntry on rgEntry.fheadId=gather.fid left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('003','004') and gather.fstate='4AUDITTED' group by rgEntry.fcontractBillId,gather.fsupplierId) gather1 on gather1.fsupplierId=gather.fsupplierId left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId left join t_con_contractBill contract on rgEntry.fcontractBillId=contract.fid left join T_FDC_ContractType ct on ct.fid=contract.FContractTypeID left join t_fdc_curProject curProject on curProject.fid=contract.fcurprojectid where contract.fstate='4AUDITTED' and type.fnumber in('003','004') and gather.fstate='4AUDITTED' and gather1.fbizDate=gather.fbizDate and gather1.fcontractBillId=rgEntry.fcontractBillId and ct.fname_l2 !='备案类合同') contract on contract.supplierId=supplier.fid");
-    	}
+//    	if(isAllContract){
+    		sb.append(" left join (select contract.fid contractId,contract.fname contractName,contract.FPartBID supplierId,(case when contract.FHasSettled=1 then '已结算' else '未结算' end) stage,curProject.fid curProjectId,curProject.fname_l2 curProject,contract.famount amount from t_con_contractBill contract left join t_fdc_curProject curProject on curProject.fid=contract.fcurprojectid where contract.fstate='4AUDITTED') contract on contract.supplierId=supplier.FSysSupplierID");
+//    	}else{
+//    		sb.append(" left join (select gather.fid lypgId,gather.famount lypgScore,gather.fbizDate lypgDate,rgEntry.fmanager manager,contract.famount amount,contract.fid contractId,contract.fname contractName,gather.fsupplierId supplierId,(case when contract.FHasSettled=1 then '已结算' else '未结算' end) stage,curProject.fid curProjectId,curProject.fname_l2 curProject from T_GYS_SRGContractEntry rgEntry left join T_GYS_SupplierReviewGather gather on rgEntry.fheadId=gather.fid left join(select rgEntry.fcontractBillId,gather.fsupplierId,max(gather.fbizDate) fbizDate from T_GYS_SupplierReviewGather gather left join T_GYS_SRGContractEntry rgEntry on rgEntry.fheadId=gather.fid left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId where type.fnumber in('003','004') and gather.fstate='4AUDITTED' group by rgEntry.fcontractBillId,gather.fsupplierId) gather1 on gather1.fsupplierId=gather.fsupplierId left join T_GYS_SupplierEvaluationType type on type.fid=gather.FEvaluationTypeId left join t_con_contractBill contract on rgEntry.fcontractBillId=contract.fid left join T_FDC_ContractType ct on ct.fid=contract.FContractTypeID left join t_fdc_curProject curProject on curProject.fid=contract.fcurprojectid where contract.fstate='4AUDITTED' and type.fnumber in('003','004') and gather.fstate='4AUDITTED' and gather1.fbizDate=gather.fbizDate and gather1.fcontractBillId=rgEntry.fcontractBillId and ct.fname_l2 !='备案类合同') contract on contract.supplierId=supplier.fid");
+//    	}
     	sb.append(" where 1=1");
     	if(inviteType!=null){
     		sb.append(" and inviteType.flongNumber like '"+inviteType+"%'");

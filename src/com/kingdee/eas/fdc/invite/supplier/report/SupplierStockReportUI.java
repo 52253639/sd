@@ -144,14 +144,14 @@ public class SupplierStockReportUI extends AbstractSupplierStockReportUI
 		tblMain.getColumn("contractName").getStyleAttributes().setFontColor(Color.BLUE);
 		tblMain.getColumn("levelSetUp").getStyleAttributes().setFontColor(Color.BLUE);
 	
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"kcScore","lyzhScore","lypgScore"});
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"kcScore","lyzhScore","lypgScore","contractAmount"});
 		
 		FDCHelper.formatTableDate(this.tblMain, "lyzhDate");
 		FDCHelper.formatTableDate(this.tblMain, "lypgDate");
 		FDCHelper.formatTableDate(this.tblMain, "storageDate");
 		
 		EnterprisePlanEditUI.mergerTable(this.tblMain, new String[]{"id"},new String[]{"id","seq","purchaseOrgUnit","inviteType","storageNumber","name","isPass","quaLevel","levelSetUpId","levelSetUp","grade","splArea"
-				,"contractor","kcId","kcScore","storageDate","inviteName","lyzhId","lyzhScore","lyzhDate"});
+				,"contractor","contractorPhone","kcId","kcScore","storageDate","inviteName","lyzhId","lyzhScore","lyzhDate"});
 	}
 	protected String getInviteName(String id){
 		FDCSQLBuilder sqlBuilder = new FDCSQLBuilder();
