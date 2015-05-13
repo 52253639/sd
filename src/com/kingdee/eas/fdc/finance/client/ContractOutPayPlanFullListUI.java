@@ -634,6 +634,6 @@ public class ContractOutPayPlanFullListUI extends AbstractContractOutPayPlanFull
 	}
 	protected String getEditUIModal() {
 		// TODO Auto-generated method stub
-		return UIFactoryName.MODEL;
+		return UIFactoryName.NEWTAB;
 	}
 }
