@@ -2463,6 +2463,57 @@
 				<comment language="en_US">fdc_budget_cost_plan</comment>
 			</comments>
 		</formula>
+		<formula name="fdc_orgUnitMonthPlanGahter_amount" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.finance.client.OrgUnitAcctFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">项目公司月度付款计划取预算上报数</local_name>
+				<local_name language="zh_TW">项目公司月度付款计划取预算上报数</local_name>
+				<local_name language="en_US">fdc_orgUnitMonthPlanGahter_amount</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.finance.formula.FDCOrgUnitMonthPlanGahterCaculator</batchImplClass>
+			<params>
+				<param name="companyNumber" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">companyNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">companyNumber</comment>
+					</comments>
+				</param>			
+				<param name="bgNumber" type="F7BgItemQuery" required="true">
+					<alias>
+						<local_name language="zh_CN">预算项目</local_name>
+						<local_name language="zh_TW">预算项目</local_name>
+						<local_name language="en_US">bgNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算项目</comment>
+						<comment language="zh_TW">预算项目</comment>
+						<comment language="en_US">bgNumber</comment>
+					</comments>
+				</param>
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">项目公司月度付款计划取预算上报数</comment>
+				<comment language="zh_TW">项目公司月度付款计划取预算上报数</comment>
+				<comment language="en_US">fdc_orgUnitMonthPlanGahter_amount</comment>
+			</comments>
+		</formula>
 		<!--测算数（从投资计划表取数）、计划数、实际数  by cassiel_peng  2010-03-05-->
 		<!--公式合法性验证全局验证定义，用于公式的验证-->
 		<global-validators>
@@ -2548,6 +2599,12 @@
 		<!--成本取数函数 begin-->
 		<type name="fdcCompanyF7" origin="string">
 		    <selector>com.kingdee.eas.basedata.org.client.f7.CompanyF7</selector>
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>	
+		<type name="F7BgItemQuery" origin="string">
+		    <selector>com.kingdee.eas.ma.budget.client.NewBgItemDialog</selector>
 			<display_fm>$name$</display_fm>
 			<edit_fm>$number$</edit_fm>
 			<commit_fm>$number$</commit_fm>

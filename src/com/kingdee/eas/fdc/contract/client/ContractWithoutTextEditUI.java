@@ -613,6 +613,7 @@ public class ContractWithoutTextEditUI extends
 			e.printStackTrace();
 		}
 		if(!isFeeTraEntry){
+			this.cbFeeType.setRequired(false);	
 			this.cbFeeType.setSelectedItem(null);
 			this.contFeeType.setVisible(false);
 		}else{
