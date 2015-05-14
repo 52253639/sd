@@ -1724,7 +1724,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.prmtRentFreeBill.setDisplayFormat("$number$");		
         this.prmtRentFreeBill.setEditFormat("$number$");		
         this.prmtRentFreeBill.setCommitFormat("$number$");		
-        this.prmtRentFreeBill.setQueryInfo("com.kingdee.eas.fdc.tenancy.app.rentFreeBillQuery");
+        this.prmtRentFreeBill.setQueryInfo("com.kingdee.eas.fdc.tenancy.app.RentFreeBillQuery");
         this.prmtRentFreeBill.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
             public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
                 try {

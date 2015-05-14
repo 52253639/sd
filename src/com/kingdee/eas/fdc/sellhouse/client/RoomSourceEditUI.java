@@ -1129,10 +1129,7 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 		selectors.add("name");
 		selectors.add("building.*");
 		selectors.add("buildUnit.*");
-		selectors.add("building.sellProject.id");
-		selectors.add("building.sellProject.isForSHE");
-		selectors.add("building.sellProject.isForTen");
-		selectors.add("building.sellProject.isForPPM");
+		selectors.add("building.sellProject.*");
 		selectors.add("buildingProperty.*");
 		selectors.add("roomModel.*");
 		selectors.add("direction.*");
