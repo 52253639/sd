@@ -91,32 +91,19 @@ public class FDCOrgUnitMonthPlanGahterCaculator implements ICalculator, IMethodB
 	public BigDecimal fdc_orgUnitMonthPlanGahter_amount(String companyNumber,String bgNumber, String budgetPeriod) throws EASBizException, BOSException, SQLException {
 		BgPeriodInfo period = FDCBudgetAcctCaculatorHelper.getBgPeriod(ServerCtx, budgetPeriod);
 		FDCSQLBuilder _builder = new FDCSQLBuilder(ServerCtx);
-		_builder.appendSql(" select entry.fsrcId id from T_FNC_OrgUnitMonthPlanGather bill left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId left join T_ORG_BaseUnit orgUnit on orgUnit.fid=bill.forgUnitId");
-		_builder.appendSql(" where entry.fsrcId is not null and bill.fstate='4AUDITTED' and bill.fIsLatest=1 and orgUnit.fnumber='"+companyNumber+"' and year(bill.fbizDate)="+period.getYear()+" and month(bill.fbizDate)="+period.getMonth());
-		IRowSet rowSet = _builder.executeQuery();
-		ProjectMonthPlanGatherDateEntryCollection srcSortCol=new ProjectMonthPlanGatherDateEntryCollection();
-		while(rowSet.next()) {
-			ProjectMonthPlanGatherCollection mp = ProjectMonthPlanGatherFactory.getLocalInstance(ServerCtx).getProjectMonthPlanGatherCollection("select entry.dateEntry.*,entry.dateEntry.bgItem.* from where id='"+rowSet.getString("id")+"'");
-			if(mp.size()>0){
-				for(int j=0;j<mp.get(0).getEntry().size();j++){
-					for(int k=0;k<mp.get(0).getEntry().get(j).getDateEntry().size();k++){
-						srcSortCol.add(mp.get(0).getEntry().get(j).getDateEntry().get(k));
-					}
-				}
-			}
-		}
-		Map bgRowMap=new HashMap();
-		BigDecimal amount=FDCHelper.ZERO;
-		for(int i=0;i<srcSortCol.size();i++){
-			ProjectMonthPlanGatherDateEntryInfo dateEntry=srcSortCol.get(i);
-			if(dateEntry.getBgItem()==null) continue;
-			String number=dateEntry.getBgItem().getNumber();
-			int month=dateEntry.getMonth();
-			int year=dateEntry.getYear();
-			if(year==period.getYear()&&month==period.getMonth()&&number.equals(bgNumber)){
-				amount=FDCHelper.add(amount, dateEntry.getAmount());
-			}
-		}
+		_builder.appendSql(" select isnull(sum(dateEntry.famount),0) amount from T_FNC_OrgUnitMonthPlanGather bill");
+    	_builder.appendSql(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId left join T_ORG_BaseUnit orgUnit on orgUnit.fid=bill.forgUnitId");
+    	_builder.appendSql(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
+    	_builder.appendSql(" left join T_FNC_ProjectMonthPlanGEntry gatherEntry on gatherEntry.fheadId=gather.fid");
+    	_builder.appendSql(" left join T_FNC_ProjectMonthPGDateEntry dateEntry on dateEntry.fheadentryId=gatherEntry.fid left join t_bg_bgitem bgItem on bgItem.fid=dateEntry.fbgItemId");
+    	_builder.appendSql(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+period.getYear()+" and month(bill.fbizDate)="+period.getMonth());
+    	_builder.appendSql(" and dateEntry.fyear="+period.getYear()+" and dateEntry.fmonth="+period.getMonth());
+    	_builder.appendSql(" and orgUnit.fnumber='"+companyNumber+"' and bgItem.fnumber like '"+bgNumber+"%'");
+    	IRowSet rowSet = _builder.executeQuery();
+    	BigDecimal amount=FDCHelper.ZERO;
+    	while(rowSet.next()) {
+    		amount=rowSet.getBigDecimal("amount");
+    	}
 		return amount;
 	}
 
