@@ -92,7 +92,7 @@ public class FDCOrgUnitMonthPlanGahterCaculator implements ICalculator, IMethodB
 		BgPeriodInfo period = FDCBudgetAcctCaculatorHelper.getBgPeriod(ServerCtx, budgetPeriod);
 		FDCSQLBuilder _builder = new FDCSQLBuilder(ServerCtx);
 		_builder.appendSql(" select entry.fsrcId id from T_FNC_OrgUnitMonthPlanGather bill left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId left join T_ORG_BaseUnit orgUnit on orgUnit.fid=bill.forgUnitId");
-		_builder.appendSql(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and orgUnit.fnumber='"+companyNumber+"' and year(bill.fbizDate)="+period.getYear()+" and month(bill.fbizDate)="+period.getMonth());
+		_builder.appendSql(" where entry.fsrcId is not null and bill.fstate='4AUDITTED' and bill.fIsLatest=1 and orgUnit.fnumber='"+companyNumber+"' and year(bill.fbizDate)="+period.getYear()+" and month(bill.fbizDate)="+period.getMonth());
 		IRowSet rowSet = _builder.executeQuery();
 		ProjectMonthPlanGatherDateEntryCollection srcSortCol=new ProjectMonthPlanGatherDateEntryCollection();
 		while(rowSet.next()) {
