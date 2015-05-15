@@ -3,6 +3,9 @@
  */
 package com.kingdee.eas.fdc.tenancy.client;
 
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Map;
@@ -33,10 +36,13 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.IQueryExecutor;
+import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
+import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -55,6 +61,7 @@ import com.kingdee.eas.fdc.sellhouse.SubareaInfo;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.IRentFreeBill;
+import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
 import com.kingdee.eas.fdc.tenancy.RentFreeBillFactory;
 import com.kingdee.eas.fdc.tenancy.RentFreeBillInfo;
 import com.kingdee.eas.fdc.tenancy.RentFreeBillFactory;
@@ -65,6 +72,9 @@ import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.batchHandler.UtilRequest;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
+import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.tools.datatask.DatataskParameter;
+import com.kingdee.eas.tools.datatask.client.DatataskCaller;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
@@ -90,7 +100,34 @@ public class RentFreeBillListUI extends AbstractRentFreeBillListUI
 		this.treeMain.setSelectionRow(0);
 		
 		initTree();
+		KDWorkButton btnImport=new KDWorkButton();
+		btnImport.setText("µº»Î");
+		btnImport.setIcon(EASResource.getIcon("imgTbtn_input"));
+		this.toolBar.add(btnImport);
+		btnImport.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+	                beforeActionPerformed(e);
+	                try {
+	                	btnImport_actionPerformed(e);
+	                } catch (Exception exc) {
+	                    handUIException(exc);
+	                } finally {
+	                    afterActionPerformed(e);
+	                }
+	            }
+	        });
 	}
+    public void btnImport_actionPerformed(ActionEvent e) throws Exception {
+    	String strSolutionName ="eas.fdc.tenancy.RentFreeBill";
+		DatataskCaller task = new DatataskCaller();
+		task.setParentComponent(this);
+		DatataskParameter param = new DatataskParameter();
+		String solutionName = strSolutionName;
+		param.solutionName = solutionName;
+		ArrayList paramList = new ArrayList();
+		paramList.add(param);
+		task.invoke(paramList, 0, true);
+    }
 	protected IQueryExecutor getQueryExecutor(IMetaDataPK queryPK,EntityViewInfo viewInfo) {
 		try {
 			DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();

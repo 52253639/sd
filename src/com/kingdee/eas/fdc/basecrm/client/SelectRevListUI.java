@@ -46,7 +46,6 @@ import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.tenancy.ITenancyPayListInfo;
 import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
 import com.kingdee.eas.util.client.MsgBox;
-
 /**
  * 选择界面暂时公用1个,可选数据由编辑界面扩展获取,并全部从编辑界面传入.再选择界面选择后,将选择后的结果再返回编辑界面
  * 后续如果编辑界面不能满足获取数据的要求,此选择界面也要做扩展
@@ -464,8 +463,12 @@ public class SelectRevListUI extends AbstractSelectRevListUI
 			setLockActRevAmount(revListInfo,row);
 			if(revListInfo instanceof ITenancyPayListInfo){
 				setColValue(row, "leaseSeq", ((ITenancyPayListInfo)revListInfo).getLeaseSeq());
+				setColValue(row, "startDate", ((ITenancyPayListInfo)revListInfo).getStartDate());
+				setColValue(row, "endDate", ((ITenancyPayListInfo)revListInfo).getEndDate());
 			}else if(revListInfo instanceof TenBillOtherPayInfo){
 				setColValue(row, "leaseSeq", ((TenBillOtherPayInfo)revListInfo).getLeaseSeq()==0?null:((TenBillOtherPayInfo)revListInfo).getLeaseSeq());
+				setColValue(row, "startDate", ((TenBillOtherPayInfo)revListInfo).getStartDate());
+				setColValue(row, "endDate", ((TenBillOtherPayInfo)revListInfo).getEndDate());
 			}
 			setColValue(row, "invoiceAmount", revListInfo.getInvoiceAmount());
 			setColValue(row, COL_IS_SELECTED, Boolean.FALSE);

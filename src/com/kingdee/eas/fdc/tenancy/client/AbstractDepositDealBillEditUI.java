@@ -46,43 +46,46 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.tenancy.client.TenBillBaseEditUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractDepositDealBillEditUI.class);
+    protected com.kingdee.bos.ctrl.swing.KDTabbedPane kDTabbedPane1;
+    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel1;
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane panel;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCompany;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoom;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCustomer;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTenancy;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contEndDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSaleMan;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoom;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSellProject;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNumber;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSaleMan;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contName;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contType;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseTime;
+    protected com.kingdee.bos.ctrl.swing.KDContainer kDContainer1;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreator;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditor;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCreateTime;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAuditTime;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDate;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contEndDate;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseTime;
-    protected com.kingdee.bos.ctrl.swing.KDContainer kDContainer1;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contType;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCompany;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtRoom;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtCustomer;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtTenancy;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtSellProject;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtSaleMan;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane1;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtDescription;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkEndDate;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtSaleMan;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtRoom;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtSellProject;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
+    protected com.kingdee.bos.ctrl.swing.KDComboBox cbType;
+    protected com.kingdee.bos.ctrl.swing.KDSpinner spinLeaseTime;
+    protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtEntry;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAuditor;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkAuditTime;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkEndDate;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spinLeaseTime;
-    protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtEntry;
-    protected com.kingdee.bos.ctrl.swing.KDComboBox cbType;
     protected com.kingdee.eas.fdc.tenancy.DepositDealBillInfo editData = null;
     /**
      * output class constructor
@@ -121,80 +124,86 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.NetFunctionService());
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.UserMonitorService());
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.ForewarnService());
+        this.kDTabbedPane1 = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
+        this.kDPanel1 = new com.kingdee.bos.ctrl.swing.KDPanel();
+        this.panel = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.contCompany = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contRoom = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contCustomer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contTenancy = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contCustomer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contStartDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contSaleMan = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contRoom = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contSellProject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contSaleMan = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contName = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contLeaseTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kDContainer1 = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.contCreator = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contAuditor = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contCreateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contAuditTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contStartDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contLeaseTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.kDContainer1 = new com.kingdee.bos.ctrl.swing.KDContainer();
-        this.contType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtCompany = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtRoom = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtCustomer = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtTenancy = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtSellProject = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtSaleMan = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtCustomer = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.kDScrollPane1 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextArea();
+        this.pkEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.txtSaleMan = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtRoom = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtSellProject = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.cbType = new com.kingdee.bos.ctrl.swing.KDComboBox();
+        this.spinLeaseTime = new com.kingdee.bos.ctrl.swing.KDSpinner();
+        this.kdtEntry = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtAuditor = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkAuditTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.pkEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.spinLeaseTime = new com.kingdee.bos.ctrl.swing.KDSpinner();
-        this.kdtEntry = new com.kingdee.bos.ctrl.kdf.table.KDTable();
-        this.cbType = new com.kingdee.bos.ctrl.swing.KDComboBox();
+        this.kDTabbedPane1.setName("kDTabbedPane1");
+        this.kDPanel1.setName("kDPanel1");
+        this.panel.setName("panel");
         this.contCompany.setName("contCompany");
-        this.contRoom.setName("contRoom");
-        this.contCustomer.setName("contCustomer");
         this.contTenancy.setName("contTenancy");
+        this.contCustomer.setName("contCustomer");
+        this.contStartDate.setName("contStartDate");
+        this.contDescription.setName("contDescription");
+        this.contEndDate.setName("contEndDate");
+        this.contSaleMan.setName("contSaleMan");
+        this.contRoom.setName("contRoom");
         this.contSellProject.setName("contSellProject");
         this.contNumber.setName("contNumber");
-        this.contSaleMan.setName("contSaleMan");
         this.contName.setName("contName");
-        this.contDescription.setName("contDescription");
+        this.contType.setName("contType");
+        this.contLeaseTime.setName("contLeaseTime");
+        this.kDContainer1.setName("kDContainer1");
         this.contCreator.setName("contCreator");
         this.contAuditor.setName("contAuditor");
         this.contCreateTime.setName("contCreateTime");
         this.contAuditTime.setName("contAuditTime");
-        this.contStartDate.setName("contStartDate");
-        this.contEndDate.setName("contEndDate");
-        this.contLeaseTime.setName("contLeaseTime");
-        this.kDContainer1.setName("kDContainer1");
-        this.contType.setName("contType");
         this.txtCompany.setName("txtCompany");
-        this.txtRoom.setName("txtRoom");
-        this.txtCustomer.setName("txtCustomer");
         this.txtTenancy.setName("txtTenancy");
-        this.txtSellProject.setName("txtSellProject");
-        this.txtNumber.setName("txtNumber");
-        this.txtSaleMan.setName("txtSaleMan");
-        this.txtName.setName("txtName");
+        this.txtCustomer.setName("txtCustomer");
+        this.pkStartDate.setName("pkStartDate");
         this.kDScrollPane1.setName("kDScrollPane1");
         this.txtDescription.setName("txtDescription");
+        this.pkEndDate.setName("pkEndDate");
+        this.txtSaleMan.setName("txtSaleMan");
+        this.txtRoom.setName("txtRoom");
+        this.txtSellProject.setName("txtSellProject");
+        this.txtNumber.setName("txtNumber");
+        this.txtName.setName("txtName");
+        this.cbType.setName("cbType");
+        this.spinLeaseTime.setName("spinLeaseTime");
+        this.kdtEntry.setName("kdtEntry");
         this.prmtCreator.setName("prmtCreator");
         this.prmtAuditor.setName("prmtAuditor");
         this.pkCreateTime.setName("pkCreateTime");
         this.pkAuditTime.setName("pkAuditTime");
-        this.pkStartDate.setName("pkStartDate");
-        this.pkEndDate.setName("pkEndDate");
-        this.spinLeaseTime.setName("spinLeaseTime");
-        this.kdtEntry.setName("kdtEntry");
-        this.cbType.setName("cbType");
         // CoreUI		
         this.btnPageSetup.setVisible(false);		
         this.btnCloud.setVisible(false);		
@@ -264,22 +273,47 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
         this.menuItemViewSubmitProccess.setEnabled(false);		
         this.menuItemViewDoProccess.setEnabled(false);		
         this.menuItemViewDoProccess.setVisible(false);
+        // kDTabbedPane1
+        // kDPanel1
+        // panel
         // contCompany		
         this.contCompany.setBoundLabelText(resHelper.getString("contCompany.boundLabelText"));		
         this.contCompany.setBoundLabelLength(100);		
         this.contCompany.setBoundLabelUnderline(true);
-        // contRoom		
-        this.contRoom.setBoundLabelText(resHelper.getString("contRoom.boundLabelText"));		
-        this.contRoom.setBoundLabelLength(100);		
-        this.contRoom.setBoundLabelUnderline(true);
-        // contCustomer		
-        this.contCustomer.setBoundLabelText(resHelper.getString("contCustomer.boundLabelText"));		
-        this.contCustomer.setBoundLabelUnderline(true);		
-        this.contCustomer.setBoundLabelLength(100);
         // contTenancy		
         this.contTenancy.setBoundLabelText(resHelper.getString("contTenancy.boundLabelText"));		
         this.contTenancy.setBoundLabelLength(100);		
         this.contTenancy.setBoundLabelUnderline(true);
+        // contCustomer		
+        this.contCustomer.setBoundLabelText(resHelper.getString("contCustomer.boundLabelText"));		
+        this.contCustomer.setBoundLabelUnderline(true);		
+        this.contCustomer.setBoundLabelLength(100);
+        // contStartDate		
+        this.contStartDate.setBoundLabelText(resHelper.getString("contStartDate.boundLabelText"));		
+        this.contStartDate.setBoundLabelLength(100);		
+        this.contStartDate.setBoundLabelUnderline(true);		
+        this.contStartDate.setVisible(true);		
+        this.contStartDate.setBoundLabelAlignment(7);
+        // contDescription		
+        this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
+        this.contDescription.setBoundLabelLength(100);		
+        this.contDescription.setBoundLabelUnderline(true);		
+        this.contDescription.setBoundLabelAlignment(7);		
+        this.contDescription.setVisible(true);
+        // contEndDate		
+        this.contEndDate.setBoundLabelText(resHelper.getString("contEndDate.boundLabelText"));		
+        this.contEndDate.setBoundLabelLength(100);		
+        this.contEndDate.setBoundLabelUnderline(true);		
+        this.contEndDate.setVisible(true);		
+        this.contEndDate.setBoundLabelAlignment(7);
+        // contSaleMan		
+        this.contSaleMan.setBoundLabelText(resHelper.getString("contSaleMan.boundLabelText"));		
+        this.contSaleMan.setBoundLabelLength(100);		
+        this.contSaleMan.setBoundLabelUnderline(true);
+        // contRoom		
+        this.contRoom.setBoundLabelText(resHelper.getString("contRoom.boundLabelText"));		
+        this.contRoom.setBoundLabelLength(100);		
+        this.contRoom.setBoundLabelUnderline(true);
         // contSellProject		
         this.contSellProject.setBoundLabelText(resHelper.getString("contSellProject.boundLabelText"));		
         this.contSellProject.setBoundLabelLength(100);		
@@ -288,20 +322,20 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
         this.contNumber.setBoundLabelText(resHelper.getString("contNumber.boundLabelText"));		
         this.contNumber.setBoundLabelLength(100);		
         this.contNumber.setBoundLabelUnderline(true);
-        // contSaleMan		
-        this.contSaleMan.setBoundLabelText(resHelper.getString("contSaleMan.boundLabelText"));		
-        this.contSaleMan.setBoundLabelLength(100);		
-        this.contSaleMan.setBoundLabelUnderline(true);
         // contName		
         this.contName.setBoundLabelText(resHelper.getString("contName.boundLabelText"));		
         this.contName.setBoundLabelLength(100);		
         this.contName.setBoundLabelUnderline(true);
-        // contDescription		
-        this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
-        this.contDescription.setBoundLabelLength(100);		
-        this.contDescription.setBoundLabelUnderline(true);		
-        this.contDescription.setBoundLabelAlignment(7);		
-        this.contDescription.setVisible(true);
+        // contType		
+        this.contType.setBoundLabelText(resHelper.getString("contType.boundLabelText"));		
+        this.contType.setBoundLabelLength(100);		
+        this.contType.setBoundLabelUnderline(true);
+        // contLeaseTime		
+        this.contLeaseTime.setBoundLabelText(resHelper.getString("contLeaseTime.boundLabelText"));		
+        this.contLeaseTime.setBoundLabelLength(100);		
+        this.contLeaseTime.setBoundLabelUnderline(true);
+        // kDContainer1		
+        this.kDContainer1.setTitle(resHelper.getString("kDContainer1.title"));
         // contCreator		
         this.contCreator.setBoundLabelText(resHelper.getString("contCreator.boundLabelText"));		
         this.contCreator.setBoundLabelLength(100);		
@@ -318,55 +352,12 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
         this.contAuditTime.setBoundLabelText(resHelper.getString("contAuditTime.boundLabelText"));		
         this.contAuditTime.setBoundLabelLength(100);		
         this.contAuditTime.setBoundLabelUnderline(true);
-        // contStartDate		
-        this.contStartDate.setBoundLabelText(resHelper.getString("contStartDate.boundLabelText"));		
-        this.contStartDate.setBoundLabelLength(100);		
-        this.contStartDate.setBoundLabelUnderline(true);		
-        this.contStartDate.setVisible(true);		
-        this.contStartDate.setBoundLabelAlignment(7);
-        // contEndDate		
-        this.contEndDate.setBoundLabelText(resHelper.getString("contEndDate.boundLabelText"));		
-        this.contEndDate.setBoundLabelLength(100);		
-        this.contEndDate.setBoundLabelUnderline(true);		
-        this.contEndDate.setVisible(true);		
-        this.contEndDate.setBoundLabelAlignment(7);
-        // contLeaseTime		
-        this.contLeaseTime.setBoundLabelText(resHelper.getString("contLeaseTime.boundLabelText"));		
-        this.contLeaseTime.setBoundLabelLength(100);		
-        this.contLeaseTime.setBoundLabelUnderline(true);
-        // kDContainer1		
-        this.kDContainer1.setTitle(resHelper.getString("kDContainer1.title"));
-        // contType		
-        this.contType.setBoundLabelText(resHelper.getString("contType.boundLabelText"));		
-        this.contType.setBoundLabelLength(100);		
-        this.contType.setBoundLabelUnderline(true);
         // txtCompany		
         this.txtCompany.setEnabled(false);
-        // txtRoom		
-        this.txtRoom.setEnabled(false);
-        // txtCustomer		
-        this.txtCustomer.setEnabled(false);
         // txtTenancy		
         this.txtTenancy.setEnabled(false);
-        // txtSellProject		
-        this.txtSellProject.setEnabled(false);
-        // txtNumber		
-        this.txtNumber.setRequired(true);		
-        this.txtNumber.setMaxLength(80);
-        // txtSaleMan		
-        this.txtSaleMan.setEnabled(false);
-        // txtName		
-        this.txtName.setRequired(true);
-        // kDScrollPane1
-        // txtDescription
-        // prmtCreator		
-        this.prmtCreator.setEnabled(false);
-        // prmtAuditor		
-        this.prmtAuditor.setEnabled(false);
-        // pkCreateTime		
-        this.pkCreateTime.setEnabled(false);
-        // pkAuditTime		
-        this.pkAuditTime.setEnabled(false);
+        // txtCustomer		
+        this.txtCustomer.setEnabled(false);
         // pkStartDate		
         this.pkStartDate.setVisible(true);		
         this.pkStartDate.setEnabled(false);		
@@ -381,6 +372,8 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
                 }
             }
         });
+        // kDScrollPane1
+        // txtDescription
         // pkEndDate		
         this.pkEndDate.setVisible(true);		
         this.pkEndDate.setEnabled(false);		
@@ -395,6 +388,20 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
                 }
             }
         });
+        // txtSaleMan		
+        this.txtSaleMan.setEnabled(false);
+        // txtRoom		
+        this.txtRoom.setEnabled(false);
+        // txtSellProject		
+        this.txtSellProject.setEnabled(false);
+        // txtNumber		
+        this.txtNumber.setRequired(true);		
+        this.txtNumber.setMaxLength(80);
+        // txtName		
+        this.txtName.setRequired(true);
+        // cbType		
+        this.cbType.setRequired(true);		
+        this.cbType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.DepositDealTypeEnum").toArray());
         // spinLeaseTime		
         this.spinLeaseTime.setRequired(true);		
         this.spinLeaseTime.setEnabled(false);
@@ -405,9 +412,14 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
 
         
 
-        // cbType		
-        this.cbType.setRequired(true);		
-        this.cbType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.DepositDealTypeEnum").toArray());
+        // prmtCreator		
+        this.prmtCreator.setEnabled(false);
+        // prmtAuditor		
+        this.prmtAuditor.setEnabled(false);
+        // pkCreateTime		
+        this.pkCreateTime.setEnabled(false);
+        // pkAuditTime		
+        this.pkAuditTime.setEnabled(false);
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -433,64 +445,79 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
     public void initUIContentLayout()
     {
         this.setBounds(new Rectangle(10, 10, 1013, 629));
-        this.setLayout(new KDLayout());
-        this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1013, 629));
-        contCompany.setBounds(new Rectangle(10, 10, 270, 19));
-        this.add(contCompany, new KDLayout.Constraints(10, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoom.setBounds(new Rectangle(367, 32, 270, 19));
-        this.add(contRoom, new KDLayout.Constraints(367, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCustomer.setBounds(new Rectangle(10, 54, 270, 19));
-        this.add(contCustomer, new KDLayout.Constraints(10, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTenancy.setBounds(new Rectangle(10, 32, 270, 19));
-        this.add(contTenancy, new KDLayout.Constraints(10, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contSellProject.setBounds(new Rectangle(367, 10, 270, 19));
-        this.add(contSellProject, new KDLayout.Constraints(367, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contNumber.setBounds(new Rectangle(733, 10, 270, 19));
-        this.add(contNumber, new KDLayout.Constraints(733, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contSaleMan.setBounds(new Rectangle(367, 54, 270, 19));
-        this.add(contSaleMan, new KDLayout.Constraints(367, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contName.setBounds(new Rectangle(733, 32, 270, 19));
-        this.add(contName, new KDLayout.Constraints(733, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contDescription.setBounds(new Rectangle(10, 98, 628, 72));
-        this.add(contDescription, new KDLayout.Constraints(10, 98, 628, 72, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCreator.setBounds(new Rectangle(10, 580, 270, 19));
-        this.add(contCreator, new KDLayout.Constraints(10, 580, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAuditor.setBounds(new Rectangle(10, 602, 270, 19));
-        this.add(contAuditor, new KDLayout.Constraints(10, 602, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCreateTime.setBounds(new Rectangle(367, 580, 270, 19));
-        this.add(contCreateTime, new KDLayout.Constraints(367, 580, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAuditTime.setBounds(new Rectangle(367, 602, 270, 19));
-        this.add(contAuditTime, new KDLayout.Constraints(367, 602, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStartDate.setBounds(new Rectangle(10, 76, 270, 19));
-        this.add(contStartDate, new KDLayout.Constraints(10, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contEndDate.setBounds(new Rectangle(367, 76, 270, 19));
-        this.add(contEndDate, new KDLayout.Constraints(367, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contLeaseTime.setBounds(new Rectangle(733, 76, 270, 19));
-        this.add(contLeaseTime, new KDLayout.Constraints(733, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDContainer1.setBounds(new Rectangle(10, 184, 999, 384));
-        this.add(kDContainer1, new KDLayout.Constraints(10, 184, 999, 384, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        contType.setBounds(new Rectangle(733, 54, 270, 19));
-        this.add(contType, new KDLayout.Constraints(733, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+this.setLayout(new BorderLayout(0, 0));
+        this.add(kDTabbedPane1, BorderLayout.CENTER);
+        //kDTabbedPane1
+        kDTabbedPane1.add(kDPanel1, resHelper.getString("kDPanel1.constraints"));
+        kDTabbedPane1.add(panel, resHelper.getString("panel.constraints"));
+        //kDPanel1
+        kDPanel1.setLayout(new KDLayout());
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 596));        contCompany.setBounds(new Rectangle(6, 7, 270, 19));
+        kDPanel1.add(contCompany, new KDLayout.Constraints(6, 7, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTenancy.setBounds(new Rectangle(6, 29, 270, 19));
+        kDPanel1.add(contTenancy, new KDLayout.Constraints(6, 29, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCustomer.setBounds(new Rectangle(6, 51, 270, 19));
+        kDPanel1.add(contCustomer, new KDLayout.Constraints(6, 51, 270, 19, 0));
+        contStartDate.setBounds(new Rectangle(6, 73, 270, 19));
+        kDPanel1.add(contStartDate, new KDLayout.Constraints(6, 73, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDescription.setBounds(new Rectangle(6, 95, 628, 72));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(6, 95, 628, 72, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contEndDate.setBounds(new Rectangle(363, 73, 270, 19));
+        kDPanel1.add(contEndDate, new KDLayout.Constraints(363, 73, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSaleMan.setBounds(new Rectangle(363, 51, 270, 19));
+        kDPanel1.add(contSaleMan, new KDLayout.Constraints(363, 51, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRoom.setBounds(new Rectangle(363, 29, 270, 19));
+        kDPanel1.add(contRoom, new KDLayout.Constraints(363, 29, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSellProject.setBounds(new Rectangle(363, 7, 270, 19));
+        kDPanel1.add(contSellProject, new KDLayout.Constraints(363, 7, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNumber.setBounds(new Rectangle(729, 7, 270, 19));
+        kDPanel1.add(contNumber, new KDLayout.Constraints(729, 7, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contName.setBounds(new Rectangle(729, 29, 270, 19));
+        kDPanel1.add(contName, new KDLayout.Constraints(729, 29, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contType.setBounds(new Rectangle(729, 51, 270, 19));
+        kDPanel1.add(contType, new KDLayout.Constraints(729, 51, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contLeaseTime.setBounds(new Rectangle(729, 73, 270, 19));
+        kDPanel1.add(contLeaseTime, new KDLayout.Constraints(729, 73, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDContainer1.setBounds(new Rectangle(6, 181, 999, 359));
+        kDPanel1.add(kDContainer1, new KDLayout.Constraints(6, 181, 999, 359, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contCreator.setBounds(new Rectangle(6, 548, 270, 19));
+        kDPanel1.add(contCreator, new KDLayout.Constraints(6, 548, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contAuditor.setBounds(new Rectangle(6, 570, 270, 19));
+        kDPanel1.add(contAuditor, new KDLayout.Constraints(6, 570, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCreateTime.setBounds(new Rectangle(363, 548, 270, 19));
+        kDPanel1.add(contCreateTime, new KDLayout.Constraints(363, 548, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contAuditTime.setBounds(new Rectangle(363, 570, 270, 19));
+        kDPanel1.add(contAuditTime, new KDLayout.Constraints(363, 570, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contCompany
         contCompany.setBoundEditor(txtCompany);
-        //contRoom
-        contRoom.setBoundEditor(txtRoom);
-        //contCustomer
-        contCustomer.setBoundEditor(txtCustomer);
         //contTenancy
         contTenancy.setBoundEditor(txtTenancy);
-        //contSellProject
-        contSellProject.setBoundEditor(txtSellProject);
-        //contNumber
-        contNumber.setBoundEditor(txtNumber);
-        //contSaleMan
-        contSaleMan.setBoundEditor(txtSaleMan);
-        //contName
-        contName.setBoundEditor(txtName);
+        //contCustomer
+        contCustomer.setBoundEditor(txtCustomer);
+        //contStartDate
+        contStartDate.setBoundEditor(pkStartDate);
         //contDescription
         contDescription.setBoundEditor(kDScrollPane1);
         //kDScrollPane1
         kDScrollPane1.getViewport().add(txtDescription, null);
+        //contEndDate
+        contEndDate.setBoundEditor(pkEndDate);
+        //contSaleMan
+        contSaleMan.setBoundEditor(txtSaleMan);
+        //contRoom
+        contRoom.setBoundEditor(txtRoom);
+        //contSellProject
+        contSellProject.setBoundEditor(txtSellProject);
+        //contNumber
+        contNumber.setBoundEditor(txtNumber);
+        //contName
+        contName.setBoundEditor(txtName);
+        //contType
+        contType.setBoundEditor(cbType);
+        //contLeaseTime
+        contLeaseTime.setBoundEditor(spinLeaseTime);
+        //kDContainer1
+kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainer1.getContentPane().add(kdtEntry, BorderLayout.CENTER);
         //contCreator
         contCreator.setBoundEditor(prmtCreator);
         //contAuditor
@@ -499,16 +526,6 @@ public abstract class AbstractDepositDealBillEditUI extends com.kingdee.eas.fdc.
         contCreateTime.setBoundEditor(pkCreateTime);
         //contAuditTime
         contAuditTime.setBoundEditor(pkAuditTime);
-        //contStartDate
-        contStartDate.setBoundEditor(pkStartDate);
-        //contEndDate
-        contEndDate.setBoundEditor(pkEndDate);
-        //contLeaseTime
-        contLeaseTime.setBoundEditor(spinLeaseTime);
-        //kDContainer1
-kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainer1.getContentPane().add(kdtEntry, BorderLayout.CENTER);
-        //contType
-        contType.setBoundEditor(cbType);
 
     }
 
@@ -687,22 +704,22 @@ kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
 	//Regiester control's property binding.
 	private void registerBindings(){
 		dataBinder.registerBinding("orgUnit.name", String.class, this.txtCompany, "text");
-		dataBinder.registerBinding("tenancyBill.tenRoomsDes", String.class, this.txtRoom, "text");
-		dataBinder.registerBinding("tenancyBill.tenCustomerDes", String.class, this.txtCustomer, "text");
 		dataBinder.registerBinding("tenancyBill.tenancyName", String.class, this.txtTenancy, "text");
+		dataBinder.registerBinding("tenancyBill.tenCustomerDes", String.class, this.txtCustomer, "text");
+		dataBinder.registerBinding("tenancyBill.startDate", java.util.Date.class, this.pkStartDate, "value");
+		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
+		dataBinder.registerBinding("tenancyBill.endDate", java.util.Date.class, this.pkEndDate, "value");
+		dataBinder.registerBinding("tenancyBill.tenancyAdviser.name", String.class, this.txtSaleMan, "text");
+		dataBinder.registerBinding("tenancyBill.tenRoomsDes", String.class, this.txtRoom, "text");
 		dataBinder.registerBinding("tenancyBill.sellProject.name", String.class, this.txtSellProject, "text");
 		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
-		dataBinder.registerBinding("tenancyBill.tenancyAdviser.name", String.class, this.txtSaleMan, "text");
 		dataBinder.registerBinding("name", String.class, this.txtName, "text");
-		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
+		dataBinder.registerBinding("type", com.kingdee.eas.fdc.tenancy.DepositDealTypeEnum.class, this.cbType, "selectedItem");
+		dataBinder.registerBinding("tenancyBill.leaseTime", int.class, this.spinLeaseTime, "value");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.prmtCreator, "data");
 		dataBinder.registerBinding("auditor", com.kingdee.eas.base.permission.UserInfo.class, this.prmtAuditor, "data");
 		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
-		dataBinder.registerBinding("auditTime", java.util.Date.class, this.pkAuditTime, "value");
-		dataBinder.registerBinding("tenancyBill.startDate", java.util.Date.class, this.pkStartDate, "value");
-		dataBinder.registerBinding("tenancyBill.endDate", java.util.Date.class, this.pkEndDate, "value");
-		dataBinder.registerBinding("tenancyBill.leaseTime", int.class, this.spinLeaseTime, "value");
-		dataBinder.registerBinding("type", com.kingdee.eas.fdc.tenancy.DepositDealTypeEnum.class, this.cbType, "selectedItem");		
+		dataBinder.registerBinding("auditTime", java.util.Date.class, this.pkAuditTime, "value");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -763,22 +780,22 @@ kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
 	protected void registerValidator() {
     	getValidateHelper().setCustomValidator( getValidator() );
 		getValidateHelper().registerBindProperty("orgUnit.name", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.tenRoomsDes", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.tenCustomerDes", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyBill.tenancyName", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyBill.tenCustomerDes", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyBill.startDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyBill.endDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyBill.tenancyAdviser.name", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyBill.tenRoomsDes", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyBill.sellProject.name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.tenancyAdviser.name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("name", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("type", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenancyBill.leaseTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("auditor", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("auditTime", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.startDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.endDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.leaseTime", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("type", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("auditTime", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -821,14 +838,18 @@ kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
 			selectorAll = "true";
 		}
         sic.add(new SelectorItemInfo("orgUnit.name"));
-        sic.add(new SelectorItemInfo("tenancyBill.tenRoomsDes"));
-        sic.add(new SelectorItemInfo("tenancyBill.tenCustomerDes"));
         sic.add(new SelectorItemInfo("tenancyBill.tenancyName"));
+        sic.add(new SelectorItemInfo("tenancyBill.tenCustomerDes"));
+        sic.add(new SelectorItemInfo("tenancyBill.startDate"));
+        sic.add(new SelectorItemInfo("description"));
+        sic.add(new SelectorItemInfo("tenancyBill.endDate"));
+        sic.add(new SelectorItemInfo("tenancyBill.tenancyAdviser.name"));
+        sic.add(new SelectorItemInfo("tenancyBill.tenRoomsDes"));
         sic.add(new SelectorItemInfo("tenancyBill.sellProject.name"));
         sic.add(new SelectorItemInfo("number"));
-        sic.add(new SelectorItemInfo("tenancyBill.tenancyAdviser.name"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("description"));
+        sic.add(new SelectorItemInfo("type"));
+        sic.add(new SelectorItemInfo("tenancyBill.leaseTime"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
 			sic.add(new SelectorItemInfo("creator.*"));
@@ -849,10 +870,6 @@ kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
 		}
         sic.add(new SelectorItemInfo("createTime"));
         sic.add(new SelectorItemInfo("auditTime"));
-        sic.add(new SelectorItemInfo("tenancyBill.startDate"));
-        sic.add(new SelectorItemInfo("tenancyBill.endDate"));
-        sic.add(new SelectorItemInfo("tenancyBill.leaseTime"));
-        sic.add(new SelectorItemInfo("type"));
         return sic;
     }        
     	

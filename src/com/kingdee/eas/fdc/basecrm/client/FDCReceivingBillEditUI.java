@@ -97,7 +97,10 @@ import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEReceivingBillEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEReceivingBillListUI;
+import com.kingdee.eas.fdc.tenancy.ITenancyPayListInfo;
 import com.kingdee.eas.fdc.tenancy.MarketingUnitFactory;
+import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
+import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryInfo;
 import com.kingdee.eas.fdc.tenancy.client.TENReceivingBillEditUI;
 import com.kingdee.eas.fdc.tenancy.client.TENReceivingBillListUI;
 import com.kingdee.eas.framework.ICoreBase;
@@ -518,6 +521,14 @@ public class FDCReceivingBillEditUI extends AbstractFDCReceivingBillEditUI
     	
     	row.setUserObject(revEntry);
 
+    	if(revList instanceof TenancyRoomPayListEntryInfo){
+			setColValue(row, "startDate", ((TenancyRoomPayListEntryInfo)revList).getStartDate());
+			setColValue(row, "endDate", ((TenancyRoomPayListEntryInfo)revList).getEndDate());
+		}else if(revList instanceof TenBillOtherPayInfo){
+			setColValue(row, "startDate", ((TenBillOtherPayInfo)revList).getStartDate());
+			setColValue(row, "endDate", ((TenBillOtherPayInfo)revList).getEndDate());
+		}
+    	setColValue(row, "appDate", revList.getAppDate());
     	setColValue(row, COL_MONEY_DEFINE, revEntry.getMoneyDefine());
     	setColValue(row, COL_STLE_TYPE, revEntry.getSettlementType());
     	setColValue(row, COL_STLE_NUMBER, revEntry.getSettlementNumber());
@@ -988,6 +999,14 @@ public class FDCReceivingBillEditUI extends AbstractFDCReceivingBillEditUI
 			FDCReceivingBillEntryInfo revEntry = buildRevEntry(revListInfo);
 			row.setUserObject(revEntry);
 
+			if(revListInfo instanceof ITenancyPayListInfo){
+				setColValue(row, "startDate", ((ITenancyPayListInfo)revListInfo).getStartDate());
+				setColValue(row, "endDate", ((ITenancyPayListInfo)revListInfo).getEndDate());
+			}else if(revListInfo instanceof TenBillOtherPayInfo){
+				setColValue(row, "startDate", ((TenBillOtherPayInfo)revListInfo).getStartDate());
+				setColValue(row, "endDate", ((TenBillOtherPayInfo)revListInfo).getEndDate());
+			}
+			setColValue(row, "appDate", revListInfo.getAppDate());
 			setColValue(row, COL_MONEY_DEFINE, revListInfo.getMoneyDefine());
 			setColValue(row, COL_STLE_COUNT, new Integer(1));
 			

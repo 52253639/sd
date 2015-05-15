@@ -26,6 +26,7 @@ import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.eas.basedata.org.OrgStructureInfo;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.fdc.basecrm.client.CRMTreeHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.BuildingInfo;
 import com.kingdee.eas.fdc.sellhouse.BuildingUnitInfo;
@@ -75,11 +76,11 @@ public class RoomSelectUI extends AbstractRoomSelectUI {
 		this.moneySysTypeEnum = (MoneySysTypeEnum) this.getUIContext().get("moneySysTypeEnum");
 		this.tblMain.getDataRequestManager().setDataRequestMode(
 				KDTDataRequestManager.REAL_MODE);
-
+		SellProjectInfo sellProject = (SellProjectInfo)this.getUIContext().get("sellProjectInfo");
+		if(sellProject==null)sellProject=(SellProjectInfo)this.getUIContext().get("sellProject");
 		//this.treeMain.setModel(SHEHelper.getPlanisphere(this.actionOnLoad,moneySysTypeEnum));
-		this.treeMain.setModel(SHEHelper.getUnitTree(this.actionOnLoad,moneySysTypeEnum));
-		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel()
-				.getRoot());
+		this.treeMain.setModel(CRMTreeHelper.getBuildingTree(sellProject, true));
+		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
 	}
 
 	protected void setActionState() {
@@ -131,61 +132,60 @@ public class RoomSelectUI extends AbstractRoomSelectUI {
 	 * @throws BOSException
 	 */
 	protected void fillData() throws BOSException {
-		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain
-				.getLastSelectedPathComponent();
-		if (node == null||node.getUserObject() instanceof SellProjectInfo) {
-			tblMain.removeColumns();
-			tblMain.removeHeadRows();
-			tblMain.removeRows();
-			if(moneySysTypeEnum!=null&&moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys)){
-				setSellStateCountByColor();
-			}
-			return;
-		}
-		
-		SellProjectInfo sellProject = (SellProjectInfo)this.getUIContext().get("sellProjectInfo");
-		RoomCollection roomColl = (RoomCollection)this.getUIContext().get("roomColl");
-		if(moneySysTypeEnum==null)
-			moneySysTypeEnum = (MoneySysTypeEnum) this.getUIContext().get("moneySysTypeEnum");
-		if(moneySysTypeEnum!=null) {
-			if(moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys))	{
-				setting = new RoomDisplaySetting();
-			}else if(moneySysTypeEnum.equals(MoneySysTypeEnum.TenancySys))		{
-				setting = new TenancyDisPlaySetting();
-			}else{
-				setting = new RoomDisplaySetting();
-			}
-		}else{
-			setting = new RoomDisplaySetting();
-		}
-		
-		
-		SHEHelper.fillRoomTableByNode(this.tblMain,node, moneySysTypeEnum, roomColl,sellProject,setting,null);
-		if(moneySysTypeEnum!=null&&moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys)){
-			setSellStateCountByColor();
-		}
-//		if (node.getUserObject() instanceof Integer) {
-//			BuildingInfo building = (BuildingInfo) ((DefaultKingdeeTreeNode) node
-//					.getParent()).getUserObject();
-//			String buildingId = building.getId().toString();
-//			Integer unit = (Integer) node.getUserObject();
-//			SHEHelper.fillRoomTableByUnit(this.tblMain, buildingId, unit
-//					.intValue());
-//		} else if (node.getUserObject() instanceof BuildingInfo) {
-//			BuildingInfo building = (BuildingInfo) node.getUserObject();
-//			if (!building.getCodingType().equals(CodingTypeEnum.UnitFloorNum)) {
-//				String buildingId = building.getId().toString();
-//				SHEHelper.fillRoomTableByUnit(this.tblMain, buildingId, 0);
-//			} else {
-//				tblMain.removeColumns();
-//				tblMain.removeHeadRows();
-//				tblMain.removeRows();
-//			}
-//		} else {
+//		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain
+//				.getLastSelectedPathComponent();
+//		if (node == null||node.getUserObject() instanceof SellProjectInfo) {
 //			tblMain.removeColumns();
 //			tblMain.removeHeadRows();
 //			tblMain.removeRows();
+//			if(moneySysTypeEnum!=null&&moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys)){
+//				setSellStateCountByColor();
+//			}
+//			return;
 //		}
+//		
+//		SellProjectInfo sellProject = (SellProjectInfo)this.getUIContext().get("sellProjectInfo");
+//		RoomCollection roomColl = (RoomCollection)this.getUIContext().get("roomColl");
+//		if(moneySysTypeEnum==null)
+//			moneySysTypeEnum = (MoneySysTypeEnum) this.getUIContext().get("moneySysTypeEnum");
+//		if(moneySysTypeEnum!=null) {
+//			if(moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys))	{
+//				setting = new RoomDisplaySetting();
+//			}else if(moneySysTypeEnum.equals(MoneySysTypeEnum.TenancySys))		{
+//				setting = new TenancyDisPlaySetting();
+//			}else{
+//				setting = new RoomDisplaySetting();
+//			}
+//		}else{
+//			setting = new RoomDisplaySetting();
+//		}
+//		
+//		
+//		SHEHelper.fillRoomTableByNode(this.tblMain,node, moneySysTypeEnum, roomColl,sellProject,setting,null);
+//		if(moneySysTypeEnum!=null&&moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys)){
+//			setSellStateCountByColor();
+//		}
+		
+		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();
+		if (node == null) 
+		{
+			return;
+		}
+		moneySysTypeEnum = (MoneySysTypeEnum) this.getUIContext().get("moneySysTypeEnum");
+		if(moneySysTypeEnum.equals(MoneySysTypeEnum.SalehouseSys))
+		{
+			setting = new RoomDisplaySetting();
+		}else if(moneySysTypeEnum.equals(MoneySysTypeEnum.TenancySys))
+		{
+			setting = new TenancyDisPlaySetting();
+		}else{
+			setting = new RoomDisplaySetting();
+		}
+		RoomCollection roomColl = (RoomCollection) this.getUIContext().get("roomColl");
+		SellProjectInfo sellProject = (SellProjectInfo)this.getUIContext().get("sellProjectInfo");
+		//SHEHelper.fillRoomTableByNode(this.tblMain,node, moneySysTypeEnum, roomColl,setting);
+		SHEHelper.fillRoomTableByNode(this.tblMain,node,moneySysTypeEnum,roomColl,sellProject,setting,null);
+		
 	}
 	
 	private void setSellStateCountByColor() throws BOSException {

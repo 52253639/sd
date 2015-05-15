@@ -47,8 +47,10 @@ import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.dao.IObjectCollection;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
+import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
@@ -57,6 +59,7 @@ import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCClientVerifyHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.contract.client.ContractBillEditUI;
 import com.kingdee.eas.fdc.sellhouse.DigitEnum;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
@@ -168,6 +171,13 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 				}
 			}
 			CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"appAmount","actRevAmount"});
+			
+			UIContext uiContext = new UIContext(this);
+			uiContext.put("ID", editData.getTenancyBill().getId().toString());
+			TenancyBillEditUI ui = (TenancyBillEditUI) UIFactoryHelper.initUIObject(TenancyBillEditUI.class.getName(), uiContext, null,OprtState.VIEW);
+			this.panel.setViewportView(ui);
+			this.panel.setKeyBoardControl(true);
+			this.panel.setEnabled(false);
 		} catch (EASBizException e) {
 			e.printStackTrace();
 		} catch (BOSException e) {
