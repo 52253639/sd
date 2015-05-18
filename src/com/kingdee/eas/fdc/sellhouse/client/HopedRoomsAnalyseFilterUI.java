@@ -65,8 +65,6 @@ public class HopedRoomsAnalyseFilterUI extends AbstractHopedRoomsAnalyseFilterUI
 	 */
 	public HopedRoomsAnalyseFilterUI() throws Exception {
 		super();
-		this.listUI = listUI;
-		this.actionListOnLoad = actionListOnLoad;
 	}
 	public HopedRoomsAnalyseFilterUI(ListUI listUI, ItemAction actionListOnLoad) throws Exception {
 		super();

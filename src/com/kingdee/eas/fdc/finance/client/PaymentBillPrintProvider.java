@@ -31,9 +31,7 @@ public class PaymentBillPrintProvider  extends FDCBillDataProvider{
 
 	public PaymentBillPrintProvider(String billId, IMetaDataPK mainQuery) {
 		super(billId, mainQuery);
-		this.attchQuery=attchQuery;
 	}
-
 	public IRowSet getOtherSubRowSet(BOSQueryDataSource ds){
 		if ("ATTCH".equals(ds.getID().toUpperCase()))//假设主数据源名称为mainbill
         {

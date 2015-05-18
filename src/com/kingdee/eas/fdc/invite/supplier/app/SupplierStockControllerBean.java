@@ -1064,30 +1064,30 @@ public class SupplierStockControllerBean extends AbstractSupplierStockController
     }
 	 public void batchAssign(String bosType, Connection cn, String data[][]) throws BOSException, EASBizException
 	 {
-	     LowTimer allTimer;
-	     String sqlTemplate;
-	     Statement stmt;
-	     allTimer = new LowTimer();
-	     sqlTemplate = getSQLTemplateForAssigning(bosType);
-	     logger.debug("start executing batchassign time " + allTimer.msValue());
-	     stmt = null;
-	     try{
-				stmt = cn.createStatement();
-				String deleteSql = getSQLDeleteAssign(data);
-				if(deleteSql != null)
-				stmt.addBatch(deleteSql);
-				int i = 0;
-				for(int n = data.length; i < n; i++){
-					stmt.addBatch(MessageFormat.format(sqlTemplate, data[i]));
-					stmt.executeBatch();
-				}
-				logger.debug("execute batchassign cost time  " + allTimer.msValue());
-	     	}catch(SQLException e){
-	     		logger.error("sql next exception:" + e.getNextException());
-	     		throw new BOSException(e);
-			}
-			SQLUtils.cleanup(stmt);
-			SQLUtils.cleanup(cn);
+//	     LowTimer allTimer;
+//	     String sqlTemplate;
+//	     Statement stmt;
+//	     allTimer = new LowTimer();
+//	     sqlTemplate = getSQLTemplateForAssigning(bosType);
+//	     logger.debug("start executing batchassign time " + allTimer.msValue());
+//	     stmt = null;
+//	     try{
+//				stmt = cn.createStatement();
+//				String deleteSql = getSQLDeleteAssign(data);
+//				if(deleteSql != null)
+//				stmt.addBatch(deleteSql);
+//				int i = 0;
+//				for(int n = data.length; i < n; i++){
+//					stmt.addBatch(MessageFormat.format(sqlTemplate, data[i]));
+//					stmt.executeBatch();
+//				}
+//				logger.debug("execute batchassign cost time  " + allTimer.msValue());
+//	     	}catch(SQLException e){
+//	     		logger.error("sql next exception:" + e.getNextException());
+//	     		throw new BOSException(e);
+//			}
+//			SQLUtils.cleanup(stmt);
+//			SQLUtils.cleanup(cn);
 	 }
 	 private String getSQLTemplateForAssigning(String bosType)
      {

@@ -448,7 +448,7 @@ public class ScheduleBizTypeEditUI extends AbstractScheduleBizTypeEditUI
 		String item = null;
 		item = (m + 1) + "";
 		if (item.length() == 4) {
-			item = item;
+//			item = item;
 		}
 		if (item.length() == 3) {
 			item = "0" + item;

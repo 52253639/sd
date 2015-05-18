@@ -484,18 +484,18 @@ public class WarningTestUI extends AbstractWarningTestUI
     							String cn=new_name.getMetaDataRef();
     							String value=":+"+cn+"\t\t÷µ£∫";
 
-    							try{
-									Class c2=Class.forName(cn);
-									Method m=c2.getMethod("getEnumList",null);
-									List list=(List)m.invoke(null,null);        								
-									for(int j=0;j<list.size();j++){
-										Enum enums=(Enum)list.get(j);
-										value=value+enums.getName()+"\t\t"+enums.getAlias(new Locale("l2"))+"\t\t";
-									}
-									dataType+=value;
-    							}catch(Exception eee){
-    								eee.printStackTrace();
-    							}
+//    							try{
+//									Class c2=Class.forName(cn);
+//									Method m=c2.getMethod("getEnumList",null);
+//									List list=(List)m.invoke(null,null);        								
+//									for(int j=0;j<list.size();j++){
+//										Enum enums=(Enum)list.get(j);
+//										value=value+enums.getName()+"\t\t"+enums.getAlias(new Locale("l2"))+"\t\t";
+//									}
+//									dataType+=value;
+//    							}catch(Exception eee){
+//    								eee.printStackTrace();
+//    							}
     						}
     					}else if(proInfo instanceof LinkPropertyInfo){
     						LinkPropertyInfo new_name = (LinkPropertyInfo)proInfo;

@@ -186,7 +186,6 @@ public class BirdEyeShowUI extends AbstractBirdEyeShowUI
      JComponent jcom2 ; //标签穿透,其他子Panel
      KDPanel jkDPanel; //标签Panel
     public  void initLable(KDPanel kDPanel,Object obj) throws Exception{
-    	x = x;
     	String labName = "";
     	String labText = "";
     	BirdEyeInfo birdInfo = new BirdEyeInfo();
