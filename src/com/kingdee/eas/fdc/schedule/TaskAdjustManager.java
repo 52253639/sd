@@ -432,45 +432,45 @@ public class TaskAdjustManager implements Serializable{
 	 * 下级最早的结束时间
 	 * @param parentTask
 	 */
-	private Date getChildEarliestEndDate(FDCScheduleTaskInfo parentTask) {
-		Date earliestDate=null;
-		FDCScheduleTaskInfo childInfo = null;
-		FDCScheduleTaskCollection childTasks = getChildTasks(parentTask);
-		for(Iterator iter=childTasks.iterator();iter.hasNext();){
-			FDCScheduleTaskInfo task=(FDCScheduleTaskInfo)iter.next();
-			TaskAdjustManagerItem taskItem = getTaskListItem(task);
-			if(taskItem!=null&&taskItem.newTask!=null){
-				task=taskItem.newTask;
-			}
-			if(earliestDate==null){
-				earliestDate=task.getEnd();
-			}else if(earliestDate.after(task.getEnd())){
-				earliestDate=task.getEnd();
-			}
-		}
-		if(TaskTypeInfo.TASKTYPE_MAINTASK.equals(parentTask.getWbs().getTaskType().getId().toString())){			
-			if(TaskTypeInfo.TASKTYPE_MAINTASK.equals(childInfo.getWbs().getTaskType().getId().toString())){			
-				if(parentTask.getEnd().before(childInfo.getEnd())){							
-					earliestDate = childInfo.getEnd();			//上级为主项&&下级为主项&&下级突破上级
-				}else{
-					earliestDate = parentTask.getEnd();			//上级为主项&&下级为主项&&下级未突破上级
-				}
-			}else if(TaskTypeInfo.TASKTYPE_SPECIALTASK.equals(childInfo.getWbs().getTaskType().getId().toString())){
-				if(parentTask.getEnd().before(childInfo.getEnd())){							
-								//上级为主项&&下级为专项&&下级突破上级
-				}else{
-					earliestDate = parentTask.getEnd();			//上级为主项&&下级为专项&&下级未突破上级
-				}
-			}
-		}else if(TaskTypeInfo.TASKTYPE_SPECIALTASK.equals(parentTask.getWbs().getTaskType().getId().toString())){
-			if(parentTask.getEnd().before(childInfo.getEnd())){							
-				earliestDate = childInfo.getEnd();			//上级为专项&&下级为专项&&下级突破上级
-			}else{
-				earliestDate = parentTask.getEnd();			//上级为专项&&下级为专项&&下级未突破上级
-			}
-		}
-		return earliestDate;
-	}
+//	private Date getChildEarliestEndDate(FDCScheduleTaskInfo parentTask) {
+//		Date earliestDate=null;
+//		FDCScheduleTaskInfo childInfo = null;
+//		FDCScheduleTaskCollection childTasks = getChildTasks(parentTask);
+//		for(Iterator iter=childTasks.iterator();iter.hasNext();){
+//			FDCScheduleTaskInfo task=(FDCScheduleTaskInfo)iter.next();
+//			TaskAdjustManagerItem taskItem = getTaskListItem(task);
+//			if(taskItem!=null&&taskItem.newTask!=null){
+//				task=taskItem.newTask;
+//			}
+//			if(earliestDate==null){
+//				earliestDate=task.getEnd();
+//			}else if(earliestDate.after(task.getEnd())){
+//				earliestDate=task.getEnd();
+//			}
+//		}
+//		if(TaskTypeInfo.TASKTYPE_MAINTASK.equals(parentTask.getWbs().getTaskType().getId().toString())){			
+//			if(TaskTypeInfo.TASKTYPE_MAINTASK.equals(childInfo.getWbs().getTaskType().getId().toString())){			
+//				if(parentTask.getEnd().before(childInfo.getEnd())){							
+//					earliestDate = childInfo.getEnd();			//上级为主项&&下级为主项&&下级突破上级
+//				}else{
+//					earliestDate = parentTask.getEnd();			//上级为主项&&下级为主项&&下级未突破上级
+//				}
+//			}else if(TaskTypeInfo.TASKTYPE_SPECIALTASK.equals(childInfo.getWbs().getTaskType().getId().toString())){
+//				if(parentTask.getEnd().before(childInfo.getEnd())){							
+//								//上级为主项&&下级为专项&&下级突破上级
+//				}else{
+//					earliestDate = parentTask.getEnd();			//上级为主项&&下级为专项&&下级未突破上级
+//				}
+//			}
+//		}else if(TaskTypeInfo.TASKTYPE_SPECIALTASK.equals(parentTask.getWbs().getTaskType().getId().toString())){
+//			if(parentTask.getEnd().before(childInfo.getEnd())){							
+//				earliestDate = childInfo.getEnd();			//上级为专项&&下级为专项&&下级突破上级
+//			}else{
+//				earliestDate = parentTask.getEnd();			//上级为专项&&下级为专项&&下级未突破上级
+//			}
+//		}
+//		return earliestDate;
+//	}
 	/**
 	 * 下级最迟的结束时间
 	 * 添加如下判断：1.下级为主项且上级为主项且下级时间突破上级，则返回下级结束时间

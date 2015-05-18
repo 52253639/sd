@@ -2954,6 +2954,7 @@ public class SHEManageHelper {
 				
 				value=ParamControlFactory.getRemoteInstance().getParamHashMap(param);
 				if(value==null){
+					value=new HashMap();
 					value.put(CRMConstants.FDCSHE_PARAM_TOL_TOINTEGER_TYPE, totalIntegerType);
 					value.put(CRMConstants.FDCSHE_PARAM_TOLAMOUNT_BIT, totalDigit);
 					value.put(CRMConstants.FDCSHE_PARAM_PRICE_TOINTEGER_TYPE, priceIntegerType);

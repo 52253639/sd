@@ -304,10 +304,10 @@ public class FDCWBSControllerBean extends AbstractFDCWBSControllerBean {
 			// WBSCodeRuleFactory.getLocalInstance(ctx).createNewNumber(
 			// parentTemplateNode.getLevel()-1, findWBSMaxSibNum(nodeMap,
 			// templateMap, parentTemplateNode)+1);
-			FDCWBSInfo nodeParent = (FDCWBSInfo) nodeMap.get(parentTemplateNode
-					.getNumber());
-			// nodeInfo.setNumber(newNum);
-			nodeInfo.setParent(nodeParent);
+//			FDCWBSInfo nodeParent = (FDCWBSInfo) nodeMap.get(parentTemplateNode
+//					.getNumber());
+//			// nodeInfo.setNumber(newNum);
+//			nodeInfo.setParent(nodeParent);
 			nodeMap.put(keyNum, nodeInfo);
 		} else {
 			setNodeValue(parentTemplateNode.getNumber(), nodeMap, templateMap,

@@ -319,6 +319,7 @@ public class WebMarkSchemaEditUI extends AbstractWebMarkSchemaEditUI {
 		fillKdtProcessEntrys(rowIndex);
 	}
 
+	@SuppressWarnings("finally")
 	private int getRowIdx(com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent e) {
 		int lRe = -99;
 		try {
@@ -330,6 +331,7 @@ public class WebMarkSchemaEditUI extends AbstractWebMarkSchemaEditUI {
 		}
 	}
 
+	@SuppressWarnings("finally")
 	private int getCurRow() {
 		int lRe = -99;
 		try {
@@ -408,6 +410,7 @@ public class WebMarkSchemaEditUI extends AbstractWebMarkSchemaEditUI {
 		}
 	}
 
+	@SuppressWarnings("finally")
 	private String getFuncID(WebMarkFunctionInfo function) {
 		String id = "";
 		try {

@@ -293,7 +293,7 @@ public class TenancyImport {
 	}
 	 //根据房间 填充 房间分录的 冗余字段
 	private static TenancyRoomEntryInfo roomToTenRoomEntry(TenancyRoomEntryInfo tenRoom) {
-		if(tenRoom==null&&tenRoom.getRoom()==null){
+		if(tenRoom==null||tenRoom.getRoom()==null){
 			return null;
 		}
 		RoomInfo room;

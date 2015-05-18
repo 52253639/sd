@@ -169,7 +169,7 @@ public class MainFrame extends AbstractMainFrame {
 		logger.info("正在importFile......");
 		userDefindedTableMap.clear(); // 每次导入前先清空一下，否则第二次导入会受第一次影响
 		File file = (File) context.get("zipFile");
-		if (file == null && !file.exists()) {
+		if (file == null || !file.exists()) {
 			JOptionPane.showConfirmDialog(this, "找不到文件 " + file.getAbsolutePath(), "错误提示", JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
