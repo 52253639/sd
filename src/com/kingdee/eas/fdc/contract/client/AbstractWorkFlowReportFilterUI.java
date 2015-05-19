@@ -99,7 +99,7 @@ public abstract class AbstractWorkFlowReportFilterUI extends com.kingdee.eas.fra
         this.prmtPerson.setCommitFormat("$name$");		
         this.prmtPerson.setDisplayFormat("$name$");		
         this.prmtPerson.setEditFormat("$name$");		
-        this.prmtPerson.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.F7UserQuery");		
+        this.prmtPerson.setQueryInfo("com.kingdee.eas.basedata.person.app.F7PersonQuery");		
         this.prmtPerson.setEnabledMultiSelection(true);		
         this.prmtPerson.setRequired(true);
         // pkFromDate		
