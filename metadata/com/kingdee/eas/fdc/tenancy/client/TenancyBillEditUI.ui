@@ -704,7 +704,7 @@
             <userDefined>true</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDPanel</classType>
             <isContainer>true</isContainer>
-            <constraints>-3,49,1008,94,77</constraints>
+            <constraints>-3,49,1008,115,77</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -1453,7 +1453,7 @@
             <userDefined>true</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDContainer</classType>
             <isContainer>true</isContainer>
-            <constraints>1,144,999,205,13</constraints>
+            <constraints>1,168,999,181,13</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -1819,7 +1819,7 @@
             <userDefined>true</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
             <isContainer>true</isContainer>
-            <constraints>11,58,236,19,261</constraints>
+            <constraints>259,58,236,19,385</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -1861,7 +1861,7 @@
             <userDefined>true</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
             <isContainer>true</isContainer>
-            <constraints>259,58,236,19,385</constraints>
+            <constraints>507,58,236,19,385</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -2064,7 +2064,7 @@
             <userDefined>true</userDefined>
             <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
             <isContainer>true</isContainer>
-            <constraints>507,58,484,19,137</constraints>
+            <constraints>11,80,484,19,261</constraints>
             <tabIndex>0</tabIndex>
             <herited>false</herited>
             <bimUIObjectPK />
@@ -2344,6 +2344,48 @@
                     <name>boundLabelAlignment</name>
                     <type>int</type>
                     <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contStartDate].properties.property[boundLabelAlignment].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>true</userDefined>
+                </property>
+            </properties>
+            <parent>
+                <key name="name" value="kDPanel1" />
+            </parent>
+        </component>
+        <component>
+            <name>contFirstLeaseEndDate</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].alias</alias>
+            <userDefined>true</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
+            <isContainer>true</isContainer>
+            <constraints>11,58,236,19,261</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>LabelContainerLayout</type>
+                <value />
+            </layoutInfo>
+            <properties>
+                <property>
+                    <name>boundLabelText</name>
+                    <type>java.lang.String</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].properties.property[boundLabelText].value</value>
+                    <isMultiLan>true</isMultiLan>
+                    <userDefined>true</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelLength</name>
+                    <type>int</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].properties.property[boundLabelLength].value</value>
+                    <isMultiLan>false</isMultiLan>
+                    <userDefined>true</userDefined>
+                </property>
+                <property>
+                    <name>boundLabelUnderline</name>
+                    <type>boolean</type>
+                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].properties.property[boundLabelUnderline].value</value>
                     <isMultiLan>false</isMultiLan>
                     <userDefined>true</userDefined>
                 </property>
@@ -2953,6 +2995,52 @@
                     <listenerType>com.kingdee.bos.ctrl.swing.event.DataChangeListener</listenerType>
                     <listenerAdapter>com.kingdee.bos.ctrl.swing.event.DataChangeListener</listenerAdapter>
                     <methodName>pkStartDate_dataChanged</methodName>
+                    <code />
+                    <isBindWorkFlow>false</isBindWorkFlow>
+                    <herited>false</herited>
+                    <userDefined>true</userDefined>
+                </eventBinding>
+            </eventBindings>
+        </component>
+        <component>
+            <name>pkFirstLeaseEndDate</name>
+            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[pkFirstLeaseEndDate].alias</alias>
+            <userDefined>true</userDefined>
+            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
+            <isContainer>false</isContainer>
+            <constraints>7</constraints>
+            <tabIndex>0</tabIndex>
+            <herited>false</herited>
+            <bimUIObjectPK />
+            <layoutInfo>
+                <name />
+                <type>XYLayout</type>
+                <value />
+            </layoutInfo>
+            <parent>
+                <key name="name" value="contFirstLeaseEndDate" />
+            </parent>
+            <propertyBindings>
+                <propertyBinding>
+                    <propertyName>value</propertyName>
+                    <propertyType>java.lang.Object</propertyType>
+                    <bindingObject>editData</bindingObject>
+                    <bindingField>firstLeaseEndDate</bindingField>
+                    <fieldType>java.util.Date</fieldType>
+                    <accessType>2</accessType>
+                    <autoMode>false</autoMode>
+                    <herited>false</herited>
+                    <userDefined>true</userDefined>
+                </propertyBinding>
+            </propertyBindings>
+            <eventBindings>
+                <eventBinding>
+                    <name>dataChanged</name>
+                    <eventType>com.kingdee.bos.ctrl.swing.event.DataChangeEvent</eventType>
+                    <scene />
+                    <listenerType>com.kingdee.bos.ctrl.swing.event.DataChangeListener</listenerType>
+                    <listenerAdapter>com.kingdee.bos.ctrl.swing.event.DataChangeListener</listenerAdapter>
+                    <methodName>pkFirstLeaseEndDate_dataChanged</methodName>
                     <code />
                     <isBindWorkFlow>false</isBindWorkFlow>
                     <herited>false</herited>
@@ -3801,48 +3889,6 @@
                     <name>boundLabelLength</name>
                     <type>int</type>
                     <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contDeductionAmount].properties.property[boundLabelLength].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>true</userDefined>
-                </property>
-            </properties>
-            <parent>
-                <key name="name" value="panelContractInfo" />
-            </parent>
-        </component>
-        <component>
-            <name>contFirstLeaseEndDate</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].alias</alias>
-            <userDefined>true</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDLabelContainer</classType>
-            <isContainer>true</isContainer>
-            <constraints>315,85,270,19,384</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>LabelContainerLayout</type>
-                <value />
-            </layoutInfo>
-            <properties>
-                <property>
-                    <name>boundLabelText</name>
-                    <type>java.lang.String</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].properties.property[boundLabelText].value</value>
-                    <isMultiLan>true</isMultiLan>
-                    <userDefined>true</userDefined>
-                </property>
-                <property>
-                    <name>boundLabelLength</name>
-                    <type>int</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].properties.property[boundLabelLength].value</value>
-                    <isMultiLan>false</isMultiLan>
-                    <userDefined>true</userDefined>
-                </property>
-                <property>
-                    <name>boundLabelUnderline</name>
-                    <type>boolean</type>
-                    <value>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[contFirstLeaseEndDate].properties.property[boundLabelUnderline].value</value>
                     <isMultiLan>false</isMultiLan>
                     <userDefined>true</userDefined>
                 </property>
@@ -4855,52 +4901,6 @@
                     <userDefined>true</userDefined>
                 </propertyBinding>
             </propertyBindings>
-        </component>
-        <component>
-            <name>pkFirstLeaseEndDate</name>
-            <alias>uiObject[com.kingdee.eas.fdc.tenancy.client.TenancyBillEditUI].components.component[pkFirstLeaseEndDate].alias</alias>
-            <userDefined>true</userDefined>
-            <classType>com.kingdee.bos.ctrl.swing.KDDatePicker</classType>
-            <isContainer>false</isContainer>
-            <constraints>7</constraints>
-            <tabIndex>0</tabIndex>
-            <herited>false</herited>
-            <bimUIObjectPK />
-            <layoutInfo>
-                <name />
-                <type>XYLayout</type>
-                <value />
-            </layoutInfo>
-            <parent>
-                <key name="name" value="contFirstLeaseEndDate" />
-            </parent>
-            <propertyBindings>
-                <propertyBinding>
-                    <propertyName>value</propertyName>
-                    <propertyType>java.lang.Object</propertyType>
-                    <bindingObject>editData</bindingObject>
-                    <bindingField>firstLeaseEndDate</bindingField>
-                    <fieldType>java.util.Date</fieldType>
-                    <accessType>2</accessType>
-                    <autoMode>false</autoMode>
-                    <herited>false</herited>
-                    <userDefined>true</userDefined>
-                </propertyBinding>
-            </propertyBindings>
-            <eventBindings>
-                <eventBinding>
-                    <name>dataChanged</name>
-                    <eventType>com.kingdee.bos.ctrl.swing.event.DataChangeEvent</eventType>
-                    <scene />
-                    <listenerType>com.kingdee.bos.ctrl.swing.event.DataChangeListener</listenerType>
-                    <listenerAdapter>com.kingdee.bos.ctrl.swing.event.DataChangeListener</listenerAdapter>
-                    <methodName>pkFirstLeaseEndDate_dataChanged</methodName>
-                    <code />
-                    <isBindWorkFlow>false</isBindWorkFlow>
-                    <herited>false</herited>
-                    <userDefined>true</userDefined>
-                </eventBinding>
-            </eventBindings>
         </component>
         <component>
             <name>pkStartDateLimit</name>
