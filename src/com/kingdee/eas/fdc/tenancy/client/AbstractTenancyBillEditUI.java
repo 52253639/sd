@@ -100,6 +100,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChargeOffsetDays;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseCount;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFirstLeaseEndDate;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboRentStartType;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboFlagAtTerm;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboChargeDateType;
@@ -111,6 +112,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinChargeOffsetDays;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtLeaseCount;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFirstLeaseEndDate;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7Creator;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalRoomStandardRent;
@@ -125,7 +127,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDeliveryRoomDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealTotalRent;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDeductionAmount;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFirstLeaseEndDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDateLimit;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSincerObligate;
     protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator8;
@@ -145,7 +146,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkDeliveryRoomDate;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealTotalRent;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDeductionAmount;
-    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFirstLeaseEndDate;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDateLimit;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7SincerObligate;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDepositAmount;
@@ -421,6 +421,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contChargeOffsetDays = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contLeaseCount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStartDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.comboRentStartType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboFlagAtTerm = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboChargeDateType = new com.kingdee.bos.ctrl.swing.KDComboBox();
@@ -432,6 +433,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.spinChargeOffsetDays = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.txtLeaseCount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.pkFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.f7Creator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtTotalRoomStandardRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
@@ -446,7 +448,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contDeliveryRoomDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contDealTotalRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contDeductionAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStartDateLimit = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contSincerObligate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDSeparator8 = new com.kingdee.bos.ctrl.swing.KDSeparator();
@@ -466,7 +467,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.pkDeliveryRoomDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.txtDealTotalRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtDeductionAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
-        this.pkFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkStartDateLimit = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.f7SincerObligate = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtDepositAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
@@ -634,6 +634,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contChargeOffsetDays.setName("contChargeOffsetDays");
         this.contLeaseCount.setName("contLeaseCount");
         this.contStartDate.setName("contStartDate");
+        this.contFirstLeaseEndDate.setName("contFirstLeaseEndDate");
         this.comboRentStartType.setName("comboRentStartType");
         this.comboFlagAtTerm.setName("comboFlagAtTerm");
         this.comboChargeDateType.setName("comboChargeDateType");
@@ -645,6 +646,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.spinChargeOffsetDays.setName("spinChargeOffsetDays");
         this.txtLeaseCount.setName("txtLeaseCount");
         this.pkStartDate.setName("pkStartDate");
+        this.pkFirstLeaseEndDate.setName("pkFirstLeaseEndDate");
         this.pkCreateTime.setName("pkCreateTime");
         this.f7Creator.setName("f7Creator");
         this.txtTotalRoomStandardRent.setName("txtTotalRoomStandardRent");
@@ -659,7 +661,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contDeliveryRoomDate.setName("contDeliveryRoomDate");
         this.contDealTotalRent.setName("contDealTotalRent");
         this.contDeductionAmount.setName("contDeductionAmount");
-        this.contFirstLeaseEndDate.setName("contFirstLeaseEndDate");
         this.contStartDateLimit.setName("contStartDateLimit");
         this.contSincerObligate.setName("contSincerObligate");
         this.kDSeparator8.setName("kDSeparator8");
@@ -679,7 +680,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.pkDeliveryRoomDate.setName("pkDeliveryRoomDate");
         this.txtDealTotalRent.setName("txtDealTotalRent");
         this.txtDeductionAmount.setName("txtDeductionAmount");
-        this.pkFirstLeaseEndDate.setName("pkFirstLeaseEndDate");
         this.pkStartDateLimit.setName("pkStartDateLimit");
         this.f7SincerObligate.setName("f7SincerObligate");
         this.txtDepositAmount.setName("txtDepositAmount");
@@ -1103,6 +1103,10 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contStartDate.setBoundLabelUnderline(true);		
         this.contStartDate.setVisible(true);		
         this.contStartDate.setBoundLabelAlignment(7);
+        // contFirstLeaseEndDate		
+        this.contFirstLeaseEndDate.setBoundLabelText(resHelper.getString("contFirstLeaseEndDate.boundLabelText"));		
+        this.contFirstLeaseEndDate.setBoundLabelLength(100);		
+        this.contFirstLeaseEndDate.setBoundLabelUnderline(true);
         // comboRentStartType		
         this.comboRentStartType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.RentStartTypeEnum").toArray());
         this.comboRentStartType.addItemListener(new java.awt.event.ItemListener() {
@@ -1212,6 +1216,17 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
             public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
                 try {
                     pkStartDate_dataChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
+        // pkFirstLeaseEndDate
+        this.pkFirstLeaseEndDate.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
+            public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
+                try {
+                    pkFirstLeaseEndDate_dataChanged(e);
                 } catch (Exception exc) {
                     handUIException(exc);
                 } finally {
@@ -1347,10 +1362,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contDeductionAmount.setBoundLabelText(resHelper.getString("contDeductionAmount.boundLabelText"));		
         this.contDeductionAmount.setBoundLabelUnderline(true);		
         this.contDeductionAmount.setBoundLabelLength(100);
-        // contFirstLeaseEndDate		
-        this.contFirstLeaseEndDate.setBoundLabelText(resHelper.getString("contFirstLeaseEndDate.boundLabelText"));		
-        this.contFirstLeaseEndDate.setBoundLabelLength(100);		
-        this.contFirstLeaseEndDate.setBoundLabelUnderline(true);
         // contStartDateLimit		
         this.contStartDateLimit.setBoundLabelText(resHelper.getString("contStartDateLimit.boundLabelText"));		
         this.contStartDateLimit.setBoundLabelLength(100);		
@@ -1446,17 +1457,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.txtDeductionAmount.setPrecision(2);		
         this.txtDeductionAmount.setSupportedEmpty(true);		
         this.txtDeductionAmount.setHorizontalAlignment(2);
-        // pkFirstLeaseEndDate
-        this.pkFirstLeaseEndDate.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
-            public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
-                try {
-                    pkFirstLeaseEndDate_dataChanged(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                }
-            }
-        });
         // pkStartDateLimit
         // f7SincerObligate		
         this.f7SincerObligate.setCommitFormat("$number$");		
@@ -2361,8 +2361,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel2.add(contname, new KDLayout.Constraints(610, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         chkIsByAgency.setBounds(new Rectangle(906, 0, 102, 19));
         kDPanel2.add(chkIsByAgency, new KDLayout.Constraints(906, 0, 102, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDPanel1.setBounds(new Rectangle(-3, 49, 1008, 94));
-        kDPanel2.add(kDPanel1, new KDLayout.Constraints(-3, 49, 1008, 94, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDPanel1.setBounds(new Rectangle(-3, 49, 1008, 115));
+        kDPanel2.add(kDPanel1, new KDLayout.Constraints(-3, 49, 1008, 115, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contCreateTime.setBounds(new Rectangle(426, 566, 270, 19));
         kDPanel2.add(contCreateTime, new KDLayout.Constraints(426, 566, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contCreator.setBounds(new Rectangle(8, 565, 270, 19));
@@ -2391,8 +2391,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel2.add(btnAddCustomer, new KDLayout.Constraints(868, 385, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         btnRemoveCustomer.setBounds(new Rectangle(935, 389, 67, 19));
         kDPanel2.add(btnRemoveCustomer, new KDLayout.Constraints(935, 389, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        panelTotal.setBounds(new Rectangle(1, 144, 999, 205));
-        kDPanel2.add(panelTotal, new KDLayout.Constraints(1, 144, 999, 205, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        panelTotal.setBounds(new Rectangle(1, 168, 999, 181));
+        kDPanel2.add(panelTotal, new KDLayout.Constraints(1, 168, 999, 181, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //contTenancyType
         contTenancyType.setBoundEditor(comboTenancyType);
         //contTenancyDate
@@ -2408,18 +2408,18 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contname.setBoundEditor(txtName);
         //kDPanel1
         kDPanel1.setLayout(new KDLayout());
-        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(-3, 49, 1008, 94));        contRentStartType.setBounds(new Rectangle(11, 58, 236, 19));
-        kDPanel1.add(contRentStartType, new KDLayout.Constraints(11, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contFlagAtTerm.setBounds(new Rectangle(259, 58, 236, 19));
-        kDPanel1.add(contFlagAtTerm, new KDLayout.Constraints(259, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(-3, 49, 1008, 115));        contRentStartType.setBounds(new Rectangle(259, 58, 236, 19));
+        kDPanel1.add(contRentStartType, new KDLayout.Constraints(259, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contFlagAtTerm.setBounds(new Rectangle(507, 58, 236, 19));
+        kDPanel1.add(contFlagAtTerm, new KDLayout.Constraints(507, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contChargeDateType.setBounds(new Rectangle(507, 36, 236, 19));
         kDPanel1.add(contChargeDateType, new KDLayout.Constraints(507, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contFirstLeaseType.setBounds(new Rectangle(11, 36, 236, 19));
         kDPanel1.add(contFirstLeaseType, new KDLayout.Constraints(11, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contEndDate.setBounds(new Rectangle(259, 14, 236, 19));
         kDPanel1.add(contEndDate, new KDLayout.Constraints(259, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDescription.setBounds(new Rectangle(507, 58, 484, 19));
-        kDPanel1.add(contDescription, new KDLayout.Constraints(507, 58, 484, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDescription.setBounds(new Rectangle(11, 80, 484, 19));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(11, 80, 484, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contFristRevDate.setBounds(new Rectangle(259, 36, 236, 19));
         kDPanel1.add(contFristRevDate, new KDLayout.Constraints(259, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLeaseTime.setBounds(new Rectangle(507, 14, 236, 19));
@@ -2430,6 +2430,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel1.add(contLeaseCount, new KDLayout.Constraints(756, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contStartDate.setBounds(new Rectangle(11, 14, 236, 19));
         kDPanel1.add(contStartDate, new KDLayout.Constraints(11, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contFirstLeaseEndDate.setBounds(new Rectangle(11, 58, 236, 19));
+        kDPanel1.add(contFirstLeaseEndDate, new KDLayout.Constraints(11, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contRentStartType
         contRentStartType.setBoundEditor(comboRentStartType);
         //contFlagAtTerm
@@ -2452,6 +2454,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contLeaseCount.setBoundEditor(txtLeaseCount);
         //contStartDate
         contStartDate.setBoundEditor(pkStartDate);
+        //contFirstLeaseEndDate
+        contFirstLeaseEndDate.setBoundEditor(pkFirstLeaseEndDate);
         //contCreateTime
         contCreateTime.setBoundEditor(pkCreateTime);
         //contCreator
@@ -2482,8 +2486,6 @@ panelTotal.getContentPane().setLayout(new BorderLayout(0, 0));        panelTotal
         panelContractInfo.add(contDealTotalRent, new KDLayout.Constraints(7, 139, 270, 19, KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contDeductionAmount.setBounds(new Rectangle(620, 10, 270, 19));
         panelContractInfo.add(contDeductionAmount, new KDLayout.Constraints(620, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contFirstLeaseEndDate.setBounds(new Rectangle(315, 85, 270, 19));
-        panelContractInfo.add(contFirstLeaseEndDate, new KDLayout.Constraints(315, 85, 270, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contStartDateLimit.setBounds(new Rectangle(670, 373, 270, 19));
         panelContractInfo.add(contStartDateLimit, new KDLayout.Constraints(670, 373, 270, 19, KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contSincerObligate.setBounds(new Rectangle(581, 326, 270, 19));
@@ -2522,8 +2524,6 @@ panelTotal.getContentPane().setLayout(new BorderLayout(0, 0));        panelTotal
         contDealTotalRent.setBoundEditor(txtDealTotalRent);
         //contDeductionAmount
         contDeductionAmount.setBoundEditor(txtDeductionAmount);
-        //contFirstLeaseEndDate
-        contFirstLeaseEndDate.setBoundEditor(pkFirstLeaseEndDate);
         //contStartDateLimit
         contStartDateLimit.setBoundEditor(pkStartDateLimit);
         //contSincerObligate
@@ -2955,6 +2955,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		dataBinder.registerBinding("chargeOffsetDays", int.class, this.spinChargeOffsetDays, "value");
 		dataBinder.registerBinding("leaseCount", java.math.BigDecimal.class, this.txtLeaseCount, "value");
 		dataBinder.registerBinding("startDate", java.util.Date.class, this.pkStartDate, "value");
+		dataBinder.registerBinding("firstLeaseEndDate", java.util.Date.class, this.pkFirstLeaseEndDate, "value");
 		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.f7Creator, "data");
 		dataBinder.registerBinding("tenancyRoomList.roomEntryId", String.class, this.tblRoom, "roomEntryId.text");
@@ -2964,7 +2965,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		dataBinder.registerBinding("deliveryRoomDate", java.util.Date.class, this.pkDeliveryRoomDate, "value");
 		dataBinder.registerBinding("dealTotalRent", java.math.BigDecimal.class, this.txtDealTotalRent, "value");
 		dataBinder.registerBinding("deductAmount", java.math.BigDecimal.class, this.txtDeductionAmount, "value");
-		dataBinder.registerBinding("firstLeaseEndDate", java.util.Date.class, this.pkFirstLeaseEndDate, "value");
 		dataBinder.registerBinding("sincerObligate", com.kingdee.eas.fdc.tenancy.SincerObligateInfo.class, this.f7SincerObligate, "data");
 		dataBinder.registerBinding("depositAmount", java.math.BigDecimal.class, this.txtDepositAmount, "value");
 		dataBinder.registerBinding("firstPayRent", java.math.BigDecimal.class, this.txtFirstPayRent, "value");
@@ -3137,6 +3137,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		getValidateHelper().registerBindProperty("chargeOffsetDays", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("leaseCount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("startDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("firstLeaseEndDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyRoomList.roomEntryId", ValidateHelper.ON_SAVE);    
@@ -3146,7 +3147,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		getValidateHelper().registerBindProperty("deliveryRoomDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("dealTotalRent", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("deductAmount", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("firstLeaseEndDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("sincerObligate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("depositAmount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("firstPayRent", ValidateHelper.ON_SAVE);    
@@ -3315,6 +3315,13 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     }
 
     /**
+     * output pkFirstLeaseEndDate_dataChanged method
+     */
+    protected void pkFirstLeaseEndDate_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
+    {
+    }
+
+    /**
      * output tblRoom_editStopped method
      */
     protected void tblRoom_editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) throws Exception
@@ -3333,13 +3340,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
      * output tblCustomer_tableClicked method
      */
     protected void tblCustomer_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
-    {
-    }
-
-    /**
-     * output pkFirstLeaseEndDate_dataChanged method
-     */
-    protected void pkFirstLeaseEndDate_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
     {
     }
 
@@ -3687,6 +3687,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         sic.add(new SelectorItemInfo("chargeOffsetDays"));
         sic.add(new SelectorItemInfo("leaseCount"));
         sic.add(new SelectorItemInfo("startDate"));
+        sic.add(new SelectorItemInfo("firstLeaseEndDate"));
         sic.add(new SelectorItemInfo("createTime"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
@@ -3712,7 +3713,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         sic.add(new SelectorItemInfo("deliveryRoomDate"));
         sic.add(new SelectorItemInfo("dealTotalRent"));
         sic.add(new SelectorItemInfo("deductAmount"));
-        sic.add(new SelectorItemInfo("firstLeaseEndDate"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
 			sic.add(new SelectorItemInfo("sincerObligate.*"));
