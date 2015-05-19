@@ -1250,8 +1250,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		//更新租金设置Table
 		//		updateTblRentSetRow();
 	}
-	boolean isEdit=false;
+	boolean isEdit=true;
 	boolean isFreeAdd=false;
+	boolean isPeriodShow=true;
 	/** 初始化控件基础属性,主要设置菜单,控件可否编辑(且状态不会变化) */
 	private void initControl() {
 		this.pkStartDate.setRequired(true);
@@ -1333,14 +1334,18 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			HashMap hmParamIn = new HashMap();
 			hmParamIn.put("ISOTHEREDIT", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
 			hmParamIn.put("ISFREEADD", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
+			hmParamIn.put("ISPERIODSHOW", SysContext.getSysContext().getCurrentOrgUnit().getId().toString());
 		
 			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
 			
-			if(hmAllParam.get("ISOTHEREDIT")!=null&&Boolean.valueOf(hmAllParam.get("ISOTHEREDIT").toString()).booleanValue()){
-				isEdit=true;
+			if(hmAllParam.get("ISOTHEREDIT")!=null){
+				isEdit=Boolean.valueOf(hmAllParam.get("ISOTHEREDIT").toString()).booleanValue();
 			}
-			if(hmAllParam.get("ISFREEADD")!=null&&Boolean.valueOf(hmAllParam.get("ISFREEADD").toString()).booleanValue()){
-				isFreeAdd=true;
+			if(hmAllParam.get("ISFREEADD")!=null){
+				isFreeAdd=Boolean.valueOf(hmAllParam.get("ISFREEADD").toString()).booleanValue();
+			}
+			if(hmAllParam.get("ISPERIODSHOW")!=null){
+				isPeriodShow=Boolean.valueOf(hmAllParam.get("ISPERIODSHOW").toString()).booleanValue();
 			}
 		} catch (EASBizException e) {
 			e.printStackTrace();
@@ -3217,16 +3222,18 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				}
 			}
 		}
-		//增加周期型费用
-		EntityViewInfo view = new EntityViewInfo();
-		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("moneyType", MoneyTypeEnum.PeriodicityAmount));
-		filter.getFilterItems().add(new FilterItemInfo("sysType", MoneySysTypeEnum.TenancySys));
-		//原来没有是否启用状态，周期性费用需要处理了
-		//		filter.getFilterItems().add(new FilterItemInfo("isEnabled", Boolean.TRUE));
-		view.setFilter(filter);
-		MoneyDefineCollection periodicityMoneys = MoneyDefineFactory.getRemoteInstance().getMoneyDefineCollection(view);
-				
+		MoneyDefineCollection periodicityMoneys=new MoneyDefineCollection();
+		if(isPeriodShow){
+			//增加周期型费用
+			EntityViewInfo view = new EntityViewInfo();
+			FilterInfo filter = new FilterInfo();
+			filter.getFilterItems().add(new FilterItemInfo("moneyType", MoneyTypeEnum.PeriodicityAmount));
+			filter.getFilterItems().add(new FilterItemInfo("sysType", MoneySysTypeEnum.TenancySys));
+			//原来没有是否启用状态，周期性费用需要处理了
+			//		filter.getFilterItems().add(new FilterItemInfo("isEnabled", Boolean.TRUE));
+			view.setFilter(filter);
+			periodicityMoneys = MoneyDefineFactory.getRemoteInstance().getMoneyDefineCollection(view);
+		}
 	
 		/*
 		 * 逻辑介绍主要考虑两种情况，一种是新增，一种是新增的时候，房间一个一个的添加，
