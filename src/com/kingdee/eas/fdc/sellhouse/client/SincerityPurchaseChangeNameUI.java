@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -1212,8 +1213,43 @@ public class SincerityPurchaseChangeNameUI extends AbstractSincerityPurchaseChan
      */
     public void actionRemove_actionPerformed(ActionEvent e) throws Exception
     {
+    	boolean isRev =false;
+		SelectorItemCollection selCol = new SelectorItemCollection();
+		
+		selCol.add("sincerPriceEntrys.*");
+		selCol.add("sincerPriceEntrys.moneyDefine.*");
+		selCol.add("*");
+		SincerityPurchaseInfo sin = SincerityPurchaseFactory.getRemoteInstance().getSincerityPurchaseInfo(new ObjectUuidPK(this.editData.getId()),selCol);
+
+		
+		BigDecimal actAmount = FDCHelper.ZERO;
+	
+		for(Iterator it = sin.getSincerPriceEntrys().iterator(); it.hasNext();){
+			SincerReceiveEntryInfo sinInfo = (SincerReceiveEntryInfo) it.next();
+			isRev = isNullorZero(SHEManageHelper.getActRevAmount(null,sinInfo.getTanPayListEntryId()));
+			if(!isRev){
+				isRev = isNullorZero(sinInfo.getActRevAmount());
+			}
+			if(isRev){
+				break;
+			}
+		}
+		
+		if (!(sin.getBizState().equals(TransactionStateEnum.BAYNUMBER)&& !isRev)) {
+			MsgBox.showInfo( "只能删除排号并未收款的预约单!");
+			return;
+		}
         super.actionRemove_actionPerformed(e);
     }
+    public boolean isNullorZero(Object obj ){
+		if(obj==null){
+			return false;
+		}
+		if(FDCHelper.ZERO.equals((BigDecimal)obj)){
+			return false;
+		}
+		return true;
+	}
 
     /**
      * output actionAttachment_actionPerformed
