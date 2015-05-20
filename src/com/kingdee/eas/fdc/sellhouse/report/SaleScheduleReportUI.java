@@ -55,6 +55,7 @@ import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.client.AccountReportUI;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.fdc.sellhouse.client.PrePurchaseManageListUI;
 import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageListUI;
@@ -138,14 +139,17 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
                      
                      RptRowSet signRs = (RptRowSet)((RptParams)result).getObject("signRs");
                      RptRowSet onLoadRS = (RptRowSet)((RptParams)result).getObject("onLoadRS");
+                     RptRowSet onLoadRSUnLoan = (RptRowSet)((RptParams)result).getObject("onLoadRSUnLoan");
                      RptRowSet revRS = (RptRowSet)((RptParams)result).getObject("revRS");
                      
                      Map revMap=new HashMap();
                      Map onLoadMap=new HashMap();
+                     Map onLoadUnLoanMap=new HashMap();
                      
                      IRow totoalSignRow=null;
                      IRow totoalRevRow=null;
                      IRow totoalOnLoadRow=null;
+                     IRow totoalOnLoadRowUnLoan=null;
                      BigDecimal totalSignMonthAmount=FDCHelper.ZERO;
                      BigDecimal totalSignYearAmount=FDCHelper.ZERO;
                      
@@ -154,6 +158,9 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
                      
                      BigDecimal totalOnLoadMonthAmount=FDCHelper.ZERO;
                      BigDecimal totalOnLoadYearAmount=FDCHelper.ZERO;
+                     
+                     BigDecimal totalOnLoadMonthAmountUnLoan=FDCHelper.ZERO;
+                     BigDecimal totalOnLoadYearAmountUnLoan=FDCHelper.ZERO;
                      DefaultKingdeeTreeNode treeNode = (DefaultKingdeeTreeNode)treeMain.getLastSelectedPathComponent();
              		 if(treeNode!=null){
              			Object obj = treeNode.getUserObject();
@@ -180,7 +187,15 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
              				
              				totoalOnLoadRow=tblMain.addRow();
              				totoalOnLoadRow.getCell("company").setValue("宋都控股");
-             				totoalOnLoadRow.getCell("type").setValue("在途资金");
+             				totoalOnLoadRow.getCell("type").setValue("在途资金（按揭类）");
+             				totoalOnLoadRow.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
+             				totoalOnLoadRow.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
+             				
+             				totoalOnLoadRowUnLoan=tblMain.addRow();
+             				totoalOnLoadRowUnLoan.getCell("company").setValue("宋都控股");
+             				totoalOnLoadRowUnLoan.getCell("type").setValue("在途资金（非按揭类）");
+             				totoalOnLoadRowUnLoan.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
+             				totoalOnLoadRowUnLoan.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
              			}
              		 }
                      while(signRs.next()){
@@ -216,12 +231,26 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
                     	 row.getCell("type").setValue("费效比");
                     	 
                     	 row=tblMain.addRow();
+                    	 row.getCell("orgId").setValue(signRs.getString("orgId"));
                     	 row.getCell("company").setValue(signRs.getString("company"));
-                    	 row.getCell("type").setValue("在途资金");
+                    	 row.getCell("type").setValue("在途资金（按揭类）");
                     	 row.getCell("act").setValue(FDCHelper.ZERO);
                     	 row.getCell("yearAct").setValue(FDCHelper.ZERO);
+                    	 row.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
+                    	 row.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
                     	 
                     	 onLoadMap.put(signRs.getString("company"), row);
+                    	 
+                    	 row=tblMain.addRow();
+                    	 row.getCell("orgId").setValue(signRs.getString("orgId"));
+                    	 row.getCell("company").setValue(signRs.getString("company"));
+                    	 row.getCell("type").setValue("在途资金（非按揭类）");
+                    	 row.getCell("act").setValue(FDCHelper.ZERO);
+                    	 row.getCell("yearAct").setValue(FDCHelper.ZERO);
+                    	 row.getCell("act").getStyleAttributes().setFontColor(Color.BLUE);
+                    	 row.getCell("yearAct").getStyleAttributes().setFontColor(Color.BLUE);
+                    	 
+                    	 onLoadUnLoanMap.put(signRs.getString("company"), row);
                 	 }
                      while(revRS.next()){
                 		 if(revMap.containsKey(revRS.getString("company"))){
@@ -243,6 +272,17 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
                         	 totalOnLoadYearAmount=FDCHelper.add(totalOnLoadYearAmount, onLoadRS.getBigDecimal("amount"));
                 		 }
                 	 }
+                     while(onLoadRSUnLoan.next()){
+                    	 if(onLoadUnLoanMap.containsKey(onLoadRSUnLoan.getString("company"))){
+                			 IRow row=(IRow) onLoadUnLoanMap.get(onLoadRSUnLoan.getString("company"));
+                        	 row.getCell("act").setValue(onLoadRSUnLoan.getBigDecimal("amount"));
+                        	 row.getCell("yearAct").setValue(onLoadRSUnLoan.getBigDecimal("amount"));
+                        	 
+                        	 totalOnLoadMonthAmountUnLoan=FDCHelper.add(totalOnLoadMonthAmountUnLoan, onLoadRSUnLoan.getBigDecimal("amount"));
+                        	 totalOnLoadYearAmountUnLoan=FDCHelper.add(totalOnLoadYearAmountUnLoan, onLoadRSUnLoan.getBigDecimal("amount"));
+                		 }
+                	 }
+                     
                      if(totoalSignRow!=null){
                     	 totoalSignRow.getCell("act").setValue(totalSignMonthAmount);
                     	 totoalSignRow.getCell("yearAct").setValue(totalSignYearAmount);
@@ -254,6 +294,10 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
                      if(totoalOnLoadRow!=null){
                     	 totoalOnLoadRow.getCell("act").setValue(totalOnLoadMonthAmount);
                     	 totoalOnLoadRow.getCell("yearAct").setValue(totalOnLoadYearAmount);
+                     }
+                     if(totoalOnLoadRowUnLoan!=null){
+                    	 totoalOnLoadRowUnLoan.getCell("act").setValue(totalOnLoadMonthAmountUnLoan);
+                    	 totoalOnLoadRowUnLoan.getCell("yearAct").setValue(totalOnLoadYearAmountUnLoan);
                      }
          	         tblMain.setRefresh(true);
          	         if(signRs.getRowCount() > 0){
@@ -323,20 +367,29 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 			}
 			String orgId=(String)this.tblMain.getRow(e.getRowIndex()).getCell("orgId").getValue();
 			String type=(String)this.tblMain.getRow(e.getRowIndex()).getCell("type").getValue();
-			if(!(type.equals("销售收入")||type.equals("回笼资金"))){
+			if(!(type.equals("销售收入")||type.equals("回笼资金")||type.equals("在途资金（按揭类）")||type.equals("在途资金（非按揭类）"))){
 				return;
 			}
+			if(uiWindow!=null)uiWindow.close();
 			if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("act")){
 				if(type.equals("销售收入")){
 					toBaseTransaction(0,orgId);
 				}else if(type.equals("回笼资金")){
 					toSheRevBill(0,orgId);
+				}else if(type.equals("在途资金（按揭类）")){
+					toOnLoadBaseTransaction(orgId);
+				}else if(type.equals("在途资金（非按揭类）")){
+					toOnLoadBaseTransaction(orgId);
 				}
 			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yearAct")){
 				if(type.equals("销售收入")){
 					toBaseTransaction(1,orgId);
 				}else if(type.equals("回笼资金")){
 					toSheRevBill(1,orgId);
+				}else if(type.equals("在途资金（按揭类）")){
+					toOnLoadBaseTransaction(orgId);
+				}else if(type.equals("在途资金（非按揭类）")){
+					toOnLoadBaseTransaction(orgId);
 				}
 			}
 		}
@@ -371,7 +424,7 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		UIContext uiContext = new UIContext(this);
 		uiContext.put(UIContext.OWNER, this);
 		uiContext.put("filter", filter);
-		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(SignManageListUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(SignManageListUI.class.getName(), uiContext, null, OprtState.VIEW);
 		uiWindow.show();
 	}
 	protected void toSheRevBill(int type,String orgId) throws BOSException, SQLException{
@@ -413,8 +466,33 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		UIContext uiContext = new UIContext(this);
 		uiContext.put(UIContext.OWNER, this);
 		uiContext.put("filter", filter);
-		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(PaymentReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(PaymentReportUI.class.getName(), uiContext, null, OprtState.VIEW);
 		uiWindow.show();
     }
-
+	protected void toOnLoadBaseTransaction(String orgId) throws BOSException, SQLException{
+    	Date toDate =   (Date)params.getObject("toDate");
+    	
+    	UIContext uiContext = new UIContext(this);
+		uiContext.put("Owner", this);
+		RptParams param = new RptParams();
+		param.setObject("orgId", orgId);
+		param.setObject("toDate", toDate);
+		param.setObject("type", Boolean.TRUE);
+		uiContext.put("RPTFilter", param);
+		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(AccountReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow.show();
+    }
+	protected void toOnLoadBaseTransactionUnLoan(String orgId) throws BOSException, SQLException{
+    	Date toDate =   (Date)params.getObject("toDate");
+		
+		UIContext uiContext = new UIContext(this);
+		uiContext.put("Owner", this);
+		RptParams param = new RptParams();
+		param.setObject("orgId", orgId);
+		param.setObject("toDate", toDate);
+		param.setObject("type", Boolean.FALSE);
+		uiContext.put("RPTFilter", param);
+		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(AccountReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow.show();
+    }
 }

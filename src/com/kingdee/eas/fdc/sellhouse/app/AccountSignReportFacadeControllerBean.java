@@ -150,28 +150,28 @@ public class AccountSignReportFacadeControllerBean extends AbstractAccountSignRe
 		String psp=(String)params.getObject("psp");
     	String userSql=null;
     	if(psp!=null){
-    		try {
-    			if(!SHEManageHelper.isControl(ctx, ContextUtil.getCurrentUserInfo(ctx))){
-    				StringBuffer bufferSql = new StringBuffer();
-    				bufferSql.append("select MuMember.fmemberid ");
-    				bufferSql.append("from T_SHE_MarketingUnitMember MuMember ");
-    				bufferSql.append("left join T_SHE_MarketingUnit MuUnit on MuUnit.fid =MuMember.fheadId ");
-    				bufferSql.append("left join T_SHE_MarketingUnitSellProject MuSp on MuSp.fheadid = MuUnit.fid ");
-    				bufferSql.append("where MuSp.fsellProjectId in ("+psp+") and MuMember.fmemberid='"+ContextUtil.getCurrentUserInfo(ctx).getId().toString()+"'");
-    				FDCSQLBuilder sqlBuild = new FDCSQLBuilder(ctx);
-    				sqlBuild.appendSql(bufferSql.toString());
-    				IRowSet rowSet = sqlBuild.executeQuery();
-    				if(rowSet.size()==0){
-    					userSql=null;
-    				}else{
-    					userSql = MarketingUnitFactory.getLocalInstance(ctx).getPermitSaleManIdSql(ContextUtil.getCurrentUserInfo(ctx))+ "where fsellProjectId in ("+psp+")";
-    				}
-    			}
-			} catch (BOSException e) {
-				e.printStackTrace();
-			} catch (EASBizException e) {
-				e.printStackTrace();
-			}
+//    		try {
+//    			if(!SHEManageHelper.isControl(ctx, ContextUtil.getCurrentUserInfo(ctx))){
+//    				StringBuffer bufferSql = new StringBuffer();
+//    				bufferSql.append("select MuMember.fmemberid ");
+//    				bufferSql.append("from T_SHE_MarketingUnitMember MuMember ");
+//    				bufferSql.append("left join T_SHE_MarketingUnit MuUnit on MuUnit.fid =MuMember.fheadId ");
+//    				bufferSql.append("left join T_SHE_MarketingUnitSellProject MuSp on MuSp.fheadid = MuUnit.fid ");
+//    				bufferSql.append("where MuSp.fsellProjectId in ("+psp+") and MuMember.fmemberid='"+ContextUtil.getCurrentUserInfo(ctx).getId().toString()+"'");
+//    				FDCSQLBuilder sqlBuild = new FDCSQLBuilder(ctx);
+//    				sqlBuild.appendSql(bufferSql.toString());
+//    				IRowSet rowSet = sqlBuild.executeQuery();
+//    				if(rowSet.size()==0){
+//    					userSql=null;
+//    				}else{
+//    					userSql = MarketingUnitFactory.getLocalInstance(ctx).getPermitSaleManIdSql(ContextUtil.getCurrentUserInfo(ctx))+ "where fsellProjectId in ("+psp+")";
+//    				}
+//    			}
+//			} catch (BOSException e) {
+//				e.printStackTrace();
+//			} catch (EASBizException e) {
+//				e.printStackTrace();
+//			}
     	}
     	
     	Date fromDate = (Date)params.getObject("fromDate");

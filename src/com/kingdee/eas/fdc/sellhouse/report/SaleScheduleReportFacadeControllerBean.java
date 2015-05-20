@@ -81,6 +81,9 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
 		RptRowSet onLoadRS = executeQuery(getOnLoadBaseTransaction(orgUnit,fromDate,toDate), null, ctx);
 		params.setObject("onLoadRS", onLoadRS);
 		
+		RptRowSet onLoadRSUnLoan = executeQuery(getOnLoadBaseTransactionUnLoan(orgUnit,fromDate,toDate), null, ctx);
+		params.setObject("onLoadRSUnLoan", onLoadRS);
+		
 		RptRowSet revRS = executeQuery(getSheRevBill(orgUnit,fromDate,toDate), null, ctx);
 		params.setObject("revRS", revRS);
 		return params;
@@ -116,35 +119,38 @@ public class SaleScheduleReportFacadeControllerBean extends AbstractSaleSchedule
     }
     private String getOnLoadBaseTransaction(String orgUnit,Date fromDate,Date toDate){
     	StringBuffer sb=new StringBuffer();
-    	sb.append(" select t.orgId,t.number,t.company,round(max(case t.name when 'sign' then t.amount else 0 end)-max(case t.name when 'rev' then t.amount else 0 end),2)/10000 amount");
-    	sb.append(" from (select 'sign' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(sign.fcontractTotalAmount+isnull(sign.fareaCompensate,0)) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId where sign.fbizState in('ChangeNameAuditing','QuitRoomAuditing','ChangeRoomAuditing','SignApple','SignAudit')");
-    	sb.append(" and NOT EXISTS (select tt.fnewId from t_she_changeManage tt where tt.fstate in('2SUBMITTED','3AUDITTING') and sign.fid=tt.fnewId )");
-		if(toDate!=null){
+    	sb.append(" select org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(t.amount,0))/10000 amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId");
+    	sb.append(" left join (select base.fbillid,sum(tbov.fappAmount-isnull(tbov.factRevAmount,0)) amount from t_she_transaction base left join t_she_tranBusinessOverView tbov on tbov.fheadid=base.fid left join t_she_moneyDefine md on md.fid=tbov.fmoneyDefineId where tbov.ftype='Pay' and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount') and tbov.fBusinessName!='违约金' group by base.fbillid) t on t.fbillid=sign.fid");
+    	sb.append(" where sign.fBizState in('SignApple','SignAudit')");
+    	sb.append(" and EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where md.fmoneyType in('LoanAmount','AccFundAmount') and sign.fid=t1.fid )");
+    	if(toDate!=null){
 			sb.append(" and sign.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}
 		if(orgUnit!=null){
 			sb.append(" and org.fid in("+orgUnit+")");
 		}
     	sb.append(" group by org.fid,org.fname_l2,org.flongNumber");
-    	
-    	sb.append(" union all");
-    	
-    	sb.append(" select 'rev' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
-    	sb.append(" left join t_org_baseUnit org on org.fid=revBill.fsaleOrgUnitId left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
-    	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount') and md.fname_l2!='定金'");
-		if(toDate!=null){
-			sb.append(" and revBill.fbizDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
+		return sb.toString();
+    }
+    private String getOnLoadBaseTransactionUnLoan(String orgUnit,Date fromDate,Date toDate){
+    	StringBuffer sb=new StringBuffer();
+    	sb.append(" select org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(t.amount,0))/10000 amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId");
+    	sb.append(" left join (select base.fbillid,sum(tbov.fappAmount-isnull(tbov.factRevAmount,0)) amount from t_she_transaction base left join t_she_tranBusinessOverView tbov on tbov.fheadid=base.fid left join t_she_moneyDefine md on md.fid=tbov.fmoneyDefineId where tbov.ftype='Pay' and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount') and tbov.fBusinessName!='违约金' group by base.fbillid) t on t.fbillid=sign.fid");
+    	sb.append(" where sign.fBizState in('SignApple','SignAudit')");
+    	sb.append(" and NOT EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where md.fmoneyType in('LoanAmount','AccFundAmount') and sign.fid=t1.fid )");
+    	if(toDate!=null){
+			sb.append(" and sign.fbusAdscriptionDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}
 		if(orgUnit!=null){
 			sb.append(" and org.fid in("+orgUnit+")");
 		}
-    	sb.append(" group by org.fid,org.fname_l2,org.flongNumber) t group by t.orgId,t.company,t.number order by t.number");
+    	sb.append(" group by org.fid,org.fname_l2,org.flongNumber");
 		return sb.toString();
     }
     private String getSheRevBill(String orgUnit,Date fromDate,Date toDate){
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select t.orgId,t.number,t.company,max(case t.name when 'month' then round(t.amount,2) else 0 end)/10000 monthAmount,max(case t.name when 'year' then round(t.amount,2) else 0 end)/10000 yearAmount");
-    	sb.append(" from (select 'month' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
+    	sb.append(" from (select 'month' name,org.fid orgId,org.flongNumber number,org.fname_l2 company,sum(isnull(entry.famount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	sb.append(" left join t_org_baseUnit org on org.fid=revBill.fsaleOrgUnitId left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
     	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount')");
 		if(fromDate!=null){
