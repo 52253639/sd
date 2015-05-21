@@ -372,16 +372,16 @@ public class AccountReportFacadeControllerBean extends AbstractAccountReportFaca
 			sb.append(" and DATEDIFF(day,  ov.FAppDate, getdate())<="+toDays);
 		}
 		if(fromNotproPortion!=null){
-			sb.append(" and ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100  >= "+fromNotproPortion);
+			sb.append(" and ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100  > "+fromNotproPortion);
 		}
 		if(toNotproPortion!=null){
 			sb.append(" and ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100  <= "+toNotproPortion);
 		}
 		if(type!=null){
 			if(type){
-				sb.append(" and EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where md.fmoneyType in('LoanAmount','AccFundAmount') and sm.fid=t1.fid )");
+				sb.append(" and EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where t1.fBizState in('SignApple','SignAudit') and md.fmoneyType in('LoanAmount','AccFundAmount') and sm.fid=t1.fid )");
 			}else{
-				sb.append(" and NOT EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where md.fmoneyType in('LoanAmount','AccFundAmount') and sm.fid=t1.fid )");
+				sb.append(" and NOT EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where t1.fBizState in('SignApple','SignAudit') and md.fmoneyType in('LoanAmount','AccFundAmount') and sm.fid=t1.fid )");
 			}
 		}
 		if(orgId!=null){

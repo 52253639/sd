@@ -379,7 +379,7 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 				}else if(type.equals("在途资金（按揭类）")){
 					toOnLoadBaseTransaction(orgId);
 				}else if(type.equals("在途资金（非按揭类）")){
-					toOnLoadBaseTransaction(orgId);
+					toOnLoadBaseTransactionUnLoan(orgId);
 				}
 			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yearAct")){
 				if(type.equals("销售收入")){
@@ -389,7 +389,7 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 				}else if(type.equals("在途资金（按揭类）")){
 					toOnLoadBaseTransaction(orgId);
 				}else if(type.equals("在途资金（非按揭类）")){
-					toOnLoadBaseTransaction(orgId);
+					toOnLoadBaseTransactionUnLoan(orgId);
 				}
 			}
 		}
@@ -478,6 +478,8 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		param.setObject("orgId", orgId);
 		param.setObject("toDate", toDate);
 		param.setObject("type", Boolean.TRUE);
+		param.setObject("fromNotproPortion", new BigDecimal(0));
+		param.setObject("toNotproPortion", new BigDecimal(100));
 		uiContext.put("RPTFilter", param);
 		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(AccountReportUI.class.getName(), uiContext, null, OprtState.VIEW);
 		uiWindow.show();
@@ -491,6 +493,8 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		param.setObject("orgId", orgId);
 		param.setObject("toDate", toDate);
 		param.setObject("type", Boolean.FALSE);
+		param.setObject("fromNotproPortion", new BigDecimal(0));
+		param.setObject("toNotproPortion", new BigDecimal(100));
 		uiContext.put("RPTFilter", param);
 		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(AccountReportUI.class.getName(), uiContext, null, OprtState.VIEW);
 		uiWindow.show();
