@@ -273,9 +273,6 @@ public class AccountReportFacadeControllerBean extends AbstractAccountReportFaca
             	}
             }
 	    }   	
-	    String orgId = (String) params.getObject("orgId");
-	    Boolean type=(Boolean)params.getObject("type");
-	    
     	Date fromDate = (Date)params.getObject("fromDate");
     	Date toDate =   (Date)params.getObject("toDate");
     	Date fromRevDate = (Date)params.getObject("fromRevDate");
@@ -299,13 +296,12 @@ public class AccountReportFacadeControllerBean extends AbstractAccountReportFaca
 		sb.append(" sm.FCustomerNames as 客户,sm.FContractTotalAmount as 合同总价,");
 		sb.append(" sm.fbizDate as 签约日期, ov.FBusinessName as 款项名称,ov.FAppAmount as 应收款,ov.FAppDate as 应收日期, ");
 		sb.append(" sherevbill.actRevAmount as 已收款, sherevbill.revDate as 收款日期,case when ov.FAppAmount =0 then 0 else (isnull(sumSherevbill.sumActRevAmount,0)/ov.FAppAmount)*100  end as 收款比例,");
-		sb.append(" ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0) as 未收款,case when ov.FAppAmount =0 then 0 else ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100 end as 未收款比例,DATEDIFF(day,  ov.FAppDate, getdate()) as 违约天数,");
+		sb.append(" ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0) as 未收款,case when ov.FAppAmount =0 or ov.FAppAmount is null then 0 else ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100 end as 未收款比例,DATEDIFF(day,  ov.FAppDate, getdate()) as 违约天数,");
 		sb.append(" defaultamount.fdefCalDate as 最近违约金生成日期,defaultamount.fcarryAmount as 违约金,");
 		sb.append(" sm.FSaleManNames as 置业顾问,");
 		sb.append(" yqyy.逾期原因分类 as 逾期原因分类,yqyy.逾期原因详细描述 as 逾期原因详细描述,");
 		sb.append(" yqyy.最晚回款日期 as 最晚回款日期,DATEDIFF(day,getdate(),yqyy.最晚回款日期) as 预计回款周期,yqyy.逾期解决措施,yqyy.贷款银行 as 贷款银行,yqyy.商业贷款所处阶段 as 商业贷款所处阶段");
 		sb.append(" FROM T_SHE_SignManage  sm");
-		sb.append(" left join t_org_baseUnit org on org.fid=sm.forgUnitId");
 		sb.append(" LEFT  JOIN T_SHE_Room  room ON sm.FRoomID = room.fid left join T_SHE_Building building on building.FID = room.FBuildingID ");
 		sb.append(" LEFT  JOIN T_SHE_Transaction  t on t.FBILLID = sm.FID AND t.FID = sm.FTransactionID");
 		sb.append(" LEFT  JOIN T_SHE_TranBusinessOverView  ov  on t.FID = ov.FHeadID");
@@ -338,7 +334,7 @@ public class AccountReportFacadeControllerBean extends AbstractAccountReportFaca
 		}
 		if(sellProject!=null&&!"".equals(sellProject)){
 			sb.append(" and sm.FSellProjectID in ("+sellProject+")");
-		}else if(orgId==null&&type==null){
+		}else{
 			sb.append(" and sm.FSellProjectID in ('null')");
 		}
 		if(room!=null){
@@ -372,20 +368,10 @@ public class AccountReportFacadeControllerBean extends AbstractAccountReportFaca
 			sb.append(" and DATEDIFF(day,  ov.FAppDate, getdate())<="+toDays);
 		}
 		if(fromNotproPortion!=null){
-			sb.append(" and ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100  > "+fromNotproPortion);
+			sb.append(" and (case when ov.FAppAmount =0 or ov.FAppAmount is null then 0 else ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100 end)  > "+fromNotproPortion);
 		}
 		if(toNotproPortion!=null){
-			sb.append(" and ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100  <= "+toNotproPortion);
-		}
-		if(type!=null){
-			if(type){
-				sb.append(" and EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where t1.fBizState in('SignApple','SignAudit') and md.fmoneyType in('LoanAmount','AccFundAmount') and sm.fid=t1.fid )");
-			}else{
-				sb.append(" and NOT EXISTS (select t1.fid from t_she_signManage t1 left join t_she_signPayListEntry t2 on t2.fheadid=t1.fid left join t_she_moneyDefine md on md.fid=t2.fmoneyDefineId where t1.fBizState in('SignApple','SignAudit') and md.fmoneyType in('LoanAmount','AccFundAmount') and sm.fid=t1.fid )");
-			}
-		}
-		if(orgId!=null){
-			sb.append(" and org.fid ='"+orgId+"'");
+			sb.append(" and (case when ov.FAppAmount =0 or ov.FAppAmount is null then 0 else ((ov.FAppAmount-isnull(sumSherevbill.sumActRevAmount,0))/ov.FAppAmount)*100 end)  <= "+toNotproPortion);
 		}
 		sb.append(" ORDER BY sm.FSellProjectID,building.fnumber,room.funit,room.ffloor,room.fnumber,ov.FBusinessName,sumSherevbill.FPayListEntryId");
 		return sb.toString();

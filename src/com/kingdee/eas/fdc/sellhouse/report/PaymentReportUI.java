@@ -48,7 +48,6 @@ public class PaymentReportUI extends AbstractPaymentReportUI
     public PaymentReportUI() throws Exception
     {
         super();
-        FDCSysContext.getInstance().checkIsSHEOrg(this);
     }
 
     protected void tblMain_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception

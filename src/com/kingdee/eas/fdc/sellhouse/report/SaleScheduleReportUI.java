@@ -470,33 +470,25 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
 		uiWindow.show();
     }
 	protected void toOnLoadBaseTransaction(String orgId) throws BOSException, SQLException{
-    	Date toDate =   (Date)params.getObject("toDate");
-    	
-    	UIContext uiContext = new UIContext(this);
-		uiContext.put("Owner", this);
-		RptParams param = new RptParams();
-		param.setObject("orgId", orgId);
-		param.setObject("toDate", toDate);
-		param.setObject("type", Boolean.TRUE);
-		param.setObject("fromNotproPortion", new BigDecimal(0));
-		param.setObject("toNotproPortion", new BigDecimal(100));
-		uiContext.put("RPTFilter", param);
-		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(AccountReportUI.class.getName(), uiContext, null, OprtState.VIEW);
-		uiWindow.show();
-    }
-	protected void toOnLoadBaseTransactionUnLoan(String orgId) throws BOSException, SQLException{
-    	Date toDate =   (Date)params.getObject("toDate");
-		
 		UIContext uiContext = new UIContext(this);
 		uiContext.put("Owner", this);
 		RptParams param = new RptParams();
+		param.setObject("type", Boolean.TRUE);
 		param.setObject("orgId", orgId);
-		param.setObject("toDate", toDate);
-		param.setObject("type", Boolean.FALSE);
-		param.setObject("fromNotproPortion", new BigDecimal(0));
-		param.setObject("toNotproPortion", new BigDecimal(100));
+		param.setObject("toDate", params.getObject("toDate"));
 		uiContext.put("RPTFilter", param);
-		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(AccountReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(SaleScheduleOnLoadDetailReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+		uiWindow.show();
+    }
+	protected void toOnLoadBaseTransactionUnLoan(String orgId) throws BOSException, SQLException{
+		UIContext uiContext = new UIContext(this);
+		uiContext.put("Owner", this);
+		RptParams param = new RptParams();
+		param.setObject("type", Boolean.FALSE);
+		param.setObject("orgId", orgId);
+		param.setObject("toDate", params.getObject("toDate"));
+		uiContext.put("RPTFilter", param);
+		uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(SaleScheduleOnLoadDetailReportUI.class.getName(), uiContext, null, OprtState.VIEW);
 		uiWindow.show();
     }
 }

@@ -751,7 +751,7 @@ public class TimeAccountReportFacadeControllerBean extends AbstractTimeAccountRe
     	sb.append(" group by revBill.fsellProjectid,productType.fid)");
     }
     private void getSheRevBill(StringBuffer sb,Date fromDate,Date toDate,int type,String sellProjectId,String org,boolean isFitment){
-    	sb.append(" left join (select revBill.fsellProjectid sellProjectId,productType.fid productTypeId,sum(isnull(entry.frevAmount,0)) as backAccount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid left join t_she_room room on room.fid=revBill.froomid");
+    	sb.append(" left join (select revBill.fsellProjectid sellProjectId,productType.fid productTypeId,sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)) as backAccount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid left join t_she_room room on room.fid=revBill.froomid");
     	sb.append(" left join T_FDC_ProductType productType on productType.fid=room.fproductTypeid left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
     	sb.append(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount')");
     	if(!isFitment){
