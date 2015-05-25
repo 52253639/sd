@@ -385,8 +385,7 @@ public class ContractWithoutTextEditUI extends
 		objectValue.setIsInvoice(true);
 		objectValue.setIsBgControl(true);
 		objectValue.setIsNeedPaid(true);
-		ContractWithoutTextBgEntryInfo entry=new ContractWithoutTextBgEntryInfo();
-		objectValue.getBgEntry().add(entry);
+		objectValue.getBgEntry().add(new ContractWithoutTextBgEntryInfo());
 		try {
 			BizCollBillBaseInfo baseInfo = CommonUtilFacadeFactory.getRemoteInstance().forLoanBillCreateNewData();
 			objectValue.setApplierOrgUnit(baseInfo.getOrgUnit());
@@ -400,6 +399,7 @@ public class ContractWithoutTextEditUI extends
 			e.printStackTrace();
 		}
 		objectValue.setApplier(SysContext.getSysContext().getCurrentUserInfo().getPerson());
+		
 		return objectValue;
 	}
 
@@ -612,14 +612,24 @@ public class ContractWithoutTextEditUI extends
 		} catch (BOSException e) {
 			e.printStackTrace();
 		}
-		if(!isFeeTraEntry){
-			this.cbFeeType.setRequired(false);	
-			this.cbFeeType.setSelectedItem(null);
-			this.contFeeType.setVisible(false);
-		}else{
-			this.cbFeeType.setRequired(true);
-		}
 		cbFeeType_itemStateChanged(null);
+		
+		KDFormattedTextField txtWeight = new KDFormattedTextField();
+		txtWeight.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
+		txtWeight.setDataVerifierType(KDFormattedTextField.NO_VERIFIER);
+		txtWeight.setPrecision(2);
+		txtWeight.setMinimumValue(FDCHelper.ZERO);
+		KDTDefaultCellEditor weight = new KDTDefaultCellEditor(txtWeight);
+		
+		this.kdtFeeEntry.getColumn("amount").setEditor(weight);
+		this.kdtTraEntry.getColumn("airFee").setEditor(weight);
+		this.kdtTraEntry.getColumn("carFee").setEditor(weight);
+		this.kdtTraEntry.getColumn("cityFee").setEditor(weight);
+		this.kdtTraEntry.getColumn("otherFee").setEditor(weight);
+		this.kdtTraEntry.getColumn("liveFee").setEditor(weight);
+		this.kdtTraEntry.getColumn("allowance").setEditor(weight);
+		this.kdtTraEntry.getColumn("other").setEditor(weight);
+		this.kdtTraEntry.getColumn("total").setEditor(weight);
 	}
 	protected Set getCostedDeptIdSet(CompanyOrgUnitInfo com) throws EASBizException, BOSException{
 		if(com==null) return null;
@@ -1551,6 +1561,7 @@ public class ContractWithoutTextEditUI extends
 		if("供应商".equals(this.comboPayeeType.getSelectedItem().toString())){
     		this.editData.setReceiveUnit((SupplierInfo)prmtreceiveUnit.getData());//收款单位
     		this.editData.setPerson(null);
+    		this.cbFeeType.setSelectedItem(null);
 		}else{
 			this.editData.setPerson((PersonInfo)prmtreceiveUnit.getData());
 			this.editData.setReceiveUnit(null);
@@ -2251,6 +2262,8 @@ public class ContractWithoutTextEditUI extends
 			prmtrealSupplier.setRequired(false);
 			prmtrealSupplier.setEnabled(false);
 		}
+		
+		cbFeeType_itemStateChanged(null);
 	}
 
 	//设置精度
@@ -3900,10 +3913,24 @@ public class ContractWithoutTextEditUI extends
 	protected void cbFeeType_itemStateChanged(ItemEvent e) throws Exception {
 		this.kDTabbedPane1.removeAll();
 		this.kDTabbedPane1.add(this.contBgEntry,"费用清单");
-		if(FeeTypeEnum.FEE.equals(cbFeeType.getSelectedItem())){
-			this.kDTabbedPane1.add(this.contFeeEntry,"费用明细");
-		}else if(FeeTypeEnum.TRA.equals(cbFeeType.getSelectedItem())){
-			this.kDTabbedPane1.add(this.contTraEntry,"费用明细");
+		if(!"供应商".equals(this.comboPayeeType.getSelectedItem().toString())){
+			if(!isFeeTraEntry){
+				this.cbFeeType.setRequired(false);	
+				this.contFeeType.setVisible(false);
+			}else{
+				this.cbFeeType.setRequired(true);
+				this.contFeeType.setVisible(true);
+				if(FeeTypeEnum.FEE.equals(cbFeeType.getSelectedItem())){
+					this.kDTabbedPane1.add(this.contFeeEntry,"费用明细");
+					if(this.kdtFeeEntry.getRowCount()==0)this.kdtFeeEntry.addRow();
+				}else if(FeeTypeEnum.TRA.equals(cbFeeType.getSelectedItem())){
+					this.kDTabbedPane1.add(this.contTraEntry,"费用明细");
+					if(this.kdtTraEntry.getRowCount()==0)this.kdtTraEntry.addRow();
+				}
+			}
+		}else{
+			this.cbFeeType.setRequired(false);	
+			this.contFeeType.setVisible(false);
 		}
 	}
 	protected void kdtFeeEntry_editStopped(KDTEditEvent e) throws Exception {

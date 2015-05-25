@@ -113,7 +113,7 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 		prmtCompareVer.setEditFormat("$versionNumber$");
 		prmtCompareVer.setDisplayFormat("$versionNumber$_$versionName$");
 		prmtCompareVer.setRequired(true);
-		prmtCompareVer.setEnabledMultiSelection(true);
+//		prmtCompareVer.setEnabledMultiSelection(true);
 		prmtCompareVer.setSelectorCollection(selectors);
 		clear();
 		up.setOpaque(true);
