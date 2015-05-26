@@ -5436,71 +5436,71 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 		 * 所以是有本币和原币的区别的，但是现改为合同最新造价*付款提示比例 由于合同最新造价只有本币的概念，
 		 * 所以下边的原币提示比例的校验已经没有实际意义了 by cassiel_peng 2010-03-17
 		 */
-		if (contractBill != null && !contractBill.isHasSettled()) {// 未最终结算
-			builder.clear();
-			if (isBaseCurrency) {
-				// builder
-				// .appendSql(
-				// "select (famount * fpayPercForWarn)/100 as fsumamt,famount as amount,fpayPercForWarn from t_con_contractbill where fid="
-				// );
-				builder.appendSql("select fpayPercForWarn from t_con_contractbill where fid=");
-
-				builder.appendParam(billInfo.getContractId());
-				final IRowSet rowSet = builder.executeQuery();
-				BigDecimal payRate = FDCHelper.ZERO;
-				// BigDecimal contractAmt = FDCHelper.ZERO;
-				BigDecimal payPercForWarn = FDCHelper.ZERO;
-				BigDecimal conLastestPrice = FDCHelper.ZERO;
-				Map map = new HashMap();
-				if (rowSet.size() == 1) {
-					rowSet.next();
-					// payRate =
-					// FDCHelper.toBigDecimal(rowSet.getBigDecimal("fsumamt"),
-					// 2);
-					// contractAmt = FDCHelper.toBigDecimal(
-					// rowSet.getBigDecimal("amount"), 2);
-					payPercForWarn = FDCHelper.toBigDecimal(rowSet.getBigDecimal("fpayPercForWarn"), 2);
-				}
-				// 合同最新造价
-				map = FDCUtils.getLastAmt_Batch(null, new String[] { billInfo.getContractId() });
-				if (map != null && map.size() == 1) {
-					conLastestPrice = (BigDecimal) map.get(billInfo.getContractId());
-				}
-				payRate = FDCHelper.divide(FDCHelper.multiply(conLastestPrice, payPercForWarn), FDCHelper.ONE_HUNDRED);
-				totalpayAmountLocal = FDCHelper.toBigDecimal(totalpayAmountLocal, 2);
-				// totalpayAmount = FDCHelper.toBigDecimal(totalpayAmount, 2);
-
-				if (totalpayAmountLocal.compareTo(payRate) > 0) {
-					String str = "本币：当前单据合同下的累计实付款+未付的申请单超过了付款提示比例:";
-					str = str + "\n累计金额:" + totalpayAmountLocal + " 其中,实付数：" + FDCHelper.toBigDecimal(payAmtLocal, 2) + "  申请未付数:" + FDCHelper.toBigDecimal(noPayAmtLocal, 2);
-					str = str + "\n付款提示比例金额：" + payRate + "(" + conLastestPrice + "*" + payPercForWarn + "%)";
-					if ("0".equals(allPaidMoreThanConPrice())) {// 严格控制
-						FDCMsgBox.showDetailAndOK(this, "超过付款提示比例,请查看详细信息", str, 2);
-						SysUtil.abort();
-					} else if ("1".equals(allPaidMoreThanConPrice())) {// 提示控制
-						FDCMsgBox.showDetailAndOK(this, "超过付款提示比例,请查看详细信息", str, 1);
-					}
-				}
-			} else {
-				// builder
-				// .appendSql(
-				// "select (foriginalamount * fpayPercForWarn)/100 as fsumamt,foriginalamount as amount ,fpayPercForWarn from t_con_contractbill where fid="
-				// );
-			}
-
-			// if (isBaseCurrency) {
-			// } else {
-			// if (totalpayAmount.compareTo(payRate) > 0) {
-			// String str = "原币：当前单据合同下的累计实付款+未付的申请单超过了付款提示比例:";
-			// str = str + "\n累计金额:" + totalpayAmount + " 其中,实付数：" +
-			// FDCHelper.toBigDecimal(payAmt, 2) + "  申请未付数:" +
-			// FDCHelper.toBigDecimal(noPayAmt, 2);
-			// str = str + "\n付款提示比例金额：" + payRate + "(" + contractAmt + "*" +
-			// payPercForWarn + "%)";
-			// FDCMsgBox.showDetailAndOK(this, "超过付款提示比例,请查看详细信息", str, 1);
-			// }
-			// }
-		}
+//		if (contractBill != null && !contractBill.isHasSettled()) {// 未最终结算
+//			builder.clear();
+//			if (isBaseCurrency) {
+//				// builder
+//				// .appendSql(
+//				// "select (famount * fpayPercForWarn)/100 as fsumamt,famount as amount,fpayPercForWarn from t_con_contractbill where fid="
+//				// );
+//				builder.appendSql("select fpayPercForWarn from t_con_contractbill where fid=");
+//
+//				builder.appendParam(billInfo.getContractId());
+//				final IRowSet rowSet = builder.executeQuery();
+//				BigDecimal payRate = FDCHelper.ZERO;
+//				// BigDecimal contractAmt = FDCHelper.ZERO;
+//				BigDecimal payPercForWarn = FDCHelper.ZERO;
+//				BigDecimal conLastestPrice = FDCHelper.ZERO;
+//				Map map = new HashMap();
+//				if (rowSet.size() == 1) {
+//					rowSet.next();
+//					// payRate =
+//					// FDCHelper.toBigDecimal(rowSet.getBigDecimal("fsumamt"),
+//					// 2);
+//					// contractAmt = FDCHelper.toBigDecimal(
+//					// rowSet.getBigDecimal("amount"), 2);
+//					payPercForWarn = FDCHelper.toBigDecimal(rowSet.getBigDecimal("fpayPercForWarn"), 2);
+//				}
+//				// 合同最新造价
+//				map = FDCUtils.getLastAmt_Batch(null, new String[] { billInfo.getContractId() });
+//				if (map != null && map.size() == 1) {
+//					conLastestPrice = (BigDecimal) map.get(billInfo.getContractId());
+//				}
+//				payRate = FDCHelper.divide(FDCHelper.multiply(conLastestPrice, payPercForWarn), FDCHelper.ONE_HUNDRED);
+//				totalpayAmountLocal = FDCHelper.toBigDecimal(totalpayAmountLocal, 2);
+//				// totalpayAmount = FDCHelper.toBigDecimal(totalpayAmount, 2);
+//
+//				if (totalpayAmountLocal.compareTo(payRate) > 0) {
+//					String str = "本币：当前单据合同下的累计实付款+未付的申请单超过了付款提示比例:";
+//					str = str + "\n累计金额:" + totalpayAmountLocal + " 其中,实付数：" + FDCHelper.toBigDecimal(payAmtLocal, 2) + "  申请未付数:" + FDCHelper.toBigDecimal(noPayAmtLocal, 2);
+//					str = str + "\n付款提示比例金额：" + payRate + "(" + conLastestPrice + "*" + payPercForWarn + "%)";
+//					if ("0".equals(allPaidMoreThanConPrice())) {// 严格控制
+//						FDCMsgBox.showDetailAndOK(this, "超过付款提示比例,请查看详细信息", str, 2);
+//						SysUtil.abort();
+//					} else if ("1".equals(allPaidMoreThanConPrice())) {// 提示控制
+//						FDCMsgBox.showDetailAndOK(this, "超过付款提示比例,请查看详细信息", str, 1);
+//					}
+//				}
+//			} else {
+//				// builder
+//				// .appendSql(
+//				// "select (foriginalamount * fpayPercForWarn)/100 as fsumamt,foriginalamount as amount ,fpayPercForWarn from t_con_contractbill where fid="
+//				// );
+//			}
+//
+//			// if (isBaseCurrency) {
+//			// } else {
+//			// if (totalpayAmount.compareTo(payRate) > 0) {
+//			// String str = "原币：当前单据合同下的累计实付款+未付的申请单超过了付款提示比例:";
+//			// str = str + "\n累计金额:" + totalpayAmount + " 其中,实付数：" +
+//			// FDCHelper.toBigDecimal(payAmt, 2) + "  申请未付数:" +
+//			// FDCHelper.toBigDecimal(noPayAmt, 2);
+//			// str = str + "\n付款提示比例金额：" + payRate + "(" + contractAmt + "*" +
+//			// payPercForWarn + "%)";
+//			// FDCMsgBox.showDetailAndOK(this, "超过付款提示比例,请查看详细信息", str, 1);
+//			// }
+//			// }
+//		}
 		/******
 		 * 判断最新造价
 		 */

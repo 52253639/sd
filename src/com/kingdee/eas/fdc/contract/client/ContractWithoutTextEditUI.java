@@ -1589,9 +1589,17 @@ public class ContractWithoutTextEditUI extends
     	}
     	this.prbi.setPayDate(pksignDate.getSqlDate());//付款日期
     	if("供应商".equals(this.comboPayeeType.getSelectedItem().toString())){
+    		if(prmtreceiveUnit.getData()!=null &&prmtreceiveUnit.getData() instanceof PersonInfo){
+				FDCMsgBox.showWarning(this,"实际收款单位请选择供应商基础资料！");
+				SysUtil.abort();
+			}
     		this.prbi.setSupplier((SupplierInfo)prmtreceiveUnit.getData());//收款单位
     		this.prbi.setPerson(null);
 		}else{
+			if(prmtreceiveUnit.getData()!=null &&prmtreceiveUnit.getData() instanceof SupplierInfo){
+				FDCMsgBox.showWarning(this,"实际收款单位请选择人员基础资料！");
+				SysUtil.abort();
+			}
 			this.prbi.setPerson((PersonInfo)prmtreceiveUnit.getData());
 			this.prbi.setSupplier(null);
 		}

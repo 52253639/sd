@@ -72,10 +72,29 @@ public class RoomKeepDownBillControllerBean extends AbstractRoomKeepDownBillCont
 	throws BOSException, EASBizException {
     
     }
+	protected void _delete(Context ctx, IObjectPK pk) throws BOSException,
+			EASBizException {
+    	IRoom iroom = RoomFactory.getLocalInstance(ctx);
+    	RoomInfo room = this.getRoomKeepDownBillInfo(ctx, pk).getRoom();
+    
+    	SelectorItemCollection seleRoom = new SelectorItemCollection();
+    	seleRoom.add("isPush");
+    	RoomInfo roomIsPush = iroom.getRoomInfo(new ObjectUuidPK(room.getId()), seleRoom);
+    	if(true==roomIsPush.isIsPush()){
+    		room.setSellState(RoomSellStateEnum.OnShow);
+    	}else{
+    		room.setSellState(RoomSellStateEnum.Init);
+    	}
+    	room.setLastKeepDownBill(null);
+    	SelectorItemCollection updatRoom = new SelectorItemCollection();
+    	updatRoom.add("sellState");
+    	updatRoom.add("lastKeepDownBill");
+    	iroom.updatePartial(room, updatRoom);
+    	
+		super._delete(ctx, pk);
+	}
 
-
-
-    protected void _cancelKeepDown(Context ctx, String roomId, String billId) throws BOSException, EASBizException {
+	protected void _cancelKeepDown(Context ctx, String roomId, String billId) throws BOSException, EASBizException {
 		// TODO Auto-generated method stub
 		//db2 的不好处理
 //		final String updateRoomSql = "update T_SHE_Room set FSellState=?,FLastKeepDownBillID=? where FID=?";
@@ -163,8 +182,7 @@ public class RoomKeepDownBillControllerBean extends AbstractRoomKeepDownBillCont
 		return false;
 	}
 
-	protected void _setAudittingStatus(Context ctx, BOSUuid billId)
-	throws BOSException, EASBizException {
+	protected void _setAudittingStatus(Context ctx, BOSUuid billId)throws BOSException, EASBizException {
 		super._setAudittingStatus(ctx, billId);
 		RoomKeepDownBillInfo billInfo = new RoomKeepDownBillInfo();
 		
@@ -179,8 +197,7 @@ public class RoomKeepDownBillControllerBean extends AbstractRoomKeepDownBillCont
 
 	}
 
-	protected void _audit(Context ctx, BOSUuid billId) throws BOSException,
-	EASBizException {
+	protected void _audit(Context ctx, BOSUuid billId) throws BOSException,EASBizException {
 		super._audit(ctx, billId);
 		SelectorItemCollection selector = new SelectorItemCollection();
 		selector.add("bizState");
