@@ -150,7 +150,7 @@ public class SupplierStockReportUI extends AbstractSupplierStockReportUI
 		FDCHelper.formatTableDate(this.tblMain, "lypgDate");
 		FDCHelper.formatTableDate(this.tblMain, "storageDate");
 		
-		EnterprisePlanEditUI.mergerTable(this.tblMain, new String[]{"id"},new String[]{"id","seq","purchaseOrgUnit","inviteType","storageNumber","name","isPass","quaLevel","levelSetUpId","levelSetUp","grade","splArea"
+		EnterprisePlanEditUI.mergerTable(this.tblMain, new String[]{"id"},new String[]{"id","seq","fileType","purchaseOrgUnit","inviteType","storageNumber","name","isPass","quaLevel","levelSetUpId","levelSetUp","grade","splArea"
 				,"contractor","contractorPhone","kcId","kcScore","storageDate","inviteName","lyzhId","lyzhScore","lyzhDate"});
 	}
 	protected String getInviteName(String id){
