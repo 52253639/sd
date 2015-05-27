@@ -148,10 +148,22 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
                      RptRowSet rs = (RptRowSet)((RptParams)result).getObject("rs");
          	         tblMain.setRowCount(rs.getRowCount());
          	         Map rowMap=new HashMap();
+         	         Map totalrowMap=new HashMap();
+         	         String conId=null;
          	         while(rs.next()){
-         	        	 IRow row=tblMain.addRow();
-	                   	 ((KDTableInsertHandler)(new DefaultKDTableInsertHandler(rs))).setTableRowData(row, rs.toRowArray());
+	                   	 if(conId!=null&&!conId.equals(rs.getString("conId"))){
+	                   		IRow totalrow=tblMain.addRow();
+	                   		for(int i=0;i<17;i++){
+	                   			totalrow.getCell(i).setValue(tblMain.getRow(totalrow.getRowIndex()-1).getCell(i).getValue());
+	                   		}
+	                   		totalrow.getCell(17).setValue("ºÏ¼Æ");
+	                   		totalrow.getStyleAttributes().setBackground(FDCHelper.KDTABLE_TOTAL_BG_COLOR);
+	                   		totalrowMap.put(conId, totalrow);
+	                   	 }
+	                   	 conId=rs.getString("conId");
 	                   	 
+	                   	 IRow row=tblMain.addRow();
+	                   	 ((KDTableInsertHandler)(new DefaultKDTableInsertHandler(rs))).setTableRowData(row, rs.toRowArray());
 	                   	 rowMap.put(rs.getString("conId")+rs.getString("mdId"), row);
          	         }
          	         
@@ -222,6 +234,16 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
         	        		row.getCell("invoiceAmount").setValue(FDCHelper.add(row.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        		row.getCell("actRevAmount").setValue(FDCHelper.add(row.getCell("actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
         	        		
+        	        		if(totalrowMap.containsKey(detailrs.getString("conId"))){
+        	        			IRow totalrow=(IRow) totalrowMap.get(detailrs.getString("conId"));
+        	        			totalrow.getCell("appAmount").setValue(FDCHelper.add(totalrow.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
+        	        			totalrow.getCell("invoiceAmount").setValue(FDCHelper.add(totalrow.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
+        	        			totalrow.getCell("actRevAmount").setValue(FDCHelper.add(totalrow.getCell("actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
+        	        		
+        	        			totalrow.getCell(year+"Y"+month+"M"+"appAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
+        	        			totalrow.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
+        	        			totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
+    	        			}
         	        		if(detailrs.getBigDecimal("appAmount").compareTo(detailrs.getBigDecimal("actRevAmount"))==0){
         	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.GREEN);
         	        			row.getCell(year+"Y"+month+"M"+"invoiceAmount").getStyleAttributes().setBackground(Color.GREEN);

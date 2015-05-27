@@ -7,7 +7,10 @@ import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.*;
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.JDialog;
 import javax.swing.SwingUtilities;
@@ -34,6 +37,7 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
+import com.kingdee.bos.ctrl.swing.KDDialog;
 import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
@@ -63,7 +67,13 @@ import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.batchHandler.UtilRequest;
+import com.kingdee.eas.framework.client.FindDialog;
+import com.kingdee.eas.framework.client.FindListEvent;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
+import com.kingdee.eas.framework.client.IFindListListener;
+import com.kingdee.eas.framework.client.ListFind;
+import com.kingdee.eas.framework.client.ListUiHelper;
+import com.kingdee.eas.framework.util.StringUtility;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
 import com.kingdee.eas.tools.datatask.DatataskParameter;
 import com.kingdee.eas.tools.datatask.client.DatataskCaller;
@@ -467,4 +477,423 @@ public class DepositDealBillListUI extends AbstractDepositDealBillListUI
 	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
 		getTenancyBillList();
 	}
+	private boolean hasQyeryPK = false;
+    boolean isFirstFind = true;
+    private int searcheRowCount=0;
+    private  String searchText=null;
+    private  boolean isMatch=false;
+    private  FindListEvent preFindListEvent=null;
+    private  String  propertyName=null;
+    //定位框
+    private FindDialog findDialog = null;
+    private static String locateFirst = "Msg_LocateFirst";
+    private static String locateLast = "Msg_LocateLast";
+    //添加等待提示框
+    KDDialog kddialog=null;
+    protected String[] keyFieldNames;
+    //分录id
+    protected String   subKeyFieldName;
+    //初始化辅助类
+    ListUiHelper listUiHelper=null;
+    protected String[] getLocateNames()
+    {
+    	String[] locateNames = new String[3];
+        locateNames[0] = "number";
+        locateNames[1] = "tenRoomsDes";
+        locateNames[2] = "tenCustomerDes";
+        return locateNames;
+    }
+    public void actionLocate_actionPerformed(ActionEvent e) throws Exception
+    {
+	 	/*if(kdtTenancy.getSelectManager().get()==null){
+	 		MsgBox.showWarning("请先选中一行");
+	 		return;
+	 	}*/
+	 
+        searcheRowCount=0;
+        searchText=null;
+        preFindListEvent=null;
+        Window win = SwingUtilities.getWindowAncestor(this);
+        List FindPropertyName = new ArrayList();
+        for (int i = 0; i < getLocateNames().length; i++)
+        {
+            if (kdtTenancy.getColumn(getLocateNames()[i]) != null)
+            {
+            	//在序时簿中应该是kdtTenancy.getHeadRow(0)，不过在此处应用场景之下应该是kdtTenancy.getHeadRow(1)。
+                ListFind cEnum = new ListFind(getLocateNames()[i], kdtTenancy.getHeadRow(0).getCell(getLocateNames()[i]).getValue().toString());
+                FindPropertyName.add(cEnum);
+            }
+        }
+
+        if (FindPropertyName.size() == 0)
+        {
+            return;
+        }
+
+            if (win instanceof Frame)
+            {
+                findDialog = new FindDialog((Frame) win, "", FindPropertyName, true);
+            }
+            else
+            {
+                findDialog = new FindDialog((Dialog) win, "", FindPropertyName, true);
+            }
+            findDialog.addFindListListener(new IFindListListener()
+            {
+                public void FindNext(FindListEvent e)
+                {
+                    locate(e);
+                }
+
+                /**
+                 * FindClose
+                 *
+                 * @param e
+                 *            FindListEvent
+                 */
+                public void FindClose(FindListEvent e)
+                {
+                    findDialog.dispose();
+                    findDialog = null;
+                    searcheRowCount=0;
+                    searchText=null;
+                    isMatch=false;
+                }
+            }
+
+            );
+        findDialog.setLocation(600, 100);
+        findDialog.show();
+    }
+
+protected void locateForNotIdList(FindListEvent e)
+{
+int currentRow = 0;
+if (this.kdtTenancy.getSelectManager().get() != null)
+{
+    currentRow = this.kdtTenancy.getSelectManager().get().getBeginRow();
+}
+int i = 0;
+    if (e.getFindDeration() == FindListEvent.Down_Find)
+    {
+        i = currentRow + 1;
+    }
+    else
+    {
+        i = currentRow;
+    }
+
+IRow row = kdtTenancy.getRow(i);
+showMsgNoIdList(row,e);
+while (row != null)
+{
+	row = kdtTenancy.getRow(i);
+    // 如果碰到融合单据，则不处理。
+    if (i!=-1&&i!=kdtTenancy.getRowCount()&&row.getCell(e.getPropertyName()).getValue() == null)
+    {
+    	if (e.getFindDeration() == FindListEvent.Down_Find)
+    		i++;
+    	else
+    		i--;
+        continue;
+    }
+    int curSelectIndex=this.kdtTenancy.getSelectManager().getActiveRowIndex();
+    if (curSelectIndex==i)
+    {
+    	if (e.getFindDeration() == FindListEvent.Down_Find)
+    		i++;
+    	else
+    		i--;
+    	 continue;
+    }
+    row = kdtTenancy.getRow(i);
+    if (row==null)
+    {
+    	showMsgNoIdList(row,e);
+    	break;
+    }
+    ICell cell=kdtTenancy.getRow(i).getCell(e.getPropertyName());
+    Object cellValue = cell==null?null:cell.getValue();
+    String Search =cellValue==null?null:cellValue.toString().replace('!', '.');
+    
+    if (Search != null
+            && StringUtility.isMatch(Search, e.getSearch(), e.isIsMatch(), Pattern.CASE_INSENSITIVE))
+    {
+        isFirstFind = false;
+        searcheRowCount++;
+        this.kdtTenancy.getSelectManager().select(i, 0, i, kdtTenancy.getColumnCount());
+        //kdtTenancy.getRow(i).getStyleAttributes().setBackground(new Color(223,239,245));
+        kdtTenancy.getLayoutManager().scrollRowToShow(i);
+        break;
+    }
+    if (e.getFindDeration() == FindListEvent.Down_Find){
+    	i++;
+    }
+	else{
+		i--;
+	}
+}
+
+}
+/**
+* 找不到匹配记录时给予提示
+*/
+private void showMsgNoIdList(IRow row,FindListEvent e)
+{
+if (row == null)
+{
+	String hint="";
+	if (e.getFindDeration() == FindListEvent.Down_Find)
+	{
+		if (searcheRowCount==0)
+		{
+		  hint=locateLast;
+		}else
+		{
+		  hint="Msg_LocateFirst_end";
+		}
+	}else
+	{
+		if (searcheRowCount==0)
+		{
+			hint=locateFirst;
+		}else
+		{
+			hint="Msg_LocateFirst_end";
+		}
+	}
+	String msg=EASResource.getString(FrameWorkClientUtils.strResource + hint);
+	if (searcheRowCount!=0)
+	{
+		Object[] objs = new Object[]{ new Integer(searcheRowCount)};
+		msg = MessageFormat.format(msg, objs);
+	}
+    MsgBox.showInfo(this, msg);
+    this.findDialog.show();
+}
+}
+
+
+//是否使用虚模式预取,在定位的时候不需要预取
+private boolean bPreFetch = true;
+
+public boolean isHasQyeryPK()
+{
+    return hasQyeryPK;
+}
+
+// 定位List表格位置。
+protected void locate(FindListEvent e)
+{
+boolean searchResult = false;
+int currentRow = 0;
+// 总行数
+int RowCount = 0;
+
+// 如果是虚模式则处理。
+// if (this.isHasQyeryPK() && !this.isLessData()) {
+int curSelectIndex=this.kdtTenancy.getSelectManager().getActiveRowIndex();
+if (curSelectIndex<0&&(this.kdtTenancy.getRowCount()>0||this.kdtTenancy.getRowCount3()>0))
+{
+	this.kdtTenancy.getSelectManager().select(0,0);
+	curSelectIndex=0;
+}
+if (curSelectIndex<0||this.kdtTenancy.getRowCount()==0)
+{
+	MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateLast));
+	return;
+}
+if ((preFindListEvent!=null&&e.getFindDeration()!=preFindListEvent.getFindDeration())
+	||(searchText!=null&&!searchText.equals(e.getSearch()))
+	||(propertyName!=null&&!e.getPropertyName().equals(propertyName))
+	||isMatch!=e.isIsMatch())
+{
+	searcheRowCount=0;
+	Object cellValue= null;
+	try {
+		bPreFetch = false;
+		cellValue = kdtTenancy.getRow(curSelectIndex).getCell(e.getPropertyName()).getValue();
+	}
+	finally {
+		bPreFetch = true;
+	}
+  String selectText = cellValue==null?null:cellValue.toString();
+  propertyName=e.getPropertyName();
+  if (selectText != null&&StringUtility.isMatch(selectText, e.getSearch(), e.isIsMatch(), Pattern.CASE_INSENSITIVE))
+  {
+      searcheRowCount=searcheRowCount+1;
+  }
+}
+isMatch=e.isIsMatch();
+preFindListEvent=e;
+searchText=e.getSearch();
+propertyName=e.getPropertyName();
+if (this.isHasQyeryPK())
+{
+    RowCount = kdtTenancy.getBody().size();
+}
+else
+{
+    locateForNotIdList(e);
+}
+
+if (this.kdtTenancy.getSelectManager().get() != null)
+{
+    currentRow = this.kdtTenancy.getSelectManager().get().getBeginRow();
+}
+int i = 0;
+if (e.getFindDeration() == FindListEvent.Down_Find)
+{
+   i = currentRow + 1;
+}
+else
+{
+    i = currentRow;
+}
+
+
+// 如果没数据则不进行处理。
+if (RowCount == 0)
+{
+    return;
+}
+
+if (e.getFindDeration() == FindListEvent.Down_Find)
+{
+    if (i == RowCount)
+    {
+    	if (searcheRowCount==0)
+    	{
+          MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateLast));
+    	}
+        else
+        {
+    		String msg=EASResource.getString(FrameWorkClientUtils.strResource + "Msg_LocateLast_end");
+    		Object[] objs = new Object[]{ new Integer(searcheRowCount)};
+    		msg = MessageFormat.format(msg, objs);
+    		MsgBox.showInfo(this, msg);
+    		//searcheRowCount=0;
+        }
+        this.findDialog.show();
+    }
+    else
+    {
+        for (; i < RowCount; i++)
+        {
+        	IRow row = null;
+        	try {
+        		bPreFetch = false;
+        		row = kdtTenancy.getRow2(i);
+        	}
+        	finally {
+        		bPreFetch = true;
+        	}
+        	ICell cell=(null == row ) ? null : row.getCell(e.getPropertyName());
+            Object o = cell==null?null:cell.getValue();
+            String Search = o == null ? null : o.toString();
+            // 如果碰到融合单据，则不处理。
+            if (Search == null)
+            {
+                if (i == RowCount - 1)
+                {
+                    MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateLast));
+                    this.findDialog.show();
+                }
+                continue;
+            }
+
+            if (Search != null
+                    && StringUtility.isMatch(Search, e.getSearch(), e.isIsMatch(), Pattern.CASE_INSENSITIVE))
+            {
+                searchResult = true;
+                isFirstFind = false;
+                searcheRowCount++;
+                this.kdtTenancy.getSelectManager().select(i, 0);
+                kdtTenancy.getLayoutManager().scrollRowToShow(i);
+                break;
+            }
+            // 没有找到就不会选中。
+            if (i == RowCount - 1)
+            {
+            	if (searcheRowCount==0)
+            	{
+            		MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateLast));
+            	}else
+            	{
+            		String msg=EASResource.getString(FrameWorkClientUtils.strResource + "Msg_LocateLast_end");
+            		Object[] objs = new Object[]{ new Integer(searcheRowCount)};
+            		msg = MessageFormat.format(msg, objs);
+            		MsgBox.showInfo(this, msg);
+            		//searcheRowCount=0;
+            	}
+                this.findDialog.show();
+            }
+        }
+    }
+}
+else
+{
+    if (i == 0)
+    {
+    	if (searcheRowCount==0)
+    	{
+    		MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateFirst));
+    	}else
+    	{
+    		String msg=EASResource.getString(FrameWorkClientUtils.strResource + "Msg_LocateFirst_end");
+    		Object[] objs = new Object[]{ new Integer(searcheRowCount)};
+    		msg = MessageFormat.format(msg, objs);
+    		MsgBox.showInfo(this, msg);
+    		//searcheRowCount=0;
+    	}
+        this.findDialog.show();
+    }
+
+    for (; i > 0; i--)
+    {
+    	ICell cell=(null == kdtTenancy.getRow2(i - 1)) ? null : kdtTenancy.getRow2(i - 1).getCell(e.getPropertyName());
+    	Object o = cell==null?null:cell.getValue();
+        String Search = o == null ? null : o.toString();
+        // 如果碰到融合单据，则不处理。
+        if (Search == null)
+        {
+            if (i == 1)
+            {
+                MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateFirst));
+                this.findDialog.show();
+            }
+            continue;
+        }
+
+
+        if (Search != null
+                && StringUtility.isMatch(Search, e.getSearch(), e.isIsMatch(), Pattern.CASE_INSENSITIVE))
+        {
+            searchResult = true;
+            isFirstFind = false;
+            searcheRowCount++;
+            this.kdtTenancy.getSelectManager().select(i - 1, 0);
+            kdtTenancy.getLayoutManager().scrollRowToShow(i - 1);
+            break;
+        }
+        // 没有找到就不会选中。
+        if (i == 1)
+        {
+        	if (searcheRowCount==0)
+        	{
+        		MsgBox.showInfo(this, EASResource.getString(FrameWorkClientUtils.strResource + locateFirst));
+        	}else
+        	{
+        		String msg=EASResource.getString(FrameWorkClientUtils.strResource + "Msg_LocateFirst_end");
+        		Object[] objs = new Object[]{ new Integer(searcheRowCount)};
+        		msg = MessageFormat.format(msg, objs);
+        		MsgBox.showInfo(this, msg);
+        		//searcheRowCount=0;
+        	}
+
+            this.findDialog.show();
+        }
+    }
+}
+}
 }

@@ -49,8 +49,10 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTanancyBill;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoom;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox cbIsAll;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCustomer;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtTanancyBill;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtRoom;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCustomer;
     /**
      * output class constructor
      */
@@ -72,13 +74,17 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.contTanancyBill = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contRoom = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.cbIsAll = new com.kingdee.bos.ctrl.swing.KDCheckBox();
+        this.contCustomer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.prmtTanancyBill = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtRoom = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtCustomer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contTanancyBill.setName("contTanancyBill");
         this.contRoom.setName("contRoom");
         this.cbIsAll.setName("cbIsAll");
+        this.contCustomer.setName("contCustomer");
         this.prmtTanancyBill.setName("prmtTanancyBill");
         this.prmtRoom.setName("prmtRoom");
+        this.prmtCustomer.setName("prmtCustomer");
         // CustomerQueryPanel
         // contTanancyBill		
         this.contTanancyBill.setBoundLabelText(resHelper.getString("contTanancyBill.boundLabelText"));		
@@ -102,6 +108,10 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
                 }
             }
         });
+        // contCustomer		
+        this.contCustomer.setBoundLabelText(resHelper.getString("contCustomer.boundLabelText"));		
+        this.contCustomer.setBoundLabelLength(100);		
+        this.contCustomer.setBoundLabelUnderline(true);
         // prmtTanancyBill		
         this.prmtTanancyBill.setCommitFormat("$name$");		
         this.prmtTanancyBill.setEditFormat("$name$");		
@@ -113,6 +123,7 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.prmtRoom.setDisplayFormat("$name$");		
         this.prmtRoom.setCommitFormat("$name$");		
         this.prmtRoom.setEnabledMultiSelection(true);
+        // prmtCustomer
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -139,16 +150,20 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
     {
         this.setBounds(new Rectangle(10, 10, 600, 120));
         this.setLayout(null);
-        contTanancyBill.setBounds(new Rectangle(43, 28, 528, 19));
+        contTanancyBill.setBounds(new Rectangle(43, 13, 528, 19));
         this.add(contTanancyBill, null);
-        contRoom.setBounds(new Rectangle(43, 60, 528, 19));
+        contRoom.setBounds(new Rectangle(43, 39, 528, 19));
         this.add(contRoom, null);
-        cbIsAll.setBounds(new Rectangle(45, 93, 140, 19));
+        cbIsAll.setBounds(new Rectangle(43, 93, 140, 19));
         this.add(cbIsAll, null);
+        contCustomer.setBounds(new Rectangle(43, 65, 528, 19));
+        this.add(contCustomer, null);
         //contTanancyBill
         contTanancyBill.setBoundEditor(prmtTanancyBill);
         //contRoom
         contRoom.setBoundEditor(prmtRoom);
+        //contCustomer
+        contCustomer.setBoundEditor(prmtCustomer);
 
     }
 

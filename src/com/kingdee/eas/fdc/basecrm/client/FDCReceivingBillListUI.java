@@ -574,8 +574,9 @@ public class FDCReceivingBillListUI extends AbstractFDCReceivingBillListUI
     	return true;
     }
     
-    protected String[] getLocateNames() {
-    	return super.getLocateNames();
+    protected String[] getLocateNames()
+    {
+        return super.getLocateNames();
     }
     
     protected String getEditUIModal() {

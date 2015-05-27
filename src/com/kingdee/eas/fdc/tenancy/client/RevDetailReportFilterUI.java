@@ -12,11 +12,13 @@ import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.FDCRoomPromptDialog;
 import com.kingdee.eas.fdc.sellhouse.client.NewFDCRoomPromptDialog;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
@@ -50,6 +52,14 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		filter.setMaskString("(#0 or #1) and #2");
 		vi.setFilter(filter);
 		this.prmtTanancyBill.setEntityViewInfo(vi);
+		
+		this.prmtCustomer.setEditable(false);
+		this.prmtCustomer.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.CustomerAllQuery");
+		this.prmtCustomer.setDisplayFormat("$name$");
+		this.prmtCustomer.setEditFormat("$number$");
+		this.prmtCustomer.setCommitFormat("$number$");
+		this.prmtCustomer.setEnabledMultiSelection(true);
+		this.prmtCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,SysContext.getSysContext().getCurrentUserInfo()));
 	}
     public boolean verify()
     {
@@ -67,6 +77,11 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
          }else{
         	 pp.setObject("tenancyBill", null);
          }
+         if(this.prmtCustomer.getValue()!=null){
+    		 pp.setObject("customer", this.prmtCustomer.getValue());
+         }else{
+        	 pp.setObject("customer", null);
+         }
 		 pp.setObject("isAll", this.cbIsAll.isSelected());
 		 return pp;
 	}
@@ -77,6 +92,7 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		this.prmtRoom.setValue(params.getObject("room"));
 		this.prmtTanancyBill.setValue(params.getObject("tenancyBill"));
 		this.cbIsAll.setSelected(params.getBoolean("isAll"));
+		this.prmtCustomer.setValue(params.getObject("customer"));
 	}
 	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
 		EntityViewInfo vi = new EntityViewInfo();

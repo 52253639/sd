@@ -6,6 +6,7 @@ import java.util.Date;
 import com.kingdee.bos.*;
 
 import com.kingdee.eas.common.EASBizException;
+import com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo;
 import com.kingdee.eas.fdc.sellhouse.RoomInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
 import com.kingdee.eas.framework.report.util.RptParams;
@@ -94,6 +95,19 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
             	}
             }
 	    }
+	    StringBuffer customer =null;
+	    if(params.getObject("customer")!=null){
+	    	customer=new StringBuffer();
+	    	Object[] customerObject = (Object[])params.getObject("customer");
+        	for(int i=0;i<customerObject.length;i++){
+        		if(customerObject[i]==null) continue;
+            	if(i==0){
+            		customer.append("'"+((FDCCustomerInfo)customerObject[i]).getId().toString()+"'");
+            	}else{
+            		customer.append(",'"+((FDCCustomerInfo)customerObject[i]).getId().toString()+"'");
+            	}
+            }
+	    }
 	    Boolean isAll=params.getBoolean("isAll");
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select * from (select distinct t.mdNumber,t.mdId,t.conId,t.sellProject,t.build,t.room,t.buildArea,t.tenancyArea,");
@@ -121,6 +135,9 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	if(tenancyBill!=null){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
+    	if(customer!=null){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
+    	}
     	sb.append(" union all select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
     	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
@@ -142,6 +159,9 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}
     	if(tenancyBill!=null){
     		sb.append(" and con.fid in("+tenancyBill+")");
+    	}
+    	if(customer!=null){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" )t )t order by t.conNumber,t.mdNumber");
     	
@@ -168,6 +188,9 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	if(tenancyBill!=null){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
+    	if(customer!=null){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
+    	}
     	sb.append(" union all select md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount");
     	sb.append(" from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
@@ -186,6 +209,9 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}
     	if(tenancyBill!=null){
     		sb.append(" and con.fid in("+tenancyBill+")");
+    	}
+    	if(customer!=null){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	RptRowSet detailrs = executeQuery(sb.toString(), null, ctx);
 		params.setObject("detailrs", detailrs);
@@ -211,6 +237,9 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	if(tenancyBill!=null){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
+    	if(customer!=null){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
+    	}
     	sb.append(" union all select pay.fappDate");
     	sb.append(" from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
@@ -229,6 +258,9 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}
     	if(tenancyBill!=null){
     		sb.append(" and con.fid in("+tenancyBill+")");
+    	}
+    	if(customer!=null){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" )");
     	RptRowSet appdaters = executeQuery(sb.toString(), null, ctx);
