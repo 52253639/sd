@@ -52,6 +52,7 @@ import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
+import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basedata.CurProjectFactory;
@@ -62,8 +63,10 @@ import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.contract.ChangeAuditBillInfo;
 import com.kingdee.eas.fdc.contract.ChangeBillStateEnum;
+import com.kingdee.eas.fdc.contract.ContractBillFactory;
 import com.kingdee.eas.fdc.contract.IPayRequestBill;
 import com.kingdee.eas.fdc.contract.PayReqUtils;
+import com.kingdee.eas.fdc.contract.PayRequestBillCollection;
 import com.kingdee.eas.fdc.contract.PayRequestBillEntryInfo;
 import com.kingdee.eas.fdc.contract.PayRequestBillFactory;
 import com.kingdee.eas.fdc.contract.PayRequestBillInfo;
@@ -73,8 +76,10 @@ import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
 import com.kingdee.eas.fdc.tenancy.client.OtherBillEditUI;
 import com.kingdee.eas.fdc.tenancy.client.TenancyImport;
 import com.kingdee.eas.framework.CoreBaseCollection;
+import com.kingdee.eas.framework.CoreBillBaseCollection;
 import com.kingdee.eas.framework.CoreBillBaseInfo;
 import com.kingdee.eas.framework.ICoreBase;
+import com.kingdee.eas.framework.ICoreBillBase;
 import com.kingdee.eas.framework.client.FrameWorkClientUtils;
 import com.kingdee.eas.framework.report.util.RptParams;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
@@ -515,6 +520,10 @@ public class PayRequestFullListUI extends AbstractPayRequestFullListUI
 	                }
 	            }
 	        });
+		if(SysContext.getSysContext().getCurrentUserInfo().getPerson()==null){
+			this.actionRemove.setEnabled(true);
+			this.actionRemove.setVisible(true);
+		}
 	}
 	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
 		checkSelected();
@@ -694,9 +703,58 @@ public class PayRequestFullListUI extends AbstractPayRequestFullListUI
 	
     public void actionRemove_actionPerformed(ActionEvent e) throws Exception
     {
-    	return;
+    	checkBeforeRemove();
+    	super.actionRemove_actionPerformed(e);
     }
     
+    protected boolean checkBeforeRemove() throws Exception {
+    	checkSelected();
+    	
+    	List idList = ContractClientUtils.getSelectedIdValues(getBillListTable(), getKeyFieldName());
+
+    	if(idList==null || idList.size()==0){
+    		return false;
+    	}
+    	
+		Set idSet = ContractClientUtils.listToSet(idList);
+
+		EntityViewInfo view = new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		filter.getFilterItems().add(
+				new FilterItemInfo("id", idSet, CompareType.INCLUDE));
+		view.setFilter(filter);
+		view.getSelector().add("id");
+		view.getSelector().add(getBillStatePropertyName());
+		CoreBillBaseCollection coll = getRemoteInterface().getCoreBillBaseCollection(view);
+
+		
+		String[] states = getBillStateForEditOrRemove();
+		
+		for (Iterator iter = coll.iterator(); iter.hasNext();) {
+			CoreBillBaseInfo element = (CoreBillBaseInfo) iter.next();
+			String billState = element.getString(getBillStatePropertyName());
+			boolean pass = false;
+			for (int i = 0; i < states.length; i++) {
+				if(billState.equals(states[i])) {
+					pass = true;
+				}
+			}
+			if(!pass) {
+				MsgBox.showWarning(this, ContractClientUtils.getRes("cantRemove"));
+				SysUtil.abort();
+			}
+			
+			ContractClientUtils.checkContractBillRefForRemove(this, element.getId().toString());
+		}
+		
+		return true;
+    }
+    protected String[] getBillStateForEditOrRemove() {
+    	return new String[]{FDCBillStateEnum.SAVED_VALUE, FDCBillStateEnum.SUBMITTED_VALUE};
+    }
+    protected ICoreBillBase getRemoteInterface() throws BOSException {
+		return (ICoreBillBase) PayRequestBillFactory.getRemoteInstance();
+	}
 	/**
      * 设置是否显示合计行
      * 2005-03-09 haiti_yang

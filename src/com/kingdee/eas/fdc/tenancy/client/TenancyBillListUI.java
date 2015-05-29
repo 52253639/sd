@@ -854,7 +854,7 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
 		   IRow row = tblMain.getRow(i);
 		   Object state = row.getCell("tenancyState").getValue();
 		   if(state!=null&&state.toString().equals("Ö´ÐÐÖÐ")){
-			   row.getStyleAttributes().setBackground(Color.GREEN);
+			   row.getStyleAttributes().setBackground(new java.awt.Color(190,255,190));
 		   }
 	   }
    }
