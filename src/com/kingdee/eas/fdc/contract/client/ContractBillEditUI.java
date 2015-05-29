@@ -247,6 +247,9 @@ import com.kingdee.eas.fdc.invite.supplier.SupplierAttachListEntryFactory;
 import com.kingdee.eas.fdc.invite.supplier.SupplierStateEnum;
 import com.kingdee.eas.fi.gl.GlUtils;
 import com.kingdee.eas.fm.common.ContextHelperFactory;
+import com.kingdee.eas.fm.common.IProgressMonitor;
+import com.kingdee.eas.fm.common.IRunnableWithProgress;
+import com.kingdee.eas.fm.common.client.ProgressDialog;
 import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.eas.framework.CoreBillBaseCollection;
@@ -384,6 +387,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		addDataChangeListener(prmtModel);
 		//添加责任部门监听器
 		addDataChangeListener(prmtRespDept);
+		addDataChangeListener(prmtNeedDept);
 		//addDataChangeListener(comboCurrency);
 
 		addDataChangeListener(prmtcontractType);
@@ -410,6 +414,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		removeDataChangeListener(txtStampTaxRate);
 		//除掉责任部门监听器
 		removeDataChangeListener(prmtRespDept);
+		removeDataChangeListener(prmtNeedDept);
 	}
 
 	/** 是否使用不计成本的金额, 是否单据计算 = 是, 此变量值为 fasle, 是否单据计算 = 否, 此变量值 = true, 

@@ -132,25 +132,25 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         this.menuItemAudit.setName("menuItemAudit");
         this.menuItemUnAudit.setName("menuItemUnAudit");
         // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol2\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat><c:Alignment horizontal=\"center\" /></c:Style><c:Style id=\"sCol5\"><c:NumberFormat>0.00</c:NumberFormat></c:Style><c:Style id=\"sCol6\"><c:NumberFormat>0.00</c:NumberFormat></c:Style><c:Style id=\"sCol9\"><c:NumberFormat>yyyy-M-d</c:NumberFormat></c:Style><c:Style id=\"sCol10\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol11\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"bizDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol2\" /><t:Column t:key=\"tenancyBill\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"billState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"otherPayList.appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"otherPayList.actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol6\" /><t:Column t:key=\"creator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"auditor.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"auditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" t:styleID=\"sCol9\" /><t:Column t:key=\"createTime\" t:width=\"120\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" t:styleID=\"sCol10\" /><t:Column t:key=\"otherPayList.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" t:styleID=\"sCol11\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{tenancyBill}</t:Cell><t:Cell>$Resource{billState}</t:Cell><t:Cell>$Resource{otherPayList.appAmount}</t:Cell><t:Cell>$Resource{otherPayList.actRevAmount}</t:Cell><t:Cell>$Resource{creator.name}</t:Cell><t:Cell>$Resource{auditor.name}</t:Cell><t:Cell>$Resource{auditDate}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{otherPayList.id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol2\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat><c:Alignment horizontal=\"center\" /></c:Style><c:Style id=\"sCol6\"><c:NumberFormat>0.00</c:NumberFormat></c:Style><c:Style id=\"sCol7\"><c:NumberFormat>0.00</c:NumberFormat></c:Style><c:Style id=\"sCol10\"><c:NumberFormat>yyyy-M-d</c:NumberFormat></c:Style><c:Style id=\"sCol11\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol12\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"bizDate\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol2\" /><t:Column t:key=\"tenancyBill\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"tenancyBill.tenCustomerDes\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"billState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"otherPayList.appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol6\" /><t:Column t:key=\"otherPayList.actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"creator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"auditor.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"auditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" t:styleID=\"sCol10\" /><t:Column t:key=\"createTime\" t:width=\"120\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" t:styleID=\"sCol11\" /><t:Column t:key=\"otherPayList.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" t:styleID=\"sCol12\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{tenancyBill}</t:Cell><t:Cell>$Resource{tenancyBill.tenCustomerDes}</t:Cell><t:Cell>$Resource{billState}</t:Cell><t:Cell>$Resource{otherPayList.appAmount}</t:Cell><t:Cell>$Resource{otherPayList.actRevAmount}</t:Cell><t:Cell>$Resource{creator.name}</t:Cell><t:Cell>$Resource{auditor.name}</t:Cell><t:Cell>$Resource{auditDate}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{otherPayList.id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
-                this.tblMain.putBindContents("mainQuery",new String[] {"id","number","bizDate","tenancyBill.number","billState","otherPayList.appAmount","otherPayList.actRevAmount","creator.name","auditor.name","auditDate","createTime","otherPayList.id"});
+                this.tblMain.putBindContents("mainQuery",new String[] {"id","number","bizDate","tenancyBill.tenancyName","tenancyBill.tenCustomerDes","billState","otherPayList.appAmount","otherPayList.actRevAmount","creator.name","auditor.name","auditDate","createTime","otherPayList.id"});
 
 
         this.tblMain.checkParsed();
         this.tblMain.getGroupManager().setGroup(true);		
         this.separatorFW2.setVisible(true);		
         this.btnCreateTo.setVisible(false);		
+        this.btnWorkFlowG.setVisible(false);		
         this.btnAuditResult.setVisible(false);		
-        this.kDSeparator4.setVisible(false);		
         this.menuItemCreateTo.setVisible(false);		
         this.menuItemCopyTo.setVisible(false);		
+        this.kDSeparator4.setVisible(false);		
         this.kDSeparator6.setVisible(false);		
         this.menuWorkFlow.setVisible(false);		
         this.menuItemViewDoProccess.setVisible(false);		
-        this.menuItemAuditResult.setVisible(false);		
-        this.btnWorkFlowG.setVisible(false);
+        this.menuItemAuditResult.setVisible(false);
         // btnAudit
         this.btnAudit.setAction((IItemAction)ActionProxyFactory.getProxy(actionAudit, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnAudit.setText(resHelper.getString("btnAudit.text"));
@@ -221,10 +221,14 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(menuItemImportData);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemExportData);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(separatorFile1);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(MenuItemAttachment);
         menuFile.add(kDSeparator1);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
@@ -251,8 +255,8 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         menuView.add(menuItemSwitchView);
         menuView.add(separatorView1);
         menuView.add(menuItemTraceUp);
-        menuView.add(menuItemQueryScheme);
         menuView.add(menuItemTraceDown);
+        menuView.add(menuItemQueryScheme);
         menuView.add(kDSeparator6);
         //menuBiz
         menuBiz.add(menuItemCancelCancel);
@@ -264,6 +268,7 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkFlow
         menuWorkFlow.add(menuItemViewDoProccess);
         menuWorkFlow.add(menuItemMultiapprove);
@@ -300,8 +305,11 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnView);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnRemove);
         this.toolBar.add(btnRefresh);
         this.toolBar.add(btnQuery);
@@ -323,6 +331,7 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(btnVoucher);
         this.toolBar.add(btnDelVoucher);
         this.toolBar.add(btnMultiapprove);
@@ -442,24 +451,10 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         super.setOprtState(oprtType);
     }
 
-			public SelectorItemCollection getBOTPSelectors() {
+	public SelectorItemCollection getBOTPSelectors() {
 			SelectorItemCollection sic = new SelectorItemCollection();
-			sic.add(new SelectorItemInfo("*"));
-			sic.add(new SelectorItemInfo("creator.*"));
-			sic.add(new SelectorItemInfo("lastUpdateUser.*"));
-			sic.add(new SelectorItemInfo("CU.*"));
-			sic.add(new SelectorItemInfo("handler.*"));
-			sic.add(new SelectorItemInfo("auditor.*"));
-			sic.add(new SelectorItemInfo("entrys.*"));
-			sic.add(new SelectorItemInfo("entrys.currency.*"));
-			sic.add(new SelectorItemInfo("entrys.moneyDefine.*"));
-			sic.add(new SelectorItemInfo("entrys.tenancyBillEntry.*"));
-			sic.add(new SelectorItemInfo("tenancyBill.*"));
-			sic.add(new SelectorItemInfo("otherPayList.*"));
-			sic.add(new SelectorItemInfo("otherPayList.moneyDefine.*"));
-			sic.add(new SelectorItemInfo("otherPayList.currency.*"));
 			return sic;
-		}
+	}
 
     /**
      * output getSelectors method
@@ -467,6 +462,10 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("id"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("createTime"));
@@ -475,12 +474,24 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
         sic.add(new SelectorItemInfo("auditDate"));
         sic.add(new SelectorItemInfo("billState"));
         sic.add(new SelectorItemInfo("bizDate"));
-        sic.add(new SelectorItemInfo("tenancyBill.number"));
         sic.add(new SelectorItemInfo("otherPayList.id"));
         sic.add(new SelectorItemInfo("otherPayList.appAmount"));
         sic.add(new SelectorItemInfo("otherPayList.actRevAmount"));
+        sic.add(new SelectorItemInfo("tenancyBill.tenCustomerDes"));
+        sic.add(new SelectorItemInfo("tenancyBill.tenancyName"));
         return sic;
-    }        
+    }            protected java.util.List getQuerySorterFields() 
+    { 
+        java.util.List sorterFieldList = new ArrayList(); 
+        sorterFieldList.add("number"); 
+        return sorterFieldList; 
+    } 
+    protected java.util.List getQueryPKFields() 
+    { 
+        java.util.List pkList = new ArrayList(); 
+        pkList.add("id"); 
+        return pkList;
+    }
     	
 
     /**
@@ -855,7 +866,7 @@ public abstract class AbstractRestReceivableListUI extends com.kingdee.eas.frame
      */
     public String[] getMergeColumnKeys()
     {
-        return new String[] {"id","number","bizDate","tenancyBill","billState","creator.name","auditor.name","auditDate","createTime"};
+        return new String[] {"id","number","bizDate","tenancyBill","tenancyBill.tenCustomerDes","billState","creator.name","auditor.name","auditDate","createTime"};
     }
 
 

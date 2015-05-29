@@ -129,13 +129,13 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}else{
     		sb.append(" and sp.fid in('null')");
     	}
-    	if(room!=null){
+    	if(room!=null&&!"".equals(room.toString())){
     		sb.append(" and room.fid in("+room+")");
     	}
-    	if(tenancyBill!=null){
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
-    	if(customer!=null){
+    	if(customer!=null&&!"".equals(customer.toString())){
     		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" union all select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
@@ -154,13 +154,13 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}else{
     		sb.append(" and sp.fid in('null')");
     	}
-    	if(room!=null){
+    	if(room!=null&&!"".equals(room.toString())){
     		sb.append(" and room.fid in("+room+")");
     	}
-    	if(tenancyBill!=null){
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
-    	if(customer!=null){
+    	if(customer!=null&&!"".equals(customer.toString())){
     		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" )t )t order by t.conNumber,t.mdNumber");
@@ -182,13 +182,13 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}else{
     		sb.append(" and sp.fid in('null')");
     	}
-    	if(room!=null){
+    	if(room!=null&&!"".equals(room.toString())){
     		sb.append(" and room.fid in("+room+")");
     	}
-    	if(tenancyBill!=null){
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
-    	if(customer!=null){
+    	if(customer!=null&&!"".equals(customer.toString())){
     		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" union all select md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount");
@@ -204,13 +204,13 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}else{
     		sb.append(" and sp.fid in('null')");
     	}
-    	if(room!=null){
+    	if(room!=null&&!"".equals(room.toString())){
     		sb.append(" and room.fid in("+room+")");
     	}
-    	if(tenancyBill!=null){
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
-    	if(customer!=null){
+    	if(customer!=null&&!"".equals(customer.toString())){
     		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	RptRowSet detailrs = executeQuery(sb.toString(), null, ctx);
@@ -231,13 +231,13 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}else{
     		sb.append(" and sp.fid in('null')");
     	}
-    	if(room!=null){
+    	if(room!=null&&!"".equals(room.toString())){
     		sb.append(" and room.fid in("+room+")");
     	}
-    	if(tenancyBill!=null){
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
-    	if(customer!=null){
+    	if(customer!=null&&!"".equals(customer.toString())){
     		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" union all select pay.fappDate");
@@ -253,13 +253,13 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	}else{
     		sb.append(" and sp.fid in('null')");
     	}
-    	if(room!=null){
+    	if(room!=null&&!"".equals(room.toString())){
     		sb.append(" and room.fid in("+room+")");
     	}
-    	if(tenancyBill!=null){
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
     		sb.append(" and con.fid in("+tenancyBill+")");
     	}
-    	if(customer!=null){
+    	if(customer!=null&&!"".equals(customer.toString())){
     		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
     	}
     	sb.append(" )");

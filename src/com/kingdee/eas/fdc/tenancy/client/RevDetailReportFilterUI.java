@@ -39,6 +39,8 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		super.onLoad();
 		this.prmtRoom.setValue(null);
 		this.prmtTanancyBill.setValue(null);
+		this.prmtCustomer.setValue(null);
+		
 		FDCRoomPromptDialog dialog=new FDCRoomPromptDialog(Boolean.TRUE, null, null,
 				MoneySysTypeEnum.TenancySys, null,null);
 		this.prmtRoom.setSelector(dialog);
