@@ -84,7 +84,8 @@ public abstract class AbstractContractDetailFullInfoUI extends com.kingdee.eas.f
         this.txtSplitState.setName("txtSplitState");
         this.txtSettleState.setName("txtSettleState");
         this.txtSettleNumber.setName("txtSettleNumber");
-        // CoreUI
+        // CoreUI		
+        this.tabPanel.setPreferredSize(new Dimension(1,1));
         this.btnSettelGroup.add(this.btnAType);
         this.btnSettelGroup.add(this.btnBType);
         this.btnSettelGroup.add(this.BtnCType);
@@ -181,7 +182,7 @@ public abstract class AbstractContractDetailFullInfoUI extends com.kingdee.eas.f
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(0, 0, 1013, 730));
+        this.setBounds(new Rectangle(0, 0, 1013, 768));
 this.setLayout(new BorderLayout(0, 0));
         this.add(tabPanel, BorderLayout.CENTER);
         //tabPanel
@@ -189,7 +190,7 @@ this.setLayout(new BorderLayout(0, 0));
         tabPanel.add(ecoItemPanel, resHelper.getString("ecoItemPanel.constraints"));
         //mainPanel
         mainPanel.setLayout(new KDLayout());
-        mainPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 697));        contCreateTime.setBounds(new Rectangle(630, 433, 276, 19));
+        mainPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 735));        contCreateTime.setBounds(new Rectangle(630, 433, 276, 19));
         mainPanel.add(contCreateTime, new KDLayout.Constraints(630, 433, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contNumber.setBounds(new Rectangle(531, 31, 470, 19));
         mainPanel.add(contNumber, new KDLayout.Constraints(531, 31, 470, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
@@ -529,7 +530,9 @@ kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
 contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayItem.getContentPane().add(tblEconItem, BorderLayout.CENTER);
         //contBailItem
         contBailItem.getContentPane().setLayout(new KDLayout());
-        contBailItem.getContentPane().putClientProperty("OriginalBounds", new Rectangle(0, 0, 1011, 342));        contBailOriAmount.setBounds(new Rectangle(5, 8, 463, 19));
+        contBailItem.getContentPane().putClientProperty("OriginalBounds", new Rectangle(0, 0, 1011, 361));        kDScrollPane3.setBounds(new Rectangle(452, -62, 123, 94));
+        contBailItem.getContentPane().add(kDScrollPane3, new KDLayout.Constraints(452, -62, 123, 94, 0));
+        contBailOriAmount.setBounds(new Rectangle(5, 8, 463, 19));
         contBailItem.getContentPane().add(contBailOriAmount, new KDLayout.Constraints(5, 8, 463, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contBailRate.setBounds(new Rectangle(544, 8, 450, 19));
         contBailItem.getContentPane().add(contBailRate, new KDLayout.Constraints(544, 8, 450, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));

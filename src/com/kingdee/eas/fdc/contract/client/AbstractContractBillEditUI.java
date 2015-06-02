@@ -46,6 +46,7 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.basedata.client.FDCBillEditUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractContractBillEditUI.class);
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane3;
     protected com.kingdee.bos.ctrl.swing.KDTabbedPane tabPanel;
     protected com.kingdee.bos.ctrl.swing.KDPanel mainPanel;
     protected com.kingdee.bos.ctrl.swing.KDPanel ecoItemPanel;
@@ -389,6 +390,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.actionDownLoad = new ActionDownLoad(this);
         getActionManager().registerAction("actionDownLoad", actionDownLoad);
          this.actionDownLoad.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        this.kDScrollPane3 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.tabPanel = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.mainPanel = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.ecoItemPanel = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -578,6 +580,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.menuItemContractPayPlan = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.enuItemViewCost = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemProgram = new com.kingdee.bos.ctrl.swing.KDMenuItem();
+        this.kDScrollPane3.setName("kDScrollPane3");
         this.tabPanel.setName("tabPanel");
         this.mainPanel.setName("mainPanel");
         this.ecoItemPanel.setName("ecoItemPanel");
@@ -767,7 +770,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.enuItemViewCost.setName("enuItemViewCost");
         this.menuItemProgram.setName("menuItemProgram");
         // CoreUI		
-        this.setPreferredSize(new Dimension(1013,629));		
+        this.setPreferredSize(new Dimension(1013,768));		
         this.btnSubmit.setText(resHelper.getString("btnSubmit.text"));		
         this.btnSubmit.setToolTipText(resHelper.getString("btnSubmit.toolTipText"));		
         this.btnCopy.setVisible(false);		
@@ -802,10 +805,13 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.menuItemUnAudit.setText(resHelper.getString("menuItemUnAudit.text"));		
         this.menuItemUnAudit.setToolTipText(resHelper.getString("menuItemUnAudit.toolTipText"));		
         this.menuItemUnAudit.setMnemonic(85);
-        // tabPanel
+        // kDScrollPane3
+        // tabPanel		
+        this.tabPanel.setPreferredSize(new Dimension(1013,768));
         // mainPanel		
         this.mainPanel.setAutoscrolls(true);
-        // ecoItemPanel
+        // ecoItemPanel		
+        this.ecoItemPanel.setVisible(false);
         // contCreateTime		
         this.contCreateTime.setBoundLabelText(resHelper.getString("contCreateTime.boundLabelText"));		
         this.contCreateTime.setBoundLabelLength(100);		
@@ -2097,15 +2103,17 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(0, 0, 1013, 730));
+        this.setBounds(new Rectangle(0, 0, 1013, 768));
 this.setLayout(new BorderLayout(0, 0));
-        this.add(tabPanel, BorderLayout.CENTER);
+        this.add(kDScrollPane3, BorderLayout.CENTER);
+        //kDScrollPane3
+        kDScrollPane3.getViewport().add(tabPanel, null);
         //tabPanel
         tabPanel.add(mainPanel, resHelper.getString("mainPanel.constraints"));
         tabPanel.add(ecoItemPanel, resHelper.getString("ecoItemPanel.constraints"));
         //mainPanel
         mainPanel.setLayout(new KDLayout());
-        mainPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 697));        contCreateTime.setBounds(new Rectangle(631, 446, 276, 19));
+        mainPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1012, 735));        contCreateTime.setBounds(new Rectangle(631, 446, 276, 19));
         mainPanel.add(contCreateTime, new KDLayout.Constraints(631, 446, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contNumber.setBounds(new Rectangle(531, 31, 470, 19));
         mainPanel.add(contNumber, new KDLayout.Constraints(531, 31, 470, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
@@ -2123,8 +2131,8 @@ this.setLayout(new BorderLayout(0, 0));
         mainPanel.add(contpartC, new KDLayout.Constraints(7, 97, 470, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contcontractName.setBounds(new Rectangle(7, 53, 471, 19));
         mainPanel.add(contcontractName, new KDLayout.Constraints(7, 53, 471, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        kDTabbedPane1.setBounds(new Rectangle(0, 476, 1000, 214));
-        mainPanel.add(kDTabbedPane1, new KDLayout.Constraints(0, 476, 1000, 214, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDTabbedPane1.setBounds(new Rectangle(0, 476, 1000, 256));
+        mainPanel.add(kDTabbedPane1, new KDLayout.Constraints(0, 476, 1000, 256, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contExRate.setBounds(new Rectangle(320, 219, 276, 19));
         mainPanel.add(contExRate, new KDLayout.Constraints(320, 219, 276, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLocalAmount.setBounds(new Rectangle(7, 241, 276, 19));
@@ -2344,7 +2352,7 @@ this.setLayout(new BorderLayout(0, 0));
         pnlDetail.getViewport().add(tblDetail, null);
         //pnlCost
         pnlCost.setLayout(new KDLayout());
-        pnlCost.putClientProperty("OriginalBounds", new Rectangle(0, 0, 999, 181));        tblCost.setBounds(new Rectangle(10, 10, 965, 247));
+        pnlCost.putClientProperty("OriginalBounds", new Rectangle(0, 0, 999, 223));        tblCost.setBounds(new Rectangle(10, 10, 965, 247));
         pnlCost.add(tblCost, new KDLayout.Constraints(10, 10, 965, 247, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT));
         //panelInvite
 panelInvite.setLayout(new BorderLayout(0, 0));        panelInvite.add(tblInvite, BorderLayout.CENTER);
@@ -2433,7 +2441,7 @@ kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
 contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayItem.getContentPane().add(tblEconItem, BorderLayout.CENTER);
         //contBailItem
         contBailItem.getContentPane().setLayout(new KDLayout());
-        contBailItem.getContentPane().putClientProperty("OriginalBounds", new Rectangle(0, 0, 1011, 342));        contBailOriAmount.setBounds(new Rectangle(5, 8, 463, 19));
+        contBailItem.getContentPane().putClientProperty("OriginalBounds", new Rectangle(0, 0, 1011, 361));        contBailOriAmount.setBounds(new Rectangle(5, 8, 463, 19));
         contBailItem.getContentPane().add(contBailOriAmount, new KDLayout.Constraints(5, 8, 463, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contBailRate.setBounds(new Rectangle(544, 8, 450, 19));
         contBailItem.getContentPane().add(contBailRate, new KDLayout.Constraints(544, 8, 450, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));

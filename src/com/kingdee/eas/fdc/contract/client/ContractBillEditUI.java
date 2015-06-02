@@ -1790,6 +1790,8 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			}
 		});
 		contOrgAmtBig.setLocation(5, 5);
+		
+		tabPanel.remove(ecoItemPanel);
 	}
 	
 	/*
