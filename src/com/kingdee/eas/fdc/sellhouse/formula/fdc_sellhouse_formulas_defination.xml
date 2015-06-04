@@ -146,6 +146,57 @@
 				<comment language="en_US">fdc_statistic</comment>
 			</comments>
 		</formula>
+		<formula name="fdc_backAmount" type="string" return="default" category="fdc" group="110" wizard="com.kingdee.eas.fdc.sellhouse.client.BackAmountFormulaWizard">
+			<alias>
+				<local_name language="zh_CN">项目公司月度回款</local_name>
+				<local_name language="zh_TW">项目公司月度回款</local_name>
+				<local_name language="en_US">fdc_backAmount</local_name>
+			</alias>
+			<batchImplClass>com.kingdee.eas.fdc.sellhouse.formula.BackAmountCaculator</batchImplClass>
+			<params>
+				<param name="companyNumber" type="fdcCompanyF7" required="true">
+					<alias>
+						<local_name language="zh_CN">公司</local_name>
+						<local_name language="zh_TW">公司</local_name>
+						<local_name language="en_US">companyNumber</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">公司</comment>
+						<comment language="zh_TW">公司</comment>
+						<comment language="en_US">companyNumber</comment>
+					</comments>
+				</param>			
+				<param name="sellProject" type="f7SellProject" required="false">
+					<alias>
+						<local_name language="zh_CN">项目</local_name>
+						<local_name language="zh_TW">项目</local_name>
+						<local_name language="en_US">sellProject</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">项目</comment>
+						<comment language="zh_TW">项目</comment>
+						<comment language="en_US">sellProject</comment>
+					</comments>
+				</param>
+				<param name="budgetPeriod" type="fpPeriod" required="false">
+					<alias>
+						<local_name language="zh_CN">预算期间</local_name>
+						<local_name language="zh_TW">预算期间</local_name>
+						<local_name language="en_US">budgetPeriod</local_name>
+					</alias>
+					<comments>
+						<comment language="zh_CN">预算期间</comment>
+						<comment language="zh_TW">预算期间</comment>
+						<comment language="en_US">budgetPeriod</comment>
+					</comments>
+				</param>
+			</params>
+			<comments>
+				<comment language="zh_CN">项目公司月度回款</comment>
+				<comment language="zh_TW">项目公司月度回款</comment>
+				<comment language="en_US">fdc_backAmount</comment>
+			</comments>
+		</formula>
 	<!--###########################结束############################################-->
 		<!--公式合法性验证全局验证定义，用于公式的验证-->
 		<global-validators>
@@ -160,7 +211,6 @@
     	    </validator-->
 		</global-validators>
 	</formulas>
-	
 	<datatypes>
 		
 		<!-- 房地产取数 -->
@@ -210,7 +260,12 @@
 		    <edit_fm>$number$</edit_fm>
 		    <commit_fm>$number$</commit_fm>
 		</type>
-		
+		<type name="fdcCompanyF7" origin="string">
+		    <selector>com.kingdee.eas.basedata.org.client.f7.CompanyF7</selector>
+			<display_fm>$name$</display_fm>
+			<edit_fm>$number$</edit_fm>
+			<commit_fm>$number$</commit_fm>
+		</type>	
 		<enum name="statisticRoomTypeEnum">
 			<source>com.kingdee.eas.fdc.sellhouse.StatisticRoomTypeEnum</source>
 		</enum>
