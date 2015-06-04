@@ -561,7 +561,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 	 * 
 	 * @author owen_wen 2011-06-09
 	 */
-	private void setCapticalAmount() {
+	public void setCapticalAmount() {
 		BigDecimal amount = FDCHelper.toBigDecimal(txtamount.getBigDecimalValue());
 		this.txtOrgAmtBig.setText(FDCClientHelper.getChineseFormat(amount, false));
 		this.txtOrgAmtBig.setHorizontalAlignment(JTextField.RIGHT);

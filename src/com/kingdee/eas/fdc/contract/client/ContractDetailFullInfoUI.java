@@ -184,6 +184,7 @@ public class ContractDetailFullInfoUI extends AbstractContractDetailFullInfoUI {
 	}
 
 	public void loadFields() {
+		detachListeners();
 		super.loadFields();
 		isUseAmtWithoutCost = editData.isIsAmtWithoutCost();
 
@@ -230,7 +231,7 @@ public class ContractDetailFullInfoUI extends AbstractContractDetailFullInfoUI {
 			editData.setOrgUnit(costOrg);
 			editData.setCU(curProjectInfo.getCU());
 		}
-		
+		setCapticalAmount();
 		//加载合同结算类型
 		loadContractSettleType();
 		
@@ -399,6 +400,7 @@ public class ContractDetailFullInfoUI extends AbstractContractDetailFullInfoUI {
 		sic.add(new SelectorItemInfo("contractType.inviteTypeEntry.inviteType.*"));
 		
 		sic.add(new SelectorItemInfo("srcAmount"));
+		sic.add(new SelectorItemInfo("orgType"));
 		return sic;
 	}
 	//Regiester control's property binding.
