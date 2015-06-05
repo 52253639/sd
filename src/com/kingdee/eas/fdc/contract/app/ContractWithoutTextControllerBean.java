@@ -110,48 +110,10 @@ public class ContractWithoutTextControllerBean extends
 	protected IObjectPK _save(Context ctx, IObjectValue model)
 			throws BOSException, EASBizException {
 		FDCBillInfo con = ((FDCBillInfo) model);
-		PayRequestBillInfo prbi = (PayRequestBillInfo) con
-				.get("PayRequestBillInfo");
-
-		// //付款申请单编码重复性校验
-		// String sql =
-		// "select fid from T_CON_PayRequestBill where FNumber = ? ";
-		// boolean b = con.getId() != null;
-		// if(b) sql += " and FContractId != ?";
-		// Object[] params = null;
-		// if(b) {
-		// params = new Object[]{prbi.getNumber(), con.getId().toString()};
-		// }else {
-		// params = new Object[]{prbi.getNumber()};
-		// }
-		// RowSet rowset = DbUtil.executeQuery(ctx, sql, params);
-		// try {
-		// if(rowset.next()){
-		// throw (new
-		// ContractException(ContractException.PAYREQUESTBILL_NUM_DUP));
-		// }
-		// } catch (SQLException e) {
-		// throw new BOSException(e);
-		// }
-
-		// //暂存
-		// con.setState(FDCBillStateEnum.SAVED);
-		// //处理断号
-		// handleIntermitNumber(ctx, con);
-		//		
-		// setPropsForBill(ctx, con);
-		//		
-		// checkBill(ctx, model);
-		//		
-		// trimName(con);
-		//		
-		// if (con.getId() == null || !this._exists(ctx, new
-		// ObjectUuidPK(con.getId()))) {
-		// handleIntermitNumber(ctx, con);
-		// }
-
+		PayRequestBillInfo prbi = (PayRequestBillInfo) con.get("PayRequestBillInfo");
+		con.setAmount(FDCHelper.multiply(con.getOriginalAmount(), prbi.getExchangeRate()));
+		prbi.setAmount(con.getAmount());
 		IObjectPK pk = super._save(ctx, con);
-
 		con.setId(BOSUuid.read(pk.toString()));
 		createPayRequestBill(ctx, con, prbi, FDCBillStateEnum.SAVED);
 		return pk;
@@ -160,6 +122,8 @@ public class ContractWithoutTextControllerBean extends
 	protected void _save(Context ctx, IObjectPK pk, IObjectValue model) throws BOSException, EASBizException {
 		FDCBillInfo con = ((FDCBillInfo) model);
 		PayRequestBillInfo prbi = (PayRequestBillInfo) con.get("PayRequestBillInfo");
+		con.setAmount(FDCHelper.multiply(con.getOriginalAmount(), prbi.getExchangeRate()));
+		prbi.setAmount(con.getAmount());
 		super._save(ctx, pk, model);
 		con.setId(BOSUuid.read(pk.toString()));
 		createPayRequestBill(ctx, con, prbi, FDCBillStateEnum.SAVED);
@@ -167,56 +131,22 @@ public class ContractWithoutTextControllerBean extends
 
 	protected void _submit(Context ctx, IObjectPK pk, IObjectValue model) throws BOSException, EASBizException {
 		FDCBillInfo con = ((FDCBillInfo) model);
-		// 提交前检查
 		checkBillForSubmit(ctx, con);
 		PayRequestBillInfo prbi = (PayRequestBillInfo) con.get("PayRequestBillInfo");
+		con.setAmount(FDCHelper.multiply(con.getOriginalAmount(), prbi.getExchangeRate()));
+		prbi.setAmount(con.getAmount());
 		super._submit(ctx, pk, model);
 		con.setId(BOSUuid.read(pk.toString()));
 		createPayRequestBill(ctx, con, prbi, FDCBillStateEnum.SUBMITTED);
 	}
 
-	protected IObjectPK _submit(Context ctx, IObjectValue model)
-			throws BOSException, EASBizException {
+	protected IObjectPK _submit(Context ctx, IObjectValue model)throws BOSException, EASBizException {
 		FDCBillInfo con = ((FDCBillInfo) model);
-
-		// 提交前检查
 		checkBillForSubmit(ctx, con);
-
-		PayRequestBillInfo prbi = (PayRequestBillInfo) con
-				.get("PayRequestBillInfo");
-		// // 付款申请单编码重复性校验
-		// String sql =
-		// "select fid from T_CON_PayRequestBill where FNumber = ? ";
-		// boolean b = con.getId() != null;
-		// if(b) sql += " and FContractId != ?";
-		// Object[] params = null;
-		// if(b) {
-		// params = new Object[]{prbi.getNumber(), con.getId().toString()};
-		// }else {
-		// params = new Object[]{prbi.getNumber()};
-		// }
-		//		    
-		// RowSet rowset = DbUtil.executeQuery(ctx, sql, params);
-		// try {
-		// if(rowset.next()){
-		// throw (new
-		// ContractException(ContractException.PAYREQUESTBILL_NUM_DUP));
-		// }
-		// } catch (SQLException e) {
-		// }
-
-		// con.setState(FDCBillStateEnum.SUBMITTED);
-		// handleIntermitNumber(ctx, con);// 处理断号
-		// setPropsForBill(ctx, con);
-		// checkBill(ctx, model);
-		// trimName(con);
-		// if (con.getId() == null || !this._exists(ctx, new
-		// ObjectUuidPK(con.getId()))) {
-		// handleIntermitNumber(ctx, con);
-		// }
-
+		PayRequestBillInfo prbi = (PayRequestBillInfo) con.get("PayRequestBillInfo");
+		con.setAmount(FDCHelper.multiply(con.getOriginalAmount(), prbi.getExchangeRate()));
+		prbi.setAmount(con.getAmount());
 		IObjectPK pk = super._submit(ctx, con);
-
 		con.setId(BOSUuid.read(pk.toString()));
 		createPayRequestBill(ctx, con, prbi, FDCBillStateEnum.SUBMITTED);
 		return pk;
