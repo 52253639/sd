@@ -386,6 +386,19 @@
                 <key name="name" value="AdminOrgUnit" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>createDept</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].subObjects.subEntity[createDept].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBillQueryForPrint" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.basedata.org.app" />
+                <key name="name" value="AdminOrgUnit" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <propertyUnit>
@@ -4915,6 +4928,99 @@
                 <key name="name" value="ContractBillQueryForPrint" />
             </query>
         </queryField>
+        <propertyUnit>
+            <name>9eec887e-5d19-4c20-b31a-f541d91e05a8</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.propertyUnit[9eec887e-5d19-4c20-b31a-f541d91e05a8].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ef3cc8db-1bad-4c09-b11c-8e2f3db8b810</key>
+                    <parentUnit>
+                        <key name="name" value="9eec887e-5d19-4c20-b31a-f541d91e05a8" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="ContractBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="createDept" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBillQueryForPrint" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>1cfddc4e-4314-4f88-bdf4-ba34a2f33f5a</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.propertyUnit[1cfddc4e-4314-4f88-bdf4-ba34a2f33f5a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>0d64c829-1d04-4c3e-ac49-63ea13ed0727</key>
+                    <parentUnit>
+                        <key name="name" value="1cfddc4e-4314-4f88-bdf4-ba34a2f33f5a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="createDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBillQueryForPrint" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>createDept.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.queryField[createDept.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>45cb729a-a7c3-4054-b645-353a6aa64fcb</key>
+                    <parentUnit>
+                        <key name="name" value="createDept.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="createDept" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBillQueryForPrint" />
+            </query>
+        </queryField>
     </units>
     <defaultFilter>
         <name>defaultFilter</name>
@@ -5776,6 +5882,36 @@
                 <key name="name" value="ContractBillQueryForPrint" />
             </query>
         </join>
+        <join>
+            <name>2bb70e41-e8a7-4baf-bd98-d7dc503a6bbd</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="ContractBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="createDept" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>f1e06b90-d999-43da-940d-f58dcad7e56b</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="9eec887e-5d19-4c20-b31a-f541d91e05a8" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="1cfddc4e-4314-4f88-bdf4-ba34a2f33f5a" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="2bb70e41-e8a7-4baf-bd98-d7dc503a6bbd" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.contract.app" />
+                <key name="name" value="ContractBillQueryForPrint" />
+            </query>
+        </join>
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].alias">
@@ -5849,6 +5985,12 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].subObjects.subEntity[contractType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].subObjects.subEntity[createDept].alias">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -6028,6 +6170,12 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.propertyUnit[1cfddc4e-4314-4f88-bdf4-ba34a2f33f5a].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.propertyUnit[27aef511-011c-1000-e000-424ac0a810b3].displayName">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="null" />
@@ -6065,6 +6213,12 @@
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.propertyUnit[8449e8d5-9f32-485d-8fa7-be1f1f715be9].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.propertyUnit[9eec887e-5d19-4c20-b31a-f541d91e05a8].displayName">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -6473,6 +6627,12 @@
             <lang locale="zh_CN" value="造价性质" />
             <lang locale="zh_HK" value="造價性質" />
             <lang locale="zh_TW" value="造價性質" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.queryField[createDept.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="制单部门" />
+            <lang locale="zh_HK" value="制單部門" />
+            <lang locale="zh_TW" value="制單部門" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.contract.app.ContractBillQueryForPrint].units.queryField[createTime].displayName">
             <lang locale="en_US" value="null" />

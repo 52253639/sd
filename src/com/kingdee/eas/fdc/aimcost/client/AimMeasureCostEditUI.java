@@ -746,7 +746,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		tblPlanIndex.getHeadRow(0).getCell("value").setValue("值");
 		value.setWidth(300);
 		this.plTables.add(tblPlanIndex, "规划指标明细表");
-		
 		for(int i=0;i<((MeasureCostInfo)this.editData).getNewPlanIndexEntry().size();i++){
 			NewPlanIndexInfo entry=((MeasureCostInfo)this.editData).getNewPlanIndexEntry().get(i);
 			IRow row=tblPlanIndex.addRow();
@@ -3575,12 +3574,17 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
         File tempFile = File.createTempFile("eastemp",".xls");
         path = tempFile.getCanonicalPath();
 
-
-
-        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[tables.size()];
-        for(int i =0;i<tables.size();i++)
+        List tablesExport=new ArrayList();
+        for(int i=0;i<tables.size();i++){
+        	tablesExport.add(tables.get(i));
+        	if(i==1){
+        		tablesExport.add(this.tblPlanIndex);
+        	}
+        }
+        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[tablesExport.size()];
+        for(int i =0;i<tablesExport.size();i++)
         {
-            tablesVO[i] = new KDTables2KDSBookVO((KDTable)tables.get(i));
+            tablesVO[i] = new KDTables2KDSBookVO((KDTable)tablesExport.get(i));
             String title = plTables.getTitleAt(i+1);
             title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
 			tablesVO[i].setTableName(title);
