@@ -405,7 +405,7 @@ public class PlanIndexTable {
 	private void initFixTableForXU(PlanIndexInfo info){
 		table.addRows(10);
 		//绑定单元格
-		binder.bindCell(table, 0, 1,"用地面积(m2)"	,"totalContainArea",true);//jf总占地面积
+		binder.bindCell(table, 0, 1,"总占地面积(m2)"	,"totalContainArea",true);//jf总占地面积
 //		binder.bindCell(table, 0, 4,"用地性质"	,"landUsage",false);
 //		binder.bindCell(table, 0, 6,"代征用面积(m2)"	,"requisitionArea",true);
 //		binder.bindCell(table, 0, 8,"建设用地面积(m2)","buildArea",true);
@@ -420,13 +420,13 @@ public class PlanIndexTable {
 //		binder.bindCell(table, 1, 10,"建筑限高(m)","maxHeight",true);
 //		binder.bindCell(table, 1, 12,"停车位配比要求","parkingRequire",false);
 		
-		binder.bindCell(table, 1, 1,"建筑面积(m2)"	,"totalBuildArea",true);//总建筑面积(m2)
+		binder.bindCell(table, 1, 1,"总建筑面积(m2)"	,"totalBuildArea",true);//总建筑面积(m2)
 //		binder.bindCell(table, 2, 4,"计容积率面积(m2)(实际)"	,"rateCoverbuildArea",true);
 //		binder.bindCell(table, 2, 6,"地上建筑面积(m2)","groundBuildArea",true);
 //		binder.bindCell(table, 2, 8,"地下建筑面积(m2)","underGroundBuildArea",true);
 ////		binder.bindCell(table, 2, 8,"公共配套用房面积(m2)","publicSetHouse",true);
 		
-		binder.bindCell(table, 2, 1,"可售面积(m2)"	,"totalSellArea",true);
+		binder.bindCell(table, 2, 1,"总可售面积(m2)"	,"totalSellArea",true);
 //		binder.bindCell(table, 3, 4,"测绘总建筑面积(m2)"	,"totalConstructArea",true);
 //		binder.bindCell(table, 3, 6,"可售比"	,"saleRate",true);
 //		

@@ -826,7 +826,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		
 		//公摊及产品
 		table = new KDTable();
-		table.setName("六类公摊及期间费");
+		table.setName("公摊及期间费");
 		this.tables.add(table);
 		FDCTableHelper.addTableMenu(table);
 		FDCTableHelper.setColumnMoveable(table, true);
@@ -841,7 +841,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		table.getHeadRow(0).getCell(0).setUserObject(info);
 		this.fillTable(table);
 		setUnionData(table);
-		this.plTables.add(table, "六类公摊及期间费");
+		this.plTables.add(table, "公摊及期间费");
 		
 		
 		for(int i=0;i<info.getEntrys().size();i++){
@@ -1625,7 +1625,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
     				for(int i=0;i<tables.size();i++){
     					KDTable table=(KDTable) tables.get(i);
     					if(table.getHeadRow(0).getUserObject() instanceof ProductTypeInfo||
-    							table.getName().equals("六类公摊及期间费")){
+    							table.getName().equals("公摊及期间费")){
     						this.plTables.remove(table);
     					}
     				}
@@ -2245,7 +2245,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		if(this.plTables.getSelectedIndex()==ii+4){
 			Object v = prmtProjectType.getValue();
 			if(v==null){
-				MsgBox.showWarning(this, "六类公摊测算必须先设置项目系列");
+				MsgBox.showWarning(this, "公摊测算必须先设置项目系列");
 				return;
 			}
 		}
@@ -2417,7 +2417,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 						KDBizPromptBox my=(KDBizPromptBox) e.getSource();
 						((TemplateMeasureCostPromptBox)my.getSelector()).setProjectTypeID(((ProjectTypeInfo)v).getId().toString());
 					}else{
-						MsgBox.showWarning(getplTables(), "六类公摊必须先设置项目系列");
+						MsgBox.showWarning(getplTables(), "公摊必须先设置项目系列");
 						e.setCanceled(true);
 					}
 				}
@@ -2446,7 +2446,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					if(v instanceof ProjectTypeInfo){
 						((TemplateMeasureCostPromptBox)my.getSelector()).setProjectTypeID(((ProjectTypeInfo)v).getId().toString());
 					}else{
-						MsgBox.showWarning(getplTables(), "六类公摊必须先设置项目系列");
+						MsgBox.showWarning(getplTables(), "公摊必须先设置项目系列");
 						e.setCanceled(true);
 					}
 				}
@@ -3877,7 +3877,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 						projectTypeId=((ProjectTypeInfo)v).getId().toString();
 						
 					}else{
-						MsgBox.showWarning(getplTables(), "六类公摊必须先设置项目系列");
+						MsgBox.showWarning(getplTables(), "公摊必须先设置项目系列");
 						e.setCanceled(true);
 						return;
 					}
@@ -4501,7 +4501,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		for(int i=3;i<tables.size();i++){
 			KDTable table=(KDTable) tables.get(i);
 			ProductTypeInfo product = (ProductTypeInfo) table.getHeadRow(0).getUserObject();
-			String productKey="六类公摊及期间费";
+			String productKey="公摊及期间费";
 			if(product!=null)productKey=product.getName();
 			for (int j = 0; j < table.getRowCount(); j++) {
 				IRow row = table.getRow(j);
@@ -4612,7 +4612,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		_builder.appendSql(" group by costAccount.flongNumber,costAccount.fname_l2,product.fname_l2");
 		rowSet = _builder.executeQuery();
 		while(rowSet.next()){
-			String productKey="六类公摊及期间费";
+			String productKey="公摊及期间费";
 			if(rowSet.getString("productKey")!=null)productKey=rowSet.getString("productKey");
 			String longNumber = rowSet.getString("longNumber").replaceAll("!", "\\.");
 			String name=rowSet.getString("name");
@@ -4667,7 +4667,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			MeasureEntryInfo nowMEntry=(MeasureEntryInfo) entryMap.get(entryKey[k]);
 			String nowNumber=nowMEntry.getCostAccount().getLongNumber().replaceAll("!", "\\.");
 			String nowName=nowMEntry.getCostAccount().getName();
-			String productKey="六类公摊及期间费";
+			String productKey="公摊及期间费";
 			if(nowMEntry.getProduct()!=null)productKey=nowMEntry.getProduct().getName();
 			
 			MeasureCostCompareInfo entry=new MeasureCostCompareInfo();
@@ -4711,7 +4711,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		PlanIndexEntryCollection ptCol=PlanIndexEntryFactory.getRemoteInstance().getPlanIndexEntryCollection("select product.name from where parent.headId='"+id+"' and product.id is not null");
 		initCompareTable("汇总");
-		initCompareTable("六类公摊及期间费");
+		initCompareTable("公摊及期间费");
 		for(int i=0;i<ptCol.size();i++){
 			initCompareTable(ptCol.get(i).getProduct().getName());
 		}
