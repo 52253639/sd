@@ -19,6 +19,7 @@ public class AbstractMeasureCostInfo extends com.kingdee.eas.fdc.basedata.FDCBil
         put("constrEntrys", new com.kingdee.eas.fdc.aimcost.ConstructPlanIndexEntryCollection());
         put("compareEntry", new com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection());
         put("costEntry", new com.kingdee.eas.fdc.aimcost.MeasureEntryCollection());
+        put("newPlanIndexEntry", new com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection());
     }
     /**
      * Object: 成本测算 's 工程项目 property 
@@ -185,6 +186,13 @@ public class AbstractMeasureCostInfo extends com.kingdee.eas.fdc.basedata.FDCBil
     public com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection getCompareEntry()
     {
         return (com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection)get("compareEntry");
+    }
+    /**
+     * Object: 成本测算 's 规划指标 property 
+     */
+    public com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection getNewPlanIndexEntry()
+    {
+        return (com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection)get("newPlanIndexEntry");
     }
     public BOSObjectType getBOSType()
     {

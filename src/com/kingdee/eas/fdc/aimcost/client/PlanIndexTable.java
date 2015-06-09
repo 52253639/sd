@@ -98,7 +98,7 @@ public class PlanIndexTable {
 	private MeasureCostInfo costInfo=null;
 	
 	public PlanIndexTable(PlanIndexInfo planIndexInfo,AimMeasureCostEditUI measureCostEditUI) throws EASBizException, BOSException{
-		table=new KDTable(17,1,0);
+		table=new KDTable(23,1,0);
 		table.setName("规划指标表");
 		initCtrlListener();
 		binder=new CellBinder();
@@ -160,33 +160,34 @@ public class PlanIndexTable {
 	}
 	
 	public void initTableForXU(PlanIndexInfo info){
-				((KDTTransferAction) table.getActionMap().get(KDTAction.PASTE)).setPasteMode(KDTEditHelper.VALUE);
-				table.getHeadRow(0).getCell(0).setValue("规划指标表");
-				table.getHeadRow(0).getCell(0).setUserObject("planIndex");
-				table.getColumn(3).setWidth(120);
-				table.getColumn(4).setWidth(120);
-				table.getColumn(7).setWidth(120);
-				table.getColumn(8).setWidth(150);
-				table.getColumn(10).setWidth(120);
-				table.getColumn(12).setWidth(120);
-				table.getColumn(14).setWidth(120);
-				initFixTableForXU(info);
-				initDynTable(info);
-				ICellEditor f7Editor = new KDTDefaultCellEditor(getF7productType());
-				table.getColumn(1).setEditor(f7Editor);
-				table.getCell(table.getRowCount()-1, 0).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
-				table.getColumn(1).getStyleAttributes().setNumberFormat("@");
-				
-				KDTextField textField=new  KDTextField();
-				textField.setMaxLength(255);
-				table.getColumn(15).setEditor(PlanIndexTable.getCheckBoxEdit());
-				table.getColumn(16).setEditor(new KDTDefaultCellEditor(textField));
+			((KDTTransferAction) table.getActionMap().get(KDTAction.PASTE)).setPasteMode(KDTEditHelper.VALUE);
+			table.getHeadRow(0).getCell(0).setValue("规划指标表");
+			table.getHeadRow(0).getCell(0).setUserObject("planIndex");
+			table.getColumn(3).setWidth(120);
+			table.getColumn(4).setWidth(120);
+			table.getColumn(6).setWidth(120);
+			table.getColumn(7).setWidth(120);
+			table.getColumn(10).setWidth(200);
+			table.getColumn(11).setWidth(150);
+			table.getColumn(12).setWidth(170);
+			table.getColumn(14).setWidth(150);
+			initFixTableForXU(info);
+			initDynTable(info);
+			ICellEditor f7Editor = new KDTDefaultCellEditor(getF7productType());
+			table.getColumn(1).setEditor(f7Editor);
+			table.getCell(table.getRowCount()-1, 0).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
+			table.getColumn(1).getStyleAttributes().setNumberFormat("@");
+			
+			KDTextField textField=new  KDTextField();
+			textField.setMaxLength(255);
+			table.getColumn(21).setEditor(PlanIndexTable.getCheckBoxEdit());
+			table.getColumn(22).setEditor(new KDTDefaultCellEditor(textField));
 //				reSetExpressions();
-				KDTEditEvent e=new KDTEditEvent(table, null,null, dynRowBase+1, 1,false,10000);
-				calc(e);
-				if(isHasSubTable()){
-					initSubTable(info);
-				}
+			KDTEditEvent e=new KDTEditEvent(table, null,null, dynRowBase+1, 1,false,10000);
+			calc(e);
+			if(isHasSubTable()){
+				initSubTable(info);
+			}
 			
 	}
 	public void initTable(PlanIndexInfo info){
@@ -405,51 +406,60 @@ public class PlanIndexTable {
 		table.addRows(10);
 		//绑定单元格
 		binder.bindCell(table, 0, 1,"用地面积(m2)"	,"totalContainArea",true);//jf总占地面积
-		binder.bindCell(table, 0, 4,"用地性质"	,"landUsage",false);
-		binder.bindCell(table, 0, 6,"代征用面积(m2)"	,"requisitionArea",true);
-		binder.bindCell(table, 0, 8,"建设用地面积(m2)","buildArea",true);
-		binder.bindCell(table, 0, 10,"住宅用地面积(m2)","houseArea",true);
-		binder.bindCell(table, 0, 12,"商办用地面积(m2)","commBuildArea",true);
-		binder.bindCell(table, 0, 14,"其他用地面积(m2)","otherArea",true);
+//		binder.bindCell(table, 0, 4,"用地性质"	,"landUsage",false);
+//		binder.bindCell(table, 0, 6,"代征用面积(m2)"	,"requisitionArea",true);
+//		binder.bindCell(table, 0, 8,"建设用地面积(m2)","buildArea",true);
+//		binder.bindCell(table, 0, 10,"住宅用地面积(m2)","houseArea",true);
+//		binder.bindCell(table, 0, 12,"商办用地面积(m2)","commBuildArea",true);
+//		binder.bindCell(table, 0, 14,"其他用地面积(m2)","otherArea",true);
 		
-		binder.bindCell(table, 1, 1,"容积率"	,"cubageRate",true);
-		binder.bindCell(table, 1, 4,"建筑密度"	,"buildDensity",true);
-		binder.bindCell(table, 1, 6,"绿地率"	,"greenAreaRate",true);
-		binder.bindCell(table, 1, 8,"计容积率面积(m2)(上限)","cubageRateArea",true);
-		binder.bindCell(table, 1, 10,"建筑限高(m)","maxHeight",true);
-		binder.bindCell(table, 1, 12,"停车位配比要求","parkingRequire",false);
+//		binder.bindCell(table, 1, 1,"容积率"	,"cubageRate",true);
+//		binder.bindCell(table, 1, 4,"建筑密度"	,"buildDensity",true);
+//		binder.bindCell(table, 1, 6,"绿地率"	,"greenAreaRate",true);
+//		binder.bindCell(table, 1, 8,"计容积率面积(m2)(上限)","cubageRateArea",true);
+//		binder.bindCell(table, 1, 10,"建筑限高(m)","maxHeight",true);
+//		binder.bindCell(table, 1, 12,"停车位配比要求","parkingRequire",false);
 		
-		binder.bindCell(table, 2, 1,"建筑面积(m2)"	,"totalBuildArea",true);//总建筑面积(m2)
-		binder.bindCell(table, 2, 4,"计容积率面积(m2)(实际)"	,"rateCoverbuildArea",true);
-		binder.bindCell(table, 2, 6,"地上建筑面积(m2)","groundBuildArea",true);
-		binder.bindCell(table, 2, 8,"地下建筑面积(m2)","underGroundBuildArea",true);
-//		binder.bindCell(table, 2, 8,"公共配套用房面积(m2)","publicSetHouse",true);
+		binder.bindCell(table, 1, 1,"建筑面积(m2)"	,"totalBuildArea",true);//总建筑面积(m2)
+//		binder.bindCell(table, 2, 4,"计容积率面积(m2)(实际)"	,"rateCoverbuildArea",true);
+//		binder.bindCell(table, 2, 6,"地上建筑面积(m2)","groundBuildArea",true);
+//		binder.bindCell(table, 2, 8,"地下建筑面积(m2)","underGroundBuildArea",true);
+////		binder.bindCell(table, 2, 8,"公共配套用房面积(m2)","publicSetHouse",true);
 		
-		binder.bindCell(table, 3, 1,"可售面积(m2)"	,"totalSellArea",true);
-		binder.bindCell(table, 3, 4,"测绘总建筑面积(m2)"	,"totalConstructArea",true);
-		binder.bindCell(table, 3, 6,"可售比"	,"saleRate",true);
-		
-		//空一行
-
-		binder.bindCell(table, 5, 1,"建筑物占地面积(m2)"	,"buildContainArea",true);
-		binder.bindCell(table, 5, 4,"景观面积(m2)"	,"sightSpotArea",true);
-		binder.bindCell(table, 5, 6,"精装修面积(m2)"	,"decorationArea",true);
-		binder.bindCell(table, 5, 8,"小区道路面积(m2)","roadArea",true);
-		
-		
-		binder.bindCell(table, 6, 1,"小区围墙长度(m)","lengthOfWall",true);
-		binder.bindCell(table, 6, 4,"大门数量"	,"doorNumber",false);
-		binder.bindCell(table, 6, 6,"硬地率"	,"rateOfHardFloor",true);
-		binder.bindCell(table, 6, 8,"地上停车位数量(个)"	,"groundparkCarNum",false);
-		binder.bindCell(table, 6, 10,"地下停车位数量(个)"	,"underGroundparkCarNum",false);
-		
-		binder.bindCell(table, 7, 1,"商业面积比%","commAreaRate",true);
-		binder.bindCell(table, 7, 4,"托儿所面积比%","nurseryAreaRate",true);
-		binder.bindCell(table, 7, 6,"精装房面积%","clothboundRoomRate",true);
-		binder.bindCell(table, 7, 8,"其它政府要求送的面积(m2)","giveArea",true);
-		
+		binder.bindCell(table, 2, 1,"可售面积(m2)"	,"totalSellArea",true);
+//		binder.bindCell(table, 3, 4,"测绘总建筑面积(m2)"	,"totalConstructArea",true);
+//		binder.bindCell(table, 3, 6,"可售比"	,"saleRate",true);
+//		
+//		//空一行
+//
+//		binder.bindCell(table, 5, 1,"建筑物占地面积(m2)"	,"buildContainArea",true);
+//		binder.bindCell(table, 5, 4,"景观面积(m2)"	,"sightSpotArea",true);
+//		binder.bindCell(table, 5, 6,"精装修面积(m2)"	,"decorationArea",true);
+//		binder.bindCell(table, 5, 8,"小区道路面积(m2)","roadArea",true);
+//		
+//		
+//		binder.bindCell(table, 6, 1,"小区围墙长度(m)","lengthOfWall",true);
+//		binder.bindCell(table, 6, 4,"大门数量"	,"doorNumber",false);
+//		binder.bindCell(table, 6, 6,"硬地率"	,"rateOfHardFloor",true);
+//		binder.bindCell(table, 6, 8,"地上停车位数量(个)"	,"groundparkCarNum",false);
+//		binder.bindCell(table, 6, 10,"地下停车位数量(个)"	,"underGroundparkCarNum",false);
+//		
+//		binder.bindCell(table, 7, 1,"商业面积比%","commAreaRate",true);
+//		binder.bindCell(table, 7, 4,"托儿所面积比%","nurseryAreaRate",true);
+//		binder.bindCell(table, 7, 6,"精装房面积%","clothboundRoomRate",true);
+//		binder.bindCell(table, 7, 8,"其它政府要求送的面积(m2)","giveArea",true);
+//		
 //		binder.bindCell(table, 5, 8,"地下室面积(m2)"	,"basementArea",true);
 		
+		setLockAndBk(0,3);
+		setLockAndBk(1,3);
+		setLockAndBk(2,3);
+		table.getRow(3).getStyleAttributes().setHided(true);
+		table.getRow(4).getStyleAttributes().setHided(true);
+		table.getRow(5).getStyleAttributes().setHided(true);
+		table.getRow(6).getStyleAttributes().setHided(true);
+		table.getRow(7).getStyleAttributes().setHided(true);
+				
 		//合并与锁定
 		KDTMergeManager mm = table.getMergeManager();
 		//合并前8行的（0，1）列，（3，4）列
@@ -475,21 +485,31 @@ public class PlanIndexTable {
 		//空一行,设置产品头
 		table.getCell(9, 0).setValue("产品构成");
 		table.getCell(9, 1).setValue("产品类型");
-		table.getCell(9, 2).setValue("占地面积");
-		table.getCell(9, 3).setValue("地上建筑面积");
-		table.getCell(9, 4).setValue("地下建筑面积");
-		table.getCell(9, 5).setValue("建筑面积");
-		table.getCell(9, 6).setValue("可售面积");
-		table.getCell(9, 7).setValue("产品比例");
-		table.getCell(9, 8).setValue("平均每户面积");
-		table.getCell(9, 9).setValue("电梯");
-		table.getCell(9, 10).setValue("层数");
-		table.getCell(9, 11).setValue("层高");
-		table.getCell(9, 12).setValue("幢数");
-		table.getCell(9, 13).setValue("单元数");
-		table.getCell(9, 14).setValue("户数");
-		table.getCell(9, 15).setValue("是否分摊");
-		table.getCell(9, 16).setValue("备注");
+		table.getCell(9, 2).setValue("占地面积(m2)");
+		table.getCell(9, 3).setValue("地上建筑面积(m2)");
+		table.getCell(9, 4).setValue("地下建筑面积(m2)");
+		table.getCell(9, 5).setValue("建筑面积(m2)");
+		
+		table.getCell(9, 6).setValue("赠送建筑面积(m2)");
+		table.getCell(9, 7).setValue("实际建设面积(m2)");
+		
+		table.getCell(9, 8).setValue("可售面积(m2)");
+		
+		table.getCell(9, 9).setValue("可租面积(m2)");
+		table.getCell(9, 10).setValue("地上可租售面积（产权面积）(m2)");
+		table.getCell(9, 11).setValue("公共区域精装面积(m2)");
+		table.getCell(9, 12).setValue("精装交付的可售面积面积(m2)");
+		
+		table.getCell(9, 13).setValue("产品比例");
+		table.getCell(9, 14).setValue("平均每户面积(m2)");
+		table.getCell(9, 15).setValue("电梯");
+		table.getCell(9, 16).setValue("层数");
+		table.getCell(9, 17).setValue("层高");
+		table.getCell(9, 18).setValue("幢数");
+		table.getCell(9, 19).setValue("单元数");
+		table.getCell(9, 20).setValue("户数");
+		table.getCell(9, 21).setValue("是否分摊");
+		table.getCell(9, 22).setValue("备注");
 		table.getRow(9).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
 		table.getRow(9).getStyleAttributes().setLocked(true);
 		table.getRow(9).getStyleAttributes().setBackground(new Color(0xF0EDD9));
@@ -522,14 +542,13 @@ public class PlanIndexTable {
 		if(info!=null)
 			binder.setCellsValue(info);
 	}
-	
 	private void  setLockAndBk(int row, int col ){
 		int i = row;
 		for(int j = col; j < 17 ;j++){
 			table.getCell(i, j).getStyleAttributes().setLocked(true);
-			table.getCell(i, j).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			table.getCell(i, j).getStyleAttributes().setBackground(new Color(15789529));
 		}
-		table.getMergeManager().mergeBlock(i, col, i, 16);
+		table.getMergeManager().mergeBlock(i, col, i, 22);
 	}
 	private void initDynTable(PlanIndexInfo info){
 		int base=dynRowBase;
@@ -597,10 +616,10 @@ public class PlanIndexTable {
 					row.getCell(3).setValue("地上建筑面积(m2)");
 					row.getCell(4).setValue("地下建筑面积(m2)");//jf
 					row.getCell(5).setValue("建筑面积(m2)");
-					row.getCell(6).setValue("可售面积(m2)");
-					row.getCell(7).setValue("车位数(个)");
-					row.getCell(8).setValue("可售车位数(个)");
-					row.getCell(9).setValue("车位数可售比");
+					row.getCell(8).setValue("可售面积(m2)");
+					row.getCell(13).setValue("车位数(个)");
+					row.getCell(14).setValue("可售车位数(个)");
+					row.getCell(15).setValue("车位数可售比");
 					StyleAttributes sa = row.getStyleAttributes();
 					sa.setHorizontalAlign(HorizontalAlignment.CENTER);
 					sa.setLocked(true);
@@ -631,21 +650,11 @@ public class PlanIndexTable {
 		StyleAttributes sa = row.getStyleAttributes();
 		if(isSubTotalRow(row)){
 			sa.getNumberFormat();
-			sa.setNumberFormat("#,##0.00;-#,##0.00");
 			sa.setHorizontalAlign(HorizontalAlignment.RIGHT);
 			sa.setLocked(true);
 			sa.setBackground(FDCTableHelper.yearTotalColor);
 			row.getCell(0).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.LEFT);
 			row.getCell(1).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.LEFT);
-			row.getCell(9).getStyleAttributes().setNumberFormat("");
-			row.getCell(10).getStyleAttributes().setNumberFormat("");
-			row.getCell(12).getStyleAttributes().setNumberFormat("");
-			row.getCell(13).getStyleAttributes().setNumberFormat("");
-			row.getCell(14).getStyleAttributes().setNumberFormat("");
-			if(row.getCell(0)!=null&&PlanIndexTypeEnum.parking.equals((PlanIndexTypeEnum)row.getCell(0).getValue())){
-				row.getCell(7).getStyleAttributes().setNumberFormat("");
-				row.getCell(8).getStyleAttributes().setNumberFormat("");
-			}
 			return;
 		}else if(isTotalRow(row)){
 			sa.setNumberFormat("#,##0.00;-#,##0.00");
@@ -655,7 +664,7 @@ public class PlanIndexTable {
 			return;
 		}
 		if(entry==null){
-			row.getCell(15).setValue(Boolean.FALSE);
+			row.getCell(21).setValue(Boolean.FALSE);
 			row.getCell(5).getStyleAttributes().setLocked(true);
 			row.getCell(5).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 		}else{
@@ -670,80 +679,87 @@ public class PlanIndexTable {
 			
 			row.getCell(2).setValue(entry.getContainArea());
 			row.getCell(3).setValue(entry.getGroundArea());
-			row.getCell(4).setValue(entry.getUnderGroundArea());//jf
+			row.getCell(4).setValue(entry.getUnderGroundArea());
 			row.getCell(5).setValue(entry.getBuildArea());
 			
 			row.getCell(5).getStyleAttributes().setLocked(true);
 			row.getCell(5).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 			
-			row.getCell(6).setValue(entry.getSellArea());
-			row.getCell(7).setValue(entry.getProductRate());
-			row.getCell(8).setValue(entry.getUnitArea());
+			row.getCell(6).setValue(entry.getGivingArea());
+			row.getCell(7).setValue(entry.getConstructArea());
+			
+			row.getCell(8).setValue(entry.getSellArea());
+			
+			row.getCell(9).setValue(entry.getRentArea());
+			row.getCell(10).setValue(entry.getGroundRentArea());
+			row.getCell(11).setValue(entry.getPublicArea());
+			row.getCell(12).setValue(entry.getDeliveryArea());
+			
+			row.getCell(13).setValue(entry.getProductRate());
+			row.getCell(14).setValue(entry.getUnitArea());
 			if(entry.getElevators()>0){
-				row.getCell(9).setValue(new Integer(entry.getElevators()));
+				row.getCell(15).setValue(new Integer(entry.getElevators()));
 			}
-			if(entry.getType()==PlanIndexTypeEnum.house || entry.getType()==PlanIndexTypeEnum.business){
+			if((PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.house || (PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.business
+					|| (PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.publicBuild){
 				if(entry.getFloors()>0){
-					row.getCell(10).setValue(new Integer(entry.getFloors()));
+					row.getCell(16).setValue(new Integer(entry.getFloors()));
 				}
-				row.getCell(11).setValue(entry.getFloorHeight());
+				row.getCell(17).setValue(entry.getFloorHeight());
 				//幢数
-				row.getCell(12).setValue(new Integer(entry.getBuild()));
-				row.getCell(13).setValue(entry.getUnits());
-				row.getCell(14).setValue(entry.getDoors());
-//				row.getCell(15).setValue(Boolean.valueOf(entry.isIsSplit()));
-				row.getCell(16).setValue(entry.getDesc());
+				row.getCell(18).setValue(new Integer(entry.getBuild()));
+				row.getCell(19).setValue(entry.getUnits());
+				row.getCell(20).setValue(entry.getDoors());
+				row.getCell(22).setValue(entry.getDesc());
 			}
-			row.getCell(15).setValue(Boolean.valueOf(entry.isIsSplit()));
-//			else if (entry.getType()==PlanIndexTypeEnum.parking){
-//				row.getCell(7).setValue(entry.getCubageRate());
-//				row.getCell(8).setValue(entry.getCubageRate());
-//				row.getCell(9).setValue(entry.getCubageRate());
-//			}
-			
-		
+			row.getCell(21).setValue(Boolean.valueOf(entry.isIsSplit()));
 		}
-		for(int i=2;i<15;i++){
-			sa=row.getCell(i).getStyleAttributes();
-			sa.setHorizontalAlign(HorizontalAlignment.RIGHT);
-			if((i==9&&(row.getCell(0)!=null&&!PlanIndexTypeEnum.parking.equals((PlanIndexTypeEnum)row.getCell(0).getValue()) ) || i==10 || i== 12 || i== 13 || i ==14 ||
-					(row.getCell(0)!=null&&PlanIndexTypeEnum.parking.equals((PlanIndexTypeEnum)row.getCell(0).getValue()) && (i == 7||i==8)))){
-				row.getCell(i).setEditor(CellBinder.getCellIntegerNumberEdit());
-			}else {
-				row.getCell(i).setEditor(CellBinder.getCellNumberEdit());
-				sa.setNumberFormat("#,##0.00;-#,##0.00");
-			}
-		}
-		boolean isPark=false;
-		if(row.getCell(0)!=null&&row.getCell(0).getValue() instanceof PlanIndexTypeEnum){
-			PlanIndexTypeEnum type=(PlanIndexTypeEnum)row.getCell(0).getValue();
-			if(type==PlanIndexTypeEnum.parking){
-				isPark=true;
-			}
+		if((PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.house || (PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.business
+				|| (PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.publicBuild){
+			row.getCell(13).getStyleAttributes().setLocked(true);
+			row.getCell(13).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 			
-			if(type==PlanIndexTypeEnum.parking||type==PlanIndexTypeEnum.publicBuild){
-				for(int i=10;i<table.getColumnCount()-2;i++){
-					row.getCell(i).getStyleAttributes().setLocked(true);
-					row.getCell(i).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-				}
-				
-			} else if (type == PlanIndexTypeEnum.house
-					|| (type == PlanIndexTypeEnum.business && (entry == null || entry
-							.getProduct() == null))) {//没有产品则认为空记录
-				// 住宅必需分摊,停车，公共配套建筑，商业(如上)分摊取自定义值
-				row.getCell(15).setValue(Boolean.TRUE);
-			}
-			
-			
-		}
-
-		if(!isPark){
+			row.getCell(14).getStyleAttributes().setLocked(true);
+			row.getCell(14).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+		}else{
+			row.getCell(6).getStyleAttributes().setLocked(true);
+			row.getCell(6).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 			row.getCell(7).getStyleAttributes().setLocked(true);
 			row.getCell(7).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-			row.getCell(8).getStyleAttributes().setLocked(true);
-			row.getCell(8).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			row.getCell(9).getStyleAttributes().setLocked(true);
+			row.getCell(9).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			row.getCell(10).getStyleAttributes().setLocked(true);
+			row.getCell(10).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			row.getCell(11).getStyleAttributes().setLocked(true);
+			row.getCell(11).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			row.getCell(12).getStyleAttributes().setLocked(true);
+			row.getCell(12).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			for(int i=16;i<table.getColumnCount()-2;i++){
+				row.getCell(i).getStyleAttributes().setLocked(true);
+				row.getCell(i).getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+			}
 		}
-		
+		for(int i=2;i<21;i++){
+			sa=row.getCell(i).getStyleAttributes();
+			sa.setHorizontalAlign(HorizontalAlignment.RIGHT);
+			
+			if((PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.house || (PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.business
+					|| (PlanIndexTypeEnum)row.getCell(0).getValue()==PlanIndexTypeEnum.publicBuild){
+				if(i==15||i==16||i==18||i==19||i==20){
+					row.getCell(i).setEditor(CellBinder.getCellIntegerNumberEdit());
+				}else{
+					row.getCell(i).setEditor(CellBinder.getCellNumberEdit());
+					sa.setNumberFormat("#,##0.00;-#,##0.00");
+				}
+			}else{
+				if(i==13||i==14||i==15){
+					row.getCell(i).setEditor(CellBinder.getCellIntegerNumberEdit());
+				}else{
+					row.getCell(i).setEditor(CellBinder.getCellNumberEdit());
+					sa.setNumberFormat("#,##0.00;-#,##0.00");
+				}
+			}
+		}
 		row.getCell(0).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.LEFT);
 		row.getCell(1).getStyleAttributes().setHorizontalAlign(HorizontalAlignment.LEFT);
 	}
@@ -1209,41 +1225,62 @@ public class PlanIndexTable {
 						entry.setBuildArea((BigDecimal)row.getCell(5).getValue());
 					}
 					if(row.getCell(6).getValue() instanceof BigDecimal){
-						entry.setSellArea((BigDecimal)row.getCell(6).getValue());
+						entry.setGivingArea((BigDecimal)row.getCell(6).getValue());
 					}
-					if(FDCHelper.toBigDecimal(row.getCell(7).getValue()) instanceof BigDecimal){
-						entry.setProductRate(FDCHelper.toBigDecimal(row.getCell(7).getValue()));//车位个数，产品比例
+					if(row.getCell(7).getValue() instanceof BigDecimal){
+						entry.setConstructArea((BigDecimal)row.getCell(7).getValue());
 					}
-					if(FDCHelper.toBigDecimal(row.getCell(8).getValue()) instanceof BigDecimal){
-						entry.setUnitArea(FDCHelper.toBigDecimal(row.getCell(8).getValue()));
-//						entry.setElevators(((Integer)row.getCell(8).getValue()).intValue());//电梯、可售车位数(个)
+					
+					if(row.getCell(8).getValue() instanceof BigDecimal){
+						entry.setSellArea((BigDecimal)row.getCell(8).getValue());
 					}
-					if(row.getCell(9).getValue() instanceof Integer){
-//						entry.setUnitArea(FDCHelper.toBigDecimal(row.getCell(9).getValue()));//平均每户面积、车位可售比
-						entry.setElevators(((Integer)row.getCell(9).getValue()).intValue());
+					
+					if(row.getCell(9).getValue() instanceof BigDecimal){
+						entry.setRentArea((BigDecimal)row.getCell(9).getValue());
 					}
-					if(row.getCell(10).getValue() instanceof Integer){
-						entry.setFloors(((Integer)row.getCell(10).getValue()).intValue());
+					if(row.getCell(10).getValue() instanceof BigDecimal){
+						entry.setGroundRentArea((BigDecimal)row.getCell(10).getValue());
 					}
 					if(row.getCell(11).getValue() instanceof BigDecimal){
-						entry.setFloorHeight((BigDecimal)row.getCell(11).getValue());
+						entry.setPublicArea((BigDecimal)row.getCell(11).getValue());
+					}
+					if(row.getCell(12).getValue() instanceof BigDecimal){
+						entry.setDeliveryArea((BigDecimal)row.getCell(12).getValue());
+					}
+					
+					if(FDCHelper.toBigDecimal(row.getCell(13).getValue()) instanceof BigDecimal){
+						entry.setProductRate(FDCHelper.toBigDecimal(row.getCell(13).getValue()));//车位个数，产品比例
+					}
+					if(FDCHelper.toBigDecimal(row.getCell(14).getValue()) instanceof BigDecimal){
+						entry.setUnitArea(FDCHelper.toBigDecimal(row.getCell(14).getValue()));
+//						entry.setElevators(((Integer)row.getCell(8).getValue()).intValue());//电梯、可售车位数(个)
+					}
+					if(row.getCell(15).getValue() instanceof Integer){
+//						entry.setUnitArea(FDCHelper.toBigDecimal(row.getCell(9).getValue()));//平均每户面积、车位可售比
+						entry.setElevators(((Integer)row.getCell(15).getValue()).intValue());
+					}
+					if(row.getCell(16).getValue() instanceof Integer){
+						entry.setFloors(((Integer)row.getCell(16).getValue()).intValue());
+					}
+					if(row.getCell(17).getValue() instanceof BigDecimal){
+						entry.setFloorHeight((BigDecimal)row.getCell(17).getValue());
 					}
 				
-					if(row.getCell(12).getValue() instanceof Integer){
-						entry.setBuild(((Integer)row.getCell(12).getValue()).intValue());
+					if(row.getCell(18).getValue() instanceof Integer){
+						entry.setBuild(((Integer)row.getCell(18).getValue()).intValue());
 					}
-					if(row.getCell(13).getValue() instanceof BigDecimal){
-						entry.setUnits((BigDecimal) row.getCell(13).getValue());
+					if(row.getCell(19).getValue() instanceof Integer){
+						entry.setUnits(new BigDecimal(row.getCell(19).getValue().toString()));
 					}
-					if(row.getCell(14).getValue() instanceof BigDecimal){
-						entry.setDoors((BigDecimal)row.getCell(14).getValue());
+					if(row.getCell(20).getValue() instanceof Integer){
+						entry.setDoors(new BigDecimal(row.getCell(20).getValue().toString()));
 					}
-					if(row.getCell(15).getValue() instanceof Boolean){
-						entry.setIsSplit(((Boolean)row.getCell(15).getValue()).booleanValue());
+					if(row.getCell(21).getValue() instanceof Boolean){
+						entry.setIsSplit(((Boolean)row.getCell(21).getValue()).booleanValue());
 					}else{
 						entry.setIsSplit(false);
 					}
-					entry.setDesc((String)row.getCell(16).getValue());
+					entry.setDesc((String)row.getCell(22).getValue());
 					entry.setParent(planIndexInfo);
 					planIndexInfo.getEntrys().add(entry);
 				}
@@ -1616,20 +1653,11 @@ public class PlanIndexTable {
 	 * 占地面积
 	 */
 	private int containAreaColummnIndex=2;
-	/**
-	 * 容积率面积
-	 */
-	private int cubageRateColummnIndex=30;
-	
 	
 	/**
 	 * 地上建筑面积
 	 */
 	private int groundAreaColummnIndex=3;
-	/**
-	 * 规划建筑面积
-	 */
-	private int constructAreaColumnIndex=40;
 	
 	/**
 	 * 地下建筑面积
@@ -1639,59 +1667,85 @@ public class PlanIndexTable {
 	 * 建筑面积
 	 */
 	private int buildAreaColummnIndex=5;
+	
+	/**
+	 * 赠送建筑面积
+	 */
+	private int givingAreaColummnIndex=6;
+	
+	/**
+	 * 实际建设面积
+	 */
+	private int constructAreaColummnIndex=7;
 	/**
 	 * 可售面积
 	 */
-	private int sellAreaColummnIndex=6;
+	private int sellAreaColummnIndex=8;
+	/**
+	 * 可租面积
+	 */
+	private int rentAreaColummnIndex=9;
+	/**
+	 * 地上可租售面积
+	 */
+	private int groundRentAreaColummnIndex=10;
+	/**
+	 * 公共区域精装面积
+	 */
+	private int publicAreaColummnIndex=11;
+	/**
+	 * 精装交付的可售面积面积
+	 */
+	private int deliveryAreaColummnIndex=12;
 	/**
 	 * 产品比例
 	 */
-	private int productRateColummnIndex=7;
+	private int productRateColummnIndex=13;
 	/**
 	 * 平均每户面积
 	 */
-	private int avgHuColummnIndex=8;
+	private int avgHuColummnIndex=14;
 	/**
 	 * 电梯
 	 */
-	private int elevatorsIndex=9;
+	private int elevatorsIndex=15;
 	/**
 	 * 楼层
 	 */
-	private int floorsIndex=10;
+	private int floorsIndex=16;
 	/**
 	 * 层高
 	 */
-	private int floorHeightIndex=11;
+	private int floorHeightIndex=17;
 	
 	/**
 	 * 幢数
 	 */
-	private int buildColummnIndex=12;
+	private int buildColummnIndex=18;
 	/**
 	 * 单元数
 	 */
-	private int unitColummnIndex=13;
+	private int unitColummnIndex=19;
 	/**
 	 * 户数
 	 */
-	private int huColummnIndex=14;
+	private int huColummnIndex=20;
 	/**
 	 * 是否分摊
 	 */
-	private int splitColummnIndex=15;
+	private int splitColummnIndex=21;
 	/**
 	 * 备注
 	 */
-	private int descColummnIndex=16;
+	private int descColummnIndex=22;
 	/**
 	 * 车位数
 	 */
-	private int parksColummnIndex=7;
+	private int parksColummnIndex=13;
 	/**
 	 * 可售车位数(个)
 	 */
-	private int sellParksColummnIndex=8;
+	private int sellParksColummnIndex=14;
 	/**
 	 * 住宅小计行
 	 */
@@ -1718,9 +1772,10 @@ public class PlanIndexTable {
 		//占地面积
 		totalContainAreaCell=table.getCell(0, 2);
 		//建筑面积
-		totalBuildAreaCell=table.getCell(2,2);	
+		totalBuildAreaCell=table.getCell(1,2);	
 		
-		totalSellAreaCell = table.getCell(3, 2);
+		totalSellAreaCell = table.getCell(2, 2);
+		
 		totalGroundAreaCell = table.getCell(2, 7);
 		totalUnderGroundAreaCell = table.getCell(2, 9);
 		
@@ -1869,87 +1924,41 @@ public class PlanIndexTable {
 					BigDecimal buildArea = FDCNumberHelper.toBigDecimal(
 							table.getCell(i, buildAreaColummnIndex).getValue());
 					if(changedCol == 2){
-//						BigDecimal tmpCubRate = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(buildArea)){
-//							tmpCubRate = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(), 
-//									table.getCell(i,containAreaColummnIndex).getValue());
-//							table.getCell(i, cubageRateColummnIndex).setValue(tmpCubRate);
-//						}
-//						else {
-//							tmpCubRate = FDCNumberHelper.multiply(
-//									table.getCell(i, containAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, buildAreaColummnIndex).setValue(tmpCubRate);
-//						}
 						
 					}else if(changedCol == 3){
 						BigDecimal tmpConArea = FDCNumberHelper.add(table.getCell(i, groundAreaColummnIndex).getValue()
 								, table.getCell(i, underGroundAreaColummnIndex).getValue());
-//						if(!FDCHelper.isNullZero(buildArea)){
-//							tmpConArea = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, containAreaColummnIndex).setValue(tmpConArea);
-//						}else{
-//							tmpConArea = FDCNumberHelper.multiply(
-//									table.getCell(i, containAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
 							table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea!=null?tmpConArea:FDCHelper.ZERO);
-//						}
 					}else if(changedCol == 4){
 						BigDecimal tmpConArea = FDCNumberHelper.add(table.getCell(i, groundAreaColummnIndex).getValue()
 								, table.getCell(i, underGroundAreaColummnIndex).getValue());
 						table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea!=null?tmpConArea:FDCHelper.ZERO);
 					}
-//					else if(changedCol == 5){
-//						BigDecimal tmpConArea = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(
-//								FDCNumberHelper.toBigDecimal(
-//										table.getCell(i, cubageRateColummnIndex).getValue()))){
-//							tmpConArea = FDCNumberHelper.divide(
-//								table.getCell(i, buildAreaColummnIndex).getValue(),
-//								table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, containAreaColummnIndex).setValue(tmpConArea);
-//						}else{
-//							tmpConArea = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(),
-//									table.getCell(i, containAreaColummnIndex).getValue());
-//								table.getCell(i, cubageRateColummnIndex).setValue(tmpConArea);
-//						}
-//					}
 					BigDecimal tmp = FDCHelper.ZERO;
 					tmp=FDCNumberHelper.divide(table.getCell(i, sellAreaColummnIndex).getValue(), table.getCell(i, huColummnIndex).getValue());
 					table.getCell(i, avgHuColummnIndex).setValue(tmp);
 				}
-//				sumMap.put("cubageRate", FDCNumberHelper.add(sumMap.get("cubageRate"), table.getCell(i, cubageRateColummnIndex).getValue()));
 				sumMap.put("containArea", FDCNumberHelper.add(sumMap.get("containArea"), table.getCell(i, containAreaColummnIndex).getValue()));
-				//地上建筑面积
 				sumMap.put("groundArea", FDCNumberHelper.add(sumMap.get("groundArea"), table.getCell(i, groundAreaColummnIndex).getValue()));
-				//地下建筑面积
 				sumMap.put("underGroundArea", FDCNumberHelper.add(sumMap.get("underGroundArea"), table.getCell(i, underGroundAreaColummnIndex).getValue()));
-//				sumMap.put("constructArea", FDCNumberHelper.add(sumMap.get("constructArea"), table.getCell(i, constructAreaColumnIndex).getValue()));//jf
 				sumMap.put("buildArea", FDCNumberHelper.add(sumMap.get("buildArea"), table.getCell(i, buildAreaColummnIndex).getValue()));
+				
+				sumMap.put("givingArea", FDCNumberHelper.add(sumMap.get("givingArea"), table.getCell(i, givingAreaColummnIndex).getValue()));
+				sumMap.put("constructArea", FDCNumberHelper.add(sumMap.get("constructArea"), table.getCell(i, constructAreaColummnIndex).getValue()));
+				
 				sumMap.put("sellArea", FDCNumberHelper.add(sumMap.get("sellArea"), table.getCell(i, sellAreaColummnIndex).getValue()));
+				
+				sumMap.put("rentArea", FDCNumberHelper.add(sumMap.get("rentArea"), table.getCell(i, rentAreaColummnIndex).getValue()));
+				sumMap.put("groundRentArea", FDCNumberHelper.add(sumMap.get("groundRentArea"), table.getCell(i, groundRentAreaColummnIndex).getValue()));
+				sumMap.put("publicArea", FDCNumberHelper.add(sumMap.get("publicArea"), table.getCell(i, publicAreaColummnIndex).getValue()));
+				sumMap.put("deliveryArea", FDCNumberHelper.add(sumMap.get("deliveryArea"), table.getCell(i, deliveryAreaColummnIndex).getValue()));
+				
 				sumMap.put("elevators", FDCNumberHelper.add(sumMap.get("elevators"), table.getCell(i, elevatorsIndex).getValue()));
 				sumMap.put("floors", FDCNumberHelper.add(sumMap.get("floors"), table.getCell(i, floorsIndex).getValue()));
 				sumMap.put("floorHeight", FDCNumberHelper.add(sumMap.get("floorHeight"), table.getCell(i, floorHeightIndex).getValue()));
 				sumMap.put("unit", FDCNumberHelper.add(sumMap.get("unit"), table.getCell(i, unitColummnIndex).getValue()));
 				sumMap.put("hu", FDCNumberHelper.add(sumMap.get("hu"), table.getCell(i, huColummnIndex).getValue()));
 				sumMap.put("build", FDCNumberHelper.add(sumMap.get("build"), table.getCell(i, buildColummnIndex).getValue()));
-				
-				
-				
-//				tmp = FDCNumberHelper.divide(table.getCell(i, buildAreaColummnIndex).getValue(), table.getCell(i, cubageRateColummnIndex).getValue());
-//				table.getCell(i, containAreaColummnIndex).setValue(tmp);
-//				tmp=FDCNumberHelper.divide(table.getCell(i, sellAreaColummnIndex).getValue(), table.getCell(i, huColummnIndex).getValue());
-//				table.getCell(i, avgHuColummnIndex).setValue(tmp);
-//				sumMap.put("containArea", FDCNumberHelper.add(sumMap.get("containArea"), table.getCell(i, containAreaColummnIndex).getValue()));
-//				sumMap.put("buildArea", FDCNumberHelper.add(sumMap.get("buildArea"), table.getCell(i, buildAreaColummnIndex).getValue()));
-//				sumMap.put("sellArea", FDCNumberHelper.add(sumMap.get("sellArea"), table.getCell(i, sellAreaColummnIndex).getValue()));
-//				sumMap.put("unit", FDCNumberHelper.add(sumMap.get("unit"), table.getCell(i, unitColummnIndex).getValue()));
-//				sumMap.put("hu", FDCNumberHelper.add(sumMap.get("hu"), table.getCell(i, huColummnIndex).getValue()));
-				
 				
 			}
 			//产品比例
@@ -1976,7 +1985,17 @@ public class PlanIndexTable {
 			table.getCell(houseSubIndex, buildColummnIndex).setValue(sumMap.get("build"));
 			
 			table.getCell(houseSubIndex, buildAreaColummnIndex).setValue(sumMap.get("buildArea"));
+			
+			table.getCell(houseSubIndex, givingAreaColummnIndex).setValue(sumMap.get("givingArea"));
+			table.getCell(houseSubIndex, constructAreaColummnIndex).setValue(sumMap.get("constructArea"));
+			
 			table.getCell(houseSubIndex, sellAreaColummnIndex).setValue(sumMap.get("sellArea"));
+			
+			table.getCell(houseSubIndex, rentAreaColummnIndex).setValue(sumMap.get("rentArea"));
+			table.getCell(houseSubIndex, groundRentAreaColummnIndex).setValue(sumMap.get("groundRentArea"));
+			table.getCell(houseSubIndex, publicAreaColummnIndex).setValue(sumMap.get("publicArea"));
+			table.getCell(houseSubIndex, deliveryAreaColummnIndex).setValue(sumMap.get("deliveryArea"));
+			
 			table.getCell(houseSubIndex, elevatorsIndex).setValue(sumMap.get("elevators"));
 //			table.getCell(houseSubIndex, floorsIndex).setValue(sumMap.get("floors"));
 //			table.getCell(houseSubIndex, floorHeightIndex).setValue(sumMap.get("floorHeight"));
@@ -1997,82 +2016,68 @@ public class PlanIndexTable {
 					BigDecimal buildArea = FDCNumberHelper.toBigDecimal(
 							table.getCell(i, buildAreaColummnIndex).getValue());
 					if(changedCol == 2){
-//						BigDecimal tmpCubRate = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(buildArea)){
-//							tmpCubRate = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(), 
-//									table.getCell(i,containAreaColummnIndex).getValue());
-//							table.getCell(i, cubageRateColummnIndex).setValue(tmpCubRate);
-//						}
-//						else {
-//							tmpCubRate = FDCNumberHelper.multiply(
-//									table.getCell(i, containAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, buildAreaColummnIndex).setValue(tmpCubRate);
-//						}
-						
 					}else if(changedCol == 3){
 						BigDecimal tmpConArea = FDCNumberHelper.add(table.getCell(i, groundAreaColummnIndex).getValue()
 								, table.getCell(i, underGroundAreaColummnIndex).getValue());
 						table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea!=null?tmpConArea:FDCHelper.ZERO);
-//						BigDecimal tmpConArea = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(buildArea)){
-//							tmpConArea = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, containAreaColummnIndex).setValue(tmpConArea);
-//						}else{
-//							tmpConArea = FDCNumberHelper.multiply(
-//									table.getCell(i, containAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea);
-//						}
 					}else if(changedCol == 4){
 						BigDecimal tmpConArea = FDCNumberHelper.add(table.getCell(i, groundAreaColummnIndex).getValue()
 								, table.getCell(i, underGroundAreaColummnIndex).getValue());
 						table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea!=null?tmpConArea:FDCHelper.ZERO);
-//						BigDecimal tmpConArea = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(
-//								FDCNumberHelper.toBigDecimal(
-//										table.getCell(i, cubageRateColummnIndex).getValue()))){
-//							tmpConArea = FDCNumberHelper.divide(
-//								table.getCell(i, buildAreaColummnIndex).getValue(),
-//								table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, containAreaColummnIndex).setValue(tmpConArea);
-//						}else{
-//							tmpConArea = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(),
-//									table.getCell(i, containAreaColummnIndex).getValue());
-//								table.getCell(i, cubageRateColummnIndex).setValue(tmpConArea);
-//						}
 					}
 					tmp=FDCNumberHelper.divide(table.getCell(i, sellAreaColummnIndex).getValue(), table.getCell(i, huColummnIndex).getValue());
 					table.getCell(i, avgHuColummnIndex).setValue(tmp);
 				}
 				sumMap.put("containArea", FDCNumberHelper.add(sumMap.get("containArea"), table.getCell(i, containAreaColummnIndex).getValue()));
-//				sumMap.put("constructArea", FDCNumberHelper.add(sumMap.get("constructArea"), table.getCell(i, constructAreaColumnIndex).getValue()));
-				sumMap.put("elevators", FDCNumberHelper.add(sumMap.get("elevators"), table.getCell(i, elevatorsIndex).getValue()));
+				sumMap.put("groundArea", FDCNumberHelper.add(sumMap.get("groundArea"), table.getCell(i, groundAreaColummnIndex).getValue()));
+				sumMap.put("underGroundArea", FDCNumberHelper.add(sumMap.get("underGroundArea"), table.getCell(i, underGroundAreaColummnIndex).getValue()));
 				sumMap.put("buildArea", FDCNumberHelper.add(sumMap.get("buildArea"), table.getCell(i, buildAreaColummnIndex).getValue()));
+				
+				sumMap.put("givingArea", FDCNumberHelper.add(sumMap.get("givingArea"), table.getCell(i, givingAreaColummnIndex).getValue()));
+				sumMap.put("constructArea", FDCNumberHelper.add(sumMap.get("constructArea"), table.getCell(i, constructAreaColummnIndex).getValue()));
+				
 				sumMap.put("sellArea", FDCNumberHelper.add(sumMap.get("sellArea"), table.getCell(i, sellAreaColummnIndex).getValue()));
+				
+				sumMap.put("rentArea", FDCNumberHelper.add(sumMap.get("rentArea"), table.getCell(i, rentAreaColummnIndex).getValue()));
+				sumMap.put("groundRentArea", FDCNumberHelper.add(sumMap.get("groundRentArea"), table.getCell(i, groundRentAreaColummnIndex).getValue()));
+				sumMap.put("publicArea", FDCNumberHelper.add(sumMap.get("publicArea"), table.getCell(i, publicAreaColummnIndex).getValue()));
+				sumMap.put("deliveryArea", FDCNumberHelper.add(sumMap.get("deliveryArea"), table.getCell(i, deliveryAreaColummnIndex).getValue()));
+				
+				sumMap.put("elevators", FDCNumberHelper.add(sumMap.get("elevators"), table.getCell(i, elevatorsIndex).getValue()));
+				sumMap.put("floors", FDCNumberHelper.add(sumMap.get("floors"), table.getCell(i, floorsIndex).getValue()));
+				sumMap.put("floorHeight", FDCNumberHelper.add(sumMap.get("floorHeight"), table.getCell(i, floorHeightIndex).getValue()));
 				sumMap.put("unit", FDCNumberHelper.add(sumMap.get("unit"), table.getCell(i, unitColummnIndex).getValue()));
 				sumMap.put("hu", FDCNumberHelper.add(sumMap.get("hu"), table.getCell(i, huColummnIndex).getValue()));
 				sumMap.put("build", FDCNumberHelper.add(sumMap.get("build"), table.getCell(i, buildColummnIndex).getValue()));
-				//地上建筑面积,地下建筑面积
-				sumMap.put("groundArea", FDCNumberHelper.add(sumMap.get("groundArea"), table.getCell(i, groundAreaColummnIndex).getValue()));
-				sumMap.put("underGroundArea", FDCNumberHelper.add(sumMap.get("underGroundArea"), table.getCell(i, underGroundAreaColummnIndex).getValue()));
 			}
 			table.getCell(businessSubIndex, containAreaColummnIndex).setValue(sumMap.get("containArea"));
-			table.getCell(businessSubIndex, buildAreaColummnIndex).setValue(sumMap.get("buildArea"));
-			table.getCell(businessSubIndex, sellAreaColummnIndex).setValue(sumMap.get("sellArea"));
-			table.getCell(businessSubIndex, unitColummnIndex).setValue(sumMap.get("unit"));
-			table.getCell(businessSubIndex, huColummnIndex).setValue(sumMap.get("hu"));
-			table.getCell(businessSubIndex, elevatorsIndex).setValue(sumMap.get("elevators"));
+			//小计
+			table.getCell(businessSubIndex, containAreaColummnIndex).setValue(sumMap.get("containArea"));
 			//地上建筑面积
 			table.getCell(businessSubIndex, groundAreaColummnIndex).setValue(sumMap.get("groundArea"));
 			table.getCell(businessSubIndex, underGroundAreaColummnIndex).setValue(sumMap.get("underGroundArea"));
 			table.getCell(businessSubIndex, buildColummnIndex).setValue(sumMap.get("build"));
+			
+			table.getCell(businessSubIndex, buildAreaColummnIndex).setValue(sumMap.get("buildArea"));
+			
+			table.getCell(businessSubIndex, givingAreaColummnIndex).setValue(sumMap.get("givingArea"));
+			table.getCell(businessSubIndex, constructAreaColummnIndex).setValue(sumMap.get("constructArea"));
+			
+			table.getCell(businessSubIndex, sellAreaColummnIndex).setValue(sumMap.get("sellArea"));
+			
+			table.getCell(businessSubIndex, rentAreaColummnIndex).setValue(sumMap.get("rentArea"));
+			table.getCell(businessSubIndex, groundRentAreaColummnIndex).setValue(sumMap.get("groundRentArea"));
+			table.getCell(businessSubIndex, publicAreaColummnIndex).setValue(sumMap.get("publicArea"));
+			table.getCell(businessSubIndex, deliveryAreaColummnIndex).setValue(sumMap.get("deliveryArea"));
+			
+			table.getCell(businessSubIndex, elevatorsIndex).setValue(sumMap.get("elevators"));
+//			table.getCell(businessSubIndex, floorsIndex).setValue(sumMap.get("floors"));
+//			table.getCell(businessSubIndex, floorHeightIndex).setValue(sumMap.get("floorHeight"));
+			table.getCell(businessSubIndex, unitColummnIndex).setValue(sumMap.get("unit"));
+			table.getCell(businessSubIndex, huColummnIndex).setValue(sumMap.get("hu"));
+			table.getCell(businessSubIndex, productRateColummnIndex).setValue(FDCNumberHelper.ONE);
 			//容积率小计＝建筑面积小计/占地面积小计
-//			table.getCell(businessSubIndex, cubageRateColummnIndex).setValue(FDCNumberHelper.divide(sumMap.get("buildArea"), sumMap.get("containArea")));
+//			table.getCell(houseSubIndex, cubageRateColummnIndex).setValue(FDCNumberHelper.divide(sumMap.get("buildArea"), sumMap.get("containArea")));
 			//平均每户面积小计＝可售面积小计/户数小计
 			table.getCell(businessSubIndex, avgHuColummnIndex).setValue(FDCNumberHelper.divide(sumMap.get("sellArea"), sumMap.get("hu")));
 			
@@ -2084,73 +2089,69 @@ public class PlanIndexTable {
 					BigDecimal buildArea = FDCNumberHelper.toBigDecimal(
 							table.getCell(i, buildAreaColummnIndex).getValue());
 					if(changedCol == 2){
-//						BigDecimal tmpCubRate = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(buildArea)){
-//							tmpCubRate = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(), 
-//									table.getCell(i,containAreaColummnIndex).getValue());
-//							table.getCell(i, cubageRateColummnIndex).setValue(tmpCubRate);
-//						}
-//						else {
-//							tmpCubRate = FDCNumberHelper.multiply(
-//									table.getCell(i, containAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, buildAreaColummnIndex).setValue(tmpCubRate);
-//						}
-						
 					}else if(changedCol == 3){
 						BigDecimal tmpConArea = FDCNumberHelper.add(table.getCell(i, groundAreaColummnIndex).getValue()
 								, table.getCell(i, underGroundAreaColummnIndex).getValue());
 						table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea!=null?tmpConArea:FDCHelper.ZERO);
-//						BigDecimal tmpConArea = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(buildArea)){
-//							tmpConArea = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, containAreaColummnIndex).setValue(tmpConArea);
-//						}else{
-//							tmpConArea = FDCNumberHelper.multiply(
-//									table.getCell(i, containAreaColummnIndex).getValue(),
-//									table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea);
-//						}
 					}else if(changedCol == 4){
 						BigDecimal tmpConArea = FDCNumberHelper.add(table.getCell(i, groundAreaColummnIndex).getValue()
 								, table.getCell(i, underGroundAreaColummnIndex).getValue());
 						table.getCell(i, buildAreaColummnIndex).setValue(tmpConArea!=null?tmpConArea:FDCHelper.ZERO);
-//						BigDecimal tmpConArea = FDCHelper.ZERO;
-//						if(!FDCHelper.isNullZero(
-//								FDCNumberHelper.toBigDecimal(
-//										table.getCell(i, cubageRateColummnIndex).getValue()))){
-//							tmpConArea = FDCNumberHelper.divide(
-//								table.getCell(i, buildAreaColummnIndex).getValue(),
-//								table.getCell(i, cubageRateColummnIndex).getValue());
-//							table.getCell(i, containAreaColummnIndex).setValue(tmpConArea);
-//						}else{
-//							tmpConArea = FDCNumberHelper.divide(
-//									table.getCell(i, buildAreaColummnIndex).getValue(),
-//									table.getCell(i, containAreaColummnIndex).getValue());
-//								table.getCell(i, cubageRateColummnIndex).setValue(tmpConArea);
-//						}
 					}
 				}
 				sumMap.put("containArea", FDCNumberHelper.add(sumMap.get("containArea"), table.getCell(i, containAreaColummnIndex).getValue()));
-//				sumMap.put("constructArea", FDCNumberHelper.add(sumMap.get("constructArea"), table.getCell(i, constructAreaColumnIndex).getValue()));
-				sumMap.put("buildArea", FDCNumberHelper.add(sumMap.get("buildArea"), table.getCell(i, buildAreaColummnIndex).getValue()));
-				sumMap.put("sellArea", FDCNumberHelper.add(sumMap.get("sellArea"), table.getCell(i, sellAreaColummnIndex).getValue()));
-				//地上建筑面积
 				sumMap.put("groundArea", FDCNumberHelper.add(sumMap.get("groundArea"), table.getCell(i, groundAreaColummnIndex).getValue()));
-				//地下建筑面积
 				sumMap.put("underGroundArea", FDCNumberHelper.add(sumMap.get("underGroundArea"), table.getCell(i, underGroundAreaColummnIndex).getValue()));
+				sumMap.put("buildArea", FDCNumberHelper.add(sumMap.get("buildArea"), table.getCell(i, buildAreaColummnIndex).getValue()));
+				
+				sumMap.put("givingArea", FDCNumberHelper.add(sumMap.get("givingArea"), table.getCell(i, givingAreaColummnIndex).getValue()));
+				sumMap.put("constructArea", FDCNumberHelper.add(sumMap.get("constructArea"), table.getCell(i, constructAreaColummnIndex).getValue()));
+				
+				sumMap.put("sellArea", FDCNumberHelper.add(sumMap.get("sellArea"), table.getCell(i, sellAreaColummnIndex).getValue()));
+				
+				sumMap.put("rentArea", FDCNumberHelper.add(sumMap.get("rentArea"), table.getCell(i, rentAreaColummnIndex).getValue()));
+				sumMap.put("groundRentArea", FDCNumberHelper.add(sumMap.get("groundRentArea"), table.getCell(i, groundRentAreaColummnIndex).getValue()));
+				sumMap.put("publicArea", FDCNumberHelper.add(sumMap.get("publicArea"), table.getCell(i, publicAreaColummnIndex).getValue()));
+				sumMap.put("deliveryArea", FDCNumberHelper.add(sumMap.get("deliveryArea"), table.getCell(i, deliveryAreaColummnIndex).getValue()));
+				
+				sumMap.put("elevators", FDCNumberHelper.add(sumMap.get("elevators"), table.getCell(i, elevatorsIndex).getValue()));
+				sumMap.put("floors", FDCNumberHelper.add(sumMap.get("floors"), table.getCell(i, floorsIndex).getValue()));
+				sumMap.put("floorHeight", FDCNumberHelper.add(sumMap.get("floorHeight"), table.getCell(i, floorHeightIndex).getValue()));
+				sumMap.put("unit", FDCNumberHelper.add(sumMap.get("unit"), table.getCell(i, unitColummnIndex).getValue()));
+				sumMap.put("hu", FDCNumberHelper.add(sumMap.get("hu"), table.getCell(i, huColummnIndex).getValue()));
+				sumMap.put("build", FDCNumberHelper.add(sumMap.get("build"), table.getCell(i, buildColummnIndex).getValue()));
 			}
 			table.getCell(publicSubIndex, containAreaColummnIndex).setValue(sumMap.get("containArea"));
-//			table.getCell(publicSubIndex, constructAreaColumnIndex).setValue(sumMap.get("constructArea"));//jf
-			table.getCell(publicSubIndex, buildAreaColummnIndex).setValue(sumMap.get("buildArea"));
-			table.getCell(publicSubIndex, sellAreaColummnIndex).setValue(sumMap.get("sellArea"));
-//			table.getCell(publicSubIndex, cubageRateColummnIndex).setValue(FDCNumberHelper.divide(sumMap.get("buildArea"), sumMap.get("containArea")));
+			//小计
+			table.getCell(publicSubIndex, containAreaColummnIndex).setValue(sumMap.get("containArea"));
 			//地上建筑面积
 			table.getCell(publicSubIndex, groundAreaColummnIndex).setValue(sumMap.get("groundArea"));
 			table.getCell(publicSubIndex, underGroundAreaColummnIndex).setValue(sumMap.get("underGroundArea"));
+			table.getCell(publicSubIndex, buildColummnIndex).setValue(sumMap.get("build"));
+			
+			table.getCell(publicSubIndex, buildAreaColummnIndex).setValue(sumMap.get("buildArea"));
+			
+			table.getCell(publicSubIndex, givingAreaColummnIndex).setValue(sumMap.get("givingArea"));
+			table.getCell(publicSubIndex, constructAreaColummnIndex).setValue(sumMap.get("constructArea"));
+			
+			table.getCell(publicSubIndex, sellAreaColummnIndex).setValue(sumMap.get("sellArea"));
+			
+			table.getCell(publicSubIndex, rentAreaColummnIndex).setValue(sumMap.get("rentArea"));
+			table.getCell(publicSubIndex, groundRentAreaColummnIndex).setValue(sumMap.get("groundRentArea"));
+			table.getCell(publicSubIndex, publicAreaColummnIndex).setValue(sumMap.get("publicArea"));
+			table.getCell(publicSubIndex, deliveryAreaColummnIndex).setValue(sumMap.get("deliveryArea"));
+			
+			table.getCell(publicSubIndex, elevatorsIndex).setValue(sumMap.get("elevators"));
+//			table.getCell(publicSubIndex, floorsIndex).setValue(sumMap.get("floors"));
+//			table.getCell(publicSubIndex, floorHeightIndex).setValue(sumMap.get("floorHeight"));
+			table.getCell(publicSubIndex, unitColummnIndex).setValue(sumMap.get("unit"));
+			table.getCell(publicSubIndex, huColummnIndex).setValue(sumMap.get("hu"));
+			table.getCell(publicSubIndex, productRateColummnIndex).setValue(FDCNumberHelper.ONE);
+			//容积率小计＝建筑面积小计/占地面积小计
+//			table.getCell(publicSubIndex, cubageRateColummnIndex).setValue(FDCNumberHelper.divide(sumMap.get("buildArea"), sumMap.get("containArea")));
+			//平均每户面积小计＝可售面积小计/户数小计
+			table.getCell(publicSubIndex, avgHuColummnIndex).setValue(FDCNumberHelper.divide(sumMap.get("sellArea"), sumMap.get("hu")));
+			
 			//停车
 			sumMap.clear();
 			for(int i=publicSubIndex+2;i<parkingSubIndex;i++){
@@ -2219,11 +2220,53 @@ public class PlanIndexTable {
 			table.getCell(totalIndex, buildAreaColummnIndex).setValue(total);
 			
 			total=FDCHelper.ZERO;
+			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, givingAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, givingAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, givingAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, givingAreaColummnIndex).getValue());
+			table.getCell(totalIndex, givingAreaColummnIndex).setValue(total);
+			
+			total=FDCHelper.ZERO;
+			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, constructAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, constructAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, constructAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, constructAreaColummnIndex).getValue());
+			table.getCell(totalIndex, constructAreaColummnIndex).setValue(total);
+			
+			total=FDCHelper.ZERO;
 			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, sellAreaColummnIndex).getValue());
 			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, sellAreaColummnIndex).getValue());
 			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, sellAreaColummnIndex).getValue());
 			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, sellAreaColummnIndex).getValue());
 			table.getCell(totalIndex, sellAreaColummnIndex).setValue(total);
+			
+			total=FDCHelper.ZERO;
+			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, rentAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, rentAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, rentAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, rentAreaColummnIndex).getValue());
+			table.getCell(totalIndex, rentAreaColummnIndex).setValue(total);
+			
+			total=FDCHelper.ZERO;
+			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, groundRentAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, groundRentAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, groundRentAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, groundRentAreaColummnIndex).getValue());
+			table.getCell(totalIndex, groundRentAreaColummnIndex).setValue(total);
+			
+			total=FDCHelper.ZERO;
+			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, publicAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, publicAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, publicAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, publicAreaColummnIndex).getValue());
+			table.getCell(totalIndex, publicAreaColummnIndex).setValue(total);
+			
+			total=FDCHelper.ZERO;
+			total=FDCNumberHelper.add(total, table.getCell(houseSubIndex, deliveryAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(businessSubIndex, deliveryAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(publicSubIndex, deliveryAreaColummnIndex).getValue());
+			total=FDCNumberHelper.add(total, table.getCell(parkingSubIndex, deliveryAreaColummnIndex).getValue());
+			table.getCell(totalIndex, deliveryAreaColummnIndex).setValue(total);
 			
 //			BigDecimal newGroundBuildArea=FDCHelper.toBigDecimal(table.getCell(totalIndex, groundAreaColummnIndex).getValue());
 //			if(totalGroundAreaCell!=null&&e.getType()!=10000&&oldtotalGroundArea.compareTo(newGroundBuildArea)!=0){

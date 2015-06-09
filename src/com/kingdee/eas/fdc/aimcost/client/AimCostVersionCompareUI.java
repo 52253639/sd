@@ -299,7 +299,7 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 					row.getCell(diffID+"_aim").setValue(FDCNumberHelper.subtract(row.getCell(verId+"_aim").getValue(), row.getCell(baseId+"_aim").getValue()));
 					row.getCell(diffRate+"_aim").setValue(FDCNumberHelper.divide(row.getCell(diffID+"_aim").getValue(),row.getCell(baseId+"_aim").getValue(),
 							                              4, BigDecimal.ROUND_HALF_UP));
-					if(row.getCell(diffID+"_aim").getValue()!=null){
+					if(row.getCell(diffID+"_aim").getValue()!=null&&row.getUserObject()!=null){
 						if(((BigDecimal)row.getCell(diffID+"_aim").getValue()).compareTo(FDCHelper.ZERO)>0){
 							row.getStyleAttributes().setBackground(up.getBackground());
 						}else if(((BigDecimal)row.getCell(diffID+"_aim").getValue()).compareTo(FDCHelper.ZERO)<0){
@@ -312,7 +312,7 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 					row.getCell(diffRate+"_build").setValue(FDCNumberHelper.divide(row.getCell(diffID+"_build").getValue(),row.getCell(baseId+"_build").getValue(),
 							                              4, BigDecimal.ROUND_HALF_UP));
 					
-					if(row.getCell(diffID+"_build").getValue()!=null){
+					if(row.getCell(diffID+"_build").getValue()!=null&&row.getUserObject()!=null){
 						if(((BigDecimal)row.getCell(diffID+"_build").getValue()).compareTo(FDCHelper.ZERO)>0){
 							row.getStyleAttributes().setBackground(up.getBackground());
 						}else if(((BigDecimal)row.getCell(diffID+"_build").getValue()).compareTo(FDCHelper.ZERO)<0){
@@ -325,7 +325,7 @@ public class AimCostVersionCompareUI extends AbstractAimCostVersionCompareUI
 					row.getCell(diffRate+"_sell").setValue(FDCNumberHelper.divide(row.getCell(diffID+"_sell").getValue(),row.getCell(baseId+"_sell").getValue(),
 							                              4, BigDecimal.ROUND_HALF_UP));
 				
-					if(row.getCell(diffID+"_sell").getValue()!=null){
+					if(row.getCell(diffID+"_sell").getValue()!=null&&row.getUserObject()!=null){
 						if(((BigDecimal)row.getCell(diffID+"_sell").getValue()).compareTo(FDCHelper.ZERO)>0){
 							row.getStyleAttributes().setBackground(up.getBackground());
 						}else if(((BigDecimal)row.getCell(diffID+"_sell").getValue()).compareTo(FDCHelper.ZERO)<0){

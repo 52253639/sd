@@ -42,6 +42,7 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.common.variant.Variant;
 import com.kingdee.bos.ctrl.excel.io.kds.KDSBookToBook;
 import com.kingdee.bos.ctrl.excel.model.struct.Sheet;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.ctrl.extendcontrols.KDCommonPromptDialog;
 import com.kingdee.bos.ctrl.kdf.export.ExportManager;
@@ -136,11 +137,15 @@ import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryCollection;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeInfo;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexCollection;
+import com.kingdee.eas.fdc.aimcost.PlanIndexConfigCollection;
+import com.kingdee.eas.fdc.aimcost.PlanIndexConfigFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryCollection;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexFactory;
+import com.kingdee.eas.fdc.aimcost.PlanIndexFieldTypeEnum;
 import com.kingdee.eas.fdc.aimcost.PlanIndexInfo;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostCollection;
 import com.kingdee.eas.fdc.aimcost.VersionTypeEnum;
@@ -239,6 +244,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	boolean hasMutex = true;
 	
 	private MeasureIncomeInfo miInfo=null;
+	
+	private KDTable tblPlanIndex=null;
 	/**
 	 * output class constructor
 	 */
@@ -441,7 +448,17 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				}
 			}
 		}
-    		
+    	
+		cost.getNewPlanIndexEntry().clear();
+		for(int i=0;i<tblPlanIndex.getRowCount();i++){
+			NewPlanIndexInfo entry=(NewPlanIndexInfo) tblPlanIndex.getRow(i).getUserObject();
+			if(tblPlanIndex.getRow(i).getCell("value").getValue()!=null){
+				entry.setValue(tblPlanIndex.getRow(i).getCell("value").getValue().toString());
+			}else{
+				entry.setValue(null);
+			}
+			cost.getNewPlanIndexEntry().add(entry);
+		}
 	}
 
 	protected void initWorkButton() {
@@ -554,6 +571,18 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		//版本类型
 		cost.setVersionType(VersionTypeEnum.CheckVersion);
+		
+		try {
+			PlanIndexConfigCollection col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 order by longNumber");
+			for(int i=0;i<col.size();i++){
+				NewPlanIndexInfo entry=new NewPlanIndexInfo();
+				entry.setConfig(col.get(i));
+				cost.getNewPlanIndexEntry().add(entry);
+			}
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		
 		return cost;
 	}
 	private void removeitemListener(KDComboBox comboMeasureStage) {
@@ -641,7 +670,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		splitPane.add(contDes, "left");
 		splitPane.add(contAttach,"right");
 		this.plTables.add(splitPane, "测算说明&附件管理");
-		splitPane.setDividerLocation(1000);
+		splitPane.setDividerLocation(800);
 		
 		KDWorkButton btnAttachment = new KDWorkButton();
 		this.actionAttachment.putValue("SmallIcon", EASResource.getIcon("imgTbtn_affixmanage"));
@@ -702,6 +731,64 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		FDCTableHelper.setColumnMoveable(table, true);
 		FDCTableHelper.addTableMenu(table);
 		this.plTables.add(planIndexTable.getContentPanel(), "规划指标表");
+		
+		tblPlanIndex=new KDTable();
+		tblPlanIndex.checkParsed();
+		tblPlanIndex.addHeadRow();
+		IColumn config=tblPlanIndex.addColumn();
+		config.setKey("config");
+		config.getStyleAttributes().setLocked(true);
+		tblPlanIndex.getHeadRow(0).getCell("config").setValue("规划指标");
+		config.setWidth(500);
+		
+		IColumn value=tblPlanIndex.addColumn();
+		value.setKey("value");
+		tblPlanIndex.getHeadRow(0).getCell("value").setValue("值");
+		value.setWidth(300);
+		this.plTables.add(tblPlanIndex, "规划指标明细表");
+		
+		for(int i=0;i<((MeasureCostInfo)this.editData).getNewPlanIndexEntry().size();i++){
+			NewPlanIndexInfo entry=((MeasureCostInfo)this.editData).getNewPlanIndexEntry().get(i);
+			IRow row=tblPlanIndex.addRow();
+			row.setUserObject(entry);
+			if(entry.getConfig().getLevel()==1){
+				row.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_TOTAL_BG_COLOR);
+			}
+			String blk="";
+			for(int k=1;k<entry.getConfig().getLevel();k++){
+				blk=blk+"        ";
+			}
+			row.getCell("config").setValue(blk+entry.getConfig().getName());
+			row.getCell("value").setValue(entry.getValue());
+			if(entry.getConfig().getFieldType().equals(PlanIndexFieldTypeEnum.RATE)){
+				ObjectValueRender render_scale = new ObjectValueRender();
+				render_scale.setFormat(new IDataFormat() {
+					public String format(Object o) {
+						String str = o.toString();
+						if (!FDCHelper.isEmpty(str)) {
+							return str + "%";
+						}
+						return str;
+					}
+				});
+				row.getCell("value").setRenderer(render_scale);
+			}else if(entry.getConfig().getFieldType().equals(PlanIndexFieldTypeEnum.DIGITAL)){
+				KDFormattedTextField amount = new KDFormattedTextField();
+				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
+				amount.setDataVerifierType(KDFormattedTextField.NO_VERIFIER);
+				amount.setPrecision(2);
+				KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
+				row.getCell("value").setEditor(amountEditor);
+			}
+			if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
+				row.getCell("value").getStyleAttributes().setLocked(false);
+			}else{
+				row.getCell("value").getStyleAttributes().setLocked(true);
+			}
+			if(!entry.getConfig().isIsEdit()){
+				row.getCell("value").getStyleAttributes().setLocked(true);
+			}
+		}
 		
 		table = planIndexTable.getConstructTable();
 		this.tables.add(table);
@@ -1300,6 +1387,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		
 		sels.add("creator.*");
 		sels.add("compareEntry.*");
+		sels.add("newPlanIndexEntry.*");
+		sels.add("newPlanIndexEntry.config.*");
 		return sels;
 	}
 
@@ -2142,8 +2231,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			planIndexTable.addRow(arg0);
 			return;
 		}
-		
 		if(this.plTables.getSelectedIndex()==ii+2){
+			return;
+		}
+		if(this.plTables.getSelectedIndex()==ii+3){
 			planIndexTable.addConstrIndexRow(arg0);
 			return;
 		}
@@ -2151,7 +2242,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			return;
 //		}
 		
-		if(this.plTables.getSelectedIndex()==ii+3){
+		if(this.plTables.getSelectedIndex()==ii+4){
 			Object v = prmtProjectType.getValue();
 			if(v==null){
 				MsgBox.showWarning(this, "六类公摊测算必须先设置项目系列");
@@ -2160,7 +2251,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		
 		int selectIndex = this.plTables.getSelectedIndex();
-		KDTable table = (KDTable) this.tables.get(selectIndex-2);
+		KDTable table = (KDTable) this.tables.get(selectIndex-3);
 		if (table.getRowCount() == 0) {
 			return;
 		}
@@ -2391,6 +2482,9 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			return;
 		}
 		if(this.plTables.getSelectedIndex()==ii+2){
+			return;
+		}
+		if(this.plTables.getSelectedIndex()==ii+3){
 			planIndexTable.deleteConstrIndexRow(arg0);
 			return;
 		}
@@ -2399,7 +2493,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			return;
 //		}
 		int selectIndex = this.plTables.getSelectedIndex();
-		KDTable table = (KDTable) this.tables.get(selectIndex - 2);
+		KDTable table = (KDTable) this.tables.get(selectIndex - 3);
 		KDTSelectManager selectManager = table.getSelectManager();
 		if (selectManager == null || selectManager.size() == 0) {
 			return;
@@ -3608,6 +3702,9 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
     	}
     	for(Iterator iter=info.getConstrEntrys().iterator();iter.hasNext();){
     		((ConstructPlanIndexEntryInfo)iter.next()).setId(null);
+    	}
+    	for(Iterator iter=info.getNewPlanIndexEntry().iterator();iter.hasNext();){
+    		((NewPlanIndexInfo)iter.next()).setId(null);
     	}
     	PlanIndexInfo planIndex=(PlanIndexInfo)editData.get("PlanIndex");
     	if(planIndex==null) return;
