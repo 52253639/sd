@@ -19,6 +19,7 @@ public class AbstractMeasureCostInfo extends com.kingdee.eas.fdc.basedata.FDCBil
         put("constrEntrys", new com.kingdee.eas.fdc.aimcost.ConstructPlanIndexEntryCollection());
         put("compareEntry", new com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection());
         put("costEntry", new com.kingdee.eas.fdc.aimcost.MeasureEntryCollection());
+        put("newPlanIndexEntryPT", new com.kingdee.eas.fdc.aimcost.NewPlanIndexPTCollection());
         put("newPlanIndexEntry", new com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection());
     }
     /**
@@ -193,6 +194,13 @@ public class AbstractMeasureCostInfo extends com.kingdee.eas.fdc.basedata.FDCBil
     public com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection getNewPlanIndexEntry()
     {
         return (com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection)get("newPlanIndexEntry");
+    }
+    /**
+     * Object: 成本测算 's 规划指标业态快照 property 
+     */
+    public com.kingdee.eas.fdc.aimcost.NewPlanIndexPTCollection getNewPlanIndexEntryPT()
+    {
+        return (com.kingdee.eas.fdc.aimcost.NewPlanIndexPTCollection)get("newPlanIndexEntryPT");
     }
     public BOSObjectType getBOSType()
     {

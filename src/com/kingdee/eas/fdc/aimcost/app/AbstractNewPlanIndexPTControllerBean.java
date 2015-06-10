@@ -25,39 +25,38 @@ import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.eas.framework.CoreBaseInfo;
-import com.kingdee.eas.fdc.aimcost.MeasureEntryInfo;
-import com.kingdee.eas.framework.ObjectBaseCollection;
-import com.kingdee.eas.fdc.aimcost.MeasureEntryCollection;
-import com.kingdee.eas.framework.app.DataBaseControllerBean;
+import com.kingdee.eas.framework.app.CoreBillEntryBaseControllerBean;
+import com.kingdee.eas.framework.CoreBillEntryBaseCollection;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTCollection;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTInfo;
 import com.kingdee.eas.framework.CoreBaseCollection;
-import com.kingdee.eas.framework.DataBaseCollection;
 
 
 
-public abstract class AbstractMeasureEntryControllerBean extends DataBaseControllerBean implements MeasureEntryController
+public abstract class AbstractNewPlanIndexPTControllerBean extends CoreBillEntryBaseControllerBean implements NewPlanIndexPTController
 {
-    protected AbstractMeasureEntryControllerBean()
+    protected AbstractNewPlanIndexPTControllerBean()
     {
     }
 
     protected BOSObjectType getBOSType()
     {
-        return new BOSObjectType("8A291C8B");
+        return new BOSObjectType("DEAD8244");
     }
 
-    public MeasureEntryInfo getMeasureEntryInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
+    public NewPlanIndexPTInfo getNewPlanIndexPTInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("80bf56fe-010d-1000-e000-0089c0a813e8"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("36542bc1-8451-4f69-a675-e47ce2e7608e"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            MeasureEntryInfo retValue = (MeasureEntryInfo)_getValue(ctx, pk);
+            NewPlanIndexPTInfo retValue = (NewPlanIndexPTInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (MeasureEntryInfo)svcCtx.getMethodReturnValue();
+          return (NewPlanIndexPTInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -71,18 +70,18 @@ public abstract class AbstractMeasureEntryControllerBean extends DataBaseControl
         return super._getValue(ctx, pk);
     }
 
-    public MeasureEntryInfo getMeasureEntryInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
+    public NewPlanIndexPTInfo getNewPlanIndexPTInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("80bf56fe-010d-1000-e000-008ac0a813e8"), new Object[]{ctx, pk, selector});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("7b11ad7d-741e-40ef-84d9-8acd90e0e744"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            MeasureEntryInfo retValue = (MeasureEntryInfo)_getValue(ctx, pk, selector);
+            NewPlanIndexPTInfo retValue = (NewPlanIndexPTInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (MeasureEntryInfo)svcCtx.getMethodReturnValue();
+          return (NewPlanIndexPTInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -96,18 +95,18 @@ public abstract class AbstractMeasureEntryControllerBean extends DataBaseControl
         return super._getValue(ctx, pk, selector);
     }
 
-    public MeasureEntryInfo getMeasureEntryInfo(Context ctx, String oql) throws BOSException, EASBizException
+    public NewPlanIndexPTInfo getNewPlanIndexPTInfo(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("80bf56fe-010d-1000-e000-008bc0a813e8"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("7c1d8b23-64f8-460c-9ca1-570ab5ddb896"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            MeasureEntryInfo retValue = (MeasureEntryInfo)_getValue(ctx, oql);
+            NewPlanIndexPTInfo retValue = (NewPlanIndexPTInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (MeasureEntryInfo)svcCtx.getMethodReturnValue();
+          return (NewPlanIndexPTInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -121,18 +120,18 @@ public abstract class AbstractMeasureEntryControllerBean extends DataBaseControl
         return super._getValue(ctx, oql);
     }
 
-    public MeasureEntryCollection getMeasureEntryCollection(Context ctx) throws BOSException
+    public NewPlanIndexPTCollection getNewPlanIndexPTCollection(Context ctx) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("80bf56fe-010d-1000-e000-008cc0a813e8"), new Object[]{ctx});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("9a44221a-6f44-4144-9e40-97e191bc1c3c"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            MeasureEntryCollection retValue = (MeasureEntryCollection)_getCollection(ctx, svcCtx);
+            NewPlanIndexPTCollection retValue = (NewPlanIndexPTCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (MeasureEntryCollection)svcCtx.getMethodReturnValue();
+          return (NewPlanIndexPTCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -144,18 +143,18 @@ public abstract class AbstractMeasureEntryControllerBean extends DataBaseControl
         return super._getCollection(ctx, svcCtx);
     }
 
-    public MeasureEntryCollection getMeasureEntryCollection(Context ctx, EntityViewInfo view) throws BOSException
+    public NewPlanIndexPTCollection getNewPlanIndexPTCollection(Context ctx, EntityViewInfo view) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("80bf56fe-010d-1000-e000-008dc0a813e8"), new Object[]{ctx, view});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("2c50b9fd-f699-4199-8463-cecc009d94ad"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            MeasureEntryCollection retValue = (MeasureEntryCollection)_getCollection(ctx, svcCtx, view);
+            NewPlanIndexPTCollection retValue = (NewPlanIndexPTCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (MeasureEntryCollection)svcCtx.getMethodReturnValue();
+          return (NewPlanIndexPTCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -167,18 +166,18 @@ public abstract class AbstractMeasureEntryControllerBean extends DataBaseControl
         return super._getCollection(ctx, svcCtx, view);
     }
 
-    public MeasureEntryCollection getMeasureEntryCollection(Context ctx, String oql) throws BOSException
+    public NewPlanIndexPTCollection getNewPlanIndexPTCollection(Context ctx, String oql) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("80bf56fe-010d-1000-e000-008ec0a813e8"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("39bf6bbb-ce50-4524-b1cf-5f958d198a31"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            MeasureEntryCollection retValue = (MeasureEntryCollection)_getCollection(ctx, svcCtx, oql);
+            NewPlanIndexPTCollection retValue = (NewPlanIndexPTCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (MeasureEntryCollection)svcCtx.getMethodReturnValue();
+          return (NewPlanIndexPTCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -190,40 +189,28 @@ public abstract class AbstractMeasureEntryControllerBean extends DataBaseControl
         return super._getCollection(ctx, svcCtx, oql);
     }
 
-    public DataBaseCollection getDataBaseCollection (Context ctx) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx) throws BOSException
     {
-    	return (DataBaseCollection)(getMeasureEntryCollection(ctx).cast(DataBaseCollection.class));
+    	return (CoreBillEntryBaseCollection)(getNewPlanIndexPTCollection(ctx).cast(CoreBillEntryBaseCollection.class));
     }
-    public DataBaseCollection getDataBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
     {
-    	return (DataBaseCollection)(getMeasureEntryCollection(ctx, view).cast(DataBaseCollection.class));
+    	return (CoreBillEntryBaseCollection)(getNewPlanIndexPTCollection(ctx, view).cast(CoreBillEntryBaseCollection.class));
     }
-    public DataBaseCollection getDataBaseCollection (Context ctx, String oql) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx, String oql) throws BOSException
     {
-    	return (DataBaseCollection)(getMeasureEntryCollection(ctx, oql).cast(DataBaseCollection.class));
-    }
-    public ObjectBaseCollection getObjectBaseCollection (Context ctx) throws BOSException
-    {
-    	return (ObjectBaseCollection)(getMeasureEntryCollection(ctx).cast(ObjectBaseCollection.class));
-    }
-    public ObjectBaseCollection getObjectBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
-    {
-    	return (ObjectBaseCollection)(getMeasureEntryCollection(ctx, view).cast(ObjectBaseCollection.class));
-    }
-    public ObjectBaseCollection getObjectBaseCollection (Context ctx, String oql) throws BOSException
-    {
-    	return (ObjectBaseCollection)(getMeasureEntryCollection(ctx, oql).cast(ObjectBaseCollection.class));
+    	return (CoreBillEntryBaseCollection)(getNewPlanIndexPTCollection(ctx, oql).cast(CoreBillEntryBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx) throws BOSException
     {
-    	return (CoreBaseCollection)(getMeasureEntryCollection(ctx).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getNewPlanIndexPTCollection(ctx).cast(CoreBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
     {
-    	return (CoreBaseCollection)(getMeasureEntryCollection(ctx, view).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getNewPlanIndexPTCollection(ctx, view).cast(CoreBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx, String oql) throws BOSException
     {
-    	return (CoreBaseCollection)(getMeasureEntryCollection(ctx, oql).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getNewPlanIndexPTCollection(ctx, oql).cast(CoreBaseCollection.class));
     }
 }

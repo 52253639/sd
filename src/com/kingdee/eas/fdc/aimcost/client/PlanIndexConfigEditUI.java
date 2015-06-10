@@ -4,27 +4,55 @@
 package com.kingdee.eas.fdc.aimcost.client;
 
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.entity.EntityViewInfo;
+import com.kingdee.bos.metadata.entity.FilterInfo;
+import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.metadata.entity.SelectorItemInfo;
+import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.bos.ui.face.IUIObject;
+import com.kingdee.bos.ctrl.swing.KDPromptBox;
+import com.kingdee.bos.ctrl.swing.util.CtrlCommonConstant;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectStringPK;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.basedata.org.OrgConstants;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.fdc.basedata.FDCBasedataException;
 import com.kingdee.eas.fdc.basedata.client.FDCBaseDataClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCClientVerifyHelper;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.aimcost.PlanIndexConfigCollection;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo;
 import com.kingdee.eas.fdc.aimcost.IPlanIndexConfig;
+import com.kingdee.eas.fdc.aimcost.PlanIndexFieldTypeEnum;
+import com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum;
+import com.kingdee.eas.fdc.aimcost.PlanIndexInfo;
+import com.kingdee.eas.fi.gr.cslrpt.ServerException;
 import com.kingdee.eas.framework.*;
+import com.kingdee.eas.ma.budget.BgItemCollection;
+import com.kingdee.eas.ma.budget.BgItemFactory;
+import com.kingdee.eas.ma.budget.BgSHelper;
+import com.kingdee.eas.ma.budget.IBgItem;
+import com.kingdee.eas.tools.datatask.DIETemplateInfo;
+import com.kingdee.eas.tools.datatask.client.PropertySetUI;
+import com.kingdee.eas.tools.datatask.client.UIUtil;
+import com.kingdee.eas.util.SysUtil;
+import com.kingdee.eas.util.app.ContextUtil;
 import com.kingdee.eas.util.client.EASResource;
 
 /**
@@ -46,6 +74,10 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 	protected IObjectValue createNewData() {
 		PlanIndexConfigInfo info=new PlanIndexConfigInfo();
 		info.setIsEdit(true);
+		parentInfo = (PlanIndexConfigInfo) getUIContext().get(UIContext.PARENTNODE);
+		if(parentInfo!=null){
+			info.setIsProductType(parentInfo.isIsProductType());
+		}
 		return info;
 	}
 	protected ICoreBase getBizInterface() throws Exception {
@@ -136,8 +168,28 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 
 			}
 		}
+		this.txtFormula.setAccessAuthority(CtrlCommonConstant.AUTHORITY_COMMON);
+		this.cbFormulaType.setAccessAuthority(CtrlCommonConstant.AUTHORITY_COMMON);
+		this.cbIsProductType.setAccessAuthority(CtrlCommonConstant.AUTHORITY_COMMON);
+		if(this.cbIsEdit.isSelected()){
+			this.cbFormulaType.setEnabled(false);
+		}else{
+			this.cbFormulaType.setEnabled(true);
+		}
+		if(!this.cbIsEdit.isSelected()){
+			if(PlanIndexFormulaTypeEnum.NORMAL.equals(this.cbFormulaType.getSelectedItem())
+				||PlanIndexFormulaTypeEnum.PRODUCTTYPE.equals(this.cbFormulaType.getSelectedItem())){
+				this.txtFormula.setEnabled(true);
+			}else{
+				this.txtFormula.setEnabled(false);
+			}
+		}else{
+			this.txtFormula.setEnabled(false);
+		}
+		if(parentInfo!=null||this.editData.getParent()!=null){
+			this.cbIsProductType.setEnabled(false);
+		}
 	}
-
 	/**
 	 * 校验值对象的合法性
 	 */
@@ -184,6 +236,85 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 			throw new FDCBasedataException(FDCBasedataException.NAME_IS_EMPTY);
 		}
 		FDCClientVerifyHelper.verifyEmpty(this, this.cbFieldType);
+		if(this.txtFormula.getText()!= null && this.txtFormula.getText().length() != 0){
+			FDCClientVerifyHelper.verifyEmpty(this, this.cbFormulaType);
+		}
+		if(this.cbIsProductType.isSelected()&&this.cbFormulaType.getSelectedItem()!=null&&this.cbFormulaType.getSelectedItem().equals(PlanIndexFormulaTypeEnum.PRODUCTTYPE)){
+			FDCMsgBox.showWarning(this,"业态指标不能选择业态求和公式");
+			SysUtil.abort();
+		}
+		if(!this.cbIsEdit.isSelected()){
+			Pattern pt = Pattern.compile("([\\(]*)([^\\+|^\\-|^\\*|^\\/|^\\(|^\\))]{1,})([\\+|\\-|\\*|\\/|\\(|\\)]*)");
+			
+			if(this.txtFormula.getText()!= null && this.txtFormula.getText().length() != 0){
+				Matcher matcher = pt.matcher(this.txtFormula.getText());
+				
+				EntityViewInfo view = new EntityViewInfo();
+				FilterInfo filter = new FilterInfo();
+				List sumItemNumber = new ArrayList();
+				String itemNumber = null;
+				StringBuffer maskString = new StringBuffer("(");
+				int count = 0;
+				do{
+					if(!matcher.find())break;
+					itemNumber = matcher.group(2);
+					if(sumItemNumber.contains(this.txtLongNumber.getText().trim())){
+						FDCMsgBox.showWarning(this,"公式:计算项"+itemNumber.toString()+"包含自己");
+						SysUtil.abort();
+					}
+					if(sumItemNumber.contains(itemNumber)){
+						FDCMsgBox.showWarning(this,"公式:计算项"+itemNumber.toString()+"重复");
+						SysUtil.abort();
+					}
+					sumItemNumber.add(itemNumber);
+					if(itemNumber != null && itemNumber.trim().length() != 0){
+						filter.getFilterItems().add(new FilterItemInfo("longNumber", itemNumber.replaceAll("\\.", "!").trim(), CompareType.EQUALS));
+						if(count != 0)
+							maskString.append(" OR ");
+						maskString.append("#").append(count);
+						count++;
+						}
+					} while(true);
+				maskString.append(")");
+				filter.setMaskString(maskString.toString());
+				view.setFilter(filter);
+				IPlanIndexConfig ie = PlanIndexConfigFactory.getRemoteInstance();
+				PlanIndexConfigCollection subItems = ie.getPlanIndexConfigCollection(view);
+				if(subItems == null || subItems.isEmpty()){
+					FDCMsgBox.showWarning(this,"公式:计算项"+sumItemNumber.toString()+"不存在");
+					SysUtil.abort();
+				}
+				if(sumItemNumber.size() != subItems.size()){
+					for(int i = 0; i < subItems.size(); i++){
+						sumItemNumber.remove(subItems.get(i).getLongNumber().replaceAll("!", "."));
+					}
+					if(!sumItemNumber.isEmpty()){
+						FDCMsgBox.showWarning(this,"公式:计算项"+sumItemNumber.toString()+"不存在");
+						SysUtil.abort();
+					}
+				}else{
+					for(int i = 0; i < subItems.size(); i++){
+						if(subItems.get(i).getFieldType().equals(PlanIndexFieldTypeEnum.TEXT)){
+							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"类型不能为文本");
+							SysUtil.abort();
+						}
+						if(!subItems.get(i).isIsEnabled()){
+							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"已禁用");
+							SysUtil.abort();
+						}
+						if(this.cbFormulaType.getSelectedItem().equals(PlanIndexFormulaTypeEnum.NORMAL)){
+							if(subItems.get(i).isIsProductType()!=this.cbIsProductType.isSelected()){
+								FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"与指标类型不符合");
+								SysUtil.abort();
+							}
+						}else if(!subItems.get(i).isIsProductType()){
+							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"不是业态指标");
+							SysUtil.abort();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private void setTitle() {
@@ -277,7 +408,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				this.menuItemEdit.setEnabled(false);
 				this.menuItemRemove.setEnabled(false);
 			}
-
+			this.btnSelect.setEnabled(false);
 		}
 	}
 
@@ -330,5 +461,45 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 			this.btnRemove.setEnabled(false);
 		}
 	}
-
+	protected void cbIsEdit_actionPerformed(ActionEvent e) throws Exception {
+		if(this.cbIsEdit.isSelected()){
+			this.cbFormulaType.setEnabled(false);
+			this.cbFormulaType.setSelectedItem(PlanIndexFormulaTypeEnum.NULL);
+		}else{
+			this.cbFormulaType.setEnabled(true);
+		}
+	}
+	protected void cbFormulaType_itemStateChanged(ItemEvent e) throws Exception {
+		if(!this.cbIsEdit.isSelected()){
+			if(PlanIndexFormulaTypeEnum.NORMAL.equals(this.cbFormulaType.getSelectedItem())
+				||PlanIndexFormulaTypeEnum.PRODUCTTYPE.equals(this.cbFormulaType.getSelectedItem())){
+				this.txtFormula.setEnabled(true);
+			}else{
+				this.txtFormula.setEnabled(false);
+				this.txtFormula.setText(null);
+			}
+		}else{
+			this.txtFormula.setEnabled(false);
+			this.txtFormula.setText(null);
+		}
+	}
+	protected void btnSelect_actionPerformed(ActionEvent e) throws Exception {
+		DIETemplateInfo info=new DIETemplateInfo();
+		UIContext uiContext = new UIContext(this);
+		uiContext.put("Owner", this);
+		uiContext.put("editData", info);
+		if(this.cbIsProductType.isSelected()){
+			uiContext.put("bosAlias", "规划指标分录");
+			uiContext.put("bostype", "DCB88FE0");
+		}else{
+			uiContext.put("bosAlias", "规划指标");
+			uiContext.put("bostype", "768287B2");
+		}
+		UIUtil.showDialog(PropertySetUI.class.getName(), uiContext, OprtState.ADDNEW, this);
+		if(info.getFieldEntries().size()>0){
+			this.txtProp.setText(info.getFieldEntries().get(0).getEntityPropName());
+		}else{
+			this.txtProp.setText(null);
+		}
+	}
 }

@@ -7,18 +7,18 @@ import com.kingdee.util.TypeConversionUtils;
 import com.kingdee.bos.util.BOSObjectType;
 
 
-public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBillEntryBaseInfo implements Serializable 
+public class AbstractNewPlanIndexPTInfo extends com.kingdee.eas.framework.CoreBillEntryBaseInfo implements Serializable 
 {
-    public AbstractNewPlanIndexInfo()
+    public AbstractNewPlanIndexPTInfo()
     {
         this("id");
     }
-    protected AbstractNewPlanIndexInfo(String pkField)
+    protected AbstractNewPlanIndexPTInfo(String pkField)
     {
         super(pkField);
     }
     /**
-     * Object: 规划指标 's 头 property 
+     * Object: 规划指标业态快照 's 头 property 
      */
     public com.kingdee.eas.fdc.aimcost.MeasureCostInfo getHead()
     {
@@ -29,7 +29,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         put("head", item);
     }
     /**
-     * Object: 规划指标 's 规划指标 property 
+     * Object: 规划指标业态快照 's 规划指标 property 
      */
     public com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo getConfig()
     {
@@ -40,7 +40,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         put("config", item);
     }
     /**
-     * Object:规划指标's 值property 
+     * Object:规划指标业态快照's 值property 
      */
     public String getValue()
     {
@@ -51,7 +51,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         setString("value", item);
     }
     /**
-     * Object:规划指标's 类型property 
+     * Object:规划指标业态快照's 类型property 
      */
     public com.kingdee.eas.fdc.aimcost.PlanIndexFieldTypeEnum getFieldType()
     {
@@ -64,7 +64,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
 		}
     }
     /**
-     * Object:规划指标's 指标名称property 
+     * Object:规划指标业态快照's 指标名称property 
      */
     public String getName()
     {
@@ -75,7 +75,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         setString("name", item);
     }
     /**
-     * Object:规划指标's 说明property 
+     * Object:规划指标业态快照's 说明property 
      */
     public String getRemark()
     {
@@ -86,7 +86,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         setString("remark", item);
     }
     /**
-     * Object:规划指标's 公式property 
+     * Object:规划指标业态快照's 公式property 
      */
     public String getFormula()
     {
@@ -97,7 +97,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         setString("formula", item);
     }
     /**
-     * Object:规划指标's 编码property 
+     * Object:规划指标业态快照's 编码property 
      */
     public String getNumber()
     {
@@ -108,7 +108,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
         setString("number", item);
     }
     /**
-     * Object:规划指标's 公式类型property 
+     * Object:规划指标业态快照's 公式类型property 
      */
     public com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum getFormulaType()
     {
@@ -121,18 +121,7 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
 		}
     }
     /**
-     * Object: 规划指标 's 产品类型 property 
-     */
-    public com.kingdee.eas.fdc.basedata.ProductTypeInfo getProductType()
-    {
-        return (com.kingdee.eas.fdc.basedata.ProductTypeInfo)get("productType");
-    }
-    public void setProductType(com.kingdee.eas.fdc.basedata.ProductTypeInfo item)
-    {
-        put("productType", item);
-    }
-    /**
-     * Object:规划指标's 关联字段property 
+     * Object:规划指标业态快照's 关联字段property 
      */
     public String getProp()
     {
@@ -144,6 +133,6 @@ public class AbstractNewPlanIndexInfo extends com.kingdee.eas.framework.CoreBill
     }
     public BOSObjectType getBOSType()
     {
-        return new BOSObjectType("302E8840");
+        return new BOSObjectType("DEAD8244");
     }
 }

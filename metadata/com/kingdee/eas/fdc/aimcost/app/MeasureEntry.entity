@@ -36,6 +36,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getValue</name>
@@ -70,6 +71,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getValue</name>
@@ -95,6 +97,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getCollection</name>
@@ -109,6 +112,7 @@
             <transactionAttribute>Supports</transactionAttribute>
             <userDefined>false</userDefined>
             <userDefinedLogic />
+            <configured>false</configured>
         </method>
         <method>
             <name>getCollection</name>
@@ -134,6 +138,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
         <method>
             <name>getCollection</name>
@@ -159,6 +164,7 @@
                     <userDefined>false</userDefined>
                 </parameter>
             </parameters>
+            <configured>false</configured>
         </method>
     </methods>
     <isAbstract>false</isAbstract>
@@ -522,6 +528,20 @@
                 <key name="name" value="FChangeReason" />
             </mappingField>
         </ownProperty>
+        <linkProperty>
+            <name>config</name>
+            <alias>entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[config].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[config].description</description>
+            <userDefined>true</userDefined>
+            <configured>false</configured>
+            <mappingField>
+                <key name="name" value="FConfigId" />
+            </mappingField>
+            <relationship>
+                <key name="package" value="com.kingdee.eas.fdc.aimcost.app" />
+                <key name="name" value="R_MeasureEntry_PlanIndexConfig_config" />
+            </relationship>
+        </linkProperty>
     </properties>
     <logicalKey>
         <name>id</name>
@@ -537,412 +557,424 @@
     </logicalKey>
     <resource>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].alias">
-            <lang locale="zh_CN" value="测算分录" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="测算分录" />
             <lang locale="zh_HK" value="測算分錄" />
             <lang locale="zh_TW" value="測算分錄" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].description">
-            <lang locale="zh_CN" value="测算分录" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="测算分录" />
             <lang locale="zh_HK" value="測算分錄" />
             <lang locale="zh_TW" value="測算分錄" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].logicalKey[id].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].logicalKey[id].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getCollection].alias">
-            <lang locale="zh_CN" value="取集合" />
             <lang locale="en_US" value="getCollection" />
+            <lang locale="zh_CN" value="取集合" />
             <lang locale="zh_HK" value="取集合" />
             <lang locale="zh_TW" value="取集合" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getCollection].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getCollection].parameters.parameter[oql].alias">
-            <lang locale="zh_CN" value="取集合" />
             <lang locale="en_US" value="getCollection" />
+            <lang locale="zh_CN" value="取集合" />
             <lang locale="zh_HK" value="取集合" />
             <lang locale="zh_TW" value="取集合" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getCollection].parameters.parameter[oql].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getCollection].parameters.parameter[view].alias">
-            <lang locale="zh_CN" value="取集合" />
             <lang locale="en_US" value="getCollection" />
+            <lang locale="zh_CN" value="取集合" />
             <lang locale="zh_HK" value="取集合" />
             <lang locale="zh_TW" value="取集合" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getCollection].parameters.parameter[view].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].alias">
-            <lang locale="zh_CN" value="取值" />
             <lang locale="en_US" value="getValue" />
+            <lang locale="zh_CN" value="取值" />
             <lang locale="zh_HK" value="取值" />
             <lang locale="zh_TW" value="取值" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].parameters.parameter[oql].alias">
-            <lang locale="zh_CN" value="取值" />
             <lang locale="en_US" value="getValue" />
+            <lang locale="zh_CN" value="取值" />
             <lang locale="zh_HK" value="取值" />
             <lang locale="zh_TW" value="取值" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].parameters.parameter[oql].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].parameters.parameter[pk].alias">
-            <lang locale="zh_CN" value="取值" />
             <lang locale="en_US" value="getValue" />
+            <lang locale="zh_CN" value="取值" />
             <lang locale="zh_HK" value="取值" />
             <lang locale="zh_TW" value="取值" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].parameters.parameter[pk].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].parameters.parameter[selector].alias">
-            <lang locale="zh_CN" value="取值" />
             <lang locale="en_US" value="getValue" />
+            <lang locale="zh_CN" value="取值" />
             <lang locale="zh_HK" value="取值" />
             <lang locale="zh_TW" value="取值" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].methods.method[getValue].parameters.parameter[selector].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[apportionType].alias">
-            <lang locale="zh_CN" value="原始指标" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="原始指标" />
             <lang locale="zh_HK" value="原始指標" />
             <lang locale="zh_TW" value="原始指標" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[apportionType].description">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[config].alias">
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="规划指标" />
+            <lang locale="zh_HK" value="規劃指標" />
+            <lang locale="zh_TW" value="規劃指標" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[config].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="规划指标" />
+            <lang locale="zh_HK" value="規劃指標" />
+            <lang locale="zh_TW" value="規劃指標" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[costAccount].alias">
-            <lang locale="zh_CN" value="父级成本科目" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="父级成本科目" />
             <lang locale="zh_HK" value="父級成本科目" />
             <lang locale="zh_TW" value="父級成本科目" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[costAccount].description">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[head].alias">
-            <lang locale="zh_CN" value="头" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="头" />
             <lang locale="zh_HK" value="頭" />
             <lang locale="zh_TW" value="頭" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[head].description">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[product].alias">
-            <lang locale="zh_CN" value="所属产品" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="所属产品" />
             <lang locale="zh_HK" value="所屬產品" />
             <lang locale="zh_TW" value="所屬產品" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[product].description">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[unit].alias">
-            <lang locale="zh_CN" value="单位" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单位" />
             <lang locale="zh_HK" value="單位" />
             <lang locale="zh_TW" value="單位" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.linkProperty[unit].description">
-            <lang locale="zh_CN" value="单位" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单位" />
             <lang locale="zh_HK" value="單位" />
             <lang locale="zh_TW" value="單位" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[adjustAmt].alias">
-            <lang locale="zh_CN" value="调整金额" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="调整金额" />
             <lang locale="zh_HK" value="調整金額" />
             <lang locale="zh_TW" value="調整金額" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[adjustAmt].defaultValue">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[adjustAmt].description">
-            <lang locale="zh_CN" value="调整金额" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="调整金额" />
             <lang locale="zh_HK" value="調整金額" />
             <lang locale="zh_TW" value="調整金額" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[adjustCoefficient].alias">
-            <lang locale="zh_CN" value="调整系数" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="调整系数" />
             <lang locale="zh_HK" value="調整係數" />
             <lang locale="zh_TW" value="調整係數" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[adjustCoefficient].defaultValue">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[adjustCoefficient].description">
-            <lang locale="zh_CN" value="调整系数" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="调整系数" />
             <lang locale="zh_HK" value="調整係數" />
             <lang locale="zh_TW" value="調整係數" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[amount].alias">
-            <lang locale="zh_CN" value="合价" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合价" />
             <lang locale="zh_HK" value="合價" />
             <lang locale="zh_TW" value="合價" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[amount].defaultValue">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[amount].description">
-            <lang locale="zh_CN" value="合价" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合价" />
             <lang locale="zh_HK" value="合價" />
             <lang locale="zh_TW" value="合價" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[changeReason].alias">
-            <lang locale="zh_CN" value="变化原因" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="变化原因" />
             <lang locale="zh_HK" value="變化原因" />
             <lang locale="zh_TW" value="變化原因" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[changeReason].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[changeReason].description">
-            <lang locale="zh_CN" value="变化原因" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="变化原因" />
             <lang locale="zh_HK" value="變化原因" />
             <lang locale="zh_TW" value="變化原因" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[coefficientName].alias">
-            <lang locale="zh_CN" value="系数名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="系数名称" />
             <lang locale="zh_HK" value="係數名稱" />
             <lang locale="zh_TW" value="係數名稱" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[coefficientName].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[coefficientName].description">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[coefficient].alias">
-            <lang locale="zh_CN" value="系数" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="系数" />
             <lang locale="zh_HK" value="係數" />
             <lang locale="zh_TW" value="係數" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[coefficient].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[coefficient].description">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[costAmount].alias">
-            <lang locale="zh_CN" value="总价" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="总价" />
             <lang locale="zh_HK" value="總價" />
             <lang locale="zh_TW" value="總價" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[costAmount].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[costAmount].description">
-            <lang locale="zh_CN" value="等于量乘以单价" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="等于量乘以单价" />
             <lang locale="zh_HK" value="等於量乘以單價" />
             <lang locale="zh_TW" value="等於量乘以單價" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[desc].alias">
-            <lang locale="zh_CN" value="备注" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="备注" />
             <lang locale="zh_HK" value="備註" />
             <lang locale="zh_TW" value="備註" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[desc].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[desc].description">
-            <lang locale="zh_CN" value="备注" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="备注" />
             <lang locale="zh_HK" value="備註" />
             <lang locale="zh_TW" value="備註" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[entryName].alias">
-            <lang locale="zh_CN" value="条目名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="条目名称" />
             <lang locale="zh_HK" value="條目名稱" />
             <lang locale="zh_TW" value="條目名稱" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[entryName].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[entryName].description">
-            <lang locale="zh_CN" value="条目名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="条目名称" />
             <lang locale="zh_HK" value="條目名稱" />
             <lang locale="zh_TW" value="條目名稱" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[indexName].alias">
-            <lang locale="zh_CN" value="指标名" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="指标名" />
             <lang locale="zh_HK" value="指標名" />
             <lang locale="zh_TW" value="指標名" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[indexName].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[indexName].description">
-            <lang locale="zh_CN" value="指标名" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="指标名" />
             <lang locale="zh_HK" value="指標名" />
             <lang locale="zh_TW" value="指標名" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[indexValue].alias">
-            <lang locale="zh_CN" value="指标值" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="指标值" />
             <lang locale="zh_HK" value="指標值" />
             <lang locale="zh_TW" value="指標值" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[indexValue].defaultValue">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[indexValue].description">
-            <lang locale="zh_CN" value="指标值" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="指标值" />
             <lang locale="zh_HK" value="指標值" />
             <lang locale="zh_TW" value="指標值" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[price].alias">
-            <lang locale="zh_CN" value="单价" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单价" />
             <lang locale="zh_HK" value="單價" />
             <lang locale="zh_TW" value="單價" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[price].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[price].description">
-            <lang locale="zh_CN" value="单价" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单价" />
             <lang locale="zh_HK" value="單價" />
             <lang locale="zh_TW" value="單價" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[program].alias">
-            <lang locale="zh_CN" value="合约规划 " />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合约规划 " />
             <lang locale="zh_HK" value="合約規劃 " />
             <lang locale="zh_TW" value="合約規劃 " />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[program].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[program].description">
-            <lang locale="zh_CN" value="合约规划" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合约规划" />
             <lang locale="zh_HK" value="合約規劃" />
             <lang locale="zh_TW" value="合約規劃" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[workload].alias">
-            <lang locale="zh_CN" value="工作量" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="工作量" />
             <lang locale="zh_HK" value="工作量" />
             <lang locale="zh_TW" value="工作量" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[workload].defaultValue">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.aimcost.app.MeasureEntry].properties.ownProperty[workload].description">
-            <lang locale="zh_CN" value="工作量" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="工作量" />
             <lang locale="zh_HK" value="工作量" />
             <lang locale="zh_TW" value="工作量" />
         </rs>

@@ -16,6 +16,7 @@ import com.kingdee.eas.basedata.org.OrgConstants;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basedata.ContractWFEntryFactory;
 import com.kingdee.eas.fdc.basedata.FDCBasedataException;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.aimcost.NewPlanIndexFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigCollection;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigFactory;
@@ -59,6 +60,17 @@ public class PlanIndexConfigControllerBean extends AbstractPlanIndexConfigContro
     {
     	trimBlank(model);
     	super._update(ctx, pk, model);
+    	PlanIndexConfigInfo info = (PlanIndexConfigInfo) model;
+    	if(info.getParent()==null){
+    		FDCSQLBuilder fdcSB = new FDCSQLBuilder(ctx);
+    		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+        	StringBuffer sql = new StringBuffer();
+        	int isProductType=0;
+        	if(info.isIsProductType())isProductType=1;
+    		sql.append("update T_AIM_PlanIndexConfig set fisProductType = "+isProductType+" where flongNumber like '"+info.getNumber()+"%'");
+    		fdcSB.addBatch(sql.toString());
+    		fdcSB.executeBatch();
+    	}
     }
     
     /**

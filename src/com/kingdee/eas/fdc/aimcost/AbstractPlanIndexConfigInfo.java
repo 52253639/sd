@@ -51,7 +51,7 @@ public class AbstractPlanIndexConfigInfo extends com.kingdee.eas.framework.TreeB
         setBoolean("isEdit", item);
     }
     /**
-     * Object:规划指标's 类型property 
+     * Object:规划指标's 字段类型property 
      */
     public com.kingdee.eas.fdc.aimcost.PlanIndexFieldTypeEnum getFieldType()
     {
@@ -62,6 +62,63 @@ public class AbstractPlanIndexConfigInfo extends com.kingdee.eas.framework.TreeB
 		if (item != null) {
         setString("fieldType", item.getValue());
 		}
+    }
+    /**
+     * Object:规划指标's 公式property 
+     */
+    public String getFormula()
+    {
+        return getString("formula");
+    }
+    public void setFormula(String item)
+    {
+        setString("formula", item);
+    }
+    /**
+     * Object:规划指标's 公式类型property 
+     */
+    public com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum getFormulaType()
+    {
+        return com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum.getEnum(getString("formulaType"));
+    }
+    public void setFormulaType(com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum item)
+    {
+		if (item != null) {
+        setString("formulaType", item.getValue());
+		}
+    }
+    /**
+     * Object:规划指标's 是否业态指标property 
+     */
+    public boolean isIsProductType()
+    {
+        return getBoolean("isProductType");
+    }
+    public void setIsProductType(boolean item)
+    {
+        setBoolean("isProductType", item);
+    }
+    /**
+     * Object:规划指标's 关联字段property 
+     */
+    public String getProp()
+    {
+        return getString("prop");
+    }
+    public void setProp(String item)
+    {
+        setString("prop", item);
+    }
+    /**
+     * Object:规划指标's 是否实体指标property 
+     */
+    public boolean isIsEntityIndex()
+    {
+        return getBoolean("isEntityIndex");
+    }
+    public void setIsEntityIndex(boolean item)
+    {
+        setBoolean("isEntityIndex", item);
     }
     public BOSObjectType getBOSType()
     {

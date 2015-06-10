@@ -14,11 +14,13 @@ import com.kingdee.util.enums.StringEnum;
 public class PlanIndexFieldTypeEnum extends StringEnum
 {
     public static final String TEXT_VALUE = "TEXT";//alias=文本
-    public static final String DIGITAL_VALUE = "DIGITAL";//alias=数字
+    public static final String DIGITAL_VALUE = "DIGITAL";//alias=小数
+    public static final String INT_VALUE = "INT";//alias=整数
     public static final String RATE_VALUE = "RATE";//alias=百分比
 
     public static final PlanIndexFieldTypeEnum TEXT = new PlanIndexFieldTypeEnum("TEXT", TEXT_VALUE);
     public static final PlanIndexFieldTypeEnum DIGITAL = new PlanIndexFieldTypeEnum("DIGITAL", DIGITAL_VALUE);
+    public static final PlanIndexFieldTypeEnum INT = new PlanIndexFieldTypeEnum("INT", INT_VALUE);
     public static final PlanIndexFieldTypeEnum RATE = new PlanIndexFieldTypeEnum("RATE", RATE_VALUE);
 
     /**
