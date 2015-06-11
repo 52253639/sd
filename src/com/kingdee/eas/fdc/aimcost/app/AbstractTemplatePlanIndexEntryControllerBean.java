@@ -51,10 +51,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-002bc0a81296"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, pk);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -73,10 +76,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-002cc0a81296"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, filter);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -95,10 +101,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-002dc0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, oql);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -117,10 +126,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-002ec0a81296"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplatePlanIndexEntryInfo retValue = (TemplatePlanIndexEntryInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplatePlanIndexEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -139,10 +151,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-002fc0a81296"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplatePlanIndexEntryInfo retValue = (TemplatePlanIndexEntryInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplatePlanIndexEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -161,10 +176,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0030c0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplatePlanIndexEntryInfo retValue = (TemplatePlanIndexEntryInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplatePlanIndexEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -183,10 +201,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0031c0a81296"), new Object[]{ctx, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK retValue = (IObjectPK)_addnew(ctx, model);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -207,7 +228,9 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0032c0a81296"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _addnew(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -229,7 +252,9 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0033c0a81296"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _update(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -251,7 +276,9 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0034c0a81296"), new Object[]{ctx, model, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _updatePartial(ctx, model, selector);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -273,7 +300,9 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0035c0a81296"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _updateBigObject(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -292,7 +321,9 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0036c0a81296"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, pk);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -314,10 +345,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0037c0a81296"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -336,10 +370,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0038c0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -358,10 +395,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0039c0a81296"), new Object[]{ctx, filter, sorter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, filter, sorter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -380,10 +420,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-003ac0a81296"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplatePlanIndexEntryCollection retValue = (TemplatePlanIndexEntryCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplatePlanIndexEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -400,10 +443,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-003bc0a81296"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplatePlanIndexEntryCollection retValue = (TemplatePlanIndexEntryCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplatePlanIndexEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -420,10 +466,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-003cc0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplatePlanIndexEntryCollection retValue = (TemplatePlanIndexEntryCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplatePlanIndexEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -440,10 +489,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-003dc0a81296"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, filter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -464,10 +516,13 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-003ec0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -488,7 +543,9 @@ public abstract class AbstractTemplatePlanIndexEntryControllerBean extends CoreB
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-003fc0a81296"), new Object[]{ctx, arrayPK});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, arrayPK);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();

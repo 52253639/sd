@@ -280,6 +280,17 @@ public class AbstractTemplatePlanIndexEntryInfo extends com.kingdee.eas.framewor
     {
         setInt("build", item);
     }
+    /**
+     * Object:规则指标分录's 赠送面积property 
+     */
+    public java.math.BigDecimal getGivingArea()
+    {
+        return getBigDecimal("givingArea");
+    }
+    public void setGivingArea(java.math.BigDecimal item)
+    {
+        setBigDecimal("givingArea", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("A2A6C3FA");

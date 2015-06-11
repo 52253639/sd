@@ -17,11 +17,15 @@ import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basedata.ContractWFEntryFactory;
 import com.kingdee.eas.fdc.basedata.FDCBasedataException;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
+import com.kingdee.eas.fdc.aimcost.MeasureEntryFactory;
 import com.kingdee.eas.fdc.aimcost.NewPlanIndexFactory;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigCollection;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo;
 import com.kingdee.eas.fdc.aimcost.IPlanIndexConfig;
+import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexFactory;
+import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTFactory;
 import com.kingdee.eas.framework.IFWEntityStruct;
 import com.kingdee.eas.framework.TreeBaseCollection;
 import com.kingdee.eas.framework.TreeBaseException;
@@ -118,6 +122,18 @@ public class PlanIndexConfigControllerBean extends AbstractPlanIndexConfigContro
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("config.id", PlanIndexConfigInfo.getId().toString()));
 		if(NewPlanIndexFactory.getLocalInstance(ctx).exists(filter)){
+			throw new EASBizException(new NumericExceptionSubItem("100","已经被目标成本测算引用，不能进行删除操作！"));
+		}
+		if(NewPlanIndexPTFactory.getLocalInstance(ctx).exists(filter)){
+			throw new EASBizException(new NumericExceptionSubItem("100","已经被目标成本测算引用，不能进行删除操作！"));
+		}
+		if(TemplateNewPlanIndexFactory.getLocalInstance(ctx).exists(filter)){
+			throw new EASBizException(new NumericExceptionSubItem("100","已经被目标成本测算引用，不能进行删除操作！"));
+		}
+		if(TemplateNewPlanIndexPTFactory.getLocalInstance(ctx).exists(filter)){
+			throw new EASBizException(new NumericExceptionSubItem("100","已经被目标成本测算引用，不能进行删除操作！"));
+		}
+		if(MeasureEntryFactory.getLocalInstance(ctx).exists(filter)){
 			throw new EASBizException(new NumericExceptionSubItem("100","已经被目标成本测算引用，不能进行删除操作！"));
 		}
 		super._delete(ctx, pk);

@@ -152,23 +152,23 @@ public class PlanIndexConfigListUI extends AbstractPlanIndexConfigListUI
 		tblMain.removeRows();// 触发新查询
 	}
 	public void actionAddNew_actionPerformed(ActionEvent e) throws Exception {
-		PlanIndexConfigInfo cti = null;
-		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();
-		if (node == null) {
-			return;
-		} else {
-			if (node.getUserObject() instanceof PlanIndexConfigInfo) {
-				cti = (PlanIndexConfigInfo) node.getUserObject();
-			}
-		}
-		if (cti != null) {
-			if ((!this.isHasSubLevel(cti)) && this.isReferenced(cti)) {
-				if (!MsgBox.isYes(MsgBox.showConfirm2(this,"当前父类型已被引用，此操作将转移对应数据到新增子类型，是否继续？"))) {
-					// 不继续
-					return;
-				}
-			}
-		}
+//		PlanIndexConfigInfo cti = null;
+//		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain.getLastSelectedPathComponent();
+//		if (node == null) {
+//			return;
+//		} else {
+//			if (node.getUserObject() instanceof PlanIndexConfigInfo) {
+//				cti = (PlanIndexConfigInfo) node.getUserObject();
+//			}
+//		}
+//		if (cti != null) {
+//			if ((!this.isHasSubLevel(cti)) && this.isReferenced(cti)) {
+//				if (!MsgBox.isYes(MsgBox.showConfirm2(this,"当前父类型已被引用，此操作将转移对应数据到新增子类型，是否继续？"))) {
+//					// 不继续
+//					return;
+//				}
+//			}
+//		}
 		super.actionAddNew_actionPerformed(e);
 	}
 	private boolean isHasSubLevel(PlanIndexConfigInfo cti) throws EASBizException, BOSException {

@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
 import com.kingdee.bos.Context;
+import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
@@ -60,7 +61,14 @@ import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeInfo;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexInfo;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTCollection;
+import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexCollection;
+import com.kingdee.eas.fdc.aimcost.PlanIndexConfigCollection;
+import com.kingdee.eas.fdc.aimcost.PlanIndexConfigFactory;
+import com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryCollection;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexFactory;
@@ -74,6 +82,8 @@ import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostFactory;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostInfo;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureEntryCollection;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureEntryInfo;
+import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexInfo;
+import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTInfo;
 import com.kingdee.eas.fdc.aimcost.TemplatePlanIndexCollection;
 import com.kingdee.eas.fdc.aimcost.TemplatePlanIndexEntryCollection;
 import com.kingdee.eas.fdc.aimcost.TemplatePlanIndexEntryInfo;
@@ -306,6 +316,12 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 		selector.add("constrEntrys.*");
 		selector.add("constrEntrys.productType.*");
 		
+		selector.add("costEntry.config.*");
+		selector.add("newPlanIndexEntry.*");
+		selector.add("newPlanIndexEntry.config.*");
+		selector.add("newPlanIndexEntry.productType.*");
+		selector.add("newPlanIndexEntryPT.*");
+		selector.add("newPlanIndexEntryPT.config.*");
 		MeasureCostInfo measure = MeasureCostFactory.getLocalInstance(ctx).getMeasureCostInfo(new ObjectUuidPK(BOSUuid.read(measureCostId)), selector);
 		PlanIndexInfo planIndex = getPlanIndex(ctx, measureCostId,false);
 
@@ -330,6 +346,20 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			entry.setId(BOSUuid.create(entry.getBOSType()));
 			entry.setParent(templateMeasureInfo);
 			templateMeasureInfo.getConstrEntrys().add(entry);
+		}
+		templateMeasureInfo.put("newPlanIndexEntry", new NewPlanIndexCollection());
+		for (int i = 0; i < measure.getNewPlanIndexEntry().size(); i++) {
+			TemplateNewPlanIndexInfo entry = new TemplateNewPlanIndexInfo();
+			entry.putAll(measure.getNewPlanIndexEntry().get(i));
+			entry.setId(null);
+			templateMeasureInfo.getNewPlanIndexEntry().add(entry);
+		}
+		templateMeasureInfo.put("newPlanIndexEntryPT", new NewPlanIndexPTCollection());
+		for (int i = 0; i < measure.getNewPlanIndexEntryPT().size(); i++) {
+			TemplateNewPlanIndexPTInfo entry = new TemplateNewPlanIndexPTInfo();
+			entry.putAll(measure.getNewPlanIndexEntryPT().get(i));
+			entry.setId(null);
+			templateMeasureInfo.getNewPlanIndexEntryPT().add(entry);
 		}
 		templatePlanIndexInfo.put("entrys", new TemplatePlanIndexEntryCollection());
 		// templatePlanIndexInfo.getEntrys().clear();
@@ -481,6 +511,15 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 		selector.add("costEntry.unit.name");
 		selector.add("constrEntrys.*");
 		selector.add("constrEntrys.productType.*");
+		selector.add("constrEntrys.productType.*");
+		
+		selector.add("costEntry.config.*");
+		selector.add("newPlanIndexEntry.*");
+		selector.add("newPlanIndexEntry.config.*");
+		selector.add("newPlanIndexEntry.productType.*");
+		selector.add("newPlanIndexEntryPT.*");
+		selector.add("newPlanIndexEntryPT.config.*");
+		
 		TemplateMeasureCostInfo templateMeasure = TemplateMeasureCostFactory.getLocalInstance(ctx).getTemplateMeasureCostInfo(new ObjectUuidPK(BOSUuid.read(id)), selector);
 		TemplatePlanIndexInfo templatePlanIndex = getTemplatePlanIndex(ctx, id);
 		
@@ -513,7 +552,93 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			entry.setId(BOSUuid.create(entry.getBOSType()));
 			measureInfo.getConstrEntrys().add(entry);
 		}
-
+		Map config=new HashMap();
+		PlanIndexConfigCollection col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=0 and isEntityIndex=0 order by longNumber");
+		for(int i=0;i<col.size();i++){
+			config.put(col.get(i).getId().toString(), col.get(i));
+		}
+		
+		Map configPT=new HashMap();
+		col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by longNumber");
+		for(int i=0;i<col.size();i++){
+			configPT.put(col.get(i).getId().toString(), col.get(i));
+		}
+		measureInfo.put("newPlanIndexEntry", new NewPlanIndexCollection());
+		for (int i = 0; i < templateMeasure.getNewPlanIndexEntry().size(); i++) {
+			if(config.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
+				NewPlanIndexInfo entry = new NewPlanIndexInfo();
+				entry.setId(BOSUuid.create(entry.getBOSType()));
+				entry.setConfig(col.get(i));
+				entry.setFieldType(col.get(i).getFieldType());
+				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
+				entry.setName(col.get(i).getName());
+				entry.setRemark(col.get(i).getDescription());
+				entry.setFormula(col.get(i).getFormula());
+				entry.setFormulaType(col.get(i).getFormulaType());
+				entry.setProp(col.get(i).getProp());
+				if(templateMeasure.getNewPlanIndexEntry().get(i).getFieldType().equals(col.get(i).getFieldType())){
+					entry.setValue(templateMeasure.getNewPlanIndexEntry().get(i).getValue());
+				}
+				measureInfo.getNewPlanIndexEntry().add(entry);
+				
+				config.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
+			}
+		}
+		Object[] key = config.keySet().toArray(); 
+		for (int k = 0; k < key.length; k++) {
+			String configid=key[k].toString();
+			PlanIndexConfigInfo info=(PlanIndexConfigInfo) config.get(configid);
+			
+			NewPlanIndexInfo entry = new NewPlanIndexInfo();
+			entry.setId(BOSUuid.create(entry.getBOSType()));
+			entry.setConfig(info);
+			entry.setFieldType(info.getFieldType());
+			entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+			entry.setName(info.getName());
+			entry.setRemark(info.getDescription());
+			entry.setFormula(info.getFormula());
+			entry.setFormulaType(info.getFormulaType());
+			entry.setProp(info.getProp());
+			measureInfo.getNewPlanIndexEntry().add(entry);
+		}
+		
+		measureInfo.put("newPlanIndexEntryPT", new NewPlanIndexPTCollection());
+		for (int i = 0; i < templateMeasure.getNewPlanIndexEntryPT().size(); i++) {
+			if(configPT.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
+				NewPlanIndexPTInfo entry = new NewPlanIndexPTInfo();
+				entry.setId(BOSUuid.create(entry.getBOSType()));
+				entry.setConfig(col.get(i));
+				entry.setFieldType(col.get(i).getFieldType());
+				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
+				entry.setName(col.get(i).getName());
+				entry.setRemark(col.get(i).getDescription());
+				entry.setFormula(col.get(i).getFormula());
+				entry.setFormulaType(col.get(i).getFormulaType());
+				entry.setProp(col.get(i).getProp());
+				measureInfo.getNewPlanIndexEntryPT().add(entry);
+				
+				configPT.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
+			}
+		}
+		
+		key = configPT.keySet().toArray(); 
+		for (int k = 0; k < key.length; k++) {
+			String configid=key[k].toString();
+			PlanIndexConfigInfo info=(PlanIndexConfigInfo) configPT.get(configid);
+			
+			NewPlanIndexPTInfo entry = new NewPlanIndexPTInfo();
+			entry.setId(BOSUuid.create(entry.getBOSType()));
+			entry.setConfig(info);
+			entry.setFieldType(info.getFieldType());
+			entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+			entry.setName(info.getName());
+			entry.setRemark(info.getDescription());
+			entry.setFormula(info.getFormula());
+			entry.setFormulaType(info.getFormulaType());
+			entry.setProp(info.getProp());
+			measureInfo.getNewPlanIndexEntryPT().add(entry);
+		}
+		
 		planIndexInfo.put("entrys", new PlanIndexEntryCollection());
 		for (int i = 0; i < templatePlanIndex.getEntrys().size(); i++) {
 			PlanIndexEntryInfo entry = new PlanIndexEntryInfo();

@@ -668,10 +668,10 @@ public class PlanIndexTable {
 			
 			row.getCell(8).setValue(entry.getSellArea());
 			
-			row.getCell(9).setValue(entry.getRentArea());
-			row.getCell(10).setValue(entry.getGroundRentArea());
-			row.getCell(11).setValue(entry.getPublicArea());
-			row.getCell(12).setValue(entry.getDeliveryArea());
+//			row.getCell(9).setValue(entry.getRentArea());
+//			row.getCell(10).setValue(entry.getGroundRentArea());
+//			row.getCell(11).setValue(entry.getPublicArea());
+//			row.getCell(12).setValue(entry.getDeliveryArea());
 			
 			row.getCell(13).setValue(entry.getProductRate());
 			row.getCell(14).setValue(entry.getUnitArea());
@@ -1194,18 +1194,18 @@ public class PlanIndexTable {
 						entry.setSellArea((BigDecimal)row.getCell(8).getValue());
 					}
 					
-					if(row.getCell(9).getValue() instanceof BigDecimal){
-						entry.setRentArea((BigDecimal)row.getCell(9).getValue());
-					}
-					if(row.getCell(10).getValue() instanceof BigDecimal){
-						entry.setGroundRentArea((BigDecimal)row.getCell(10).getValue());
-					}
-					if(row.getCell(11).getValue() instanceof BigDecimal){
-						entry.setPublicArea((BigDecimal)row.getCell(11).getValue());
-					}
-					if(row.getCell(12).getValue() instanceof BigDecimal){
-						entry.setDeliveryArea((BigDecimal)row.getCell(12).getValue());
-					}
+//					if(row.getCell(9).getValue() instanceof BigDecimal){
+//						entry.setRentArea((BigDecimal)row.getCell(9).getValue());
+//					}
+//					if(row.getCell(10).getValue() instanceof BigDecimal){
+//						entry.setGroundRentArea((BigDecimal)row.getCell(10).getValue());
+//					}
+//					if(row.getCell(11).getValue() instanceof BigDecimal){
+//						entry.setPublicArea((BigDecimal)row.getCell(11).getValue());
+//					}
+//					if(row.getCell(12).getValue() instanceof BigDecimal){
+//						entry.setDeliveryArea((BigDecimal)row.getCell(12).getValue());
+//					}
 					
 					if(FDCHelper.toBigDecimal(row.getCell(13).getValue()) instanceof BigDecimal){
 						entry.setProductRate(FDCHelper.toBigDecimal(row.getCell(13).getValue()));//车位个数，产品比例

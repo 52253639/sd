@@ -2,6 +2,8 @@ package com.kingdee.eas.fdc.aimcost.client;
 import java.math.BigDecimal;
 import java.util.Stack;
 
+import com.kingdee.eas.fdc.basedata.FDCHelper;
+
 public class Calc {  
   
     /** 
@@ -114,7 +116,7 @@ public class Calc {
             digital.push(number2.multiply(number1));  
             break;  
         case '/':  
-            digital.push(number2.divide(number1,4,BigDecimal.ROUND_HALF_UP));  
+            digital.push(FDCHelper.divide(number2, number1, 4, BigDecimal.ROUND_HALF_UP));  
             break;  
         }  
     }  

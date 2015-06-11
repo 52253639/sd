@@ -18,6 +18,8 @@ public class AbstractTemplateMeasureCostInfo extends com.kingdee.eas.fdc.basedat
         super(pkField);
         put("constrEntrys", new com.kingdee.eas.fdc.aimcost.TempConstrPlanIndexEntryCollection());
         put("costEntry", new com.kingdee.eas.fdc.aimcost.TemplateMeasureEntryCollection());
+        put("newPlanIndexEntryPT", new com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTCollection());
+        put("newPlanIndexEntry", new com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexCollection());
     }
     /**
      * Object: 成本测算 's 工程项目 property 
@@ -177,6 +179,20 @@ public class AbstractTemplateMeasureCostInfo extends com.kingdee.eas.fdc.basedat
 		if (item != null) {
         setString("versionType", item.getValue());
 		}
+    }
+    /**
+     * Object: 成本测算 's 规划指标 property 
+     */
+    public com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexCollection getNewPlanIndexEntry()
+    {
+        return (com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexCollection)get("newPlanIndexEntry");
+    }
+    /**
+     * Object: 成本测算 's 规划指标业态快照 property 
+     */
+    public com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTCollection getNewPlanIndexEntryPT()
+    {
+        return (com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTCollection)get("newPlanIndexEntryPT");
     }
     public BOSObjectType getBOSType()
     {

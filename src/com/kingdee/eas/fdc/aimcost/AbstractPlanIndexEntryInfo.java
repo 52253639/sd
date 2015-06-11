@@ -281,7 +281,7 @@ public class AbstractPlanIndexEntryInfo extends com.kingdee.eas.framework.CoreBa
         setInt("build", item);
     }
     /**
-     * Object:规则指标分录's 赠送建筑面积property 
+     * Object:规则指标分录's 赠送面积property 
      */
     public java.math.BigDecimal getGivingArea()
     {
@@ -290,50 +290,6 @@ public class AbstractPlanIndexEntryInfo extends com.kingdee.eas.framework.CoreBa
     public void setGivingArea(java.math.BigDecimal item)
     {
         setBigDecimal("givingArea", item);
-    }
-    /**
-     * Object:规则指标分录's 可租面积property 
-     */
-    public java.math.BigDecimal getRentArea()
-    {
-        return getBigDecimal("rentArea");
-    }
-    public void setRentArea(java.math.BigDecimal item)
-    {
-        setBigDecimal("rentArea", item);
-    }
-    /**
-     * Object:规则指标分录's 地上可租售面积property 
-     */
-    public java.math.BigDecimal getGroundRentArea()
-    {
-        return getBigDecimal("groundRentArea");
-    }
-    public void setGroundRentArea(java.math.BigDecimal item)
-    {
-        setBigDecimal("groundRentArea", item);
-    }
-    /**
-     * Object:规则指标分录's 公共区域精装面积property 
-     */
-    public java.math.BigDecimal getPublicArea()
-    {
-        return getBigDecimal("publicArea");
-    }
-    public void setPublicArea(java.math.BigDecimal item)
-    {
-        setBigDecimal("publicArea", item);
-    }
-    /**
-     * Object:规则指标分录's 精装交付的可售面积面积property 
-     */
-    public java.math.BigDecimal getDeliveryArea()
-    {
-        return getBigDecimal("deliveryArea");
-    }
-    public void setDeliveryArea(java.math.BigDecimal item)
-    {
-        setBigDecimal("deliveryArea", item);
     }
     public BOSObjectType getBOSType()
     {

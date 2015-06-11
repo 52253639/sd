@@ -571,7 +571,9 @@ public class AimCostUI extends AbstractAimCostUI {
 			actionSubmit.setVisible(false);
 		}
 		pnlAimCost.setDividerLocation(500);
-
+		this.tblMain.getColumn("description").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("program").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("changeReason").getStyleAttributes().setHided(true);
 	}
 
 	private void initControl() {
