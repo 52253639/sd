@@ -478,6 +478,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				}else{
 					entry.setValue(null);
 				}
+				entry.setDes((String)table.getRow(i).getCell("des").getValue());
 				cost.getNewPlanIndexEntry().add(entry);
 			}
 		}
@@ -4009,20 +4010,20 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				selector.setIsPrice(isPrice);
 				if(!isPrice){
 					//系数要先设置指标
-					if(row.getCell("indexName").getValue() instanceof Item){
-						String key = ((Item)row.getCell("indexName").getValue()).key;
-						if(key==null||key.equals("empty")){
-							MsgBox.showWarning(getplTables(), "请先选择指标");
-							e.setCanceled(true);
-							return;
-						}
-						selector.setIndex(key);
-						
-					}else{
-						MsgBox.showWarning(getplTables(), "请先选择指标");
-						e.setCanceled(true);
-						return;
-					}
+//					if(row.getCell("indexName").getValue() instanceof Item){
+//						String key = ((Item)row.getCell("indexName").getValue()).key;
+//						if(key==null||key.equals("empty")){
+//							MsgBox.showWarning(getplTables(), "请先选择指标");
+//							e.setCanceled(true);
+//							return;
+//						}
+//						selector.setIndex(key);
+//						
+//					}else{
+//						MsgBox.showWarning(getplTables(), "请先选择指标");
+//						e.setCanceled(true);
+//						return;
+//					}
 				}else{
 					selector.setIndex(null);
 				}
@@ -4563,24 +4564,30 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		config.setKey("config");
 		config.getStyleAttributes().setLocked(true);
 		tblPlanIndex.getHeadRow(0).getCell("config").setValue("规划指标");
-		config.setWidth(500);
+		config.setWidth(400);
 		
 		IColumn value=tblPlanIndex.addColumn();
 		value.setKey("value");
 		tblPlanIndex.getHeadRow(0).getCell("value").setValue("值");
-		value.setWidth(200);
+		value.setWidth(180);
+		
+		IColumn des=tblPlanIndex.addColumn();
+		des.setKey("des");
+		des.getStyleAttributes().setLocked(true);
+		tblPlanIndex.getHeadRow(0).getCell("des").setValue("备注");
+		des.setWidth(300);
 		
 		IColumn remark=tblPlanIndex.addColumn();
 		remark.setKey("remark");
 		remark.getStyleAttributes().setLocked(true);
 		tblPlanIndex.getHeadRow(0).getCell("remark").setValue("说明");
-		remark.setWidth(500);
+		remark.setWidth(400);
 		
-//		if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
-//			reason.getStyleAttributes().setLocked(false);
-//		}else{
-//			reason.getStyleAttributes().setLocked(true);
-//		}
+		if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
+			des.getStyleAttributes().setLocked(false);
+		}else{
+			des.getStyleAttributes().setLocked(true);
+		}
 		if(productType==null){
 			tabPlanIndexEntry.add(tblPlanIndex,planIndexKey);
 			planIndexTables.put(planIndexKey, tblPlanIndex);
@@ -4623,6 +4630,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			row.getCell("config").setValue(blk+entry.getName());
 			row.getCell("value").setValue(entry.getValue());
 			row.getCell("remark").setValue(entry.getRemark());
+			row.getCell("des").setValue(entry.getDes());
 			if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.RATE)){
 				KDFormattedTextField amount = new KDFormattedTextField();
 				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
@@ -5148,6 +5156,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		return value;
 	}
 	protected void tblPlanIndex_editStopped(KDTEditEvent e)throws Exception {
+		if(e.getColIndex()!=1)return;
 		Object[] key = planIndexTables.keySet().toArray(); 
 		for (int k = 0; k < key.length; k++) {
 			String productKey=key[k].toString();

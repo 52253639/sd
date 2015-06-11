@@ -142,6 +142,17 @@ public class AbstractTemplateNewPlanIndexInfo extends com.kingdee.eas.framework.
     {
         setString("prop", item);
     }
+    /**
+     * Object:规划指标模板's 说明property 
+     */
+    public String getDes()
+    {
+        return getString("des");
+    }
+    public void setDes(String item)
+    {
+        setString("des", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("046EFADA");

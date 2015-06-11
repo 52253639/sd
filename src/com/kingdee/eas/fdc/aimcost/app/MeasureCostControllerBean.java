@@ -579,6 +579,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 				if(templateMeasure.getNewPlanIndexEntry().get(i).getFieldType().equals(col.get(i).getFieldType())){
 					entry.setValue(templateMeasure.getNewPlanIndexEntry().get(i).getValue());
 				}
+				entry.setDes(templateMeasure.getNewPlanIndexEntry().get(i).getDes());
 				measureInfo.getNewPlanIndexEntry().add(entry);
 				
 				config.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
