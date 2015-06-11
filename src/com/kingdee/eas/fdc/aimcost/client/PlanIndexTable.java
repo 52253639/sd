@@ -1490,6 +1490,21 @@ public class PlanIndexTable {
 		
 		return amount;
 	}
+	public static BigDecimal getAllConstructArea(PlanIndexInfo info){
+		BigDecimal amount=FDCHelper.ZERO;
+		if(isBuildPartLogic()){
+			for(int i=0;i<info.getEntrys().size();i++){
+				//与可售一致，包括停车
+				if(info.getEntrys().get(i).isIsProduct()&&info.getEntrys().get(i).isIsSplit()){
+					amount=amount.add(FDCHelper.toBigDecimal(info.getEntrys().get(i).getConstructArea()));
+				}
+			}
+		}else{//直接赋值可能为空amount = info.getTotalBuildArea();
+			amount = amount.add(FDCHelper.toBigDecimal(info.getTotalConstructArea()));
+		}
+		
+		return amount;
+	}
 	private boolean isSubTotalRow(IRow row){
 		boolean isSubTotalRow=false;
 		if(row.getCell(1).getValue()!=null&&row.getCell(1).getValue().equals("小计")){

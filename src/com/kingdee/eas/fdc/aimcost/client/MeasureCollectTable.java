@@ -70,6 +70,7 @@ public class MeasureCollectTable {
 	private PlanIndexEntryCollection getEntrys(PlanIndexInfo planIndexInfo) {
 		allSellArea=PlanIndexTable.getAllSellArea(planIndexInfo);
 		allBuildArea=PlanIndexTable.getAllBuildArea(planIndexInfo);
+		allConstructArea=PlanIndexTable.getAllConstructArea(planIndexInfo);
 		PlanIndexEntryCollection entrys = new PlanIndexEntryCollection();
 		for (int i = 0; i < planIndexInfo.getEntrys().size(); i++) {
 			PlanIndexEntryInfo entry = planIndexInfo.getEntrys().get(i);
@@ -91,6 +92,10 @@ public class MeasureCollectTable {
 	private BigDecimal allSellArea=FDCHelper.ZERO;
 	private BigDecimal getAllSellArea(){
 		return allSellArea;
+	}
+	private BigDecimal allConstructArea=FDCHelper.ZERO;
+	private BigDecimal getAllConstructArea(){
+		return allConstructArea;
 	}
 	
 	private BigDecimal getCustomIndex(Item item, String productId){
@@ -130,7 +135,7 @@ public class MeasureCollectTable {
 		if(entrys==null) return;
 		this.table.removeColumns();
 		int entrysSize = entrys.size();
-		int colums = entrysSize * 3 + 6;
+		int colums = entrysSize * 4 + 7;
 		// this.table=new KDTable(colums,2,0);
 		this.table.createBlankTable(colums, 2, 0);
 		table.getColumn(0).setKey("acctNumber");
@@ -142,6 +147,14 @@ public class MeasureCollectTable {
 		}
 		table.getColumn(base + entrysSize).setKey("buildAvg");
 		FDCHelper.formatTableNumber(table, "buildAvg");
+		
+		base = base + entrysSize + 1;
+		for (int i = 0; i < entrysSize; i++) {
+			table.getColumn(base + i).setKey("constructAvg" + i);
+			FDCHelper.formatTableNumber(table, "constructAvg" + i);
+		}
+		table.getColumn(base + entrysSize).setKey("constructAvg");
+		FDCHelper.formatTableNumber(table, "constructAvg");
 		
 		base = base + entrysSize + 1;
 		for (int i = 0; i < entrysSize; i++) {
@@ -167,6 +180,7 @@ public class MeasureCollectTable {
 		headRow.getCell("acctNumber").setValue("科目编码");
 		headRow.getCell("acctName").setValue("科目名称");
 		headRow.getCell("buildAvg").setValue("建筑面积单位成本");
+		headRow.getCell("constructAvg").setValue("实际建设面积单位成本");
 		headRow.getCell("avg").setValue("可售面积单位成本");
 		headRow.getCell("total").setValue("总成本");
 		headRow.getCell("splitType").setValue("分配方式");
@@ -176,11 +190,13 @@ public class MeasureCollectTable {
 		for (int i = 0; i < entrysSize; i++) {
 			String name = entrys.get(i).getProduct().getName();
 			headRow.getCell("buildAvg" + i).setValue(name);
+			headRow.getCell("constructAvg" + i).setValue(name);
 			headRow.getCell("avg" + i).setValue(name);
 			headRow.getCell("split" + i).setValue(name);
 			headRow.getCell("split" + i).setUserObject(entrys.get(i).getProduct().getId().toString());
 		}
 		headRow.getCell("buildAvg").setValue("平均");
+		headRow.getCell("constructAvg").setValue("平均");
 		headRow.getCell("avg").setValue("平均");
 		headRow.getCell("total").setValue("合计");
 		// merge
@@ -197,8 +213,10 @@ public class MeasureCollectTable {
 		mm.mergeBlock(0, 2, 0, 2 + entrysSize);
 		// 可售面积单位成本(加1是因为建筑面积单位成本多了平均列，总成本加2类同 by hpw)
 		mm.mergeBlock(0, 2 + entrysSize + 1, 0, 2 + entrysSize * 2 + 1);
+		
+		mm.mergeBlock(0, 2 + entrysSize * 2 + 2, 0, 2 + entrysSize * 3 + 2);
 		// 总成本
-		mm.mergeBlock(0, 2 + entrysSize * 2 + 2, 0, colums - 2);
+		mm.mergeBlock(0, 2 + entrysSize * 3 + 3, 0, colums - 2);
 		// table.getColumn("splitType").setEditor(measureCostEditUI.getIndexEditor(CostAccountTypeEnum.MAIN,
 		// null));
 		// 冻结
@@ -312,17 +330,21 @@ public class MeasureCollectTable {
 			BigDecimal allTotal = FDCHelper.ZERO;
 			BigDecimal allSellArea = FDCHelper.ZERO;
 			BigDecimal allBuildArea = FDCHelper.ZERO;
+			BigDecimal allconstructArea = FDCHelper.ZERO;
 			for (int i = 0; i < entrys.size(); i++) {
 				PlanIndexEntryInfo entry = entrys.get(i);
 				BigDecimal sellArea = entry.getSellArea();
 				BigDecimal buildArea = entry.getBuildArea();
+				BigDecimal constructArea=entry.getConstructArea();
 				if (FDCHelper.toBigDecimal(sellArea).compareTo(FDCHelper.ZERO) == 0) {
 					sellArea = null;
 				}
 				if (FDCHelper.toBigDecimal(buildArea).compareTo(FDCHelper.ZERO) == 0) {
 					buildArea = null;
 				}
-
+				if (FDCHelper.toBigDecimal(constructArea).compareTo(FDCHelper.ZERO) == 0) {
+					constructArea = null;
+				}
 				String productKey = key + entry.getProduct().getId().toString();
 				MeasureEntryCollection coll = (MeasureEntryCollection) measureCostMap.get(productKey);
 				if (coll != null && coll.size() > 0) {
@@ -342,6 +364,10 @@ public class MeasureCollectTable {
 					if (buildArea != null) {
 						BigDecimal avg = total.divide(buildArea, 2, BigDecimal.ROUND_HALF_UP);
 						row.getCell("buildAvg" + i).setValue(avg);
+					}
+					if (constructArea != null) {
+						BigDecimal avg = total.divide(constructArea, 2, BigDecimal.ROUND_HALF_UP);
+						row.getCell("constructAvg" + i).setValue(avg);
 					}
 				}
 
@@ -435,15 +461,17 @@ public class MeasureCollectTable {
 	public void setUnionData() {
 		// if(true) return;
 		// String[] cols = new String[] { "price", "sumPrice", "sellPart" };
-		String[] cols = new String[entrys.size() * 3 + 3];
+		String[] cols = new String[entrys.size() * 4 + 4];
 		for (int i = 0; i < entrys.size(); i++) {
 			cols[i] = "buildAvg" + i;
-			cols[entrys.size() + 1 + i] = "avg" + i;
-			cols[entrys.size()*2 + 2 + i] = "split" + i;
+			cols[entrys.size() + 1 + i] = "constructAvg" + i;
+			cols[entrys.size()*2 + 2 + i] = "avg" + i;
+			cols[entrys.size()*3 + 3 + i] = "split" + i;
 		}
 		cols[entrys.size()] = "buildAvg";
-		cols[entrys.size() * 2 + 1] = "avg";
-		cols[entrys.size() * 3 + 2] = "total";
+		cols[entrys.size() * 2 + 1] = "constructAvg";
+		cols[entrys.size() * 3 + 2] = "avg";
+		cols[entrys.size() * 4 + 3] = "total";
 		// cols=new String[]{"total"};
 		for (int i = 0; i < table.getRowCount(); i++) {
 			IRow row = table.getRow(i);
@@ -506,6 +534,7 @@ public class MeasureCollectTable {
 	private void afterSetUnionData(){
 		BigDecimal allSellArea = getAllSellArea();
 		BigDecimal allBuildArea = getAllBuildArea();
+		BigDecimal allConstructArea = getAllConstructArea();
 		for (int i = 0; i < table.getRowCount(); i++) {
 			IRow row = table.getRow(i);
 			if (row.getUserObject() instanceof CostAccountInfo) {
@@ -520,6 +549,10 @@ public class MeasureCollectTable {
 				if (FDCHelper.toBigDecimal(allBuildArea).compareTo(FDCHelper.ZERO) != 0) {
 					BigDecimal avg = allTotal.divide(allBuildArea, 2, BigDecimal.ROUND_HALF_UP);
 					row.getCell("buildAvg").setValue(avg);
+				}
+				if (FDCHelper.toBigDecimal(allConstructArea).compareTo(FDCHelper.ZERO) != 0) {
+					BigDecimal avg = allTotal.divide(allConstructArea, 2, BigDecimal.ROUND_HALF_UP);
+					row.getCell("constructAvg").setValue(avg);
 				}
 			}
 		}
@@ -555,11 +588,15 @@ public class MeasureCollectTable {
 				int index = Integer.parseInt(table.getColumnKey(columnIndex).substring("split".length()));
 				BigDecimal sellArea = entrys.get(index).getSellArea();
 				BigDecimal buildArea = entrys.get(index).getBuildArea();
+				BigDecimal constructArea = entrys.get(index).getConstructArea();
 				if (FDCHelper.toBigDecimal(sellArea).signum() != 0) {
 					row.getCell("avg" + index).setValue(FDCHelper.toBigDecimal(newValue).divide(sellArea, 2, BigDecimal.ROUND_HALF_UP));
 				}
 				if (FDCHelper.toBigDecimal(buildArea).signum() != 0) {
 					row.getCell("buildAvg" + index).setValue(FDCHelper.toBigDecimal(newValue).divide(buildArea, 2, BigDecimal.ROUND_HALF_UP));
+				}
+				if (FDCHelper.toBigDecimal(constructArea).signum() != 0) {
+					row.getCell("constructAvg" + index).setValue(FDCHelper.toBigDecimal(newValue).divide(constructArea, 2, BigDecimal.ROUND_HALF_UP));
 				}
 				setUnionData();
 			}
@@ -683,9 +720,11 @@ public class MeasureCollectTable {
 		if (total.signum() == 0||splitType==null) {
 			for (int i = 0; i < entrys.size(); i++) {
 				row.getCell("buildAvg"+i).setValue(null);
+				row.getCell("constructAvg"+i).setValue(null);
 				row.getCell("avg"+i).setValue(null);
 				row.getCell("split"+i).setValue(null);
 			}
+			row.getCell("constructAvg").setValue(null);
 			row.getCell("buildAvg").setValue(null);
 			row.getCell("avg").setValue(null);
 			row.getCell("total").setValue(null);
@@ -701,6 +740,7 @@ public class MeasureCollectTable {
 			manSplit(splitType, row);
 			for (int i = 0; i < entrys.size(); i++) {
 				row.getCell("buildAvg" + i).setValue(null);
+				row.getCell("constructAvg"+i).setValue(null);
 				row.getCell("avg" + i).setValue(null);
 				row.getCell("split" + i).setValue(null);
 			}
@@ -713,6 +753,7 @@ public class MeasureCollectTable {
 					row.getCell("split" + i).setValue(null);
 					row.getCell("avg" + i).setValue(null);
 					row.getCell("buildAvg" + i).setValue(null);
+					row.getCell("constructAvg"+i).setValue(null);
 					if (i == entrys.size() - 1) {
 						// 最后一项不分摊的话,将分摊的差值归到之前分摊的最后一项
 						BigDecimal dif = total.subtract(tmp);
@@ -749,6 +790,12 @@ public class MeasureCollectTable {
 					continue;
 				avgAmt = splitAmt.divide(amt, 2, BigDecimal.ROUND_HALF_UP);
 				row.getCell("buildAvg" + i).setValue(avgAmt);
+				
+				amt = FDCHelper.toBigDecimal(entrys.get(i).getConstructArea());
+				if (amt.compareTo(FDCHelper.ZERO) == 0)
+					continue;
+				avgAmt = splitAmt.divide(amt, 2, BigDecimal.ROUND_HALF_UP);
+				row.getCell("constructAvg" + i).setValue(avgAmt);
 
 			}
 		} else {
@@ -761,6 +808,7 @@ public class MeasureCollectTable {
 						row.getCell("split" + i).setValue(null);
 						row.getCell("avg" + i).setValue(null);
 						row.getCell("buildAvg" + i).setValue(null);
+						row.getCell("constructAvg" + i).setValue(null);
 						if (i == entrys.size() - 1) {
 							// 最后一项不分摊的话,将分摊的差值归到之前分摊的最后一项
 							BigDecimal dif = total.subtract(tmp);
@@ -809,22 +857,39 @@ public class MeasureCollectTable {
 						row.getCell("buildAvg" + i).setValue(avgAmt);
 					}
 					
+					amt = FDCHelper.toBigDecimal(entrys.get(i).getConstructArea());
+					if (amt.compareTo(FDCHelper.ZERO) == 0)
+						continue;
+					avgAmt = splitAmt.divide(amt, 2, BigDecimal.ROUND_HALF_UP);
+//					row.getCell("buildAvg" + i).setValue(avgAmt);
+					
+					if (amt.compareTo(FDCHelper.ZERO) != 0){
+						
+						avgAmt = splitAmt.divide(amt, 2, BigDecimal.ROUND_HALF_UP);
+						row.getCell("constructAvg" + i).setValue(avgAmt);
+					}
+					
 				}
 
 			} else {
 				for (int i = 0; i < entrys.size(); i++) {
 					row.getCell("buildAvg" + i).setValue(null);
+					row.getCell("constructAvg" + i).setValue(null);
 					row.getCell("avg" + i).setValue(null);
 					row.getCell("split" + i).setValue(null);
 				}
 			}
 			BigDecimal sumSellArea = getAllSellArea();
 			BigDecimal sumBuildArea = getAllBuildArea();
+			BigDecimal sumConstructArea = getAllConstructArea();
 			if (sumSellArea.signum() != 0) {
 				row.getCell("avg").setValue(total.divide(sumSellArea, 2, BigDecimal.ROUND_HALF_UP));
 			}
 			if (sumBuildArea.signum() != 0) {
 				row.getCell("buildAvg").setValue(total.divide(sumBuildArea, 2, BigDecimal.ROUND_HALF_UP));
+			}
+			if (sumConstructArea.signum() != 0) {
+				row.getCell("constructAvg").setValue(total.divide(sumConstructArea, 2, BigDecimal.ROUND_HALF_UP));
 			}
 		}
 			
@@ -859,11 +924,18 @@ public class MeasureCollectTable {
 					continue;
 				avgAmt = splitAmt.divide(amt, 2, BigDecimal.ROUND_HALF_UP);
 				row.getCell("buildAvg" + i).setValue(avgAmt);
+				
+				amt = FDCHelper.toBigDecimal(entrys.get(i).getConstructArea());
+				if (amt.compareTo(FDCHelper.ZERO) == 0)
+					continue;
+				avgAmt = splitAmt.divide(amt, 2, BigDecimal.ROUND_HALF_UP);
+				row.getCell("constructAvg" + i).setValue(avgAmt);
 			}
 		}
 
 		BigDecimal sumSellArea = FDCHelper.toBigDecimal(getAllSellArea());
 		BigDecimal sumBuildArea = FDCHelper.toBigDecimal(getAllBuildArea());
+		BigDecimal sumconstructArea = FDCHelper.toBigDecimal(getAllConstructArea());
 		BigDecimal total = FDCHelper.toBigDecimal(row.getCell("total").getValue());
 		if (sumSellArea.compareTo(FDCHelper.ZERO) != 0) {
 			row.getCell("avg").setValue(total.divide(sumSellArea, 2, BigDecimal.ROUND_HALF_UP));
@@ -871,7 +943,9 @@ public class MeasureCollectTable {
 		if (sumBuildArea.compareTo(FDCHelper.ZERO) != 0) {
 			row.getCell("buildAvg").setValue(total.divide(sumBuildArea, 2, BigDecimal.ROUND_HALF_UP));
 		}
-		
+		if (sumconstructArea.compareTo(FDCHelper.ZERO) != 0) {
+			row.getCell("constructAvg").setValue(total.divide(sumconstructArea, 2, BigDecimal.ROUND_HALF_UP));
+		}
 		//初始加载及分摊方式改变的时候统一设置状态
 		for (int i = 0; i < entrys.size(); i++) {
 			//查看状态不能修改

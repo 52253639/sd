@@ -4675,7 +4675,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 	}
 	public void setTotalColor(){
-		if(this.measureCollectTable==null)return;
+		if(this.measureCollectTable==null||totalColor==null)return;
 		for(int j=0;j<this.measureCollectTable.getTable().getRowCount();j++){
 			String longNumber=(String) this.measureCollectTable.getTable().getRow(j).getCell("acctNumber").getValue();
 			if(totalColor.containsKey(longNumber)){
@@ -5175,7 +5175,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 									if(value==null||value.toString().trim().length()<1){
 										continue;
 									}
-									if(value instanceof ProductTypeInfo&&productType.getId().toString().equals(productType.getId().toString())
+									if(value instanceof ProductTypeInfo&&((ProductTypeInfo)value).getId().toString().equals(productType.getId().toString())
 											&&planIndexTable.entryBinder.get(entry.getProp())!=null){
 										planIndexRow.getCell(Integer.valueOf(planIndexTable.entryBinder.get(entry.getProp()).toString())).setValue(row.getCell("value").getValue());
 									}
