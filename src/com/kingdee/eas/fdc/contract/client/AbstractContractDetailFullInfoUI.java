@@ -85,6 +85,7 @@ public abstract class AbstractContractDetailFullInfoUI extends com.kingdee.eas.f
         this.txtSettleState.setName("txtSettleState");
         this.txtSettleNumber.setName("txtSettleNumber");
         // CoreUI		
+        this.setPreferredSize(new Dimension(1013,768));		
         this.tabPanel.setPreferredSize(new Dimension(1,1));
         this.btnSettelGroup.add(this.btnAType);
         this.btnSettelGroup.add(this.btnBType);

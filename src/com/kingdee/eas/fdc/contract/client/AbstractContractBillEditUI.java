@@ -770,7 +770,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.enuItemViewCost.setName("enuItemViewCost");
         this.menuItemProgram.setName("menuItemProgram");
         // CoreUI		
-        this.setPreferredSize(new Dimension(1013,768));		
+        this.setPreferredSize(new Dimension(1013,650));		
         this.btnSubmit.setText(resHelper.getString("btnSubmit.text"));		
         this.btnSubmit.setToolTipText(resHelper.getString("btnSubmit.toolTipText"));		
         this.btnCopy.setVisible(false);		

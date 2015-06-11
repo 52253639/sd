@@ -2485,8 +2485,12 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		kDTabbedPane1.removeAll();
 
 		kDTabbedPane1.add(pnlDetail, resHelper.getString("pnlDetail.constraints"));
+		if(ContractPropertyEnum.SUPPLY.equals(contractPropert.getSelectedItem())){
+			kDTabbedPane1.add(this.kdtSupplyEntry, "主合同信息");
+		}else{
+			kDTabbedPane1.add(this.kdtSupplyEntry, resHelper.getString("kdtSupplyEntry.constraints"));
+		}
 		kDTabbedPane1.add(this.panelInvite, resHelper.getString("panelInvite.constraints"));
-		kDTabbedPane1.add(this.kdtSupplyEntry, resHelper.getString("kdtSupplyEntry.constraints"));
 //		kDTabbedPane1.add(pnlInviteInfo, resHelper.getString("pnlInviteInfo.constraints"));
 		//亿达需要，万科先注销
 		//		kDTabbedPane1.add(pnlCost, "成本信息");		
@@ -5834,6 +5838,11 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 	}
 	protected void loadSupplyEntry() throws BOSException, SQLException{
 		this.kdtSupplyEntry.getStyleAttributes().setLocked(true);
+		this.kdtSupplyEntry.getColumn("number").setWidth(200);
+		this.kdtSupplyEntry.getColumn("name").setWidth(200);
+		this.kdtSupplyEntry.getColumn("amount").setWidth(200);
+		this.kdtSupplyEntry.getColumn("localAmount").setWidth(200);
+		    
 	    this.kdtSupplyEntry.getColumn("amount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
 	    this.kdtSupplyEntry.getColumn("amount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 	    this.kdtSupplyEntry.getColumn("localAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
@@ -5844,29 +5853,54 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			return;
 		}
 		FDCSQLBuilder builder = new FDCSQLBuilder();
-		builder.appendSql(" select con.fid id,con.fcontractPropert contractPropert,contractType.fname_l2 contractType,con.fnumber number,con.fname name,con.fbookedDate bookedDate,supplier.fname_l2 partB,con.foriginalAmount amount,con.famount localAmount");
-		builder.appendSql(" from t_con_contractbillentry entry inner join t_con_contractbill con on con.fid = entry.fparentid and con.fisAmtWithoutCost=1 and");
-		builder.appendSql(" con.fcontractPropert='SUPPLY'  inner join T_Con_contractBill parent on parent.fnumber = con.fmainContractNumber and parent.fcurprojectid=con.fcurprojectid");
-		builder.appendSql(" left join t_bd_supplier supplier on supplier.fid=con.fpartBId left join T_FDC_ContractType contractType on contractType.fid=con.fcontractTypeId where  entry.FRowkey='am' and con.fstate='4AUDITTED' and ");
-		builder.appendParam(" parent.fid", editData.getId().toString());
-		IRowSet rowSet = builder.executeQuery();
-		while(rowSet.next()){
-			IRow row=this.kdtSupplyEntry.addRow();
-			row.setUserObject(rowSet.getString("id"));
-			ContractPropertyEnum contractProperty=ContractPropertyEnum.getEnum(rowSet.getString("contractPropert"));
-			if(contractProperty!=null){
-				row.getCell("contractPropert").setValue(contractProperty.getAlias());
+		if(ContractPropertyEnum.SUPPLY.equals(contractPropert.getSelectedItem())){
+			builder.appendSql(" select parent.fid id,parent.fcontractPropert contractPropert,contractType.fname_l2 contractType,parent.fnumber number,parent.fname name,parent.fbookedDate bookedDate,supplier.fname_l2 partB,parent.foriginalAmount amount,parent.famount localAmount");
+			builder.appendSql(" from t_con_contractbillentry entry inner join t_con_contractbill con on con.fid = entry.fparentid and con.fisAmtWithoutCost=1 and");
+			builder.appendSql(" con.fcontractPropert='SUPPLY'  inner join T_Con_contractBill parent on parent.fnumber = con.fmainContractNumber and parent.fcurprojectid=con.fcurprojectid");
+			builder.appendSql(" left join t_bd_supplier supplier on supplier.fid=parent.fpartBId left join T_FDC_ContractType contractType on contractType.fid=parent.fcontractTypeId where  entry.FRowkey='am' and con.fstate='4AUDITTED' and ");
+			builder.appendParam(" con.fid", editData.getId().toString());
+			IRowSet rowSet = builder.executeQuery();
+			while(rowSet.next()){
+				IRow row=this.kdtSupplyEntry.addRow();
+				row.setUserObject(rowSet.getString("id"));
+				ContractPropertyEnum contractProperty=ContractPropertyEnum.getEnum(rowSet.getString("contractPropert"));
+				if(contractProperty!=null){
+					row.getCell("contractPropert").setValue(contractProperty.getAlias());
+				}
+				row.getCell("contractType").setValue(rowSet.getString("contractType"));
+				row.getCell("number").setValue(rowSet.getString("number"));
+				row.getCell("name").setValue(rowSet.getString("name"));
+				row.getCell("partB").setValue(rowSet.getString("partB"));
+				row.getCell("bookedDate").setValue(rowSet.getDate("bookedDate"));
+				row.getCell("amount").setValue(rowSet.getBigDecimal("amount"));
+				row.getCell("localAmount").setValue(rowSet.getBigDecimal("localAmount"));
 			}
-			row.getCell("contractType").setValue(rowSet.getString("contractType"));
-			row.getCell("number").setValue(rowSet.getString("number"));
-			row.getCell("name").setValue(rowSet.getString("name"));
-			row.getCell("partB").setValue(rowSet.getString("partB"));
-			row.getCell("bookedDate").setValue(rowSet.getDate("bookedDate"));
-			row.getCell("amount").setValue(rowSet.getBigDecimal("amount"));
-			row.getCell("localAmount").setValue(rowSet.getBigDecimal("localAmount"));
-		}
-		if(rowSet.size()==0){
 			this.contSrcAmount.setVisible(false);
+		}else{
+			builder.appendSql(" select con.fid id,con.fcontractPropert contractPropert,contractType.fname_l2 contractType,con.fnumber number,con.fname name,con.fbookedDate bookedDate,supplier.fname_l2 partB,con.foriginalAmount amount,con.famount localAmount");
+			builder.appendSql(" from t_con_contractbillentry entry inner join t_con_contractbill con on con.fid = entry.fparentid and con.fisAmtWithoutCost=1 and");
+			builder.appendSql(" con.fcontractPropert='SUPPLY'  inner join T_Con_contractBill parent on parent.fnumber = con.fmainContractNumber and parent.fcurprojectid=con.fcurprojectid");
+			builder.appendSql(" left join t_bd_supplier supplier on supplier.fid=con.fpartBId left join T_FDC_ContractType contractType on contractType.fid=con.fcontractTypeId where  entry.FRowkey='am' and con.fstate='4AUDITTED' and ");
+			builder.appendParam(" parent.fid", editData.getId().toString());
+			IRowSet rowSet = builder.executeQuery();
+			while(rowSet.next()){
+				IRow row=this.kdtSupplyEntry.addRow();
+				row.setUserObject(rowSet.getString("id"));
+				ContractPropertyEnum contractProperty=ContractPropertyEnum.getEnum(rowSet.getString("contractPropert"));
+				if(contractProperty!=null){
+					row.getCell("contractPropert").setValue(contractProperty.getAlias());
+				}
+				row.getCell("contractType").setValue(rowSet.getString("contractType"));
+				row.getCell("number").setValue(rowSet.getString("number"));
+				row.getCell("name").setValue(rowSet.getString("name"));
+				row.getCell("partB").setValue(rowSet.getString("partB"));
+				row.getCell("bookedDate").setValue(rowSet.getDate("bookedDate"));
+				row.getCell("amount").setValue(rowSet.getBigDecimal("amount"));
+				row.getCell("localAmount").setValue(rowSet.getBigDecimal("localAmount"));
+			}
+			if(rowSet.size()==0){
+				this.contSrcAmount.setVisible(false);
+			}
 		}
 	}
 	protected void kdtSupplyEntry_tableClicked(KDTMouseEvent e) throws Exception {
