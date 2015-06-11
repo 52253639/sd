@@ -1299,6 +1299,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		EntityViewInfo view = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("isEnabled", Boolean.TRUE));
+		filter.getFilterItems().add(new FilterItemInfo("fieldType", PlanIndexFieldTypeEnum.TEXT_VALUE,CompareType.NOTEQUALS));
 		if(productId==null){
 			filter.getFilterItems().add(new FilterItemInfo("isProductType", Boolean.FALSE));
 		}else{
@@ -2052,7 +2053,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getLongNumber().replaceAll("!", "."));
 				row.getCell("index").getStyleAttributes().setLocked(true);
 				row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-				if(valueRow!=null&&valueRow.getCell("value").getValue()!=null){
+				if(valueRow!=null&&valueRow.getCell("value").getValue()!=null&&!(valueRow.getCell("value").getValue() instanceof String)){
 					row.getCell("index").setValue(valueRow.getCell("value").getValue());
 				}
 			}else{
@@ -4633,11 +4634,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				ObjectValueRender render_scale = new ObjectValueRender();
 				render_scale.setFormat(new IDataFormat() {
 					public String format(Object o) {
-						String str = o.toString();
-						if (!FDCHelper.isEmpty(str)) {
-							return str + "%";
+						if (!FDCHelper.isEmpty(o)&&o instanceof BigDecimal) {
+							return FDCHelper.multiply(o, new BigDecimal(100)).setScale(2, BigDecimal.ROUND_HALF_UP).toString()+"%";
 						}
-						return str;
+						return null;
 					}
 				});
 				row.getCell("value").setRenderer(render_scale);
@@ -5142,9 +5142,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		
 		BigDecimal value=Calc.calc(maskString.toString());
 				
-		if(value!=null){
-			value=value.setScale(2, BigDecimal.ROUND_HALF_UP);
-		}else{
+		if(value==null){
 			value=FDCHelper.ZERO;
 		}
 		return value;
@@ -5161,7 +5159,13 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				IRow row=table.getRow(i);
 				NewPlanIndexInfo entry=(NewPlanIndexInfo) row.getUserObject();
 				if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-					row.getCell("value").setValue(cal(entry.getFormulaType(),entry.getFormula(),productTypeKey));
+					BigDecimal value=cal(entry.getFormulaType(),entry.getFormula(),productTypeKey);
+					if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.DIGITAL)){
+						value=value.setScale(2, BigDecimal.ROUND_HALF_UP);
+					}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.INT)){
+						value=value.setScale(0, BigDecimal.ROUND_HALF_UP);
+					}
+					row.getCell("value").setValue(value);
 				}
 				if(entry.getProp()!=null&&entry.getProp().length()>0){
 					if(!(row.getCell("value").getValue() instanceof String)){
