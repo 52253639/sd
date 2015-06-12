@@ -165,6 +165,7 @@ import com.kingdee.eas.fdc.basedata.ContractSecondTypeEnum;
 import com.kingdee.eas.fdc.basedata.ContractSourceFactory;
 import com.kingdee.eas.fdc.basedata.ContractSourceInfo;
 import com.kingdee.eas.fdc.basedata.ContractThirdTypeEnum;
+import com.kingdee.eas.fdc.basedata.ContractTypeCollection;
 import com.kingdee.eas.fdc.basedata.ContractTypeFactory;
 import com.kingdee.eas.fdc.basedata.ContractTypeInfo;
 import com.kingdee.eas.fdc.basedata.ContractTypeOrgTypeEnum;
@@ -4448,8 +4449,10 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 					if (number.indexOf("!") != -1) {
 						number = number.substring(0, number.indexOf("!"));
 					}
-
-					cti = ContractTypeFactory.getRemoteInstance().getContractTypeInfo("select id where longNumber = '" + number+ "'");
+					ContractTypeCollection ctCol=ContractTypeFactory.getRemoteInstance().getContractTypeCollection("select id where longNumber = '" + number+ "'");
+					if(ctCol.size()>0){
+						cti = ctCol.get(0);
+					}
 				}
 			}
 			ContractCodingTypeCollection cctc = null;
