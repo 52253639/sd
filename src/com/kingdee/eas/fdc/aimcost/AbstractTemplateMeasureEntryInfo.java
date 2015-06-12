@@ -226,6 +226,17 @@ public class AbstractTemplateMeasureEntryInfo extends com.kingdee.eas.framework.
     {
         setString("changeReason", item);
     }
+    /**
+     * Object: 测算分录 's 规划指标 property 
+     */
+    public com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo getConfig()
+    {
+        return (com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo)get("config");
+    }
+    public void setConfig(com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo item)
+    {
+        put("config", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("5E698F25");

@@ -5179,7 +5179,13 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				if(entry.getProp()!=null&&entry.getProp().length()>0){
 					if(!(row.getCell("value").getValue() instanceof String)){
 						if(productType==null&&((ICell)planIndexTable.binder.getBindCellMap().get(entry.getProp()))!=null){
-							((ICell)planIndexTable.binder.getBindCellMap().get(entry.getProp())).setValue(row.getCell("value").getValue());
+							ICell cell=((ICell)planIndexTable.binder.getBindCellMap().get(entry.getProp()));
+							cell.setValue(row.getCell("value").getValue());
+							KDTEditEvent event=new KDTEditEvent(table);
+							event.setColIndex(cell.getColumnIndex());
+							event.setRowIndex(cell.getRowIndex());
+							event.setValue(cell.getValue());
+							planIndexTable.table_editStopped(event);
 						}else{
 							for(int j=planIndexTable.dynRowBase;j<planIndexTable.getTable().getRowCount()-1;j++){
 								IRow planIndexRow=planIndexTable.getTable().getRow(j);
@@ -5190,7 +5196,13 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 									}
 									if(value instanceof ProductTypeInfo&&((ProductTypeInfo)value).getId().toString().equals(productType.getId().toString())
 											&&planIndexTable.entryBinder.get(entry.getProp())!=null){
-										planIndexRow.getCell(Integer.valueOf(planIndexTable.entryBinder.get(entry.getProp()).toString())).setValue(row.getCell("value").getValue());
+										ICell cell=planIndexRow.getCell(Integer.valueOf(planIndexTable.entryBinder.get(entry.getProp()).toString()));
+										cell.setValue(row.getCell("value").getValue());
+										KDTEditEvent event=new KDTEditEvent(table);
+										event.setColIndex(cell.getColumnIndex());
+										event.setRowIndex(cell.getRowIndex());
+										event.setValue(cell.getValue());
+										planIndexTable.table_editStopped(event);
 									}
 								}
 							}

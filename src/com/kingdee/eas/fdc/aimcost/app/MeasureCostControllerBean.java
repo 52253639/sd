@@ -51,6 +51,7 @@ import com.kingdee.eas.fdc.aimcost.CustomPlanIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.DynamicCostInfo;
 import com.kingdee.eas.fdc.aimcost.DynamicCostProductSplitEntryInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureCostCollection;
+import com.kingdee.eas.fdc.aimcost.MeasureCostCompareCollection;
 import com.kingdee.eas.fdc.aimcost.MeasureCostFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureCostInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureEntryCollection;
@@ -82,7 +83,9 @@ import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostFactory;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostInfo;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureEntryCollection;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureEntryInfo;
+import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexCollection;
 import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexInfo;
+import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTCollection;
 import com.kingdee.eas.fdc.aimcost.TemplateNewPlanIndexPTInfo;
 import com.kingdee.eas.fdc.aimcost.TemplatePlanIndexCollection;
 import com.kingdee.eas.fdc.aimcost.TemplatePlanIndexEntryCollection;
@@ -347,14 +350,14 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			entry.setParent(templateMeasureInfo);
 			templateMeasureInfo.getConstrEntrys().add(entry);
 		}
-		templateMeasureInfo.put("newPlanIndexEntry", new NewPlanIndexCollection());
+		templateMeasureInfo.put("newPlanIndexEntry", new TemplateNewPlanIndexCollection());
 		for (int i = 0; i < measure.getNewPlanIndexEntry().size(); i++) {
 			TemplateNewPlanIndexInfo entry = new TemplateNewPlanIndexInfo();
 			entry.putAll(measure.getNewPlanIndexEntry().get(i));
 			entry.setId(null);
 			templateMeasureInfo.getNewPlanIndexEntry().add(entry);
 		}
-		templateMeasureInfo.put("newPlanIndexEntryPT", new NewPlanIndexPTCollection());
+		templateMeasureInfo.put("newPlanIndexEntryPT", new TemplateNewPlanIndexPTCollection());
 		for (int i = 0; i < measure.getNewPlanIndexEntryPT().size(); i++) {
 			TemplateNewPlanIndexPTInfo entry = new TemplateNewPlanIndexPTInfo();
 			entry.putAll(measure.getNewPlanIndexEntryPT().get(i));
@@ -557,12 +560,6 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 		for(int i=0;i<col.size();i++){
 			config.put(col.get(i).getId().toString(), col.get(i));
 		}
-		
-		Map configPT=new HashMap();
-		col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by longNumber");
-		for(int i=0;i<col.size();i++){
-			configPT.put(col.get(i).getId().toString(), col.get(i));
-		}
 		measureInfo.put("newPlanIndexEntry", new NewPlanIndexCollection());
 		for (int i = 0; i < templateMeasure.getNewPlanIndexEntry().size(); i++) {
 			if(config.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
@@ -585,6 +582,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 				config.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
 			}
 		}
+		
 		Object[] key = config.keySet().toArray(); 
 		for (int k = 0; k < key.length; k++) {
 			String configid=key[k].toString();
@@ -603,6 +601,11 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			measureInfo.getNewPlanIndexEntry().add(entry);
 		}
 		
+		Map configPT=new HashMap();
+		col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by longNumber");
+		for(int i=0;i<col.size();i++){
+			configPT.put(col.get(i).getId().toString(), col.get(i));
+		}
 		measureInfo.put("newPlanIndexEntryPT", new NewPlanIndexPTCollection());
 		for (int i = 0; i < templateMeasure.getNewPlanIndexEntryPT().size(); i++) {
 			if(configPT.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
@@ -621,7 +624,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 				configPT.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
 			}
 		}
-		
+		measureInfo.put("compareEntry", new MeasureCostCompareCollection());
 		key = configPT.keySet().toArray(); 
 		for (int k = 0; k < key.length; k++) {
 			String configid=key[k].toString();

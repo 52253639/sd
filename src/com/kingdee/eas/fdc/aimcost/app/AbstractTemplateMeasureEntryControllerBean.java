@@ -51,10 +51,13 @@ public abstract class AbstractTemplateMeasureEntryControllerBean extends DataBas
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0010c0a81296"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplateMeasureEntryInfo retValue = (TemplateMeasureEntryInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplateMeasureEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -73,10 +76,13 @@ public abstract class AbstractTemplateMeasureEntryControllerBean extends DataBas
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0011c0a81296"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplateMeasureEntryInfo retValue = (TemplateMeasureEntryInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplateMeasureEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -95,10 +101,13 @@ public abstract class AbstractTemplateMeasureEntryControllerBean extends DataBas
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0012c0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplateMeasureEntryInfo retValue = (TemplateMeasureEntryInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplateMeasureEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -117,10 +126,13 @@ public abstract class AbstractTemplateMeasureEntryControllerBean extends DataBas
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0013c0a81296"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplateMeasureEntryCollection retValue = (TemplateMeasureEntryCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplateMeasureEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -137,10 +149,13 @@ public abstract class AbstractTemplateMeasureEntryControllerBean extends DataBas
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0014c0a81296"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplateMeasureEntryCollection retValue = (TemplateMeasureEntryCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplateMeasureEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -157,10 +172,13 @@ public abstract class AbstractTemplateMeasureEntryControllerBean extends DataBas
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d9bc6160-0114-1000-e000-0015c0a81296"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             TemplateMeasureEntryCollection retValue = (TemplateMeasureEntryCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (TemplateMeasureEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {

@@ -1319,30 +1319,30 @@ public class PlanIndexTable {
 	}
 	
 	protected void table_editStopped(KDTEditEvent e) {
-//		if(table==null){
-//			return;
-//		}
-//		Object objOld=e.getOldValue();
-//		Object objNew=e.getValue();
-//		if(objOld==null&&objNew==null){
-//			return;
-//		}
-//		if(objOld!=null&&objNew!=null&&objOld.equals(objNew)){
-//			return;
-//		}
-///*		int buildAreaIdx=4;
-//		if(e.getColIndex()==buildAreaIdx&&e.getRowIndex()>=dynRowBase){
-//			BigDecimal amount=FDCHelper.ZERO;
-//			for(int i=dynRowBase;i<table.getRowCount()-2;i++){
-//				IRow row=table.getRow(i);
-//				if(!isSubTotalRow(row)){
-//					amount=amount.add(FDCHelper.toBigDecimal(row.getCell(buildAreaIdx).getValue()));
-//				}
-//			}
-//			table.getCell(0, 6).setValue(amount);
-//		}*/
-//		calc(e);
-//		measureCostEditU.setDataChange(true);
+		if(table==null){
+			return;
+		}
+		Object objOld=e.getOldValue();
+		Object objNew=e.getValue();
+		if(objOld==null&&objNew==null){
+			return;
+		}
+		if(objOld!=null&&objNew!=null&&objOld.equals(objNew)){
+			return;
+		}
+/*		int buildAreaIdx=4;
+		if(e.getColIndex()==buildAreaIdx&&e.getRowIndex()>=dynRowBase){
+			BigDecimal amount=FDCHelper.ZERO;
+			for(int i=dynRowBase;i<table.getRowCount()-2;i++){
+				IRow row=table.getRow(i);
+				if(!isSubTotalRow(row)){
+					amount=amount.add(FDCHelper.toBigDecimal(row.getCell(buildAreaIdx).getValue()));
+				}
+			}
+			table.getCell(0, 6).setValue(amount);
+		}*/
+		calc(e);
+		measureCostEditU.setDataChange(true);
 	}
 	private KDBizPromptBox f7productType=null; 
 	public KDBizPromptBox  getF7productType(){
@@ -1882,14 +1882,14 @@ public class PlanIndexTable {
 			BigDecimal oldtotalUnderGroundArea=FDCHelper.toBigDecimal(table.getCell(totalIndex, underGroundAreaColummnIndex).getValue());
 			 
 //			BigDecimal oldSellBuildArea=FDCHelper.toBigDecimal(table.getCell(totalIndex, sellAreaColummnIndex).getValue());
-			boolean isChange = true;
-			if(e.getOldValue() instanceof BigDecimal && e.getValue() instanceof BigDecimal){
-				BigDecimal old = (BigDecimal)e.getOldValue();
-				BigDecimal value = (BigDecimal)e.getValue();
-				if(old != null && value != null){
-					isChange = !(old.floatValue() == value.floatValue());
-				}
-			}
+			boolean isChange = false;
+//			if(e.getOldValue() instanceof BigDecimal && e.getValue() instanceof BigDecimal){
+//				BigDecimal old = (BigDecimal)e.getOldValue();
+//				BigDecimal value = (BigDecimal)e.getValue();
+//				if(old != null && value != null){
+//					isChange = !(old.floatValue() == value.floatValue());
+//				}
+//			}
 			//סլ
 			Map sumMap=new HashMap();
 			int currentRow = e.getRowIndex();
