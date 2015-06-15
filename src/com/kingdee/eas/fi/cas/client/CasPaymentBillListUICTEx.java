@@ -31,6 +31,7 @@ public class CasPaymentBillListUICTEx extends CasPaymentBillListUI{
 		PaymentBillInfo info=PaymentBillFactory.getRemoteInstance().getPaymentBillInfo(new ObjectUuidPK(id));
 		if(info.getContractBillId()!=null&&info.getFdcPayReqID()!=null){
 			String className=PayRequestBillEditUI.class.getName();
+			id=info.getFdcPayReqID();
 			if(PayReqUtils.isConWithoutTxt(info.getContractBillId())){
 				id=info.getContractBillId();
 				className=ContractWithoutTextEditUI.class.getName();
