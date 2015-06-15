@@ -1220,6 +1220,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		evi.setFilter(filterInfo);
 
 		SelectorItemCollection coll = new SelectorItemCollection();
+		coll.add(new SelectorItemInfo("*"));
 		coll.add(new SelectorItemInfo("id"));
 		coll.add(new SelectorItemInfo("company.*"));
 		coll.add(new SelectorItemInfo("bizDate"));
@@ -1244,7 +1245,6 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		coll.add(new SelectorItemInfo("settlementType.*"));
 		coll.add(new SelectorItemInfo("settlementNumber"));
 		coll.add(new SelectorItemInfo("bank.*"));
-		
 		
 		evi.setSelector(coll);
 

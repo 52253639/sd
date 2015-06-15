@@ -253,7 +253,6 @@ public class ContractOutPayPlanListUI extends AbstractContractOutPayPlanListUI
 		this.tblPayRequestBill.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
 		this.actionModify.putValue(Action.SMALL_ICON, EASResource.getIcon("imgTbtn_duizsetting"));
 		this.actionModify.setVisible(false);
-		this.cbIsAll.setVisible(false);
 	}
 	protected boolean isShowAttachmentAction() {
 		return false;

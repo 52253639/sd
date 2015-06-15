@@ -87,6 +87,7 @@ import com.kingdee.eas.fdc.contract.ContractEstimateChangeBillCollection;
 import com.kingdee.eas.fdc.contract.ContractEstimateChangeBillFactory;
 import com.kingdee.eas.fdc.contract.ContractEstimateChangeBillInfo;
 import com.kingdee.eas.fdc.contract.ContractEstimateChangeTypeEnum;
+import com.kingdee.eas.fdc.contract.ContractEvaluationFactory;
 import com.kingdee.eas.fdc.contract.ContractException;
 import com.kingdee.eas.fdc.contract.ContractExecInfosFactory;
 import com.kingdee.eas.fdc.contract.ContractExecInfosInfo;
@@ -108,6 +109,7 @@ import com.kingdee.eas.fdc.contract.SettlementCostSplitFactory;
 import com.kingdee.eas.fdc.contract.programming.IProgrammingContract;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractFactory;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
+import com.kingdee.eas.fdc.finance.ContractOutPayPlanFactory;
 import com.kingdee.eas.fdc.finance.ContractPayPlanCollection;
 import com.kingdee.eas.fdc.finance.ContractPayPlanFactory;
 import com.kingdee.eas.fdc.finance.ContractPayPlanInfo;
@@ -1487,6 +1489,14 @@ public class ContractBillControllerBean extends
 		filter.getFilterItems().add(new FilterItemInfo("contractBill.id", billId.toString()));
 		if(ContractPCSplitBillFactory.getLocalInstance(ctx).exists(filter)){
 			throw new EASBizException(new NumericExceptionSubItem("100","存在合约规划拆分，不能进行反审批操作！"));
+		}
+		filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("contract.id", billId.toString()));
+		if(ContractOutPayPlanFactory.getLocalInstance(ctx).exists(filter)){
+			throw new EASBizException(new NumericExceptionSubItem("100","存在计划外付款申请，不能进行反审批操作！"));
+		}
+		if(ContractEvaluationFactory.getLocalInstance(ctx).exists(filter)){
+			throw new EASBizException(new NumericExceptionSubItem("100","存在合同执行情况评估表，不能进行反审批操作！"));
 		}
 		checkBillForUnAudit(ctx, billId);
 		

@@ -47,7 +47,6 @@ public abstract class AbstractContractOutPayPlanListUI extends com.kingdee.eas.f
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractContractOutPayPlanListUI.class);
     protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtQueryPayRequestBillQuery;
-    protected com.kingdee.bos.ctrl.swing.KDCheckBox cbIsAll;
     protected com.kingdee.bos.ctrl.swing.KDContainer contBillList;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblPayRequestBill;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnSet;
@@ -174,12 +173,10 @@ public abstract class AbstractContractOutPayPlanListUI extends com.kingdee.eas.f
         getActionManager().registerAction("actionModify", actionModify);
          this.actionModify.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.kdtQueryPayRequestBillQuery = new com.kingdee.bos.ctrl.kdf.table.KDTable();
-        this.cbIsAll = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.contBillList = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.tblPayRequestBill = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.btnSet = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.kdtQueryPayRequestBillQuery.setName("kdtQueryPayRequestBillQuery");
-        this.cbIsAll.setName("cbIsAll");
         this.contBillList.setName("contBillList");
         this.tblPayRequestBill.setName("tblPayRequestBill");
         this.btnSet.setName("btnSet");
@@ -202,18 +199,6 @@ public abstract class AbstractContractOutPayPlanListUI extends com.kingdee.eas.f
 
         
 
-        // cbIsAll		
-        this.cbIsAll.setText(resHelper.getString("cbIsAll.text"));
-        this.cbIsAll.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent e) {
-                try {
-                    cbIsAll_itemStateChanged(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                }
-            }
-        });
         // contBillList		
         this.contBillList.setTitle(resHelper.getString("contBillList.title"));		
         this.contBillList.setEnableActive(false);
@@ -264,12 +249,10 @@ public abstract class AbstractContractOutPayPlanListUI extends com.kingdee.eas.f
         this.setBounds(new Rectangle(10, 10, 1013, 629));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1013, 629));
-        pnlSplit.setBounds(new Rectangle(10, 19, 993, 609));
-        this.add(pnlSplit, new KDLayout.Constraints(10, 19, 993, 609, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        pnlSplit.setBounds(new Rectangle(10, 12, 993, 609));
+        this.add(pnlSplit, new KDLayout.Constraints(10, 12, 993, 609, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         kdtQueryPayRequestBillQuery.setBounds(new Rectangle(10, 19, 700, 500));
         this.add(kdtQueryPayRequestBillQuery, new KDLayout.Constraints(10, 19, 700, 500, 0));
-        cbIsAll.setBounds(new Rectangle(269, 2, 140, 19));
-        this.add(cbIsAll, new KDLayout.Constraints(269, 2, 140, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //pnlSplit
         pnlSplit.add(pnlLeftTree, "left");
         pnlSplit.add(pnlRight, "right");
@@ -524,13 +507,6 @@ contBillList.getContentPane().setLayout(new BorderLayout(0, 0));        contBill
     public void setOprtState(String oprtType)
     {
         super.setOprtState(oprtType);
-    }
-
-    /**
-     * output cbIsAll_itemStateChanged method
-     */
-    protected void cbIsAll_itemStateChanged(java.awt.event.ItemEvent e) throws Exception
-    {
     }
 
     /**

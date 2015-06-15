@@ -2056,6 +2056,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 				if(valueRow!=null&&valueRow.getCell("value").getValue()!=null&&!(valueRow.getCell("value").getValue() instanceof String)){
 					row.getCell("index").setValue(valueRow.getCell("value").getValue());
+				}else{
+					row.getCell("index").setValue(null);
 				}
 			}else{
 				row.getCell("index").setValue(null);
