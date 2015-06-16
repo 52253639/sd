@@ -277,28 +277,37 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
     	}
     	isQuery=false;
 	}
-	public int getMonthDiff(Date startDate, Date endDate) {
-        int monthday;
-
-        Calendar starCal = Calendar.getInstance();
-        starCal.setTime(startDate);
-
-        int sYear  = starCal.get(Calendar.YEAR);
-        int sMonth = starCal.get(Calendar.MONTH)+1;
-        int sDay   = starCal.get(Calendar.DAY_OF_MONTH);
-
-        Calendar endCal = Calendar.getInstance();
-        endCal.setTime(endDate);
-        int eYear  = endCal.get(Calendar.YEAR);
-        int eMonth = endCal.get(Calendar.MONTH)+1;
-        int eDay   = endCal.get(Calendar.DAY_OF_MONTH);
-
-        monthday = ((eYear - sYear) * 12 + (eMonth - sMonth));
-        
-        if (sDay < eDay) {
-            monthday = monthday + 1;
+	public int getMonthDiff(Date start, Date end) {
+		if (start.after(end)) {
+            Date t = start;
+            start = end;
+            end = t;
         }
-        return monthday;
+		Calendar startCalendar = Calendar.getInstance();
+        startCalendar.setTime(start);
+        Calendar endCalendar = Calendar.getInstance();
+        endCalendar.setTime(end);
+        Calendar temp = Calendar.getInstance();
+        temp.setTime(end);
+        temp.add(Calendar.DATE, 1);
+
+        int year = endCalendar.get(Calendar.YEAR)
+                - startCalendar.get(Calendar.YEAR);
+        int month = endCalendar.get(Calendar.MONTH)
+                - startCalendar.get(Calendar.MONTH);
+        
+        if ((startCalendar.get(Calendar.DATE) == 1)
+                && (temp.get(Calendar.DATE) == 1)) {
+            return year * 12 + month + 1;
+        } else if ((startCalendar.get(Calendar.DATE) != 1)
+                && (temp.get(Calendar.DATE) == 1)) {
+            return year * 12 + month;
+        } else if ((startCalendar.get(Calendar.DATE) == 1)
+                && (temp.get(Calendar.DATE) != 1)) {
+            return year * 12 + month;
+        } else {
+            return (year * 12 + month - 1) < 0 ? 0 : (year * 12 + month);
+        }
     }
 	private void mergerTable(KDTable table,String coloum[],String mergeColoum[]){
 		int merger=0;

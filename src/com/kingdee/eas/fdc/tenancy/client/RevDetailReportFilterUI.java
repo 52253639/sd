@@ -40,6 +40,9 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		this.prmtRoom.setValue(null);
 		this.prmtTanancyBill.setValue(null);
 		this.prmtCustomer.setValue(null);
+		this.prmtMoneyDefine.setValue(null);
+		this.pkFromDate.setValue(null);
+		this.pkToDate.setValue(null);
 		
 		FDCRoomPromptDialog dialog=new FDCRoomPromptDialog(Boolean.TRUE, null, null,
 				MoneySysTypeEnum.TenancySys, null,null);
@@ -62,7 +65,20 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		this.prmtCustomer.setCommitFormat("$number$");
 		this.prmtCustomer.setEnabledMultiSelection(true);
 		this.prmtCustomer.setEntityViewInfo(CommerceHelper.getPermitCustomerView(null,SysContext.getSysContext().getCurrentUserInfo()));
-	}
+	
+		this.prmtMoneyDefine.setEditable(false);
+		this.prmtMoneyDefine.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.MoneyDefineQuery");
+		this.prmtMoneyDefine.setDisplayFormat("$name$");
+		this.prmtMoneyDefine.setEditFormat("$number$");
+		this.prmtMoneyDefine.setCommitFormat("$number$");
+		this.prmtMoneyDefine.setEnabledMultiSelection(true);
+		EntityViewInfo view = new EntityViewInfo();
+		filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("sysType", MoneySysTypeEnum.TENANCYSYS_VALUE));
+		view.setFilter(filter);
+		this.prmtMoneyDefine.setEntityViewInfo(view);
+	
+    }
     public boolean verify()
     {
         return true;
@@ -84,6 +100,13 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
          }else{
         	 pp.setObject("customer", null);
          }
+         if(this.prmtMoneyDefine.getValue()!=null){
+    		 pp.setObject("moneyDefine", this.prmtMoneyDefine.getValue());
+         }else{
+        	 pp.setObject("moneyDefine", null);
+         }
+         pp.setObject("fromDate", this.pkFromDate.getValue());
+         pp.setObject("toDate", this.pkToDate.getValue());
 		 pp.setObject("isAll", this.cbIsAll.isSelected());
 		 return pp;
 	}
@@ -95,6 +118,7 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		this.prmtTanancyBill.setValue(params.getObject("tenancyBill"));
 		this.cbIsAll.setSelected(params.getBoolean("isAll"));
 		this.prmtCustomer.setValue(params.getObject("customer"));
+		this.prmtMoneyDefine.setValue(params.getObject("moneyDefine"));
 	}
 	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
 		EntityViewInfo vi = new EntityViewInfo();

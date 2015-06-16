@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
 import com.kingdee.bos.dao.IObjectValue;
+import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.eas.common.EASBizException;
@@ -91,7 +92,7 @@ public class ModifyCustomerNameUI extends AbstractModifyCustomerNameUI
 			}
 		}
 		
-		FDCCustomerInfo otherInfo = (FDCCustomerInfo) this.editData.clone();
+		FDCCustomerInfo otherInfo = (FDCCustomerInfo) FDCCustomerFactory.getRemoteInstance().getFDCCustomerInfo(new ObjectUuidPK(this.editData.getId())).clone();
 		otherInfo.setPhone(this.txtPhone.getText().trim());
 		otherInfo.setName(this.txtName.getText().trim());
 		//ºÏ≤È”√ªß

@@ -50,9 +50,15 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoom;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox cbIsAll;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFromDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contToDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contMoneyDefine;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtTanancyBill;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtRoom;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCustomer;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFromDate;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkToDate;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtMoneyDefine;
     /**
      * output class constructor
      */
@@ -75,16 +81,28 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.contRoom = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.cbIsAll = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.contCustomer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contFromDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contToDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contMoneyDefine = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.prmtTanancyBill = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtRoom = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtCustomer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.pkFromDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.pkToDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.prmtMoneyDefine = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contTanancyBill.setName("contTanancyBill");
         this.contRoom.setName("contRoom");
         this.cbIsAll.setName("cbIsAll");
         this.contCustomer.setName("contCustomer");
+        this.contFromDate.setName("contFromDate");
+        this.contToDate.setName("contToDate");
+        this.contMoneyDefine.setName("contMoneyDefine");
         this.prmtTanancyBill.setName("prmtTanancyBill");
         this.prmtRoom.setName("prmtRoom");
         this.prmtCustomer.setName("prmtCustomer");
+        this.pkFromDate.setName("pkFromDate");
+        this.pkToDate.setName("pkToDate");
+        this.prmtMoneyDefine.setName("prmtMoneyDefine");
         // CustomerQueryPanel
         // contTanancyBill		
         this.contTanancyBill.setBoundLabelText(resHelper.getString("contTanancyBill.boundLabelText"));		
@@ -112,6 +130,18 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.contCustomer.setBoundLabelText(resHelper.getString("contCustomer.boundLabelText"));		
         this.contCustomer.setBoundLabelLength(100);		
         this.contCustomer.setBoundLabelUnderline(true);
+        // contFromDate		
+        this.contFromDate.setBoundLabelText(resHelper.getString("contFromDate.boundLabelText"));		
+        this.contFromDate.setBoundLabelLength(100);		
+        this.contFromDate.setBoundLabelUnderline(true);
+        // contToDate		
+        this.contToDate.setBoundLabelText(resHelper.getString("contToDate.boundLabelText"));		
+        this.contToDate.setBoundLabelLength(100);		
+        this.contToDate.setBoundLabelUnderline(true);
+        // contMoneyDefine		
+        this.contMoneyDefine.setBoundLabelText(resHelper.getString("contMoneyDefine.boundLabelText"));		
+        this.contMoneyDefine.setBoundLabelLength(100);		
+        this.contMoneyDefine.setBoundLabelUnderline(true);
         // prmtTanancyBill		
         this.prmtTanancyBill.setCommitFormat("$name$");		
         this.prmtTanancyBill.setEditFormat("$name$");		
@@ -124,6 +154,9 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.prmtRoom.setCommitFormat("$name$");		
         this.prmtRoom.setEnabledMultiSelection(true);
         // prmtCustomer
+        // pkFromDate
+        // pkToDate
+        // prmtMoneyDefine
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -148,22 +181,34 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 600, 120));
+        this.setBounds(new Rectangle(10, 10, 600, 160));
         this.setLayout(null);
-        contTanancyBill.setBounds(new Rectangle(43, 13, 528, 19));
+        contTanancyBill.setBounds(new Rectangle(27, 13, 552, 19));
         this.add(contTanancyBill, null);
-        contRoom.setBounds(new Rectangle(43, 39, 528, 19));
+        contRoom.setBounds(new Rectangle(27, 35, 552, 19));
         this.add(contRoom, null);
-        cbIsAll.setBounds(new Rectangle(43, 93, 140, 19));
+        cbIsAll.setBounds(new Rectangle(27, 128, 140, 19));
         this.add(cbIsAll, null);
-        contCustomer.setBounds(new Rectangle(43, 65, 528, 19));
+        contCustomer.setBounds(new Rectangle(27, 57, 552, 19));
         this.add(contCustomer, null);
+        contFromDate.setBounds(new Rectangle(27, 101, 270, 19));
+        this.add(contFromDate, null);
+        contToDate.setBounds(new Rectangle(311, 101, 270, 19));
+        this.add(contToDate, null);
+        contMoneyDefine.setBounds(new Rectangle(27, 79, 552, 19));
+        this.add(contMoneyDefine, null);
         //contTanancyBill
         contTanancyBill.setBoundEditor(prmtTanancyBill);
         //contRoom
         contRoom.setBoundEditor(prmtRoom);
         //contCustomer
         contCustomer.setBoundEditor(prmtCustomer);
+        //contFromDate
+        contFromDate.setBoundEditor(pkFromDate);
+        //contToDate
+        contToDate.setBoundEditor(pkToDate);
+        //contMoneyDefine
+        contMoneyDefine.setBoundEditor(prmtMoneyDefine);
 
     }
 
