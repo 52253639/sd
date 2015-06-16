@@ -282,7 +282,7 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 			if(hmAllParam.get("FDC_ISPCINVITEDATE")!=null){
 				isPCInvite=Boolean.parseBoolean(hmAllParam.get("FDC_ISPCINVITEDATE").toString());
 			}else{
-				isPCInvite=true;
+				isPCInvite=false;
 			}
 		} catch (EASBizException e) {
 			e.printStackTrace();
