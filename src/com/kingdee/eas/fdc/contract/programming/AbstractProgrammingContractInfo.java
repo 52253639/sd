@@ -453,6 +453,61 @@ public class AbstractProgrammingContractInfo extends com.kingdee.eas.framework.T
     {
         setBigDecimal("price", item);
     }
+    /**
+     * Object:合约规划's 招标文件审批日期property 
+     */
+    public java.util.Date getDocumentsAuditDate()
+    {
+        return getDate("documentsAuditDate");
+    }
+    public void setDocumentsAuditDate(java.util.Date item)
+    {
+        setDate("documentsAuditDate", item);
+    }
+    /**
+     * Object:合约规划's 中标审批日期property 
+     */
+    public java.util.Date getResultAuditDate()
+    {
+        return getDate("resultAuditDate");
+    }
+    public void setResultAuditDate(java.util.Date item)
+    {
+        setDate("resultAuditDate", item);
+    }
+    /**
+     * Object:合约规划's 合同审批日期property 
+     */
+    public java.util.Date getContractAuditDate()
+    {
+        return getDate("contractAuditDate");
+    }
+    public void setContractAuditDate(java.util.Date item)
+    {
+        setDate("contractAuditDate", item);
+    }
+    /**
+     * Object:合约规划's 预计进场日期property 
+     */
+    public java.util.Date getEnterAuditDate()
+    {
+        return getDate("enterAuditDate");
+    }
+    public void setEnterAuditDate(java.util.Date item)
+    {
+        setDate("enterAuditDate", item);
+    }
+    /**
+     * Object:合约规划's 图纸及样品确认property 
+     */
+    public java.util.Date getPaperDate()
+    {
+        return getDate("paperDate");
+    }
+    public void setPaperDate(java.util.Date item)
+    {
+        setDate("paperDate", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("ECE079DB");

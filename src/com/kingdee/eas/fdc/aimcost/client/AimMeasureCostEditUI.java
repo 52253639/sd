@@ -4630,7 +4630,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			}
 			newPlanIndexMap.put(productTypeKey+entry.getNumber(), row);
 			row.getCell("config").setValue(blk+entry.getName());
-			row.getCell("value").setValue(entry.getValue());
 			row.getCell("remark").setValue(entry.getRemark());
 			row.getCell("des").setValue(entry.getDes());
 			if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.RATE)){
@@ -4651,6 +4650,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					}
 				});
 				row.getCell("value").setRenderer(render_scale);
+				
+				if(entry.getValue()!=null)row.getCell("value").setValue(new BigDecimal(entry.getValue()));
 			}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.DIGITAL)){
 				KDFormattedTextField amount = new KDFormattedTextField();
 				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
@@ -4658,6 +4659,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				amount.setPrecision(2);
 				KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
 				row.getCell("value").setEditor(amountEditor);
+				
+				if(entry.getValue()!=null)row.getCell("value").setValue(new BigDecimal(entry.getValue()));
 			}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.INT)){
 				KDFormattedTextField amount = new KDFormattedTextField();
 				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
@@ -4665,6 +4668,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				amount.setPrecision(0);
 				KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
 				row.getCell("value").setEditor(amountEditor);
+				
+				if(entry.getValue()!=null)row.getCell("value").setValue(new BigDecimal(entry.getValue()));
+			}else{
+				row.getCell("value").setValue(entry.getValue());
 			}
 			if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
 				row.getCell("value").getStyleAttributes().setLocked(false);

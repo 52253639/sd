@@ -229,6 +229,17 @@ public class CreateProTableRow {
 	     head.setUnit(null);
 	     newDetailInfo.setPrice(head.getPrice());
 	     head.setPrice(null);
+	     
+	     newDetailInfo.setPaperDate(head.getPaperDate());
+	     head.setPaperDate(null);
+	     newDetailInfo.setDocumentsAuditDate(head.getDocumentsAuditDate());
+	     head.setDocumentsAuditDate(null);
+	     newDetailInfo.setResultAuditDate(head.getResultAuditDate());
+	     head.setResultAuditDate(null);
+	     newDetailInfo.setContractAuditDate(head.getContractAuditDate());
+	     head.setContractAuditDate(null);
+	     newDetailInfo.setEnterAuditDate(head.getEnterAuditDate());
+	     head.setEnterAuditDate(null);
 	}
     public BigDecimal getAllContractAssign(ProgrammingContractInfo pcInfo,ProgrammingContractCollection pcCollection,CostAccountInfo caInfo, boolean flag) {
 		BigDecimal allContractAssign = FDCHelper.ZERO;

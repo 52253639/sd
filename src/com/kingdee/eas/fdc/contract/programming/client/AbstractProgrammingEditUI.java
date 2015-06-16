@@ -296,28 +296,28 @@ public abstract class AbstractProgrammingEditUI extends com.kingdee.eas.fdc.base
         this.menuItemRemove.setEnabled(false);		
         this.MenuItemAttachment.setText(resHelper.getString("MenuItemAttachment.text"));		
         this.MenuItemAttachment.setToolTipText(resHelper.getString("MenuItemAttachment.toolTipText"));		
+        this.btnTraceUp.setVisible(false);		
+        this.btnTraceUp.setEnabled(false);		
+        this.btnTraceDown.setVisible(false);		
+        this.btnTraceDown.setEnabled(false);		
+        this.btnCreateFrom.setVisible(false);		
+        this.btnCreateFrom.setEnabled(false);		
         this.btnAddLine.setVisible(false);		
         this.btnAddLine.setEnabled(false);		
         this.btnInsertLine.setVisible(false);		
         this.btnInsertLine.setEnabled(false);		
         this.btnRemoveLine.setVisible(false);		
         this.btnRemoveLine.setEnabled(false);		
-        this.btnCreateFrom.setVisible(false);		
-        this.btnCreateFrom.setEnabled(false);		
-        this.btnTraceUp.setVisible(false);		
-        this.btnTraceUp.setEnabled(false);		
-        this.btnTraceDown.setVisible(false);		
-        this.btnTraceDown.setEnabled(false);		
         this.btnAuditResult.setVisible(false);		
         this.btnAuditResult.setEnabled(false);		
+        this.btnMultiapprove.setVisible(false);		
+        this.btnMultiapprove.setEnabled(false);		
         this.menuItemCreateFrom.setVisible(false);		
         this.menuItemCreateFrom.setEnabled(false);		
         this.menuItemCopyFrom.setVisible(false);		
         this.menuItemCopyFrom.setEnabled(false);		
         this.menuItemTraceUp.setVisible(false);		
         this.menuItemTraceDown.setVisible(false);		
-        this.btnMultiapprove.setVisible(false);		
-        this.btnMultiapprove.setEnabled(false);		
         this.menuTable1.setVisible(false);		
         this.menuTable1.setEnabled(false);
         // kDTabbedPane1
@@ -408,7 +408,7 @@ public abstract class AbstractProgrammingEditUI extends com.kingdee.eas.fdc.base
         this.kDSplitPane1.setDividerLocation(380);		
         this.kDSplitPane1.setDividerSize(0);
         // kdtEntries
-		String kdtEntriesStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol3\"><c:Protection locked=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol8\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol14\"><c:Protection locked=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol15\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol16\"><c:Protection locked=\"true\" /></c:Style><c:Style id=\"sCol17\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol18\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol19\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol20\"><c:Protection locked=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol21\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol22\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"center\" /></c:Style><c:Style id=\"sCol23\"><c:Protection locked=\"true\" hidden=\"true\" /></c:Style><c:Style id=\"sCol24\"><c:Protection locked=\"true\" hidden=\"true\" /></c:Style><c:Style id=\"sCol26\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol27\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol28\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol29\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol30\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol31\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol32\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol33\"><c:Protection hidden=\"true\" /><c:NumberFormat>#,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol35\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"longNumber\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"0\" /><t:Column t:key=\"name\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"1\" /><t:Column t:key=\"contractType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"costAccount\" t:width=\"300\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"workContent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"supMaterial\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"isInvite\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"inviteWay\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" t:styleID=\"sCol7\" /><t:Column t:key=\"inviteOrg\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" t:styleID=\"sCol8\" /><t:Column t:key=\"buildPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"isInput\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"quantities\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"unit\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"price\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" t:styleID=\"sCol14\" /><t:Column t:key=\"controlAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /><t:Column t:key=\"isCiting\" t:width=\"80\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" t:styleID=\"sCol16\" /><t:Column t:key=\"signUpAmount\" t:width=\"90\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" t:styleID=\"sCol17\" /><t:Column t:key=\"changeAmount\" t:width=\"90\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" t:styleID=\"sCol18\" /><t:Column t:key=\"settleAmount\" t:width=\"90\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" t:styleID=\"sCol19\" /><t:Column t:key=\"balance\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" t:styleID=\"sCol20\" /><t:Column t:key=\"controlBalance\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" t:styleID=\"sCol21\" /><t:Column t:key=\"attachment\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" t:styleID=\"sCol22\" /><t:Column t:key=\"buildPerSquare\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" t:styleID=\"sCol23\" /><t:Column t:key=\"soldPerSquare\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" t:styleID=\"sCol24\" /><t:Column t:key=\"remark\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"26\" t:styleID=\"sCol26\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"27\" t:styleID=\"sCol27\" /><t:Column t:key=\"level\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"28\" t:styleID=\"sCol28\" /><t:Column t:key=\"citeVersion\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"29\" t:styleID=\"sCol29\" /><t:Column t:key=\"headNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"30\" t:styleID=\"sCol30\" /><t:Column t:key=\"longName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"31\" t:styleID=\"sCol31\" /><t:Column t:key=\"sortNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"32\" t:styleID=\"sCol32\" /><t:Column t:key=\"estimateAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"33\" t:styleID=\"sCol33\" /><t:Column t:key=\"isWTCiting\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"34\" /><t:Column t:key=\"compare\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"35\" t:styleID=\"sCol35\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{longNumber}</t:Cell><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{contractType}</t:Cell><t:Cell>$Resource{costAccount}</t:Cell><t:Cell>$Resource{workContent}</t:Cell><t:Cell>$Resource{supMaterial}</t:Cell><t:Cell>$Resource{isInvite}</t:Cell><t:Cell>$Resource{inviteWay}</t:Cell><t:Cell>$Resource{inviteOrg}</t:Cell><t:Cell>$Resource{buildPrice}</t:Cell><t:Cell>$Resource{isInput}</t:Cell><t:Cell>$Resource{quantities}</t:Cell><t:Cell>$Resource{unit}</t:Cell><t:Cell>$Resource{price}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{controlAmount}</t:Cell><t:Cell>$Resource{isCiting}</t:Cell><t:Cell>$Resource{signUpAmount}</t:Cell><t:Cell>$Resource{changeAmount}</t:Cell><t:Cell>$Resource{settleAmount}</t:Cell><t:Cell>$Resource{balance}</t:Cell><t:Cell>$Resource{controlBalance}</t:Cell><t:Cell>$Resource{attachment}</t:Cell><t:Cell>$Resource{buildPerSquare}</t:Cell><t:Cell>$Resource{soldPerSquare}</t:Cell><t:Cell>$Resource{remark}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{level}</t:Cell><t:Cell>$Resource{citeVersion}</t:Cell><t:Cell>$Resource{headNumber}</t:Cell><t:Cell>$Resource{longName}</t:Cell><t:Cell>$Resource{sortNumber}</t:Cell><t:Cell>$Resource{estimateAmount}</t:Cell><t:Cell>$Resource{isWTCiting}</t:Cell><t:Cell>$Resource{compare}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String kdtEntriesStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol3\"><c:Protection locked=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol12\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol13\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol19\"><c:Protection locked=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol20\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol21\"><c:Protection locked=\"true\" /></c:Style><c:Style id=\"sCol22\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol23\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol24\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol25\"><c:Protection locked=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol26\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol27\"><c:Protection locked=\"true\" hidden=\"true\" /><c:Alignment horizontal=\"center\" /></c:Style><c:Style id=\"sCol28\"><c:Protection locked=\"true\" hidden=\"true\" /></c:Style><c:Style id=\"sCol29\"><c:Protection locked=\"true\" hidden=\"true\" /></c:Style><c:Style id=\"sCol31\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol32\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol33\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol34\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol35\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol36\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol37\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol38\"><c:Protection hidden=\"true\" /><c:NumberFormat>#,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol40\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"longNumber\" t:width=\"150\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"0\" /><t:Column t:key=\"name\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"1\" /><t:Column t:key=\"contractType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"costAccount\" t:width=\"300\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol3\" /><t:Column t:key=\"workContent\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"supMaterial\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol5\" /><t:Column t:key=\"paperDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"documentsAuditDate\" t:width=\"120\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"resultAuditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"contractAuditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"enterAuditDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"isInvite\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"inviteWay\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" t:styleID=\"sCol12\" /><t:Column t:key=\"inviteOrg\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" t:styleID=\"sCol13\" /><t:Column t:key=\"buildPrice\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"isInput\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"quantities\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"unit\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" /><t:Column t:key=\"price\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" t:styleID=\"sCol19\" /><t:Column t:key=\"controlAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" t:styleID=\"sCol20\" /><t:Column t:key=\"isCiting\" t:width=\"80\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" t:styleID=\"sCol21\" /><t:Column t:key=\"signUpAmount\" t:width=\"90\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" t:styleID=\"sCol22\" /><t:Column t:key=\"changeAmount\" t:width=\"90\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" t:styleID=\"sCol23\" /><t:Column t:key=\"settleAmount\" t:width=\"90\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" t:styleID=\"sCol24\" /><t:Column t:key=\"balance\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" t:styleID=\"sCol25\" /><t:Column t:key=\"controlBalance\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"26\" t:styleID=\"sCol26\" /><t:Column t:key=\"attachment\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"27\" t:styleID=\"sCol27\" /><t:Column t:key=\"buildPerSquare\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"28\" t:styleID=\"sCol28\" /><t:Column t:key=\"soldPerSquare\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"29\" t:styleID=\"sCol29\" /><t:Column t:key=\"remark\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"30\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"31\" t:styleID=\"sCol31\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"32\" t:styleID=\"sCol32\" /><t:Column t:key=\"level\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"33\" t:styleID=\"sCol33\" /><t:Column t:key=\"citeVersion\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"34\" t:styleID=\"sCol34\" /><t:Column t:key=\"headNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"35\" t:styleID=\"sCol35\" /><t:Column t:key=\"longName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"36\" t:styleID=\"sCol36\" /><t:Column t:key=\"sortNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"37\" t:styleID=\"sCol37\" /><t:Column t:key=\"estimateAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"38\" t:styleID=\"sCol38\" /><t:Column t:key=\"isWTCiting\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"39\" /><t:Column t:key=\"compare\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"40\" t:styleID=\"sCol40\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{longNumber}</t:Cell><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{contractType}</t:Cell><t:Cell>$Resource{costAccount}</t:Cell><t:Cell>$Resource{workContent}</t:Cell><t:Cell>$Resource{supMaterial}</t:Cell><t:Cell>$Resource{paperDate}</t:Cell><t:Cell>$Resource{documentsAuditDate}</t:Cell><t:Cell>$Resource{resultAuditDate}</t:Cell><t:Cell>$Resource{contractAuditDate}</t:Cell><t:Cell>$Resource{enterAuditDate}</t:Cell><t:Cell>$Resource{isInvite}</t:Cell><t:Cell>$Resource{inviteWay}</t:Cell><t:Cell>$Resource{inviteOrg}</t:Cell><t:Cell>$Resource{buildPrice}</t:Cell><t:Cell>$Resource{isInput}</t:Cell><t:Cell>$Resource{quantities}</t:Cell><t:Cell>$Resource{unit}</t:Cell><t:Cell>$Resource{price}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{controlAmount}</t:Cell><t:Cell>$Resource{isCiting}</t:Cell><t:Cell>$Resource{signUpAmount}</t:Cell><t:Cell>$Resource{changeAmount}</t:Cell><t:Cell>$Resource{settleAmount}</t:Cell><t:Cell>$Resource{balance}</t:Cell><t:Cell>$Resource{controlBalance}</t:Cell><t:Cell>$Resource{attachment}</t:Cell><t:Cell>$Resource{buildPerSquare}</t:Cell><t:Cell>$Resource{soldPerSquare}</t:Cell><t:Cell>$Resource{remark}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{level}</t:Cell><t:Cell>$Resource{citeVersion}</t:Cell><t:Cell>$Resource{headNumber}</t:Cell><t:Cell>$Resource{longName}</t:Cell><t:Cell>$Resource{sortNumber}</t:Cell><t:Cell>$Resource{estimateAmount}</t:Cell><t:Cell>$Resource{isWTCiting}</t:Cell><t:Cell>$Resource{compare}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.kdtEntries.setFormatXml(resHelper.translateString("kdtEntries",kdtEntriesStrXML));
         this.kdtEntries.addKDTActiveCellListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTActiveCellListener() {
@@ -455,7 +455,7 @@ public abstract class AbstractProgrammingEditUI extends com.kingdee.eas.fdc.base
             }
         });
 
-                this.kdtEntries.putBindContents("editData",new String[] {"longNumber","name","contractType","costAccountNames","workContent","supMaterial","isInvite","inviteWay","inviteOrg","buildPrice","isInput","quantities","unit","price","amount","controlAmount","isCiting","signUpAmount","changeAmount","settleAmount","balance","controlBalance","attachment","buildPerSquare","soldPerSquare","description","id","number","level","citeVersion","parent.longNumber","displayName","sortNumber","estimateAmount","isWTCiting","compare"});
+                this.kdtEntries.putBindContents("editData",new String[] {"longNumber","name","contractType","costAccountNames","workContent","supMaterial","paperDate","documentsAuditDate","resultAuditDate","contractAuditDate","enterAuditDate","isInvite","inviteWay","inviteOrg","buildPrice","isInput","quantities","unit","price","amount","controlAmount","isCiting","signUpAmount","changeAmount","settleAmount","balance","controlBalance","attachment","buildPerSquare","soldPerSquare","description","id","number","level","citeVersion","parent.longNumber","displayName","sortNumber","estimateAmount","isWTCiting","compare"});
 
 
         // colorPanel		
@@ -640,9 +640,13 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -707,6 +711,7 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -738,8 +743,11 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnRefresh);
@@ -763,6 +771,7 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
         this.toolBar.add(separatorFW3);
         this.toolBar.add(btnTraceUp);
         this.toolBar.add(btnTraceDown);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(btnWorkFlowG);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnSignature);
@@ -837,6 +846,11 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
 		dataBinder.registerBinding("entries.quantities", java.math.BigDecimal.class, this.kdtEntries, "quantities.text");
 		dataBinder.registerBinding("entries.unit", String.class, this.kdtEntries, "unit.text");
 		dataBinder.registerBinding("entries.price", java.math.BigDecimal.class, this.kdtEntries, "price.text");
+		dataBinder.registerBinding("entries.paperDate", java.util.Date.class, this.kdtEntries, "paperDate.text");
+		dataBinder.registerBinding("entries.documentsAuditDate", java.util.Date.class, this.kdtEntries, "documentsAuditDate.text");
+		dataBinder.registerBinding("entries.resultAuditDate", java.util.Date.class, this.kdtEntries, "resultAuditDate.text");
+		dataBinder.registerBinding("entries.contractAuditDate", java.util.Date.class, this.kdtEntries, "contractAuditDate.text");
+		dataBinder.registerBinding("entries.enterAuditDate", java.util.Date.class, this.kdtEntries, "enterAuditDate.text");
 		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
 		dataBinder.registerBinding("name", String.class, this.txtName, "text");
 		dataBinder.registerBinding("version", java.math.BigDecimal.class, this.txtVersion, "text");
@@ -948,6 +962,11 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
 		getValidateHelper().registerBindProperty("entries.quantities", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entries.unit", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entries.price", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entries.paperDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entries.documentsAuditDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entries.resultAuditDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entries.contractAuditDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entries.enterAuditDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("version", ValidateHelper.ON_SAVE);    
@@ -1023,57 +1042,97 @@ pnlCostAccount.setLayout(new BorderLayout(0, 0));        pnlCostAccount.add(kdtC
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("description"));
-        sic.add(new SelectorItemInfo("compareEntry.*"));
-//        sic.add(new SelectorItemInfo("compareEntry.number"));
-    sic.add(new SelectorItemInfo("compareEntry.programmingContract"));
-    sic.add(new SelectorItemInfo("compareEntry.content"));
-    sic.add(new SelectorItemInfo("compareEntry.reason"));
-    sic.add(new SelectorItemInfo("entries.longNumber"));
-    sic.add(new SelectorItemInfo("entries.name"));
-        sic.add(new SelectorItemInfo("entries.*"));
-//        sic.add(new SelectorItemInfo("entries.number"));
-    sic.add(new SelectorItemInfo("entries.amount"));
-    sic.add(new SelectorItemInfo("entries.controlAmount"));
-    sic.add(new SelectorItemInfo("entries.balance"));
-    sic.add(new SelectorItemInfo("entries.controlBalance"));
-    sic.add(new SelectorItemInfo("entries.signUpAmount"));
-    sic.add(new SelectorItemInfo("entries.changeAmount"));
-    sic.add(new SelectorItemInfo("entries.settleAmount"));
-    sic.add(new SelectorItemInfo("entries.citeVersion"));
-    sic.add(new SelectorItemInfo("entries.isCiting"));
-    sic.add(new SelectorItemInfo("entries.attachment"));
-    sic.add(new SelectorItemInfo("entries.description"));
-    sic.add(new SelectorItemInfo("entries.id"));
-    sic.add(new SelectorItemInfo("entries.number"));
-    sic.add(new SelectorItemInfo("entries.level"));
-    sic.add(new SelectorItemInfo("entries.parent.longNumber"));
-    sic.add(new SelectorItemInfo("entries.displayName"));
-    sic.add(new SelectorItemInfo("entries.sortNumber"));
-    sic.add(new SelectorItemInfo("entries.workContent"));
-    sic.add(new SelectorItemInfo("entries.supMaterial"));
-    sic.add(new SelectorItemInfo("entries.inviteWay"));
-    sic.add(new SelectorItemInfo("entries.buildPerSquare"));
-    sic.add(new SelectorItemInfo("entries.soldPerSquare"));
-        sic.add(new SelectorItemInfo("entries.inviteOrg.*"));
-//        sic.add(new SelectorItemInfo("entries.inviteOrg.number"));
-    sic.add(new SelectorItemInfo("entries.costAccountNames"));
-    sic.add(new SelectorItemInfo("entries.estimateAmount"));
-        sic.add(new SelectorItemInfo("entries.contractType.*"));
-//        sic.add(new SelectorItemInfo("entries.contractType.number"));
-    sic.add(new SelectorItemInfo("entries.isInvite"));
-    sic.add(new SelectorItemInfo("entries.isWTCiting"));
-    sic.add(new SelectorItemInfo("entries.compare"));
-    sic.add(new SelectorItemInfo("entries.buildPrice"));
-    sic.add(new SelectorItemInfo("entries.isInput"));
-    sic.add(new SelectorItemInfo("entries.quantities"));
-    sic.add(new SelectorItemInfo("entries.unit"));
-    sic.add(new SelectorItemInfo("entries.price"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("compareEntry.*"));
+		}
+		else{
+		}
+    	sic.add(new SelectorItemInfo("compareEntry.programmingContract"));
+    	sic.add(new SelectorItemInfo("compareEntry.content"));
+    	sic.add(new SelectorItemInfo("compareEntry.reason"));
+    	sic.add(new SelectorItemInfo("entries.longNumber"));
+    	sic.add(new SelectorItemInfo("entries.name"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("entries.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("entries.number"));
+		}
+    	sic.add(new SelectorItemInfo("entries.amount"));
+    	sic.add(new SelectorItemInfo("entries.controlAmount"));
+    	sic.add(new SelectorItemInfo("entries.balance"));
+    	sic.add(new SelectorItemInfo("entries.controlBalance"));
+    	sic.add(new SelectorItemInfo("entries.signUpAmount"));
+    	sic.add(new SelectorItemInfo("entries.changeAmount"));
+    	sic.add(new SelectorItemInfo("entries.settleAmount"));
+    	sic.add(new SelectorItemInfo("entries.citeVersion"));
+    	sic.add(new SelectorItemInfo("entries.isCiting"));
+    	sic.add(new SelectorItemInfo("entries.attachment"));
+    	sic.add(new SelectorItemInfo("entries.description"));
+    	sic.add(new SelectorItemInfo("entries.id"));
+    	sic.add(new SelectorItemInfo("entries.level"));
+    	sic.add(new SelectorItemInfo("entries.parent.longNumber"));
+    	sic.add(new SelectorItemInfo("entries.displayName"));
+    	sic.add(new SelectorItemInfo("entries.sortNumber"));
+    	sic.add(new SelectorItemInfo("entries.workContent"));
+    	sic.add(new SelectorItemInfo("entries.supMaterial"));
+    	sic.add(new SelectorItemInfo("entries.inviteWay"));
+    	sic.add(new SelectorItemInfo("entries.buildPerSquare"));
+    	sic.add(new SelectorItemInfo("entries.soldPerSquare"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("entries.inviteOrg.*"));
+		}
+		else{
+	    	sic.add(new SelectorItemInfo("entries.inviteOrg.id"));
+			sic.add(new SelectorItemInfo("entries.inviteOrg.name"));
+        	sic.add(new SelectorItemInfo("entries.inviteOrg.number"));
+		}
+    	sic.add(new SelectorItemInfo("entries.costAccountNames"));
+    	sic.add(new SelectorItemInfo("entries.estimateAmount"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("entries.contractType.*"));
+		}
+		else{
+	    	sic.add(new SelectorItemInfo("entries.contractType.id"));
+			sic.add(new SelectorItemInfo("entries.contractType.name"));
+        	sic.add(new SelectorItemInfo("entries.contractType.number"));
+		}
+    	sic.add(new SelectorItemInfo("entries.isInvite"));
+    	sic.add(new SelectorItemInfo("entries.isWTCiting"));
+    	sic.add(new SelectorItemInfo("entries.compare"));
+    	sic.add(new SelectorItemInfo("entries.buildPrice"));
+    	sic.add(new SelectorItemInfo("entries.isInput"));
+    	sic.add(new SelectorItemInfo("entries.quantities"));
+    	sic.add(new SelectorItemInfo("entries.unit"));
+    	sic.add(new SelectorItemInfo("entries.price"));
+    	sic.add(new SelectorItemInfo("entries.paperDate"));
+    	sic.add(new SelectorItemInfo("entries.documentsAuditDate"));
+    	sic.add(new SelectorItemInfo("entries.resultAuditDate"));
+    	sic.add(new SelectorItemInfo("entries.contractAuditDate"));
+    	sic.add(new SelectorItemInfo("entries.enterAuditDate"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("name"));
         sic.add(new SelectorItemInfo("version"));
         sic.add(new SelectorItemInfo("project.name"));
-        sic.add(new SelectorItemInfo("aimCost.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("aimCost.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("aimCost.id"));
+        	sic.add(new SelectorItemInfo("aimCost.number"));
+        	sic.add(new SelectorItemInfo("aimCost.versionName"));
+        	sic.add(new SelectorItemInfo("aimCost.versionNumber"));
+		}
         sic.add(new SelectorItemInfo("versionGroup"));
         sic.add(new SelectorItemInfo("createTime"));
         sic.add(new SelectorItemInfo("lastUpdateTime"));

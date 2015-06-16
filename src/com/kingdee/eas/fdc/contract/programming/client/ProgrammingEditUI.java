@@ -58,6 +58,7 @@ import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
 import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDCheckBox;
 import com.kingdee.bos.ctrl.swing.KDComboBox;
+import com.kingdee.bos.ctrl.swing.KDDatePicker;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDLabel;
 import com.kingdee.bos.ctrl.swing.KDScrollPane;
@@ -87,6 +88,7 @@ import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.base.attachment.client.AttachmentUIContextInfo;
 import com.kingdee.eas.base.attachment.common.AttachmentClientManager;
 import com.kingdee.eas.base.attachment.common.AttachmentManagerFactory;
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.basedata.org.CostCenterOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -271,6 +273,27 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 		
 		this.kdtCompareEntry.getColumn("reason").getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_COMMON_BG_COLOR);
 		this.txtDescription.setRequired(true);
+		
+		boolean isPCInvite=false;
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISPCINVITEDATE", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISPCINVITEDATE")!=null){
+				isPCInvite=Boolean.parseBoolean(hmAllParam.get("FDC_ISPCINVITEDATE").toString());
+			}else{
+				isPCInvite=true;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		this.kdtEntries.getColumn("paperDate").getStyleAttributes().setHided(!isPCInvite);
+		this.kdtEntries.getColumn("documentsAuditDate").getStyleAttributes().setHided(!isPCInvite);
+		this.kdtEntries.getColumn("resultAuditDate").getStyleAttributes().setHided(!isPCInvite);
+		this.kdtEntries.getColumn("contractAuditDate").getStyleAttributes().setHided(!isPCInvite);
+		this.kdtEntries.getColumn("enterAuditDate").getStyleAttributes().setHided(!isPCInvite);
     }
     protected void drawALogo(String name, Color color) {
 		KDLabel lable = new KDLabel(name);
@@ -849,6 +872,22 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
  		kdtEntries.getColumn("unit").getStyleAttributes().setLocked(true);
  		kdtEntries.getColumn("price").getStyleAttributes().setLocked(true);
  		kdtEntries.getColumn("price").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+ 		
+ 		String formatString = "yyyy-MM-dd";
+		this.kdtEntries.getColumn("paperDate").getStyleAttributes().setNumberFormat(formatString);
+		this.kdtEntries.getColumn("documentsAuditDate").getStyleAttributes().setNumberFormat(formatString);
+		this.kdtEntries.getColumn("resultAuditDate").getStyleAttributes().setNumberFormat(formatString);
+		this.kdtEntries.getColumn("contractAuditDate").getStyleAttributes().setNumberFormat(formatString);
+		this.kdtEntries.getColumn("enterAuditDate").getStyleAttributes().setNumberFormat(formatString);
+		
+		KDDatePicker pk = new KDDatePicker();
+		KDTDefaultCellEditor dateEditor = new KDTDefaultCellEditor(pk);
+		
+ 		this.kdtEntries.getColumn("paperDate").setEditor(dateEditor);
+		this.kdtEntries.getColumn("documentsAuditDate").setEditor(dateEditor);
+		this.kdtEntries.getColumn("resultAuditDate").setEditor(dateEditor);
+		this.kdtEntries.getColumn("contractAuditDate").setEditor(dateEditor);
+		this.kdtEntries.getColumn("enterAuditDate").setEditor(dateEditor);
 	}
 	public void actionEditInvite_actionPerformed(ActionEvent e) throws Exception {
 		if (MsgBox.showConfirm2("是否确定修改？") == MsgBox.CANCEL) {
@@ -2207,6 +2246,81 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 		}
 		if (colIndex == kdtEntries.getColumnIndex("quantities")) {
 			kdtEntries.getRow(rowIndex).getCell("price").setValue(FDCHelper.divide(kdtEntries.getRow(rowIndex).getCell("amount").getValue(), kdtEntries.getRow(rowIndex).getCell("quantities").getValue(), 2, BigDecimal.ROUND_HALF_UP));
+		}
+		if (colIndex == kdtEntries.getColumnIndex("paperDate")) {
+			if(rowIndex+1 <kdtEntries.getRowCount()){
+				Object oldLongNumber = kdtEntries.getCell(rowIndex, LONGNUMBER).getValue();
+				if(oldLongNumber == null){
+					FDCMsgBox.showInfo("请填写编码！");
+					return;
+				}
+				Object nextHeadNumber = kdtEntries.getCell(rowIndex+1, HEADNUMBER).getValue();
+				if(oldLongNumber.equals(nextHeadNumber)){
+					FDCMsgBox.showInfo("非明细目录不能录入图纸及样品确认！");
+					kdtEntries.getRow(rowIndex).getCell("paperDate").setValue(null);
+					return;
+				}
+			}
+		}
+		if (colIndex == kdtEntries.getColumnIndex("documentsAuditDate")) {
+			if(rowIndex+1 <kdtEntries.getRowCount()){
+				Object oldLongNumber = kdtEntries.getCell(rowIndex, LONGNUMBER).getValue();
+				if(oldLongNumber == null){
+					FDCMsgBox.showInfo("请填写编码！");
+					return;
+				}
+				Object nextHeadNumber = kdtEntries.getCell(rowIndex+1, HEADNUMBER).getValue();
+				if(oldLongNumber.equals(nextHeadNumber)){
+					FDCMsgBox.showInfo("非明细目录不能录入招标文件审批日期！");
+					kdtEntries.getRow(rowIndex).getCell("documentsAuditDate").setValue(null);
+					return;
+				}
+			}
+		}
+		if (colIndex == kdtEntries.getColumnIndex("resultAuditDate")) {
+			if(rowIndex+1 <kdtEntries.getRowCount()){
+				Object oldLongNumber = kdtEntries.getCell(rowIndex, LONGNUMBER).getValue();
+				if(oldLongNumber == null){
+					FDCMsgBox.showInfo("请填写编码！");
+					return;
+				}
+				Object nextHeadNumber = kdtEntries.getCell(rowIndex+1, HEADNUMBER).getValue();
+				if(oldLongNumber.equals(nextHeadNumber)){
+					FDCMsgBox.showInfo("非明细目录不能录入中标审批日期！");
+					kdtEntries.getRow(rowIndex).getCell("resultAuditDate").setValue(null);
+					return;
+				}
+			}
+		}
+		if (colIndex == kdtEntries.getColumnIndex("contractAuditDate")) {
+			if(rowIndex+1 <kdtEntries.getRowCount()){
+				Object oldLongNumber = kdtEntries.getCell(rowIndex, LONGNUMBER).getValue();
+				if(oldLongNumber == null){
+					FDCMsgBox.showInfo("请填写编码！");
+					return;
+				}
+				Object nextHeadNumber = kdtEntries.getCell(rowIndex+1, HEADNUMBER).getValue();
+				if(oldLongNumber.equals(nextHeadNumber)){
+					FDCMsgBox.showInfo("非明细目录不能录入合同审批日期！");
+					kdtEntries.getRow(rowIndex).getCell("contractAuditDate").setValue(null);
+					return;
+				}
+			}
+		}
+		if (colIndex == kdtEntries.getColumnIndex("enterAuditDate")) {
+			if(rowIndex+1 <kdtEntries.getRowCount()){
+				Object oldLongNumber = kdtEntries.getCell(rowIndex, LONGNUMBER).getValue();
+				if(oldLongNumber == null){
+					FDCMsgBox.showInfo("请填写编码！");
+					return;
+				}
+				Object nextHeadNumber = kdtEntries.getCell(rowIndex+1, HEADNUMBER).getValue();
+				if(oldLongNumber.equals(nextHeadNumber)){
+					FDCMsgBox.showInfo("非明细目录不能录入预计进场日期！");
+					kdtEntries.getRow(rowIndex).getCell("enterAuditDate").setValue(null);
+					return;
+				}
+			}
 		}
     }
     

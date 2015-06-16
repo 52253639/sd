@@ -52,10 +52,13 @@ public abstract class AbstractProgrammingContractControllerBean extends TreeBase
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("d6855b92-49bf-43a5-8098-03ceadfc56da"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ProgrammingContractInfo retValue = (ProgrammingContractInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ProgrammingContractInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -74,10 +77,13 @@ public abstract class AbstractProgrammingContractControllerBean extends TreeBase
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ef4cb7d1-5465-45de-a9ca-8fa07188ab3b"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ProgrammingContractInfo retValue = (ProgrammingContractInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ProgrammingContractInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -96,10 +102,13 @@ public abstract class AbstractProgrammingContractControllerBean extends TreeBase
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("14023b2f-16bc-4365-91fc-40d9ce3d8f06"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ProgrammingContractInfo retValue = (ProgrammingContractInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ProgrammingContractInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -118,10 +127,13 @@ public abstract class AbstractProgrammingContractControllerBean extends TreeBase
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("04dca02e-abdf-4448-a4ea-160574c723fc"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ProgrammingContractCollection retValue = (ProgrammingContractCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ProgrammingContractCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -138,10 +150,13 @@ public abstract class AbstractProgrammingContractControllerBean extends TreeBase
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("1efc936b-9fc9-4f42-8798-f2491e48d76d"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ProgrammingContractCollection retValue = (ProgrammingContractCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ProgrammingContractCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -158,10 +173,13 @@ public abstract class AbstractProgrammingContractControllerBean extends TreeBase
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("96b1aa41-6d3e-43c9-bcd7-69bb709b9870"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ProgrammingContractCollection retValue = (ProgrammingContractCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ProgrammingContractCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
