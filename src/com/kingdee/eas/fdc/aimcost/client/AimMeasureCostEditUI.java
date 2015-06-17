@@ -1306,6 +1306,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}else{
 			filter.getFilterItems().add(new FilterItemInfo("isProductType", Boolean.TRUE));
 		}
+		filter.getFilterItems().add(new FilterItemInfo("isEntityIndex", Boolean.FALSE));
+		filter.getFilterItems().add(new FilterItemInfo("isEntityIndex", Boolean.TRUE));
+		filter.getFilterItems().add(new FilterItemInfo("isLeaf", Boolean.TRUE));
+		filter.setMaskString("#0 and #1 and #2 and (#3 or (#4 and #5))");
 		view.setFilter(filter);
 		config.setEntityViewInfo(view);
 		config.setEditable(true);
@@ -1484,6 +1488,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			}
 //		}
 		row.getCell("indexName").setValue(info.getConfig());
+		if(info.getConfig().isIsEntityIndex()&&isEdit){
+			row.getCell("index").getStyleAttributes().setLocked(false);
+			row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
+		}
 		row.getCell("coefficientName").setValue(info.getCoefficientName());
 		BigDecimal coefficient = info.getCoefficient();
 		if (coefficient != null && coefficient.compareTo(FDCHelper.ZERO) == 0) {
@@ -2047,17 +2055,20 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				if(table.getHeadRow(0).getUserObject()!=null){
 					productTypeKey=((ProductTypeInfo)table.getHeadRow(0).getUserObject()).getId().toString();
 				}
-				if(config.isIsEntityIndex()&&isEdit){
-					row.getCell("index").getStyleAttributes().setLocked(false);
-					row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
-				}
 				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getLongNumber().replaceAll("!", "."));
-				row.getCell("index").getStyleAttributes().setLocked(true);
-				row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-				if(valueRow!=null&&valueRow.getCell("value").getValue()!=null&&!(valueRow.getCell("value").getValue() instanceof String)){
-					row.getCell("index").setValue(valueRow.getCell("value").getValue());
+				if(config.isIsEntityIndex()){
+					if(isEdit){
+						row.getCell("index").getStyleAttributes().setLocked(false);
+						row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
+					}
 				}else{
-					row.getCell("index").setValue(null);
+					row.getCell("index").getStyleAttributes().setLocked(true);
+					row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+					if(valueRow!=null&&valueRow.getCell("value").getValue()!=null&&!(valueRow.getCell("value").getValue() instanceof String)){
+						row.getCell("index").setValue(valueRow.getCell("value").getValue());
+					}else{
+						row.getCell("index").setValue(null);
+					}
 				}
 			}else{
 				row.getCell("index").setValue(null);
