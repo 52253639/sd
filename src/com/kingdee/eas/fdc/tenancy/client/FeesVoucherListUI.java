@@ -23,6 +23,7 @@ import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.client.UIContext;
+import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
@@ -47,61 +48,66 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
      */
     public void actionRemove_actionPerformed(ActionEvent e) throws Exception
     {
-    	if(KDTableUtil.getSelectedRow(tblMain) == null){
-			MsgBox.showWarning(this, "请先选中行！");
-			return;
-		}
-		 int currRow = -1;
-		    String chcek = null;
-		    int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
-		    for (int i = 0; i < selectRows.length; i++) {
-		      currRow = selectRows[i];
-		      String ObjectPK = this.tblMain.getRow(currRow).getCell("id").getValue().toString();
-		      if (!ObjectPK.equals(chcek)) {
-		    	  FeesWarrantInfo fwinfo= FeesWarrantFactory.getRemoteInstance().getFeesWarrantInfo(new ObjectUuidPK(ObjectPK));
-		        if (FDCBillStateEnum.SUBMITTED.equals(fwinfo.getState()))
-		        {
-		        }else{
-		        	  if (fwinfo.isFiVouchered()){
-		        		  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 生成了凭证，不能删除!");
-			        	  this.abort();
-		        	  }else if(!FDCBillStateEnum.SUBMITTED.equals(fwinfo.getState())){
-		        		  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 单据状态不是已提交，不能删除!");
-			        	  this.abort();
-		        	  }
-		        	 
-		        }
-		        chcek = ObjectPK;
-		      }
-		    }
+//    	if(KDTableUtil.getSelectedRow(tblMain) == null){
+//			MsgBox.showWarning(this, "请先选中行！");
+//			return;
+//		}
+//		 int currRow = -1;
+//		    String chcek = null;
+//		    int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
+//		    for (int i = 0; i < selectRows.length; i++) {
+//		      currRow = selectRows[i];
+//		      String ObjectPK = this.tblMain.getRow(currRow).getCell("id").getValue().toString();
+//		      if (!ObjectPK.equals(chcek)) {
+//		    	  FeesWarrantInfo fwinfo= FeesWarrantFactory.getRemoteInstance().getFeesWarrantInfo(new ObjectUuidPK(ObjectPK));
+//		        if (FDCBillStateEnum.SUBMITTED.equals(fwinfo.getState()))
+//		        {
+//		        }else{
+//		        	  if (fwinfo.isFiVouchered()){
+//		        		  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 生成了凭证，不能删除!");
+//			        	  this.abort();
+//		        	  }else if(!FDCBillStateEnum.SUBMITTED.equals(fwinfo.getState())){
+//		        		  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 单据状态不是已提交，不能删除!");
+//			        	  this.abort();
+//		        	  }
+//		        	 
+//		        }
+//		        chcek = ObjectPK;
+//		      }
+//		    }
         super.actionRemove_actionPerformed(e);
     }
 	protected String getEditUIName() {
 		return FeesWarrantEditUI.class.getName();
 	}
+	protected String getEditUIModal()
+	{
+		return UIFactoryName.NEWTAB;
+	}
 	private SaleOrgUnitInfo saleOrg = SHEHelper.getCurrentSaleOrg();
 	protected void prepareUIContext(UIContext uiContext, ActionEvent e) 
 	{
-		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain
-		.getLastSelectedPathComponent();
-		if (node == null) {
-			MsgBox.showWarning("请选择具体租售项目！");
-			this.abort();
-		}
-		if (node.getUserObject() instanceof String) {
-			MsgBox.showWarning("请选择具体租售项目！");
-			this.abort();
-		}
-		if (node.getUserObject() instanceof SellProjectInfo) {
-			SellProjectInfo sellProject = (SellProjectInfo) node.getUserObject();
-			uiContext.put("sellProject", sellProject);
-		} 
+//		DefaultKingdeeTreeNode node = (DefaultKingdeeTreeNode) treeMain
+//		.getLastSelectedPathComponent();
+//		if (node == null) {
+//			MsgBox.showWarning("请选择具体租售项目！");
+//			this.abort();
+//		}
+//		if (node.getUserObject() instanceof String) {
+//			MsgBox.showWarning("请选择具体租售项目！");
+//			this.abort();
+//		}
+//		if (node.getUserObject() instanceof SellProjectInfo) {
+//			SellProjectInfo sellProject = (SellProjectInfo) node.getUserObject();
+//			uiContext.put("sellProject", sellProject);
+//		} 
 		super.prepareUIContext(uiContext, e);
 	}
 	protected void initTree() throws Exception
 	{
 		this.treeMain.setModel(SHEHelper.getSellProjectTree(this.actionOnLoad,MoneySysTypeEnum.TenancySys));
 		this.treeMain.expandAllNodes(true, (TreeNode) this.treeMain.getModel().getRoot());
+		this.treeMain.setSelectionRow(0);
 	}
 	protected ICoreBase getBizInterface() throws Exception {
 		return FeesWarrantFactory.getRemoteInstance();
@@ -148,20 +154,24 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
 
 	 }
 	 public void onLoad() throws Exception    {
-		EntityViewInfo ev=new EntityViewInfo();
-		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("id", null));
-		ev.setFilter(filter);
-		this.mainQuery=ev;
+		if(this.getUIContext().get("filter")!=null){
+			EntityViewInfo ev=new EntityViewInfo();
+			ev.setFilter((FilterInfo) this.getUIContext().get("filter"));
+			this.mainQuery=ev;
+		}
     	super.onLoad();
     	tblMain.getColumn("id").getStyleAttributes().setHided(true);
     	this.tblMain.getIndexColumn().setWidthAdjustMode(
 				KDTIndexColumn.WIDTH_MANUAL);
 		tblMain.getSelectManager().setSelectMode(
 				KDTSelectManager.MULTIPLE_ROW_SELECT);
-    	initTree();
+		if(this.getUIContext().get("filter")==null){
+			initTree();
+		}else{
+			this.kDTreeView1.setVisible(false);
+			this.actionQuery.setVisible(false);
+		}
     	FDCClientHelper.addSqlMenu(this, this.menuEdit);
-		this.actionQuery.setVisible(true);
 		this.actionLocate.setVisible(true);
 		this.actionEdit.setEnabled(true);
 		this.actionRemove.setEnabled(true);
@@ -172,8 +182,6 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
 		btnCancelCancel.setVisible(false);
 	    this.kDWorkButton1.setIcon(EASResource.getIcon("imgTbtn_audit"));
 	    this.kDWorkButton2.setIcon(EASResource.getIcon("imgTbtn_unaudit"));
-		btnVoucher.setIcon(EASResource.getIcon("imgTbtn_createcredence"));
-		btnDelVoucher.setIcon(EASResource.getIcon("imgTbtn_deletecredence"));
 		if (saleOrg.isIsBizUnit()) 
 		{
 			this.actionEdit.setEnabled(true);
@@ -188,6 +196,15 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
 			this.actionSetAudit.setEnabled(false);
 			this.actionSetUnaudit.setEnabled(false);
 		}
+		
+		this.actionSetAudit.setVisible(false);
+		this.actionSetUnaudit.setVisible(false);
+		this.actionAddNew.setVisible(false);
+		this.actionWorkFlowG.setVisible(false);
+		this.actionAuditResult.setVisible(false);
+		this.menuWorkFlow.setVisible(false);
+		this.actionCopyTo.setVisible(false);
+		this.actionEdit.setVisible(false);
     }
 	 public void actionSetAudit_actionPerformed(ActionEvent e) throws Exception {
 			// TODO Auto-generated method stub
@@ -262,27 +279,27 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
 	     */
 	    public void actionVoucher_actionPerformed(ActionEvent e) throws Exception
 	    {
-	    	if(KDTableUtil.getSelectedRow(tblMain) == null){
-				MsgBox.showWarning(this, "请先选中行！");
-				return;
-			}
-			 int currRow = -1;
-			    String chcek = null;
-			    int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
-			    for (int i = 0; i < selectRows.length; i++) {
-			      currRow = selectRows[i];
-			      String ObjectPK = this.tblMain.getRow(currRow).getCell("id").getValue().toString();
-			      if (!ObjectPK.equals(chcek)) {
-			    	  FeesWarrantInfo fwinfo= FeesWarrantFactory.getRemoteInstance().getFeesWarrantInfo(new ObjectUuidPK(ObjectPK));
-			        if (FDCBillStateEnum.AUDITTED.equals(fwinfo.getState()))
-			        {
-			        }else{
-			        	  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 单据状态不是审批状态,不能生成凭证!");
-			        	  this.abort();
-			        }
-			        chcek = ObjectPK;
-			      }
-			    }
+//	    	if(KDTableUtil.getSelectedRow(tblMain) == null){
+//				MsgBox.showWarning(this, "请先选中行！");
+//				return;
+//			}
+//			 int currRow = -1;
+//			    String chcek = null;
+//			    int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
+//			    for (int i = 0; i < selectRows.length; i++) {
+//			      currRow = selectRows[i];
+//			      String ObjectPK = this.tblMain.getRow(currRow).getCell("id").getValue().toString();
+//			      if (!ObjectPK.equals(chcek)) {
+//			    	  FeesWarrantInfo fwinfo= FeesWarrantFactory.getRemoteInstance().getFeesWarrantInfo(new ObjectUuidPK(ObjectPK));
+//			        if (FDCBillStateEnum.AUDITTED.equals(fwinfo.getState()))
+//			        {
+//			        }else{
+//			        	  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 单据状态不是审批状态,不能生成凭证!");
+//			        	  this.abort();
+//			        }
+//			        chcek = ObjectPK;
+//			      }
+//			    }
 	        super.actionVoucher_actionPerformed(e);
 	    }
 

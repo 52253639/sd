@@ -43,9 +43,9 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 /**
  * output class name
  */
-public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.framework.report.client.CommRptBaseConditionUI
+public abstract class AbstractRevDetailVoucherReportFilterUI extends com.kingdee.eas.framework.report.client.CommRptBaseConditionUI
 {
-    private static final Logger logger = CoreUIObject.getLogger(AbstractRevDetailReportFilterUI.class);
+    private static final Logger logger = CoreUIObject.getLogger(AbstractRevDetailVoucherReportFilterUI.class);
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTanancyBill;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoom;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox cbIsAll;
@@ -53,22 +53,17 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contMoneyDefine;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer1;
     protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spSMonth;
+    protected com.kingdee.bos.ctrl.swing.KDSpinner spMonth;
     protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel2;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer2;
-    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel3;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spEMonth;
-    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel4;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtTanancyBill;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtRoom;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCustomer;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtMoneyDefine;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spSYear;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spEYear;
+    protected com.kingdee.bos.ctrl.swing.KDSpinner spYear;
     /**
      * output class constructor
      */
-    public AbstractRevDetailReportFilterUI() throws Exception
+    public AbstractRevDetailVoucherReportFilterUI() throws Exception
     {
         super();
         jbInit();
@@ -81,7 +76,7 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
      */
     private void jbInit() throws Exception
     {
-        this.resHelper = new ResourceBundleHelper(AbstractRevDetailReportFilterUI.class.getName());
+        this.resHelper = new ResourceBundleHelper(AbstractRevDetailVoucherReportFilterUI.class.getName());
         this.setUITitle(resHelper.getString("this.title"));
         this.contTanancyBill = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contRoom = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -90,18 +85,13 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.contMoneyDefine = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDLabelContainer1 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
-        this.spSMonth = new com.kingdee.bos.ctrl.swing.KDSpinner();
+        this.spMonth = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.kDLabel2 = new com.kingdee.bos.ctrl.swing.KDLabel();
-        this.kDLabelContainer2 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.kDLabel3 = new com.kingdee.bos.ctrl.swing.KDLabel();
-        this.spEMonth = new com.kingdee.bos.ctrl.swing.KDSpinner();
-        this.kDLabel4 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.prmtTanancyBill = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtRoom = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtCustomer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtMoneyDefine = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.spSYear = new com.kingdee.bos.ctrl.swing.KDSpinner();
-        this.spEYear = new com.kingdee.bos.ctrl.swing.KDSpinner();
+        this.spYear = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.contTanancyBill.setName("contTanancyBill");
         this.contRoom.setName("contRoom");
         this.cbIsAll.setName("cbIsAll");
@@ -109,18 +99,13 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.contMoneyDefine.setName("contMoneyDefine");
         this.kDLabelContainer1.setName("kDLabelContainer1");
         this.kDLabel1.setName("kDLabel1");
-        this.spSMonth.setName("spSMonth");
+        this.spMonth.setName("spMonth");
         this.kDLabel2.setName("kDLabel2");
-        this.kDLabelContainer2.setName("kDLabelContainer2");
-        this.kDLabel3.setName("kDLabel3");
-        this.spEMonth.setName("spEMonth");
-        this.kDLabel4.setName("kDLabel4");
         this.prmtTanancyBill.setName("prmtTanancyBill");
         this.prmtRoom.setName("prmtRoom");
         this.prmtCustomer.setName("prmtCustomer");
         this.prmtMoneyDefine.setName("prmtMoneyDefine");
-        this.spSYear.setName("spSYear");
-        this.spEYear.setName("spEYear");
+        this.spYear.setName("spYear");
         // CustomerQueryPanel
         // contTanancyBill		
         this.contTanancyBill.setBoundLabelText(resHelper.getString("contTanancyBill.boundLabelText"));		
@@ -158,18 +143,9 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.kDLabelContainer1.setBoundLabelUnderline(true);
         // kDLabel1		
         this.kDLabel1.setText(resHelper.getString("kDLabel1.text"));
-        // spSMonth
+        // spMonth
         // kDLabel2		
         this.kDLabel2.setText(resHelper.getString("kDLabel2.text"));
-        // kDLabelContainer2		
-        this.kDLabelContainer2.setBoundLabelText(resHelper.getString("kDLabelContainer2.boundLabelText"));		
-        this.kDLabelContainer2.setBoundLabelLength(100);		
-        this.kDLabelContainer2.setBoundLabelUnderline(true);
-        // kDLabel3		
-        this.kDLabel3.setText(resHelper.getString("kDLabel3.text"));
-        // spEMonth
-        // kDLabel4		
-        this.kDLabel4.setText(resHelper.getString("kDLabel4.text"));
         // prmtTanancyBill		
         this.prmtTanancyBill.setCommitFormat("$name$");		
         this.prmtTanancyBill.setEditFormat("$name$");		
@@ -183,8 +159,7 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.prmtRoom.setEnabledMultiSelection(true);
         // prmtCustomer
         // prmtMoneyDefine
-        // spSYear
-        // spEYear
+        // spYear
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -225,18 +200,10 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         this.add(kDLabelContainer1, null);
         kDLabel1.setBounds(new Rectangle(221, 101, 15, 19));
         this.add(kDLabel1, null);
-        spSMonth.setBounds(new Rectangle(241, 101, 40, 19));
-        this.add(spSMonth, null);
+        spMonth.setBounds(new Rectangle(241, 101, 40, 19));
+        this.add(spMonth, null);
         kDLabel2.setBounds(new Rectangle(285, 101, 15, 19));
         this.add(kDLabel2, null);
-        kDLabelContainer2.setBounds(new Rectangle(308, 101, 189, 19));
-        this.add(kDLabelContainer2, null);
-        kDLabel3.setBounds(new Rectangle(502, 101, 15, 19));
-        this.add(kDLabel3, null);
-        spEMonth.setBounds(new Rectangle(522, 101, 40, 19));
-        this.add(spEMonth, null);
-        kDLabel4.setBounds(new Rectangle(566, 101, 15, 19));
-        this.add(kDLabel4, null);
         //contTanancyBill
         contTanancyBill.setBoundEditor(prmtTanancyBill);
         //contRoom
@@ -246,9 +213,7 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
         //contMoneyDefine
         contMoneyDefine.setBoundEditor(prmtMoneyDefine);
         //kDLabelContainer1
-        kDLabelContainer1.setBoundEditor(spSYear);
-        //kDLabelContainer2
-        kDLabelContainer2.setBoundEditor(spEYear);
+        kDLabelContainer1.setBoundEditor(spYear);
 
     }
 
@@ -277,7 +242,7 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
 	private void registerUIState(){		
 	}
 	public String getUIHandlerClassName() {
-	    return "com.kingdee.eas.fdc.tenancy.app.RevDetailReportFilterUIHandler";
+	    return "com.kingdee.eas.fdc.tenancy.app.RevDetailVoucherReportFilterUIHandler";
 	}
 	public IUIActionPostman prepareInit() {
 		IUIActionPostman clientHanlder = super.prepareInit();
@@ -355,7 +320,7 @@ public abstract class AbstractRevDetailReportFilterUI extends com.kingdee.eas.fr
      */
     public IMetaDataPK getMetaDataPK()
     {
-        return new MetaDataPK("com.kingdee.eas.fdc.tenancy.client", "RevDetailReportFilterUI");
+        return new MetaDataPK("com.kingdee.eas.fdc.tenancy.client", "RevDetailVoucherReportFilterUI");
     }
 
 

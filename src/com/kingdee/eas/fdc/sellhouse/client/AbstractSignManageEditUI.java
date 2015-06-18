@@ -46,6 +46,8 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractSignManageEditUI extends com.kingdee.eas.fdc.sellhouse.client.BaseTransactionEditUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractSignManageEditUI.class);
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane2;
+    protected com.kingdee.bos.ctrl.swing.KDPanel kDPanel1;
     protected com.kingdee.bos.ctrl.swing.KDPanel panelAfterService;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblAfterService;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSellAmount;
@@ -126,6 +128,8 @@ public abstract class AbstractSignManageEditUI extends com.kingdee.eas.fdc.sellh
         this.actionRelatePrePurchase = new ActionRelatePrePurchase(this);
         getActionManager().registerAction("actionRelatePrePurchase", actionRelatePrePurchase);
          this.actionRelatePrePurchase.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        this.kDScrollPane2 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
+        this.kDPanel1 = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.panelAfterService = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.tblAfterService = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.contSellAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -158,6 +162,8 @@ public abstract class AbstractSignManageEditUI extends com.kingdee.eas.fdc.sellh
         this.prtLoanBank = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.btnRelatePrePurchase = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnRelatePurchase = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.kDScrollPane2.setName("kDScrollPane2");
+        this.kDPanel1.setName("kDPanel1");
         this.panelAfterService.setName("panelAfterService");
         this.tblAfterService.setName("tblAfterService");
         this.contSellAmount.setName("contSellAmount");
@@ -261,6 +267,9 @@ public abstract class AbstractSignManageEditUI extends com.kingdee.eas.fdc.sellh
         
 
         this.tblPayList.checkParsed();
+        // kDScrollPane2
+        // kDPanel1		
+        this.kDPanel1.setPreferredSize(new Dimension(1013,700));
         // panelAfterService
         // tblAfterService
 		String tblAfterServiceStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"serviceItem\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"appDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"finishDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"serviceState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{serviceItem}</t:Cell><t:Cell>$Resource{appDate}</t:Cell><t:Cell>$Resource{finishDate}</t:Cell><t:Cell>$Resource{serviceState}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
@@ -404,26 +413,30 @@ public abstract class AbstractSignManageEditUI extends com.kingdee.eas.fdc.sellh
     public void initUIContentLayout()
     {
         this.setBounds(new Rectangle(10, 10, 1013, 700));
-        this.setLayout(new KDLayout());
-        this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1013, 700));
-        contCreateTime.setBounds(new Rectangle(13, 676, 270, 19));
-        this.add(contCreateTime, new KDLayout.Constraints(13, 676, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contModifyDate.setBounds(new Rectangle(732, 676, 270, 19));
-        this.add(contModifyDate, new KDLayout.Constraints(732, 676, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contAuditor.setBounds(new Rectangle(372, 653, 270, 19));
-        this.add(contAuditor, new KDLayout.Constraints(372, 653, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAuditDate.setBounds(new Rectangle(372, 676, 270, 19));
-        this.add(contAuditDate, new KDLayout.Constraints(372, 676, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contModifier.setBounds(new Rectangle(732, 653, 270, 19));
-        this.add(contModifier, new KDLayout.Constraints(732, 653, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contCreator.setBounds(new Rectangle(13, 653, 270, 19));
-        this.add(contCreator, new KDLayout.Constraints(13, 653, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        tabInformation.setBounds(new Rectangle(13, 7, 989, 152));
-        this.add(tabInformation, new KDLayout.Constraints(13, 7, 989, 152, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        tabBiz.setBounds(new Rectangle(13, 163, 989, 262));
-        this.add(tabBiz, new KDLayout.Constraints(13, 163, 989, 262, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        conPayList.setBounds(new Rectangle(13, 426, 989, 222));
-        this.add(conPayList, new KDLayout.Constraints(13, 426, 989, 222, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+this.setLayout(new BorderLayout(0, 0));
+        this.add(kDScrollPane2, BorderLayout.CENTER);
+        //kDScrollPane2
+        kDScrollPane2.getViewport().add(kDPanel1, null);
+        //kDPanel1
+        kDPanel1.setLayout(new KDLayout());
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1013, 700));        contCreateTime.setBounds(new Rectangle(10, 677, 270, 19));
+        kDPanel1.add(contCreateTime, new KDLayout.Constraints(10, 677, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contModifyDate.setBounds(new Rectangle(729, 676, 270, 19));
+        kDPanel1.add(contModifyDate, new KDLayout.Constraints(729, 676, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contAuditor.setBounds(new Rectangle(374, 655, 270, 19));
+        kDPanel1.add(contAuditor, new KDLayout.Constraints(374, 655, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contAuditDate.setBounds(new Rectangle(374, 676, 270, 19));
+        kDPanel1.add(contAuditDate, new KDLayout.Constraints(374, 676, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contModifier.setBounds(new Rectangle(729, 655, 270, 19));
+        kDPanel1.add(contModifier, new KDLayout.Constraints(729, 655, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contCreator.setBounds(new Rectangle(10, 655, 270, 19));
+        kDPanel1.add(contCreator, new KDLayout.Constraints(10, 655, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        tabInformation.setBounds(new Rectangle(10, 7, 989, 152));
+        kDPanel1.add(tabInformation, new KDLayout.Constraints(10, 7, 989, 152, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        tabBiz.setBounds(new Rectangle(10, 166, 989, 262));
+        kDPanel1.add(tabBiz, new KDLayout.Constraints(10, 166, 989, 262, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        conPayList.setBounds(new Rectangle(10, 430, 989, 222));
+        kDPanel1.add(conPayList, new KDLayout.Constraints(10, 430, 989, 222, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //contCreateTime
         contCreateTime.setBoundEditor(pkCreateTime);
         //contModifyDate
@@ -680,7 +693,7 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         contOldSeller.setBoundEditor(f7OldSeller);
         //conPayList
         conPayList.getContentPane().setLayout(new KDLayout());
-        conPayList.getContentPane().putClientProperty("OriginalBounds", new Rectangle(13, 426, 989, 222));        contAFundAmount.setBounds(new Rectangle(366, 6, 170, 19));
+        conPayList.getContentPane().putClientProperty("OriginalBounds", new Rectangle(10, 430, 989, 222));        contAFundAmount.setBounds(new Rectangle(366, 6, 170, 19));
         conPayList.getContentPane().add(contAFundAmount, new KDLayout.Constraints(366, 6, 170, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLoanAmount.setBounds(new Rectangle(9, 6, 170, 19));
         conPayList.getContentPane().add(contLoanAmount, new KDLayout.Constraints(9, 6, 170, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
@@ -727,9 +740,13 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -792,6 +809,7 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -823,8 +841,11 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnSubmitAudit);
@@ -848,6 +869,7 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         this.toolBar.add(btnWorkFlowG);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnSignature);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(btnCreateFrom);
@@ -1048,7 +1070,7 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
     }
 		protected void setOrgF7(KDBizPromptBox f7,com.kingdee.eas.basedata.org.OrgType orgType) throws Exception
 		{
-			com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer oufip=(com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer)com.kingdee.bos.ctrl.extendcontrols.ext.FilterInfoProducerFactory.getOrgUnitFilterInfoProducer(orgType);
+			com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer oufip = new com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer(orgType);
 			oufip.getModel().setIsCUFilter(true);
 			f7.setFilterInfoProducer(oufip);
 		}
@@ -1150,14 +1172,50 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("createTime"));
         sic.add(new SelectorItemInfo("lastUpdateTime"));
-        sic.add(new SelectorItemInfo("auditor.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("auditor.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("auditor.id"));
+        	sic.add(new SelectorItemInfo("auditor.number"));
+        	sic.add(new SelectorItemInfo("auditor.name"));
+		}
         sic.add(new SelectorItemInfo("auditTime"));
-        sic.add(new SelectorItemInfo("lastUpdateUser.*"));
-        sic.add(new SelectorItemInfo("creator.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("lastUpdateUser.id"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.number"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("customerPhone"));
-        sic.add(new SelectorItemInfo("room.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("room.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("room.id"));
+        	sic.add(new SelectorItemInfo("room.number"));
+        	sic.add(new SelectorItemInfo("room.name"));
+		}
         sic.add(new SelectorItemInfo("sellType"));
         sic.add(new SelectorItemInfo("room.roomModel.name"));
         sic.add(new SelectorItemInfo("strdTotalAmount"));
@@ -1167,7 +1225,15 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         sic.add(new SelectorItemInfo("fitmentTotalAmount"));
         sic.add(new SelectorItemInfo("tackDesc"));
         sic.add(new SelectorItemInfo("isFitmentToContract"));
-        sic.add(new SelectorItemInfo("fitmentStandard.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("fitmentStandard.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("fitmentStandard.id"));
+        	sic.add(new SelectorItemInfo("fitmentStandard.number"));
+        	sic.add(new SelectorItemInfo("fitmentStandard.name"));
+		}
         sic.add(new SelectorItemInfo("fitmentPrice"));
         sic.add(new SelectorItemInfo("insider.insiderNumber"));
         sic.add(new SelectorItemInfo("busAdscriptionDate"));
@@ -1175,8 +1241,24 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         sic.add(new SelectorItemInfo("bizNumber"));
         sic.add(new SelectorItemInfo("valuationType"));
         sic.add(new SelectorItemInfo("bizDate"));
-        sic.add(new SelectorItemInfo("payType.*"));
-        sic.add(new SelectorItemInfo("agioScheme.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("payType.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("payType.id"));
+        	sic.add(new SelectorItemInfo("payType.number"));
+        	sic.add(new SelectorItemInfo("payType.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("agioScheme.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("agioScheme.id"));
+        	sic.add(new SelectorItemInfo("agioScheme.number"));
+        	sic.add(new SelectorItemInfo("agioScheme.name"));
+		}
         sic.add(new SelectorItemInfo("agioDesc"));
         sic.add(new SelectorItemInfo("dealTotalAmount"));
         sic.add(new SelectorItemInfo("dealBuildPrice"));
@@ -1185,7 +1267,15 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         sic.add(new SelectorItemInfo("contractBuildPrice"));
         sic.add(new SelectorItemInfo("contractRoomPrice"));
         sic.add(new SelectorItemInfo("lastAgio"));
-        sic.add(new SelectorItemInfo("insider.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("insider.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("insider.id"));
+        	sic.add(new SelectorItemInfo("insider.number"));
+        	sic.add(new SelectorItemInfo("insider.insiderName"));
+		}
         sic.add(new SelectorItemInfo("accFundAmount"));
         sic.add(new SelectorItemInfo("loanAmount"));
         sic.add(new SelectorItemInfo("isWorkRoom"));
@@ -1199,9 +1289,33 @@ panelAdditionInfo.setLayout(new BorderLayout(0, 0));        panelAdditionInfo.ad
         sic.add(new SelectorItemInfo("description"));
         sic.add(new SelectorItemInfo("joinInDate"));
         sic.add(new SelectorItemInfo("recommended"));
-        sic.add(new SelectorItemInfo("salesman.*"));
-        sic.add(new SelectorItemInfo("AcfBank.*"));
-        sic.add(new SelectorItemInfo("LoanBank.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("salesman.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("salesman.id"));
+        	sic.add(new SelectorItemInfo("salesman.number"));
+        	sic.add(new SelectorItemInfo("salesman.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("AcfBank.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("AcfBank.id"));
+        	sic.add(new SelectorItemInfo("AcfBank.number"));
+        	sic.add(new SelectorItemInfo("AcfBank.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("LoanBank.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("LoanBank.id"));
+        	sic.add(new SelectorItemInfo("LoanBank.number"));
+        	sic.add(new SelectorItemInfo("LoanBank.name"));
+		}
         return sic;
     }        
     	

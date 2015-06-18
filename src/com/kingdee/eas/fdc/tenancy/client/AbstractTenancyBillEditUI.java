@@ -186,6 +186,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAddPayList;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnInsert;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox chkIsFreeContract;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contMD;
+    protected com.kingdee.bos.ctrl.swing.KDComboBox cbMD;
     protected com.kingdee.bos.ctrl.swing.KDTabbedPane tabMiddle;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAgency;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAgencyContract;
@@ -507,6 +509,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.btnAddPayList = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnInsert = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.chkIsFreeContract = new com.kingdee.bos.ctrl.swing.KDCheckBox();
+        this.contMD = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.cbMD = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.tabMiddle = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.contAgency = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contAgencyContract = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -720,6 +724,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.btnAddPayList.setName("btnAddPayList");
         this.btnInsert.setName("btnInsert");
         this.chkIsFreeContract.setName("chkIsFreeContract");
+        this.contMD.setName("contMD");
+        this.cbMD.setName("cbMD");
         this.tabMiddle.setName("tabMiddle");
         this.contAgency.setName("contAgency");
         this.contAgencyContract.setName("contAgencyContract");
@@ -1815,6 +1821,21 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
                 }
             }
         });
+        // contMD		
+        this.contMD.setBoundLabelText(resHelper.getString("contMD.boundLabelText"));		
+        this.contMD.setBoundLabelLength(120);		
+        this.contMD.setBoundLabelUnderline(true);
+        // cbMD
+        this.cbMD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent e) {
+                try {
+                    cbMD_itemStateChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
         // tabMiddle
         // contAgency		
         this.contAgency.setBoundLabelText(resHelper.getString("contAgency.boundLabelText"));		
@@ -2608,6 +2629,10 @@ containerRentSet.getContentPane().setLayout(new BorderLayout(0, 0));        cont
         panelPayList.add(btnInsert, new KDLayout.Constraints(761, 11, 76, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         chkIsFreeContract.setBounds(new Rectangle(7, 11, 151, 19));
         panelPayList.add(chkIsFreeContract, new KDLayout.Constraints(7, 11, 151, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contMD.setBounds(new Rectangle(190, 11, 199, 19));
+        panelPayList.add(contMD, new KDLayout.Constraints(190, 11, 199, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        //contMD
+        contMD.setBoundEditor(cbMD);
         //panelProperty
 panelProperty.setLayout(new BorderLayout(0, 0));        panelProperty.add(tabMiddle, BorderLayout.CENTER);
         //panelAgency
@@ -3497,6 +3522,13 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     protected void chkIsFreeContract_actionPerformed(java.awt.event.ActionEvent e) throws Exception
     {
         //write your code here
+    }
+
+    /**
+     * output cbMD_itemStateChanged method
+     */
+    protected void cbMD_itemStateChanged(java.awt.event.ItemEvent e) throws Exception
+    {
     }
 
     /**

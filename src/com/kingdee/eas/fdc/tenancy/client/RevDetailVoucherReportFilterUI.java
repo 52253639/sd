@@ -17,16 +17,13 @@ import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
-import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
-import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
-import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.FDCRoomPromptDialog;
-import com.kingdee.eas.fdc.sellhouse.client.NewFDCRoomPromptDialog;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.report.util.RptParams;
@@ -34,10 +31,10 @@ import com.kingdee.eas.framework.report.util.RptParams;
 /**
  * output class name
  */
-public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
+public class RevDetailVoucherReportFilterUI extends AbstractRevDetailVoucherReportFilterUI
 {
-    private static final Logger logger = CoreUIObject.getLogger(RevDetailReportFilterUI.class);
-    public RevDetailReportFilterUI() throws Exception
+    private static final Logger logger = CoreUIObject.getLogger(RevDetailVoucherReportFilterUI.class);
+    public RevDetailVoucherReportFilterUI() throws Exception
     {
         super();
     }
@@ -47,7 +44,7 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		this.prmtTanancyBill.setValue(null);
 		this.prmtCustomer.setValue(null);
 		this.prmtMoneyDefine.setValue(null);
-
+		
 		Date now=new Date();
 		try {
 			now=FDCCommonServerHelper.getServerTimeStamp();
@@ -60,11 +57,8 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		int year=cal.get(Calendar.YEAR);
 		int month=cal.get(Calendar.MONTH)+1;
 		
-		this.spSYear.setModel(new SpinnerNumberModel(year,1,10000,1));
-		this.spSMonth.setModel(new SpinnerNumberModel(month,1,12,1));
-		
-		this.spEYear.setModel(new SpinnerNumberModel(year,1,10000,1));
-		this.spEMonth.setModel(new SpinnerNumberModel(month,1,12,1));
+		this.spYear.setModel(new SpinnerNumberModel(year,1,10000,1));
+		this.spMonth.setModel(new SpinnerNumberModel(month,1,12,1));
 		
 		FDCRoomPromptDialog dialog=new FDCRoomPromptDialog(Boolean.TRUE, null, null,
 				MoneySysTypeEnum.TenancySys, null,null);
@@ -97,6 +91,9 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		EntityViewInfo view = new EntityViewInfo();
 		filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("sysType", MoneySysTypeEnum.TENANCYSYS_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("moneyType", MoneyTypeEnum.RENTAMOUNT_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("moneyType", MoneyTypeEnum.PERIODICITYAMOUNT_VALUE));
+		filter.setMaskString("#0 and (#1 or #2)");
 		view.setFilter(filter);
 		this.prmtMoneyDefine.setEntityViewInfo(view);
 	
@@ -127,10 +124,8 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
          }else{
         	 pp.setObject("moneyDefine", null);
          }
-         pp.setObject("syear", this.spSYear.getIntegerVlaue());
-         pp.setObject("smonth", this.spSMonth.getIntegerVlaue());
-         pp.setObject("eyear", this.spEYear.getIntegerVlaue());
-         pp.setObject("emonth", this.spEMonth.getIntegerVlaue());
+         pp.setObject("year", this.spYear.getIntegerVlaue());
+         pp.setObject("month", this.spMonth.getIntegerVlaue());
 		 pp.setObject("isAll", this.cbIsAll.isSelected());
 		 return pp;
 	}
@@ -143,10 +138,8 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		this.cbIsAll.setSelected(params.getBoolean("isAll"));
 		this.prmtCustomer.setValue(params.getObject("customer"));
 		this.prmtMoneyDefine.setValue(params.getObject("moneyDefine"));
-		this.spSYear.setValue(params.getObject("syear"));
-		this.spSMonth.setValue(params.getObject("smonth"));
-		this.spEYear.setValue(params.getObject("eyear"));
-		this.spEMonth.setValue(params.getObject("emonth"));
+		this.spYear.setValue(params.getObject("year"));
+		this.spMonth.setValue(params.getObject("month"));
 	}
 	protected void cbIsAll_actionPerformed(ActionEvent e) throws Exception {
 		EntityViewInfo vi = new EntityViewInfo();
@@ -165,5 +158,4 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		vi.setFilter(filter);
 		this.prmtTanancyBill.setEntityViewInfo(vi);
 	}
-	
 }

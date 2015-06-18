@@ -1488,7 +1488,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			}
 //		}
 		row.getCell("indexName").setValue(info.getConfig());
-		if(info.getConfig().isIsEntityIndex()&&isEdit){
+		if(info.getConfig()!=null&&info.getConfig().isIsEntityIndex()&&isEdit){
 			row.getCell("index").getStyleAttributes().setLocked(false);
 			row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
 		}

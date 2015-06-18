@@ -61,6 +61,7 @@ import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
 import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.ctrl.swing.KDComboBox;
+import com.kingdee.bos.ctrl.swing.KDComboBoxMultiColumnItem;
 import com.kingdee.bos.ctrl.swing.KDContainer;
 import com.kingdee.bos.ctrl.swing.KDDatePicker;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
@@ -2931,7 +2932,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				});
 			}						
 		}
-
+		cbMD.removeAllItems();
+		cbMD.addItem(new KDComboBoxMultiColumnItem(new String[] { "" }));
+		Set md=new HashSet();
 		this.getUIContext().put("tmpMap", tmpMap);
 		for(Iterator itor = tmpMap.keySet().iterator(); itor.hasNext(); ){
 			Integer key = (Integer)itor.next();
@@ -2948,6 +2951,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				row.getCell(C_PAYS_START_DATE).setValue(tPay.getStartDate());
 				row.getCell(C_PAYS_END_DATE).setValue(tPay.getEndDate());
 				row.getCell(C_PAYS_APP_PAY_DATE).setValue(tPay.getAppPayDate());
+				if(!md.contains(tPay.getMoneyDefine().getName())){
+					cbMD.addItem(new KDComboBoxMultiColumnItem(new String[] { tPay.getMoneyDefine().getName() }));
+					md.add(tPay.getMoneyDefine().getName());
+				}
 			}else{
 				IRow unionRow = this.tblPayList.addRow();
 				unionRow.setTreeLevel(0);
@@ -2975,6 +2982,10 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 						unionRow.getCell(C_PAYS_START_DATE).setValue(tPay.getStartDate());
 						unionRow.getCell(C_PAYS_END_DATE).setValue(tPay.getEndDate());
 						unionRow.getCell(C_PAYS_APP_PAY_DATE).setValue(tPay.getAppPayDate());
+					}
+					if(!md.contains(tPay.getMoneyDefine().getName())){
+						cbMD.addItem(new KDComboBoxMultiColumnItem(new String[] { tPay.getMoneyDefine().getName() }));
+						md.add(tPay.getMoneyDefine().getName());
 					}
 				}
 
@@ -7456,6 +7467,21 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
         }
         this.loadFreeRents(this.editData.getRentFrees());
 		updatePayListInfo();
+	}
+	protected void cbMD_itemStateChanged(ItemEvent arg0) throws Exception {
+		for(int i=0;i<this.tblPayList.getRowCount();i++){
+			IRow row = this.tblPayList.getRow(i);
+			ITenancyPayListInfo tPay = (ITenancyPayListInfo) row.getUserObject();
+			if(this.cbMD.getSelectedItem().toString().equals("")){
+				row.getStyleAttributes().setHided(false);
+			}else{
+				if(tPay!=null&&tPay.getMoneyDefine().getName().equals(this.cbMD.getSelectedItem().toString())){
+					row.getStyleAttributes().setHided(false);
+				}else{
+					row.getStyleAttributes().setHided(true);
+				}
+			}
+		}
 	}
 	
 	

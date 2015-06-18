@@ -60,9 +60,9 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
     protected com.kingdee.bos.ctrl.swing.KDWorkButton kDWorkButton1;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer1;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
-    protected com.kingdee.bos.ctrl.swing.KDTimePicker pkCreateTime;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtLastUpdateUser;
-    protected com.kingdee.bos.ctrl.swing.KDTimePicker pkLastUpdateTime;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkLastUpdateTime;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtDescription;
@@ -120,9 +120,9 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         this.kDWorkButton1 = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.kDLabelContainer1 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDTimePicker();
+        this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.prmtLastUpdateUser = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.pkLastUpdateTime = new com.kingdee.bos.ctrl.swing.KDTimePicker();
+        this.pkLastUpdateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -156,7 +156,9 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         this.sellProject.setName("sellProject");
         this.kDWorkButton2.setName("kDWorkButton2");
         this.kDWorkButton3.setName("kDWorkButton3");
-        // CoreUI
+        // CoreUI		
+        this.menuItemCopyFrom.setVisible(false);		
+        this.menuTable1.setVisible(false);
         // contCreator		
         this.contCreator.setBoundLabelText(resHelper.getString("contCreator.boundLabelText"));		
         this.contCreator.setBoundLabelLength(100);		
@@ -176,15 +178,18 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         // contNumber		
         this.contNumber.setBoundLabelText(resHelper.getString("contNumber.boundLabelText"));		
         this.contNumber.setBoundLabelLength(100);		
-        this.contNumber.setBoundLabelUnderline(true);
+        this.contNumber.setBoundLabelUnderline(true);		
+        this.contNumber.setVisible(false);
         // contBizDate		
         this.contBizDate.setBoundLabelText(resHelper.getString("contBizDate.boundLabelText"));		
         this.contBizDate.setBoundLabelLength(100);		
-        this.contBizDate.setBoundLabelUnderline(true);
+        this.contBizDate.setBoundLabelUnderline(true);		
+        this.contBizDate.setVisible(false);
         // contDescription		
         this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
         this.contDescription.setBoundLabelLength(100);		
-        this.contDescription.setBoundLabelUnderline(true);
+        this.contDescription.setBoundLabelUnderline(true);		
+        this.contDescription.setVisible(false);
         // contState		
         this.contState.setBoundLabelText(resHelper.getString("contState.boundLabelText"));		
         this.contState.setBoundLabelLength(100);		
@@ -194,7 +199,7 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         this.contName.setBoundLabelLength(100);		
         this.contName.setBoundLabelUnderline(true);
         // kdtFeesWarrantEntry
-		String kdtFeesWarrantEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"tenancyBill\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" /><t:Column t:key=\"tenancyName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"room\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"customername\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"startDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"endDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"appDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"actRevDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"account\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"oppSubject\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{tenancyBill}</t:Cell><t:Cell>$Resource{tenancyName}</t:Cell><t:Cell>$Resource{room}</t:Cell><t:Cell>$Resource{customername}</t:Cell><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{appDate}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell><t:Cell>$Resource{actRevDate}</t:Cell><t:Cell>$Resource{account}</t:Cell><t:Cell>$Resource{oppSubject}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String kdtFeesWarrantEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol9\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol10\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"tenancyBill\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" /><t:Column t:key=\"tenancyName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"room\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"customername\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"startDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"endDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"appDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" t:styleID=\"sCol9\" /><t:Column t:key=\"actRevDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" t:styleID=\"sCol10\" /><t:Column t:key=\"account\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"11\" /><t:Column t:key=\"oppSubject\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"12\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{tenancyBill}</t:Cell><t:Cell>$Resource{tenancyName}</t:Cell><t:Cell>$Resource{room}</t:Cell><t:Cell>$Resource{customername}</t:Cell><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{appDate}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell><t:Cell>$Resource{actRevDate}</t:Cell><t:Cell>$Resource{account}</t:Cell><t:Cell>$Resource{oppSubject}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.kdtFeesWarrantEntry.setFormatXml(resHelper.translateString("kdtFeesWarrantEntry",kdtFeesWarrantEntryStrXML));
 
@@ -204,27 +209,31 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         this.chkFiVouchered.setText(resHelper.getString("chkFiVouchered.text"));
         // kDWorkButton1
         this.kDWorkButton1.setAction((IItemAction)ActionProxyFactory.getProxy(actionAddEntry, new Class[] { IItemAction.class }, getServiceContext()));		
-        this.kDWorkButton1.setText(resHelper.getString("kDWorkButton1.text"));
+        this.kDWorkButton1.setText(resHelper.getString("kDWorkButton1.text"));		
+        this.kDWorkButton1.setVisible(false);
         // kDLabelContainer1		
         this.kDLabelContainer1.setBoundLabelText(resHelper.getString("kDLabelContainer1.boundLabelText"));		
         this.kDLabelContainer1.setBoundLabelLength(100);		
         this.kDLabelContainer1.setBoundLabelUnderline(true);
-        // prmtCreator
-        // pkCreateTime
-        // prmtLastUpdateUser
-        // pkLastUpdateTime
-        // txtNumber
+        // prmtCreator		
+        this.prmtCreator.setEnabled(false);		
+        this.prmtCreator.setDisplayFormat("$name$");
+        // pkCreateTime		
+        this.pkCreateTime.setEnabled(false);
+        // prmtLastUpdateUser		
+        this.prmtLastUpdateUser.setEnabled(false);		
+        this.prmtLastUpdateUser.setDisplayFormat("$name$");
+        // pkLastUpdateTime		
+        this.pkLastUpdateTime.setEnabled(false);
+        // txtNumber		
+        this.txtNumber.setEnabled(false);
         // pkBizDate
         // txtDescription
         // comboState		
         this.comboState.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.basedata.FDCBillStateEnum").toArray());
-        // txtName
-        // sellProject		
-        this.sellProject.setDisplayFormat("$name$");		
-        this.sellProject.setEditFormat("$number$");		
-        this.sellProject.setCommitFormat("$number$");		
-        this.sellProject.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.MoneyDefineQuery");		
-        this.sellProject.setEnabled(false);
+        // txtName		
+        this.txtName.setEnabled(false);
+        // sellProject
         // kDWorkButton2
         this.kDWorkButton2.setAction((IItemAction)ActionProxyFactory.getProxy(actionSetAccount, new Class[] { IItemAction.class }, getServiceContext()));		
         this.kDWorkButton2.setText(resHelper.getString("kDWorkButton2.text"));
@@ -256,33 +265,34 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
     public void initUIContentLayout()
     {
         this.setBounds(new Rectangle(10, 10, 1013, 629));
-        this.setLayout(null);
-        contCreator.setBounds(new Rectangle(20, 539, 270, 19));
-        this.add(contCreator, null);
-        contCreateTime.setBounds(new Rectangle(310, 539, 270, 19));
-        this.add(contCreateTime, null);
-        contLastUpdateUser.setBounds(new Rectangle(20, 569, 270, 19));
-        this.add(contLastUpdateUser, null);
-        contLastUpdateTime.setBounds(new Rectangle(310, 569, 270, 19));
-        this.add(contLastUpdateTime, null);
-        contNumber.setBounds(new Rectangle(20, 32, 270, 19));
-        this.add(contNumber, null);
-        contBizDate.setBounds(new Rectangle(320, 32, 270, 19));
-        this.add(contBizDate, null);
-        contDescription.setBounds(new Rectangle(618, 542, 270, 19));
-        this.add(contDescription, null);
-        contState.setBounds(new Rectangle(320, 65, 267, 19));
-        this.add(contState, null);
-        contName.setBounds(new Rectangle(18, 65, 270, 19));
-        this.add(contName, null);
-        kdtFeesWarrantEntry.setBounds(new Rectangle(10, 103, 959, 397));
-        this.add(kdtFeesWarrantEntry, null);
-        chkFiVouchered.setBounds(new Rectangle(612, 65, 140, 19));
-        this.add(chkFiVouchered, null);
-        kDWorkButton1.setBounds(new Rectangle(784, 73, 173, 19));
-        this.add(kDWorkButton1, null);
-        kDLabelContainer1.setBounds(new Rectangle(619, 32, 270, 19));
-        this.add(kDLabelContainer1, null);
+        this.setLayout(new KDLayout());
+        this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1013, 629));
+        contCreator.setBounds(new Rectangle(34, 579, 270, 19));
+        this.add(contCreator, new KDLayout.Constraints(34, 579, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contCreateTime.setBounds(new Rectangle(368, 579, 270, 19));
+        this.add(contCreateTime, new KDLayout.Constraints(368, 579, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contLastUpdateUser.setBounds(new Rectangle(34, 601, 270, 19));
+        this.add(contLastUpdateUser, new KDLayout.Constraints(34, 601, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contLastUpdateTime.setBounds(new Rectangle(368, 601, 270, 19));
+        this.add(contLastUpdateTime, new KDLayout.Constraints(368, 601, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNumber.setBounds(new Rectangle(769, 83, 270, 19));
+        this.add(contNumber, new KDLayout.Constraints(769, 83, 270, 19, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contBizDate.setBounds(new Rectangle(727, 50, 270, 19));
+        this.add(contBizDate, new KDLayout.Constraints(727, 50, 270, 19, 0));
+        contDescription.setBounds(new Rectangle(34, 513, 877, 51));
+        this.add(contDescription, new KDLayout.Constraints(34, 513, 877, 51, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contState.setBounds(new Rectangle(641, 67, 267, 19));
+        this.add(contState, new KDLayout.Constraints(641, 67, 267, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contName.setBounds(new Rectangle(24, 16, 270, 19));
+        this.add(contName, new KDLayout.Constraints(24, 16, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kdtFeesWarrantEntry.setBounds(new Rectangle(24, 51, 959, 515));
+        this.add(kdtFeesWarrantEntry, new KDLayout.Constraints(24, 51, 959, 515, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        chkFiVouchered.setBounds(new Rectangle(713, 16, 270, 18));
+        this.add(chkFiVouchered, new KDLayout.Constraints(713, 16, 270, 18, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDWorkButton1.setBounds(new Rectangle(835, 29, 157, 19));
+        this.add(kDWorkButton1, new KDLayout.Constraints(835, 29, 157, 19, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabelContainer1.setBounds(new Rectangle(368, 16, 270, 19));
+        this.add(kDLabelContainer1, new KDLayout.Constraints(368, 16, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contCreator
         contCreator.setBoundEditor(prmtCreator);
         //contCreateTime
@@ -324,9 +334,13 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -385,6 +399,7 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -416,8 +431,11 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -441,6 +459,7 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnCreateFrom);
         this.toolBar.add(btnCopyFrom);
@@ -478,7 +497,7 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
 		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
 		dataBinder.registerBinding("state", com.kingdee.eas.fdc.basedata.FDCBillStateEnum.class, this.comboState, "selectedItem");
 		dataBinder.registerBinding("name", String.class, this.txtName, "text");
-		dataBinder.registerBinding("sellProject", com.kingdee.eas.fdc.sellhouse.SellProjectInfo.class, this.sellProject, "data");		
+		dataBinder.registerBinding("sellProject", com.kingdee.eas.fdc.crm.basedata.SellProjectInfo.class, this.sellProject, "data");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -572,17 +591,43 @@ public abstract class AbstractFeesWarrantEditUI extends com.kingdee.eas.framewor
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("fiVouchered"));
-        sic.add(new SelectorItemInfo("creator.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("createTime"));
-        sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("lastUpdateUser.id"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.number"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.name"));
+		}
         sic.add(new SelectorItemInfo("lastUpdateTime"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("bizDate"));
         sic.add(new SelectorItemInfo("description"));
         sic.add(new SelectorItemInfo("state"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("sellProject.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("sellProject.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("sellProject.id"));
+		}
         return sic;
     }        
     	

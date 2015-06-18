@@ -32,6 +32,8 @@ import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.eas.framework.CoreBillBaseCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillCollection;
+import com.kingdee.eas.fdc.basedata.FDCBillInfo;
+import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.framework.ObjectBaseCollection;
 
 public class FeesWarrantControllerBean extends AbstractFeesWarrantControllerBean
@@ -41,6 +43,9 @@ public class FeesWarrantControllerBean extends AbstractFeesWarrantControllerBean
 	protected boolean _account(Context ctx, BOSUuid tenBillOtherPayID)
 			throws BOSException {
 		// TODO Auto-generated method stub
+		return false;
+	}
+	protected boolean isUseNumber() {
 		return false;
 	}
 }

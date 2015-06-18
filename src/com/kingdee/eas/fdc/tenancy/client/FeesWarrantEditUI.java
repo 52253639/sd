@@ -149,6 +149,7 @@ public class FeesWarrantEditUI extends AbstractFeesWarrantEditUI
 		contLastUpdateTime.setEnabled(false);
 		pkBizDate.setValue(new Date());
 		contState.setVisible(false);
+		
 		if (saleOrg.isIsBizUnit()) 
 		{
 			this.actionEdit.setEnabled(true);
@@ -156,15 +157,14 @@ public class FeesWarrantEditUI extends AbstractFeesWarrantEditUI
 			this.actionRemove.setEnabled(true);
 			
 			
-//			if(com.kingdee.eas.fdc.basedata.FDCBillStateEnum.SAVED.equals(comboState.getSelectedItem())||com.kingdee.eas.fdc.basedata.FDCBillStateEnum..AUDITTING.equals(comboState.getSelectedItem())){
-				kDWorkButton1.setEnabled(true);
-//			}
+			kDWorkButton1.setEnabled(true);
 		}else{
 			this.actionAddNew.setEnabled(false);
 			this.actionEdit.setEnabled(false);
 			this.actionRemove.setEnabled(false);
 			kDWorkButton1.setEnabled(false);
 		}
+		
 		this.txtNumber.setRequired(true);
 		this.txtName.setRequired(true);
 		this.prmtCreator.setEnabled(false);
@@ -173,18 +173,6 @@ public class FeesWarrantEditUI extends AbstractFeesWarrantEditUI
 		
 		FDCClientHelper.addSqlMenu(this, this.menuEdit);
 		hideButton();
-		if(this.getOprtState().equalsIgnoreCase(OprtState.ADDNEW)){
-			addNews();
-			this.actionSetAccount.setEnabled(true);
-			this.actionSetunAccount.setEnabled(true);
-		}else if(this.getOprtState().equalsIgnoreCase(OprtState.EDIT)){
-			loadFields();
-			this.actionSetAccount.setEnabled(true);
-			this.actionSetunAccount.setEnabled(true);
-		}else if(this.getOprtState().equalsIgnoreCase(OprtState.VIEW)){
-			this.actionSetAccount.setEnabled(false);
-			this.actionSetunAccount.setEnabled(false);
-		}
 		//锁定：
 		setColumnLocked(COL_TENANCY);//合同
 		setColumnLocked(COL_TENANCYNAME);//合同名称
@@ -198,9 +186,42 @@ public class FeesWarrantEditUI extends AbstractFeesWarrantEditUI
 		setColumnLocked(COL_APPAMOUNT);//应收金额
 		setColumnLocked(COL_ACTREVAMOUNT);///实收金额
 		
+		this.btnFirst.setVisible(false);
+		this.btnLast.setVisible(false);
+		this.btnNext.setVisible(false);
+		this.btnPre.setVisible(false);
+		this.menuView.setVisible(false);
+		this.menuWorkflow.setVisible(false);
 		
+		
+		
+		this.actionEdit.setVisible(false);
+		this.actionSubmit.setVisible(false);
+		this.actionSetAccount.setVisible(false);
+		this.actionSetunAccount.setVisible(false);
+		this.kdtFeesWarrantEntry.getColumn("account").getStyleAttributes().setHided(true);
+		this.kdtFeesWarrantEntry.getColumn("oppSubject").getStyleAttributes().setHided(true);
+		this.kdtFeesWarrantEntry.getColumn("startDate").getStyleAttributes().setHided(true);
+		this.kdtFeesWarrantEntry.getColumn("endDate").getStyleAttributes().setHided(true);
+		this.kdtFeesWarrantEntry.getColumn("appDate").getStyleAttributes().setHided(true);
+		this.menuFile.setVisible(false);
+		this.menuEdit.setVisible(false);
     }
 	
+	public void setOprtState(String oprtType) {
+		if(oprtType.equalsIgnoreCase(OprtState.ADDNEW)){
+			this.actionSetAccount.setEnabled(true);
+			this.actionSetunAccount.setEnabled(true);
+		}else if(oprtType.equalsIgnoreCase(OprtState.EDIT)){
+//			loadFields();
+			this.actionSetAccount.setEnabled(true);
+			this.actionSetunAccount.setEnabled(true);
+		}else if(oprtType.equalsIgnoreCase(OprtState.VIEW)){
+			this.actionSetAccount.setEnabled(false);
+			this.actionSetunAccount.setEnabled(false);
+		}
+	}
+
 	private void loadEntry(FeesWarrantInfo info) {
 		this.kdtFeesWarrantEntry.removeRows();
 		FeesWarrantEntrysCollection ew = info.getFeesWarrantEntry();

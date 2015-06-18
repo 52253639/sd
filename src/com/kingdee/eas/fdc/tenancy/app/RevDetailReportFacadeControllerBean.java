@@ -1,6 +1,8 @@
 package com.kingdee.eas.fdc.tenancy.app;
 
 import org.apache.log4j.Logger;
+
+import java.util.Calendar;
 import java.util.Date;
 
 import com.kingdee.bos.*;
@@ -40,24 +42,24 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
 	    initColoum(header,col,"mdNumber",100,true);
 	    initColoum(header,col,"mdId",100,true);
 	    initColoum(header,col,"conId",100,true);
-	    initColoum(header,col,"sellProject",200,false);
+	    initColoum(header,col,"sellProject",100,false);
 	    initColoum(header,col,"build",50,false);
 	    initColoum(header,col,"room",270,false);
-	    initColoum(header,col,"buildArea",100,false);
-	    initColoum(header,col,"tenancyArea",100,false);
-	    initColoum(header,col,"conNumber",150,false);
+	    initColoum(header,col,"buildArea",75,false);
+	    initColoum(header,col,"tenancyArea",75,false);
+	    initColoum(header,col,"conNumber",100,false);
 	    initColoum(header,col,"conName",200,false);
 	    initColoum(header,col,"customer",200,false);
-	    initColoum(header,col,"startDate",100,false);
-	    initColoum(header,col,"endDate",100,false);
-	    initColoum(header,col,"freeDays",100,false);
-	    initColoum(header,col,"dealTotal",100,false);
-	    initColoum(header,col,"dealPrice",100,false);
-	    initColoum(header,col,"roomPrice",150,false);
+	    initColoum(header,col,"startDate",75,false);
+	    initColoum(header,col,"endDate",75,false);
+	    initColoum(header,col,"freeDays",80,false);
+	    initColoum(header,col,"dealTotal",80,false);
+	    initColoum(header,col,"dealPrice",80,false);
+	    initColoum(header,col,"roomPrice",80,false);
 	    initColoum(header,col,"moneyDefine",100,false);
-	    initColoum(header,col,"appAmount",100,false);
-	    initColoum(header,col,"invoiceAmount",100,false);
-	    initColoum(header,col,"actRevAmount",100,false);
+	    initColoum(header,col,"appAmount",80,false);
+	    initColoum(header,col,"invoiceAmount",80,false);
+	    initColoum(header,col,"actRevAmount",80,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
 	    			"mdNumber","mdId","conId","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","租金信息","租金信息","租金信息","款项类别","累计金额","累计金额","累计金额"
@@ -124,8 +126,25 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
             	}
             }
 	    }
-	    Date fromDate = (Date)params.getObject("fromDate");
-    	Date toDate =   (Date)params.getObject("toDate");
+	    Integer syear = (Integer)params.getObject("syear");
+	    Integer smonth =   (Integer)params.getObject("smonth");
+	    
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, syear);
+		cal.set(Calendar.MONTH, smonth-1);
+
+		Date fromDate=FDCDateHelper.getFirstDayOfMonth(cal.getTime());
+		
+		
+		Integer eyear = (Integer)params.getObject("eyear");
+	    Integer emonth =   (Integer)params.getObject("emonth");
+	    
+		cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, eyear);
+		cal.set(Calendar.MONTH, emonth-1);
+
+		Date toDate=FDCDateHelper.getLastDayOfMonth(cal.getTime());
+		
 	    Boolean isAll=params.getBoolean("isAll");
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select * from (select distinct t.mdNumber,t.mdId,t.conId,t.sellProject,t.build,t.room,t.buildArea,t.tenancyArea,");
@@ -159,6 +178,12 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	if(moneyDefine!=null&&!"".equals(moneyDefine.toString())){
     		sb.append(" and md.fid in("+moneyDefine+")");
     	}
+    	if(fromDate!=null){
+    		sb.append(" and pay.fappDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+		}
+		if(toDate!=null){
+			sb.append(" and pay.fappDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
+		}
     	sb.append(" union all select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
     	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
@@ -187,6 +212,12 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
     	if(moneyDefine!=null&&!"".equals(moneyDefine.toString())){
     		sb.append(" and md.fid in("+moneyDefine+")");
     	}
+    	if(fromDate!=null){
+    		sb.append(" and pay.fappDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+		}
+		if(toDate!=null){
+			sb.append(" and pay.fappDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
+		}
     	sb.append(" )t )t order by t.conNumber,t.mdNumber");
     	
     	RptRowSet rs = executeQuery(sb.toString(), null, ctx);
