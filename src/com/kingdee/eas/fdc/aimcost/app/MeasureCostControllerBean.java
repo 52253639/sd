@@ -564,16 +564,18 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 		for (int i = 0; i < templateMeasure.getNewPlanIndexEntry().size(); i++) {
 			if(config.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
 				NewPlanIndexInfo entry = new NewPlanIndexInfo();
+				
+				PlanIndexConfigInfo configInfo=(PlanIndexConfigInfo) config.get(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
 				entry.setId(BOSUuid.create(entry.getBOSType()));
-				entry.setConfig(col.get(i));
-				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
-				entry.setName(col.get(i).getName());
-				entry.setRemark(col.get(i).getDescription());
-				entry.setFormula(col.get(i).getFormula());
-				entry.setFormulaType(col.get(i).getFormulaType());
-				entry.setProp(col.get(i).getProp());
-				if(templateMeasure.getNewPlanIndexEntry().get(i).getFieldType().equals(col.get(i).getFieldType())){
+				entry.setConfig(configInfo);
+				entry.setFieldType(configInfo.getFieldType());
+				entry.setNumber(configInfo.getLongNumber().replaceAll("!", "."));
+				entry.setName(configInfo.getName());
+				entry.setRemark(configInfo.getDescription());
+				entry.setFormula(configInfo.getFormula());
+				entry.setFormulaType(configInfo.getFormulaType());
+				entry.setProp(configInfo.getProp());
+				if(templateMeasure.getNewPlanIndexEntry().get(i).getFieldType().equals(configInfo.getFieldType())){
 					entry.setValue(templateMeasure.getNewPlanIndexEntry().get(i).getValue());
 				}
 				entry.setDes(templateMeasure.getNewPlanIndexEntry().get(i).getDes());
@@ -608,20 +610,22 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 		}
 		measureInfo.put("newPlanIndexEntryPT", new NewPlanIndexPTCollection());
 		for (int i = 0; i < templateMeasure.getNewPlanIndexEntryPT().size(); i++) {
-			if(configPT.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
+			if(configPT.containsKey(templateMeasure.getNewPlanIndexEntryPT().get(i).getConfig().getId().toString())){
 				NewPlanIndexPTInfo entry = new NewPlanIndexPTInfo();
+				
+				PlanIndexConfigInfo configInfo=(PlanIndexConfigInfo) configPT.get(templateMeasure.getNewPlanIndexEntryPT().get(i).getConfig().getId().toString());
 				entry.setId(BOSUuid.create(entry.getBOSType()));
-				entry.setConfig(col.get(i));
-				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
-				entry.setName(col.get(i).getName());
-				entry.setRemark(col.get(i).getDescription());
-				entry.setFormula(col.get(i).getFormula());
-				entry.setFormulaType(col.get(i).getFormulaType());
-				entry.setProp(col.get(i).getProp());
+				entry.setConfig(configInfo);
+				entry.setFieldType(configInfo.getFieldType());
+				entry.setNumber(configInfo.getLongNumber().replaceAll("!", "."));
+				entry.setName(configInfo.getName());
+				entry.setRemark(configInfo.getDescription());
+				entry.setFormula(configInfo.getFormula());
+				entry.setFormulaType(configInfo.getFormulaType());
+				entry.setProp(configInfo.getProp());
 				measureInfo.getNewPlanIndexEntryPT().add(entry);
 				
-				configPT.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
+				configPT.remove(templateMeasure.getNewPlanIndexEntryPT().get(i).getConfig().getId().toString());
 			}
 		}
 		measureInfo.put("compareEntry", new MeasureCostCompareCollection());
