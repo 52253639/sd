@@ -24,6 +24,7 @@ import javax.swing.tree.TreeNode;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
@@ -62,6 +63,8 @@ import com.kingdee.eas.fdc.sellhouse.client.PrePurchaseManageListUI;
 import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageListUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SignManageListUI;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysCollection;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysFactory;
 import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysInfo;
 import com.kingdee.eas.fdc.tenancy.FeesWarrantFactory;
 import com.kingdee.eas.fdc.tenancy.FeesWarrantInfo;
@@ -175,21 +178,27 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
          	         int year=params.getInt("year");
          	         int month=params.getInt("month");
          	         IColumn column=tblMain.addColumn();
-         	         column.setKey(year+"Y"+month+"M"+"appAmount");
-         	         column.setWidth(70);
-         	         int merge=tblMain.getHeadRow(0).getCell(column.getKey()).getColumnIndex();
-   	        	 
-         	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
-         	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("应收金额");
-         	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
-   	        	 
-	   	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge);
+      	        	 column.setKey(year+"Y"+month+"M"+"isGen");
+      	        	 column.setWidth(130);
+      	        	 int merge=tblMain.getHeadRow(0).getCell(column.getKey()).getColumnIndex();
+      	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+      	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("是否生成应收费用汇总");
+      	        	 
+      	        	 column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"appAmount");
+        	         column.setWidth(70);
+        	         
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("应收金额");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+	   	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+1);
          	         
 	   	        	 Calendar cal = Calendar.getInstance();
 	        		 cal.set(Calendar.YEAR, year);
 	        		 cal.set(Calendar.MONTH, month-1);
 
-	        		 Date curEndDate=FDCDateHelper.getLastDayOfMonth(cal.getTime());
+	        		 Date curEndDate=FDCDateHelper.getSQLBegin(FDCDateHelper.getLastDayOfMonth(cal.getTime()));
 	        		
          	         RptRowSet detailrs = (RptRowSet)((RptParams)result).getObject("detailrs");
         	         while(detailrs.next()){
@@ -199,6 +208,16 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
         	        		IRow row=(IRow) rowMap.get(key);
         	        		if(row.getCell(year+"Y"+month+"M"+"appAmount")==null){
         	        			continue;
+        	        		}
+        	        		FilterInfo filter=new FilterInfo();
+        	        		filter.getFilterItems().add(new FilterItemInfo("tenancyBill.id",detailrs.getString("conId")));
+        	        		filter.getFilterItems().add(new FilterItemInfo("moneyDefine.id",detailrs.getString("mdId")));
+        	        		filter.getFilterItems().add(new FilterItemInfo("appDate",curEndDate));
+        	        		
+        	        		if(FeesWarrantEntrysFactory.getRemoteInstance().exists(filter)){
+        	        			row.getCell(year+"Y"+month+"M"+"isGen").setValue(Boolean.TRUE);
+        	        		}else{
+        	        			row.getCell(year+"Y"+month+"M"+"isGen").setValue(Boolean.FALSE);
         	        		}
         	        		Date startDate=(Date) row.getCell("startDate").getValue();
            	        	    Date endDate=(Date) row.getCell("endDate").getValue();
@@ -373,13 +392,26 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 		}
 		FeesWarrantInfo info=new FeesWarrantInfo();
 		info.setId(BOSUuid.create(info.getBOSType()));
-		int year=params.getInt("year");
-        int month=params.getInt("month");
          
         String mdName="";
         Set conIdSet=new HashSet();
+        
+        int year=params.getInt("year");
+        int month=params.getInt("month");
+        
+        Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month-1);
+
+		Date curEndDate=FDCDateHelper.getSQLBegin(FDCDateHelper.getLastDayOfMonth(cal.getTime()));
 		for (int i = 0; i < selectRows.length; i++) {
 			IRow row = this.tblMain.getRow(selectRows[i]);
+			
+			BigDecimal amount=(BigDecimal) row.getCell(year+"Y"+month+"M"+"appAmount").getValue();
+			if(amount==null||amount.compareTo(FDCHelper.ZERO)==0||row.getStyleAttributes().getBackground().equals(FDCHelper.KDTABLE_TOTAL_BG_COLOR)){
+				continue;
+			}
+			
 			SellProjectInfo sp=new SellProjectInfo();
 			sp.setId(BOSUuid.read(row.getCell("spId").getValue().toString()));
 			info.setSellProject(sp);
@@ -389,8 +421,6 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			FeesWarrantEntrysInfo entry=new FeesWarrantEntrysInfo();
 			
 			String conId=row.getCell("conId").getValue().toString();
-			info.setSourceBillId(conId);
-			
 			conIdSet.add(conId);
 			if(conIdSet.size()>1){
 				FDCMsgBox.showWarning(this,"请选择同一租赁合同！");
@@ -415,11 +445,9 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			
 			mdName=mdName+row.getCell("moneyDefine").getValue().toString()+";";
 			
-			BigDecimal amount=(BigDecimal) row.getCell(year+"Y"+month+"M"+"appAmount").getValue();
-			if(amount==null||amount.compareTo(FDCHelper.ZERO)==0||row.getStyleAttributes().getBackground().equals(FDCHelper.KDTABLE_TOTAL_BG_COLOR)){
-				continue;
-			}
 			entry.setAppAmount((BigDecimal) row.getCell(year+"Y"+month+"M"+"appAmount").getValue());
+			
+			entry.setAppDate(curEndDate);
 			
 			info.getFeesWarrantEntry().add(entry);
 		}
@@ -429,6 +457,7 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 	        
 			FeesWarrantFactory.getRemoteInstance().submit(info);
 			FDCClientUtils.showOprtOK(this);
+			this.query();
 		}else{
 			FDCMsgBox.showWarning(this,"无应收记录！");
 		}
@@ -440,14 +469,35 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			FDCMsgBox.showWarning(this, EASResource.getString(FrameWorkClientUtils.strResource + "Msg_MustSelected"));
 			return;
 		}
-        Set conId=new HashSet();
-		for (int i = 0; i < selectRows.length; i++) {
+        Set conIdSet=new HashSet();
+        for (int i = 0; i < selectRows.length; i++) {
 			IRow row = this.tblMain.getRow(selectRows[i]);
-			conId.add(row.getCell("conId").getValue().toString());
-		}
+	        
+			conIdSet.add(row.getCell("conId").getValue().toString());
+			
+        }
+		int year=params.getInt("year");
+        int month=params.getInt("month");
+        
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month-1);
+
+		Date curEndDate=FDCDateHelper.getSQLBegin(FDCDateHelper.getLastDayOfMonth(cal.getTime()));
+		
+		EntityViewInfo view=new EntityViewInfo();
 		FilterInfo filter=new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("sourceBillId",conId,CompareType.INCLUDE));
-		if(FeesWarrantFactory.getRemoteInstance().exists(filter)){
+		filter.getFilterItems().add(new FilterItemInfo("tenancyBill.id",conIdSet,CompareType.INCLUDE));
+		filter.getFilterItems().add(new FilterItemInfo("appDate",curEndDate));
+		view.setFilter(filter);
+		FeesWarrantEntrysCollection col=FeesWarrantEntrysFactory.getRemoteInstance().getFeesWarrantEntrysCollection(view);
+		if(col.size()>0){
+			Set id=new HashSet();
+			for(int i=0;i<col.size();i++){
+				id.add(col.get(i).getParent().getId().toString());
+			}
+			filter=new FilterInfo();
+			filter.getFilterItems().add(new FilterItemInfo("id",id,CompareType.INCLUDE));
 			if(uiWindow!=null)uiWindow.close();
 			UIContext uiContext = new UIContext(this);
 			uiContext.put(UIContext.OWNER, this);
@@ -458,5 +508,4 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			FDCMsgBox.showWarning(this,"无应收费用汇总记录！");
 		}
 	}
-
 }

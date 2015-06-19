@@ -158,7 +158,7 @@ public class RevDetailVoucherReportFacadeControllerBean extends AbstractRevDetai
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenancyRoomPayListEntry pay on pay.ftenRoomId=roomEntry.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
-    	sb.append(" where con.fid='d90AAAAG20l7qR3e' and md.fid is not null and md.fmoneyType in('RentAmount','PeriodicityAmount')");
+    	sb.append(" where md.fid is not null and md.fmoneyType in('RentAmount','PeriodicityAmount')");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','Expiration')");
     	}else{
@@ -195,7 +195,7 @@ public class RevDetailVoucherReportFacadeControllerBean extends AbstractRevDetai
 		sb=new StringBuffer();
     	sb.append(" select md.fid mdId,con.fid conId,sum(isnull(pay.fappAmount,0)) appAmount");
     	sb.append(" from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
-    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where con.fid='d90AAAAG20l7qR3e' and md.fid is not null and md.fmoneyType in('RentAmount','PeriodicityAmount')");
+    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where md.fid is not null and md.fmoneyType in('RentAmount','PeriodicityAmount')");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','Expiration')");
     	}else{

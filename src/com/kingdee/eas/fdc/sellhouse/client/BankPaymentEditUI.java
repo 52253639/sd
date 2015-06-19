@@ -94,6 +94,13 @@ public class BankPaymentEditUI extends AbstractBankPaymentEditUI
     	super.loadData();
     	BankPaymentInfo bankPayInfo = (BankPaymentInfo)this.editData;
     	loadBankPayEntry(bankPayInfo);
+    	
+    	if(this.editData.getPaymentBank()!=null){
+    		this.prmtPaymentBank.setEnabled(false);
+    	}
+    	if(this.editData.getMoneyDefine()!=null){
+    		this.prmtMoneyDefine.setEnabled(false);
+    	}
     }
     
     public void onLoad() throws Exception {
@@ -478,16 +485,18 @@ public class BankPaymentEditUI extends AbstractBankPaymentEditUI
       		 sellColl.add("id");
       		 sellColl.add("appAmount");
       		 sellColl.add("actRevAmount");
-//             sellColl.add("moneyDefine.name");                   
-//             sellColl.add("moneyDefine.number");
-//             sellColl.add("moneyDefine.moneyType"); 
+             sellColl.add("moneyDefine.name");                   
+             sellColl.add("moneyDefine.number");
+             sellColl.add("moneyDefine.moneyType"); 
              sellColl.add("head.room.name");
              sellColl.add("head.room.number");
              sellColl.add("head.number");
              sellColl.add("head.number");
              sellColl.add("head.customerNames");
-             sellColl.add("head.signCustomerEntry.customer.name");
-             sellColl.add("head.signCustomerEntry.customer.name");
+             sellColl.add("head.signCustomerEntry.customer.*");
+             sellColl.add("head.loanBank.*");
+             sellColl.add("head.acfBank.*");
+             
       		viewInfo.setSelector(sellColl);
       		filter.getFilterItems().add(new FilterItemInfo("id",idSet,CompareType.INCLUDE));
       		viewInfo.setFilter(filter);
@@ -674,6 +683,14 @@ public class BankPaymentEditUI extends AbstractBankPaymentEditUI
 				for(int i=0;i<signPayColl.size();i++)
 				{
 					SignPayListEntryInfo signPayEntryInfo = signPayColl.get(i);
+					
+					bankPayment.setMoneyDefine(signPayEntryInfo.getMoneyDefine());
+					if(signPayEntryInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){
+						bankPayment.setPaymentBank(signPayEntryInfo.getHead().getLoanBank());
+					}else{
+						bankPayment.setPaymentBank(signPayEntryInfo.getHead().getAcfBank());
+					}
+					
 					BankPaymentEntryInfo bankEntryInfo = new BankPaymentEntryInfo();
 					bankEntryInfo.setSignPayList(signPayEntryInfo);
 					bankEntryInfo.setRoom(signPayEntryInfo.getHead().getRoom());

@@ -1698,19 +1698,21 @@ public class SignManageEditUI extends AbstractSignManageEditUI
 			}
 			if(moneyName.getMoneyType().equals(MoneyTypeEnum.LoanAmount)){
 				isHasLoan=true;
-				loanType.add(moneyName.getMoneyType());
+				if(loanType.contains(moneyName.getMoneyType())){
+					FDCMsgBox.showWarning(this,"按揭款款项类型重复！");
+					SysUtil.abort();
+				}else{
+					loanType.add(moneyName.getMoneyType());
+				}
 			}else if(moneyName.getMoneyType().equals(MoneyTypeEnum.AccFundAmount)){
 				isHasAccFund=true;
-				accType.add(moneyName.getMoneyType());
+				if(accType.contains(moneyName.getMoneyType())){
+					FDCMsgBox.showWarning(this,"公积金款项类型重复！");
+					SysUtil.abort();
+				}else{
+					accType.add(moneyName.getMoneyType());
+				}
 			}
-		}
-		if(loanType.size()>1){
-			FDCMsgBox.showWarning(this,"按揭款款项类型重复！");
-			SysUtil.abort();
-		}
-		if(accType.size()>1){
-			FDCMsgBox.showWarning(this,"公积金款项类型重复！");
-			SysUtil.abort();
 		}
 		if (contractAmount == null) {
 			contractAmount = FDCHelper.ZERO;
