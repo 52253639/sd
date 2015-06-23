@@ -556,11 +556,15 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			measureInfo.getConstrEntrys().add(entry);
 		}
 		Map config=new HashMap();
-		PlanIndexConfigCollection col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=0 and isEntityIndex=0 order by longNumber");
+		PlanIndexConfigCollection col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isEntityIndex=0 order by longNumber");
 		for(int i=0;i<col.size();i++){
 			config.put(col.get(i).getId().toString(), col.get(i));
 		}
+		
+		Map ptMap=new HashMap();
 		measureInfo.put("newPlanIndexEntry", new NewPlanIndexCollection());
+		
+		Map checkMap=new HashMap();
 		for (int i = 0; i < templateMeasure.getNewPlanIndexEntry().size(); i++) {
 			if(config.containsKey(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString())){
 				NewPlanIndexInfo entry = new NewPlanIndexInfo();
@@ -579,9 +583,19 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 					entry.setValue(templateMeasure.getNewPlanIndexEntry().get(i).getValue());
 				}
 				entry.setDes(templateMeasure.getNewPlanIndexEntry().get(i).getDes());
+				
+				ProductTypeInfo pt=templateMeasure.getNewPlanIndexEntry().get(i).getProductType();
+				if(configInfo.isIsProductType()){
+					entry.setProductType(pt);
+				}
 				measureInfo.getNewPlanIndexEntry().add(entry);
 				
-				config.remove(templateMeasure.getNewPlanIndexEntry().get(i).getConfig().getId().toString());
+				if(pt!=null){
+					ptMap.put(pt.getId().toString(), pt);
+					checkMap.put(pt.getId().toString()+configInfo.getId().toString(), configInfo);
+				}else{
+					checkMap.put(configInfo.getId().toString(), configInfo);
+				}
 			}
 		}
 		
@@ -590,17 +604,42 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			String configid=key[k].toString();
 			PlanIndexConfigInfo info=(PlanIndexConfigInfo) config.get(configid);
 			
-			NewPlanIndexInfo entry = new NewPlanIndexInfo();
-			entry.setId(BOSUuid.create(entry.getBOSType()));
-			entry.setConfig(info);
-			entry.setFieldType(info.getFieldType());
-			entry.setNumber(info.getLongNumber().replaceAll("!", "."));
-			entry.setName(info.getName());
-			entry.setRemark(info.getDescription());
-			entry.setFormula(info.getFormula());
-			entry.setFormulaType(info.getFormulaType());
-			entry.setProp(info.getProp());
-			measureInfo.getNewPlanIndexEntry().add(entry);
+			if(info.isIsProductType()){
+				Object[] ptkey = ptMap.keySet().toArray(); 
+				for (int kk = 0; kk < ptkey.length; kk++) {
+					ProductTypeInfo pt=(ProductTypeInfo) ptMap.get(ptkey[kk].toString());
+					
+					if(!checkMap.containsKey(pt.getId().toString()+configid)){
+						NewPlanIndexInfo entry = new NewPlanIndexInfo();
+						entry.setId(BOSUuid.create(entry.getBOSType()));
+						entry.setConfig(info);
+						entry.setFieldType(info.getFieldType());
+						entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+						entry.setName(info.getName());
+						entry.setRemark(info.getDescription());
+						entry.setFormula(info.getFormula());
+						entry.setFormulaType(info.getFormulaType());
+						entry.setProp(info.getProp());
+						
+						entry.setProductType(pt);
+						measureInfo.getNewPlanIndexEntry().add(entry);
+					}
+				}
+			}else{
+				if(!checkMap.containsKey(configid)){
+					NewPlanIndexInfo entry = new NewPlanIndexInfo();
+					entry.setId(BOSUuid.create(entry.getBOSType()));
+					entry.setConfig(info);
+					entry.setFieldType(info.getFieldType());
+					entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+					entry.setName(info.getName());
+					entry.setRemark(info.getDescription());
+					entry.setFormula(info.getFormula());
+					entry.setFormulaType(info.getFormulaType());
+					entry.setProp(info.getProp());
+					measureInfo.getNewPlanIndexEntry().add(entry);
+				}
+			}
 		}
 		
 		Map configPT=new HashMap();

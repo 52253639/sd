@@ -175,6 +175,16 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 	                   	 ((KDTableInsertHandler)(new DefaultKDTableInsertHandler(rs))).setTableRowData(row, rs.toRowArray());
 	                   	 rowMap.put(rs.getString("conId")+rs.getString("mdId"), row);
          	         }
+         	         if(tblMain.getRowCount()>0){
+        	        	 IRow lastTotalrow=tblMain.addRow();
+	   	           		 for(int i=0;i<17;i++){
+	   	           			 lastTotalrow.getCell(i).setValue(tblMain.getRow(lastTotalrow.getRowIndex()-1).getCell(i).getValue());
+	   	           		 }
+	   	           		 lastTotalrow.getCell(17).setValue("ºÏ¼Æ");
+	   	           		 lastTotalrow.getStyleAttributes().setBackground(FDCHelper.KDTABLE_TOTAL_BG_COLOR);
+	   	           		 totalrowMap.put(conId, lastTotalrow);
+        	         }
+                		
          	         int year=params.getInt("year");
          	         int month=params.getInt("month");
          	         IColumn column=tblMain.addColumn();
@@ -242,6 +252,8 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
             	        				beginDate=FDCDateHelper.getFirstDayOfMonth(subDate);
             	        			}
             	        			int curDayDiff=FDCDateHelper.getDiffDays(beginDate, lastDate);
+            	        			System.out.println(FDCDateHelper.formatDate(subDate));
+            	        			System.out.println(FDCDateHelper.formatDate(curEndDate));
             	        			System.out.println(getMonthDiff(subDate,curEndDate));
             	        			if(getMonthDiff(subDate,curEndDate)==0){
             	        				if(i!=monthDiff-1){
@@ -296,7 +308,7 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
         
         if ((startCalendar.get(Calendar.DATE) == 1)
                 && (temp.get(Calendar.DATE) == 1)) {
-            return year * 12 + month + 1;
+            return year * 12 + month;
         } else if ((startCalendar.get(Calendar.DATE) != 1)
                 && (temp.get(Calendar.DATE) == 1)) {
             return year * 12 + month;

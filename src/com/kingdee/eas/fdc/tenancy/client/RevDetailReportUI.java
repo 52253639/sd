@@ -166,7 +166,16 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
 	                   	 ((KDTableInsertHandler)(new DefaultKDTableInsertHandler(rs))).setTableRowData(row, rs.toRowArray());
 	                   	 rowMap.put(rs.getString("conId")+rs.getString("mdId"), row);
          	         }
-         	         
+         	         if(tblMain.getRowCount()>0){
+         	        	 IRow lastTotalrow=tblMain.addRow();
+	   	           		 for(int i=0;i<17;i++){
+	   	           			 lastTotalrow.getCell(i).setValue(tblMain.getRow(lastTotalrow.getRowIndex()-1).getCell(i).getValue());
+	   	           		 }
+	   	           		 lastTotalrow.getCell(17).setValue("ºÏ¼Æ");
+	   	           		 lastTotalrow.getStyleAttributes().setBackground(FDCHelper.KDTABLE_TOTAL_BG_COLOR);
+	   	           		 totalrowMap.put(conId, lastTotalrow);
+         	         }
+               	 
          	         RptRowSet appdaters = (RptRowSet)((RptParams)result).getObject("appdaters");
          	         Date maxAppDate=null;
          	         Date minAppDate=null;

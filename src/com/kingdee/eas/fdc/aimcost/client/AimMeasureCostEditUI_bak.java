@@ -28,11 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
@@ -46,7 +42,6 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.common.variant.Variant;
 import com.kingdee.bos.ctrl.excel.io.kds.KDSBookToBook;
 import com.kingdee.bos.ctrl.excel.model.struct.Sheet;
-import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.ctrl.extendcontrols.KDCommonPromptDialog;
 import com.kingdee.bos.ctrl.kdf.export.ExportManager;
@@ -96,7 +91,6 @@ import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.metadata.entity.SelectorItemInfo;
 import com.kingdee.bos.metadata.entity.SorterItemInfo;
 import com.kingdee.bos.metadata.function.FunctionObjectInfo;
-import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.IUIFactory;
 import com.kingdee.bos.ui.face.IUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
@@ -142,22 +136,12 @@ import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryCollection;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeEntryInfo;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeFactory;
 import com.kingdee.eas.fdc.aimcost.MeasureIncomeInfo;
-import com.kingdee.eas.fdc.aimcost.NewPlanIndexCollection;
-import com.kingdee.eas.fdc.aimcost.NewPlanIndexInfo;
-import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTCollection;
-import com.kingdee.eas.fdc.aimcost.NewPlanIndexPTInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexCollection;
-import com.kingdee.eas.fdc.aimcost.PlanIndexConfigCollection;
-import com.kingdee.eas.fdc.aimcost.PlanIndexConfigFactory;
-import com.kingdee.eas.fdc.aimcost.PlanIndexConfigInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryCollection;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryFactory;
 import com.kingdee.eas.fdc.aimcost.PlanIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.PlanIndexFactory;
-import com.kingdee.eas.fdc.aimcost.PlanIndexFieldTypeEnum;
-import com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum;
 import com.kingdee.eas.fdc.aimcost.PlanIndexInfo;
-import com.kingdee.eas.fdc.aimcost.PlanIndexTypeEnum;
 import com.kingdee.eas.fdc.aimcost.TemplateMeasureCostCollection;
 import com.kingdee.eas.fdc.aimcost.VersionTypeEnum;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
@@ -255,7 +239,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	boolean hasMutex = true;
 	
 	private MeasureIncomeInfo miInfo=null;
-	
 	/**
 	 * output class constructor
 	 */
@@ -399,23 +382,15 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					 * "indexName").getValue());
 					 */
 					Object obj = row.getCell("indexName").getValue();
-//					if (obj instanceof Item) {
-//						Item item = (Item) obj;
-//						entry.setSimpleName(item.key);
-//						entry.setIndexName(item.toString());
-//						entry.setIndexValue(FDCHelper.toBigDecimal(row.getCell("index").getValue()));
-//						// KDComboBox
-//						// box=(KDComboBox)row.getCell("indexName").getEditor().getComponent();
-//						// box.getSelectedIndex();
-//					}
-					PlanIndexConfigInfo config=(PlanIndexConfigInfo)obj;
-					if(obj!=null){
-						entry.setConfig((PlanIndexConfigInfo) obj);
-					}else{
-						entry.setConfig(null);
+					if (obj instanceof Item) {
+						Item item = (Item) obj;
+						entry.setSimpleName(item.key);
+						entry.setIndexName(item.toString());
+						entry.setIndexValue(FDCHelper.toBigDecimal(row.getCell("index").getValue()));
+						// KDComboBox
+						// box=(KDComboBox)row.getCell("indexName").getEditor().getComponent();
+						// box.getSelectedIndex();
 					}
-					entry.setIndexValue(FDCHelper.toBigDecimal(row.getCell("index").getValue()));
-					
 					entry.setCoefficientName((String) row.getCell(
 							"coefficientName").getValue());
 					entry.setCoefficient((BigDecimal) row
@@ -466,22 +441,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				}
 			}
 		}
-		cost.getNewPlanIndexEntry().clear();
-		Object[] key = planIndexTables.keySet().toArray(); 
-		for (int k = 0; k < key.length; k++) {
-			String productKey=key[k].toString();
-			KDTable table=(KDTable) planIndexTables.get(productKey);
-			for(int i=0;i<table.getRowCount();i++){
-				NewPlanIndexInfo entry=(NewPlanIndexInfo) table.getRow(i).getUserObject();
-				if(table.getRow(i).getCell("value").getValue()!=null){
-					entry.setValue(table.getRow(i).getCell("value").getValue().toString());
-				}else{
-					entry.setValue(null);
-				}
-				entry.setDes((String)table.getRow(i).getCell("des").getValue());
-				cost.getNewPlanIndexEntry().add(entry);
-			}
-		}
+    		
 	}
 
 	protected void initWorkButton() {
@@ -594,38 +554,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		//版本类型
 		cost.setVersionType(VersionTypeEnum.CheckVersion);
-		
-		try {
-			PlanIndexConfigCollection col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=0 and isEntityIndex=0 order by longNumber");
-			for(int i=0;i<col.size();i++){
-				NewPlanIndexInfo entry=new NewPlanIndexInfo();
-				entry.setConfig(col.get(i));
-				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
-				entry.setName(col.get(i).getName());
-				entry.setRemark(col.get(i).getDescription());
-				entry.setFormula(col.get(i).getFormula());
-				entry.setFormulaType(col.get(i).getFormulaType());
-				entry.setProp(col.get(i).getProp());
-				cost.getNewPlanIndexEntry().add(entry);
-			}
-			col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by longNumber");
-			for(int i=0;i<col.size();i++){
-				NewPlanIndexPTInfo entry=new NewPlanIndexPTInfo();
-				entry.setConfig(col.get(i));
-				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
-				entry.setName(col.get(i).getName());
-				entry.setRemark(col.get(i).getDescription());
-				entry.setFormula(col.get(i).getFormula());
-				entry.setFormulaType(col.get(i).getFormulaType());
-				entry.setProp(col.get(i).getProp());
-				cost.getNewPlanIndexEntryPT().add(entry);
-			}
-		} catch (BOSException e) {
-			e.printStackTrace();
-		}
-		
 		return cost;
 	}
 	private void removeitemListener(KDComboBox comboMeasureStage) {
@@ -647,12 +575,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	KDTable tblAttachement= null;
 	boolean isHasCompareEntry=false;
 	Map compareTables = null;
-	Map planIndexTables = null;
 	Map totalColor = null;
 	KDTabbedPane tabCompareEntry=null;
-	KDTabbedPane tabPlanIndexEntry=null;
-	final String planIndexKey="规划指标";
-	Map newPlanIndexMap=null;
 //	KDPanel indexPanel = null;
 //	AimIndexUI aimIdexUI  = null;
 	private void addPanel() throws Exception {
@@ -717,7 +641,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		splitPane.add(contDes, "left");
 		splitPane.add(contAttach,"right");
 		this.plTables.add(splitPane, "测算说明&附件管理");
-		splitPane.setDividerLocation(800);
+		splitPane.setDividerLocation(1000);
 		
 		KDWorkButton btnAttachment = new KDWorkButton();
 		this.actionAttachment.putValue("SmallIcon", EASResource.getIcon("imgTbtn_affixmanage"));
@@ -779,17 +703,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		FDCTableHelper.addTableMenu(table);
 		this.plTables.add(planIndexTable.getContentPanel(), "规划指标表");
 		
-		
-		tabPlanIndexEntry=new KDTabbedPane();
-		KDContainer contPlanIndexEntry=new KDContainer();
-		contPlanIndexEntry.getContentPane().setLayout(new BorderLayout(0, 0)); 
-		contPlanIndexEntry.getContentPane().add(tabPlanIndexEntry,BorderLayout.CENTER);
-		
-		planIndexTables=new HashMap();
-		newPlanIndexMap=new HashMap();
-		loadPlanIndexEntry(((MeasureCostInfo)this.editData).getNewPlanIndexEntry());
-		this.plTables.add(contPlanIndexEntry, "规划指标表明细表");
-    	
 		table = planIndexTable.getConstructTable();
 		this.tables.add(table);
 		
@@ -826,7 +739,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		
 		//公摊及产品
 		table = new KDTable();
-		table.setName("公摊及期间费");
+		table.setName("六类公摊及期间费");
 		this.tables.add(table);
 		FDCTableHelper.addTableMenu(table);
 		FDCTableHelper.setColumnMoveable(table, true);
@@ -841,7 +754,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		table.getHeadRow(0).getCell(0).setUserObject(info);
 		this.fillTable(table);
 		setUnionData(table);
-		this.plTables.add(table, "公摊及期间费");
+		this.plTables.add(table, "六类公摊及期间费");
 		
 		
 		for(int i=0;i<info.getEntrys().size();i++){
@@ -930,27 +843,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			headRow.getCell(product.getId().toString()).setUserObject(product);
 			headRow.getCell(product.getId().toString()).setValue(product.getName());
 		}
-		if(!planIndexTables.containsKey(product.getId().toString())){
-			NewPlanIndexCollection loadCol=new NewPlanIndexCollection();
-			NewPlanIndexPTCollection col=((MeasureCostInfo)this.editData).getNewPlanIndexEntryPT();
-			for(int i=0;i<col.size();i++){
-				NewPlanIndexInfo entry=new NewPlanIndexInfo();
-				entry.setConfig(col.get(i).getConfig());
-				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getNumber());
-				entry.setName(col.get(i).getName());
-				entry.setRemark(col.get(i).getRemark());
-				entry.setFormula(col.get(i).getFormula());
-				entry.setFormulaType(col.get(i).getFormulaType());
-				entry.setProp(col.get(i).getProp());
-				entry.setProductType(product);
-				((MeasureCostInfo)this.editData).getNewPlanIndexEntry().add(entry);
-				
-				loadCol.add(entry);
-			}
-			loadPlanIndexEntry(loadCol);
-		}
-		
 		
 		this.setUnionData(table);
 		FDCTableHelper.addTableMenu(table);
@@ -984,21 +876,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			if(headRow.getCell(j).getUserObject() instanceof ProductTypeInfo){
 				if(((ProductTypeInfo)headRow.getCell(j).getUserObject()).getId().equals(product.getId())){
 					planIndexTable.getConstructTable().removeColumn(j);
-					break;
-				}
-			}
-		}
-		planIndexTables.remove(product.getId().toString());
-		for(int i=0;i<tabPlanIndexEntry.getComponentCount();i++){
-			KDTable table=(KDTable) tabPlanIndexEntry.getComponentAt(i);
-			if(table.getUserObject() instanceof ProductTypeInfo){
-				if(((ProductTypeInfo)table.getUserObject()).getId().equals(product.getId())){
-					tabPlanIndexEntry.remove(i);
-					try {
-						tblPlanIndex_editStopped(null);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
 					break;
 				}
 			}
@@ -1063,12 +940,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		column.setKey("sellPart");
 		column = table.addColumn();
 		column.setKey("program");
-		column.getStyleAttributes().setHided(true);
 		column = table.addColumn();
 		column.setKey("desc");
 		column = table.addColumn();
 		column.setKey("changeReason");
-		column.getStyleAttributes().setHided(true);
 		column = table.addColumn();
 		column.setKey("description");
 		IRow row = table.addHeadRow();
@@ -1292,33 +1167,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		ICellEditor f7Editor = new KDTDefaultCellEditor(f7ApportionType);
 		
 */		
-//		ICellEditor editor=getIndexEditor(type, productId);
-//		table.getColumn("indexName").setEditor(editor);
-		
-		KDBizPromptBox config = new KDBizPromptBox();
-		config.setQueryInfo("com.kingdee.eas.fdc.aimcost.app.PlanIndexConfigQuery");
-		EntityViewInfo view = new EntityViewInfo();
-		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("isEnabled", Boolean.TRUE));
-		filter.getFilterItems().add(new FilterItemInfo("fieldType", PlanIndexFieldTypeEnum.TEXT_VALUE,CompareType.NOTEQUALS));
-		if(productId==null){
-			filter.getFilterItems().add(new FilterItemInfo("isProductType", Boolean.FALSE));
-		}else{
-			filter.getFilterItems().add(new FilterItemInfo("isProductType", Boolean.TRUE));
-		}
-		filter.getFilterItems().add(new FilterItemInfo("isEntityIndex", Boolean.FALSE));
-		filter.getFilterItems().add(new FilterItemInfo("isEntityIndex", Boolean.TRUE));
-		filter.getFilterItems().add(new FilterItemInfo("isLeaf", Boolean.TRUE));
-		filter.setMaskString("#0 and #1 and #2 and (#3 or (#4 and #5))");
-		view.setFilter(filter);
-		config.setEntityViewInfo(view);
-		config.setEditable(true);
-		config.setDisplayFormat("$name$");
-		config.setEditFormat("$number$");
-		config.setCommitFormat("$number$");
-		ICellEditor configEditor = new KDTDefaultCellEditor(config);
-		table.getColumn("indexName").setEditor(configEditor);
-		
+		ICellEditor editor=getIndexEditor(type, productId);
+		table.getColumn("indexName").setEditor(editor);
 		setTemplateMeasureCostF7Editor(table);
 		this.addTableChangeEnvent(table);
 	}
@@ -1442,7 +1292,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		sels.add("costEntry.unit.id");
 		sels.add("costEntry.unit.name");
 		sels.add("costEntry.unit.number");
-		sels.add("costEntry.config.*");
 		sels.add("measureStage.id");
 		sels.add("measureStage.name");
 		sels.add("measureStage.number");
@@ -1451,11 +1300,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		
 		sels.add("creator.*");
 		sels.add("compareEntry.*");
-		sels.add("newPlanIndexEntry.*");
-		sels.add("newPlanIndexEntry.config.*");
-		sels.add("newPlanIndexEntry.productType.*");
-		sels.add("newPlanIndexEntryPT.*");
-		sels.add("newPlanIndexEntryPT.config.*");
 		return sels;
 	}
 
@@ -1473,24 +1317,19 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			row.getCell("index").setValue(value);
 		}*/
 		row.getCell("index").setValue(info.getIndexValue());
-//		if(info.getSimpleName()!=null){
-////			row.getCell("indexName").setValue(info.getSimpleName());
-//			if(table.getColumn("indexName").getEditor()!=null){
-//				KDComboBox box=(KDComboBox)table.getColumn("indexName").getEditor().getComponent();
-//				if(box!=null){
-//					for(int i=0;i<box.getItemCount();i++){
-//						if(((Item)box.getItemAt(i)).key.equals(info.getSimpleName())){
-//							row.getCell("indexName").setValue(box.getItemAt(i));
-//							break;
-//						}
-//					}
-//				}
-//			}
-//		}
-		row.getCell("indexName").setValue(info.getConfig());
-		if(info.getConfig()!=null&&info.getConfig().isIsEntityIndex()&&isEdit){
-			row.getCell("index").getStyleAttributes().setLocked(false);
-			row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
+		if(info.getSimpleName()!=null){
+//			row.getCell("indexName").setValue(info.getSimpleName());
+			if(table.getColumn("indexName").getEditor()!=null){
+				KDComboBox box=(KDComboBox)table.getColumn("indexName").getEditor().getComponent();
+				if(box!=null){
+					for(int i=0;i<box.getItemCount();i++){
+						if(((Item)box.getItemAt(i)).key.equals(info.getSimpleName())){
+							row.getCell("indexName").setValue(box.getItemAt(i));
+							break;
+						}
+					}
+				}
+			}
 		}
 		row.getCell("coefficientName").setValue(info.getCoefficientName());
 		BigDecimal coefficient = info.getCoefficient();
@@ -1507,7 +1346,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			row.getCell("workload").getStyleAttributes().setLocked(true);
 		}*/
 		
-		if (info.getConfig() != null && coefficient != null) {
+		if (info.getSimpleName() != null && coefficient != null) {
 			row.getCell("workload").getStyleAttributes().setLocked(true);
 		}
 		row.getCell("workload").setValue(workload);
@@ -1697,7 +1536,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
     				for(int i=0;i<tables.size();i++){
     					KDTable table=(KDTable) tables.get(i);
     					if(table.getHeadRow(0).getUserObject() instanceof ProductTypeInfo||
-    							table.getName().equals("公摊及期间费")){
+    							table.getName().equals("六类公摊及期间费")){
     						this.plTables.remove(table);
     					}
     				}
@@ -2049,75 +1888,48 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			refreshAdjustAmount(table,row);
 		} else if (table.getColumnKey(columnIndex).equals("indexName")) {
 			Object obj=row.getCell("indexName").getValue();
-			PlanIndexConfigInfo config=(PlanIndexConfigInfo)obj;
-			if(config!=null){
-				String productTypeKey=planIndexKey;
-				if(table.getHeadRow(0).getUserObject()!=null){
-					productTypeKey=((ProductTypeInfo)table.getHeadRow(0).getUserObject()).getId().toString();
-				}
-				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getLongNumber().replaceAll("!", "."));
-				if(config.isIsEntityIndex()){
-					if(isEdit){
-						row.getCell("index").getStyleAttributes().setLocked(false);
-						row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
+			if(obj instanceof Item){
+				Item item=(Item)obj;
+//				row.getCell("index").setValue(item.getValue());
+				if(info!=null){
+					BigDecimal amount=FDCHelper.ZERO;
+					//处理景观面积及户数
+					if(info instanceof PlanIndexInfo){
+						PlanIndexInfo planIndexInfo=(PlanIndexInfo)info;
+//						if(item.key.equals("viewArea")){
+							//道路用地合计+绿化用地合计
+//							amount=FDCHelper.toBigDecimal(planIndexInfo.getTotalRoadArea()).add(FDCHelper.toBigDecimal(planIndexInfo.getTotalGreenArea())); 
+//						}
+						if(item.key.equals("doors")){
+							//户数之和
+							for(int i=0;i<planIndexInfo.getEntrys().size();i++){
+								PlanIndexEntryInfo entry = planIndexInfo.getEntrys().get(i);
+								amount=amount.add(FDCHelper.toBigDecimal(entry.getDoors()));
+							}
+						}
 					}
-				}else{
-					row.getCell("index").getStyleAttributes().setLocked(true);
-					row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-					if(valueRow!=null&&valueRow.getCell("value").getValue()!=null&&!(valueRow.getCell("value").getValue() instanceof String)){
-						row.getCell("index").setValue(valueRow.getCell("value").getValue());
+					if(amount.compareTo(FDCHelper.ZERO)==0){
+						if(!"entityIndex".equals(item.key)){
+							row.getCell("index").getStyleAttributes().setLocked(true);
+							row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+							row.getCell("index").setValue(getCustomIndexValue(info, item));
+						}else {
+							if(isEdit){
+								row.getCell("index").getStyleAttributes().setLocked(false);
+								row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
+							}
+						}
+						
 					}else{
-						row.getCell("index").setValue(null);
+						row.getCell("index").setValue(amount);
+					}
+					
+					if(item.key.equals("empty")){
+						row.getCell("coefficient").setValue(null);
+						row.getCell("coefficientName").setValue(null);
 					}
 				}
-			}else{
-				row.getCell("index").setValue(null);
-				row.getCell("coefficient").setValue(null);
-				row.getCell("coefficientName").setValue(null);
 			}
-			
-//			if(obj instanceof Item){
-//				Item item=(Item)obj;
-////				row.getCell("index").setValue(item.getValue());
-//				if(info!=null){
-//					BigDecimal amount=FDCHelper.ZERO;
-//					//处理景观面积及户数
-//					if(info instanceof PlanIndexInfo){
-//						PlanIndexInfo planIndexInfo=(PlanIndexInfo)info;
-////						if(item.key.equals("viewArea")){
-//							//道路用地合计+绿化用地合计
-////							amount=FDCHelper.toBigDecimal(planIndexInfo.getTotalRoadArea()).add(FDCHelper.toBigDecimal(planIndexInfo.getTotalGreenArea())); 
-////						}
-//						if(item.key.equals("doors")){
-//							//户数之和
-//							for(int i=0;i<planIndexInfo.getEntrys().size();i++){
-//								PlanIndexEntryInfo entry = planIndexInfo.getEntrys().get(i);
-//								amount=amount.add(FDCHelper.toBigDecimal(entry.getDoors()));
-//							}
-//						}
-//					}
-//					if(amount.compareTo(FDCHelper.ZERO)==0){
-//						if(!"entityIndex".equals(item.key)){
-//							row.getCell("index").getStyleAttributes().setLocked(true);
-//							row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-//							row.getCell("index").setValue(getCustomIndexValue(info, item));
-//						}else {
-//							if(isEdit){
-//								row.getCell("index").getStyleAttributes().setLocked(false);
-//								row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
-//							}
-//						}
-//						
-//					}else{
-//						row.getCell("index").setValue(amount);
-//					}
-//					
-//					if(item.key.equals("empty")){
-//						row.getCell("coefficient").setValue(null);
-//						row.getCell("coefficientName").setValue(null);
-//					}
-//				}
-//			}
 			refreshWorkload(table,row);
 		}
 		
@@ -2330,10 +2142,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			planIndexTable.addRow(arg0);
 			return;
 		}
+		
 		if(this.plTables.getSelectedIndex()==ii+2){
-			return;
-		}
-		if(this.plTables.getSelectedIndex()==ii+3){
 			planIndexTable.addConstrIndexRow(arg0);
 			return;
 		}
@@ -2341,16 +2151,16 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			return;
 //		}
 		
-		if(this.plTables.getSelectedIndex()==ii+4){
+		if(this.plTables.getSelectedIndex()==ii+3){
 			Object v = prmtProjectType.getValue();
 			if(v==null){
-				MsgBox.showWarning(this, "公摊测算必须先设置项目系列");
+				MsgBox.showWarning(this, "六类公摊测算必须先设置项目系列");
 				return;
 			}
 		}
 		
 		int selectIndex = this.plTables.getSelectedIndex();
-		KDTable table = (KDTable) this.tables.get(selectIndex-(ii+1));
+		KDTable table = (KDTable) this.tables.get(selectIndex-ii);
 		if (table.getRowCount() == 0) {
 			return;
 		}
@@ -2392,19 +2202,14 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					 * selectRow.getCell( "indexName").getValue());
 					 */
 					Object obj = selectRow.getCell("indexName").getValue();
-					PlanIndexConfigInfo config=(PlanIndexConfigInfo)obj;
-//					if (obj instanceof Item) {
-//						Item item = (Item) obj;
-//						entry.setSimpleName(item.key);
-//						entry.setIndexName(item.toString());
-//						entry.setIndexValue(FDCHelper.toBigDecimal(selectRow.getCell("index").getValue()));
-//						// KDComboBox
-//						// box=(KDComboBox)selectRow.getCell("indexName").getEditor().getComponent();
-//						// box.getSelectedIndex();
-//					}
-					if(config!=null){
-						entry.setConfig(config);
+					if (obj instanceof Item) {
+						Item item = (Item) obj;
+						entry.setSimpleName(item.key);
+						entry.setIndexName(item.toString());
 						entry.setIndexValue(FDCHelper.toBigDecimal(selectRow.getCell("index").getValue()));
+						// KDComboBox
+						// box=(KDComboBox)selectRow.getCell("indexName").getEditor().getComponent();
+						// box.getSelectedIndex();
 					}
 					entry.setCoefficientName((String) selectRow.getCell("coefficientName").getValue());
 					entry.setCoefficient((BigDecimal) selectRow.getCell("coefficient").getValue());
@@ -2521,7 +2326,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 						KDBizPromptBox my=(KDBizPromptBox) e.getSource();
 						((TemplateMeasureCostPromptBox)my.getSelector()).setProjectTypeID(((ProjectTypeInfo)v).getId().toString());
 					}else{
-						MsgBox.showWarning(getplTables(), "公摊必须先设置项目系列");
+						MsgBox.showWarning(getplTables(), "六类公摊必须先设置项目系列");
 						e.setCanceled(true);
 					}
 				}
@@ -2550,7 +2355,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					if(v instanceof ProjectTypeInfo){
 						((TemplateMeasureCostPromptBox)my.getSelector()).setProjectTypeID(((ProjectTypeInfo)v).getId().toString());
 					}else{
-						MsgBox.showWarning(getplTables(), "公摊必须先设置项目系列");
+						MsgBox.showWarning(getplTables(), "六类公摊必须先设置项目系列");
 						e.setCanceled(true);
 					}
 				}
@@ -2586,9 +2391,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			return;
 		}
 		if(this.plTables.getSelectedIndex()==ii+2){
-			return;
-		}
-		if(this.plTables.getSelectedIndex()==ii+3){
 			planIndexTable.deleteConstrIndexRow(arg0);
 			return;
 		}
@@ -2597,7 +2399,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			return;
 //		}
 		int selectIndex = this.plTables.getSelectedIndex();
-		KDTable table = (KDTable) this.tables.get(selectIndex - (ii+1));
+		KDTable table = (KDTable) this.tables.get(selectIndex-ii);
 		KDTSelectManager selectManager = table.getSelectManager();
 		if (selectManager == null || selectManager.size() == 0) {
 			return;
@@ -3205,22 +3007,22 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	}
 	
 	private void refreshMeasureTable(KDTable table){
-//		if(table.getHeadRow(0).getUserObject() instanceof ProductTypeInfo){
-//			ProductTypeInfo product=(ProductTypeInfo)table.getHeadRow(0).getUserObject();
-//			table.getHeadRow(0).getCell(0).setUserObject(
-//					planIndexTable.getPlanIndexEntryInfo(product.getId().toString()));
-//			ICellEditor editor=getIndexEditor(CostAccountTypeEnum.MAIN,product.getId().toString());
-//			table.getColumn("indexName").setEditor(editor);
-//		}else{
-//			PlanIndexInfo planIndexInfo = planIndexTable.getPlanIndexInfo();
-//			ICellEditor editor=getIndexEditor(CostAccountTypeEnum.SIX,null);
-//			table.getColumn("indexName").setEditor(editor);
-//			BigDecimal amount=planIndexTable.getAllSellArea(planIndexInfo);
-//			planIndexInfo.put("allSellArea", amount);
-//			amount=planIndexTable.getAllBuildArea(planIndexInfo);
-//			planIndexInfo.put("allBuildArea", amount);
-//			table.getHeadRow(0).getCell(0).setUserObject(planIndexInfo);
-//		}
+		if(table.getHeadRow(0).getUserObject() instanceof ProductTypeInfo){
+			ProductTypeInfo product=(ProductTypeInfo)table.getHeadRow(0).getUserObject();
+			table.getHeadRow(0).getCell(0).setUserObject(
+					planIndexTable.getPlanIndexEntryInfo(product.getId().toString()));
+			ICellEditor editor=getIndexEditor(CostAccountTypeEnum.MAIN,product.getId().toString());
+			table.getColumn("indexName").setEditor(editor);
+		}else{
+			PlanIndexInfo planIndexInfo = planIndexTable.getPlanIndexInfo();
+			ICellEditor editor=getIndexEditor(CostAccountTypeEnum.SIX,null);
+			table.getColumn("indexName").setEditor(editor);
+			BigDecimal amount=planIndexTable.getAllSellArea(planIndexInfo);
+			planIndexInfo.put("allSellArea", amount);
+			amount=planIndexTable.getAllBuildArea(planIndexInfo);
+			planIndexInfo.put("allBuildArea", amount);
+			table.getHeadRow(0).getCell(0).setUserObject(planIndexInfo);
+		}
 		
 		for (int j = 0; j < table.getRowCount(); j++) {
 			IRow row = table.getRow(j);
@@ -3464,11 +3266,11 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			new Item("buildArea",	"建筑用地面积"),	
 			new Item("totalBuildArea",	"总建筑面积"),
 			new Item("totalSellArea",	"总可售面积"),	
-//			new Item("groundBuildArea",	"总地上建筑面积"),	
-//			new Item("underGroundBuildArea","总地下建筑面积"),	
-//			new Item("decorationArea","精装修面积"),	
-//			new Item("lengthOfWall","小区围墙长度"),	
-//			new Item("roadArea","小区道路面积"),	
+			new Item("groundBuildArea",	"总地上建筑面积"),	
+			new Item("underGroundBuildArea","总地下建筑面积"),	
+			new Item("decorationArea","精装修面积"),	
+			new Item("lengthOfWall","小区围墙长度"),	
+			new Item("roadArea","小区道路面积"),	
 //			new Item("buildContainArea",	"建筑物占地面积"),
 //			new Item("buildDensity",	"建筑密度	"),
 //			new Item("greenAreaRate",	"绿地率"),	
@@ -3485,8 +3287,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //			new Item("houseGreenArea",	"组团宅间绿化	"),
 //			new Item("privateGarden",	"底层私家花园	"),
 //			new Item("warterViewArea",	"水景面积"),
-//			new Item("sightSpotArea",	"景观面积"),
-//			new Item("basementArea",	"地下室面积"),
+			new Item("sightSpotArea",	"景观面积"),
+			new Item("basementArea",	"地下室面积"),
 			new Item("entityIndex",	"实体指标")
 //			new Item("doors",	"户数")
 			
@@ -3497,11 +3299,11 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		 */
 		public static Item [] PRODUCTITEMS=new Item[]{
 				new Item("empty",	""),
-				new Item("containArea",	"产品占地面积"),	
-				new Item("buildArea",	"产品建筑面积"),	
-				new Item("sellArea",	"产品可售面积"),	
-//				new Item("groundArea",	"产品总地上建筑面积"),	
-//				new Item("underGroundArea",	"产品总地下建筑面积"),
+				new Item("containArea",	"产品总占地面积"),	
+				new Item("buildArea",	"产品总建筑面积"),	
+				new Item("sellArea",	"产品总可售面积"),	
+				new Item("groundArea",	"产品总地上建筑面积"),	
+				new Item("underGroundArea",	"产品总地下建筑面积"),
 				new Item("entityIndex",	"实体指标")
 //				new Item("cubageRate",	"容积率"),	
 //				new Item("productRate",	"产品比例"),	
@@ -3513,16 +3315,16 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		/**
 		 * 汇总表产品分摊使用指标
 		 */
-		public static Item [] SPLITITEMS = new Item[] {
-				new Item("containArea", "占地面积"),
+		public static Item [] SPLITITEMS = new Item[] { 
+				new Item("man", "指定分摊"), 
 				new Item("buildArea", "建筑面积"), 
 				new Item("sellArea", "可售面积"),
-				new Item("man", "指定分摊"), 
-//				new Item("cubageRate", "容积率"), 
-//				new Item("productRate", "产品比例"), 
-//				new Item("unitArea", "平均每户面积"), 
-//				new Item("units", "单元数"),
-//				new Item("doors", "户数	"),
+				new Item("containArea", "占地面积"),
+				new Item("cubageRate", "容积率"), 
+				new Item("productRate", "产品比例"), 
+				new Item("unitArea", "平均每户面积"), 
+				new Item("units", "单元数"),
+				new Item("doors", "户数	"),
 
 		};
 
@@ -3679,40 +3481,13 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
         File tempFile = File.createTempFile("eastemp",".xls");
         path = tempFile.getCanonicalPath();
 
-        Object[] key = planIndexTables.keySet().toArray(); 
-        List tablesExport=new ArrayList();
-        for(int i=0;i<tables.size();i++){
-        	tablesExport.add(tables.get(i));
-        	if(i==1){
-        		for (int k = 0; k < key.length; k++) {
-        			String productKey=key[k].toString();
-        			KDTable table=(KDTable) planIndexTables.get(productKey);
-        			tablesExport.add(table);
-        		}
-        	}
-        }
-        int ii=1;
-		if(this.isHasCompareEntry){
-			ii=2;
-		}
-		
-        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[tablesExport.size()];
-        for(int i =0;i<tablesExport.size();i++)
+
+
+        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[tables.size()];
+        for(int i =0;i<tables.size();i++)
         {
-            tablesVO[i] = new KDTables2KDSBookVO((KDTable)tablesExport.get(i));
-            String title ="";
-            if(i>1&&i<=key.length+1){
-            	if(i-ii-1>0){
-            		title=planIndexKey+"-"+tabPlanIndexEntry.getTitleAt(i-ii-1);
-            	}else{
-            		title=tabPlanIndexEntry.getTitleAt(i-ii-1);
-            	}
-            }else if(i<=1){
-            	title=plTables.getTitleAt(i+ii);
-            }else{
-            	title=plTables.getTitleAt(i-key.length+ii+1);
-            }
-            
+            tablesVO[i] = new KDTables2KDSBookVO((KDTable)tables.get(i));
+            String title = plTables.getTitleAt(i+1);
             title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
 			tablesVO[i].setTableName(title);
         }
@@ -3833,12 +3608,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
     	}
     	for(Iterator iter=info.getConstrEntrys().iterator();iter.hasNext();){
     		((ConstructPlanIndexEntryInfo)iter.next()).setId(null);
-    	}
-    	for(Iterator iter=info.getNewPlanIndexEntry().iterator();iter.hasNext();){
-    		((NewPlanIndexInfo)iter.next()).setId(null);
-    	}
-    	for(Iterator iter=info.getNewPlanIndexEntryPT().iterator();iter.hasNext();){
-    		((NewPlanIndexPTInfo)iter.next()).setId(null);
     	}
     	PlanIndexInfo planIndex=(PlanIndexInfo)editData.get("PlanIndex");
     	if(planIndex==null) return;
@@ -4011,7 +3780,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 						projectTypeId=((ProjectTypeInfo)v).getId().toString();
 						
 					}else{
-						MsgBox.showWarning(getplTables(), "公摊必须先设置项目系列");
+						MsgBox.showWarning(getplTables(), "六类公摊必须先设置项目系列");
 						e.setCanceled(true);
 						return;
 					}
@@ -4023,20 +3792,20 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				selector.setIsPrice(isPrice);
 				if(!isPrice){
 					//系数要先设置指标
-//					if(row.getCell("indexName").getValue() instanceof Item){
-//						String key = ((Item)row.getCell("indexName").getValue()).key;
-//						if(key==null||key.equals("empty")){
-//							MsgBox.showWarning(getplTables(), "请先选择指标");
-//							e.setCanceled(true);
-//							return;
-//						}
-//						selector.setIndex(key);
-//						
-//					}else{
-//						MsgBox.showWarning(getplTables(), "请先选择指标");
-//						e.setCanceled(true);
-//						return;
-//					}
+					if(row.getCell("indexName").getValue() instanceof Item){
+						String key = ((Item)row.getCell("indexName").getValue()).key;
+						if(key==null||key.equals("empty")){
+							MsgBox.showWarning(getplTables(), "请先选择指标");
+							e.setCanceled(true);
+							return;
+						}
+						selector.setIndex(key);
+						
+					}else{
+						MsgBox.showWarning(getplTables(), "请先选择指标");
+						e.setCanceled(true);
+						return;
+					}
 				}else{
 					selector.setIndex(null);
 				}
@@ -4568,142 +4337,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		compareTables.put(productType, tblCompareEntry);
 		return tblCompareEntry;
 	}
-	public KDTable initPlanIndexTable(ProductTypeInfo productType){
-		KDTable tblPlanIndex=new KDTable();
-		tblPlanIndex.setUserObject(productType);
-		tblPlanIndex.checkParsed();
-		tblPlanIndex.addHeadRow();
-		IColumn config=tblPlanIndex.addColumn();
-		config.setKey("config");
-		config.getStyleAttributes().setLocked(true);
-		tblPlanIndex.getHeadRow(0).getCell("config").setValue("规划指标");
-		config.setWidth(400);
-		
-		IColumn value=tblPlanIndex.addColumn();
-		value.setKey("value");
-		tblPlanIndex.getHeadRow(0).getCell("value").setValue("值");
-		value.setWidth(180);
-		
-		IColumn des=tblPlanIndex.addColumn();
-		des.setKey("des");
-		des.getStyleAttributes().setLocked(true);
-		tblPlanIndex.getHeadRow(0).getCell("des").setValue("备注");
-		des.setWidth(300);
-		
-		IColumn remark=tblPlanIndex.addColumn();
-		remark.setKey("remark");
-		remark.getStyleAttributes().setLocked(true);
-		tblPlanIndex.getHeadRow(0).getCell("remark").setValue("说明");
-		remark.setWidth(400);
-		
-		if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
-			des.getStyleAttributes().setLocked(false);
-		}else{
-			des.getStyleAttributes().setLocked(true);
-		}
-		if(productType==null){
-			tabPlanIndexEntry.add(tblPlanIndex,planIndexKey);
-			planIndexTables.put(planIndexKey, tblPlanIndex);
-		}else{
-			tabPlanIndexEntry.add(tblPlanIndex,productType.getName());
-			planIndexTables.put(productType.getId().toString(), tblPlanIndex);
-		}
-		return tblPlanIndex;
-	}
-	public void loadPlanIndexEntry(NewPlanIndexCollection col){
-		CRMHelper.sortCollection(col, "number", true);
-		for(int i=0;i<col.size();i++){
-			NewPlanIndexInfo entry=col.get(i);
-			ProductTypeInfo productType=entry.getProductType();
-			String productTypeKey=planIndexKey;
-			KDTable table=null;
-			if(productType!=null){
-				productTypeKey=productType.getId().toString();
-			}
-			table=(KDTable) planIndexTables.get(productTypeKey);
-			if(table==null){
-				table=initPlanIndexTable(productType);
-				table.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
-					public void editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) {
-						try {
-							tblPlanIndex_editStopped(e);
-						} catch (Exception exc) {
-							handUIException(exc);
-						}
-					}
-		        });
-			}
-			IRow row=table.addRow();
-			row.setUserObject(entry);
-			String blk="";
-			for(int k=1;k<entry.getConfig().getLevel();k++){
-				blk=blk+"        ";
-			}
-			newPlanIndexMap.put(productTypeKey+entry.getNumber(), row);
-			row.getCell("config").setValue(blk+entry.getName());
-			row.getCell("remark").setValue(entry.getRemark());
-			row.getCell("des").setValue(entry.getDes());
-			if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.RATE)){
-				KDFormattedTextField amount = new KDFormattedTextField();
-				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
-				amount.setDataVerifierType(KDFormattedTextField.NO_VERIFIER);
-				amount.setPrecision(2);
-				KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
-				row.getCell("value").setEditor(amountEditor);
-				
-				ObjectValueRender render_scale = new ObjectValueRender();
-				render_scale.setFormat(new IDataFormat() {
-					public String format(Object o) {
-						if (!FDCHelper.isEmpty(o)&&o instanceof BigDecimal) {
-							return FDCHelper.multiply(o, new BigDecimal(100)).setScale(2, BigDecimal.ROUND_HALF_UP).toString()+"%";
-						}
-						return null;
-					}
-				});
-				row.getCell("value").setRenderer(render_scale);
-				
-				if(entry.getValue()!=null)row.getCell("value").setValue(new BigDecimal(entry.getValue()));
-			}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.DIGITAL)){
-				KDFormattedTextField amount = new KDFormattedTextField();
-				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
-				amount.setDataVerifierType(KDFormattedTextField.NO_VERIFIER);
-				amount.setPrecision(2);
-				KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
-				row.getCell("value").setEditor(amountEditor);
-				
-				if(entry.getValue()!=null)row.getCell("value").setValue(new BigDecimal(entry.getValue()));
-			}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.INT)){
-				KDFormattedTextField amount = new KDFormattedTextField();
-				amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
-				amount.setDataVerifierType(KDFormattedTextField.NO_VERIFIER);
-				amount.setPrecision(0);
-				KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
-				row.getCell("value").setEditor(amountEditor);
-				
-				if(entry.getValue()!=null)row.getCell("value").setValue(new BigDecimal(entry.getValue()));
-			}else{
-				row.getCell("value").setValue(entry.getValue());
-			}
-			if(getOprtState().equals(OprtState.ADDNEW) ||getOprtState().equals(OprtState.EDIT)){
-				row.getCell("value").getStyleAttributes().setLocked(false);
-			}else{
-				row.getCell("value").getStyleAttributes().setLocked(true);
-			}
-			if(!entry.getConfig().isIsEdit()){
-				row.getCell("value").getStyleAttributes().setLocked(true);
-			}
-			if(entry.getConfig().getLevel()==1){
-				row.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_TOTAL_BG_COLOR);
-				row.getStyleAttributes().setBold(true);
-			}else if(!entry.getConfig().isIsEdit()){
-				row.getCell("value").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
-			}
-			
-			if(entry.getFormula()!=null)row.getCell("value").getStyleAttributes().setBold(true);
-		}
-	}
 	public void setTotalColor(){
-		if(this.measureCollectTable==null||totalColor==null)return;
+		if(this.measureCollectTable==null)return;
 		for(int j=0;j<this.measureCollectTable.getTable().getRowCount();j++){
 			String longNumber=(String) this.measureCollectTable.getTable().getRow(j).getCell("acctNumber").getValue();
 			if(totalColor.containsKey(longNumber)){
@@ -4769,7 +4404,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		for(int i=3;i<tables.size();i++){
 			KDTable table=(KDTable) tables.get(i);
 			ProductTypeInfo product = (ProductTypeInfo) table.getHeadRow(0).getUserObject();
-			String productKey="公摊及期间费";
+			String productKey="六类公摊及期间费";
 			if(product!=null)productKey=product.getName();
 			for (int j = 0; j < table.getRowCount(); j++) {
 				IRow row = table.getRow(j);
@@ -4880,7 +4515,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		_builder.appendSql(" group by costAccount.flongNumber,costAccount.fname_l2,product.fname_l2");
 		rowSet = _builder.executeQuery();
 		while(rowSet.next()){
-			String productKey="公摊及期间费";
+			String productKey="六类公摊及期间费";
 			if(rowSet.getString("productKey")!=null)productKey=rowSet.getString("productKey");
 			String longNumber = rowSet.getString("longNumber").replaceAll("!", "\\.");
 			String name=rowSet.getString("name");
@@ -4935,7 +4570,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			MeasureEntryInfo nowMEntry=(MeasureEntryInfo) entryMap.get(entryKey[k]);
 			String nowNumber=nowMEntry.getCostAccount().getLongNumber().replaceAll("!", "\\.");
 			String nowName=nowMEntry.getCostAccount().getName();
-			String productKey="公摊及期间费";
+			String productKey="六类公摊及期间费";
 			if(nowMEntry.getProduct()!=null)productKey=nowMEntry.getProduct().getName();
 			
 			MeasureCostCompareInfo entry=new MeasureCostCompareInfo();
@@ -4979,7 +4614,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		PlanIndexEntryCollection ptCol=PlanIndexEntryFactory.getRemoteInstance().getPlanIndexEntryCollection("select product.name from where parent.headId='"+id+"' and product.id is not null");
 		initCompareTable("汇总");
-		initCompareTable("公摊及期间费");
+		initCompareTable("六类公摊及期间费");
 		for(int i=0;i<ptCol.size();i++){
 			initCompareTable(ptCol.get(i).getProduct().getName());
 		}
@@ -5122,115 +4757,4 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		return true;
 	}
-	private BigDecimal cal(PlanIndexFormulaTypeEnum type,String formula,String productTypeKey){
-		Pattern pt = Pattern.compile("([\\(]*)([^\\+|^\\-|^\\*|^\\/|^\\(|^\\))]{1,})([\\+|\\-|\\*|\\/|\\(|\\)]*)");
-
-		Matcher matcher = pt.matcher(formula);
-		
-		String itemNumber = null;
-		StringBuffer maskString = new StringBuffer();
-		int count = 0;
-		do{
-			if(!matcher.find())break;
-			itemNumber = matcher.group(2);
-			maskString.append(matcher.group(1));
-			BigDecimal value=FDCHelper.ZERO;
-			if(type.equals(PlanIndexFormulaTypeEnum.NORMAL)){
-				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+itemNumber);
-				NewPlanIndexInfo entry=(NewPlanIndexInfo) valueRow.getUserObject();
-				if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-					value=cal(entry.getFormulaType(),entry.getFormula(),productTypeKey);
-				}else{
-					if(valueRow!=null&&valueRow.getCell("value").getValue()!=null){
-						value=new BigDecimal(valueRow.getCell("value").getValue().toString());
-						if(((NewPlanIndexInfo) valueRow.getUserObject()).getFieldType().equals(PlanIndexFieldTypeEnum.RATE)){
-							value=FDCHelper.divide(value, new BigDecimal(100), 4, BigDecimal.ROUND_HALF_UP);
-						}
-					}
-				}
-			}else{
-				Object[] ptkey = planIndexTables.keySet().toArray(); 
-				for (int kk = 0; kk < ptkey.length; kk++) {
-					String productKeyPT=ptkey[kk].toString();
-					if(planIndexKey.equals(productKeyPT)){
-						continue;
-					}
-					IRow valueRow=(IRow)newPlanIndexMap.get(productKeyPT+itemNumber);
-					NewPlanIndexInfo entry=(NewPlanIndexInfo) valueRow.getUserObject();
-					if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-						value=FDCHelper.add(value,cal(entry.getFormulaType(),entry.getFormula(),productKeyPT));
-					}else{
-						value=FDCHelper.add(value, valueRow.getCell("value").getValue());
-					}
-				}
-			}
-			maskString.append(value);
-			maskString.append(matcher.group(3));
-		} while(true);
-		
-		BigDecimal value=Calc.calc(maskString.toString());
-				
-		if(value==null){
-			value=FDCHelper.ZERO;
-		}
-		return value;
-	}
-	protected void tblPlanIndex_editStopped(KDTEditEvent e)throws Exception {
-		if(e.getColIndex()!=1)return;
-		Object[] key = planIndexTables.keySet().toArray(); 
-		for (int k = 0; k < key.length; k++) {
-			String productKey=key[k].toString();
-			KDTable table=(KDTable) planIndexTables.get(productKey);
-			ProductTypeInfo productType=(ProductTypeInfo) table.getUserObject();
-			String productTypeKey=planIndexKey;
-			if(productType!=null)productTypeKey=productType.getId().toString();
-			for(int i=0;i<table.getRowCount();i++){
-				IRow row=table.getRow(i);
-				NewPlanIndexInfo entry=(NewPlanIndexInfo) row.getUserObject();
-				if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-					BigDecimal value=cal(entry.getFormulaType(),entry.getFormula(),productTypeKey);
-					if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.DIGITAL)){
-						value=value.setScale(2, BigDecimal.ROUND_HALF_UP);
-					}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.INT)){
-						value=value.setScale(0, BigDecimal.ROUND_HALF_UP);
-					}
-					row.getCell("value").setValue(value);
-				}
-				if(entry.getProp()!=null&&entry.getProp().length()>0){
-					if(!(row.getCell("value").getValue() instanceof String)){
-						if(productType==null&&((ICell)planIndexTable.binder.getBindCellMap().get(entry.getProp()))!=null){
-							ICell cell=((ICell)planIndexTable.binder.getBindCellMap().get(entry.getProp()));
-							cell.setValue(row.getCell("value").getValue());
-							KDTEditEvent event=new KDTEditEvent(table);
-							event.setColIndex(cell.getColumnIndex());
-							event.setRowIndex(cell.getRowIndex());
-							event.setValue(cell.getValue());
-							planIndexTable.table_editStopped(event);
-						}else{
-							for(int j=planIndexTable.dynRowBase;j<planIndexTable.getTable().getRowCount()-1;j++){
-								IRow planIndexRow=planIndexTable.getTable().getRow(j);
-								if(planIndexRow.getCell(0).getValue() instanceof PlanIndexTypeEnum){
-									Object value = planIndexRow.getCell(1).getValue();
-									if(value==null||value.toString().trim().length()<1){
-										continue;
-									}
-									if(value instanceof ProductTypeInfo&&((ProductTypeInfo)value).getId().toString().equals(productType.getId().toString())
-											&&planIndexTable.entryBinder.get(entry.getProp())!=null){
-										ICell cell=planIndexRow.getCell(Integer.valueOf(planIndexTable.entryBinder.get(entry.getProp()).toString()));
-										cell.setValue(row.getCell("value").getValue());
-										KDTEditEvent event=new KDTEditEvent(table);
-										event.setColIndex(cell.getColumnIndex());
-										event.setRowIndex(cell.getRowIndex());
-										event.setValue(cell.getValue());
-										planIndexTable.table_editStopped(event);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	
 }
