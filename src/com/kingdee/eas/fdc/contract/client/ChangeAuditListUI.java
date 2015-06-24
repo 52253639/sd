@@ -7,6 +7,7 @@ import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -20,6 +21,7 @@ import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
+import com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
@@ -595,6 +597,21 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
         					SysUtil.abort();
         			   }
         			   ui.loadFields();
+        			   
+        			   BigDecimal amount = FDCHelper.ZERO;
+        			   int count = ui.kdtSuppEntry.getRowCount();
+        			   for(int j=0;j<count;j++){
+        				   if(j%ui.suppRows==8){
+        					   Object obj  = ui.kdtSuppEntry.getCell(j-1, "content").getValue();
+        					   Object contentCA = ui.kdtSuppEntry.getCell(j, "content").getValue();
+        					   BigDecimal newCostAmt = FDCHelper.toBigDecimal(obj).multiply(FDCHelper.toBigDecimal(contentCA));
+        					   ui.kdtSuppEntry.getCell(j+1, "content").setValue(newCostAmt);
+        					   
+        					   amount = amount.add((FDCHelper.toBigDecimal(newCostAmt)));
+        				   }
+        			   }
+        			   ui.editData.setTotalCost(amount);
+        			   ui.storeFields();
         			   ui.verifyInputForSave();
         			   ui.verfySuppEntrys();
         			   ui.runSubmit();
