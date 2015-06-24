@@ -152,13 +152,15 @@ public class RevDetailVoucherReportFacadeControllerBean extends AbstractRevDetai
 		
 	    Boolean isAll=params.getBoolean("isAll");
     	StringBuffer sb=new StringBuffer();
-    	
-    	sb.append(" select distinct md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fid spId,room.fid roomId,customerEntry.ffdcCustomerId customerId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
+    	sb.append(" select * from (select distinct t.mdNumber,t.mdId,t.conId,t.spId,t.roomId,t.customerId,t.sellProject,t.build,t.room,t.buildArea,t.tenancyArea,");
+    	sb.append(" t.conNumber,t.conName,t.customer,t.startDate,t.endDate,t.freeDays,t.dealTotal,");
+    	sb.append(" t.dealPrice,t.roomPrice,t.moneyDefine from ("); 
+    	sb.append(" select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fid spId,room.fid roomId,customerEntry.ffdcCustomerId customerId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
     	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenancyRoomPayListEntry pay on pay.ftenRoomId=roomEntry.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
-    	sb.append(" where md.fid is not null and md.fmoneyType in('RentAmount','PeriodicityAmount')");
+    	sb.append(" where md.fid is not null");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','Expiration')");
     	}else{
@@ -187,15 +189,52 @@ public class RevDetailVoucherReportFacadeControllerBean extends AbstractRevDetai
     	if(endDate!=null){
     		sb.append(" and con.fendDate>{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(startDate))+ "'}");
     	}
-    	sb.append(" order by con.fnumber,md.fnumber");
+    	
+    	sb.append(" union all select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fid spId,room.fid roomId,customerEntry.ffdcCustomerId customerId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
+    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
+    	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
+    	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
+    	sb.append(" left join T_TEN_TenBillOtherPay pay on pay.fheadId=con.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
+    	sb.append(" where md.fid is not null");
+    	if(isAll){
+    		sb.append(" and con.ftenancyState in('Audited','Executing','Expiration')");
+    	}else{
+    		sb.append(" and con.ftenancyState in('Audited','Executing')");
+    	}
+    	if(sellProject!=null&&!"".equals(sellProject)){
+    		sb.append(" and sp.fid in("+sellProject+")");
+    	}else{
+    		sb.append(" and sp.fid in('null')");
+    	}
+    	if(room!=null&&!"".equals(room.toString())){
+    		sb.append(" and room.fid in("+room+")");
+    	}
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
+    		sb.append(" and con.fid in("+tenancyBill+")");
+    	}
+    	if(customer!=null&&!"".equals(customer.toString())){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
+    	}
+    	if(moneyDefine!=null&&!"".equals(moneyDefine.toString())){
+    		sb.append(" and md.fid in("+moneyDefine+")");
+    	}
+    	if(startDate!=null){
+    		sb.append(" and con.fstartDate<={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(endDate))+ "'}");
+    	}
+    	if(endDate!=null){
+    		sb.append(" and con.fendDate>{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(startDate))+ "'}");
+    	}
+		
+    	sb.append(" )t )t order by t.conNumber,mdNumber");
     	
     	RptRowSet rs = executeQuery(sb.toString(), null, ctx);
 		params.setObject("rs", rs);
 		
 		sb=new StringBuffer();
-    	sb.append(" select md.fid mdId,con.fid conId,sum(isnull(pay.fappAmount,0)) appAmount");
+		sb.append(" select t.mdId,t.conId,sum(t.appAmount) appAmount from (");
+    	sb.append(" select md.fid mdId,con.fid conId,isnull(pay.fappAmount,0) appAmount");
     	sb.append(" from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
-    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where md.fid is not null and md.fmoneyType in('RentAmount','PeriodicityAmount')");
+    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where md.fid is not null");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','Expiration')");
     	}else{
@@ -224,7 +263,39 @@ public class RevDetailVoucherReportFacadeControllerBean extends AbstractRevDetai
     	if(endDate!=null){
     		sb.append(" and con.fendDate>{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(startDate))+ "'}");
     	}
-    	sb.append(" group by md.fid,con.fid");
+    	
+    	sb.append(" union all select md.fid mdId,con.fid conId,isnull(pay.fappAmount,0) appAmount");
+    	sb.append(" from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
+    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where md.fid is not null");
+    	if(isAll){
+    		sb.append(" and con.ftenancyState in('Audited','Executing','Expiration')");
+    	}else{
+    		sb.append(" and con.ftenancyState in('Audited','Executing')");
+    	}
+    	if(sellProject!=null&&!"".equals(sellProject)){
+    		sb.append(" and sp.fid in("+sellProject+")");
+    	}else{
+    		sb.append(" and sp.fid in('null')");
+    	}
+    	if(room!=null&&!"".equals(room.toString())){
+    		sb.append(" and room.fid in("+room+")");
+    	}
+    	if(tenancyBill!=null&&!"".equals(tenancyBill.toString())){
+    		sb.append(" and con.fid in("+tenancyBill+")");
+    	}
+    	if(customer!=null&&!"".equals(customer.toString())){
+    		sb.append(" and EXISTS(select ftenancyBillId from T_TEN_TenancyCustomerEntry where ffdccustomerid in("+customer+") and con.fid=ftenancyBillId)");
+    	}
+    	if(moneyDefine!=null&&!"".equals(moneyDefine.toString())){
+    		sb.append(" and md.fid in("+moneyDefine+")");
+    	}
+    	if(startDate!=null){
+    		sb.append(" and con.fstartDate<={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(endDate))+ "'}");
+    	}
+    	if(endDate!=null){
+    		sb.append(" and con.fendDate>{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(startDate))+ "'}");
+    	}
+    	sb.append(" )t group by t.mdId,t.conId");
     	RptRowSet detailrs = executeQuery(sb.toString(), null, ctx);
 		params.setObject("detailrs", detailrs);
 		return params;

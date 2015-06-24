@@ -91,9 +91,6 @@ public class RevDetailVoucherReportFilterUI extends AbstractRevDetailVoucherRepo
 		EntityViewInfo view = new EntityViewInfo();
 		filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("sysType", MoneySysTypeEnum.TENANCYSYS_VALUE));
-		filter.getFilterItems().add(new FilterItemInfo("moneyType", MoneyTypeEnum.RENTAMOUNT_VALUE));
-		filter.getFilterItems().add(new FilterItemInfo("moneyType", MoneyTypeEnum.PERIODICITYAMOUNT_VALUE));
-		filter.setMaskString("#0 and (#1 or #2)");
 		view.setFilter(filter);
 		this.prmtMoneyDefine.setEntityViewInfo(view);
 	
