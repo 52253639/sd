@@ -103,6 +103,8 @@ import com.kingdee.eas.fdc.contract.ContractPayPlanEntryInfo;
 import com.kingdee.eas.fdc.contract.ContractPayPlanInfo;
 import com.kingdee.eas.fdc.contract.FDCUtils;
 import com.kingdee.eas.fdc.contract.client.ContractPayPlanEditUI;
+import com.kingdee.eas.fdc.contract.client.ContractWithoutTextEditUI;
+import com.kingdee.eas.fdc.contract.client.PayRequestBillEditUI;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractEconomyCollection;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractEconomyFactory;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractEconomyInfo;
@@ -557,6 +559,12 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 		column.setKey("bgItem");
 		headRow.getCell("bgItem").setValue("‘§À„œÓƒø");
 		
+		this.payTable.addKDTMouseListener(new KDTMouseListener() {
+			public void tableClicked(KDTMouseEvent e) {
+				paytable_Clicked(e);
+			}
+		});
+		
 		this.payTable.getColumn("amount").setEditor(amountEditor);
 		this.payTable.getColumn("amount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
 		this.payTable.getColumn("amount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
@@ -612,6 +620,33 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 							IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(uiClass, uiContext, null, OprtState.VIEW);
 							uiWindow.show();
 						}
+					} catch (UIException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+	protected void paytable_Clicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e){
+		KDTable table = (KDTable) e.getSource();
+		if (e.getType() == KDTStyleConstants.BODY_ROW && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
+			if(table.getColumnKey(e.getColIndex()).equals("number")){
+				ProjectMonthPlanGatherPayEntryInfo entry=(ProjectMonthPlanGatherPayEntryInfo) table.getRow(e.getRowIndex()).getUserObject();
+				if(entry.getPayRequestBill()!=null){
+					UIContext uiContext = new UIContext(this);
+					uiContext.put("ID", entry.getPayRequestBill().getId());
+					try {
+						IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(PayRequestBillEditUI.class.getName(), uiContext, null, OprtState.VIEW);
+						uiWindow.show();
+					} catch (UIException e1) {
+						e1.printStackTrace();
+					}
+				}else{
+					UIContext uiContext = new UIContext(this);
+					uiContext.put("ID", entry.getContractWithoutText().getId());
+					try {
+						IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(ContractWithoutTextEditUI.class.getName(), uiContext, null, OprtState.VIEW);
+						uiWindow.show();
 					} catch (UIException e1) {
 						e1.printStackTrace();
 					}
