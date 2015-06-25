@@ -153,6 +153,7 @@ import com.kingdee.eas.fdc.finance.ProjectYearPlanTotalEntryCollection;
 import com.kingdee.eas.fdc.finance.ProjectYearPlanTotalEntryFactory;
 import com.kingdee.eas.fdc.finance.ProjectYearPlanTotalEntryInfo;
 import com.kingdee.eas.fdc.finance.VersionTypeEnum;
+import com.kingdee.eas.fdc.merch.common.KDTableHelper;
 import com.kingdee.eas.fdc.sellhouse.BankPaymentInfo;
 import com.kingdee.eas.fdc.sellhouse.BaseTransactionInfo;
 import com.kingdee.eas.fdc.sellhouse.ChangeManageFactory;
@@ -161,6 +162,7 @@ import com.kingdee.eas.fdc.sellhouse.TransactionStateEnum;
 import com.kingdee.eas.fdc.sellhouse.client.BankPaymentEditUI;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.client.UIPopupManager;
+import com.kingdee.eas.ma.budget.BgItemFactory;
 import com.kingdee.eas.ma.budget.BgItemInfo;
 import com.kingdee.eas.ma.budget.BgItemObject;
 import com.kingdee.eas.ma.budget.client.NewBgItemDialog;
@@ -617,10 +619,6 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 		headRow.getCell("name").setValue("名称");
 
 		column=this.payTable.addColumn();
-		column.setKey("amount");
-		headRow.getCell("amount").setValue("申请金额");
-		
-		column=this.payTable.addColumn();
 		column.setKey("bizDate");
 		headRow.getCell("bizDate").setValue("业务日期");
 		
@@ -630,8 +628,16 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 		headRow.getCell("supplier").setValue("供应商");
 		
 		column=this.payTable.addColumn();
+		column.setKey("amount");
+		headRow.getCell("amount").setValue("申请金额");
+		
+		column=this.payTable.addColumn();
 		column.setKey("actPayAmount");
 		headRow.getCell("actPayAmount").setValue("已付金额");
+		
+		column=this.payTable.addColumn();
+		column.setKey("unPayAmount");
+		headRow.getCell("unPayAmount").setValue("未付金额");
 		
 		column=this.payTable.addColumn();
 		
@@ -673,13 +679,16 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 		this.payTable.getColumn("actPayAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
 		this.payTable.getColumn("actPayAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
 		
+		this.payTable.getColumn("unPayAmount").setEditor(amountEditor);
+		this.payTable.getColumn("unPayAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+		this.payTable.getColumn("unPayAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
+		
 		this.payTable.setName("payTable");
 		
 		ActionMap actionMap = this.contractTable.getActionMap();
 		actionMap.remove(KDTAction.CUT);
 		actionMap.remove(KDTAction.DELETE);
 		actionMap.remove(KDTAction.PASTE);
-		
 		
 		KDContainer contEntry = new KDContainer();
 		contEntry.setName(this.payTable.getName());
@@ -693,6 +702,12 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 		btnDeleteRowinfo.setSize(new Dimension(140, 19));
 		
         this.pnlBig.add(contEntry, "付款申请未完成支付数据汇总");
+        
+        String[] fields=new String[this.payTable.getColumnCount()];
+		for(int i=0;i<this.payTable.getColumnCount();i++){
+			fields[i]=this.payTable.getColumnKey(i);
+		}
+		KDTableHelper.setSortedColumn(this.payTable,fields);
 	}
 	private void table_editStopped(KDTEditEvent e) {
 		KDTable table = (KDTable) e.getSource();
@@ -802,7 +817,7 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 					} catch (UIException e1) {
 						e1.printStackTrace();
 					}
-				}else{
+				}else if(entry.getContractWithoutText()!=null){
 					UIContext uiContext = new UIContext(this);
 					uiContext.put("ID", entry.getContractWithoutText().getId());
 					try {
@@ -1149,25 +1164,30 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 			ProjectMonthPlanGatherPayEntryInfo entry=this.editData.getPayEntry().get(i);
 			IRow addrow=this.payTable.addRow();
 			addrow.setUserObject(entry);
-			String number=entry.getPayRequestBill().getNumber();
-			String name=entry.getPayRequestBill().getName();
-			Date bizDate=entry.getPayRequestBill().getBookedDate();
-			SupplierInfo supplier=entry.getPayRequestBill().getRealSupplier();
-			
-			if(entry.getContractWithoutText()!=null){
+			String number=null;
+			String name=null;
+			Date bizDate=null;
+			SupplierInfo supplier=null;
+			if(entry.getPayRequestBill()!=null){
+				number=entry.getPayRequestBill().getContractNo();
+				name=entry.getPayRequestBill().getContractName();
+				bizDate=entry.getPayRequestBill().getBookedDate();
+				supplier=entry.getPayRequestBill().getRealSupplier();
+			}else if(entry.getContractWithoutText()!=null){
 				number=entry.getContractWithoutText().getNumber();
 				name=entry.getContractWithoutText().getName();
 				bizDate=entry.getContractWithoutText().getBookedDate();
 				supplier=entry.getContractWithoutText().getReceiveUnit();
 			}
 			addrow.getCell("number").setValue(number);
-			addrow.getCell("name").setValue(number);
+			addrow.getCell("name").setValue(name);
 			addrow.getCell("amount").setValue(entry.getAmount());
 			addrow.getCell("bizDate").setValue(bizDate);
 			if(supplier!=null)
 				addrow.getCell("supplier").setValue(supplier.getName());
 			
 			addrow.getCell("actPayAmount").setValue(entry.getActPayAmount());
+			addrow.getCell("unPayAmount").setValue(FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount()));
 			addrow.getCell("bgItem").setValue(entry.getBgItem());
 			if(entry.getBgItem()!=null&&bgRowMap.containsKey(entry.getBgItem().getId().toString())){
 				String key=spYear+"year"+spMonth+"m";
@@ -1201,7 +1221,7 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 				spMonth++;
 			}
 		}
-		CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount"});
+		CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount","unPayAmount"});
 		CRMClientHelper.getFootRow(this.contractTable, amountColoun);
 		CRMClientHelper.getFootRow(this.contractTable, new String[]{"lastPrice","actPayAmount"});
 		CRMClientHelper.getFootRow(this.bgTable, amountColoun);
@@ -1337,6 +1357,16 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 					}
 				}
 			}
+		}
+		for(int i=0;i<this.payTable.getRowCount();i++){
+			IRow row=this.payTable.getRow(i);
+			BgItemInfo bgItem=(BgItemInfo) row.getCell("bgItem").getValue();
+			if(bgItem==null){
+				FDCMsgBox.showWarning(this,"预算项目不能为空！");
+				this.payTable.getEditManager().editCellAt(i, this.payTable.getColumnIndex("bgItem"));
+				SysUtil.abort();
+			}
+			
 		}
 		checkExecuteAmount();
 		checkYearAmount();
@@ -1570,8 +1600,6 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
         	this.editData.getPayEntry().clear();
         	this.storeFields();
         	
-        	Map bgItemMap=new HashMap();
-        	
         	int comYear=this.spYear.getIntegerVlaue().intValue();
     		int comMonth=this.spMonth.getIntegerVlaue().intValue();
     		Calendar cal = Calendar.getInstance();
@@ -1797,10 +1825,6 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
                 				gdEntry.setAmt(dEntry.getAmt());
                 				
                 				entry.getDateEntry().add(gdEntry);
-                				
-                				if(dEntry.getYear()==spYear&&dEntry.getMonth()==spMonth){
-                					bgItemMap.put(id, dEntry.getBgItem());
-                				}
             				}
             			}
         			}else{
@@ -1972,16 +1996,20 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
     		}
     		
     		FDCSQLBuilder _builder = new FDCSQLBuilder();
-			_builder.appendSql("select bill.fid billId,pay.fid id,pay.famount amount,isnull(t.amount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId ");
-			_builder.appendSql("left join (select ffdcPayReqId,sum(FAmount) amount from t_cas_paymentbill where fbillstatus=15 group by ffdcPayReqId) t on t.ffdcPayReqId=pay.fid where pay.famount!=t.amount and bill.fid is null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
-			_builder.appendSql("union all select bill.fid billId,bill.fid id,bill.famount amount,isnull(t.amount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId ");
-			_builder.appendSql("left join (select ffdcPayReqId,sum(FAmount) amount from t_cas_paymentbill where fbillstatus=15 group by ffdcPayReqId) t on t.ffdcPayReqId=pay.fid where bill.famount!=t.amount and bill.fid is not null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
-			
+    		_builder.appendSql("select * from ( ");
+			_builder.appendSql("select pay.fbookedDate bizDate,bgEntry.fbgItemId bgItemId,bill.fid billId,pay.fid id,pay.famount amount,isnull(t.amount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId left join T_CON_PayRequestBillBgEntry bgEntry on bgEntry.fheadId=pay.fid");
+			_builder.appendSql("left join (select ffdcPayReqId,isnull(sum(FAmount),0) amount from t_cas_paymentbill where fbillstatus=15 group by ffdcPayReqId) t on t.ffdcPayReqId=pay.fid where (pay.famount!=t.amount or t.amount is null) and bill.fid is null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
+			_builder.appendSql("union all select bill.fbookedDate bizDate,bgEntry.fbgItemId bgItemId,bill.fid billId,bill.fid id,bill.famount amount,isnull(t.amount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId left join T_CON_CWTextBgEntry bgEntry on bgEntry.fheadId=pay.fid");
+			_builder.appendSql("left join (select ffdcPayReqId,isnull(sum(FAmount),0) amount from t_cas_paymentbill where fbillstatus=15 group by ffdcPayReqId) t on t.ffdcPayReqId=pay.fid where (bill.famount!=t.amount or t.amount is null) and bill.fid is not null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
+			_builder.appendSql(")t order by t.bizDate");
+			Map bgMap=new HashMap();
 			final IRowSet rowSet = _builder.executeQuery();
 			while(rowSet.next()) {
 				ProjectMonthPlanGatherPayEntryInfo entry=new ProjectMonthPlanGatherPayEntryInfo();
 				if(rowSet.getString("billId")==null){
 					SelectorItemCollection sic=new SelectorItemCollection();
+					sic.add("contractNo");
+					sic.add("contractName");
 					sic.add("realSupplier.name");
 					sic.add("number");
 					sic.add("name");
@@ -1997,8 +2025,16 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 				}
 				entry.setAmount(rowSet.getBigDecimal("amount"));
 				entry.setActPayAmount(rowSet.getBigDecimal("actPayAmount"));
-				if(bgItemMap.containsKey(bgItemMap))
-					entry.setBgItem((BgItemInfo) bgItemMap.get(rowSet.getString("contractId")));
+				if(rowSet.getString("bgItemId")!=null){
+					if(bgMap.containsKey(rowSet.getString("bgItemId"))){
+						entry.setBgItem((BgItemInfo) bgMap.get(rowSet.getString("bgItemId")));
+					}else{
+						BgItemInfo bgItem=BgItemFactory.getRemoteInstance().getBgItemInfo(new ObjectUuidPK(rowSet.getString("bgItemId")));
+						bgMap.put(rowSet.getString("bgItemId"), bgItem);
+						
+						entry.setBgItem(bgItem);
+					}
+				}
 				this.editData.getPayEntry().add(entry);
 			}
 			
@@ -2209,8 +2245,7 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 				if(this.editData.getPayEntry().contains(topValue)){
 					this.editData.getPayEntry().removeObject(topValue);
 				}
-				
-				CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount"});
+				CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount","unPayAmount"});
 			}
 		}
 	}
@@ -2220,13 +2255,15 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 	        File tempFile = File.createTempFile("eastemp",".xls");
 	        path = tempFile.getCanonicalPath();
 
-
-
-	        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[1];
+	        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[3];
             tablesVO[0] = new KDTables2KDSBookVO(this.contractTable);
-            String title ="付款计划明细";
-            title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
-			tablesVO[0].setTableName(title);
+			tablesVO[0].setTableName("付款计划明细");
+			
+			tablesVO[1] = new KDTables2KDSBookVO(this.payTable);
+			tablesVO[1].setTableName("付款申请未完成支付数据汇总");
+				
+			tablesVO[2] = new KDTables2KDSBookVO(this.bgTable);
+			tablesVO[2].setTableName("预算明细");
 	        KDSBook book = null;
 	        book = KDTables2KDSBook.getInstance().exportKDTablesToKDSBook(tablesVO,true,true);
 

@@ -140,6 +140,7 @@ import com.kingdee.eas.fdc.finance.ProjectMonthPlanProEntryInfo;
 import com.kingdee.eas.fdc.finance.ProjectYearPlanTotalEntryCollection;
 import com.kingdee.eas.fdc.finance.ProjectYearPlanTotalEntryFactory;
 import com.kingdee.eas.fdc.finance.VersionTypeEnum;
+import com.kingdee.eas.fdc.merch.common.KDTableHelper;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.ma.budget.BgItemInfo;
 import com.kingdee.eas.ma.budget.client.NewBgItemDialog;
@@ -525,10 +526,6 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 		headRow.getCell("name").setValue("名称");
 
 		column=this.payTable.addColumn();
-		column.setKey("amount");
-		headRow.getCell("amount").setValue("申请金额");
-		
-		column=this.payTable.addColumn();
 		column.setKey("bizDate");
 		headRow.getCell("bizDate").setValue("业务日期");
 		
@@ -538,8 +535,16 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 		headRow.getCell("supplier").setValue("供应商");
 		
 		column=this.payTable.addColumn();
+		column.setKey("amount");
+		headRow.getCell("amount").setValue("申请金额");
+		
+		column=this.payTable.addColumn();
 		column.setKey("actPayAmount");
 		headRow.getCell("actPayAmount").setValue("已付金额");
+		
+		column=this.payTable.addColumn();
+		column.setKey("unPayAmount");
+		headRow.getCell("unPayAmount").setValue("未付金额");
 		
 		column=this.payTable.addColumn();
 		
@@ -573,6 +578,10 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 		this.payTable.getColumn("actPayAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
 		this.payTable.getColumn("actPayAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
 		
+		this.payTable.getColumn("unPayAmount").setEditor(amountEditor);
+		this.payTable.getColumn("unPayAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+		this.payTable.getColumn("unPayAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
+		
 		this.payTable.setName("payTable");
 		
 		ActionMap actionMap = this.contractTable.getActionMap();
@@ -580,13 +589,18 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 		actionMap.remove(KDTAction.DELETE);
 		actionMap.remove(KDTAction.PASTE);
 		
-		
 		KDContainer contEntry = new KDContainer();
 		contEntry.setName(this.payTable.getName());
 		contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        
 		contEntry.getContentPane().add(this.payTable, BorderLayout.CENTER);
 		
         this.pnlBig.add(contEntry, "付款申请未完成支付数据汇总");
+        
+        String[] fields=new String[this.payTable.getColumnCount()];
+		for(int i=0;i<this.payTable.getColumnCount();i++){
+			fields[i]=this.payTable.getColumnKey(i);
+		}
+		KDTableHelper.setSortedColumn(this.payTable,fields);
 	}
 	private void table_editStopped(KDTEditEvent e) {
 		KDTable table = (KDTable) e.getSource();
@@ -870,25 +884,30 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 			ProjectMonthPlanGatherPayEntryInfo entry=payCol.get(i);
 			IRow addrow=this.payTable.addRow();
 			addrow.setUserObject(entry);
-			String number=entry.getPayRequestBill().getNumber();
-			String name=entry.getPayRequestBill().getName();
-			Date bizDate=entry.getPayRequestBill().getBookedDate();
-			SupplierInfo supplier=entry.getPayRequestBill().getRealSupplier();
-			
-			if(entry.getContractWithoutText()!=null){
+			String number=null;
+			String name=null;
+			Date bizDate=null;
+			SupplierInfo supplier=null;
+			if(entry.getPayRequestBill()!=null){
+				number=entry.getPayRequestBill().getContractNo();
+				name=entry.getPayRequestBill().getContractName();
+				bizDate=entry.getPayRequestBill().getBookedDate();
+				supplier=entry.getPayRequestBill().getRealSupplier();
+			}else if(entry.getContractWithoutText()!=null){
 				number=entry.getContractWithoutText().getNumber();
 				name=entry.getContractWithoutText().getName();
 				bizDate=entry.getContractWithoutText().getBookedDate();
 				supplier=entry.getContractWithoutText().getReceiveUnit();
 			}
 			addrow.getCell("number").setValue(number);
-			addrow.getCell("name").setValue(number);
+			addrow.getCell("name").setValue(name);
 			addrow.getCell("amount").setValue(entry.getAmount());
 			addrow.getCell("bizDate").setValue(bizDate);
 			if(supplier!=null)
 				addrow.getCell("supplier").setValue(supplier.getName());
 			
 			addrow.getCell("actPayAmount").setValue(entry.getActPayAmount());
+			addrow.getCell("unPayAmount").setValue(FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount()));
 			addrow.getCell("bgItem").setValue(entry.getBgItem());
 			if(entry.getBgItem()!=null&&bgRowMap.containsKey(entry.getBgItem().getId().toString())){
 				String key=spYear+"year"+spMonth+"m";
@@ -921,7 +940,7 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 				spMonth++;
 			}
 		}
-		CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount"});
+		CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount","unPayAmount"});
 		CRMClientHelper.getFootRow(this.contractTable, amountColoun);
 		CRMClientHelper.getFootRow(this.contractTable, new String[]{"actPayAmount","monthActPayAmount","planActPayAmount","totoalActPayAmount"});
 		CRMClientHelper.getFootRow(this.bgTable, amountColoun);
@@ -1588,13 +1607,15 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 	        File tempFile = File.createTempFile("eastemp",".xls");
 	        path = tempFile.getCanonicalPath();
 
-
-
-	        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[1];
-           tablesVO[0] = new KDTables2KDSBookVO(this.contractTable);
-           String title ="资金计划明细";
-           title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
-			tablesVO[0].setTableName(title);
+	        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[3];
+            tablesVO[0] = new KDTables2KDSBookVO(this.contractTable);
+			tablesVO[0].setTableName("付款计划明细");
+			
+			tablesVO[1] = new KDTables2KDSBookVO(this.payTable);
+			tablesVO[1].setTableName("付款申请未完成支付数据汇总");
+				
+			tablesVO[2] = new KDTables2KDSBookVO(this.bgTable);
+			tablesVO[2].setTableName("预算明细");
 	        KDSBook book = null;
 	        book = KDTables2KDSBook.getInstance().exportKDTablesToKDSBook(tablesVO,true,true);
 
