@@ -131,15 +131,15 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 {
     private static final Logger logger = CoreUIObject.getLogger(VirtualRoomFullInfoUI.class);
     
-    private PrePurchaseManageInfo prePurchaseInfo = null;
+//    private PrePurchaseManageInfo prePurchaseInfo = null;
     
-    private PurchaseManageInfo purchaseInfo = null;
+//    private PurchaseManageInfo purchaseInfo = null;
     
-    private SignManageInfo signInfo = null;
+//    private SignManageInfo signInfo = null;
     
-    private PurchaseInfo purchase = null;
+//    private PurchaseInfo purchase = null;
 
-	private RoomSignContractInfo sign = null;
+//	private RoomSignContractInfo sign = null;
 
 	//=== 售后服务列明====
 	private static String PROCESSES_NAME = "processName";
@@ -198,7 +198,7 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		this.txtStandardBuildPrice.setValue(room.getBuildPrice());
 		this.txtStandardRoomPrice.setValue(room.getRoomPrice());
 		this.txtStandardTotalAmount.setValue(room.getStandardTotalAmount());
-
+		
 		RoomSellStateEnum state = room.getSellState();
 		PurchaseManageCollection col = null;
 		if (RoomSellStateEnum.PrePurchase.equals(state)
@@ -206,9 +206,36 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 				||RoomSellStateEnum.Sign.equals(state)){
 			//得到预定单
 			try {
-//				prePurchaseInfo = PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageInfo("select id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
-				purchaseInfo = PurchaseManageFactory.getRemoteInstance().getPurchaseManageInfo("select id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
-				signInfo = SignManageFactory.getRemoteInstance().getSignManageInfo("select id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
+				if(RoomSellStateEnum.PrePurchase.equals(state)){
+					PrePurchaseManageCollection prePurchaseInfo = PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
+					if(prePurchaseInfo.size()>0){
+						this.txtDealTotalAmount.setVisible(false);
+						this.txtDealBuildPrice.setVisible(false);
+						this.txtDealRoomPrice.setVisible(false);
+						this.txtSaleMan.setText(prePurchaseInfo.get(0).getSaleManNames());
+					}
+				}
+				if(RoomSellStateEnum.Purchase.equals(state)){
+					PurchaseManageCollection purchaseInfo = PurchaseManageFactory.getRemoteInstance().getPurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
+					if(purchaseInfo.size()>0){
+						this.txtDealTotalAmount.setVisible(false);
+						this.txtDealBuildPrice.setVisible(false);
+						this.txtDealRoomPrice.setVisible(false);
+						this.txtSaleMan.setText(purchaseInfo.get(0).getSaleManNames());
+					}
+				}
+				if(RoomSellStateEnum.Sign.equals(state)){
+					SignManageCollection signInfp = SignManageFactory.getRemoteInstance().getSignManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
+					if(signInfp.size()>0){
+						this.txtDealTotalAmount.setVisible(true);
+						this.txtDealBuildPrice.setVisible(true);
+						this.txtDealRoomPrice.setVisible(true);
+						this.txtDealTotalAmount.setValue(signInfp.get(0).getDealTotalAmount());
+						this.txtDealBuildPrice.setValue(signInfp.get(0).getDealBuildPrice());
+						this.txtDealRoomPrice.setValue(signInfp.get(0).getDealRoomPrice());
+						this.txtSaleMan.setText(signInfp.get(0).getSaleManNames());
+					}
+				}
 			} catch (Exception e1) {
 				logger.warn(e1);
 				logger.debug("", e1);
@@ -218,9 +245,9 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 //			loan = SHEHelper.getRoomLoan(room);
 //			propertyBook = SHEHelper.getRoomPropertyBook(room);
 		} else{
-			prePurchaseInfo = null;
-			purchaseInfo = null;
-			signInfo = null;
+//			prePurchaseInfo = null;
+//			purchaseInfo = null;
+//			signInfo = null;
 //			join = null;
 //			areaCompensate = null;
 //			loan = null;
@@ -1654,6 +1681,9 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		setTextFormat(txtStandardBuildPrice);
 		setTextFormat(txtStandardRoomPrice);
 		setTextFormat(txtStandardTotalAmount);
+		setTextFormat(txtDealBuildPrice);
+		setTextFormat(txtDealRoomPrice);
+		setTextFormat(txtDealTotalAmount);
 //		UIContext uiContext = new UIContext(ui);
 //		uiContext.put("dataMap", new HashMap());
 //		CoreUIObject plUI = null;

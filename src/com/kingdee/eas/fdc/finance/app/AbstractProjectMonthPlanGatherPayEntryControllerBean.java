@@ -21,39 +21,36 @@ import com.kingdee.eas.framework.exception.EASMultiException;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 
 import java.lang.String;
+import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryCollection;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.dao.IObjectPK;
-import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherInfo;
-import java.util.Map;
-import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherCollection;
-import com.kingdee.eas.fdc.basedata.app.FDCBillControllerBean;
+import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryInfo;
+import com.kingdee.eas.framework.CoreBillEntryBaseCollection;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
-import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.bos.metadata.entity.SorterItemCollection;
+import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.bos.metadata.entity.FilterInfo;
-import com.kingdee.eas.framework.CoreBillBaseCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
-import com.kingdee.eas.fdc.basedata.FDCBillCollection;
-import com.kingdee.eas.framework.ObjectBaseCollection;
+import com.kingdee.eas.framework.app.CoreBillEntryBaseControllerBean;
 
 
 
-public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBillControllerBean implements ProjectMonthPlanGatherController
+public abstract class AbstractProjectMonthPlanGatherPayEntryControllerBean extends CoreBillEntryBaseControllerBean implements ProjectMonthPlanGatherPayEntryController
 {
-    protected AbstractProjectMonthPlanGatherControllerBean()
+    protected AbstractProjectMonthPlanGatherPayEntryControllerBean()
     {
     }
 
     protected BOSObjectType getBOSType()
     {
-        return new BOSObjectType("0003689A");
+        return new BOSObjectType("9F5B2364");
     }
 
     public boolean exists(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("875e420a-aa37-4ea5-812a-36b34f7dd243"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("cdcf2801-182c-48fc-9af8-1e87f814aba7"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, pk);
@@ -78,7 +75,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public boolean exists(Context ctx, FilterInfo filter) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("85b09951-5e58-4b91-9018-b56f605062f3"), new Object[]{ctx, filter});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("7603e310-9c05-42ab-b736-b54aa950acaf"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, filter);
@@ -103,7 +100,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public boolean exists(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("29c5cab1-d8e8-43d7-88ab-af80b3593e8d"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("f4ed0489-d75a-4e01-b1b7-864ef9695968"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, oql);
@@ -125,18 +122,18 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._exists(ctx, oql);
     }
 
-    public ProjectMonthPlanGatherInfo getProjectMonthPlanGatherInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
+    public ProjectMonthPlanGatherPayEntryInfo getProjectMonthPlanGatherPayEntryInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("56c1e962-5f1f-4543-ad07-e29aedd1adff"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("71869565-37d8-421a-bec0-89ee84df7c50"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            ProjectMonthPlanGatherInfo retValue = (ProjectMonthPlanGatherInfo)_getValue(ctx, pk);
+            ProjectMonthPlanGatherPayEntryInfo retValue = (ProjectMonthPlanGatherPayEntryInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (ProjectMonthPlanGatherInfo)svcCtx.getMethodReturnValue();
+          return (ProjectMonthPlanGatherPayEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -150,18 +147,18 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._getValue(ctx, pk);
     }
 
-    public ProjectMonthPlanGatherInfo getProjectMonthPlanGatherInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
+    public ProjectMonthPlanGatherPayEntryInfo getProjectMonthPlanGatherPayEntryInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("47a2d75a-0c80-4d51-9694-45bcc8fb0ebd"), new Object[]{ctx, pk, selector});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("12ed0e2b-6dd0-4d05-bd07-cd9bed275703"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            ProjectMonthPlanGatherInfo retValue = (ProjectMonthPlanGatherInfo)_getValue(ctx, pk, selector);
+            ProjectMonthPlanGatherPayEntryInfo retValue = (ProjectMonthPlanGatherPayEntryInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (ProjectMonthPlanGatherInfo)svcCtx.getMethodReturnValue();
+          return (ProjectMonthPlanGatherPayEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -175,18 +172,18 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._getValue(ctx, pk, selector);
     }
 
-    public ProjectMonthPlanGatherInfo getProjectMonthPlanGatherInfo(Context ctx, String oql) throws BOSException, EASBizException
+    public ProjectMonthPlanGatherPayEntryInfo getProjectMonthPlanGatherPayEntryInfo(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("66891e62-88f9-4ae1-b11d-c9d6d607c956"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("a7bcd68b-896e-4ea7-8245-b2d07df964f4"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            ProjectMonthPlanGatherInfo retValue = (ProjectMonthPlanGatherInfo)_getValue(ctx, oql);
+            ProjectMonthPlanGatherPayEntryInfo retValue = (ProjectMonthPlanGatherPayEntryInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (ProjectMonthPlanGatherInfo)svcCtx.getMethodReturnValue();
+          return (ProjectMonthPlanGatherPayEntryInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -200,10 +197,10 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._getValue(ctx, oql);
     }
 
-    public IObjectPK addnew(Context ctx, ProjectMonthPlanGatherInfo model) throws BOSException, EASBizException
+    public IObjectPK addnew(Context ctx, ProjectMonthPlanGatherPayEntryInfo model) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("fa4748bf-17f6-4237-ad73-3aa808158044"), new Object[]{ctx, model});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("6aec9255-67cf-41ea-81e7-950db6049719"), new Object[]{ctx, model});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             IObjectPK retValue = (IObjectPK)_addnew(ctx, model);
@@ -227,10 +224,10 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._addnew(ctx, model);
     }
 
-    public void addnew(Context ctx, IObjectPK pk, ProjectMonthPlanGatherInfo model) throws BOSException, EASBizException
+    public void addnew(Context ctx, IObjectPK pk, ProjectMonthPlanGatherPayEntryInfo model) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("c251fa76-813f-48a2-a9dc-07b971de406e"), new Object[]{ctx, pk, model});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("1eb567e6-84ad-49d1-bab5-b9fda444b026"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()){
             _addnew(ctx, pk, model);
@@ -251,10 +248,10 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         super._addnew(ctx, pk, model);
     }
 
-    public void update(Context ctx, IObjectPK pk, ProjectMonthPlanGatherInfo model) throws BOSException, EASBizException
+    public void update(Context ctx, IObjectPK pk, ProjectMonthPlanGatherPayEntryInfo model) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("8ed7d3f2-e598-49f1-9f22-0996f0bfc279"), new Object[]{ctx, pk, model});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("0c90c69c-866c-47f3-a9e6-3126838bfa78"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()){
             _update(ctx, pk, model);
@@ -275,10 +272,10 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         super._update(ctx, pk, model);
     }
 
-    public void updatePartial(Context ctx, ProjectMonthPlanGatherInfo model, SelectorItemCollection selector) throws BOSException, EASBizException
+    public void updatePartial(Context ctx, ProjectMonthPlanGatherPayEntryInfo model, SelectorItemCollection selector) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("4f0934a8-450a-49a6-b05d-6dd7ee61c0bd"), new Object[]{ctx, model, selector});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("58aba578-0c1a-48b0-a169-21553ee1ba30"), new Object[]{ctx, model, selector});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()){
             _updatePartial(ctx, model, selector);
@@ -299,10 +296,10 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         super._updatePartial(ctx, model, selector);
     }
 
-    public void updateBigObject(Context ctx, IObjectPK pk, ProjectMonthPlanGatherInfo model) throws BOSException
+    public void updateBigObject(Context ctx, IObjectPK pk, ProjectMonthPlanGatherPayEntryInfo model) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("001c8548-bd6c-4738-a508-f813029199eb"), new Object[]{ctx, pk, model});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("319293fc-95a4-4cc9-896e-c2e975e72e25"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()){
             _updateBigObject(ctx, pk, model);
@@ -323,7 +320,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public void delete(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("1a617a67-39a4-4917-b8f9-e3bdd6f7cb68"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("2546d794-f0db-4ddc-b0f4-0729470a7cd5"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()){
             _delete(ctx, pk);
@@ -347,7 +344,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public IObjectPK[] getPKList(Context ctx) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("4e0ced9a-a99c-4c21-ad86-a2d9c3a0e767"), new Object[]{ctx});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("65026efd-ab28-43ea-8175-4ba0372e2ecf"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx);
@@ -372,7 +369,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public IObjectPK[] getPKList(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("54c48302-aae5-4b3d-a7e8-3f10a59cd006"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("1bea4773-aaf2-4a0b-b907-e22409a7fa18"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, oql);
@@ -397,7 +394,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public IObjectPK[] getPKList(Context ctx, FilterInfo filter, SorterItemCollection sorter) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("ed45ca3a-2552-4a1e-8e48-bd7eb2d21423"), new Object[]{ctx, filter, sorter});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("07cbdb57-f321-4d6d-bb9a-63f6615ca14d"), new Object[]{ctx, filter, sorter});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, filter, sorter);
@@ -419,18 +416,18 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._getPKList(ctx, filter, sorter);
     }
 
-    public ProjectMonthPlanGatherCollection getProjectMonthPlanGatherCollection(Context ctx) throws BOSException
+    public ProjectMonthPlanGatherPayEntryCollection getProjectMonthPlanGatherPayEntryCollection(Context ctx) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("bef0e598-98b8-4a60-ad49-1d017ec428b2"), new Object[]{ctx});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("d8c0d139-f29f-4c76-bf66-c408817a04bf"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            ProjectMonthPlanGatherCollection retValue = (ProjectMonthPlanGatherCollection)_getCollection(ctx, svcCtx);
+            ProjectMonthPlanGatherPayEntryCollection retValue = (ProjectMonthPlanGatherPayEntryCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (ProjectMonthPlanGatherCollection)svcCtx.getMethodReturnValue();
+          return (ProjectMonthPlanGatherPayEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -442,18 +439,18 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._getCollection(ctx, svcCtx);
     }
 
-    public ProjectMonthPlanGatherCollection getProjectMonthPlanGatherCollection(Context ctx, EntityViewInfo view) throws BOSException
+    public ProjectMonthPlanGatherPayEntryCollection getProjectMonthPlanGatherPayEntryCollection(Context ctx, EntityViewInfo view) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("e68b93c3-5f94-4a45-8814-6b064800d48c"), new Object[]{ctx, view});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("42ab8ace-46f8-466f-bd45-cd6993ce1bfb"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            ProjectMonthPlanGatherCollection retValue = (ProjectMonthPlanGatherCollection)_getCollection(ctx, svcCtx, view);
+            ProjectMonthPlanGatherPayEntryCollection retValue = (ProjectMonthPlanGatherPayEntryCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (ProjectMonthPlanGatherCollection)svcCtx.getMethodReturnValue();
+          return (ProjectMonthPlanGatherPayEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -465,18 +462,18 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         return super._getCollection(ctx, svcCtx, view);
     }
 
-    public ProjectMonthPlanGatherCollection getProjectMonthPlanGatherCollection(Context ctx, String oql) throws BOSException
+    public ProjectMonthPlanGatherPayEntryCollection getProjectMonthPlanGatherPayEntryCollection(Context ctx, String oql) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("bb961c49-4fd8-4ae5-9590-e228df7f15e0"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("f9d117d5-cd6e-4558-b6b3-fb7927df5659"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
-            ProjectMonthPlanGatherCollection retValue = (ProjectMonthPlanGatherCollection)_getCollection(ctx, svcCtx, oql);
+            ProjectMonthPlanGatherPayEntryCollection retValue = (ProjectMonthPlanGatherPayEntryCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
             }
             invokeServiceAfter(svcCtx);
         
-          return (ProjectMonthPlanGatherCollection)svcCtx.getMethodReturnValue();
+          return (ProjectMonthPlanGatherPayEntryCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -491,7 +488,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public IObjectPK[] delete(Context ctx, FilterInfo filter) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("98da141c-68da-4f8a-bcb0-ad972fc2c190"), new Object[]{ctx, filter});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("aa053a6a-357c-47c9-be69-e0054db04e14"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, filter);
@@ -518,7 +515,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public IObjectPK[] delete(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("11840840-afce-46de-95a0-caa80fcb2b05"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("29e3c26e-df40-4c1f-91c9-d9218aacba43"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, oql);
@@ -545,7 +542,7 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
     public void delete(Context ctx, IObjectPK[] arrayPK) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("8f7cca06-17fe-4988-a3c6-120986ee215c"), new Object[]{ctx, arrayPK});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("5fa375c0-1606-4863-b506-b2099a46c2b9"), new Object[]{ctx, arrayPK});
             invokeServiceBefore(svcCtx);
             if(!svcCtx.invokeBreak()){
             _delete(ctx, arrayPK);
@@ -566,75 +563,28 @@ public abstract class AbstractProjectMonthPlanGatherControllerBean extends FDCBi
         super._delete(ctx, arrayPK);
     }
 
-    public Map checkPass(Context ctx, Map map) throws BOSException, EASBizException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx) throws BOSException
     {
-        try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("10247ce0-aa0a-4b82-a7a6-9b09387e03b1"), new Object[]{ctx, map});
-            invokeServiceBefore(svcCtx);
-            if(!svcCtx.invokeBreak()) {
-            Map retValue = (Map)_checkPass(ctx, map);
-            svcCtx.setMethodReturnValue(retValue);
-            }
-            invokeServiceAfter(svcCtx);
-            return (Map)svcCtx.getMethodReturnValue();
-        } catch (BOSException ex) {
-            this.setRollbackOnly();
-            throw ex;
-        } catch (EASBizException ex0) {
-            this.setRollbackOnly();
-            throw ex0;
-        } finally {
-            super.cleanUpServiceState();
-        }
+    	return (CoreBillEntryBaseCollection)(getProjectMonthPlanGatherPayEntryCollection(ctx).cast(CoreBillEntryBaseCollection.class));
     }
-    protected abstract Map _checkPass(Context ctx, Map map) throws BOSException, EASBizException;
-
-    public FDCBillCollection getFDCBillCollection (Context ctx) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
     {
-    	return (FDCBillCollection)(getProjectMonthPlanGatherCollection(ctx).cast(FDCBillCollection.class));
+    	return (CoreBillEntryBaseCollection)(getProjectMonthPlanGatherPayEntryCollection(ctx, view).cast(CoreBillEntryBaseCollection.class));
     }
-    public FDCBillCollection getFDCBillCollection (Context ctx, EntityViewInfo view) throws BOSException
+    public CoreBillEntryBaseCollection getCoreBillEntryBaseCollection (Context ctx, String oql) throws BOSException
     {
-    	return (FDCBillCollection)(getProjectMonthPlanGatherCollection(ctx, view).cast(FDCBillCollection.class));
-    }
-    public FDCBillCollection getFDCBillCollection (Context ctx, String oql) throws BOSException
-    {
-    	return (FDCBillCollection)(getProjectMonthPlanGatherCollection(ctx, oql).cast(FDCBillCollection.class));
-    }
-    public CoreBillBaseCollection getCoreBillBaseCollection (Context ctx) throws BOSException
-    {
-    	return (CoreBillBaseCollection)(getProjectMonthPlanGatherCollection(ctx).cast(CoreBillBaseCollection.class));
-    }
-    public CoreBillBaseCollection getCoreBillBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
-    {
-    	return (CoreBillBaseCollection)(getProjectMonthPlanGatherCollection(ctx, view).cast(CoreBillBaseCollection.class));
-    }
-    public CoreBillBaseCollection getCoreBillBaseCollection (Context ctx, String oql) throws BOSException
-    {
-    	return (CoreBillBaseCollection)(getProjectMonthPlanGatherCollection(ctx, oql).cast(CoreBillBaseCollection.class));
-    }
-    public ObjectBaseCollection getObjectBaseCollection (Context ctx) throws BOSException
-    {
-    	return (ObjectBaseCollection)(getProjectMonthPlanGatherCollection(ctx).cast(ObjectBaseCollection.class));
-    }
-    public ObjectBaseCollection getObjectBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
-    {
-    	return (ObjectBaseCollection)(getProjectMonthPlanGatherCollection(ctx, view).cast(ObjectBaseCollection.class));
-    }
-    public ObjectBaseCollection getObjectBaseCollection (Context ctx, String oql) throws BOSException
-    {
-    	return (ObjectBaseCollection)(getProjectMonthPlanGatherCollection(ctx, oql).cast(ObjectBaseCollection.class));
+    	return (CoreBillEntryBaseCollection)(getProjectMonthPlanGatherPayEntryCollection(ctx, oql).cast(CoreBillEntryBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx) throws BOSException
     {
-    	return (CoreBaseCollection)(getProjectMonthPlanGatherCollection(ctx).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getProjectMonthPlanGatherPayEntryCollection(ctx).cast(CoreBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx, EntityViewInfo view) throws BOSException
     {
-    	return (CoreBaseCollection)(getProjectMonthPlanGatherCollection(ctx, view).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getProjectMonthPlanGatherPayEntryCollection(ctx, view).cast(CoreBaseCollection.class));
     }
     public CoreBaseCollection getCoreBaseCollection (Context ctx, String oql) throws BOSException
     {
-    	return (CoreBaseCollection)(getProjectMonthPlanGatherCollection(ctx, oql).cast(CoreBaseCollection.class));
+    	return (CoreBaseCollection)(getProjectMonthPlanGatherPayEntryCollection(ctx, oql).cast(CoreBaseCollection.class));
     }
 }

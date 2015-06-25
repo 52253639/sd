@@ -5,6 +5,7 @@ package com.kingdee.eas.fdc.finance.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
@@ -62,10 +63,12 @@ import com.kingdee.bos.ctrl.swing.KDContainer;
 import com.kingdee.bos.ctrl.swing.KDFileChooser;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDTextField;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.util.CtrlCommonConstant;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.base.param.ParamControlFactory;
+import com.kingdee.eas.basedata.master.cssp.SupplierInfo;
 import com.kingdee.eas.basedata.org.AdminOrgUnitInfo;
 import com.kingdee.eas.basedata.org.CompanyOrgUnitInfo;
 import com.kingdee.eas.basedata.org.FullOrgUnitFactory;
@@ -126,6 +129,8 @@ import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherEntryFactory;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherEntryInfo;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherFactory;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherInfo;
+import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryCollection;
+import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryInfo;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanProDateEntryInfo;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanProEntryCollection;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanProEntryFactory;
@@ -137,6 +142,7 @@ import com.kingdee.eas.framework.*;
 import com.kingdee.eas.ma.budget.BgItemInfo;
 import com.kingdee.eas.ma.budget.client.NewBgItemDialog;
 import com.kingdee.eas.util.SysUtil;
+import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
 import com.kingdee.jdbc.rowset.IRowSet;
 import com.kingdee.util.UuidException;
@@ -149,6 +155,7 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
     private static final Logger logger = CoreUIObject.getLogger(OrgUnitMonthPlanGatherEditUI.class);
     private KDTable bgTable=null;
     private KDTable contractTable=null;
+    private KDTable payTable=null;
     private Boolean isLoad=false;
 	private List reportColoum=null;
 	private List executeColoum=null;
@@ -491,6 +498,88 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 			}
 		});
 	}
+	protected void initPayTable() {
+		this.payTable=new KDTable();
+		this.payTable.checkParsed();
+		IRow headRow=this.payTable.addHeadRow();
+		
+		this.payTable.getStyleAttributes().setLocked(true);
+		KDFormattedTextField amount = new KDFormattedTextField();
+		amount.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
+		amount.setDataVerifierType(KDFormattedTextField.NO_VERIFIER);
+		amount.setPrecision(2);
+		amount.setNegatived(false);
+		KDTDefaultCellEditor amountEditor = new KDTDefaultCellEditor(amount);
+		
+		IColumn column=this.payTable.addColumn();
+		column.setKey("number");
+		column.setWidth(200);
+		headRow.getCell("number").setValue("编码");
+		column.getStyleAttributes().setFontColor(Color.BLUE);
+		
+		column=this.payTable.addColumn();
+		column.setKey("name");
+		column.setWidth(200);
+		headRow.getCell("name").setValue("名称");
+
+		column=this.payTable.addColumn();
+		column.setKey("amount");
+		headRow.getCell("amount").setValue("申请金额");
+		
+		column=this.payTable.addColumn();
+		column.setKey("bizDate");
+		headRow.getCell("bizDate").setValue("业务日期");
+		
+		column=this.payTable.addColumn();
+		column.setKey("supplier");
+		column.setWidth(250);
+		headRow.getCell("supplier").setValue("供应商");
+		
+		column=this.payTable.addColumn();
+		column.setKey("actPayAmount");
+		headRow.getCell("actPayAmount").setValue("已付金额");
+		
+		column=this.payTable.addColumn();
+		
+		KDBizPromptBox f7Box = new KDBizPromptBox();
+		KDTDefaultCellEditor f7Editor = new KDTDefaultCellEditor(f7Box);
+		
+		f7Box.setDisplayFormat("$name$");
+		f7Box.setEditFormat("$name$");
+		f7Box.setCommitFormat("$name$");
+		NewBgItemDialog bgItemDialog=new NewBgItemDialog(this);
+		bgItemDialog.setMulSelect(false);
+		bgItemDialog.setSelectCombinItem(false);
+		f7Box.setSelector(bgItemDialog);
+		f7Editor = new KDTDefaultCellEditor(f7Box);
+		
+		column.setEditor(f7Editor);
+		column.setKey("bgItem");
+		headRow.getCell("bgItem").setValue("预算项目");
+		
+		this.payTable.getColumn("amount").setEditor(amountEditor);
+		this.payTable.getColumn("amount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+		this.payTable.getColumn("amount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
+        
+		this.payTable.getColumn("actPayAmount").setEditor(amountEditor);
+		this.payTable.getColumn("actPayAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+		this.payTable.getColumn("actPayAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
+		
+		this.payTable.setName("payTable");
+		
+		ActionMap actionMap = this.contractTable.getActionMap();
+		actionMap.remove(KDTAction.CUT);
+		actionMap.remove(KDTAction.DELETE);
+		actionMap.remove(KDTAction.PASTE);
+		
+		
+		KDContainer contEntry = new KDContainer();
+		contEntry.setName(this.payTable.getName());
+		contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        
+		contEntry.getContentPane().add(this.payTable, BorderLayout.CENTER);
+		
+        this.pnlBig.add(contEntry, "付款申请未完成支付数据汇总");
+	}
 	private void table_editStopped(KDTEditEvent e) {
 		KDTable table = (KDTable) e.getSource();
 		if(table.getRow(e.getRowIndex()).getCell(e.getColIndex()).getUserObject()!=null
@@ -596,24 +685,27 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 		int cycle=this.editData.getCycle().getCycle().getValue();
 	
 		this.initContractTable(spYear,spMonth,cycle);
+		this.initPayTable();
 		this.initBgTable(spYear,spMonth,cycle);
 		
 		Map rowMap=new HashMap();
 		OrgUnitMonthPlanGatherDateEntryCollection sortCol=new OrgUnitMonthPlanGatherDateEntryCollection();
 		
 		ProjectMonthPlanGatherDateEntryCollection srcSortCol=new ProjectMonthPlanGatherDateEntryCollection();
+		ProjectMonthPlanGatherPayEntryCollection payCol=new ProjectMonthPlanGatherPayEntryCollection();;
 		IRow row=null;
 		for(int i=0;i<col.size();i++){
 			OrgUnitMonthPlanGatherEntryInfo entry=col.get(i);
 			if(entry.getSrcId()!=null){
 				try {
-					ProjectMonthPlanGatherCollection mp = ProjectMonthPlanGatherFactory.getRemoteInstance().getProjectMonthPlanGatherCollection("select entry.dateEntry.*,entry.dateEntry.bgItem.* from where id='"+entry.getSrcId()+"'");
+					ProjectMonthPlanGatherCollection mp = ProjectMonthPlanGatherFactory.getRemoteInstance().getProjectMonthPlanGatherCollection("select payEntry.*,payEntry.bgItem.*,payEntry.payRequestBill.realSupplier.name,payEntry.contractWithoutText.receiveUnit.name,payEntry.payRequestBill.*,payEntry.contractWithoutText.*,entry.dateEntry.*,entry.dateEntry.bgItem.* from where id='"+entry.getSrcId()+"'");
 					if(mp.size()>0){
 						for(int j=0;j<mp.get(0).getEntry().size();j++){
 							for(int k=0;k<mp.get(0).getEntry().get(j).getDateEntry().size();k++){
 								srcSortCol.add(mp.get(0).getEntry().get(j).getDateEntry().get(k));
 							}
 						}
+						payCol.addCollection(mp.get(0).getPayEntry());
 					}
 				} catch (BOSException e) {
 					e.printStackTrace();
@@ -738,6 +830,44 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 				row.getCell(key+"amount").setValue(dateEntry.getAmount().add(amount));
 			}
 		}
+		
+		for(int i=0;i<payCol.size();i++){
+			ProjectMonthPlanGatherPayEntryInfo entry=payCol.get(i);
+			IRow addrow=this.payTable.addRow();
+			addrow.setUserObject(entry);
+			String number=entry.getPayRequestBill().getNumber();
+			String name=entry.getPayRequestBill().getName();
+			Date bizDate=entry.getPayRequestBill().getBookedDate();
+			SupplierInfo supplier=entry.getPayRequestBill().getRealSupplier();
+			
+			if(entry.getContractWithoutText()!=null){
+				number=entry.getContractWithoutText().getNumber();
+				name=entry.getContractWithoutText().getName();
+				bizDate=entry.getContractWithoutText().getBookedDate();
+				supplier=entry.getContractWithoutText().getReceiveUnit();
+			}
+			addrow.getCell("number").setValue(number);
+			addrow.getCell("name").setValue(number);
+			addrow.getCell("amount").setValue(entry.getAmount());
+			addrow.getCell("bizDate").setValue(bizDate);
+			if(supplier!=null)
+				addrow.getCell("supplier").setValue(supplier.getName());
+			
+			addrow.getCell("actPayAmount").setValue(entry.getActPayAmount());
+			addrow.getCell("bgItem").setValue(entry.getBgItem());
+			if(entry.getBgItem()!=null&&bgRowMap.containsKey(entry.getBgItem().getId().toString())){
+				String key=spYear+"year"+spMonth+"m";
+				
+				if(row.getCell(key+"amount")!=null){
+					BigDecimal amount=FDCHelper.ZERO;
+					if(row.getCell(key+"amount").getValue()!=null){
+						amount=(BigDecimal) row.getCell(key+"amount").getValue();
+					}
+					row.getCell(key+"amount").setValue(FDCHelper.add(amount, FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount())));
+				}
+			}
+		}
+		
 		String amountColoun[]=new String[cycle*4+1];
 		for(int i=0;i<cycle*4+1;i++){
 			if(i==0){
@@ -756,6 +886,7 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 				spMonth++;
 			}
 		}
+		CRMClientHelper.getFootRow(this.payTable, new String[]{"amount","actPayAmount"});
 		CRMClientHelper.getFootRow(this.contractTable, amountColoun);
 		CRMClientHelper.getFootRow(this.contractTable, new String[]{"actPayAmount","monthActPayAmount","planActPayAmount","totoalActPayAmount"});
 		CRMClientHelper.getFootRow(this.bgTable, amountColoun);

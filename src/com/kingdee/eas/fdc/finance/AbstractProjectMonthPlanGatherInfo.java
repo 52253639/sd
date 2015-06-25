@@ -16,6 +16,7 @@ public class AbstractProjectMonthPlanGatherInfo extends com.kingdee.eas.fdc.base
     protected AbstractProjectMonthPlanGatherInfo(String pkField)
     {
         super(pkField);
+        put("payEntry", new com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryCollection());
         put("entry", new com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherEntryCollection());
     }
     /**
@@ -81,6 +82,13 @@ public class AbstractProjectMonthPlanGatherInfo extends com.kingdee.eas.fdc.base
 		if (item != null) {
         setString("versionType", item.getValue());
 		}
+    }
+    /**
+     * Object: 项目月度资金计划 's 未完成支付数据分录 property 
+     */
+    public com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryCollection getPayEntry()
+    {
+        return (com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherPayEntryCollection)get("payEntry");
     }
     public BOSObjectType getBOSType()
     {

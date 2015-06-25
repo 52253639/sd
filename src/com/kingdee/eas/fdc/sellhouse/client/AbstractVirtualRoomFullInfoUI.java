@@ -57,9 +57,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contPricingType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBuildingArea;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoomArea;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardBuildPrice;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardRoomPrice;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardTotalAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealRoomPrice;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardBuildPrice;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealTotalAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealBuildPrice;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSaleMan;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtRoomModelType;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7RoomModel;
@@ -68,9 +72,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     protected com.kingdee.bos.ctrl.swing.KDTextField txtPricingType;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtBuildingArea;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtRoomArea;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtStandardBuildPrice;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtStandardRoomPrice;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtStandardTotalAmount;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealRoomPrice;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtStandardBuildPrice;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealTotalAmount;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealBuildPrice;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtSaleMan;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane buyRoomPlanPane;
     protected com.kingdee.bos.ctrl.swing.KDPanel bizTotalFlow;
     protected com.kingdee.bos.ctrl.swing.KDPanel roomPropertyBook;
@@ -125,9 +133,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contPricingType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contBuildingArea = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contRoomArea = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contStandardBuildPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStandardRoomPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStandardTotalAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDealRoomPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contStandardBuildPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDealTotalAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDealBuildPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contSaleMan = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtRoomModelType = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.f7RoomModel = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -136,9 +148,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.txtPricingType = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtBuildingArea = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtRoomArea = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
-        this.txtStandardBuildPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtStandardRoomPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtStandardTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtDealRoomPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtStandardBuildPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtDealTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtDealBuildPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtSaleMan = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.buyRoomPlanPane = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.bizTotalFlow = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.roomPropertyBook = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -170,9 +186,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contPricingType.setName("contPricingType");
         this.contBuildingArea.setName("contBuildingArea");
         this.contRoomArea.setName("contRoomArea");
-        this.contStandardBuildPrice.setName("contStandardBuildPrice");
         this.contStandardRoomPrice.setName("contStandardRoomPrice");
         this.contStandardTotalAmount.setName("contStandardTotalAmount");
+        this.contDealRoomPrice.setName("contDealRoomPrice");
+        this.contStandardBuildPrice.setName("contStandardBuildPrice");
+        this.contDealTotalAmount.setName("contDealTotalAmount");
+        this.contDealBuildPrice.setName("contDealBuildPrice");
+        this.contSaleMan.setName("contSaleMan");
         this.txtNumber.setName("txtNumber");
         this.txtRoomModelType.setName("txtRoomModelType");
         this.f7RoomModel.setName("f7RoomModel");
@@ -181,9 +201,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.txtPricingType.setName("txtPricingType");
         this.txtBuildingArea.setName("txtBuildingArea");
         this.txtRoomArea.setName("txtRoomArea");
-        this.txtStandardBuildPrice.setName("txtStandardBuildPrice");
         this.txtStandardRoomPrice.setName("txtStandardRoomPrice");
         this.txtStandardTotalAmount.setName("txtStandardTotalAmount");
+        this.txtDealRoomPrice.setName("txtDealRoomPrice");
+        this.txtStandardBuildPrice.setName("txtStandardBuildPrice");
+        this.txtDealTotalAmount.setName("txtDealTotalAmount");
+        this.txtDealBuildPrice.setName("txtDealBuildPrice");
+        this.txtSaleMan.setName("txtSaleMan");
         this.buyRoomPlanPane.setName("buyRoomPlanPane");
         this.bizTotalFlow.setName("bizTotalFlow");
         this.roomPropertyBook.setName("roomPropertyBook");
@@ -241,10 +265,6 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contRoomArea.setBoundLabelText(resHelper.getString("contRoomArea.boundLabelText"));		
         this.contRoomArea.setBoundLabelLength(75);		
         this.contRoomArea.setBoundLabelUnderline(true);
-        // contStandardBuildPrice		
-        this.contStandardBuildPrice.setBoundLabelText(resHelper.getString("contStandardBuildPrice.boundLabelText"));		
-        this.contStandardBuildPrice.setBoundLabelLength(75);		
-        this.contStandardBuildPrice.setBoundLabelUnderline(true);
         // contStandardRoomPrice		
         this.contStandardRoomPrice.setBoundLabelText(resHelper.getString("contStandardRoomPrice.boundLabelText"));		
         this.contStandardRoomPrice.setBoundLabelUnderline(true);		
@@ -253,6 +273,26 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contStandardTotalAmount.setBoundLabelText(resHelper.getString("contStandardTotalAmount.boundLabelText"));		
         this.contStandardTotalAmount.setBoundLabelLength(75);		
         this.contStandardTotalAmount.setBoundLabelUnderline(true);
+        // contDealRoomPrice		
+        this.contDealRoomPrice.setBoundLabelText(resHelper.getString("contDealRoomPrice.boundLabelText"));		
+        this.contDealRoomPrice.setBoundLabelLength(75);		
+        this.contDealRoomPrice.setBoundLabelUnderline(true);
+        // contStandardBuildPrice		
+        this.contStandardBuildPrice.setBoundLabelText(resHelper.getString("contStandardBuildPrice.boundLabelText"));		
+        this.contStandardBuildPrice.setBoundLabelLength(75);		
+        this.contStandardBuildPrice.setBoundLabelUnderline(true);
+        // contDealTotalAmount		
+        this.contDealTotalAmount.setBoundLabelText(resHelper.getString("contDealTotalAmount.boundLabelText"));		
+        this.contDealTotalAmount.setBoundLabelLength(75);		
+        this.contDealTotalAmount.setBoundLabelUnderline(true);
+        // contDealBuildPrice		
+        this.contDealBuildPrice.setBoundLabelText(resHelper.getString("contDealBuildPrice.boundLabelText"));		
+        this.contDealBuildPrice.setBoundLabelLength(75);		
+        this.contDealBuildPrice.setBoundLabelUnderline(true);
+        // contSaleMan		
+        this.contSaleMan.setBoundLabelText(resHelper.getString("contSaleMan.boundLabelText"));		
+        this.contSaleMan.setBoundLabelLength(75);		
+        this.contSaleMan.setBoundLabelUnderline(true);
         // txtNumber		
         this.txtNumber.setEnabled(false);
         // txtRoomModelType		
@@ -277,15 +317,26 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         // txtRoomArea		
         this.txtRoomArea.setDataType(1);		
         this.txtRoomArea.setEnabled(false);
-        // txtStandardBuildPrice		
-        this.txtStandardBuildPrice.setDataType(1);		
-        this.txtStandardBuildPrice.setEnabled(false);
         // txtStandardRoomPrice		
         this.txtStandardRoomPrice.setDataType(1);		
         this.txtStandardRoomPrice.setEnabled(false);
         // txtStandardTotalAmount		
         this.txtStandardTotalAmount.setDataType(1);		
         this.txtStandardTotalAmount.setEnabled(false);
+        // txtDealRoomPrice		
+        this.txtDealRoomPrice.setDataType(1);		
+        this.txtDealRoomPrice.setEnabled(false);
+        // txtStandardBuildPrice		
+        this.txtStandardBuildPrice.setDataType(1);		
+        this.txtStandardBuildPrice.setEnabled(false);
+        // txtDealTotalAmount		
+        this.txtDealTotalAmount.setDataType(1);		
+        this.txtDealTotalAmount.setEnabled(false);
+        // txtDealBuildPrice		
+        this.txtDealBuildPrice.setDataType(1);		
+        this.txtDealBuildPrice.setEnabled(false);
+        // txtSaleMan		
+        this.txtSaleMan.setEnabled(false);
         // buyRoomPlanPane
         // bizTotalFlow		
         this.bizTotalFlow.setAutoscrolls(true);
@@ -464,34 +515,42 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.setBounds(new Rectangle(10, 10, 500, 829));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 500, 829));
-        kDContainer1.setBounds(new Rectangle(2, 1, 492, 195));
-        this.add(kDContainer1, new KDLayout.Constraints(2, 1, 492, 195, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDContainer1.setBounds(new Rectangle(2, 1, 492, 209));
+        this.add(kDContainer1, new KDLayout.Constraints(2, 1, 492, 209, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         tabBizInfo.setBounds(new Rectangle(4, 212, 492, 609));
         this.add(tabBizInfo, new KDLayout.Constraints(4, 212, 492, 609, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //kDContainer1
         kDContainer1.getContentPane().setLayout(new KDLayout());
-        kDContainer1.getContentPane().putClientProperty("OriginalBounds", new Rectangle(2, 1, 492, 195));        conNumber.setBounds(new Rectangle(6, 6, 474, 19));
+        kDContainer1.getContentPane().putClientProperty("OriginalBounds", new Rectangle(2, 1, 492, 209));        conNumber.setBounds(new Rectangle(6, 6, 474, 19));
         kDContainer1.getContentPane().add(conNumber, new KDLayout.Constraints(6, 6, 474, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomModelType.setBounds(new Rectangle(6, 32, 222, 19));
-        kDContainer1.getContentPane().add(contRoomModelType, new KDLayout.Constraints(6, 32, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomModel.setBounds(new Rectangle(258, 32, 222, 19));
-        kDContainer1.getContentPane().add(contRoomModel, new KDLayout.Constraints(258, 32, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomState.setBounds(new Rectangle(6, 136, 222, 19));
-        kDContainer1.getContentPane().add(contRoomState, new KDLayout.Constraints(6, 136, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contHouseProperty.setBounds(new Rectangle(6, 58, 222, 19));
-        kDContainer1.getContentPane().add(contHouseProperty, new KDLayout.Constraints(6, 58, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contPricingType.setBounds(new Rectangle(258, 136, 222, 19));
-        kDContainer1.getContentPane().add(contPricingType, new KDLayout.Constraints(258, 136, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contBuildingArea.setBounds(new Rectangle(6, 84, 222, 19));
-        kDContainer1.getContentPane().add(contBuildingArea, new KDLayout.Constraints(6, 84, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRoomArea.setBounds(new Rectangle(258, 84, 222, 19));
-        kDContainer1.getContentPane().add(contRoomArea, new KDLayout.Constraints(258, 84, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStandardBuildPrice.setBounds(new Rectangle(6, 110, 222, 19));
-        kDContainer1.getContentPane().add(contStandardBuildPrice, new KDLayout.Constraints(6, 110, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStandardRoomPrice.setBounds(new Rectangle(258, 110, 222, 19));
-        kDContainer1.getContentPane().add(contStandardRoomPrice, new KDLayout.Constraints(258, 110, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStandardTotalAmount.setBounds(new Rectangle(258, 58, 222, 19));
-        kDContainer1.getContentPane().add(contStandardTotalAmount, new KDLayout.Constraints(258, 58, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRoomModelType.setBounds(new Rectangle(6, 28, 222, 19));
+        kDContainer1.getContentPane().add(contRoomModelType, new KDLayout.Constraints(6, 28, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRoomModel.setBounds(new Rectangle(258, 28, 222, 19));
+        kDContainer1.getContentPane().add(contRoomModel, new KDLayout.Constraints(258, 28, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRoomState.setBounds(new Rectangle(258, 50, 222, 19));
+        kDContainer1.getContentPane().add(contRoomState, new KDLayout.Constraints(258, 50, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contHouseProperty.setBounds(new Rectangle(6, 50, 222, 19));
+        kDContainer1.getContentPane().add(contHouseProperty, new KDLayout.Constraints(6, 50, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contPricingType.setBounds(new Rectangle(258, 94, 222, 19));
+        kDContainer1.getContentPane().add(contPricingType, new KDLayout.Constraints(258, 94, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contBuildingArea.setBounds(new Rectangle(6, 72, 222, 19));
+        kDContainer1.getContentPane().add(contBuildingArea, new KDLayout.Constraints(6, 72, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contRoomArea.setBounds(new Rectangle(258, 72, 222, 19));
+        kDContainer1.getContentPane().add(contRoomArea, new KDLayout.Constraints(258, 72, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contStandardRoomPrice.setBounds(new Rectangle(258, 116, 222, 19));
+        kDContainer1.getContentPane().add(contStandardRoomPrice, new KDLayout.Constraints(258, 116, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contStandardTotalAmount.setBounds(new Rectangle(6, 94, 222, 19));
+        kDContainer1.getContentPane().add(contStandardTotalAmount, new KDLayout.Constraints(6, 94, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDealRoomPrice.setBounds(new Rectangle(258, 160, 222, 19));
+        kDContainer1.getContentPane().add(contDealRoomPrice, new KDLayout.Constraints(258, 160, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contStandardBuildPrice.setBounds(new Rectangle(6, 116, 222, 19));
+        kDContainer1.getContentPane().add(contStandardBuildPrice, new KDLayout.Constraints(6, 116, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDealTotalAmount.setBounds(new Rectangle(6, 138, 222, 19));
+        kDContainer1.getContentPane().add(contDealTotalAmount, new KDLayout.Constraints(6, 138, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDealBuildPrice.setBounds(new Rectangle(6, 160, 222, 19));
+        kDContainer1.getContentPane().add(contDealBuildPrice, new KDLayout.Constraints(6, 160, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSaleMan.setBounds(new Rectangle(258, 138, 222, 19));
+        kDContainer1.getContentPane().add(contSaleMan, new KDLayout.Constraints(258, 138, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //conNumber
         conNumber.setBoundEditor(txtNumber);
         //contRoomModelType
@@ -508,12 +567,20 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         contBuildingArea.setBoundEditor(txtBuildingArea);
         //contRoomArea
         contRoomArea.setBoundEditor(txtRoomArea);
-        //contStandardBuildPrice
-        contStandardBuildPrice.setBoundEditor(txtStandardBuildPrice);
         //contStandardRoomPrice
         contStandardRoomPrice.setBoundEditor(txtStandardRoomPrice);
         //contStandardTotalAmount
         contStandardTotalAmount.setBoundEditor(txtStandardTotalAmount);
+        //contDealRoomPrice
+        contDealRoomPrice.setBoundEditor(txtDealRoomPrice);
+        //contStandardBuildPrice
+        contStandardBuildPrice.setBoundEditor(txtStandardBuildPrice);
+        //contDealTotalAmount
+        contDealTotalAmount.setBoundEditor(txtDealTotalAmount);
+        //contDealBuildPrice
+        contDealBuildPrice.setBoundEditor(txtDealBuildPrice);
+        //contSaleMan
+        contSaleMan.setBoundEditor(txtSaleMan);
         //tabBizInfo
         tabBizInfo.add(buyRoomPlanPane, resHelper.getString("buyRoomPlanPane.constraints"));
         tabBizInfo.add(bizTotalFlow, resHelper.getString("bizTotalFlow.constraints"));
@@ -589,9 +656,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -629,6 +700,7 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -647,6 +719,9 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnPageSetup);
+        this.toolBar.add(btnCloud);
+        this.toolBar.add(btnXunTong);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnAddNew);
         this.toolBar.add(btnEdit);
         this.toolBar.add(btnSave);
@@ -824,6 +899,10 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         return sic;
     }        
 
