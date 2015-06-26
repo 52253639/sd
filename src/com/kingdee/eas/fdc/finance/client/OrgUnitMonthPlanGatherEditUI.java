@@ -747,7 +747,7 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 			OrgUnitMonthPlanGatherEntryInfo entry=col.get(i);
 			if(entry.getSrcId()!=null){
 				try {
-					ProjectMonthPlanGatherCollection mp = ProjectMonthPlanGatherFactory.getRemoteInstance().getProjectMonthPlanGatherCollection("select payEntry.*,payEntry.bgItem.*,payEntry.payRequestBill.realSupplier.name,payEntry.contractWithoutText.receiveUnit.name,payEntry.payRequestBill.*,payEntry.contractWithoutText.*,entry.dateEntry.*,entry.dateEntry.bgItem.* from where id='"+entry.getSrcId()+"'");
+					ProjectMonthPlanGatherCollection mp = ProjectMonthPlanGatherFactory.getRemoteInstance().getProjectMonthPlanGatherCollection("select payEntry.*,payEntry.bgItem.*,payEntry.payRequestBill.realSupplier.name,payEntry.contractWithoutText.receiveUnit.name,payEntry.contractWithoutText.person.name,payEntry.payRequestBill.*,payEntry.contractWithoutText.*,entry.dateEntry.*,entry.dateEntry.bgItem.* from where id='"+entry.getSrcId()+"'");
 					if(mp.size()>0){
 						for(int j=0;j<mp.get(0).getEntry().size();j++){
 							for(int k=0;k<mp.get(0).getEntry().get(j).getDateEntry().size();k++){
@@ -854,6 +854,52 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 				}
 			}
 		}
+		
+		for(int i=0;i<payCol.size();i++){
+			ProjectMonthPlanGatherPayEntryInfo entry=payCol.get(i);
+			IRow addrow=this.payTable.addRow();
+			addrow.setUserObject(entry);
+			String number=null;
+			String name=null;
+			Date bizDate=null;
+			SupplierInfo supplier=null;
+			PersonInfo person=null;
+			if(entry.getPayRequestBill()!=null){
+				number=entry.getPayRequestBill().getContractNo();
+				name=entry.getPayRequestBill().getContractName();
+				bizDate=entry.getPayRequestBill().getBookedDate();
+				supplier=entry.getPayRequestBill().getRealSupplier();
+			}else if(entry.getContractWithoutText()!=null){
+				number=entry.getContractWithoutText().getNumber();
+				name=entry.getContractWithoutText().getName();
+				bizDate=entry.getContractWithoutText().getBookedDate();
+				supplier=entry.getContractWithoutText().getReceiveUnit();
+				person=entry.getContractWithoutText().getPerson();
+			}
+			addrow.getCell("number").setValue(number);
+			addrow.getCell("name").setValue(name);
+			addrow.getCell("amount").setValue(entry.getAmount());
+			addrow.getCell("bizDate").setValue(bizDate);
+			if(supplier!=null){
+				addrow.getCell("supplier").setValue(supplier.getName());
+			}else if(person!=null){
+				addrow.getCell("supplier").setValue(person.getName());
+			}
+			
+			addrow.getCell("actPayAmount").setValue(entry.getActPayAmount());
+			addrow.getCell("unPayAmount").setValue(FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount()));
+			addrow.getCell("bgItem").setValue(entry.getBgItem());
+			
+			if(entry.getBgItem()!=null){
+				ProjectMonthPlanGatherDateEntryInfo bgDataEntry=new ProjectMonthPlanGatherDateEntryInfo();
+				bgDataEntry.setBgItem(entry.getBgItem());
+				bgDataEntry.setYear(spYear);
+				bgDataEntry.setMonth(spMonth);
+				bgDataEntry.setAmount(FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount()));
+				srcSortCol.add(bgDataEntry);
+			}
+		}
+		
 		Map bgRowMap=new HashMap();
 		CRMHelper.sortCollection(srcSortCol, "bgItem.number", true);
 		for(int i=0;i<srcSortCol.size();i++){
@@ -877,48 +923,6 @@ public class OrgUnitMonthPlanGatherEditUI extends AbstractOrgUnitMonthPlanGather
 					amount=(BigDecimal) row.getCell(key+"amount").getValue();
 				}
 				row.getCell(key+"amount").setValue(dateEntry.getAmount().add(amount));
-			}
-		}
-		
-		for(int i=0;i<payCol.size();i++){
-			ProjectMonthPlanGatherPayEntryInfo entry=payCol.get(i);
-			IRow addrow=this.payTable.addRow();
-			addrow.setUserObject(entry);
-			String number=null;
-			String name=null;
-			Date bizDate=null;
-			SupplierInfo supplier=null;
-			if(entry.getPayRequestBill()!=null){
-				number=entry.getPayRequestBill().getContractNo();
-				name=entry.getPayRequestBill().getContractName();
-				bizDate=entry.getPayRequestBill().getBookedDate();
-				supplier=entry.getPayRequestBill().getRealSupplier();
-			}else if(entry.getContractWithoutText()!=null){
-				number=entry.getContractWithoutText().getNumber();
-				name=entry.getContractWithoutText().getName();
-				bizDate=entry.getContractWithoutText().getBookedDate();
-				supplier=entry.getContractWithoutText().getReceiveUnit();
-			}
-			addrow.getCell("number").setValue(number);
-			addrow.getCell("name").setValue(name);
-			addrow.getCell("amount").setValue(entry.getAmount());
-			addrow.getCell("bizDate").setValue(bizDate);
-			if(supplier!=null)
-				addrow.getCell("supplier").setValue(supplier.getName());
-			
-			addrow.getCell("actPayAmount").setValue(entry.getActPayAmount());
-			addrow.getCell("unPayAmount").setValue(FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount()));
-			addrow.getCell("bgItem").setValue(entry.getBgItem());
-			if(entry.getBgItem()!=null&&bgRowMap.containsKey(entry.getBgItem().getId().toString())){
-				String key=spYear+"year"+spMonth+"m";
-				
-				if(row.getCell(key+"amount")!=null){
-					BigDecimal amount=FDCHelper.ZERO;
-					if(row.getCell(key+"amount").getValue()!=null){
-						amount=(BigDecimal) row.getCell(key+"amount").getValue();
-					}
-					row.getCell(key+"amount").setValue(FDCHelper.add(amount, FDCHelper.subtract(entry.getAmount(), entry.getActPayAmount())));
-				}
 			}
 		}
 		
