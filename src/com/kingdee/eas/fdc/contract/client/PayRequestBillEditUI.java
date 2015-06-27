@@ -1466,10 +1466,9 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 			isOtherCostedDept=true;
 		}
 		if(!isOtherCostedDept){
-			setRespDept(prmtCostedDept, this, canSelectOtherOrgPerson ? null : cu);
-			this.prmtCostedDept.setQueryInfo("com.kingdee.eas.basedata.org.app.CostCenterOrgUnitQuery");
-			this.contCostedCompany.setVisible(false);
+			this.prmtCostedCompany.setEnabled(false);
 			this.prmtCostedCompany.setRequired(false);
+			this.prmtCostedDept.setRequired(false);
 		}
 
 		setBgEditState();
@@ -1512,64 +1511,6 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 		this.pkbookedDate.setAccessAuthority(CtrlCommonConstant.AUTHORITY_COMMON);
 		this.pkbookedDate.setEnabled(false);
 	}
-	  public void setRespDept(KDBizPromptBox bizPromptBox, CoreUIObject ui, String cuId)
-      {
-/* <-MISALIGNED-> */ /*  69*/        bizPromptBox.setQueryInfo("com.kingdee.eas.basedata.org.app.CostCenterOrgUnitQuery");
-/* <-MISALIGNED-> */ /*  71*/        EntityViewInfo view = new EntityViewInfo();
-/* <-MISALIGNED-> */ /*  73*/        SorterItemCollection sorc = view.getSorter();
-/* <-MISALIGNED-> */ /*  74*/        SorterItemInfo sort = new SorterItemInfo("number");
-/* <-MISALIGNED-> */ /*  75*/        sorc.add(sort);/*  77*/        FilterInfo filter = new FilterInfo();
-
-/*  79*/        FilterItemCollection fic = filter.getFilterItems();
-/*  80*/        fic.add(new FilterItemInfo("isFreeze", new Integer(0)));
-/*  81*/        fic.add(new FilterItemInfo("isSealUp", new Integer(0)));
-
-/*  83*/        if(cuId != null)
-/*  84*/            fic.add(new FilterItemInfo("CU.id", cuId));
-
-
-
-
-/*  89*/        try
-          {
-/* <-MISALIGNED-> */ /*  89*/            Set authorizedOrgs = new HashSet();
-/* <-MISALIGNED-> */ /*  90*/            Map orgs = (Map)ActionCache.get("FDCBillEditUIHandler.authorizedOrgs");
-/* <-MISALIGNED-> */ /*  91*/            if(orgs == null)
-/* <-MISALIGNED-> */ /*  92*/                orgs = PermissionFactory.getRemoteInstance().getAuthorizedOrgs(new ObjectUuidPK(SysContext.getSysContext().getCurrentUserInfo().getId()), OrgType.CostCenter, null, null, null);/*  94*/            if(orgs != null)
-              {/*  95*/                Set orgSet = orgs.keySet();
-/*  96*/                for(Iterator it = orgSet.iterator(); it.hasNext(); authorizedOrgs.add(it.next()));
-              }
-
-
-
-/* 101*/            FilterInfo filterID = new FilterInfo();
-/* 102*/            filterID.getFilterItems().add(new FilterItemInfo("id", authorizedOrgs, CompareType.INCLUDE));
-
-/* 104*/            filter.mergeFilter(filterID, "and");
-          }
-/* 106*/        catch(Exception e)
-          {/* 107*/            e.printStackTrace();
-          }
-
-/* 110*/        view.setFilter(filter);
-/* 111*/        bizPromptBox.setEntityViewInfo(view);
-/* 112*/        CostCenterF7 f7 = new CostCenterF7(ui);
-/* 113*/        f7.showCheckBoxOfShowingAllOUs();
-/* 114*/        f7.setRootUnitID(cuId);
-/* 115*/        if(cuId != null)
-/* 116*/            f7.setCurrentCUID(cuId);
-
-/* 118*/        bizPromptBox.setSelector(f7);
-/* 119*/        SelectorItemCollection sic = bizPromptBox.getSelectorCollection();
-/* 120*/        if(sic == null)
-          {/* 121*/            sic = new SelectorItemCollection();
-/* 122*/            sic.add(new SelectorItemInfo("number"));
-/* 123*/            sic.add(new SelectorItemInfo("name"));
-/* 124*/            bizPromptBox.setSelectorCollection(sic);
-          }
-/* 126*/        sic.add(new SelectorItemInfo("isLeaf"));
-/* 127*/        sic.add(new SelectorItemInfo("displayName"));
-      }
 	boolean isOtherCostedDept=true;
 	protected Set getCostedDeptIdSet(CompanyOrgUnitInfo com) throws EASBizException, BOSException {
 		if (com == null)
@@ -1917,7 +1858,6 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 	}
 
 	protected void prmtCostedCompany_dataChanged(DataChangeEvent e) throws Exception {
-		if(!isOtherCostedDept)return;
 		EntityViewInfo view = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("isBizUnit", Boolean.TRUE));
@@ -2622,9 +2562,6 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 		} else {
 			this.prmtCostedDept.setEnabled(false);
 		}
-		if(!isOtherCostedDept){
-			this.prmtCostedDept.setEnabled(true);
-		}
 		if (this.cbIsInvoice.isSelected()) {
 			this.txtInvoiceNumber.setEnabled(true);
 			this.txtInvoiceAmt.setEnabled(true);
@@ -2633,6 +2570,9 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 			this.txtInvoiceNumber.setEnabled(false);
 			this.txtInvoiceAmt.setEnabled(false);
 			this.pkInvoiceDate.setEnabled(false);
+		}
+		if(!isOtherCostedDept){
+			this.prmtCostedCompany.setEnabled(false);
 		}
 	}
 
