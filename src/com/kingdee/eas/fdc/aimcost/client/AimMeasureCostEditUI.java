@@ -3124,7 +3124,40 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				SysUtil.abort();
 			}
 		}
-	
+		for(int i=0;i<measureCollectTable.getTable().getRowCount();i++){
+			IRow row = measureCollectTable.getTable().getRow(i);
+			Object value = row.getCell("splitType").getValue();
+			String acctNumber=row.getCell("acctNumber").getValue().toString();
+			String acctName=row.getCell("acctName").getValue().toString();
+			String splitType = null;
+			if (value instanceof Item) {
+				Item item = (Item) value;
+				splitType = item.key;
+			}
+			if (splitType == null)
+				continue;
+			
+			Object obj = row.getUserObject();
+			if (obj instanceof CostAccountInfo) {
+				CostAccountInfo acct = (CostAccountInfo) obj;
+				if (acct.isIsLeaf() && acct.getType() == CostAccountTypeEnum.SIX) {
+					BigDecimal total=(BigDecimal) row.getCell("total").getValue();
+					BigDecimal checkTotal=FDCHelper.ZERO;
+					if (splitType.equals("man")) {
+						for (int k = 0; k < planIndexTable.getPlanIndexInfo().getEntrys().size(); k++) {
+							if (!planIndexTable.getPlanIndexInfo().getEntrys().get(k).isIsSplit()) {
+								continue;
+							}
+							checkTotal=FDCHelper.add(checkTotal, row.getCell("split" + k).getValue());
+						}
+						if(FDCHelper.subtract(total, checkTotal).compareTo(FDCHelper.ZERO)!=0){
+							FDCMsgBox.showWarning(this,"测算汇总表科目："+acctNumber+acctName+"指定分摊总额与总成本合计不一致！");
+							SysUtil.abort();
+						}
+					}
+				}
+			}
+		}
 		
 		super.actionSubmit_actionPerformed(e);
 		//提交了之后要将"导入模板"灰掉 ，只有在新增单据的时候允许使用"导入模板"   by Cassiel_peng   2009-8-19

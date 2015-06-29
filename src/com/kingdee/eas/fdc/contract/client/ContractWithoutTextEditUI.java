@@ -630,7 +630,22 @@ public class ContractWithoutTextEditUI extends
 		this.kdtTraEntry.getColumn("allowance").setEditor(weight);
 		this.kdtTraEntry.getColumn("other").setEditor(weight);
 		this.kdtTraEntry.getColumn("total").setEditor(weight);
+		
+		hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISOTHERCOSTEDDEPT", null);
+		HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+		if(hmAllParam.get("FDC_ISOTHERCOSTEDDEPT")!=null){
+			isOtherCostedDept=Boolean.parseBoolean(hmAllParam.get("FDC_ISOTHERCOSTEDDEPT").toString());
+		}else{
+			isOtherCostedDept=true;
+		}
+		if(!isOtherCostedDept){
+			this.prmtCostedCompany.setEnabled(false);
+			this.prmtCostedCompany.setRequired(false);
+			this.prmtCostedDept.setRequired(false);
+		}
 	}
+	boolean isOtherCostedDept=true;
 	protected Set getCostedDeptIdSet(CompanyOrgUnitInfo com) throws EASBizException, BOSException{
 		if(com==null) return null;
 		Set id=new HashSet();
@@ -1923,6 +1938,9 @@ public class ContractWithoutTextEditUI extends
 			this.txtInvoiceNumber.setEnabled(false);
 			this.txtInvoiceAmt.setEnabled(false);
 			this.pkInvoiceDate.setEnabled(false);
+		}
+		if(!isOtherCostedDept){
+			this.prmtCostedCompany.setEnabled(false);
 		}
 	}
 	/**
