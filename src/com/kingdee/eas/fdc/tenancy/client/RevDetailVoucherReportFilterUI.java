@@ -6,6 +6,8 @@ package com.kingdee.eas.fdc.tenancy.client;
 import java.awt.event.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.SpinnerNumberModel;
 
@@ -90,7 +92,18 @@ public class RevDetailVoucherReportFilterUI extends AbstractRevDetailVoucherRepo
 		this.prmtMoneyDefine.setEnabledMultiSelection(true);
 		EntityViewInfo view = new EntityViewInfo();
 		filter = new FilterInfo();
+		Set noInNumber=new HashSet();
+		noInNumber.add("03");
+		noInNumber.add("04");
+		noInNumber.add("08");
+		noInNumber.add("10");
+		noInNumber.add("12");
+		noInNumber.add("13");
+		noInNumber.add("14");
+		noInNumber.add("15");
+		noInNumber.add("16");
 		filter.getFilterItems().add(new FilterItemInfo("sysType", MoneySysTypeEnum.TENANCYSYS_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("number", noInNumber,CompareType.NOTINCLUDE));
 		view.setFilter(filter);
 		this.prmtMoneyDefine.setEntityViewInfo(view);
 	

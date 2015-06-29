@@ -308,27 +308,27 @@ public class FeesVoucherListUI extends AbstractFeesVoucherListUI
 	     */
 	    public void actionDelVoucher_actionPerformed(ActionEvent e) throws Exception
 	    {
-	    	if(KDTableUtil.getSelectedRow(tblMain) == null){
-				MsgBox.showWarning(this, "请先选中行！");
-				return;
-			}
-			 int currRow = -1;
-			    String chcek = null;
-			    int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
-			    for (int i = 0; i < selectRows.length; i++) {
-			      currRow = selectRows[i];
-			      String ObjectPK = this.tblMain.getRow(currRow).getCell("id").getValue().toString();
-			      if (!ObjectPK.equals(chcek)) {
-			    	  FeesWarrantInfo fwinfo= FeesWarrantFactory.getRemoteInstance().getFeesWarrantInfo(new ObjectUuidPK(ObjectPK));
-			        if (FDCBillStateEnum.AUDITTED.equals(fwinfo.getState()))
-			        {
-			        }else{
-			        	  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 单据状态不是审批状态,不能删凭证!");
-			        	  this.abort();
-			        }
-			        chcek = ObjectPK;
-			      }
-			    }
+//	    	if(KDTableUtil.getSelectedRow(tblMain) == null){
+//				MsgBox.showWarning(this, "请先选中行！");
+//				return;
+//			}
+//			 int currRow = -1;
+//			    String chcek = null;
+//			    int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
+//			    for (int i = 0; i < selectRows.length; i++) {
+//			      currRow = selectRows[i];
+//			      String ObjectPK = this.tblMain.getRow(currRow).getCell("id").getValue().toString();
+//			      if (!ObjectPK.equals(chcek)) {
+//			    	  FeesWarrantInfo fwinfo= FeesWarrantFactory.getRemoteInstance().getFeesWarrantInfo(new ObjectUuidPK(ObjectPK));
+//			        if (FDCBillStateEnum.AUDITTED.equals(fwinfo.getState()))
+//			        {
+//			        }else{
+//			        	  MsgBox.showError(" 第" + (selectRows[i] + 1) + "行 单据状态不是审批状态,不能删凭证!");
+//			        	  this.abort();
+//			        }
+//			        chcek = ObjectPK;
+//			      }
+//			    }
 	        super.actionDelVoucher_actionPerformed(e);
 	    }
     protected void refresh(ActionEvent e) throws Exception

@@ -22,6 +22,7 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTEditListener;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.ctrl.swing.KDComboBox;
+import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.eas.common.EASBizException;
@@ -41,6 +42,8 @@ import com.kingdee.eas.fdc.aimcost.client.AimMeasureCostEditUI.Item;
 import com.kingdee.eas.fdc.basedata.CostAccountInfo;
 import com.kingdee.eas.fdc.basedata.CostAccountTypeEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.util.SysUtil;
 
 public class MeasureCollectTable {
 	private KDTable table = null;
@@ -563,7 +566,7 @@ public class MeasureCollectTable {
 		if(oldValue==null&&newValue==null){
 			return;
 		}
-		if (oldValue != null && newValue != null && oldValue.equals(newValue)) {
+		if (oldValue != null && newValue != null && oldValue.toString().equals(newValue.toString())) {
 			return;
 		}
 		int rowIndex = e.getRowIndex();
@@ -577,13 +580,16 @@ public class MeasureCollectTable {
 				setUnionData();
 			}
 		}
-
 		if (table.getColumnKey(columnIndex).startsWith("split") 
 				&& !table.getColumnKey(columnIndex).equals("split")
 				&&!table.getColumnKey(columnIndex).equals("splitType")) {
 			// 处理指定分摊时的录入
 			Object obj = row.getCell("splitType").getValue();
 			if (obj instanceof Item && ((Item) obj).key.equals("man")) {
+				if(e.getValue()!=null&&e.getValue().toString().indexOf("%")>0){
+					BigDecimal total=(BigDecimal) row.getCell("total").getValue();
+					row.getCell(columnIndex).setValue(FDCHelper.divide(FDCHelper.multiply(e.getValue().toString().replace("%", ""),total), new BigDecimal(100), 2, BigDecimal.ROUND_HALF_UP));
+				}
 				row.getCell(columnIndex).setValue(row.getCell(columnIndex).getValue());
 				int index = Integer.parseInt(table.getColumnKey(columnIndex).substring("split".length()));
 				BigDecimal sellArea = entrys.get(index).getSellArea();
