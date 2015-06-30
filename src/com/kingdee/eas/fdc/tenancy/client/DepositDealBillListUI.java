@@ -117,6 +117,8 @@ public class DepositDealBillListUI extends AbstractDepositDealBillListUI
 		this.actionCreateInvoice.setVisible(false);
 		this.actionClearInvoice.setVisible(false);
 		
+		this.menuItemUpdateSubject.setVisible(false);
+		
     }
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);

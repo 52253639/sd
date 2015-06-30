@@ -57,8 +57,10 @@ import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
 import com.kingdee.eas.fdc.basecrm.FDCReceivingBillInfo;
 import com.kingdee.eas.fdc.basecrm.RevBillStatusEnum;
 import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
+import com.kingdee.eas.fdc.basecrm.RevListTypeEnum;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
@@ -67,10 +69,12 @@ import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.IDepositDealBill;
 import com.kingdee.eas.fdc.tenancy.IInvoiceBill;
 import com.kingdee.eas.fdc.tenancy.IOtherBill;
+import com.kingdee.eas.fdc.tenancy.InvoiceBillEntryInfo;
 import com.kingdee.eas.fdc.tenancy.InvoiceBillFactory;
 import com.kingdee.eas.fdc.tenancy.InvoiceBillInfo;
 import com.kingdee.eas.fdc.tenancy.OtherBillFactory;
 import com.kingdee.eas.fdc.tenancy.OtherBillInfo;
+import com.kingdee.eas.fdc.tenancy.TenBillBaseInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyBillFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
@@ -125,6 +129,12 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		this.actionClearInvoice.setVisible(false);
 		
 		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entry.amount"});
+		
+		this.menuItemUpdateSubject.setVisible(false);
+		this.btnAdjust.setText("作废");
+		this.btnAdjust.setIcon(EASResource.getIcon("imgTbtn_blankout"));
+		this.btnAdjust.setVisible(true);
+		this.actionTraceDown.setVisible(true);
 	}
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);
@@ -929,4 +939,51 @@ else
     }
 }
 }
+public void actionAdjust_actionPerformed(ActionEvent e) throws Exception {
+	
+	checkSelected();
+	ArrayList id = getSelectedIdValues();
+	for(int i = 0; i < id.size(); i++){
+		FDCClientUtils.checkBillInWorkflow(this, id.get(i).toString());
+    	
+		if (!FDCBillStateEnum.AUDITTED.equals(getInfo(id.get(i).toString()).getState())) {
+			FDCMsgBox.showWarning("单据不是审批状态，不能进行作废操作！");
+			return;
+		}
+		TenBillBaseInfo tenBillBaseInfo = new TenBillBaseInfo();
+
+		tenBillBaseInfo.setId(BOSUuid.read(id.get(i).toString()));
+		tenBillBaseInfo.setState(FDCBillStateEnum.INVALID);
+		SelectorItemCollection selector = new SelectorItemCollection();
+		selector.add("state");
+		
+		InvoiceBillFactory.getRemoteInstance().updatePartial(tenBillBaseInfo, selector);
+		
+		SelectorItemCollection sic=new SelectorItemCollection();
+		sic.add("entry.*");
+		InvoiceBillInfo info=InvoiceBillFactory.getRemoteInstance().getInvoiceBillInfo(new ObjectUuidPK(id.get(i).toString()),sic);
+		
+		FDCSQLBuilder fdcSB = new FDCSQLBuilder();
+		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+		
+		for(int kk=0;kk<info.getEntry().size();kk++){
+			InvoiceBillEntryInfo entry=info.getEntry().get(kk);
+			String table="";
+			if(RevListTypeEnum.tenRoomRev.equals(entry.getRevListType())){
+				table=" T_TEN_TenancyRoomPayListEntry ";
+			}else if(RevListTypeEnum.tenOtherRev.equals(entry.getRevListType())){
+				table=" T_TEN_TenBillOtherPay ";
+			}else if(RevListTypeEnum.sincerobligate.equals(entry.getRevListType())){
+				table=" .T_TEN_SincerPaylistEntrys ";
+			}
+			StringBuffer sql = new StringBuffer();
+			sql.append("update "+table+" revList set finvoiceAmount = (select isnull(sum(entry.famount),0) from T_TEN_InvoiceBillEntry entry left join T_TEN_InvoiceBill bill on bill.fid=entry.fheadId where bill.fstate='4AUDITTED' and entry.frevListId=revList.fid) where revList.fid='"+entry.getRevListId()+"'");
+			fdcSB.addBatch(sql.toString());
+		}
+		fdcSB.executeBatch();
+	}
+	FDCClientUtils.showOprtOK(this);
+	this.refresh(null);
+}
+
 }

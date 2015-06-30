@@ -318,7 +318,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 	}
 
 	private void setTitle() {
-		FDCBaseDataClientUtils.setupUITitle(this, "合同流程类型");
+		FDCBaseDataClientUtils.setupUITitle(this, "规划指标");
 	}
 
 	public void onLoad() throws Exception {

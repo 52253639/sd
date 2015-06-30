@@ -209,8 +209,8 @@ public abstract class AbstractInvoiceBillListUI extends com.kingdee.eas.fdc.base
         this.setBounds(new Rectangle(10, 10, 1013, 629));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 1013, 629));
-        pnlMain.setBounds(new Rectangle(8, 25, 993, 613));
-        this.add(pnlMain, new KDLayout.Constraints(8, 25, 993, 613, KDLayout.Constraints.ANCHOR_CENTRE | KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        pnlMain.setBounds(new Rectangle(8, 25, 993, 596));
+        this.add(pnlMain, new KDLayout.Constraints(8, 25, 993, 596, KDLayout.Constraints.ANCHOR_CENTRE | KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         cbIsAll.setBounds(new Rectangle(219, 4, 140, 19));
         this.add(cbIsAll, new KDLayout.Constraints(219, 4, 140, 19, 0));
         //pnlMain

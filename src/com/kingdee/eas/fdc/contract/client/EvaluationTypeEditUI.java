@@ -223,7 +223,7 @@ public class EvaluationTypeEditUI extends AbstractEvaluationTypeEditUI
 	}
 
 	private void setTitle() {
-		FDCBaseDataClientUtils.setupUITitle(this, "合同流程类型");
+		FDCBaseDataClientUtils.setupUITitle(this, "评估类型");
 	}
 
 	public void onLoad() throws Exception {

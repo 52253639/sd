@@ -202,7 +202,15 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
         	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("应收金额");
         	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
         	         
-	   	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+1);
+        	         column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"feeAmount");
+        	         column.setWidth(120);
+        	         
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("累计确认收入金额");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+	   	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+2);
          	         
 	   	        	 Calendar cal = Calendar.getInstance();
 	        		 cal.set(Calendar.YEAR, year);
@@ -233,6 +241,7 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
            	        	    Date endDate=(Date) row.getCell("endDate").getValue();
         	        		int monthDiff=getMonthDiff(startDate,endDate)+1;
         	        		BigDecimal appAmount=detailrs.getBigDecimal("appAmount");
+        	        		BigDecimal feeAmount=detailrs.getBigDecimal("feeAmount");
         	        		if(monthDiff!=1){
         	        			int dayDiff=FDCDateHelper.getDiffDays(startDate, endDate);
             	        		BigDecimal avg=FDCHelper.divide(appAmount, dayDiff, 2, BigDecimal.ROUND_HALF_UP);
@@ -265,11 +274,12 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
             	        		}
         	        		}
         	        		row.getCell(year+"Y"+month+"M"+"appAmount").setValue(appAmount);
-        	        		
+        	        		row.getCell(year+"Y"+month+"M"+"feeAmount").setValue(feeAmount);
         	        		if(totalrowMap.containsKey(detailrs.getString("conId"))){
         	        			IRow totalrow=(IRow) totalrowMap.get(detailrs.getString("conId"));
         	        			totalrow.getCell(year+"Y"+month+"M"+"appAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue(), appAmount));
-    	        			}
+        	        			totalrow.getCell(year+"Y"+month+"M"+"feeAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"feeAmount").getValue(), feeAmount));
+        	        		}
         	        	 }
         	         }
         	         

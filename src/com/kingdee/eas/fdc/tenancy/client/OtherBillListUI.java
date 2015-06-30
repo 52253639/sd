@@ -122,6 +122,8 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 		
 		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"entry.amount"});
 		
+		this.menuItemUpdateSubject.setVisible(false);
+		
 		KDWorkButton btnImport=new KDWorkButton();
 		btnImport.setText("µº»Î");
 		btnImport.setIcon(EASResource.getIcon("imgTbtn_input"));
