@@ -2004,10 +2004,10 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
     		
     		FDCSQLBuilder _builder = new FDCSQLBuilder();
     		_builder.appendSql("select * from ( ");
-			_builder.appendSql("select pay.fbookedDate bizDate,pay.fnumber number,bgEntry.fbgItemId bgItemId,bill.fid billId,pay.fid id,pay.famount amount,isnull(t.amount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId left join T_CON_PayRequestBillBgEntry bgEntry on bgEntry.fheadId=pay.fid ");
-			_builder.appendSql("left join (select ffdcPayReqId,isnull(sum(FAmount),0) amount from t_cas_paymentbill where fbillstatus=15 group by ffdcPayReqId) t on t.ffdcPayReqId=pay.fid where (pay.famount!=t.amount or t.amount is null) and bill.fid is null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
+			_builder.appendSql("select pay.fbookedDate bizDate,pay.fnumber number,bgEntry.fbgItemId bgItemId,bill.fid billId,pay.fid id,bgEntry.frequestAmount amount,isnull(bgEntry.factPayAmount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId left join T_CON_PayRequestBillBgEntry bgEntry on bgEntry.fheadId=pay.fid ");
+			_builder.appendSql("where pay.fisBgControl=1 and (bgEntry.frequestAmount!=bgEntry.factPayAmount or bgEntry.factPayAmount is null) and bill.fid is null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
 			_builder.appendSql("union all select bill.fbookedDate bizDate,bill.fnumber number,bgEntry.fbgItemId bgItemId,bill.fid billId,bill.fid id,bgEntry.frequestAmount amount,isnull(bgEntry.factPayAmount,0) actPayAmount,pay.fcontractId contractId from t_con_payRequestBill pay left join t_con_contractWithoutText bill on bill.fid=pay.fcontractId left join T_CON_PayRequestBillBgEntry bgEntry on bgEntry.fheadId=pay.fid ");
-			_builder.appendSql("where (bgEntry.frequestAmount!=bgEntry.factPayAmount or bgEntry.factPayAmount is null) and bill.fid is not null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
+			_builder.appendSql("where pay.fisBgControl=1 and (bgEntry.frequestAmount!=bgEntry.factPayAmount or bgEntry.factPayAmount is null) and bill.fid is not null and pay.fcurProjectId='"+this.editData.getCurProject().getId().toString()+"' ");
 			_builder.appendSql(")t order by t.bizDate,t.number");
 			Map bgMap=new HashMap();
 			final IRowSet rowSet = _builder.executeQuery();

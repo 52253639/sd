@@ -379,7 +379,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}else{
 			this.prmtRentFreeBill.setEnabled(false);
 		}
-		
+		attachListeners();	
+	}
+	private void initTotalPayList(){
 		this.tblTotal.checkParsed();
 		this.tblTotal.getSelectManager().setSelectMode(KDTSelectManager.CELL_SELECT);
 		this.tblTotal.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
@@ -397,15 +399,16 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblTotal.getColumn("actRevAmount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 		this.tblTotal.getColumn("actRevAmount").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 		this.tblTotal.getColumn("actRevAmount").getStyleAttributes().setLocked(true);
-
+	}
+	private void loadTotalPayList(){
 		TenBillOtherPayCollection otherPayList = new TenBillOtherPayCollection();
-		for (int i = 0; i < tenBill.getOtherPayList().size(); i++) {
-			TenBillOtherPayInfo entry=tenBill.getOtherPayList().get(i);
+		for (int i = 0; i < this.editData.getOtherPayList().size(); i++) {
+			TenBillOtherPayInfo entry=this.editData.getOtherPayList().get(i);
 			otherPayList.add(entry);
 		}
-		if(tenBill.getTenancyRoomList().size()>0){
-			for (int i = 0; i < tenBill.getTenancyRoomList().get(0).getPayList().size(); i++) {
-				TenancyRoomPayListEntryInfo tenOtherInfo = tenBill.getTenancyRoomList().get(0).getRoomPayList().get(i);
+		if(this.editData.getTenancyRoomList().size()>0){
+			for (int i = 0; i < this.editData.getTenancyRoomList().get(0).getPayList().size(); i++) {
+				TenancyRoomPayListEntryInfo tenOtherInfo = this.editData.getTenancyRoomList().get(0).getRoomPayList().get(i);
 				TenBillOtherPayInfo entry=new TenBillOtherPayInfo();
 				entry.setMoneyDefine(tenOtherInfo.getMoneyDefine());
 				entry.setAppAmount(tenOtherInfo.getAppAmount());
@@ -434,8 +437,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			}
 		}
 		CRMClientHelper.getFootRow(this.tblTotal, new String[]{"appAmount","actRevAmount"});
-		
-		attachListeners();	
 	}
 	/**
 	 * @author tim_gao
@@ -737,6 +738,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		initOtherPayList();
 		//add by yangfan
 		initLiquidatedTable();
+		initTotalPayList();
 		tabbedPaneContract.remove(panelContractInfo);
 		tabbedPaneContract.remove(kDPaneLongContract);
 		tabbedPaneContract.remove(panelCommissionSetting);
@@ -854,6 +856,16 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.actionAddCollectProtocol.setVisible(false);
 		
 		this.txtName.setEnabled(false);
+		
+		this.tabbedPaneContract.addChangeListener(new ChangeListener(){
+			public void stateChanged(ChangeEvent e) {
+				if(tabbedPaneContract.getSelectedIndex()==0&&(getOprtState().equals("ADDNEW") || getOprtState().equals("EDIT"))){
+					storePayList();
+					storeOtherPayList();
+					loadTotalPayList();
+				}
+			}
+		});
 	}
 	private void initF7Bussinss() {
 		this.f7BussinessDepartMent.setQueryInfo("com.kingdee.eas.basedata.org.app.OUQuery");

@@ -101,7 +101,7 @@ public class FDCOrgUnitMonthPlanGahterCaculator implements ICalculator, IMethodB
     	_builder.appendSql(" and dateEntry.fyear="+period.getYear()+" and dateEntry.fmonth="+period.getMonth());
     	_builder.appendSql(" and orgUnit.fnumber='"+companyNumber+"' and bgItem.fnumber like '"+bgNumber+"%'");
     	
-    	_builder.appendSql(" union all select isnull(sum(payEntry.famount-payEntry.actPayAmount),0) amount from T_FNC_OrgUnitMonthPlanGather bill");
+    	_builder.appendSql(" union all select isnull(sum(payEntry.famount-payEntry.factPayAmount),0) amount from T_FNC_OrgUnitMonthPlanGather bill");
     	_builder.appendSql(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId left join T_ORG_BaseUnit orgUnit on orgUnit.fid=bill.forgUnitId");
     	_builder.appendSql(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
     	_builder.appendSql(" left join T_FNC_ProjectMPlanGPayEntry payEntry on payEntry.fheadId=gather.fid left join t_bg_bgitem bgItem on bgItem.fid=payEntry.fbgItemId");

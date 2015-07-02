@@ -80,6 +80,7 @@ import com.kingdee.bos.ctrl.swing.KDTabbedPane;
 import com.kingdee.bos.ctrl.swing.KDTextArea;
 import com.kingdee.bos.ctrl.swing.KDTextField;
 import com.kingdee.bos.ctrl.swing.KDWorkButton;
+import com.kingdee.bos.ctrl.swing.KDPromptBox.DefaultEditor;
 import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.ctrl.swing.event.DataChangeListener;
 import com.kingdee.bos.ctrl.swing.event.SelectorEvent;
@@ -1314,11 +1315,11 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		config.setEntityViewInfo(view);
 		config.setEditable(true);
 		config.setDisplayFormat("$name$");
-		config.setEditFormat("$number$");
-		config.setCommitFormat("$number$");
+		config.setEditFormat("$longNumber$");
+		config.setCommitFormat("$longNumber$");
 		ICellEditor configEditor = new KDTDefaultCellEditor(config);
 		table.getColumn("indexName").setEditor(configEditor);
-		
+
 		setTemplateMeasureCostF7Editor(table);
 		this.addTableChangeEnvent(table);
 	}
