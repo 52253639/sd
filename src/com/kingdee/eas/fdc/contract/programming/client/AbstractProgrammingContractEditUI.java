@@ -191,7 +191,8 @@ public abstract class AbstractProgrammingContractEditUI extends com.kingdee.eas.
         this.btnSave.setName("btnSave");
         this.btnAttachment.setName("btnAttachment");
         this.btnEdit.setName("btnEdit");
-        // CoreUI
+        // CoreUI		
+        this.setPreferredSize(new Dimension(950,605));
         // kDPanel1
         // kDTabbedPane1
         // kDLabelContainer1		
@@ -439,36 +440,36 @@ public abstract class AbstractProgrammingContractEditUI extends com.kingdee.eas.
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 700, 605));
+        this.setBounds(new Rectangle(10, 10, 950, 605));
         this.setLayout(null);
-        kDPanel1.setBounds(new Rectangle(5, 5, 700, 330));
+        kDPanel1.setBounds(new Rectangle(5, 5, 939, 187));
         this.add(kDPanel1, null);
-        kDTabbedPane1.setBounds(new Rectangle(5, 330, 690, 270));
+        kDTabbedPane1.setBounds(new Rectangle(5, 195, 943, 408));
         this.add(kDTabbedPane1, null);
         //kDPanel1
-        kDPanel1.setLayout(null);        kDLabelContainer1.setBounds(new Rectangle(5, 5, 680, 20));
+        kDPanel1.setLayout(null);        kDLabelContainer1.setBounds(new Rectangle(5, 5, 927, 20));
         kDPanel1.add(kDLabelContainer1, null);
-        kDLabelContainer2.setBounds(new Rectangle(5, 35, 300, 20));
+        kDLabelContainer2.setBounds(new Rectangle(5, 28, 927, 20));
         kDPanel1.add(kDLabelContainer2, null);
-        kDLabelContainer3.setBounds(new Rectangle(385, 35, 300, 20));
+        kDLabelContainer3.setBounds(new Rectangle(5, 51, 927, 20));
         kDPanel1.add(kDLabelContainer3, null);
-        kDLabelContainer4.setBounds(new Rectangle(5, 65, 300, 19));
+        kDLabelContainer4.setBounds(new Rectangle(5, 74, 927, 19));
         kDPanel1.add(kDLabelContainer4, null);
-        kDLabelContainer5.setBounds(new Rectangle(385, 65, 300, 20));
+        kDLabelContainer5.setBounds(new Rectangle(681, 54, 300, 20));
         kDPanel1.add(kDLabelContainer5, null);
-        kDLabelContainer6.setBounds(new Rectangle(5, 125, 680, 60));
+        kDLabelContainer6.setBounds(new Rectangle(5, 96, 927, 60));
         kDPanel1.add(kDLabelContainer6, null);
-        kDLabelContainer8.setBounds(new Rectangle(5, 265, 680, 20));
+        kDLabelContainer8.setBounds(new Rectangle(5, 160, 927, 20));
         kDPanel1.add(kDLabelContainer8, null);
         kDLabelContainer9.setBounds(new Rectangle(5, 295, 680, 20));
         kDPanel1.add(kDLabelContainer9, null);
         kDLabelContainer7.setBounds(new Rectangle(5, 195, 680, 60));
         kDPanel1.add(kDLabelContainer7, null);
-        kDLabelContainer10.setBounds(new Rectangle(54, 106, 300, 19));
+        kDLabelContainer10.setBounds(new Rectangle(623, 35, 300, 19));
         kDPanel1.add(kDLabelContainer10, null);
-        kDLabelContainer11.setBounds(new Rectangle(385, 95, 300, 19));
+        kDLabelContainer11.setBounds(new Rectangle(709, 112, 300, 19));
         kDPanel1.add(kDLabelContainer11, null);
-        contEstimateAmount.setBounds(new Rectangle(5, 95, 300, 19));
+        contEstimateAmount.setBounds(new Rectangle(683, 83, 300, 19));
         kDPanel1.add(contEstimateAmount, null);
         //kDLabelContainer1
         kDLabelContainer1.setBoundEditor(txtParentLongName);

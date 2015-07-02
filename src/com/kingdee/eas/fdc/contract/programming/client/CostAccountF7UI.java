@@ -72,6 +72,23 @@ public class CostAccountF7UI extends AbstractCostAccountF7UI {
 		btnConfirm.setEnabled(true);
 		btnExit.setEnabled(true);
 	}
+	protected void btnSelect_actionPerformed(ActionEvent e) throws Exception {
+		for(int i=0;i<this.tblMain.getRowCount();i++){
+			IRow row=this.tblMain.getRow(i);
+			String name = (String)row.getCell("name").getValue();
+			String selectName=this.txtName.getText().trim();
+			if(selectName.equals("")){
+				row.getStyleAttributes().setHided(false);
+			}else{
+				if(name!=null&&name.indexOf(selectName)>=0){
+					row.getStyleAttributes().setHided(false);
+				}else{
+					row.getStyleAttributes().setHided(true);
+				}
+			}
+		}
+	}
+
 	private BigDecimal getAllContractAssign(CostAccountInfo caInfo,ProgrammingContractCollection pcCollection) {
 		BigDecimal allContractAssign = FDCHelper.ZERO;
 		for (int i = 0; i < pcCollection.size(); i++) {
@@ -173,6 +190,8 @@ public class CostAccountF7UI extends AbstractCostAccountF7UI {
 			maxLevel = Math.max(levelArray[i], maxLevel);
 		}
 		tblMain.getTreeColumn().setDepth(maxLevel);
+		tblMain.getColumn("fullOrgUnit.name").getStyleAttributes().setHided(true);
+		tblMain.getColumn("isEnabled").getStyleAttributes().setHided(true);
 		tblMain.getColumn("level").getStyleAttributes().setHided(true);
 		this.tblMain.setRefresh(true);
 	}

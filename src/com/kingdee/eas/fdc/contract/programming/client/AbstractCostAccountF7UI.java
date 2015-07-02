@@ -46,9 +46,11 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.client.ListUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractCostAccountF7UI.class);
-    protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator3;
-    protected com.kingdee.bos.ctrl.swing.KDButton btnConfirm;
-    protected com.kingdee.bos.ctrl.swing.KDButton btnExit;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contName;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnSelect;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnConfirm;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnExit;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
     protected ActionConfirm actionConfirm = null;
     protected ActionExit actionExit = null;
     /**
@@ -79,28 +81,49 @@ public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.
         this.actionExit = new ActionExit(this);
         getActionManager().registerAction("actionExit", actionExit);
          this.actionExit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
-        this.kDSeparator3 = new com.kingdee.bos.ctrl.swing.KDSeparator();
-        this.btnConfirm = new com.kingdee.bos.ctrl.swing.KDButton();
-        this.btnExit = new com.kingdee.bos.ctrl.swing.KDButton();
-        this.kDSeparator3.setName("kDSeparator3");
+        this.contName = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.btnSelect = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnConfirm = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnExit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.contName.setName("contName");
+        this.btnSelect.setName("btnSelect");
         this.btnConfirm.setName("btnConfirm");
         this.btnExit.setName("btnExit");
-        // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol8\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol9\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol10\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol11\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol12\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"longNumber\" t:width=\"160\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"name\" t:width=\"200\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"isEnabled\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"assigned\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol4\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol5\" /><t:Column t:key=\"fullOrgUnit.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"curProject.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol7\" /><t:Column t:key=\"fullOrgUnit.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol8\" /><t:Column t:key=\"curProject.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol9\" /><t:Column t:key=\"fullOrgUnit.displayName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol10\" /><t:Column t:key=\"curProject.displayName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol11\" /><t:Column t:key=\"curProject.longNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol12\" /><t:Column t:key=\"level\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{longNumber}</t:Cell><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{isEnabled}</t:Cell><t:Cell>$Resource{assigned}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{fullOrgUnit.name}</t:Cell><t:Cell>$Resource{curProject.name}</t:Cell><t:Cell>$Resource{fullOrgUnit.id}</t:Cell><t:Cell>$Resource{curProject.id}</t:Cell><t:Cell>$Resource{fullOrgUnit.displayName}</t:Cell><t:Cell>$Resource{curProject.displayName}</t:Cell><t:Cell>$Resource{curProject.longNumber}</t:Cell><t:Cell>$Resource{level}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+        this.txtName.setName("txtName");
+        // CoreUI		
+        this.setPreferredSize(new Dimension(750,500));
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol7\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol8\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol9\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol10\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol11\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol12\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol0\" /><t:Column t:key=\"longNumber\" t:width=\"160\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"name\" t:width=\"400\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"isEnabled\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"assigned\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol4\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol5\" /><t:Column t:key=\"fullOrgUnit.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"curProject.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol7\" /><t:Column t:key=\"fullOrgUnit.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol8\" /><t:Column t:key=\"curProject.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol9\" /><t:Column t:key=\"fullOrgUnit.displayName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol10\" /><t:Column t:key=\"curProject.displayName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol11\" /><t:Column t:key=\"curProject.longNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol12\" /><t:Column t:key=\"level\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{longNumber}</t:Cell><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{isEnabled}</t:Cell><t:Cell>$Resource{assigned}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{fullOrgUnit.name}</t:Cell><t:Cell>$Resource{curProject.name}</t:Cell><t:Cell>$Resource{fullOrgUnit.id}</t:Cell><t:Cell>$Resource{curProject.id}</t:Cell><t:Cell>$Resource{fullOrgUnit.displayName}</t:Cell><t:Cell>$Resource{curProject.displayName}</t:Cell><t:Cell>$Resource{curProject.longNumber}</t:Cell><t:Cell>$Resource{level}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
                 this.tblMain.putBindContents("mainQuery",new String[] {"id","longNumber","name","isEnabled","assigned","description","fullOrgUnit.name","curProject.name","fullOrgUnit.id","curProject.id","fullOrgUnit.displayName","curProject.displayName","curProject.longNumber","level"});
 
 
-        // kDSeparator3
+        // contName		
+        this.contName.setBoundLabelText(resHelper.getString("contName.boundLabelText"));		
+        this.contName.setBoundLabelLength(100);		
+        this.contName.setBoundLabelUnderline(true);
+        // btnSelect		
+        this.btnSelect.setText(resHelper.getString("btnSelect.text"));
+        this.btnSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnSelect_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
+                }
+            }
+        });
         // btnConfirm
         this.btnConfirm.setAction((IItemAction)ActionProxyFactory.getProxy(actionConfirm, new Class[] { IItemAction.class }, getServiceContext()));		
-        this.btnConfirm.setText(resHelper.getString("btnConfirm.text"));		
-        this.btnConfirm.setToolTipText(resHelper.getString("btnConfirm.toolTipText"));
+        this.btnConfirm.setText(resHelper.getString("btnConfirm.text"));
         // btnExit
         this.btnExit.setAction((IItemAction)ActionProxyFactory.getProxy(actionExit, new Class[] { IItemAction.class }, getServiceContext()));		
-        this.btnExit.setText(resHelper.getString("btnExit.text"));		
-        this.btnExit.setToolTipText(resHelper.getString("btnExit.toolTipText"));
+        this.btnExit.setText(resHelper.getString("btnExit.text"));
+        // txtName
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -125,16 +148,20 @@ public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 550, 400));
+        this.setBounds(new Rectangle(10, 10, 750, 500));
         this.setLayout(null);
-        tblMain.setBounds(new Rectangle(10, 10, 531, 344));
+        tblMain.setBounds(new Rectangle(3, 46, 743, 410));
         this.add(tblMain, null);
-        kDSeparator3.setBounds(new Rectangle(11, 360, 530, 10));
-        this.add(kDSeparator3, null);
-        btnConfirm.setBounds(new Rectangle(380, 369, 73, 21));
+        contName.setBounds(new Rectangle(16, 16, 270, 19));
+        this.add(contName, null);
+        btnSelect.setBounds(new Rectangle(314, 16, 109, 19));
+        this.add(btnSelect, null);
+        btnConfirm.setBounds(new Rectangle(480, 465, 109, 22));
         this.add(btnConfirm, null);
-        btnExit.setBounds(new Rectangle(468, 369, 73, 21));
+        btnExit.setBounds(new Rectangle(618, 465, 109, 22));
         this.add(btnExit, null);
+        //contName
+        contName.setBoundEditor(txtName);
 
     }
 
@@ -155,10 +182,14 @@ public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(menuItemImportData);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemExportData);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(separatorFile1);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(MenuItemAttachment);
         menuFile.add(kDSeparator1);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
@@ -185,6 +216,7 @@ public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuTools
         menuTools.add(menuMail);
         menuTools.add(menuItemStartWorkFlow);
@@ -211,8 +243,11 @@ public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnView);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnRemove);
         this.toolBar.add(btnRefresh);
         this.toolBar.add(btnQuery);
@@ -303,11 +338,22 @@ public abstract class AbstractCostAccountF7UI extends com.kingdee.eas.framework.
     }
 
     /**
+     * output btnSelect_actionPerformed method
+     */
+    protected void btnSelect_actionPerformed(java.awt.event.ActionEvent e) throws Exception
+    {
+    }
+
+    /**
      * output getSelectors method
      */
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("id"));
         sic.add(new SelectorItemInfo("longNumber"));
         sic.add(new SelectorItemInfo("name"));
