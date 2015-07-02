@@ -417,7 +417,7 @@ public abstract class AbstractPlanIndexConfigEditUI extends com.kingdee.eas.fram
 		dataBinder.registerBinding("prop", String.class, this.txtProp, "text");
 		dataBinder.registerBinding("isEntityIndex", boolean.class, this.cbIsEntityIndex, "selected");
 		dataBinder.registerBinding("name", String.class, this.bizName, "_multiLangItem");
-		dataBinder.registerBinding("longNumber", String.class, this.txtLongNumber, "text");
+		dataBinder.registerBinding("number", String.class, this.txtLongNumber, "text");
 		dataBinder.registerBinding("fieldType", com.kingdee.eas.fdc.aimcost.PlanIndexFieldTypeEnum.class, this.cbFieldType, "selectedItem");
 		dataBinder.registerBinding("formulaType", com.kingdee.eas.fdc.aimcost.PlanIndexFormulaTypeEnum.class, this.cbFormulaType, "selectedItem");		
 	}
@@ -487,7 +487,7 @@ public abstract class AbstractPlanIndexConfigEditUI extends com.kingdee.eas.fram
 		getValidateHelper().registerBindProperty("prop", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("isEntityIndex", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("name", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("longNumber", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("fieldType", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("formulaType", ValidateHelper.ON_SAVE);    		
 	}
@@ -545,7 +545,7 @@ public abstract class AbstractPlanIndexConfigEditUI extends com.kingdee.eas.fram
         sic.add(new SelectorItemInfo("prop"));
         sic.add(new SelectorItemInfo("isEntityIndex"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("longNumber"));
+        sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("fieldType"));
         sic.add(new SelectorItemInfo("formulaType"));
         return sic;

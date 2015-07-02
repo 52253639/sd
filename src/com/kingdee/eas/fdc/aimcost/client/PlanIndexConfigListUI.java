@@ -59,17 +59,17 @@ public class PlanIndexConfigListUI extends AbstractPlanIndexConfigListUI
 	}
 	public void onLoad() throws Exception {
 		FDCTableHelper.setColumnMoveable(tblMain, true);
-		this.tblMain.getDataRequestManager().addDataFillListener(new KDTDataFillListener() {
-			public void afterDataFill(KDTDataRequestEvent e) {
-				// do something
-				String strTemp = "";
-				for (int i = e.getFirstRow(); i <= e.getLastRow(); i++) {
-					strTemp = tblMain.getRow(i).getCell(0).getValue().toString();
-					strTemp = strTemp.replace('!', '.');
-					tblMain.getRow(i).getCell(0).setValue(strTemp);
-				}
-			}
-		});
+//		this.tblMain.getDataRequestManager().addDataFillListener(new KDTDataFillListener() {
+//			public void afterDataFill(KDTDataRequestEvent e) {
+//				// do something
+//				String strTemp = "";
+//				for (int i = e.getFirstRow(); i <= e.getLastRow(); i++) {
+//					strTemp = tblMain.getRow(i).getCell(0).getValue().toString();
+//					strTemp = strTemp.replace('!', '.');
+//					tblMain.getRow(i).getCell(0).setValue(strTemp);
+//				}
+//			}
+//		});
 		super.onLoad();
 		this.btnEnabled.setIcon(EASResource.getIcon("imgTbtn_staruse"));
 		this.btnDisEnabled.setIcon(EASResource.getIcon("imgTbtn_forbid"));
@@ -128,7 +128,7 @@ public class PlanIndexConfigListUI extends AbstractPlanIndexConfigListUI
 			HashSet lnUps = new HashSet();
 			try {
 				PlanIndexConfigCollection ctc = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection(
-						"select id where longNumber like '" + cti.getLongNumber() + "!%'");
+						"select id where number like '" + cti.getNumber() + "%'");
 				lnUps.add(cti.getId().toString());
 				for (int i = 0; i < ctc.size(); i++) {
 					lnUps.add(ctc.get(i).getId().toString());
@@ -267,6 +267,7 @@ public class PlanIndexConfigListUI extends AbstractPlanIndexConfigListUI
 	}
 	public SelectorItemCollection getSelectors() {
 		SelectorItemCollection sic = new SelectorItemCollection();
+		sic.add(new SelectorItemInfo("number"));
 		sic.add(new SelectorItemInfo("longNumber"));
 		sic.add(new SelectorItemInfo("name"));
 		sic.add(new SelectorItemInfo("description"));

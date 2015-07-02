@@ -556,7 +556,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			measureInfo.getConstrEntrys().add(entry);
 		}
 		Map config=new HashMap();
-		PlanIndexConfigCollection col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isEntityIndex=0 order by longNumber");
+		PlanIndexConfigCollection col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isEntityIndex=0 order by number");
 		for(int i=0;i<col.size();i++){
 			config.put(col.get(i).getId().toString(), col.get(i));
 		}
@@ -573,7 +573,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 				entry.setId(BOSUuid.create(entry.getBOSType()));
 				entry.setConfig(configInfo);
 				entry.setFieldType(configInfo.getFieldType());
-				entry.setNumber(configInfo.getLongNumber().replaceAll("!", "."));
+				entry.setNumber(configInfo.getNumber());
 				entry.setName(configInfo.getName());
 				entry.setRemark(configInfo.getDescription());
 				entry.setFormula(configInfo.getFormula());
@@ -614,7 +614,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 						entry.setId(BOSUuid.create(entry.getBOSType()));
 						entry.setConfig(info);
 						entry.setFieldType(info.getFieldType());
-						entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+						entry.setNumber(info.getNumber());
 						entry.setName(info.getName());
 						entry.setRemark(info.getDescription());
 						entry.setFormula(info.getFormula());
@@ -631,7 +631,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 					entry.setId(BOSUuid.create(entry.getBOSType()));
 					entry.setConfig(info);
 					entry.setFieldType(info.getFieldType());
-					entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+					entry.setNumber(info.getNumber());
 					entry.setName(info.getName());
 					entry.setRemark(info.getDescription());
 					entry.setFormula(info.getFormula());
@@ -643,7 +643,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 		}
 		
 		Map configPT=new HashMap();
-		col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by longNumber");
+		col = PlanIndexConfigFactory.getLocalInstance(ctx).getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by number");
 		for(int i=0;i<col.size();i++){
 			configPT.put(col.get(i).getId().toString(), col.get(i));
 		}
@@ -656,7 +656,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 				entry.setId(BOSUuid.create(entry.getBOSType()));
 				entry.setConfig(configInfo);
 				entry.setFieldType(configInfo.getFieldType());
-				entry.setNumber(configInfo.getLongNumber().replaceAll("!", "."));
+				entry.setNumber(configInfo.getNumber());
 				entry.setName(configInfo.getName());
 				entry.setRemark(configInfo.getDescription());
 				entry.setFormula(configInfo.getFormula());
@@ -677,7 +677,7 @@ public class MeasureCostControllerBean extends AbstractMeasureCostControllerBean
 			entry.setId(BOSUuid.create(entry.getBOSType()));
 			entry.setConfig(info);
 			entry.setFieldType(info.getFieldType());
-			entry.setNumber(info.getLongNumber().replaceAll("!", "."));
+			entry.setNumber(info.getNumber());
 			entry.setName(info.getName());
 			entry.setRemark(info.getDescription());
 			entry.setFormula(info.getFormula());

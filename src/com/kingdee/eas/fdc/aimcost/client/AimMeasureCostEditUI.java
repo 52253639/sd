@@ -47,6 +47,7 @@ import com.kingdee.bos.ctrl.common.variant.Variant;
 import com.kingdee.bos.ctrl.excel.io.kds.KDSBookToBook;
 import com.kingdee.bos.ctrl.excel.model.struct.Sheet;
 import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
+import com.kingdee.bos.ctrl.extendcontrols.IFormatter;
 import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.ctrl.extendcontrols.KDCommonPromptDialog;
 import com.kingdee.bos.ctrl.kdf.export.ExportManager;
@@ -205,6 +206,7 @@ import com.kingdee.eas.fdc.contract.programming.ProgrammingContracCostInfo;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
 import com.kingdee.eas.fdc.invite.InviteTypeInfo;
 import com.kingdee.eas.fdc.migrate.BOSUuidHelper;
+import com.kingdee.eas.fdc.schedule.WBSTemplateEntryInfo;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fi.gl.GlUtils;
 import com.kingdee.eas.framework.ICoreBase;
@@ -597,12 +599,12 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		cost.setVersionType(VersionTypeEnum.CheckVersion);
 		
 		try {
-			PlanIndexConfigCollection col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=0 and isEntityIndex=0 order by longNumber");
+			PlanIndexConfigCollection col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=0 and isEntityIndex=0 order by number");
 			for(int i=0;i<col.size();i++){
 				NewPlanIndexInfo entry=new NewPlanIndexInfo();
 				entry.setConfig(col.get(i));
 				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
+				entry.setNumber(col.get(i).getNumber());
 				entry.setName(col.get(i).getName());
 				entry.setRemark(col.get(i).getDescription());
 				entry.setFormula(col.get(i).getFormula());
@@ -610,12 +612,12 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				entry.setProp(col.get(i).getProp());
 				cost.getNewPlanIndexEntry().add(entry);
 			}
-			col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by longNumber");
+			col = PlanIndexConfigFactory.getRemoteInstance().getPlanIndexConfigCollection("select * from where isEnabled=1 and isProductType=1 and isEntityIndex=0 order by number");
 			for(int i=0;i<col.size();i++){
 				NewPlanIndexPTInfo entry=new NewPlanIndexPTInfo();
 				entry.setConfig(col.get(i));
 				entry.setFieldType(col.get(i).getFieldType());
-				entry.setNumber(col.get(i).getLongNumber().replaceAll("!", "."));
+				entry.setNumber(col.get(i).getNumber());
 				entry.setName(col.get(i).getName());
 				entry.setRemark(col.get(i).getDescription());
 				entry.setFormula(col.get(i).getFormula());
@@ -1006,8 +1008,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 	}
 	public void addTableChangeEnvent(final KDTable table) {
-		table
-				.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
+		table.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
 					public void editStopped(
 							com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) {
 						try {
@@ -1315,8 +1316,8 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		config.setEntityViewInfo(view);
 		config.setEditable(true);
 		config.setDisplayFormat("$name$");
-		config.setEditFormat("$longNumber$");
-		config.setCommitFormat("$longNumber$");
+		config.setEditFormat("$number$");
+		config.setCommitFormat("$number$");
 		ICellEditor configEditor = new KDTDefaultCellEditor(config);
 		table.getColumn("indexName").setEditor(configEditor);
 
@@ -2056,7 +2057,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				if(table.getHeadRow(0).getUserObject()!=null){
 					productTypeKey=((ProductTypeInfo)table.getHeadRow(0).getUserObject()).getId().toString();
 				}
-				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getLongNumber().replaceAll("!", "."));
+				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getNumber());
 				if(config.isIsEntityIndex()){
 					if(isEdit){
 						row.getCell("index").getStyleAttributes().setLocked(false);
@@ -2147,7 +2148,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			}
 		}
 		setUnionData(table);
-		
 		setDataChange(true);
 	}
 
@@ -3267,7 +3267,6 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				}
 			}
 		}
-		
 	}
 	public void actionPrintPreview_actionPerformed(ActionEvent e)throws Exception {
 		int i=1;
@@ -5156,10 +5155,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		}
 		return true;
 	}
-	private BigDecimal cal(PlanIndexFormulaTypeEnum type,String formula,String productTypeKey){
+	private BigDecimal cal(NewPlanIndexInfo entry,String productTypeKey,Set set){
 		Pattern pt = Pattern.compile("([\\(]*)([^\\+|^\\-|^\\*|^\\/|^\\(|^\\))]{1,})([\\+|\\-|\\*|\\/|\\(|\\)]*)");
 
-		Matcher matcher = pt.matcher(formula);
+		Matcher matcher = pt.matcher(entry.getFormula());
 		
 		String itemNumber = null;
 		StringBuffer maskString = new StringBuffer();
@@ -5169,11 +5168,14 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 			itemNumber = matcher.group(2);
 			maskString.append(matcher.group(1));
 			BigDecimal value=FDCHelper.ZERO;
-			if(type.equals(PlanIndexFormulaTypeEnum.NORMAL)){
+			if(entry.getFormulaType().equals(PlanIndexFormulaTypeEnum.NORMAL)){
 				IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+itemNumber);
-				NewPlanIndexInfo entry=(NewPlanIndexInfo) valueRow.getUserObject();
-				if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-					value=cal(entry.getFormulaType(),entry.getFormula(),productTypeKey);
+				NewPlanIndexInfo newEntry=(NewPlanIndexInfo) valueRow.getUserObject();
+				if(set.contains(newEntry.getConfig().getId().toString())){
+					set.add(entry.getConfig().getId().toString());
+				}
+				if(newEntry.getFormula()!=null&&newEntry.getFormula().length()>0){
+					value=cal(newEntry,productTypeKey,set);
 				}else{
 					if(valueRow!=null&&valueRow.getCell("value").getValue()!=null){
 						value=new BigDecimal(valueRow.getCell("value").getValue().toString());
@@ -5190,9 +5192,12 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 						continue;
 					}
 					IRow valueRow=(IRow)newPlanIndexMap.get(productKeyPT+itemNumber);
-					NewPlanIndexInfo entry=(NewPlanIndexInfo) valueRow.getUserObject();
-					if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-						value=FDCHelper.add(value,cal(entry.getFormulaType(),entry.getFormula(),productKeyPT));
+					NewPlanIndexInfo newEntry=(NewPlanIndexInfo) valueRow.getUserObject();
+					if(set.contains(newEntry.getConfig().getId().toString())){
+						set.add(entry.getConfig().getId().toString());
+					}
+					if(newEntry.getFormula()!=null&&newEntry.getFormula().length()>0){
+						value=FDCHelper.add(value,cal(newEntry,productKeyPT,set));
 					}else{
 						value=FDCHelper.add(value, valueRow.getCell("value").getValue());
 					}
@@ -5211,6 +5216,19 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	}
 	protected void tblPlanIndex_editStopped(KDTEditEvent e)throws Exception {
 		if(e.getColIndex()!=1)return;
+
+		Object oldValue = e.getOldValue();
+		Object newValue=e.getValue();
+		if(oldValue==null&&newValue==null){
+			return;
+		}
+		if(oldValue!=null&&newValue!=null&&oldValue.equals(newValue)){
+			return;
+		}
+		Set editConfig=new HashSet();
+		NewPlanIndexInfo editEntry=(NewPlanIndexInfo)((KDTable)e.getSource()).getRow(e.getRowIndex()).getUserObject();
+		editConfig.add(editEntry.getConfig().getId().toString());
+		
 		Object[] key = planIndexTables.keySet().toArray(); 
 		for (int k = 0; k < key.length; k++) {
 			String productKey=key[k].toString();
@@ -5222,7 +5240,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				IRow row=table.getRow(i);
 				NewPlanIndexInfo entry=(NewPlanIndexInfo) row.getUserObject();
 				if(entry.getFormula()!=null&&entry.getFormula().length()>0){
-					BigDecimal value=cal(entry.getFormulaType(),entry.getFormula(),productTypeKey);
+					BigDecimal value=cal(entry,productTypeKey,editConfig);
 					if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.DIGITAL)){
 						value=value.setScale(2, BigDecimal.ROUND_HALF_UP);
 					}else if(entry.getFieldType().equals(PlanIndexFieldTypeEnum.INT)){
@@ -5265,6 +5283,40 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				}
 			}
 		}
+		for(int i=3;i<tables.size();i++){
+			KDTable table=(KDTable)tables.get(i);
+			boolean isChange=false;
+			for (int j = 0; j < table.getRowCount(); j++) {
+				IRow row = table.getRow(j);
+				Object obj=row.getCell("indexName").getValue();
+				PlanIndexConfigInfo config=(PlanIndexConfigInfo)obj;
+				if(config!=null&&editConfig.contains(config.getId().toString())){
+					isChange=true;
+					String productTypeKey=planIndexKey;
+					if(table.getHeadRow(0).getUserObject()!=null){
+						productTypeKey=((ProductTypeInfo)table.getHeadRow(0).getUserObject()).getId().toString();
+					}
+					IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getLongNumber().replaceAll("!", "."));
+					if(config.isIsEntityIndex()){
+						if(isEdit){
+							row.getCell("index").getStyleAttributes().setLocked(false);
+							row.getCell("index").getStyleAttributes().setBackground(Color.WHITE);
+						}
+					}else{
+						row.getCell("index").getStyleAttributes().setLocked(true);
+						row.getCell("index").getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
+						if(valueRow!=null&&valueRow.getCell("value").getValue()!=null&&!(valueRow.getCell("value").getValue() instanceof String)){
+							row.getCell("index").setValue(valueRow.getCell("value").getValue());
+						}else{
+							row.getCell("index").setValue(null);
+						}
+					}
+					refreshWorkload(table,row);
+				}
+			}
+			if(isChange){
+				setUnionData(table);
+			}
+		}
 	}
-	
 }

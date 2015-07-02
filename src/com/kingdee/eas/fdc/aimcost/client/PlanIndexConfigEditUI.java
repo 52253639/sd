@@ -97,7 +97,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				strTemp = this.editData.getLongNumber();
 				strTemp = strTemp.replace('!', '.');
 				// parentNumber = strTemp.substring(0,strTemp.lastIndexOf("."));
-				this.txtLongNumber.setText(strTemp);
+//				this.txtLongNumber.setText(strTemp);
 				if (this.editData.isIsEnabled()) {
 					this.btnCancel.setVisible(true);
 					this.btnCancel.setEnabled(true);
@@ -112,7 +112,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				strTemp = this.editData.getLongNumber();
 				strTemp = strTemp.replace('!', '.');
 				// parentNumber = strTemp.substring(0,strTemp.lastIndexOf("."));
-				this.txtLongNumber.setText(strTemp);
+//				this.txtLongNumber.setText(strTemp);
 				if (this.editData.isIsEnabled()) {
 					this.btnCancel.setVisible(true);
 					this.btnCancel.setEnabled(true);
@@ -134,7 +134,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				if(strTemp.lastIndexOf(".")>=0){
 					parentNumber = strTemp.substring(0,strTemp.lastIndexOf("."));
 				}
-				this.txtLongNumber.setText(strTemp);
+//				this.txtLongNumber.setText(strTemp);
 				if (this.editData.isIsEnabled()) {
 					this.btnCancel.setVisible(true);
 					this.btnCancel.setEnabled(true);
@@ -154,7 +154,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				if(strTemp.lastIndexOf(".")>=0){
 					parentNumber = strTemp.substring(0,strTemp.lastIndexOf("."));
 				}
-				this.txtLongNumber.setText(strTemp);
+//				this.txtLongNumber.setText(strTemp);
 				if (this.editData.isIsEnabled()) {
 					this.btnCancel.setVisible(true);
 					this.btnCancel.setEnabled(true);
@@ -188,6 +188,10 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 		}
 		if(parentInfo!=null||this.editData.getParent()!=null){
 			this.cbIsProductType.setEnabled(false);
+		}
+		
+		if(this.editData.getParent()!=null){
+			parentNumber=this.editData.getParent().getNumber().replace('!', '.');
 		}
 	}
 	/**
@@ -224,7 +228,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 			txtLongNumber.requestFocus(true);
 			throw new FDCBasedataException(FDCBasedataException.NUMBER_CHECK_3);
 		}
-		this.editData.setNumber(longNumber.substring(longNumber.lastIndexOf(".") + 1,longNumber.length()));
+//		this.editData.setNumber(longNumber);
 		
 		longNumber = longNumber.replace('.', '!');
 		this.editData.setLongNumber(longNumber);
@@ -268,7 +272,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 					}
 					sumItemNumber.add(itemNumber);
 					if(itemNumber != null && itemNumber.trim().length() != 0){
-						filter.getFilterItems().add(new FilterItemInfo("longNumber", itemNumber.replaceAll("\\.", "!").trim(), CompareType.EQUALS));
+						filter.getFilterItems().add(new FilterItemInfo("number", itemNumber, CompareType.EQUALS));
 						if(count != 0)
 							maskString.append(" OR ");
 						maskString.append("#").append(count);
@@ -286,7 +290,7 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				}
 				if(sumItemNumber.size() != subItems.size()){
 					for(int i = 0; i < subItems.size(); i++){
-						sumItemNumber.remove(subItems.get(i).getLongNumber().replaceAll("!", "."));
+						sumItemNumber.remove(subItems.get(i).getNumber().replaceAll("!", "."));
 					}
 					if(!sumItemNumber.isEmpty()){
 						FDCMsgBox.showWarning(this,"公式:计算项"+sumItemNumber.toString()+"不存在");
@@ -295,20 +299,20 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 				}else{
 					for(int i = 0; i < subItems.size(); i++){
 						if(subItems.get(i).getFieldType().equals(PlanIndexFieldTypeEnum.TEXT)){
-							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"类型不能为文本");
+							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getNumber().replaceAll("!", ".")+"类型不能为文本");
 							SysUtil.abort();
 						}
 						if(!subItems.get(i).isIsEnabled()){
-							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"已禁用");
+							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getNumber().replaceAll("!", ".")+"已禁用");
 							SysUtil.abort();
 						}
 						if(this.cbFormulaType.getSelectedItem().equals(PlanIndexFormulaTypeEnum.NORMAL)){
 							if(subItems.get(i).isIsProductType()!=this.cbIsProductType.isSelected()){
-								FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"与指标类型不符合");
+								FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getNumber().replaceAll("!", ".")+"与指标类型不符合");
 								SysUtil.abort();
 							}
 						}else if(!subItems.get(i).isIsProductType()){
-							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getLongNumber().replaceAll("!", ".")+"不是业态指标");
+							FDCMsgBox.showWarning(this,"公式:计算项"+subItems.get(i).getNumber().replaceAll("!", ".")+"不是业态指标");
 							SysUtil.abort();
 						}
 					}
@@ -332,10 +336,10 @@ public class PlanIndexConfigEditUI extends AbstractPlanIndexConfigEditUI
 			public void keyPressed(KeyEvent e) {
 			}
 			public void keyReleased(KeyEvent e) {
-				PlanIndexConfigInfo parent = (PlanIndexConfigInfo) getUIContext().get(UIContext.PARENTNODE);
+				PlanIndexConfigInfo parent =editData.getParent();
 				if (/*STATUS_VIEW.equals(getOprtState()) ||*/ parent == null)
 					return;
-				String longNumber = parent.getLongNumber().replace('!', '.') + '.';
+				String longNumber = parent.getNumber() + '.';
 				if (!txtLongNumber.getText().startsWith(longNumber)) {
 					txtLongNumber.setText(longNumber);
 					txtLongNumber.setSelectionStart(longNumber.length());

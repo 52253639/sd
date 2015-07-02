@@ -63,15 +63,24 @@ public class PlanIndexConfigControllerBean extends AbstractPlanIndexConfigContro
     protected void _update(Context ctx, IObjectPK pk, IObjectValue model) throws BOSException, EASBizException
     {
     	trimBlank(model);
-    	super._update(ctx, pk, model);
     	PlanIndexConfigInfo info = (PlanIndexConfigInfo) model;
+		PlanIndexConfigInfo oldInfo=this.getPlanIndexConfigInfo(ctx, pk);
+		FDCSQLBuilder fdcSB = new FDCSQLBuilder(ctx);
+		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+    	StringBuffer sql = new StringBuffer();
+		sql.append("update T_AIM_PlanIndexConfig set fnumber = '"+info.getNumber()+"'||subString(fnumber,length('"+oldInfo.getNumber()+"')+1,length(fnumber)-length('"+oldInfo.getNumber()+"')) where fnumber like '"+oldInfo.getNumber()+".%'");
+		fdcSB.addBatch(sql.toString());
+		fdcSB.executeBatch();
+    	
+    	super._update(ctx, pk, model);
+    
     	if(info.getParent()==null){
-    		FDCSQLBuilder fdcSB = new FDCSQLBuilder(ctx);
+    		fdcSB = new FDCSQLBuilder(ctx);
     		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
-        	StringBuffer sql = new StringBuffer();
+        	sql = new StringBuffer();
         	int isProductType=0;
         	if(info.isIsProductType())isProductType=1;
-    		sql.append("update T_AIM_PlanIndexConfig set fisProductType = "+isProductType+" where flongNumber like '"+info.getNumber()+"%'");
+    		sql.append("update T_AIM_PlanIndexConfig set fisProductType = "+isProductType+" where fnumber like '"+info.getNumber()+"%'");
     		fdcSB.addBatch(sql.toString());
     		fdcSB.executeBatch();
     	}
