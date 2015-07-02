@@ -3628,6 +3628,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 //					setDataObject(editData);
 					TimeTools.getInstance().msValuePrintln("end storeFromTemplate");
 					isFirstLoad=true;
+					isHasCompareEntry=false;
 					loadFields();
 					txtVersionName.setText(versionName);
 					//∞Ê±æ¿‡–Õ
