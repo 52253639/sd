@@ -3797,6 +3797,8 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 	private void loadCostAccountTabData(){
 		kdtCostAccount.removeRows();
 		kdtCostAccount.getStyleAttributes().setLocked(true);
+		costRowMap=new HashMap();
+		costCostRowMap=new HashMap();
 		int rowCount = kdtEntries.getRowCount();
 		for(int i = 0 ; i < rowCount ; i++){
 			ProgrammingContractInfo rowObject = (ProgrammingContractInfo)kdtEntries.getRow(i).getUserObject();
@@ -3833,6 +3835,8 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 	 * @param oldName
 	 * @param proCol
 	 */
+	private Map costRowMap=null;
+	private Map costCostRowMap=null;
 	private void addRowForCost(String proName, String oldName, ProgrammingContracCostCollection proCol) {
 		for (int i = 0; i < proCol.size(); i++) {
 			boolean isHas = false;
@@ -3849,55 +3853,41 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 					}
 				}
 			}
-			SelectorItemCollection sic = new SelectorItemCollection();
-			sic.add("*");
-			sic.add("curProject.name");
-			CostAccountInfo costInfo = null;
-			try {
-				costInfo = CostAccountFactory.getRemoteInstance().getCostAccountInfo(new ObjectUuidPK(info.getCostAccount().getId()) , sic);
-			} catch (EASBizException e) {
-				logger.error(e);
-			} catch (BOSException e) {
-				logger.error(e);
-			}
-			if(!curProject.getId().equals(costInfo.getCurProject().getId())){
-				proName = costInfo.getCurProject().getName()+"."+proName;
-			}
-			
-			String name = null;
-			for (int j = 0; j < kdtCostAccount.getRowCount(); j++) {
-				name = null;
-				IRow row_k = kdtCostAccount.getRow(j);
-				String number = row_k.getCell("costNumber").getValue().toString();
-				Object name_1 = row_k.getCell("proName").getValue();
-				if(name_1 != null)
-					name = name_1.toString();
-				if (number.equals(costInfo.getLongNumber())) {
-					isHas = true;
-					if(name == null){
-						row_k.getCell("proName").setValue(proName);
-					}else{
-						row_k.getCell("proName").setValue(name + "," + proName);
-					}
-					Object ass = row_k.getCell("assigned").getValue();
-					BigDecimal assigned = FDCHelper.ZERO;
-					if(ass != null && !StringUtils.isEmpty(ass.toString())){
-						assigned = new BigDecimal(ass.toString());
-						assigned = assigned.add(contractAssign);
-						row_k.getCell("assigned").setValue(assigned);
-					}
-					Object aim = row_k.getCell("aimCost").getValue();
-					BigDecimal aimCost = FDCHelper.ZERO;
-					if(aim != null && !StringUtils.isEmpty(aim.toString())){
-						aimCost = new BigDecimal(aim.toString());
-					}
-					row_k.getCell("assigning").setValue(aimCost.subtract(assigned));
+//			SelectorItemCollection sic = new SelectorItemCollection();
+//			sic.add("*");
+//			sic.add("curProject.name");
+			CostAccountInfo costInfo = info.getCostAccount();
+//			try {
+//				costInfo = CostAccountFactory.getRemoteInstance().getCostAccountInfo(new ObjectUuidPK(info.getCostAccount().getId()) , sic);
+//			} catch (EASBizException e) {
+//				logger.error(e);
+//			} catch (BOSException e) {
+//				logger.error(e);
+//			}
+//			if(!curProject.getId().equals(costInfo.getCurProject().getId())){
+//				proName = costInfo.getCurProject().getName()+"."+proName;
+//			}
+			if(costRowMap.containsKey(costInfo.getId().toString())){
+				IRow row_k=(IRow) costRowMap.get(costInfo.getId().toString());
+				
+				Object ass = row_k.getCell("assigned").getValue();
+				BigDecimal assigned = FDCHelper.ZERO;
+				if(ass != null && !StringUtils.isEmpty(ass.toString())){
+					assigned = new BigDecimal(ass.toString());
+					assigned = assigned.add(contractAssign);
+					row_k.getCell("assigned").setValue(assigned);
 				}
-			}
-			if (!isHas) {
+				Object aim = row_k.getCell("aimCost").getValue();
+				BigDecimal aimCost = FDCHelper.ZERO;
+				if(aim != null && !StringUtils.isEmpty(aim.toString())){
+					aimCost = new BigDecimal(aim.toString());
+				}
+				row_k.getCell("assigning").setValue(aimCost.subtract(assigned));
+			}else{
 				List list = new ArrayList();
 				getParentCostAccountInfo(costInfo , list);
 				addCostAccountParent(list);
+				
 				IRow row = kdtCostAccount.addRow();
 				row.getCell("costNumber").setValue(costInfo.getLongNumber());
 				row.getCell("costName").setValue(setNameIndent(costInfo.getLevel())+costInfo.getName());
@@ -3906,7 +3896,42 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 				row.getCell("assigning").setValue(goalCost.subtract(contractAssign));
 				row.getCell("level").setValue(costInfo.getLevel() + "");
 				row.getCell("proName").setValue(proName);
+				
+				costRowMap.put(costInfo.getId().toString(), row);
 			}
+//			String name = null;
+//			for (int j = 0; j < kdtCostAccount.getRowCount(); j++) {
+//				name = null;
+//				IRow row_k = kdtCostAccount.getRow(j);
+//				String number = row_k.getCell("costNumber").getValue().toString();
+//				Object name_1 = row_k.getCell("proName").getValue();
+//				if(name_1 != null)
+//					name = name_1.toString();
+//				if (number.equals(costInfo.getLongNumber())) {
+//					isHas = true;
+//					if(name == null){
+//						row_k.getCell("proName").setValue(proName);
+//					}else{
+//						row_k.getCell("proName").setValue(name + "," + proName);
+//					}
+//					Object ass = row_k.getCell("assigned").getValue();
+//					BigDecimal assigned = FDCHelper.ZERO;
+//					if(ass != null && !StringUtils.isEmpty(ass.toString())){
+//						assigned = new BigDecimal(ass.toString());
+//						assigned = assigned.add(contractAssign);
+//						row_k.getCell("assigned").setValue(assigned);
+//					}
+//					Object aim = row_k.getCell("aimCost").getValue();
+//					BigDecimal aimCost = FDCHelper.ZERO;
+//					if(aim != null && !StringUtils.isEmpty(aim.toString())){
+//						aimCost = new BigDecimal(aim.toString());
+//					}
+//					row_k.getCell("assigning").setValue(aimCost.subtract(assigned));
+//				}
+//			}
+//			if (!isHas) {
+//				
+//			}
 		}
 	}
 	
@@ -3918,15 +3943,20 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 	 */
 	private CostAccountInfo getParentCostAccountInfo(CostAccountInfo info , List list){
 		if(info.getParent() != null){
-			CostAccountInfo costInfo = null;;
-			try {
-				costInfo = CostAccountFactory.getRemoteInstance().getCostAccountInfo(new ObjectUuidPK(info.getParent().getId()));
-			} catch (EASBizException e) {
-				logger.error(e);
-			} catch (BOSException e) {
-				logger.error(e);
+			CostAccountInfo costInfo = null;
+			if(costCostRowMap.containsKey(info.getParent().getId())){
+				costInfo=(CostAccountInfo) costCostRowMap.get(info.getParent().getId());
+			}else{
+				try {
+					costInfo = CostAccountFactory.getRemoteInstance().getCostAccountInfo(new ObjectUuidPK(info.getParent().getId()));
+				} catch (EASBizException e) {
+					logger.error(e);
+				} catch (BOSException e) {
+					logger.error(e);
+				}
+				list.add(costInfo);
+				costCostRowMap.put(info.getParent().getId(), costInfo);
 			}
-			list.add(costInfo);
 			return getParentCostAccountInfo(costInfo , list);
 		}
 		return null;
@@ -3939,19 +3969,26 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 	private void addCostAccountParent(List list) {
 		for(int i = 0 ; i < list.size() ; i++){
 			CostAccountInfo costAccountInfo = (CostAccountInfo)list.get(i);
-			boolean isHas = false;
-			for (int j = 0; j < kdtCostAccount.getRowCount(); j++) {
-				IRow row = kdtCostAccount.getRow(j);
-				String number = row.getCell("costNumber").getValue().toString();
-				if (number.equals(costAccountInfo.getLongNumber())) {
-					isHas = true;
-				}
-			}
-			if(!isHas){
+//			boolean isHas = false;
+//			for (int j = 0; j < kdtCostAccount.getRowCount(); j++) {
+//				IRow row = kdtCostAccount.getRow(j);
+//				String number = row.getCell("costNumber").getValue().toString();
+//				if (number.equals(costAccountInfo.getLongNumber())) {
+//					isHas = true;
+//				}
+//			}
+//			if(!isHas){
+//				IRow row = kdtCostAccount.addRow();
+//				row.getCell("costNumber").setValue(costAccountInfo.getLongNumber());
+//				row.getCell("costName").setValue(setNameIndent(costAccountInfo.getLevel())+costAccountInfo.getName());
+//				row.getCell("level").setValue(costAccountInfo.getLevel() + "");
+//			}
+			if(!costRowMap.containsKey(costAccountInfo.getId().toString())){
 				IRow row = kdtCostAccount.addRow();
 				row.getCell("costNumber").setValue(costAccountInfo.getLongNumber());
 				row.getCell("costName").setValue(setNameIndent(costAccountInfo.getLevel())+costAccountInfo.getName());
 				row.getCell("level").setValue(costAccountInfo.getLevel() + "");
+				costRowMap.put(costAccountInfo.getId().toString(), row);
 			}
 		}
 	}

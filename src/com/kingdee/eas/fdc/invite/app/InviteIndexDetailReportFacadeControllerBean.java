@@ -124,7 +124,8 @@ public class InviteIndexDetailReportFacadeControllerBean extends AbstractInviteI
     		sb.append(" and invPlan.fprojectID = 'null'");
     	}
     	sb.append(" group by con.fprogrammingContract) price on price.fprogrammingContractID=invEntry.fprogrammingContractID");
-    	sb.append(" where (purMode.fname_l2 is null or (purMode.fname_l2 not like '%战略采购%' and purMode.fname_l2 not like '%集中采购%'))");
+    	sb.append(" where 1=1");
+//    	sb.append(" where (purMode.fname_l2 is null or (purMode.fname_l2 not like '%战略采购%' and purMode.fname_l2 not like '%集中采购%'))");
     	if(curProject!=null){
     		sb.append(" and invPlan.fversion = (select max(fversion) from T_INV_InviteMonthPlan where fprojectID ='"+curProject.getId().toString()+"') and invPlan.fprojectID ='"+curProject.getId().toString()+"'");
     	}else{

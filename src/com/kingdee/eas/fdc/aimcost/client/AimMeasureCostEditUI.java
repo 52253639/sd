@@ -5297,7 +5297,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 					if(table.getHeadRow(0).getUserObject()!=null){
 						productTypeKey=((ProductTypeInfo)table.getHeadRow(0).getUserObject()).getId().toString();
 					}
-					IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getLongNumber().replaceAll("!", "."));
+					IRow valueRow=(IRow)newPlanIndexMap.get(productTypeKey+config.getNumber());
 					if(config.isIsEntityIndex()){
 						if(isEdit){
 							row.getCell("index").getStyleAttributes().setLocked(false);
