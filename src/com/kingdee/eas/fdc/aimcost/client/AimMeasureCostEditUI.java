@@ -3707,54 +3707,61 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 	
     public void actionExportAllToExcel_actionPerformed(ActionEvent e) throws Exception
     {
-    	
-        ExportManager exportM = new ExportManager();
-        String path = null;
-        File tempFile = File.createTempFile("eastemp",".xls");
-        path = tempFile.getCanonicalPath();
-
-        Object[] key = planIndexTables.keySet().toArray(); 
-        List tablesExport=new ArrayList();
-        for(int i=0;i<tables.size();i++){
-        	tablesExport.add(tables.get(i));
-        	if(i==1){
-        		for (int k = 0; k < key.length; k++) {
-        			String productKey=key[k].toString();
-        			KDTable table=(KDTable) planIndexTables.get(productKey);
-        			tablesExport.add(table);
-        		}
-        	}
-        }
-        int ii=1;
+    	ExportManager exportM = new ExportManager();
+	    String path = null;
+	    File tempFile = File.createTempFile("eastemp",".xls");
+	    path = tempFile.getCanonicalPath();
+	
+	    Object[] key = planIndexTables.keySet().toArray(); 
+	    List tablesExport=new ArrayList();
+	    for(int i=0;i<tables.size();i++){
+	    	tablesExport.add(tables.get(i));
+	    	if(i==1){
+	    		for (int k = 0; k < key.length; k++) {
+	    			String productKey=key[k].toString();
+	    			KDTable table=(KDTable) planIndexTables.get(productKey);
+	    			tablesExport.add(table);
+	    		}
+	    	}
+	    }
+	    int ii=1;
 		if(this.isHasCompareEntry){
 			ii=2;
 		}
 		
-        KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[tablesExport.size()];
-        for(int i =0;i<tablesExport.size();i++)
-        {
-            tablesVO[i] = new KDTables2KDSBookVO((KDTable)tablesExport.get(i));
-            String title ="";
-            if(i>1&&i<=key.length+1){
-            	if(i-ii-1>0){
-            		title=planIndexKey+"-"+tabPlanIndexEntry.getTitleAt(i-ii-1);
-            	}else{
-            		title=tabPlanIndexEntry.getTitleAt(i-ii-1);
-            	}
-            }else if(i<=1){
-            	title=plTables.getTitleAt(i+ii);
-            }else{
-            	title=plTables.getTitleAt(i-key.length+ii+1);
-            }
-            
-            title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
+	    KDTables2KDSBookVO[] tablesVO = new KDTables2KDSBookVO[tablesExport.size()];
+	    for(int i =0;i<tablesExport.size();i++)
+	    {
+	        tablesVO[i] = new KDTables2KDSBookVO((KDTable)tablesExport.get(i));
+	        String title ="";
+	        if(i>1&&i<=key.length+1){
+	        	if(this.isHasCompareEntry){
+	        		if(i-ii>0){
+	            		title=planIndexKey+"-"+tabPlanIndexEntry.getTitleAt(i-ii);
+	            	}else{
+	            		title=tabPlanIndexEntry.getTitleAt(i-ii);
+	            	}
+	        	}else{
+	        		if(i-ii-1>0){
+	            		title=planIndexKey+"-"+tabPlanIndexEntry.getTitleAt(i-ii-1);
+	            	}else{
+	            		title=tabPlanIndexEntry.getTitleAt(i-ii-1);
+	            	}
+	        	}
+	        }else if(i<=1){
+	        	title=plTables.getTitleAt(i+ii);
+	        }else{
+	        	title=plTables.getTitleAt(i-key.length+ii+1);
+	        }
+	        
+	        title=title.replaceAll("[{\\\\}{\\*}{\\?}{\\[}{\\]}{\\/}]", "|");
 			tablesVO[i].setTableName(title);
-        }
-        KDSBook book = null;
-        book = KDTables2KDSBook.getInstance().exportKDTablesToKDSBook(tablesVO,true,true);
-
-        exportM.exportToExcel(book, path);
-        
+	    }
+	    KDSBook book = null;
+	    book = KDTables2KDSBook.getInstance().exportKDTablesToKDSBook(tablesVO,true,true);
+	
+	    exportM.exportToExcel(book, path);
+	    
 		// ³¢ÊÔÓÃexcel´ò¿ª
 		try
 		{
@@ -3784,8 +3791,7 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				}
 			}
 		}
-
-    }
+	}
     
     public void onShow() throws Exception {
         

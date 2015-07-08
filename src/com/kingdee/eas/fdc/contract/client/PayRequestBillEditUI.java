@@ -3835,9 +3835,8 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 	 * @throws Exception
 	 */
 	private void showSelectDeductList(ActionEvent e) throws Exception {
-
-		boolean canAdjust = checkCanSubmit();
-		String state = canAdjust ? getOprtState() : OprtState.VIEW;
+//		boolean canAdjust = checkCanSubmit();
+		String state = getOprtState();
 
 		// uiWindow=null;//暂时每次都实例一个UIWindow
 		deductUIwindow = null; // 每次都实例一个UIWindow,否则会缓存UI，导致脏数据。数据的正确性远比性能更重要 by
@@ -7202,6 +7201,8 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 				toolButtionsList.add(btnViewPayDetail);
 				btnViewContract.setVisible(true);
 				toolButtionsList.add(btnViewContract);
+				btnAdjustDeduct.setVisible(true);
+				toolButtionsList.add(btnAdjustDeduct);
 				return toolButtionsList;
 			}
 		};

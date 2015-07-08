@@ -2735,6 +2735,7 @@ public class RoomPriceAdjustEditUI extends AbstractRoomPriceAdjustEditUI {
 	 *            - 更新标志
 	 */
 	private void table_editStopped(KDTable table, KDTEditEvent e, int updateFlag) {
+		table=(KDTable) e.getSource();
 		int rowIndex = e.getRowIndex();
 		IRow currentRow = table.getRow(rowIndex);
 		if(currentRow.getUserObject() == null){
