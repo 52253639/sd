@@ -225,7 +225,9 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 		
 		this.kdtEntry.checkParsed();
 		this.kdtEntry.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
+		this.actionAttachment.setVisible(true);
 	}
+	
 	public void setOprtState(String oprtType) {
 		super.setOprtState(oprtType);
 		if (oprtType.equals(OprtState.VIEW)) {

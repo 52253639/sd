@@ -157,6 +157,7 @@ public class PayRequestBillRowsetProvider extends FDCBillDataProvider {
 			"accountView.longNumber",
 			"accountView.longName",
 			"agentCompany.name",
+			"payNo",
 	};
 
 	public static String printStringHelper(Object o) {
@@ -1204,21 +1205,31 @@ public class PayRequestBillRowsetProvider extends FDCBillDataProvider {
 					}
 				}
 				String agentPayCompany="";
-				FDCSQLBuilder _builder = new FDCSQLBuilder();
-				_builder.appendSql(" select distinct company.fname_l2 name from T_CAS_PaymentBill pay left join T_ORG_Company company on pay.FAgentPayCompanyID=company.fid ");
-				_builder.appendSql(" where pay.fbillstatus=15 and company.fid is not null and pay.FFdcPayReqID='"+fdcBill.getId().toString()+"'");
-				IRowSet rowSet = _builder.executeQuery();
-				if(rowSet.size()==1){
-					while (rowSet.next()) {
-						agentPayCompany=rowSet.getString("name");
-					}
-				}else if(rowSet.size()>1){
-					while (rowSet.next()) {
-						agentPayCompany=rowSet.getString("name")+","+agentPayCompany;
-					}
-					agentPayCompany=agentPayCompany.substring(0,agentPayCompany.lastIndexOf(","));
-				}
+//				FDCSQLBuilder _builder = new FDCSQLBuilder();
+//				_builder.appendSql(" select distinct company.fname_l2 name from T_CAS_PaymentBill pay left join T_ORG_Company company on pay.FAgentPayCompanyID=company.fid ");
+//				_builder.appendSql(" where pay.fbillstatus=15 and company.fid is not null and pay.FFdcPayReqID='"+fdcBill.getId().toString()+"'");
+//				IRowSet rowSet = _builder.executeQuery();
+//				if(rowSet.size()==1){
+//					while (rowSet.next()) {
+//						agentPayCompany=rowSet.getString("name");
+//					}
+//				}else if(rowSet.size()>1){
+//					while (rowSet.next()) {
+//						agentPayCompany=rowSet.getString("name")+","+agentPayCompany;
+//					}
+//					agentPayCompany=agentPayCompany.substring(0,agentPayCompany.lastIndexOf(","));
+//				}
 				drs.updateString("agentCompany.name", agentPayCompany);
+				
+				String payNo="";
+				FDCSQLBuilder _builder = new FDCSQLBuilder();
+				_builder.appendSql(" select pay.fnumber number from T_CAS_PaymentBill pay ");
+				_builder.appendSql(" where pay.FFdcPayReqID='"+fdcBill.getId().toString()+"' order by pay.fcreateTime");
+				IRowSet rowSet = _builder.executeQuery();
+				while (rowSet.next()) {
+					payNo=rowSet.getString("number");
+				}
+				drs.updateString("payNo", payNo);
 				
 				drs.insertRow();
 				
@@ -1271,21 +1282,32 @@ public class PayRequestBillRowsetProvider extends FDCBillDataProvider {
 					}
 				}
 				String agentPayCompany="";
-				FDCSQLBuilder _builder = new FDCSQLBuilder();
-				_builder.appendSql(" select distinct company.fname_l2 name from T_CAS_PaymentBill pay left join T_ORG_Company company on pay.FAgentPayCompanyID=company.fid ");
-				_builder.appendSql(" where pay.fbillstatus=15 and company.fid is not null and pay.FFdcPayReqID='"+fdcBill.getId().toString()+"'");
-				IRowSet rowSet = _builder.executeQuery();
-				if(rowSet.size()==1){
-					while (rowSet.next()) {
-						agentPayCompany=rowSet.getString("name");
-					}
-				}else if(rowSet.size()>1){
-					while (rowSet.next()) {
-						agentPayCompany=rowSet.getString("name")+","+agentPayCompany;
-					}
-					agentPayCompany=agentPayCompany.substring(0,agentPayCompany.lastIndexOf(","));
-				}
+//				FDCSQLBuilder _builder = new FDCSQLBuilder();
+//				_builder.appendSql(" select distinct company.fname_l2 name from T_CAS_PaymentBill pay left join T_ORG_Company company on pay.FAgentPayCompanyID=company.fid ");
+//				_builder.appendSql(" where pay.fbillstatus=15 and company.fid is not null and pay.FFdcPayReqID='"+fdcBill.getId().toString()+"'");
+//				IRowSet rowSet = _builder.executeQuery();
+//				if(rowSet.size()==1){
+//					while (rowSet.next()) {
+//						agentPayCompany=rowSet.getString("name");
+//					}
+//				}else if(rowSet.size()>1){
+//					while (rowSet.next()) {
+//						agentPayCompany=rowSet.getString("name")+","+agentPayCompany;
+//					}
+//					agentPayCompany=agentPayCompany.substring(0,agentPayCompany.lastIndexOf(","));
+//				}
 				drs.updateString("agentCompany.name", agentPayCompany);
+				
+				
+				String payNo="";
+				FDCSQLBuilder _builder = new FDCSQLBuilder();
+				_builder.appendSql(" select pay.fnumber number from T_CAS_PaymentBill pay ");
+				_builder.appendSql(" where pay.FFdcPayReqID='"+fdcBill.getId().toString()+"' order by pay.fcreateTime");
+				IRowSet rowSet = _builder.executeQuery();
+				while (rowSet.next()) {
+					payNo=rowSet.getString("number");
+				}
+				drs.updateString("payNo", payNo);
 				
 				lstRealPaidAmt = drs.getString("lstRealPaidAmt");
 				drs.insertRow();
