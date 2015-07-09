@@ -54,10 +54,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ceaeaa13-c050-4757-9718-97a12b30f693"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, pk);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -76,10 +79,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("4e490fdc-cec8-4fef-9f04-f566ca7e5c7e"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, filter);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -98,10 +104,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("8522ced8-9bfb-4cc7-8b64-b54dd1ce598f"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, oql);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -120,10 +129,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("16a43bbd-177e-401a-b0f9-f764192afe15"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PrePurchaseManageInfo retValue = (PrePurchaseManageInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PrePurchaseManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -142,10 +154,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("066ea5f7-5a76-4e0d-9e66-347076526a9f"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PrePurchaseManageInfo retValue = (PrePurchaseManageInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PrePurchaseManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -164,10 +179,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("5b7e8a10-d94b-4d86-a8b6-b6ca40d719a7"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PrePurchaseManageInfo retValue = (PrePurchaseManageInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PrePurchaseManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -186,10 +204,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("736dd20b-73cb-441a-9a8d-4b4f0b019d7c"), new Object[]{ctx, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK retValue = (IObjectPK)_addnew(ctx, model);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -210,7 +231,9 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("b4dd980e-3912-4d89-a64c-605aa8b33465"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _addnew(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -232,7 +255,9 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("8da00f42-7243-4cdc-9948-e17b12e47446"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _update(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -254,7 +279,9 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("29dc2ba3-0043-47ca-9ae4-5d8d743777dd"), new Object[]{ctx, model, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _updatePartial(ctx, model, selector);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -276,7 +303,9 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f8a19b77-a2e4-4874-8adb-0318b767bb13"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _updateBigObject(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -295,7 +324,9 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e0c13475-48e4-4c3d-af5b-01f6495718ee"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, pk);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -317,10 +348,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("5385a5c7-d560-4e04-b2dd-3790b7aafcea"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -339,10 +373,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e644d389-d571-4675-85b4-81a789cdef7d"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -361,10 +398,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("3f41c964-83a6-4ea1-b52c-0cc48e43f6f7"), new Object[]{ctx, filter, sorter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, filter, sorter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -383,10 +423,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("a5df83b1-1a76-4831-9724-82d0470ece07"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PrePurchaseManageCollection retValue = (PrePurchaseManageCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PrePurchaseManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -403,10 +446,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c9eeb896-9e3f-4d11-ac24-41792ce987d0"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PrePurchaseManageCollection retValue = (PrePurchaseManageCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PrePurchaseManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -423,10 +469,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("54f9fe1d-5871-4a1c-97ea-c4772661158d"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PrePurchaseManageCollection retValue = (PrePurchaseManageCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PrePurchaseManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -443,10 +492,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("40fbe7e2-129f-4187-b1f5-77e2c4ea704f"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, filter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -467,10 +519,13 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("3a791d4d-5966-4003-a077-a37fa8a033b0"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -491,7 +546,9 @@ public abstract class AbstractPrePurchaseManageControllerBean extends BaseTransa
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("13dbcf71-76e1-4d22-a7c9-ff1197ec5445"), new Object[]{ctx, arrayPK});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, arrayPK);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();

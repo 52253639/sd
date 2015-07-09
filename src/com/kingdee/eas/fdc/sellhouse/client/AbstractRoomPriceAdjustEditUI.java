@@ -834,9 +834,13 @@ contDiffEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contDif
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -897,6 +901,7 @@ contDiffEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contDif
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -928,8 +933,11 @@ contDiffEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contDif
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -952,6 +960,7 @@ contDiffEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contDif
         this.toolBar.add(btnWorkFlowG);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnSignature);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(btnCreateFrom);
@@ -1279,9 +1288,21 @@ contDiffEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contDif
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("sellProject.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("sellProject.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("sellProject.id"));
+        	sic.add(new SelectorItemInfo("sellProject.number"));
+        	sic.add(new SelectorItemInfo("sellProject.name"));
+		}
         sic.add(new SelectorItemInfo("priceBillType"));
         sic.add(new SelectorItemInfo("priceBillMode"));
         sic.add(new SelectorItemInfo("description"));
@@ -1292,42 +1313,54 @@ contDiffEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contDif
         sic.add(new SelectorItemInfo("minBuildPrice"));
         sic.add(new SelectorItemInfo("minRoomPrice"));
         sic.add(new SelectorItemInfo("createTime"));
-        sic.add(new SelectorItemInfo("creator.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("preAdjValue"));
         sic.add(new SelectorItemInfo("aftAdjValue"));
         sic.add(new SelectorItemInfo("openBatch"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.priceType"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.oldSumAmount"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.newBuildingArea"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.oldBuildingPrice"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.newBuildingPrice"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.newRoomArea"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.oldRoomPrice"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.newRoomPrice"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.room.id"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.room.number"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.newSumAmount"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.room.displayName"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.Salesareatype"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.room.building.name"));
-    sic.add(new SelectorItemInfo("priceAdjustEntry.room.buildUnit.name"));
-        sic.add(new SelectorItemInfo("valueEntry.*"));
-//        sic.add(new SelectorItemInfo("valueEntry.number"));
-    sic.add(new SelectorItemInfo("valueEntry.project"));
-    sic.add(new SelectorItemInfo("valueEntry.batch"));
-    sic.add(new SelectorItemInfo("valueEntry.build"));
-    sic.add(new SelectorItemInfo("valueEntry.productType"));
-    sic.add(new SelectorItemInfo("valueEntry.decorate"));
-    sic.add(new SelectorItemInfo("valueEntry.modelName"));
-    sic.add(new SelectorItemInfo("valueEntry.modelType"));
-    sic.add(new SelectorItemInfo("valueEntry.modelArea"));
-    sic.add(new SelectorItemInfo("valueEntry.account"));
-    sic.add(new SelectorItemInfo("valueEntry.area"));
-    sic.add(new SelectorItemInfo("valueEntry.date"));
-    sic.add(new SelectorItemInfo("valueEntry.price"));
-    sic.add(new SelectorItemInfo("valueEntry.calculateType"));
-    sic.add(new SelectorItemInfo("valueEntry.amount"));
-    sic.add(new SelectorItemInfo("valueEntry.remark"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.priceType"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.oldSumAmount"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.newBuildingArea"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.oldBuildingPrice"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.newBuildingPrice"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.newRoomArea"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.oldRoomPrice"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.newRoomPrice"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.room.id"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.room.number"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.newSumAmount"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.room.displayName"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.Salesareatype"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.room.building.name"));
+    	sic.add(new SelectorItemInfo("priceAdjustEntry.room.buildUnit.name"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("valueEntry.*"));
+		}
+		else{
+		}
+    	sic.add(new SelectorItemInfo("valueEntry.project"));
+    	sic.add(new SelectorItemInfo("valueEntry.batch"));
+    	sic.add(new SelectorItemInfo("valueEntry.build"));
+    	sic.add(new SelectorItemInfo("valueEntry.productType"));
+    	sic.add(new SelectorItemInfo("valueEntry.decorate"));
+    	sic.add(new SelectorItemInfo("valueEntry.modelName"));
+    	sic.add(new SelectorItemInfo("valueEntry.modelType"));
+    	sic.add(new SelectorItemInfo("valueEntry.modelArea"));
+    	sic.add(new SelectorItemInfo("valueEntry.account"));
+    	sic.add(new SelectorItemInfo("valueEntry.area"));
+    	sic.add(new SelectorItemInfo("valueEntry.date"));
+    	sic.add(new SelectorItemInfo("valueEntry.price"));
+    	sic.add(new SelectorItemInfo("valueEntry.calculateType"));
+    	sic.add(new SelectorItemInfo("valueEntry.amount"));
+    	sic.add(new SelectorItemInfo("valueEntry.remark"));
         return sic;
     }        
     	

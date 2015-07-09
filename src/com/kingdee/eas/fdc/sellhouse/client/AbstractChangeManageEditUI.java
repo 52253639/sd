@@ -1881,9 +1881,13 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -1942,6 +1946,7 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -1973,8 +1978,11 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnCopy);
@@ -1996,16 +2004,17 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
         this.toolBar.add(btnTraceDown);
         this.toolBar.add(btnWorkFlowG);
         this.toolBar.add(separatorFW4);
-        this.toolBar.add(separatorFW7);
         this.toolBar.add(btnSignature);
-        this.toolBar.add(btnCreateFrom);
+        this.toolBar.add(separatorFW7);
         this.toolBar.add(btnViewSignature);
+        this.toolBar.add(btnCreateFrom);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(btnCopyFrom);
         this.toolBar.add(separatorFW5);
         this.toolBar.add(separatorFW8);
         this.toolBar.add(btnAddLine);
-        this.toolBar.add(btnInsertLine);
         this.toolBar.add(btnCreateTo);
+        this.toolBar.add(btnInsertLine);
         this.toolBar.add(btnRemoveLine);
         this.toolBar.add(separatorFW6);
         this.toolBar.add(separatorFW9);
@@ -2187,7 +2196,7 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
     }
 		protected void setOrgF7(KDBizPromptBox f7,com.kingdee.eas.basedata.org.OrgType orgType) throws Exception
 		{
-			com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer oufip=(com.kingdee.bos.ctrl.extendcontrols.ext.OrgUnitFilterInfoProducer)com.kingdee.bos.ctrl.extendcontrols.ext.FilterInfoProducerFactory.getOrgUnitFilterInfoProducer(orgType);
+			com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer oufip = new com.kingdee.eas.basedata.org.client.f7.NewOrgUnitFilterInfoProducer(orgType);
 			oufip.getModel().setIsCUFilter(true);
 			f7.setFilterInfoProducer(oufip);
 		}
@@ -2445,19 +2454,63 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("changeDate"));
-        sic.add(new SelectorItemInfo("srcRoom.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("srcRoom.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("srcRoom.id"));
+        	sic.add(new SelectorItemInfo("srcRoom.number"));
+        	sic.add(new SelectorItemInfo("srcRoom.name"));
+		}
         sic.add(new SelectorItemInfo("bizType"));
-        sic.add(new SelectorItemInfo("changeReason.*"));
-        sic.add(new SelectorItemInfo("handler.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("changeReason.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("changeReason.id"));
+        	sic.add(new SelectorItemInfo("changeReason.number"));
+        	sic.add(new SelectorItemInfo("changeReason.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("handler.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("handler.id"));
+        	sic.add(new SelectorItemInfo("handler.number"));
+        	sic.add(new SelectorItemInfo("handler.name"));
+		}
         sic.add(new SelectorItemInfo("description"));
         sic.add(new SelectorItemInfo("customerPhone"));
         sic.add(new SelectorItemInfo("isSignChangeName"));
         sic.add(new SelectorItemInfo("quitAmount"));
         sic.add(new SelectorItemInfo("bizDate"));
-        sic.add(new SelectorItemInfo("payType.*"));
-        sic.add(new SelectorItemInfo("agioScheme.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("payType.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("payType.id"));
+        	sic.add(new SelectorItemInfo("payType.number"));
+        	sic.add(new SelectorItemInfo("payType.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("agioScheme.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("agioScheme.id"));
+        	sic.add(new SelectorItemInfo("agioScheme.number"));
+        	sic.add(new SelectorItemInfo("agioScheme.name"));
+		}
         sic.add(new SelectorItemInfo("agioDesc"));
         sic.add(new SelectorItemInfo("lastAgio"));
         sic.add(new SelectorItemInfo("dealTotalAmount"));
@@ -2484,13 +2537,45 @@ public abstract class AbstractChangeManageEditUI extends com.kingdee.eas.fdc.bas
         sic.add(new SelectorItemInfo("attachmentAmount"));
         sic.add(new SelectorItemInfo("fitmentTotalAmount"));
         sic.add(new SelectorItemInfo("isFitmentToContract"));
-        sic.add(new SelectorItemInfo("fitmentStandard.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("fitmentStandard.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("fitmentStandard.id"));
+        	sic.add(new SelectorItemInfo("fitmentStandard.number"));
+        	sic.add(new SelectorItemInfo("fitmentStandard.name"));
+		}
         sic.add(new SelectorItemInfo("fitmentPrice"));
-        sic.add(new SelectorItemInfo("creator.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("createTime"));
         sic.add(new SelectorItemInfo("auditTime"));
-        sic.add(new SelectorItemInfo("auditor.*"));
-        sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("auditor.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("auditor.id"));
+        	sic.add(new SelectorItemInfo("auditor.number"));
+        	sic.add(new SelectorItemInfo("auditor.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("lastUpdateUser.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("lastUpdateUser.id"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.number"));
+        	sic.add(new SelectorItemInfo("lastUpdateUser.name"));
+		}
         sic.add(new SelectorItemInfo("lastUpdateTime"));
         sic.add(new SelectorItemInfo("details"));
         return sic;

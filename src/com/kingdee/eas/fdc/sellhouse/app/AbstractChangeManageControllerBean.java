@@ -55,10 +55,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("3c70713f-32d0-42f3-a84c-92ec4a8e20e0"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, pk);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -77,10 +80,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("0956392c-7e9b-4e9b-b02c-97d21f8e628f"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, filter);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -99,10 +105,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e7954742-0afc-41c7-a7bc-7985a030ce4c"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_exists(ctx, oql);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -121,10 +130,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("777863f2-25ae-49ee-8b71-def907fedda8"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ChangeManageInfo retValue = (ChangeManageInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ChangeManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -143,10 +155,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("82d2cabd-1b28-45f5-8e10-fe6a8da38789"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ChangeManageInfo retValue = (ChangeManageInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ChangeManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -165,10 +180,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("8f3e59e7-8af6-4c9a-a27e-97f67c303031"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ChangeManageInfo retValue = (ChangeManageInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ChangeManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -187,10 +205,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e2d15fd9-7a43-417b-b754-779ab4c7afb3"), new Object[]{ctx, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK retValue = (IObjectPK)_addnew(ctx, model);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -211,7 +232,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ac8dbed9-da04-4e4c-874d-603c8deda52d"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _addnew(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -233,7 +256,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("dcf3a2c8-d9d8-4de2-803d-80d35a7321c7"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _update(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -255,7 +280,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ddc11c22-1bb2-4d4b-959a-a8c0d5fd9d01"), new Object[]{ctx, model, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _updatePartial(ctx, model, selector);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -277,7 +304,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("4f3c67a8-e3db-4271-b8ec-979e85683da6"), new Object[]{ctx, pk, model});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _updateBigObject(ctx, pk, model);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -296,7 +325,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("54dd9d13-b91d-4b83-afee-d85012b55634"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, pk);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -318,10 +349,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("2c59a5aa-588b-43b6-9a40-6d6ebae4e77a"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -340,10 +374,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("27c1d2d9-1f03-4562-9c43-109968506cbe"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -362,10 +399,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("19e5bc3d-563b-4f27-ad43-43eab5d1ce63"), new Object[]{ctx, filter, sorter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_getPKList(ctx, filter, sorter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -384,10 +424,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ad824fbe-5527-4a0a-a0ff-1b61b4cb338c"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ChangeManageCollection retValue = (ChangeManageCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ChangeManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -404,10 +447,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("8f922b8b-3f0b-4f21-b39c-adef56cac204"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ChangeManageCollection retValue = (ChangeManageCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ChangeManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -424,10 +470,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("5fd885bc-f87d-455d-99a2-81d7e49632f0"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             ChangeManageCollection retValue = (ChangeManageCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (ChangeManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -444,10 +493,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("c6fe858a-92b9-4b5a-826f-40a5de7c2317"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, filter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -468,10 +520,13 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ba99b67d-359c-4dca-b9bc-7f0ea59f73d1"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -492,7 +547,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("15243a43-71ef-45f6-bbe3-c189a117d07a"), new Object[]{ctx, arrayPK});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, arrayPK);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -514,7 +571,9 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("89d3b0e0-af19-4441-ac19-e7ff7c619609"), new Object[]{ctx, idList});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _mark(ctx, idList);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -526,7 +585,10 @@ public abstract class AbstractChangeManageControllerBean extends BaseTransaction
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _mark(Context ctx, List idList) throws BOSException, EASBizException;
+    protected void _mark(Context ctx, List idList) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public FDCBillCollection getFDCBillCollection (Context ctx) throws BOSException
     {

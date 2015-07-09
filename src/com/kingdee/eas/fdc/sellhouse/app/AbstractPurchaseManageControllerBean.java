@@ -51,12 +51,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public PurchaseManageInfo getPurchaseManageInfo(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("ea2d4ac4-9367-45dc-8db9-b3ac64d20317"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("5c01fc7e-45e9-4ed6-81fe-cf0a8337f7b6"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PurchaseManageInfo retValue = (PurchaseManageInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PurchaseManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -73,12 +76,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public PurchaseManageInfo getPurchaseManageInfo(Context ctx, IObjectPK pk, SelectorItemCollection selector) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3248f96f-b9de-417a-9717-999cca03e8da"), new Object[]{ctx, pk, selector});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("9d38e843-92f8-4abd-9bb7-25f1f25c8a9b"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PurchaseManageInfo retValue = (PurchaseManageInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PurchaseManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -95,12 +101,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public PurchaseManageInfo getPurchaseManageInfo(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("173267d2-6379-469c-afc7-126668ca4ded"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("b2c8d830-11f1-4585-ab86-fd0ee337b31a"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PurchaseManageInfo retValue = (PurchaseManageInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PurchaseManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -117,12 +126,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public PurchaseManageCollection getPurchaseManageCollection(Context ctx) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("28bfd049-4c2c-4a61-83ed-244c0df1ccda"), new Object[]{ctx});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("b4ea6e96-f9fc-4130-96b2-7c1898ed633b"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PurchaseManageCollection retValue = (PurchaseManageCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PurchaseManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -137,12 +149,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public PurchaseManageCollection getPurchaseManageCollection(Context ctx, EntityViewInfo view) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3ce3dfa1-7b3f-4290-bfc2-2b15508e687b"), new Object[]{ctx, view});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("702f4aaa-158c-4ef3-aaec-fc26f236b76b"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PurchaseManageCollection retValue = (PurchaseManageCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PurchaseManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -157,12 +172,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public PurchaseManageCollection getPurchaseManageCollection(Context ctx, String oql) throws BOSException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("64621e87-b8c0-4008-819a-9f4c4b18673b"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("ca3e48c1-6626-4070-971e-35de8fcfdd2a"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             PurchaseManageCollection retValue = (PurchaseManageCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (PurchaseManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -177,12 +195,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public IObjectPK[] delete(Context ctx, FilterInfo filter) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("81780880-4ea5-4c80-b006-c1bb7bf0dd1f"), new Object[]{ctx, filter});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("a8714d34-c4f1-44ba-8ec2-864e73637a8f"), new Object[]{ctx, filter});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, filter);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -201,12 +222,15 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public IObjectPK[] delete(Context ctx, String oql) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("d2d7f5e4-ec51-4876-be7f-a60da673a493"), new Object[]{ctx, oql});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("f1978677-4ec7-4055-b072-71e7e09dfa68"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK[] retValue = (IObjectPK[])_delete(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (IObjectPK[])svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -225,9 +249,11 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public void delete(Context ctx, IObjectPK[] arrayPK) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("9291e3f0-ac59-4240-9eff-55f969db6cf0"), new Object[]{ctx, arrayPK});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("c7e698b8-ef3e-45ee-98de-512bff16248c"), new Object[]{ctx, arrayPK});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, arrayPK);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -247,9 +273,11 @@ public abstract class AbstractPurchaseManageControllerBean extends BaseTransacti
     public void delete(Context ctx, IObjectPK pk) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("f0726a0a-6f66-4f87-8446-182389d9d62c"), new Object[]{ctx, pk});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("67ff7784-93ee-446f-a38e-b001ef9b218d"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()){
             _delete(ctx, pk);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();

@@ -53,10 +53,13 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("7e3eb5f0-eb32-4640-8e53-61c613e3a219"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomPriceManageInfo retValue = (RoomPriceManageInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomPriceManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -75,10 +78,13 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e8a80d99-6555-4434-a3cc-1494ae07adc7"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomPriceManageInfo retValue = (RoomPriceManageInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomPriceManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -97,10 +103,13 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("2c09547a-3c1e-4eeb-9725-413f07d58e25"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomPriceManageInfo retValue = (RoomPriceManageInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomPriceManageInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -119,10 +128,13 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("b059a493-d21c-4e34-8865-81ad0e97fa52"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomPriceManageCollection retValue = (RoomPriceManageCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomPriceManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -139,10 +151,13 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("6ed42606-5c26-4e0a-a8a9-dcd191bea749"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomPriceManageCollection retValue = (RoomPriceManageCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomPriceManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -159,10 +174,13 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("935953b6-b651-4da6-82d3-b2b8d2619892"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             RoomPriceManageCollection retValue = (RoomPriceManageCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (RoomPriceManageCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -179,10 +197,12 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("2f598bb9-dc51-4793-ab22-d7ca0f4b7c1b"), new Object[]{ctx, id});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_excute(ctx, id);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -193,17 +213,22 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
             super.cleanUpServiceState();
         }
     }
-    protected abstract boolean _excute(Context ctx, String id) throws BOSException, EASBizException;
+    protected boolean _excute(Context ctx, String id) throws BOSException, EASBizException
+    {    	
+        return false;
+    }
 
     public boolean isExistDown(Context ctx, BOSUuid billId) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("8d219d87-5f97-47ca-9737-83d5579991f3"), new Object[]{ctx, billId});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             boolean retValue = (boolean)_isExistDown(ctx, billId);
             svcCtx.setMethodReturnValue(new Boolean(retValue));
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return ((Boolean)svcCtx.getMethodReturnValue()).booleanValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -214,7 +239,10 @@ public abstract class AbstractRoomPriceManageControllerBean extends FDCBillContr
             super.cleanUpServiceState();
         }
     }
-    protected abstract boolean _isExistDown(Context ctx, BOSUuid billId) throws BOSException, EASBizException;
+    protected boolean _isExistDown(Context ctx, BOSUuid billId) throws BOSException, EASBizException
+    {    	
+        return false;
+    }
 
     public FDCBillCollection getFDCBillCollection (Context ctx) throws BOSException
     {

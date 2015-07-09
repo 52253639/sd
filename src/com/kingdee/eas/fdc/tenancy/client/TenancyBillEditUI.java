@@ -379,6 +379,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		}else{
 			this.prmtRentFreeBill.setEnabled(false);
 		}
+		loadTotalPayList();
 		attachListeners();	
 	}
 	private void initTotalPayList(){
