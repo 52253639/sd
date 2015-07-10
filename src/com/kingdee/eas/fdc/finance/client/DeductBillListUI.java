@@ -49,8 +49,6 @@ import com.kingdee.jdbc.rowset.IRowSet;
  */
 public class DeductBillListUI extends AbstractDeductBillListUI
 {
-    private static final String ENTRYS_CONTRACT_NAME = "entrys.contractName";
-	private static final String ENTRYS_CONTRACT_NUMBER = "entrys.contractNumber";
 	private static final String CONTRACT_ID = "entrys.contractId";
 	private static final Logger logger = CoreUIObject.getLogger(DeductBillListUI.class);
 	private CommonQueryDialog commonQueryDialog;
@@ -171,40 +169,40 @@ public class DeductBillListUI extends AbstractDeductBillListUI
 		DeductBillFactory.getRemoteInstance().unAudit(ids);
 	}
 	
-	public void onGetRowSet(IRowSet rowSet) {
-		super.onGetRowSet(rowSet);
-		//Set idSet = new HashSet();
-		Map numberMap  = new HashMap();
-		try {
-			rowSet.beforeFirst();
-			while (rowSet.next()) {
-				String id = rowSet.getString(CONTRACT_ID);
-
-				if(id!=null){
-					numberMap.put(id,id);
-				}
-			}
-			
-			//Map contractMap = ContractClientUtils.getContractMap(idSet);
-			//±àÂëÃû³Æ
-			Map contractMap = ContractFacadeFactory.getRemoteInstance().getContractNumberAndNameMap(numberMap);
-			
-			rowSet.beforeFirst();
-			while(rowSet.next()) {
-				String id = rowSet.getString(CONTRACT_ID);
-				if(id==null) continue; 
-				FDCBillInfo billInfo = (FDCBillInfo) contractMap.get(id);
-				if(billInfo==null) continue; 
-				rowSet.updateString(ENTRYS_CONTRACT_NUMBER, billInfo.getNumber());
-				rowSet.updateString(ENTRYS_CONTRACT_NAME, billInfo.getName());
-			}
-			rowSet.beforeFirst();
-			
-		} catch (Exception e) {
-			handUIException(e);
-		}
-		
-	}
+//	public void onGetRowSet(IRowSet rowSet) {
+//		super.onGetRowSet(rowSet);
+//		//Set idSet = new HashSet();
+//		Map numberMap  = new HashMap();
+//		try {
+//			rowSet.beforeFirst();
+//			while (rowSet.next()) {
+//				String id = rowSet.getString(CONTRACT_ID);
+//
+//				if(id!=null){
+//					numberMap.put(id,id);
+//				}
+//			}
+//			
+//			//Map contractMap = ContractClientUtils.getContractMap(idSet);
+//			//±àÂëÃû³Æ
+//			Map contractMap = ContractFacadeFactory.getRemoteInstance().getContractNumberAndNameMap(numberMap);
+//			
+//			rowSet.beforeFirst();
+//			while(rowSet.next()) {
+//				String id = rowSet.getString(CONTRACT_ID);
+//				if(id==null) continue; 
+//				FDCBillInfo billInfo = (FDCBillInfo) contractMap.get(id);
+//				if(billInfo==null) continue; 
+//				rowSet.updateString(ENTRYS_CONTRACT_NUMBER, billInfo.getNumber());
+//				rowSet.updateString(ENTRYS_CONTRACT_NAME, billInfo.getName());
+//			}
+//			rowSet.beforeFirst();
+//			
+//		} catch (Exception e) {
+//			handUIException(e);
+//		}
+//		
+//	}
 	
 	protected void checkRef(String id) {
 		super.checkRef(id);

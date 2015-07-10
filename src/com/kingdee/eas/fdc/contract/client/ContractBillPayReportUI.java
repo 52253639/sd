@@ -6,13 +6,11 @@ package com.kingdee.eas.fdc.contract.client;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
-import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,7 +24,6 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
-import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
@@ -37,8 +34,6 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.foot.KDTFootManager;
 import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
-import com.kingdee.bos.ctrl.swing.KDCheckBox;
-import com.kingdee.bos.ctrl.swing.KDLayout;
 import com.kingdee.bos.ctrl.swing.KDTree;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
@@ -47,24 +42,18 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
-import com.kingdee.eas.fdc.basedata.ChangeTypeCollection;
-import com.kingdee.eas.fdc.basedata.CurProjectInfo;
-import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.ProjectTreeBuilder;
+import com.kingdee.eas.fdc.contract.ContractBillPayReportFacadeFactory;
 import com.kingdee.eas.fdc.contract.ContractBillReportFacadeFactory;
 import com.kingdee.eas.fdc.contract.ContractPropertyEnum;
-import com.kingdee.eas.fdc.contract.DynamicCostControlFacadeFactory;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
-import com.kingdee.eas.framework.report.util.DefaultKDTableInsertHandler;
-import com.kingdee.eas.framework.report.util.KDTableInsertHandler;
 import com.kingdee.eas.framework.report.util.KDTableUtil;
 import com.kingdee.eas.framework.report.util.RptParams;
-import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
 import com.kingdee.eas.util.client.EASResource;
@@ -72,13 +61,12 @@ import com.kingdee.eas.util.client.EASResource;
 /**
  * output class name
  */
-public class ContractBillReportUI extends AbstractContractBillReportUI
+public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
 {
-    private static final Logger logger = CoreUIObject.getLogger(ContractBillReportUI.class);
-    
+    private static final Logger logger = CoreUIObject.getLogger(ContractBillPayReportUI.class);
     private boolean isQuery=false;
     private boolean isOnLoad=false;
-    public ContractBillReportUI() throws Exception
+    public ContractBillPayReportUI() throws Exception
     {
         super();
         tblMain.checkParsed();
@@ -95,7 +83,7 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 	}
 
 	protected ICommRptBase getRemoteInstance() throws BOSException {
-		return ContractBillReportFacadeFactory.getRemoteInstance();
+		return ContractBillPayReportFacadeFactory.getRemoteInstance();
 	}
 
 	protected KDTable getTableForPrintSetting() {
@@ -223,12 +211,12 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	        	 addRow.getCell("name").setValue(contractType);
          	        	 List list = (ArrayList) value.get(contractType);
          	        	 BigDecimal srcAmount=FDCHelper.ZERO;
-//         	        	 BigDecimal amount1=FDCHelper.ZERO;
-//         	        	 BigDecimal amount2=FDCHelper.ZERO;
-//         	        	 BigDecimal amount3=FDCHelper.ZERO;
-//         	        	 BigDecimal amount4=FDCHelper.ZERO;
-//         	        	 BigDecimal amount5=FDCHelper.ZERO;
-//         	        	 BigDecimal amount6=FDCHelper.ZERO;
+         	        	 BigDecimal amount1=FDCHelper.ZERO;
+         	        	 BigDecimal amount2=FDCHelper.ZERO;
+         	        	 BigDecimal amount3=FDCHelper.ZERO;
+         	        	 BigDecimal amount4=FDCHelper.ZERO;
+         	        	 BigDecimal amount5=FDCHelper.ZERO;
+         	        	 BigDecimal amount6=FDCHelper.ZERO;
          	        	 for(int i=0;i<list.size();i++){
          	        		 IRow row=tblMain.addRow();
          	        		 row.setTreeLevel(1);
@@ -237,20 +225,20 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	                    row.getCell(k).setValue(rowData[k]);
          	        		 }
          	        		srcAmount=srcAmount.add(row.getCell("srcAmount").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("srcAmount").getValue());
-//         	        		amount1=amount1.add(row.getCell("amount1").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount1").getValue());
-//         	        		amount2=amount2.add(row.getCell("amount2").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount2").getValue());
-//         	        		amount3=amount3.add(row.getCell("amount3").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount3").getValue());
-//         	        		amount4=amount4.add(row.getCell("amount4").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount4").getValue());
-//         	        		amount5=amount5.add(row.getCell("amount5").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount5").getValue());
-//         	        		amount6=amount6.add(row.getCell("amount6").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount6").getValue());
+         	        		amount1=amount1.add(row.getCell("amount1").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount1").getValue());
+         	        		amount2=amount2.add(row.getCell("amount2").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount2").getValue());
+         	        		amount3=amount3.add(row.getCell("amount3").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount3").getValue());
+         	        		amount4=amount4.add(row.getCell("amount4").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount4").getValue());
+         	        		amount5=amount5.add(row.getCell("amount5").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount5").getValue());
+         	        		amount6=amount6.add(row.getCell("amount6").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount6").getValue());
          	        	 }
          	        	 addRow.getCell("srcAmount").setValue(srcAmount);
-//         	        	addRow.getCell("amount1").setValue(amount1);
-//         	        	addRow.getCell("amount2").setValue(amount2);
-//         	        	addRow.getCell("amount3").setValue(amount3);
-//         	        	addRow.getCell("amount4").setValue(amount4);
-//         	        	addRow.getCell("amount5").setValue(amount5);
-//         	        	addRow.getCell("amount6").setValue(amount6);
+         	        	addRow.getCell("amount1").setValue(amount1);
+         	        	addRow.getCell("amount2").setValue(amount2);
+         	        	addRow.getCell("amount3").setValue(amount3);
+         	        	addRow.getCell("amount4").setValue(amount4);
+         	        	addRow.getCell("amount5").setValue(amount5);
+         	        	addRow.getCell("amount6").setValue(amount6);
          	         }
          	         tblMain.setRowCount(tblMain.getRowCount());
          	         tblMain.setRefresh(true);
