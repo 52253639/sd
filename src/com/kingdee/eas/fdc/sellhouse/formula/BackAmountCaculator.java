@@ -89,24 +89,29 @@ public class BackAmountCaculator implements ICalculator, IMethodBatchQuery{
 	public BigDecimal fdc_backAmount(String companyNumber,String sellProject, String budgetPeriod) throws EASBizException, BOSException, SQLException {
 		BgPeriodInfo period = FDCBudgetAcctCaculatorHelper.getBgPeriod(ServerCtx, budgetPeriod);
 		FDCSQLBuilder _builder = new FDCSQLBuilder(ServerCtx);
-		String spStr="";
-		if(sellProject.indexOf(";")>0){
-			for(int i=0;i<sellProject.split(";").length;i++){
-				if(i==0){
-					spStr=spStr+"'"+sellProject.split(";")[i]+"'";
-				}else{
-					spStr=spStr+",'"+sellProject.split(";")[i]+"'";
+		String spStr=null;
+		if(sellProject!=null&&!"".equals(sellProject)){
+			if(sellProject.indexOf(";")>0){
+				for(int i=0;i<sellProject.split(";").length;i++){
+					if(i==0){
+						spStr=spStr+"'"+sellProject.split(";")[i]+"'";
+					}else{
+						spStr=spStr+",'"+sellProject.split(";")[i]+"'";
+					}
 				}
+			}else{
+				spStr="'"+sellProject+"'";
 			}
-		}else{
-			spStr="'"+sellProject+"'";
 		}
+		
 		_builder.appendSql(" select sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	_builder.appendSql(" left join t_she_sellProject sp on sp.fid=revBill.fsellProjectId left join t_org_baseUnit org on org.fid=revBill.fsaleOrgUnitId left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
     	_builder.appendSql(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount')");
 		_builder.appendSql(" and year(revBill.fbizDate)="+period.getYear()+" and month(revBill.fbizDate)="+period.getMonth());
-		_builder.appendSql(" and org.fnumber='"+companyNumber+"' and sp.fnumber in("+spStr+")");
-		
+		_builder.appendSql(" and org.fnumber='"+companyNumber+"'");
+		if(spStr!=null){
+			_builder.appendSql(" and sp.fnumber in("+spStr+")");
+		}
     	IRowSet rowSet = _builder.executeQuery();
     	BigDecimal amount=FDCHelper.ZERO;
     	while(rowSet.next()) {

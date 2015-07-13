@@ -89,23 +89,28 @@ public class SellAmountCaculator implements ICalculator, IMethodBatchQuery{
 	public BigDecimal fdc_backAmount(String companyNumber,String sellProject, String budgetPeriod) throws EASBizException, BOSException, SQLException {
 		BgPeriodInfo period = FDCBudgetAcctCaculatorHelper.getBgPeriod(ServerCtx, budgetPeriod);
 		FDCSQLBuilder _builder = new FDCSQLBuilder(ServerCtx);
-		String spStr="";
-		if(sellProject.indexOf(";")>0){
-			for(int i=0;i<sellProject.split(";").length;i++){
-				if(i==0){
-					spStr=spStr+"'"+sellProject.split(";")[i]+"'";
-				}else{
-					spStr=spStr+",'"+sellProject.split(";")[i]+"'";
+		String spStr=null;
+		if(sellProject!=null&&!"".equals(sellProject)){
+			if(sellProject.indexOf(";")>0){
+				for(int i=0;i<sellProject.split(";").length;i++){
+					if(i==0){
+						spStr=spStr+"'"+sellProject.split(";")[i]+"'";
+					}else{
+						spStr=spStr+",'"+sellProject.split(";")[i]+"'";
+					}
 				}
+			}else{
+				spStr="'"+sellProject+"'";
 			}
-		}else{
-			spStr="'"+sellProject+"'";
 		}
 		_builder.appendSql(" select sum(sign.fcontractTotalAmount) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId left join t_she_sellProject sp on sp.fid=sign.fsellProjectId");
 		_builder.appendSql(" where sign.fbizState in('ChangeNameAuditing','QuitRoomAuditing','ChangeRoomAuditing','SignApple','SignAudit')");
     	_builder.appendSql(" and NOT EXISTS (select tt.fnewId from t_she_changeManage tt where tt.fstate in('2SUBMITTED','3AUDITTING') and sign.fid=tt.fnewId )");
     	_builder.appendSql(" and year(sign.fbusAdscriptionDate)="+period.getYear()+" and month(sign.fbusAdscriptionDate)="+period.getMonth());
-		_builder.appendSql(" and org.fnumber='"+companyNumber+"' and sp.fnumber in("+spStr+")");
+		_builder.appendSql(" and org.fnumber='"+companyNumber+"'");
+		if(spStr!=null){
+			_builder.appendSql(" and sp.fnumber in("+spStr+")");
+		}
     	IRowSet rowSet = _builder.executeQuery();
     	BigDecimal amount=FDCHelper.ZERO;
     	while(rowSet.next()) {
