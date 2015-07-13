@@ -21,6 +21,7 @@ import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.FDCRoomPromptDialog;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
@@ -39,37 +40,44 @@ public class ContractBillPayReportFilterUI extends AbstractContractBillPayReport
     }
     public void onLoad() throws Exception {
 		super.onLoad();
-
-		Date now=new Date();
-		try {
-			now=FDCCommonServerHelper.getServerTimeStamp();
-		} catch (BOSException e) {
-			logger.error(e.getMessage());
-		}
-		
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(now);
-		int year=cal.get(Calendar.YEAR);
-		int month=cal.get(Calendar.MONTH)+1;
-		
-		this.spYear.setModel(new SpinnerNumberModel(year,1,10000,1));
-		this.spMonth.setModel(new SpinnerNumberModel(month,1,12,1));
-    }
+		this.pkFromDate.setValue(null);
+		this.pkToDate.setValue(null);
+		this.pkFromDate.setRequired(true);
+		this.pkToDate.setRequired(true);
+	}
     public boolean verify()
     {
+        if(this.pkFromDate.getValue()==null)
+        {
+            FDCMsgBox.showWarning("开始日期不能为空！");
+            return false;
+        }
+        if(this.pkToDate.getValue()==null)
+        {
+            FDCMsgBox.showWarning("结束日期不能为空！");
+            return false;
+        }
         return true;
     }
 	public RptParams getCustomCondition() {
 		 RptParams pp = new RptParams();
-         pp.setObject("year", this.spYear.getIntegerVlaue());
-         pp.setObject("month", this.spMonth.getIntegerVlaue());
+         if(this.pkFromDate.getValue()!=null){
+    		 pp.setObject("fromDate", this.pkFromDate.getValue());
+         }else{
+        	 pp.setObject("fromDate", null);
+         }
+         if(this.pkToDate.getValue()!=null){
+    		 pp.setObject("toDate", this.pkToDate.getValue());
+         }else{
+        	 pp.setObject("toDate", null);
+         }
 		 return pp;
 	}
 	public void onInit(RptParams params) throws Exception {
 		
 	}
 	public void setCustomCondition(RptParams params) {
-		this.spYear.setValue(params.getObject("year"));
-		this.spMonth.setValue(params.getObject("month"));
+		this.pkFromDate.setValue(params.getObject("fromDate"));
+		this.pkToDate.setValue(params.getObject("toDate"));
 	}
 }

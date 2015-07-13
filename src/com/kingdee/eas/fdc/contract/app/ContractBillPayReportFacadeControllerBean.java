@@ -126,37 +126,44 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     }
     protected String getSql(Context ctx,RptParams params){
     	String curProject=(String) params.getObject("curProject");
-    	Integer year = (Integer)params.getObject("year");
-	    Integer month =   (Integer)params.getObject("month");
+    	
+    	Date fromDate = (Date)params.getObject("fromDate");
+    	Date toDate =   (Date)params.getObject("toDate");
 	    
 	    Calendar cal = Calendar.getInstance();
-		cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, year);
-		cal.set(Calendar.MONTH, month-1);
+	    cal.setTime(toDate);
 
-		Date toDate=FDCDateHelper.getLastDayOfMonth(cal.getTime());
+	    Integer year=cal.get(Calendar.YEAR);
+		Integer month=cal.get(Calendar.MONTH)+1;
 		
 		Date lsttoDate=FDCDateHelper.getLastDayOfMonth(FDCDateHelper.getPreMonth(toDate));
 		
 		cal = Calendar.getInstance();
-		cal.setTime(toDate);
+		cal.setTime(lsttoDate);
 		Integer lstyear=cal.get(Calendar.YEAR);
 		Integer lstmonth=cal.get(Calendar.MONTH)+1;
 		
     	StringBuffer sb = new StringBuffer();
     	sb.append(" select REPLACE(contractType.flongNumber, '!', '.')||'   '||contractType.fname_l2 contractType,contract.fid id,contract.fnumber number,contract.fname name,supplier.fname_l2 supplier,contract.fcontractPropert contractPropert,isnull(t10.amount,0) pcAmount,contract.fsrcAmount srcAmount,contract.foriginalAmount originalAmount,contract.famount amount,");
-    	sb.append("	settle.fOriginalAmount settleOriginalAmount,settle.fsettlePrice settleAmount,isnull(t1.costAmount,0),(isnull(t1.reqAmount,0)+isnull(t3.amount,0)) appAmount,isnull(t1.reqAmount,0) reqAmount,isnull(t2.payAmount,0) payAmount,(case when (case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end) is null or (case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end)=0 then 0 else isnull(t2.payAmount,0)*100/(case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end) end) payRate,");
-    	sb.append("	isnull(t4.amount,0) lstAppAmount,isnull(t5.amount,0) lstPayAmount,isnull(t6.amount,0) lstEndAppAmount,isnull(t7.amount,0) lstCostAmount,isnull(t3.amount,0) nowAppAmount,isnull(t8.amount,0) nowReqAmount,isnull(t9.amount,0) nowPayAmount");
+    	sb.append("	settle.fOriginalAmount settleOriginalAmount,settle.fsettlePrice settleAmount,isnull(t1.costAmount,0),(isnull(t7.reqAmount,0)+isnull(t3.amount,0)) appAmount,isnull(t1.reqAmount,0) reqAmount,isnull(t2.payAmount,0) payAmount,(case when (case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end) is null or (case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end)=0 then 0 else isnull(t2.payAmount,0)*100/(case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end) end) payRate,");
+    	sb.append("	isnull(t4.amount,0) lstAppAmount,isnull(t5.amount,0) lstPayAmount,isnull(t6.amount,0) lstEndAppAmount,isnull(t4.amt,0) lstCostAmount,isnull(t3.amount,0) nowAppAmount,isnull(t8.amount,0) nowReqAmount,isnull(t9.amount,0) nowPayAmount");
     	sb.append("	from t_con_contractBill contract left join t_bd_supplier supplier on supplier.fid=contract.fpartBId left join T_FDC_ContractType contractType on contractType.fid=contract.fcontractTypeId");
     	sb.append(" left join T_CON_ContractSettlementBill settle on settle.fcontractBillId=contract.fid");
     	
-    	sb.append(" left join (select sum(fcompletePrjAmt) costAmount,sum(famount) reqAmount,fcontractId contractId from t_con_payrequestbill where fstate='4AUDITTED'");
-    	sb.append(" and fbookedDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
+    	sb.append(" left join (select sum(fcompletePrjAmt) costAmount,sum(famount) reqAmount,fcontractId contractId from t_con_payrequestbill where fstate!='1SAVED'");
+    	sb.append(" and fbookedDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+    	sb.append(" and fbookedDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
     	sb.append(" group by fcontractId) t1 on t1.contractId=contract.fid");
     	
     	sb.append(" left join (select sum(FAmount) payAmount,fcontractbillid contractId from t_cas_paymentbill where fbillstatus=15");
-    	sb.append(" and fpayDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
+    	sb.append(" and fpayDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+    	sb.append(" and fpayDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
     	sb.append(" group by fcontractbillid) t2 on t2.contractId=contract.fid");
+    	
+    	sb.append(" left join (select sum(famount) reqAmount,fcontractId contractId from t_con_payrequestbill where fstate!='1SAVED'");
+    	sb.append(" and fbookedDate>={ts '" + FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLBegin(fromDate))+ "'}");
+    	sb.append(" and fbookedDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
+    	sb.append(" group by fcontractId) t7 on t7.contractId=contract.fid");
     	
     	sb.append(" left join (select dateEntry.famount amount,gatherEntry.contractBillId contractId from T_FNC_OrgUnitMonthPlanGather bill");
     	sb.append(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId");
@@ -166,7 +173,7 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     	sb.append(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+year+" and month(bill.fbizDate)="+month);
     	sb.append(" and dateEntry.fyear="+year+" and dateEntry.fmonth="+month+") t3 on t3.contractId=contract.fid");
     	
-    	sb.append(" left join (select dateEntry.famount amount,gatherEntry.contractBillId contractId from T_FNC_OrgUnitMonthPlanGather bill");
+    	sb.append(" left join (select dateEntry.famount amount,dateEntry.FAmt amt,gatherEntry.contractBillId contractId from T_FNC_OrgUnitMonthPlanGather bill");
     	sb.append(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId");
     	sb.append(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
     	sb.append(" left join T_FNC_ProjectMonthPlanGEntry gatherEntry on gatherEntry.fheadId=gather.fid");
@@ -174,21 +181,19 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     	sb.append(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+lstyear+" and month(bill.fbizDate)="+lstmonth);
     	sb.append(" and dateEntry.fyear="+lstyear+" and dateEntry.fmonth="+lstmonth+") t4 on t3.contractId=contract.fid");
     	
-    	
     	sb.append(" left join (select sum(FAmount) amount,fcontractbillid contractId from t_cas_paymentbill where fbillstatus=15");
     	sb.append(" and year(fpayDate)="+lstyear+" and month(fpayDate)="+lstmonth);
     	sb.append(" group by fcontractbillid) t5 on t5.contractId=contract.fid");
     	
-		sb.append(" left join (select sum(bgEntry.frequestAmount-isnull(bgEntry.factPayAmount,0)) amount,pay.fcontractId contractId from t_con_payRequestBill pay left join T_CON_PayRequestBillBgEntry bgEntry on bgEntry.fheadId=pay.fid ");
-		sb.append(" where pay.fisBgControl=1 and (bgEntry.frequestAmount!=bgEntry.factPayAmount or bgEntry.factPayAmount is null) ");
-		sb.append(" and pay.fbookedDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
-		sb.append(" group by pay.fcontractId) t6 on t6.contractId=contract.fid");
-		
-		sb.append(" left join (select sum(fcompletePrjAmt) amount,fcontractId contractId from t_con_payrequestbill where fstate='4AUDITTED'");
-		sb.append(" and year(fbookedDate)="+lstyear+" and month(fbookedDate)="+lstmonth);
-    	sb.append(" group by fcontractId) t7 on t7.contractId=contract.fid");
+    	sb.append(" left join (select sum(gatherEntry.famount-gatherEntry.factPayAmount) amount,pay.fcontractId contractId from T_FNC_OrgUnitMonthPlanGather bill");
+    	sb.append(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId");
+    	sb.append(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
+    	sb.append(" left join T_FNC_ProjectMPlanGPayEntry gatherEntry on gatherEntry.fheadId=gather.fid");
+    	sb.append(" left join t_con_payrequestbill pay on gatherEntry.FPayRequestBillId=pay.fid");
+    	sb.append(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+lstyear+" and month(bill.fbizDate)="+lstmonth);
+    	sb.append(" group by pay.fcontractId) t6 on t6.contractId=contract.fid");
     	
-    	sb.append(" left join (select sum(famount) amount,fcontractId contractId from t_con_payrequestbill where fstate='4AUDITTED'");
+    	sb.append(" left join (select sum(famount) amount,fcontractId contractId from t_con_payrequestbill where fstate!='1SAVED'");
     	sb.append(" and year(fbookedDate)="+year+" and month(fbookedDate)="+month);
     	sb.append(" group by fcontractId) t8 on t8.contractId=contract.fid");
     	

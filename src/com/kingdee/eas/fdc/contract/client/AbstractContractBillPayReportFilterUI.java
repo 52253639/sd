@@ -46,11 +46,10 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractContractBillPayReportFilterUI extends com.kingdee.eas.framework.report.client.CommRptBaseConditionUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractContractBillPayReportFilterUI.class);
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDate;
-    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spMonth;
-    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel2;
-    protected com.kingdee.bos.ctrl.swing.KDSpinner spYear;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFromDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contToDate;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFromDate;
+    protected com.kingdee.bos.ctrl.swing.KDDatePicker pkToDate;
     /**
      * output class constructor
      */
@@ -69,27 +68,25 @@ public abstract class AbstractContractBillPayReportFilterUI extends com.kingdee.
     {
         this.resHelper = new ResourceBundleHelper(AbstractContractBillPayReportFilterUI.class.getName());
         this.setUITitle(resHelper.getString("this.title"));
-        this.contDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
-        this.spMonth = new com.kingdee.bos.ctrl.swing.KDSpinner();
-        this.kDLabel2 = new com.kingdee.bos.ctrl.swing.KDLabel();
-        this.spYear = new com.kingdee.bos.ctrl.swing.KDSpinner();
-        this.contDate.setName("contDate");
-        this.kDLabel1.setName("kDLabel1");
-        this.spMonth.setName("spMonth");
-        this.kDLabel2.setName("kDLabel2");
-        this.spYear.setName("spYear");
+        this.contFromDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contToDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.pkFromDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.pkToDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.contFromDate.setName("contFromDate");
+        this.contToDate.setName("contToDate");
+        this.pkFromDate.setName("pkFromDate");
+        this.pkToDate.setName("pkToDate");
         // CustomerQueryPanel
-        // contDate		
-        this.contDate.setBoundLabelText(resHelper.getString("contDate.boundLabelText"));		
-        this.contDate.setBoundLabelLength(100);		
-        this.contDate.setBoundLabelUnderline(true);
-        // kDLabel1		
-        this.kDLabel1.setText(resHelper.getString("kDLabel1.text"));
-        // spMonth
-        // kDLabel2		
-        this.kDLabel2.setText(resHelper.getString("kDLabel2.text"));
-        // spYear
+        // contFromDate		
+        this.contFromDate.setBoundLabelText(resHelper.getString("contFromDate.boundLabelText"));		
+        this.contFromDate.setBoundLabelLength(100);		
+        this.contFromDate.setBoundLabelUnderline(true);
+        // contToDate		
+        this.contToDate.setBoundLabelText(resHelper.getString("contToDate.boundLabelText"));		
+        this.contToDate.setBoundLabelLength(100);		
+        this.contToDate.setBoundLabelUnderline(true);
+        // pkFromDate
+        // pkToDate
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -116,16 +113,14 @@ public abstract class AbstractContractBillPayReportFilterUI extends com.kingdee.
     {
         this.setBounds(new Rectangle(10, 10, 600, 160));
         this.setLayout(null);
-        contDate.setBounds(new Rectangle(115, 59, 189, 19));
-        this.add(contDate, null);
-        kDLabel1.setBounds(new Rectangle(309, 59, 15, 19));
-        this.add(kDLabel1, null);
-        spMonth.setBounds(new Rectangle(329, 59, 40, 19));
-        this.add(spMonth, null);
-        kDLabel2.setBounds(new Rectangle(373, 59, 15, 19));
-        this.add(kDLabel2, null);
-        //contDate
-        contDate.setBoundEditor(spYear);
+        contFromDate.setBounds(new Rectangle(17, 60, 270, 19));
+        this.add(contFromDate, null);
+        contToDate.setBounds(new Rectangle(317, 60, 270, 19));
+        this.add(contToDate, null);
+        //contFromDate
+        contFromDate.setBoundEditor(pkFromDate);
+        //contToDate
+        contToDate.setBoundEditor(pkToDate);
 
     }
 
