@@ -64,7 +64,7 @@ public class ContractBillReportFacadeControllerBean extends AbstractContractBill
 	    initColoum(header,col,"name",200,false);
 	    initColoum(header,col,"pcName",150,false);
 	    initColoum(header,col,"supplier",200,false);
-	    initColoum(header,col,"inviteForm",100,false);
+	    initColoum(header,col,"inviteForm",100,true);
 	    initColoum(header,col,"contractPropert",100,false);
 	    initColoum(header,col,"srcAmount",100,false);
 	    initColoum(header,col,"originalAmount",100,false);
@@ -107,7 +107,7 @@ public class ContractBillReportFacadeControllerBean extends AbstractContractBill
     	Date auditDate=(Date)params.getObject("auditDate");
     	StringBuffer sb = new StringBuffer();
     	if(isClick!=null&&isClick){
-    		sb.append(" select t.contractType,t.id,t.number,t.name,t.pcName,t.supplier,t.inviteForm,t.contractPropert,t.srcAmount,t.originalAmount,t.amount,null amount1,null amount2,null amount3,null amount4,null amount5,null amount6,t.bizDate,t.auditDate");
+    		sb.append(" select t.contractType,t.id,t.number,t.name,t.pcName,t.supplier,t.inviteForm,t.contractPropert,t.srcAmount,t.originalAmount,t.amount,t.bizDate,t.auditDate");
     		sb.append(" from(select contractType.flongNumber contractTypeNumber,contract.fmainContractNumber mainContractNumber,REPLACE(contractType.flongNumber, '!', '.')||'   '||contractType.fname_l2 contractType,contract.fid id,contract.fnumber number,contract.fname name,pc.fname_l2 pcName,supplier.fname_l2 supplier,'' inviteForm,contract.fcontractPropert contractPropert,contract.fsrcAmount srcAmount,contract.foriginalAmount originalAmount,contract.famount amount,contract.fbookedDate bizDate,contract.fauditTime auditDate");
         	sb.append("	from t_con_contractBill contract left join T_CON_ProgrammingContract pc on pc.fid=contract.fProgrammingContract left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join t_bd_supplier supplier on supplier.fid=contract.fpartBId");
         	sb.append(" left join T_FDC_ContractType contractType on contractType.fid=contract.fcontractTypeId");
@@ -124,9 +124,6 @@ public class ContractBillReportFacadeControllerBean extends AbstractContractBill
         		if(auditDate!=null){
     	    		sb.append(" and contract.fauditTime<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(auditDate))+ "'}");
     	    	}
-        		if(params.getObject("isInvite")!=null&&(Boolean)params.getObject("isInvite")){
-        			sb.append(" and pc.fisInvite=1");
-        		}
         	}else{
         		sb.append(" and contract.FCurProjectID ='null'");
         	}

@@ -24,6 +24,7 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
@@ -79,7 +80,7 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
 	}
 
 	protected CommRptBaseConditionUI getQueryDialogUserPanel() throws Exception {
-		return null;
+		return new ContractBillPayReportFilterUI();
 	}
 
 	protected ICommRptBase getRemoteInstance() throws BOSException {
@@ -108,13 +109,24 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
 				return super.getText(obj);
 			}
 		});
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				String str = o.toString();
+				if (!FDCHelper.isEmpty(str)) {
+					return str + "%";
+				}
+				return str;
+			}
+		});
+		tblMain.getColumn("payRate").setRenderer(render_scale);
 		
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"srcAmount","originalAmount","amount","amount1","amount2","amount3","amount4","amount5","amount6"});
-		FDCHelper.formatTableDate(tblMain, "bizDate");
-		FDCHelper.formatTableDate(tblMain, "auditDate");
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"pcAmount","srcAmount","originalAmount","amount","settleOriginalAmount","settleAmount","costAmount","appAmount","reqAmount","payAmount","payRate",
+				"lstAppAmount","lstPayAmount","lstEndAppAmount","lstCostAmount","nowAppAmount","nowReqAmount","nowPayAmount"});
 		
 		tblMain.getColumn("number").getStyleAttributes().setFontColor(Color.BLUE);
-		getFootRow(tblMain, new String[]{"srcAmount","amount1","amount2","amount3","amount4","amount5","amount6"});
+		getFootRow(tblMain, new String[]{"srcAmount","amount","settleAmount","costAmount","appAmount","reqAmount","payAmount",
+				"lstAppAmount","lstPayAmount","lstEndAppAmount","lstCostAmount","nowAppAmount","nowReqAmount","nowPayAmount"});
 	}
 	public static void getFootRow(KDTable tblMain,String[] columnName){
 		IRow footRow = null;
@@ -179,7 +191,7 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
 		if(isQuery) return;
 		isQuery=true;
 		DefaultKingdeeTreeNode treeNode = (DefaultKingdeeTreeNode)this.treeMain.getLastSelectedPathComponent();
-    	if(treeNode!=null||isThrough){
+    	if(treeNode!=null){
     		Window win = SwingUtilities.getWindowAncestor(this);
             LongTimeDialog dialog = null;
             if(win instanceof Frame){
@@ -209,14 +221,25 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
          	        	 addRow.getStyleAttributes().setBackground(new java.awt.Color(246, 246, 191));
          	        	 addRow.setTreeLevel(0);
          	        	 addRow.getCell("name").setValue(contractType);
+         	        	 
+         	        	 
          	        	 List list = (ArrayList) value.get(contractType);
          	        	 BigDecimal srcAmount=FDCHelper.ZERO;
-         	        	 BigDecimal amount1=FDCHelper.ZERO;
-         	        	 BigDecimal amount2=FDCHelper.ZERO;
-         	        	 BigDecimal amount3=FDCHelper.ZERO;
-         	        	 BigDecimal amount4=FDCHelper.ZERO;
-         	        	 BigDecimal amount5=FDCHelper.ZERO;
-         	        	 BigDecimal amount6=FDCHelper.ZERO;
+         	        	 BigDecimal amount=FDCHelper.ZERO;
+         	        	 BigDecimal settleAmount=FDCHelper.ZERO;
+         	        	 
+         	        	 BigDecimal costAmount=FDCHelper.ZERO;
+         	        	 BigDecimal appAmount=FDCHelper.ZERO;
+         	        	 BigDecimal reqAmount=FDCHelper.ZERO;
+         	        	 BigDecimal payAmount=FDCHelper.ZERO;
+         	        	 BigDecimal lstAppAmount=FDCHelper.ZERO;
+         	        	 BigDecimal lstPayAmount=FDCHelper.ZERO;
+         	        	 BigDecimal lstEndAppAmount=FDCHelper.ZERO;
+         	        	 BigDecimal lstCostAmount=FDCHelper.ZERO;
+         	        	 BigDecimal nowAppAmount=FDCHelper.ZERO;
+         	        	 BigDecimal nowReqAmount=FDCHelper.ZERO;
+         	        	 BigDecimal nowPayAmount=FDCHelper.ZERO;
+        				
          	        	 for(int i=0;i<list.size();i++){
          	        		 IRow row=tblMain.addRow();
          	        		 row.setTreeLevel(1);
@@ -224,21 +247,40 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
          	        		 for(int k=0;k<rowData.length;k++){
          	                    row.getCell(k).setValue(rowData[k]);
          	        		 }
-         	        		srcAmount=srcAmount.add(row.getCell("srcAmount").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("srcAmount").getValue());
-         	        		amount1=amount1.add(row.getCell("amount1").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount1").getValue());
-         	        		amount2=amount2.add(row.getCell("amount2").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount2").getValue());
-         	        		amount3=amount3.add(row.getCell("amount3").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount3").getValue());
-         	        		amount4=amount4.add(row.getCell("amount4").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount4").getValue());
-         	        		amount5=amount5.add(row.getCell("amount5").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount5").getValue());
-         	        		amount6=amount6.add(row.getCell("amount6").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount6").getValue());
+         	        		 addRow.getCell("pcAmount").setValue(row.getCell("pcAmount").getValue());
+         	        		 row.getCell("pcAmount").setValue(null);
+         	        		 
+         	        		 srcAmount=FDCHelper.add(srcAmount, row.getCell("srcAmount").getValue());
+         	        		 amount=FDCHelper.add(srcAmount, row.getCell("amount").getValue());
+         	        		 settleAmount=FDCHelper.add(settleAmount, row.getCell("settleAmount").getValue());
+         	        		 
+         	        		costAmount=FDCHelper.add(costAmount, row.getCell("costAmount").getValue());
+         	        		appAmount=FDCHelper.add(appAmount, row.getCell("appAmount").getValue());
+         	        		reqAmount=FDCHelper.add(reqAmount, row.getCell("reqAmount").getValue());
+         	        		payAmount=FDCHelper.add(payAmount, row.getCell("payAmount").getValue());
+         	        		lstAppAmount=FDCHelper.add(lstAppAmount, row.getCell("lstAppAmount").getValue());
+         	        		lstPayAmount=FDCHelper.add(lstPayAmount, row.getCell("lstPayAmount").getValue());
+         	        		lstEndAppAmount=FDCHelper.add(lstEndAppAmount, row.getCell("lstEndAppAmount").getValue());
+         	        		lstCostAmount=FDCHelper.add(lstCostAmount, row.getCell("lstCostAmount").getValue());
+         	        		nowAppAmount=FDCHelper.add(nowAppAmount, row.getCell("nowAppAmount").getValue());
+         	        		nowReqAmount=FDCHelper.add(nowReqAmount, row.getCell("nowReqAmount").getValue());
+         	        		nowPayAmount=FDCHelper.add(nowPayAmount, row.getCell("nowPayAmount").getValue());
          	        	 }
          	        	 addRow.getCell("srcAmount").setValue(srcAmount);
-         	        	addRow.getCell("amount1").setValue(amount1);
-         	        	addRow.getCell("amount2").setValue(amount2);
-         	        	addRow.getCell("amount3").setValue(amount3);
-         	        	addRow.getCell("amount4").setValue(amount4);
-         	        	addRow.getCell("amount5").setValue(amount5);
-         	        	addRow.getCell("amount6").setValue(amount6);
+         	        	 addRow.getCell("amount").setValue(amount);
+         	        	 addRow.getCell("settleAmount").setValue(settleAmount);
+         	        	 
+         	        	 addRow.getCell("costAmount").setValue(costAmount);
+        	        	 addRow.getCell("appAmount").setValue(appAmount);
+        	        	 addRow.getCell("reqAmount").setValue(reqAmount);
+        	        	 addRow.getCell("payAmount").setValue(payAmount);
+         	        	 addRow.getCell("lstAppAmount").setValue(lstAppAmount);
+         	        	 addRow.getCell("lstPayAmount").setValue(lstPayAmount);
+        	        	 addRow.getCell("lstEndAppAmount").setValue(lstEndAppAmount);
+         	        	 addRow.getCell("lstCostAmount").setValue(lstCostAmount);
+         	        	 addRow.getCell("nowAppAmount").setValue(nowAppAmount);
+         	        	 addRow.getCell("nowReqAmount").setValue(nowReqAmount);
+         	        	 addRow.getCell("nowPayAmount").setValue(nowPayAmount);
          	         }
          	         tblMain.setRowCount(tblMain.getRowCount());
          	         tblMain.setRefresh(true);
@@ -280,29 +322,17 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
 	protected void treeMain_valueChanged(TreeSelectionEvent e) throws Exception {
 		this.refresh();
 	}
-	boolean isThrough=false;
 	public void onLoad() throws Exception {
-		if(this.getUIContext().get("title")!=null){
-			isThrough=true;
-		}
 		isOnLoad=true;
-		setShowDialogOnLoad(false);
+		setShowDialogOnLoad(true);
 		tblMain.getStyleAttributes().setLocked(true);
 		super.onLoad();
-		if(!isThrough){
-			buildOrgTree();
-		}
+		buildOrgTree();
 		tblMain.getSelectManager().setSelectMode(KDTSelectManager.MULTIPLE_CELL_SELECT);
 		this.actionPrint.setVisible(false);
 		this.actionPrintPreview.setVisible(false);
 		isOnLoad=false;
-		
-		if(isThrough){
-			this.setUITitle(this.getUITitle()+" - "+this.getUIContext().get("title").toString());
-			kDTreeView1.setVisible(false);
-			query();
-		}
-		this.actionQuery.setVisible(false);
+		this.actionQuery.setVisible(true);
 		this.refresh();
 	}
 	protected void tblMain_tableClicked(KDTMouseEvent e) throws Exception {

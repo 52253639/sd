@@ -44,6 +44,7 @@ import com.kingdee.eas.fdc.basedata.CurProjectInfo;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.ProjectTreeBuilder;
+import com.kingdee.eas.fdc.contract.client.ContractBillEditUI;
 import com.kingdee.eas.fdc.contract.client.ContractBillReportUI;
 import com.kingdee.eas.fdc.invite.InviteIndexDetailReportFacadeFactory;
 import com.kingdee.eas.fdc.invite.supplier.SupplierStockCollection;
@@ -101,7 +102,8 @@ public class InviteIndexDetailReportUI extends AbstractInviteIndexDetailReportUI
 		tblMain.removeRows();
 		
 		CRMClientHelper.changeTableNumberFormat(tblMain,new String []{"amount","value3","value4","rate1","rate2","rate3","rate4"});
-		tblMain.getColumn("value1").getStyleAttributes().setFontColor(Color.BLUE);
+		FDCHelper.formatTableDate(tblMain, "conDate");
+		tblMain.getColumn("conName").getStyleAttributes().setFontColor(Color.BLUE);
 		tblMain.getColumn("supplier").getStyleAttributes().setFontColor(Color.BLUE);
 		tblMain.getViewManager().freeze(0, 6);
 		sumTotal(tblMain);
@@ -306,22 +308,16 @@ public class InviteIndexDetailReportUI extends AbstractInviteIndexDetailReportUI
 						FDCMsgBox.showWarning(this,"无关联供应商档案登记信息！");
 					}
 				}
-			}else if(tblMain.getColumnKey(e.getColIndex()).equals("value1")){
-				Object amount=this.tblMain.getRow(e.getRowIndex()).getCell(e.getColIndex()).getValue();
-				if(amount==null||(new BigDecimal(amount.toString())).compareTo(FDCHelper.ZERO)<=0){
+			}else if(tblMain.getColumnKey(e.getColIndex()).equals("conName")){
+				String conId=(String)this.tblMain.getRow(e.getRowIndex()).getCell("conId").getValue();
+				if(conId!=null){
+					UIContext uiContext = new UIContext(this);
+					uiContext.put(UIContext.OWNER, this);
+					uiContext.put("ID", conId);
+					IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(ContractBillEditUI.class.getName(), uiContext, null, OprtState.VIEW);
+					uiWindow.show();
 					return;
 				}
-				UIContext uiContext = new UIContext(this);
-				uiContext.put(UIContext.OWNER, this);
-				RptParams param=new RptParams();
-				param.setObject("isClick", Boolean.TRUE);
-				param.setObject("number", this.tblMain.getRow(e.getRowIndex()).getCell("number").getValue().toString());
-				param.setObject("curProjectInfo", params.getObject("curProject"));
-				param.setObject("isInvite", true);
-				uiContext.put("RPTFilter", param);
-				uiContext.put("title", this.tblMain.getRow(e.getRowIndex()).getCell("name").getValue().toString());
-				IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(ContractBillReportUI.class.getName(), uiContext, null, OprtState.VIEW);
-				uiWindow.show();
 			}
 		}
 	}

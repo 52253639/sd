@@ -55,6 +55,7 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.CurProjectFactory;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
@@ -230,8 +231,16 @@ public class PayRequestFullListUI extends AbstractPayRequestFullListUI
 	protected void execQuery() {
 		super.execQuery();
 		auditMap.clear();
-		FDCClientUtils.fmtFootNumber(this.tblMain, new String[]{"originalAmount","amount"});
+		FDCClientUtils.fmtFootNumber(this.tblMain, new String[]{"amount","srcAmount","deduct","guerden","actPaiedLocAmount"});
 //		FDCClientHelper.initTable(tblMain);
+		FDCHelper.formatTableNumber(this.tblMain, "srcOriginalAmount");
+		FDCHelper.formatTableNumber(this.tblMain, "srcAmount");
+		FDCHelper.formatTableNumber(this.tblMain, "deduct");
+		FDCHelper.formatTableNumber(this.tblMain, "guerden");
+		FDCHelper.formatTableNumber(this.tblMain, "actPaiedAmount");
+		FDCHelper.formatTableNumber(this.tblMain, "actPaiedLocAmount");
+		
+		CRMClientHelper.getFootRow(tblMain, new String[]{"amount","srcAmount","deduct","guerden","actPaiedLocAmount"});
 	}
 
 	protected ICoreBase getBizInterface() throws Exception {

@@ -5,6 +5,7 @@ import javax.ejb.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -61,31 +62,44 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
 	    initColoum(header,col,"supplier",200,false);
 	    initColoum(header,col,"contractPropert",100,false);
 	    initColoum(header,col,"pcAmount",100,false);
+	    
 	    initColoum(header,col,"srcAmount",100,false);
 	    initColoum(header,col,"originalAmount",100,false);
 	    initColoum(header,col,"amount",100,false);
+	    
 	    initColoum(header,col,"settleOriginalAmount",100,false);
 	    initColoum(header,col,"settleAmount",100,false);
+	    
 	    initColoum(header,col,"costAmount",100,false);
 	    initColoum(header,col,"appAmount",100,false);
 	    initColoum(header,col,"reqAmount",100,false);
 	    initColoum(header,col,"payAmount",100,false);
 	    initColoum(header,col,"payRate",100,false);
+	    
 	    initColoum(header,col,"lstAppAmount",100,false);
 	    initColoum(header,col,"lstPayAmount",100,false);
-	    initColoum(header,col,"lstEndAppAmount",100,false);
+	    initColoum(header,col,"lstEndAppAmount",130,false);
 	    initColoum(header,col,"lstCostAmount",100,false);
 	    initColoum(header,col,"nowAppAmount",100,false);
 	    initColoum(header,col,"nowReqAmount",100,false);
 	    initColoum(header,col,"nowPayAmount",100,false);
-	    initColoum(header,col,"bzj",100,false);
+	    
+	    initColoum(header,col,"bzj",100,true);
 	    header.setLabels(new Object[][]{
 	    		{
-	    			"合同类型","id","合同编码","合同名称","签约单位","合同性质","规划金额","签约信息","签约信息","签约信息","结算信息","结算信息","累计信息（截止月份）","累计信息（截止月份）","累计信息（截止月份）","累计信息（截止月份）","累计信息（截止月份）","本月付款信息","本月付款信息","本月付款信息","本月付款信息","本月付款信息","本月付款信息","本月付款信息","已付保证金金额"
+	    			"合同类型","id","合同编码","合同名称","签约单位","合同性质","规划金额",
+	    			"签约信息","签约信息","签约信息",
+	    			"结算信息","结算信息",
+	    			"累计信息","累计信息","累计信息","累计信息","累计信息",
+	    			"本月付款信息","本月付款信息","本月付款信息","本月付款信息","本月付款信息","本月付款信息","本月付款信息","已付保证金金额"
 	    		}
 	    		,
 	    		{
-	    			"合同类型","id","合同编码","合同名称","签约单位","合同性质","原主合同金额","原币金额","本位币金额","原币金额","本位币金额","累计完工工程量","累计应付账款","累计付款申请","累计已付账款","付款比例","上月应付账款","上月实付款","上月末累计应付未付款","上月完工工程量","本月应付账款","本月付款申请","本月已付账款","已付保证金金额"
+	    			"合同类型","id","合同编码","合同名称","签约单位","合同性质","规划金额",
+	    			"原主合同金额","原币金额","本位币金额",
+	    			"原币金额","本位币金额",
+	    			"累计完工工程量","累计应付账款","累计付款申请","累计已付账款","付款比例",
+	    			"上月应付账款","上月实付款","上月末累计应付未付款","上月完工工程量","本月应付账款","本月付款申请","本月已付账款","已付保证金金额"
 	    		}
 	    },true);
 	    params.setObject("header", header);
@@ -112,18 +126,85 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     }
     protected String getSql(Context ctx,RptParams params){
     	String curProject=(String) params.getObject("curProject");
-    	CurProjectInfo curProjectinfo=(CurProjectInfo) params.getObject("curProjectInfo");
-    	Date auditDate=(Date)params.getObject("auditDate");
+    	Integer year = (Integer)params.getObject("year");
+	    Integer month =   (Integer)params.getObject("month");
+	    
+	    Calendar cal = Calendar.getInstance();
+		cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month-1);
+
+		Date toDate=FDCDateHelper.getLastDayOfMonth(cal.getTime());
+		
+		Date lsttoDate=FDCDateHelper.getLastDayOfMonth(FDCDateHelper.getPreMonth(toDate));
+		
+		cal = Calendar.getInstance();
+		cal.setTime(toDate);
+		Integer lstyear=cal.get(Calendar.YEAR);
+		Integer lstmonth=cal.get(Calendar.MONTH)+1;
+		
     	StringBuffer sb = new StringBuffer();
-    	sb.append(" select REPLACE(contractType.flongNumber, '!', '.')||'   '||contractType.fname_l2 contractType,contract.fid id,contract.fnumber number,contract.fname name,pc.fname_l2 pcName,supplier.fname_l2 supplier,'' inviteForm,contract.fcontractPropert contractPropert,contract.fsrcAmount srcAmount,contract.foriginalAmount originalAmount,contract.famount amount,isnull(amount1.famount,0) amount1,isnull(amount2.famount,0) amount2,isnull(amount3.famount,0) amount3,isnull(amount4.famount,0) amount4,isnull(amount5.famount,0) amount5,isnull(amount6.famount,0) amount6,contract.fbookedDate bizDate,contract.fauditTime auditDate");
-    	sb.append("	from t_con_contractBill contract left join T_CON_ProgrammingContract pc on pc.fid=contract.fProgrammingContract left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join t_bd_supplier supplier on supplier.fid=contract.fpartBId");
-    	sb.append(" left join T_FDC_ContractType contractType on contractType.fid=contract.fcontractTypeId");
-    	sb.append(" left join (select split.fcontractBillId,sum(entry.famount)famount from T_CON_ContractPCSplitBill split left join T_CON_ContractPCSplitBillEntry entry on split.fid=entry.fheadId left join T_CON_ProgrammingContract pc on pc.fid=entry.fprogrammingContractId left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_FDC_CurProject project on project.fid=pro.fProjectId where project.fnumber = '01' group by fcontractBillId) amount1 on amount1.fcontractBillId=contract.fid");
-    	sb.append(" left join (select split.fcontractBillId,sum(entry.famount)famount from T_CON_ContractPCSplitBill split left join T_CON_ContractPCSplitBillEntry entry on split.fid=entry.fheadId left join T_CON_ProgrammingContract pc on pc.fid=entry.fprogrammingContractId left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_FDC_CurProject project on project.fid=pro.fProjectId where project.fnumber = '02' group by fcontractBillId) amount2 on amount2.fcontractBillId=contract.fid");
-    	sb.append(" left join (select split.fcontractBillId,sum(entry.famount)famount from T_CON_ContractPCSplitBill split left join T_CON_ContractPCSplitBillEntry entry on split.fid=entry.fheadId left join T_CON_ProgrammingContract pc on pc.fid=entry.fprogrammingContractId left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_FDC_CurProject project on project.fid=pro.fProjectId where project.fnumber = '03' group by fcontractBillId) amount3 on amount3.fcontractBillId=contract.fid");
-    	sb.append(" left join (select split.fcontractBillId,sum(entry.famount)famount from T_CON_ContractPCSplitBill split left join T_CON_ContractPCSplitBillEntry entry on split.fid=entry.fheadId left join T_CON_ProgrammingContract pc on pc.fid=entry.fprogrammingContractId left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_FDC_CurProject project on project.fid=pro.fProjectId where project.fnumber = '04' group by fcontractBillId) amount4 on amount4.fcontractBillId=contract.fid");
-    	sb.append(" left join (select split.fcontractBillId,sum(entry.famount)famount from T_CON_ContractPCSplitBill split left join T_CON_ContractPCSplitBillEntry entry on split.fid=entry.fheadId left join T_CON_ProgrammingContract pc on pc.fid=entry.fprogrammingContractId left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_FDC_CurProject project on project.fid=pro.fProjectId where project.fnumber = '05' group by fcontractBillId) amount5 on amount5.fcontractBillId=contract.fid");
-    	sb.append(" left join (select split.fcontractBillId,sum(entry.famount)famount from T_CON_ContractPCSplitBill split left join T_CON_ContractPCSplitBillEntry entry on split.fid=entry.fheadId left join T_CON_ProgrammingContract pc on pc.fid=entry.fprogrammingContractId left join T_CON_Programming pro on pro.fid=pc.FProgrammingID left join T_FDC_CurProject project on project.fid=pro.fProjectId where project.fnumber = '06' group by fcontractBillId) amount6 on amount6.fcontractBillId=contract.fid");
+    	sb.append(" select REPLACE(contractType.flongNumber, '!', '.')||'   '||contractType.fname_l2 contractType,contract.fid id,contract.fnumber number,contract.fname name,supplier.fname_l2 supplier,contract.fcontractPropert contractPropert,isnull(t10.amount,0) pcAmount,contract.fsrcAmount srcAmount,contract.foriginalAmount originalAmount,contract.famount amount,");
+    	sb.append("	settle.fOriginalAmount settleOriginalAmount,settle.fsettlePrice settleAmount,isnull(t1.costAmount,0),(isnull(t1.reqAmount,0)+isnull(t3.amount,0)) appAmount,isnull(t1.reqAmount,0) reqAmount,isnull(t2.payAmount,0) payAmount,(case when (case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end) is null or (case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end)=0 then 0 else isnull(t2.payAmount,0)*100/(case when settle.fcontractBillId is null then contract.famount else settle.fsettlePrice end) end) payRate,");
+    	sb.append("	isnull(t4.amount,0) lstAppAmount,isnull(t5.amount,0) lstPayAmount,isnull(t6.amount,0) lstEndAppAmount,isnull(t7.amount,0) lstCostAmount,isnull(t3.amount,0) nowAppAmount,isnull(t8.amount,0) nowReqAmount,isnull(t9.amount,0) nowPayAmount");
+    	sb.append("	from t_con_contractBill contract left join t_bd_supplier supplier on supplier.fid=contract.fpartBId left join T_FDC_ContractType contractType on contractType.fid=contract.fcontractTypeId");
+    	sb.append(" left join T_CON_ContractSettlementBill settle on settle.fcontractBillId=contract.fid");
+    	
+    	sb.append(" left join (select sum(fcompletePrjAmt) costAmount,sum(famount) reqAmount,fcontractId contractId from t_con_payrequestbill where fstate='4AUDITTED'");
+    	sb.append(" and fbookedDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
+    	sb.append(" group by fcontractId) t1 on t1.contractId=contract.fid");
+    	
+    	sb.append(" left join (select sum(FAmount) payAmount,fcontractbillid contractId from t_cas_paymentbill where fbillstatus=15");
+    	sb.append(" and fpayDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
+    	sb.append(" group by fcontractbillid) t2 on t2.contractId=contract.fid");
+    	
+    	sb.append(" left join (select dateEntry.famount amount,gatherEntry.contractBillId contractId from T_FNC_OrgUnitMonthPlanGather bill");
+    	sb.append(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId");
+    	sb.append(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
+    	sb.append(" left join T_FNC_ProjectMonthPlanGEntry gatherEntry on gatherEntry.fheadId=gather.fid");
+    	sb.append(" left join T_FNC_ProjectMonthPGDateEntry dateEntry on dateEntry.fheadentryId=gatherEntry.fid");
+    	sb.append(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+year+" and month(bill.fbizDate)="+month);
+    	sb.append(" and dateEntry.fyear="+year+" and dateEntry.fmonth="+month+") t3 on t3.contractId=contract.fid");
+    	
+    	sb.append(" left join (select dateEntry.famount amount,gatherEntry.contractBillId contractId from T_FNC_OrgUnitMonthPlanGather bill");
+    	sb.append(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId");
+    	sb.append(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
+    	sb.append(" left join T_FNC_ProjectMonthPlanGEntry gatherEntry on gatherEntry.fheadId=gather.fid");
+    	sb.append(" left join T_FNC_ProjectMonthPGDateEntry dateEntry on dateEntry.fheadentryId=gatherEntry.fid");
+    	sb.append(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+lstyear+" and month(bill.fbizDate)="+lstmonth);
+    	sb.append(" and dateEntry.fyear="+lstyear+" and dateEntry.fmonth="+lstmonth+") t4 on t3.contractId=contract.fid");
+    	
+    	
+    	sb.append(" left join (select sum(FAmount) amount,fcontractbillid contractId from t_cas_paymentbill where fbillstatus=15");
+    	sb.append(" and year(fpayDate)="+lstyear+" and month(fpayDate)="+lstmonth);
+    	sb.append(" group by fcontractbillid) t5 on t5.contractId=contract.fid");
+    	
+		sb.append(" left join (select sum(bgEntry.frequestAmount-isnull(bgEntry.factPayAmount,0)) amount,pay.fcontractId contractId from t_con_payRequestBill pay left join T_CON_PayRequestBillBgEntry bgEntry on bgEntry.fheadId=pay.fid ");
+		sb.append(" where pay.fisBgControl=1 and (bgEntry.frequestAmount!=bgEntry.factPayAmount or bgEntry.factPayAmount is null) ");
+		sb.append(" and pay.fbookedDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(lsttoDate))+ "'}");
+		sb.append(" group by pay.fcontractId) t6 on t6.contractId=contract.fid");
+		
+		sb.append(" left join (select sum(fcompletePrjAmt) amount,fcontractId contractId from t_con_payrequestbill where fstate='4AUDITTED'");
+		sb.append(" and year(fbookedDate)="+lstyear+" and month(fbookedDate)="+lstmonth);
+    	sb.append(" group by fcontractId) t7 on t7.contractId=contract.fid");
+    	
+    	sb.append(" left join (select sum(famount) amount,fcontractId contractId from t_con_payrequestbill where fstate='4AUDITTED'");
+    	sb.append(" and year(fbookedDate)="+year+" and month(fbookedDate)="+month);
+    	sb.append(" group by fcontractId) t8 on t8.contractId=contract.fid");
+    	
+    	sb.append(" left join (select sum(FAmount) amount,fcontractbillid contractId from t_cas_paymentbill where fbillstatus=15");
+    	sb.append(" and year(fpayDate)="+year+" and month(fpayDate)="+month);
+    	sb.append(" group by fcontractbillid) t9 on t9.contractId=contract.fid");
+    	
+    	sb.append(" left join (select sum(pc.FAmount) amount,pc.fcontractTypeId contractTypeId from T_CON_ProgrammingContract pc left join T_CON_Programming pro on pro.fid=pc.FProgrammingID");
+    	sb.append(" where pro.FIsLatest=1 and pro.fstate='4AUDITTED'");
+    	if(curProject!=null){
+    		sb.append(" and pro.fprojectId in("+curProject+")");
+    	}else{
+    		sb.append(" and pro.fprojectId ='null'");
+    	}
+    	sb.append(" group by pc.fcontractTypeId) t10 on t10.contractTypeId=contract.fcontractTypeId");
+    	
     	sb.append(" where contract.fstate='4AUDITTED'");
     	if(curProject!=null){
     		sb.append(" and contract.FCurProjectID in("+curProject+")");
@@ -131,7 +212,6 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     		sb.append(" and contract.FCurProjectID ='null'");
     	}
     	sb.append(" order by contractType.flongNumber,(case when contract.fcontractPropert='SUPPLY' then contract.fmainContractNumber else contract.fnumber end),contract.fcontractPropert");
-	
     	return sb.toString();
     }
 }

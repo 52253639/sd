@@ -887,7 +887,6 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 							row.getCell("floor").setValue(Integer.valueOf(floor));
 							row.getCell("totalArea").setValue(rs.getBigDecimal("area"));
 							
-							
 							FDCSQLBuilder builder1 = new FDCSQLBuilder();
 							builder1.appendSql("select sum(ftenancyArea) alreadyArea from t_she_room where ftenancyState in('NewTenancy','ContinueTenancy','EnlargeTenancy') and fbuildingid='"+building.getId().toString()+"' and ffloor="+floor);
 							IRowSet rs1=builder1.executeQuery();
@@ -895,6 +894,18 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 								row.getCell("alreadyArea").setValue(rs1.getBigDecimal("alreadyArea"));
 								BigDecimal ten=FDCHelper.multiply(FDCHelper.divide(row.getCell("alreadyArea").getValue(), row.getCell("totalArea").getValue(), 4, BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
 								row.getCell("ten").setValue(ten);
+							}
+							builder1 = new FDCSQLBuilder();
+							builder1.appendSql("select sum(ftenancyArea) unTenArea from t_she_room where ftenancyState in('UNTenancy') and fbuildingid='"+building.getId().toString()+"' and ffloor="+floor);
+							rs1=builder1.executeQuery();
+							while(rs1.next()){
+								row.getCell("unTenArea").setValue(rs1.getBigDecimal("unTenArea"));
+							}
+							builder1 = new FDCSQLBuilder();
+							builder1.appendSql("select sum(ftenancyArea) waitArea from t_she_room where ftenancyState in('WaitTenancy') and fbuildingid='"+building.getId().toString()+"' and ffloor="+floor);
+							rs1=builder1.executeQuery();
+							while(rs1.next()){
+								row.getCell("waitArea").setValue(rs1.getBigDecimal("waitArea"));
 							}
 							tblTenStat.getMergeManager().mergeBlock(0, 0, floor-1, 0);
 							tblTenStat.getMergeManager().mergeBlock(0, 1, floor-1, 1);
@@ -1841,7 +1852,7 @@ public class TenancyControlUI extends AbstractTenancyControlUI implements ISolid
 					String tenArea2 = tenCount2+"/"+tenArea+"m2";
 					thisRow.getCell("totalArea").setValue(tenArea2);
 					thisRow.getCell("alreadyArea").setValue(alreadyCount +"/"+alreadyArea+"m2");
-					thisRow.getCell("ten").setValue(tenRate+"%");
+					thisRow.getCell("alreadyArea").setValue(alreadyCount +"/"+alreadyArea+"m2");
 				}
 			}					
 		} catch (Exception e1) {
