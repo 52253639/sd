@@ -47,7 +47,7 @@ public class SellAmountCaculator implements ICalculator, IMethodBatchQuery{
 		this.ServerCtx = this.context.getServerContext();
 	}
 	public boolean batchQuery(Map map) {
-		SortedParameterArray params = (SortedParameterArray) map.get("fdc_backAmount");
+		SortedParameterArray params = (SortedParameterArray) map.get("fdc_sellAmount");
 		
 		IReportPropertyAdapter adapter = context.getReportAdapter();
 		
@@ -75,7 +75,7 @@ public class SellAmountCaculator implements ICalculator, IMethodBatchQuery{
 				}
 				try {
 					// 通过计算公式计算，返回结果
-					BigDecimal amount = this.fdc_backAmount(
+					BigDecimal amount = this.fdc_sellAmount(
 							companyNumber, sellProject, budgetPeriod);
 					params.getParameter(i).setValue(amount);
 				} catch (Exception e) {
@@ -86,7 +86,7 @@ public class SellAmountCaculator implements ICalculator, IMethodBatchQuery{
 		}
 		return true;
 	}
-	public BigDecimal fdc_backAmount(String companyNumber,String sellProject, String budgetPeriod) throws EASBizException, BOSException, SQLException {
+	public BigDecimal fdc_sellAmount(String companyNumber,String sellProject, String budgetPeriod) throws EASBizException, BOSException, SQLException {
 		BgPeriodInfo period = FDCBudgetAcctCaculatorHelper.getBgPeriod(ServerCtx, budgetPeriod);
 		FDCSQLBuilder _builder = new FDCSQLBuilder(ServerCtx);
 		String spStr=null;
