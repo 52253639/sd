@@ -87,7 +87,13 @@ import com.kingdee.bos.ui.face.ItemAction;
 import com.kingdee.bos.ui.face.UIException;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
+import com.kingdee.eas.base.attachment.BizobjectFacadeFactory;
+import com.kingdee.eas.base.attachment.BoAttchAssoCollection;
+import com.kingdee.eas.base.attachment.BoAttchAssoFactory;
+import com.kingdee.eas.base.attachment.common.AttachmentClientManager;
+import com.kingdee.eas.base.attachment.common.AttachmentManagerFactory;
 import com.kingdee.eas.base.param.ParamControlFactory;
+import com.kingdee.eas.base.permission.PermissionFactory;
 import com.kingdee.eas.base.permission.UserInfo;
 import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.basedata.assistant.CurrencyInfo;
@@ -105,6 +111,7 @@ import com.kingdee.eas.fdc.basecrm.FDCReceivingBillFactory;
 import com.kingdee.eas.fdc.basecrm.RevListInfo;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.CurProjectInfo;
+import com.kingdee.eas.fdc.basedata.FDCBillInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
@@ -112,6 +119,12 @@ import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
+import com.kingdee.eas.fdc.contract.ContractBillFactory;
+import com.kingdee.eas.fdc.contract.FDCUtils;
+import com.kingdee.eas.fdc.contract.IContractBill;
+import com.kingdee.eas.fdc.contract.client.ContractBillEditUI;
+import com.kingdee.eas.fdc.contract.client.ContractChangeBillEditUI;
+import com.kingdee.eas.fdc.contract.client.ContractClientUtils;
 import com.kingdee.eas.fdc.sellhouse.BuildingInfo;
 import com.kingdee.eas.fdc.sellhouse.BuildingUnitInfo;
 import com.kingdee.eas.fdc.sellhouse.CertifacateNameEnum;
@@ -5435,7 +5448,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	 * 2.如果合同是改租,续租或者更名,将原合同的相关信息带到新合同.
 	 * */
 	protected IObjectValue createNewData() {
-		TenancyBillInfo tenancyBill = new TenancyBillInfo();		
+		TenancyBillInfo tenancyBill = new TenancyBillInfo();
+		tenancyBill.setId(BOSUuid.create(tenancyBill.getBOSType()));
 		// 从租赁控制界面传来的房间
 		RoomCollection rooms = (RoomCollection) this.getUIContext().get(KEY_ROOMS);
 		if (rooms != null) {
@@ -7505,6 +7519,47 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			}
 		}
 	}
-	
-	
+	 public void actionAttachment_actionPerformed(ActionEvent e)throws Exception{
+		 AttachmentClientManager acm = AttachmentManagerFactory.getClientManager();
+		 String boID = getSelectBOID();
+		 if(boID == null)
+			 return;
+		 boolean isEdit = false;
+		 if("ADDNEW".equals(getOprtState()) || "EDIT".equals(getOprtState())){
+			 isEdit = true;
+         }
+		 acm.showAttachmentListUIByBoID(boID, this, isEdit);
+     }
+	 public boolean destroyWindow() {
+		 boolean b = super.destroyWindow();
+		 if(b){
+			 try {
+				 	deleteAttachment(this.editData.getId().toString());
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+        }
+        return b;
+	}
+	 protected void deleteAttachment(String id) throws BOSException, EASBizException{
+		EntityViewInfo view=new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		
+		filter.getFilterItems().add(new FilterItemInfo("boID" , id));
+		view.setFilter(filter);
+		BoAttchAssoCollection col=BoAttchAssoFactory.getRemoteInstance().getBoAttchAssoCollection(view);
+		for(int i=0;i<col.size();i++){
+			EntityViewInfo attview=new EntityViewInfo();
+			FilterInfo attfilter = new FilterInfo();
+			
+			attfilter.getFilterItems().add(new FilterItemInfo("attachment.id" , col.get(i).getAttachment().getId().toString()));
+			attview.setFilter(attfilter);
+			BoAttchAssoCollection attcol=BoAttchAssoFactory.getRemoteInstance().getBoAttchAssoCollection(attview);
+			if(attcol.size()==1){
+				BizobjectFacadeFactory.getRemoteInstance().delTempAttachment(id);
+			}else if(attcol.size()>1){
+				BoAttchAssoFactory.getRemoteInstance().delete(filter);
+			}
+		}
+	}
 }
