@@ -179,7 +179,7 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     	sb.append(" left join T_FNC_ProjectMonthPlanGEntry gatherEntry on gatherEntry.fheadId=gather.fid");
     	sb.append(" left join T_FNC_ProjectMonthPGDateEntry dateEntry on dateEntry.fheadentryId=gatherEntry.fid");
     	sb.append(" where bill.fstate='4AUDITTED' and bill.fIsLatest=1 and year(bill.fbizDate)="+lstyear+" and month(bill.fbizDate)="+lstmonth);
-    	sb.append(" and dateEntry.fyear="+lstyear+" and dateEntry.fmonth="+lstmonth+") t4 on t3.contractId=contract.fid");
+    	sb.append(" and dateEntry.fyear="+lstyear+" and dateEntry.fmonth="+lstmonth+") t4 on t4.contractId=contract.fid");
     	
     	sb.append(" left join (select sum(FAmount) amount,fcontractbillid contractId from t_cas_paymentbill where fbillstatus=15");
     	sb.append(" and year(fpayDate)="+lstyear+" and month(fpayDate)="+lstmonth);

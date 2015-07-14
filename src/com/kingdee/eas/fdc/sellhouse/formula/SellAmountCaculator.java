@@ -103,7 +103,7 @@ public class SellAmountCaculator implements ICalculator, IMethodBatchQuery{
 				spStr="'"+sellProject+"'";
 			}
 		}
-		_builder.appendSql(" select sum(sign.fcontractTotalAmount) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId left join t_she_sellProject sp on sp.fid=sign.fsellProjectId");
+		_builder.appendSql(" select isnull(sum(sign.fcontractTotalAmount),0) amount from t_she_signManage sign left join t_org_baseUnit org on org.fid=sign.forgUnitId left join t_she_sellProject sp on sp.fid=sign.fsellProjectId");
 		_builder.appendSql(" where sign.fbizState in('ChangeNameAuditing','QuitRoomAuditing','ChangeRoomAuditing','SignApple','SignAudit')");
     	_builder.appendSql(" and NOT EXISTS (select tt.fnewId from t_she_changeManage tt where tt.fstate in('2SUBMITTED','3AUDITTING') and sign.fid=tt.fnewId )");
     	_builder.appendSql(" and year(sign.fbusAdscriptionDate)="+period.getYear()+" and month(sign.fbusAdscriptionDate)="+period.getMonth());

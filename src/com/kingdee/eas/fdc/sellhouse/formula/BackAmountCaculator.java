@@ -104,7 +104,7 @@ public class BackAmountCaculator implements ICalculator, IMethodBatchQuery{
 			}
 		}
 		
-		_builder.appendSql(" select sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
+		_builder.appendSql(" select isnull(sum(isnull(entry.famount,0)+isnull(entry.frevAmount,0)),0) amount from T_BDC_SHERevBillEntry entry left join T_BDC_SHERevBill revBill on revBill.fid=entry.fparentid");
     	_builder.appendSql(" left join t_she_sellProject sp on sp.fid=revBill.fsellProjectId left join t_org_baseUnit org on org.fid=revBill.fsaleOrgUnitId left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId ");
     	_builder.appendSql(" where revBill.fstate in('2SUBMITTED','4AUDITTED') and md.fmoneyType in('FisrtAmount','HouseAmount','LoanAmount','AccFundAmount')");
 		_builder.appendSql(" and year(revBill.fbizDate)="+period.getYear()+" and month(revBill.fbizDate)="+period.getMonth());

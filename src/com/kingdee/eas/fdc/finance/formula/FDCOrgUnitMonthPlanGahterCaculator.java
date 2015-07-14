@@ -91,7 +91,7 @@ public class FDCOrgUnitMonthPlanGahterCaculator implements ICalculator, IMethodB
 	public BigDecimal fdc_orgUnitMonthPlanGahter_amount(String companyNumber,String bgNumber, String budgetPeriod) throws EASBizException, BOSException, SQLException {
 		BgPeriodInfo period = FDCBudgetAcctCaculatorHelper.getBgPeriod(ServerCtx, budgetPeriod);
 		FDCSQLBuilder _builder = new FDCSQLBuilder(ServerCtx);
-		_builder.appendSql(" select sum(t.amount) amount from(");
+		_builder.appendSql(" select isnull(sum(t.amount),0) amount from(");
 		_builder.appendSql(" select isnull(sum(dateEntry.famount),0) amount from T_FNC_OrgUnitMonthPlanGather bill");
     	_builder.appendSql(" left join T_FNC_OrgUnitMonthPGEntry entry on bill.fid=entry.fheadId left join T_ORG_BaseUnit orgUnit on orgUnit.fid=bill.forgUnitId");
     	_builder.appendSql(" left join T_FNC_ProjectMonthPlanGather gather on gather.fid=entry.fsrcId");
