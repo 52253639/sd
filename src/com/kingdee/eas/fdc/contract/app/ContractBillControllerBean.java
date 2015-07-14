@@ -2705,7 +2705,7 @@ public class ContractBillControllerBean extends
 				supply.setProgrammingContract(pcInfo);
 				ContractBillFactory.getLocalInstance(ctx).updatePartial(supply, supplySel);
 				
-				pcInfo.setIsWTCiting(true);
+				pcInfo.setIsCiting(true);
 			}
 		} catch (UuidException e) {
 			e.printStackTrace();

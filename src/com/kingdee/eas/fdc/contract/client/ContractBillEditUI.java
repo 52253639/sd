@@ -5051,8 +5051,9 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 							}
 						}
 					} else if(isAbort) {
-						FDCMsgBox.showWarning(this, "未关联框架合约，不允许提交！");
-						SysUtil.abort();
+						if(FDCMsgBox.showConfirm2(this, "未关联框架合约，请确认是否提交？")== FDCMsgBox.CANCEL){
+							SysUtil.abort();
+						}
 					}
 					break;
 				case 2:

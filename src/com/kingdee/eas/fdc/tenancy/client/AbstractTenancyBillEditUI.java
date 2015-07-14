@@ -101,6 +101,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseCount;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFirstLeaseEndDate;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTenBillRoomState;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboRentStartType;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboFlagAtTerm;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboChargeDateType;
@@ -113,6 +114,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtLeaseCount;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFirstLeaseEndDate;
+    protected com.kingdee.bos.ctrl.swing.KDComboBox cbTenBillRoomState;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7Creator;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalRoomStandardRent;
@@ -424,6 +426,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contLeaseCount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStartDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contTenBillRoomState = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.comboRentStartType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboFlagAtTerm = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboChargeDateType = new com.kingdee.bos.ctrl.swing.KDComboBox();
@@ -436,6 +439,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.txtLeaseCount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.cbTenBillRoomState = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.f7Creator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtTotalRoomStandardRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
@@ -639,6 +643,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contLeaseCount.setName("contLeaseCount");
         this.contStartDate.setName("contStartDate");
         this.contFirstLeaseEndDate.setName("contFirstLeaseEndDate");
+        this.contTenBillRoomState.setName("contTenBillRoomState");
         this.comboRentStartType.setName("comboRentStartType");
         this.comboFlagAtTerm.setName("comboFlagAtTerm");
         this.comboChargeDateType.setName("comboChargeDateType");
@@ -651,6 +656,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.txtLeaseCount.setName("txtLeaseCount");
         this.pkStartDate.setName("pkStartDate");
         this.pkFirstLeaseEndDate.setName("pkFirstLeaseEndDate");
+        this.cbTenBillRoomState.setName("cbTenBillRoomState");
         this.pkCreateTime.setName("pkCreateTime");
         this.f7Creator.setName("f7Creator");
         this.txtTotalRoomStandardRent.setName("txtTotalRoomStandardRent");
@@ -1113,6 +1119,11 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contFirstLeaseEndDate.setBoundLabelText(resHelper.getString("contFirstLeaseEndDate.boundLabelText"));		
         this.contFirstLeaseEndDate.setBoundLabelLength(100);		
         this.contFirstLeaseEndDate.setBoundLabelUnderline(true);
+        // contTenBillRoomState		
+        this.contTenBillRoomState.setBoundLabelText(resHelper.getString("contTenBillRoomState.boundLabelText"));		
+        this.contTenBillRoomState.setBoundLabelLength(100);		
+        this.contTenBillRoomState.setBoundLabelUnderline(true);		
+        this.contTenBillRoomState.setEnabled(false);
         // comboRentStartType		
         this.comboRentStartType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.RentStartTypeEnum").toArray());
         this.comboRentStartType.addItemListener(new java.awt.event.ItemListener() {
@@ -1239,6 +1250,9 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
                 }
             }
         });
+        // cbTenBillRoomState		
+        this.cbTenBillRoomState.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum").toArray());		
+        this.cbTenBillRoomState.setRequired(true);
         // pkCreateTime		
         this.pkCreateTime.setEnabled(false);		
         this.pkCreateTime.setVisible(true);
@@ -2453,6 +2467,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel1.add(contStartDate, new KDLayout.Constraints(11, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contFirstLeaseEndDate.setBounds(new Rectangle(11, 58, 236, 19));
         kDPanel1.add(contFirstLeaseEndDate, new KDLayout.Constraints(11, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTenBillRoomState.setBounds(new Rectangle(756, 58, 236, 19));
+        kDPanel1.add(contTenBillRoomState, new KDLayout.Constraints(756, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contRentStartType
         contRentStartType.setBoundEditor(comboRentStartType);
         //contFlagAtTerm
@@ -2477,6 +2493,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contStartDate.setBoundEditor(pkStartDate);
         //contFirstLeaseEndDate
         contFirstLeaseEndDate.setBoundEditor(pkFirstLeaseEndDate);
+        //contTenBillRoomState
+        contTenBillRoomState.setBoundEditor(cbTenBillRoomState);
         //contCreateTime
         contCreateTime.setBoundEditor(pkCreateTime);
         //contCreator
@@ -2981,6 +2999,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		dataBinder.registerBinding("leaseCount", java.math.BigDecimal.class, this.txtLeaseCount, "value");
 		dataBinder.registerBinding("startDate", java.util.Date.class, this.pkStartDate, "value");
 		dataBinder.registerBinding("firstLeaseEndDate", java.util.Date.class, this.pkFirstLeaseEndDate, "value");
+		dataBinder.registerBinding("tenBillRoomState", com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum.class, this.cbTenBillRoomState, "selectedItem");
 		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.f7Creator, "data");
 		dataBinder.registerBinding("tenancyRoomList.roomEntryId", String.class, this.tblRoom, "roomEntryId.text");
@@ -3163,6 +3182,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		getValidateHelper().registerBindProperty("leaseCount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("startDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("firstLeaseEndDate", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("tenBillRoomState", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyRoomList.roomEntryId", ValidateHelper.ON_SAVE);    
@@ -3720,6 +3740,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         sic.add(new SelectorItemInfo("leaseCount"));
         sic.add(new SelectorItemInfo("startDate"));
         sic.add(new SelectorItemInfo("firstLeaseEndDate"));
+        sic.add(new SelectorItemInfo("tenBillRoomState"));
         sic.add(new SelectorItemInfo("createTime"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{

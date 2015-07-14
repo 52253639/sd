@@ -392,6 +392,7 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 				row.getCell("createTime").setValue(info.getCreateTime());
 				row.getCell("state").setValue(info.getState());
 				row.getCell("startDate").setValue(info.getStartDate());
+				row.getCell("tenBillRoomState").setValue(info.getTenBillRoomState());
 			}
 		} catch (BOSException ee) {
 			ee.printStackTrace();

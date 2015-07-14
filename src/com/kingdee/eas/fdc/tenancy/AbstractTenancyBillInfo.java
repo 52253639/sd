@@ -26,7 +26,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("tenCustomerList", new com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryCollection());
     }
     /**
-     * Object:租赁合同's 合同名称property 
+     * Object:K租赁合同's 合同名称property 
      */
     public String getTenancyName()
     {
@@ -37,7 +37,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("tenancyName", item);
     }
     /**
-     * Object:租赁合同's 合同类型property 
+     * Object:K租赁合同's 合同类型property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyContractTypeEnum getTenancyType()
     {
@@ -50,7 +50,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object: 租赁合同 's 租赁顾问 property 
+     * Object: K租赁合同 's 租赁顾问 property 
      */
     public com.kingdee.eas.base.permission.UserInfo getTenancyAdviser()
     {
@@ -61,7 +61,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("tenancyAdviser", item);
     }
     /**
-     * Object:租赁合同's 起始日期property 
+     * Object:K租赁合同's 起始日期property 
      */
     public java.util.Date getStartDate()
     {
@@ -72,7 +72,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("startDate", item);
     }
     /**
-     * Object:租赁合同's 结束日期property 
+     * Object:K租赁合同's 结束日期property 
      */
     public java.util.Date getEndDate()
     {
@@ -83,7 +83,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("endDate", item);
     }
     /**
-     * Object:租赁合同's 租期property 
+     * Object:K租赁合同's 租期property 
      */
     public java.math.BigDecimal getLeaseCount()
     {
@@ -94,28 +94,28 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("leaseCount", item);
     }
     /**
-     * Object: 租赁合同 's 租赁房间分录 property 
+     * Object: K租赁合同 's 租赁房间分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection getTenancyRoomList()
     {
         return (com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection)get("tenancyRoomList");
     }
     /**
-     * Object: 租赁合同 's 租赁客户分录 property 
+     * Object: K租赁合同 's 租赁客户分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryCollection getTenCustomerList()
     {
         return (com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryCollection)get("tenCustomerList");
     }
     /**
-     * Object: 租赁合同 's 租赁附属资源分录 property 
+     * Object: K租赁合同 's 租赁附属资源分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenAttachResourceEntryCollection getTenAttachResourceList()
     {
         return (com.kingdee.eas.fdc.tenancy.TenAttachResourceEntryCollection)get("tenAttachResourceList");
     }
     /**
-     * Object:租赁合同's 免租天数property 
+     * Object:K租赁合同's 免租天数property 
      */
     public int getFreeDays()
     {
@@ -126,7 +126,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setInt("freeDays", item);
     }
     /**
-     * Object:租赁合同's 约定交房日期property 
+     * Object:K租赁合同's 约定交房日期property 
      */
     public java.util.Date getDeliveryRoomDate()
     {
@@ -137,7 +137,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("deliveryRoomDate", item);
     }
     /**
-     * Object:租赁合同's 特殊条款property 
+     * Object:K租赁合同's 特殊条款property 
      */
     public String getSpecialClause()
     {
@@ -148,7 +148,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("specialClause", item);
     }
     /**
-     * Object:租赁合同's 变动说明property 
+     * Object:K租赁合同's 变动说明property 
      */
     public String getChangeDes()
     {
@@ -159,7 +159,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("changeDes", item);
     }
     /**
-     * Object:租赁合同's 期间长度类型property 
+     * Object:K租赁合同's 期间长度类型property 
      */
     public com.kingdee.eas.fdc.tenancy.RentTypeEnum getLeaseTimeType()
     {
@@ -172,7 +172,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 计租期间长度property 
+     * Object:K租赁合同's 计租期间长度property 
      */
     public int getLeaseTime()
     {
@@ -183,7 +183,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setInt("leaseTime", item);
     }
     /**
-     * Object:租赁合同's 标准租金property 
+     * Object:K租赁合同's 标准租金property 
      */
     public java.math.BigDecimal getStandardTotalRent()
     {
@@ -194,7 +194,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("standardTotalRent", item);
     }
     /**
-     * Object:租赁合同's 成交租金property 
+     * Object:K租赁合同's 成交租金property 
      */
     public java.math.BigDecimal getDealTotalRent()
     {
@@ -205,7 +205,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("dealTotalRent", item);
     }
     /**
-     * Object:租赁合同's 合同状态property 
+     * Object:K租赁合同's 合同状态property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum getTenancyState()
     {
@@ -218,7 +218,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 押金金额property 
+     * Object:K租赁合同's 押金金额property 
      */
     public java.math.BigDecimal getDepositAmount()
     {
@@ -229,7 +229,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("depositAmount", item);
     }
     /**
-     * Object:租赁合同's 剩余押金property 
+     * Object:K租赁合同's 剩余押金property 
      */
     public java.math.BigDecimal getRemainDepositAmount()
     {
@@ -240,7 +240,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("remainDepositAmount", item);
     }
     /**
-     * Object: 租赁合同 's 原租赁合同 property 
+     * Object: K租赁合同 's 原租赁合同 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyBillInfo getOldTenancyBill()
     {
@@ -251,7 +251,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("oldTenancyBill", item);
     }
     /**
-     * Object:租赁合同's 滞纳金property 
+     * Object:K租赁合同's 滞纳金property 
      */
     public java.math.BigDecimal getLateFeeAmount()
     {
@@ -262,7 +262,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("lateFeeAmount", item);
     }
     /**
-     * Object:租赁合同's 收租日类型property 
+     * Object:K租赁合同's 收租日类型property 
      */
     public com.kingdee.eas.fdc.tenancy.ChargeDateTypeEnum getChargeDateType()
     {
@@ -275,7 +275,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 收租日偏移天数property 
+     * Object:K租赁合同's 收租日偏移天数property 
      */
     public int getChargeOffsetDays()
     {
@@ -286,7 +286,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setInt("chargeOffsetDays", item);
     }
     /**
-     * Object:租赁合同's 免租日是否计入租期property 
+     * Object:K租赁合同's 免租日是否计入租期property 
      */
     public boolean isIsFreeDaysInLease()
     {
@@ -297,7 +297,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isFreeDaysInLease", item);
     }
     /**
-     * Object:租赁合同's 租赁日期property 
+     * Object:K租赁合同's 租赁日期property 
      */
     public java.util.Date getTenancyDate()
     {
@@ -308,7 +308,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("tenancyDate", item);
     }
     /**
-     * Object: 租赁合同 's 收款银行 property 
+     * Object: K租赁合同 's 收款银行 property 
      */
     public com.kingdee.eas.basedata.assistant.BankInfo getPayeeBank()
     {
@@ -319,7 +319,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("payeeBank", item);
     }
     /**
-     * Object: 租赁合同 's 中介机构 property 
+     * Object: K租赁合同 's 中介机构 property 
      */
     public com.kingdee.eas.fdc.tenancy.AgencyInfo getAgency()
     {
@@ -330,7 +330,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("agency", item);
     }
     /**
-     * Object:租赁合同's 到期标记property 
+     * Object:K租赁合同's 到期标记property 
      */
     public com.kingdee.eas.fdc.tenancy.FlagAtTermEnum getFlagAtTerm()
     {
@@ -343,7 +343,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 首付租金property 
+     * Object:K租赁合同's 首付租金property 
      */
     public java.math.BigDecimal getFirstPayRent()
     {
@@ -354,7 +354,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("firstPayRent", item);
     }
     /**
-     * Object:租赁合同's 租赁房间property 
+     * Object:K租赁合同's 租赁房间property 
      */
     public String getTenRoomsDes()
     {
@@ -365,7 +365,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("tenRoomsDes", item);
     }
     /**
-     * Object:租赁合同's 租赁配套资源property 
+     * Object:K租赁合同's 租赁配套资源property 
      */
     public String getTenAttachesDes()
     {
@@ -376,7 +376,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("tenAttachesDes", item);
     }
     /**
-     * Object:租赁合同's 租赁客户property 
+     * Object:K租赁合同's 租赁客户property 
      */
     public String getTenCustomerDes()
     {
@@ -387,7 +387,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("tenCustomerDes", item);
     }
     /**
-     * Object:租赁合同's 原合同扣除金额property 
+     * Object:K租赁合同's 原合同扣除金额property 
      */
     public java.math.BigDecimal getDeductAmount()
     {
@@ -398,7 +398,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("deductAmount", item);
     }
     /**
-     * Object: 租赁合同 's 租售项目 property 
+     * Object: K租赁合同 's 租售项目 property 
      */
     public com.kingdee.eas.fdc.sellhouse.SellProjectInfo getSellProject()
     {
@@ -409,7 +409,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("sellProject", item);
     }
     /**
-     * Object:租赁合同's 是否中介代理property 
+     * Object:K租赁合同's 是否中介代理property 
      */
     public boolean isIsByAgency()
     {
@@ -420,7 +420,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isByAgency", item);
     }
     /**
-     * Object: 租赁合同 's 中介代理合同 property 
+     * Object: K租赁合同 's 中介代理合同 property 
      */
     public com.kingdee.eas.fdc.tenancy.AgencyContractInfo getAgencyContract()
     {
@@ -431,7 +431,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("agencyContract", item);
     }
     /**
-     * Object:租赁合同's 约定代理费property 
+     * Object:K租赁合同's 约定代理费property 
      */
     public java.math.BigDecimal getPromissoryAgentFee()
     {
@@ -442,7 +442,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("promissoryAgentFee", item);
     }
     /**
-     * Object:租赁合同's 约定应付日期property 
+     * Object:K租赁合同's 约定应付日期property 
      */
     public java.util.Date getPromissoryAppPayDate()
     {
@@ -453,7 +453,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("promissoryAppPayDate", item);
     }
     /**
-     * Object:租赁合同's 代理费property 
+     * Object:K租赁合同's 代理费property 
      */
     public java.math.BigDecimal getAgentFee()
     {
@@ -464,7 +464,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("agentFee", item);
     }
     /**
-     * Object: 租赁合同 's 代理费付款方式 property 
+     * Object: K租赁合同 's 代理费付款方式 property 
      */
     public com.kingdee.eas.basedata.assistant.SettlementTypeInfo getSettlementType()
     {
@@ -475,7 +475,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("settlementType", item);
     }
     /**
-     * Object:租赁合同's 代理费应付日期property 
+     * Object:K租赁合同's 代理费应付日期property 
      */
     public java.util.Date getAppPayDate()
     {
@@ -486,7 +486,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("appPayDate", item);
     }
     /**
-     * Object:租赁合同's 代理说明property 
+     * Object:K租赁合同's 代理说明property 
      */
     public String getAgentDes()
     {
@@ -497,21 +497,21 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("agentDes", item);
     }
     /**
-     * Object: 租赁合同 's 租金递增分录 property 
+     * Object: K租赁合同 's 租金递增分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.IncreasedRentEntryCollection getIncreasedRents()
     {
         return (com.kingdee.eas.fdc.tenancy.IncreasedRentEntryCollection)get("increasedRents");
     }
     /**
-     * Object: 租赁合同 's 免租分录 property 
+     * Object: K租赁合同 's 免租分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.RentFreeEntryCollection getRentFrees()
     {
         return (com.kingdee.eas.fdc.tenancy.RentFreeEntryCollection)get("rentFrees");
     }
     /**
-     * Object:租赁合同's 首期类型property 
+     * Object:K租赁合同's 首期类型property 
      */
     public com.kingdee.eas.fdc.tenancy.FirstLeaseTypeEnum getFirstLeaseType()
     {
@@ -524,7 +524,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 首期结束日期property 
+     * Object:K租赁合同's 首期结束日期property 
      */
     public java.util.Date getFirstLeaseEndDate()
     {
@@ -535,7 +535,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("firstLeaseEndDate", item);
     }
     /**
-     * Object: 租赁合同 's 诚意预留 property 
+     * Object: K租赁合同 's 诚意预留 property 
      */
     public com.kingdee.eas.fdc.tenancy.SincerObligateInfo getSincerObligate()
     {
@@ -546,7 +546,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("sincerObligate", item);
     }
     /**
-     * Object:租赁合同's 租赁计算方式property 
+     * Object:K租赁合同's 租赁计算方式property 
      */
     public com.kingdee.eas.fdc.tenancy.RentCountTypeEnum getRentCountType()
     {
@@ -559,7 +559,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 是否自动取整property 
+     * Object:K租赁合同's 是否自动取整property 
      */
     public boolean isIsAutoToInteger()
     {
@@ -570,7 +570,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isAutoToInteger", item);
     }
     /**
-     * Object:租赁合同's 取整类型property 
+     * Object:K租赁合同's 取整类型property 
      */
     public com.kingdee.eas.fdc.sellhouse.ToIntegerTypeEnum getToIntegerType()
     {
@@ -583,7 +583,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 位数property 
+     * Object:K租赁合同's 位数property 
      */
     public com.kingdee.eas.fdc.sellhouse.DigitEnum getDigit()
     {
@@ -596,7 +596,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 收租起始类型property 
+     * Object:K租赁合同's 收租起始类型property 
      */
     public com.kingdee.eas.fdc.tenancy.RentStartTypeEnum getRentStartType()
     {
@@ -609,7 +609,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 起始日期期限property 
+     * Object:K租赁合同's 起始日期期限property 
      */
     public java.util.Date getStartDateLimit()
     {
@@ -620,7 +620,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("startDateLimit", item);
     }
     /**
-     * Object:租赁合同's 年天数property 
+     * Object:K租赁合同's 年天数property 
      */
     public int getDaysPerYear()
     {
@@ -631,7 +631,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setInt("daysPerYear", item);
     }
     /**
-     * Object:租赁合同's 多房产计算方式property 
+     * Object:K租赁合同's 多房产计算方式property 
      */
     public com.kingdee.eas.fdc.tenancy.MoreRoomsTypeEnum getMoreRoomsType()
     {
@@ -644,7 +644,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 是否自由式合同property 
+     * Object:K租赁合同's 是否自由式合同property 
      */
     public boolean isIsFreeContract()
     {
@@ -655,14 +655,14 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isFreeContract", item);
     }
     /**
-     * Object: 租赁合同 's 其他应付明细分录 property 
+     * Object: K租赁合同 's 其他应付明细分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection getOtherPayList()
     {
         return (com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection)get("otherPayList");
     }
     /**
-     * Object:租赁合同's 周期性费用是否自动取整property 
+     * Object:K租赁合同's 周期性费用是否自动取整property 
      */
     public boolean isIsAutoToIntegerFee()
     {
@@ -673,7 +673,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isAutoToIntegerFee", item);
     }
     /**
-     * Object:租赁合同's 周期性费用取整位数property 
+     * Object:K租赁合同's 周期性费用取整位数property 
      */
     public com.kingdee.eas.fdc.sellhouse.DigitEnum getDigitFee()
     {
@@ -686,7 +686,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 周期性费用取整property 
+     * Object:K租赁合同's 周期性费用取整property 
      */
     public com.kingdee.eas.fdc.sellhouse.ToIntegerTypeEnum getToIntegetTypeFee()
     {
@@ -699,7 +699,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 固定日的第几个月property 
+     * Object:K租赁合同's 固定日的第几个月property 
      */
     public java.util.Date getFixedDateFromMonth()
     {
@@ -710,14 +710,14 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("fixedDateFromMonth", item);
     }
     /**
-     * Object: 租赁合同 's 租凭合同违约金计算方案设置 property 
+     * Object: K租赁合同 's 租凭合同违约金计算方案设置 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenLiquidatedCollection getTenLiquidated()
     {
         return (com.kingdee.eas.fdc.tenancy.TenLiquidatedCollection)get("tenLiquidated");
     }
     /**
-     * Object:租赁合同's 是否计算违约金property 
+     * Object:K租赁合同's 是否计算违约金property 
      */
     public boolean isIsAccountLiquidated()
     {
@@ -728,7 +728,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isAccountLiquidated", item);
     }
     /**
-     * Object:租赁合同's 违约金比例property 
+     * Object:K租赁合同's 违约金比例property 
      */
     public java.math.BigDecimal getRate()
     {
@@ -739,7 +739,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("rate", item);
     }
     /**
-     * Object:租赁合同's 违约金比例日期property 
+     * Object:K租赁合同's 违约金比例日期property 
      */
     public com.kingdee.eas.fdc.tenancy.DateEnum getRateDate()
     {
@@ -752,7 +752,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 违约金减免property 
+     * Object:K租赁合同's 违约金减免property 
      */
     public int getRelief()
     {
@@ -763,7 +763,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setInt("relief", item);
     }
     /**
-     * Object:租赁合同's 违约金减免日期property 
+     * Object:K租赁合同's 违约金减免日期property 
      */
     public com.kingdee.eas.fdc.tenancy.DateEnum getReliefDate()
     {
@@ -776,7 +776,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 违约金计算标准property 
+     * Object:K租赁合同's 违约金计算标准property 
      */
     public int getStandard()
     {
@@ -787,7 +787,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setInt("standard", item);
     }
     /**
-     * Object:租赁合同's 违约金计算标准日期property 
+     * Object:K租赁合同's 违约金计算标准日期property 
      */
     public com.kingdee.eas.fdc.tenancy.DateEnum getStandardDate()
     {
@@ -800,7 +800,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 违约金保留位数property 
+     * Object:K租赁合同's 违约金保留位数property 
      */
     public com.kingdee.eas.fdc.tenancy.MoneyEnum getBit()
     {
@@ -813,7 +813,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 是否根据款项设置违约金property 
+     * Object:K租赁合同's 是否根据款项设置违约金property 
      */
     public boolean isIsMDLiquidated()
     {
@@ -824,7 +824,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("isMDLiquidated", item);
     }
     /**
-     * Object:租赁合同's 发生状态property 
+     * Object:K租赁合同's 发生状态property 
      */
     public com.kingdee.eas.fdc.tenancy.OccurreStateEnum getOccurred()
     {
@@ -837,7 +837,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:租赁合同's 首期应收日期property 
+     * Object:K租赁合同's 首期应收日期property 
      */
     public java.util.Date getFristRevDate()
     {
@@ -848,7 +848,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("fristRevDate", item);
     }
     /**
-     * Object:租赁合同's 第二期应收日期property 
+     * Object:K租赁合同's 第二期应收日期property 
      */
     public java.util.Date getSecondRevDate()
     {
@@ -859,7 +859,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("secondRevDate", item);
     }
     /**
-     * Object:租赁合同's 合同状态property 
+     * Object:K租赁合同's 合同状态property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyStateDisplayEnum getTenancyStateDisplay()
     {
@@ -872,14 +872,14 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object: 租赁合同 's 长租合同设置 property 
+     * Object: K租赁合同 's 长租合同设置 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyLongContractCollection getTenLongContract()
     {
         return (com.kingdee.eas.fdc.tenancy.TenancyLongContractCollection)get("tenLongContract");
     }
     /**
-     * Object:租赁合同's 房间记租周期property 
+     * Object:K租赁合同's 房间记租周期property 
      */
     public String getTenRoomsRentType()
     {
@@ -890,7 +890,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("tenRoomsRentType", item);
     }
     /**
-     * Object: 租赁合同 's 变更原因 property 
+     * Object: K租赁合同 's 变更原因 property 
      */
     public com.kingdee.eas.fdc.tenancy.ChangeReasonInfo getChangeReason()
     {
@@ -901,7 +901,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("changeReason", item);
     }
     /**
-     * Object: 租赁合同 's 经营业态 property 
+     * Object: K租赁合同 's 经营业态 property 
      */
     public com.kingdee.eas.fdc.tenancy.OperateStateInfo getOperateState()
     {
@@ -912,7 +912,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("operateState", item);
     }
     /**
-     * Object: 租赁合同 's 代理商 property 
+     * Object: K租赁合同 's 代理商 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyAgencyInfo getTenancyAgency()
     {
@@ -923,7 +923,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("tenancyAgency", item);
     }
     /**
-     * Object:租赁合同's 固定金额property 
+     * Object:K租赁合同's 固定金额property 
      */
     public java.math.BigDecimal getFinalAmount()
     {
@@ -934,7 +934,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBigDecimal("finalAmount", item);
     }
     /**
-     * Object:租赁合同's 退租日期property 
+     * Object:K租赁合同's 退租日期property 
      */
     public java.util.Date getQuitRoomDate()
     {
@@ -945,7 +945,7 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setDate("quitRoomDate", item);
     }
     /**
-     * Object: 租赁合同 's 免租期审批单 property 
+     * Object: K租赁合同 's 免租期审批单 property 
      */
     public com.kingdee.eas.fdc.tenancy.RentFreeBillInfo getRentFreeBill()
     {
@@ -954,6 +954,19 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
     public void setRentFreeBill(com.kingdee.eas.fdc.tenancy.RentFreeBillInfo item)
     {
         put("rentFreeBill", item);
+    }
+    /**
+     * Object:K租赁合同's 房源状态property 
+     */
+    public com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum getTenBillRoomState()
+    {
+        return com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum.getEnum(getString("tenBillRoomState"));
+    }
+    public void setTenBillRoomState(com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum item)
+    {
+		if (item != null) {
+        setString("tenBillRoomState", item.getValue());
+		}
     }
     public BOSObjectType getBOSType()
     {

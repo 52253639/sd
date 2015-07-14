@@ -4725,6 +4725,11 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				this.abort();
 			}
 		}
+		
+		if (this.cbTenBillRoomState.getSelectedItem() == null) {
+			MsgBox.showInfo(this, "房源状态不能为空！");
+			this.abort();
+		}
 	}
 
 	public void actionAddRoom_actionPerformed(ActionEvent e) throws Exception {
