@@ -266,9 +266,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	public TenancyBillEditUI() throws Exception {
 		super();
 	}
-
+	private boolean isLoad=false;
 	public void loadFields() {
-
+		isLoad=true;
 		detachListeners();
 		// --在loadFields之前设置该值为null,否则控件会取当前时间填充		
 		this.pkStartDate.setValue(null);
@@ -394,7 +394,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			this.prmtRentFreeBill.setEnabled(false);
 		}
 		loadTotalPayList();
-		attachListeners();	
+		attachListeners();
+		isLoad=false;
 	}
 	private void initTotalPayList(){
 		this.tblTotal.checkParsed();
@@ -6660,6 +6661,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	//自由式合同控制付款明细行是否能编辑
 	protected void isFreeConSet(boolean isFreeContract) throws BOSException
 	{		
+		if(isLoad)return;
 		if(isFreeContract)
 		{
 			if(this.tblRoom.getRowCount()==0)

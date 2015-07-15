@@ -2702,7 +2702,13 @@ public class ContractBillControllerBean extends
 				supplySel.add("programmingContract");
 				ContractBillInfo supply=new ContractBillInfo();
 				supply.setId(BOSUuid.read(supplyId));
-				supply.setProgrammingContract(pcInfo);
+				if(pcInfo.getSrcId()!=null){
+					ProgrammingContractInfo newPcInfo=new ProgrammingContractInfo();
+					newPcInfo.setId(BOSUuid.read(pcInfo.getSrcId()));
+					supply.setProgrammingContract(newPcInfo);
+				}else{
+					supply.setProgrammingContract(pcInfo);
+				}
 				ContractBillFactory.getLocalInstance(ctx).updatePartial(supply, supplySel);
 				
 				pcInfo.setIsCiting(true);
