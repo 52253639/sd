@@ -203,6 +203,7 @@ import com.kingdee.eas.fdc.tenancy.TenAttachResourcePayListEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenAttachResourcePayListEntryInfo;
 import com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection;
 import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
+import com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum;
 import com.kingdee.eas.fdc.tenancy.TenLiquidatedCollection;
 import com.kingdee.eas.fdc.tenancy.TenLiquidatedInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillCollection;
@@ -5450,6 +5451,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 	protected IObjectValue createNewData() {
 		TenancyBillInfo tenancyBill = new TenancyBillInfo();
 		tenancyBill.setId(BOSUuid.create(tenancyBill.getBOSType()));
+		tenancyBill.setTenBillRoomState(TenBillRoomStateEnum.TEN);
 		// 从租赁控制界面传来的房间
 		RoomCollection rooms = (RoomCollection) this.getUIContext().get(KEY_ROOMS);
 		if (rooms != null) {
