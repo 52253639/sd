@@ -25,6 +25,7 @@ import com.kingdee.bos.dao.IObjectCollection;
 import com.kingdee.bos.service.ServiceContext;
 import com.kingdee.bos.service.IServiceContext;
 
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basedata.CurProjectInfo;
 import com.kingdee.eas.fdc.basedata.FDCConstants;
@@ -127,6 +128,20 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     protected String getSql(Context ctx,RptParams params){
     	String curProject=(String) params.getObject("curProject");
     	
+    	String[] contractType=null;
+    	HashMap hmParamIn = new HashMap();
+    	hmParamIn.put("FDC_ISREPORTSHOWCONTRACT", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getLocalInstance(ctx).getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISREPORTSHOWCONTRACT")!=null&&!"".equals(hmAllParam.get("FDC_ISREPORTSHOWCONTRACT"))){
+				contractType=hmAllParam.get("FDC_ISREPORTSHOWCONTRACT").toString().split(";");
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		
     	Date fromDate = (Date)params.getObject("fromDate");
     	Date toDate =   (Date)params.getObject("toDate");
 	    
@@ -215,6 +230,13 @@ public class ContractBillPayReportFacadeControllerBean extends AbstractContractB
     		sb.append(" and contract.FCurProjectID in("+curProject+")");
     	}else{
     		sb.append(" and contract.FCurProjectID ='null'");
+    	}
+    	if(contractType!=null&&contractType.length>0){
+    		sb.append(" and (contractType.fisCost is null");
+    		for(int i=0;i<contractType.length;i++){
+    			sb.append(" or contractType.flongNumber like '"+contractType[i]+"%'");
+    		}
+    		sb.append(" )");
     	}
     	sb.append(" order by contractType.flongNumber,(case when contract.fcontractPropert='SUPPLY' then contract.fmainContractNumber else contract.fnumber end),contract.fcontractPropert");
     	return sb.toString();

@@ -7536,7 +7536,9 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		 boolean b = super.destroyWindow();
 		 if(b){
 			 try {
-				 	deleteAttachment(this.editData.getId().toString());
+				 if(!TenancyBillFactory.getRemoteInstance().exists(new ObjectUuidPK(this.editData.getId().toString()))){
+					 deleteAttachment(this.editData.getId().toString());
+				 }
     		} catch (Exception e) {
     			e.printStackTrace();
     		}

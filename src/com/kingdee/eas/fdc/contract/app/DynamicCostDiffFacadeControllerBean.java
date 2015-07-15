@@ -90,11 +90,11 @@ public class DynamicCostDiffFacadeControllerBean extends AbstractDynamicCostDiff
     protected String getSql(Context ctx,CurProjectInfo curProject,Date date){
     	String[] contractType=null;
     	HashMap hmParamIn = new HashMap();
-		hmParamIn.put("CIFI_PCCONTRACTTYPE",null);
+		hmParamIn.put("FDC_ISREPORTSHOWCONTRACT",null);
 		try {
 			HashMap hmAllParam = ParamControlFactory.getLocalInstance(ctx).getParamHashMap(hmParamIn);
-			if(hmAllParam.get("CIFI_PCCONTRACTTYPE")!=null&&!"".equals(hmAllParam.get("CIFI_PCCONTRACTTYPE"))){
-				contractType=hmAllParam.get("CIFI_PCCONTRACTTYPE").toString().split(";");
+			if(hmAllParam.get("FDC_ISREPORTSHOWCONTRACT")!=null&&!"".equals(hmAllParam.get("FDC_ISREPORTSHOWCONTRACT"))){
+				contractType=hmAllParam.get("FDC_ISREPORTSHOWCONTRACT").toString().split(";");
 			}
 		} catch (EASBizException e) {
 			e.printStackTrace();
