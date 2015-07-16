@@ -89,6 +89,7 @@ import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.merch.common.KDTableHelper;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineFactory;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.PurchaseManageInfo;
@@ -200,6 +201,12 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 		this.tblMain.getColumn("isCreateBill").getStyleAttributes().setHided(true);
 		
 		this.btnRefundment.setIcon(EASResource.getIcon("imgTbtn_refuse"));
+		
+		String[] fields=new String[this.kdtTenancy.getColumnCount()];
+		for(int i=0;i<this.kdtTenancy.getColumnCount();i++){
+			fields[i]=this.kdtTenancy.getColumnKey(i);
+		}
+		KDTableHelper.setSortedColumn(this.kdtTenancy,fields);
 	}
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);

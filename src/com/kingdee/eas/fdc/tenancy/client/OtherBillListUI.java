@@ -59,6 +59,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.merch.common.KDTableHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.IOtherBill;
@@ -156,6 +157,11 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 	                }
 	            }
 	        });
+		String[] fields=new String[this.kdtTenancy.getColumnCount()];
+		for(int i=0;i<this.kdtTenancy.getColumnCount();i++){
+			fields[i]=this.kdtTenancy.getColumnKey(i);
+		}
+		KDTableHelper.setSortedColumn(this.kdtTenancy,fields);
 	}
 	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
 		checkSelected();

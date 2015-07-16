@@ -64,6 +64,7 @@ import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.merch.common.KDTableHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.tenancy.IDepositDealBill;
@@ -135,6 +136,12 @@ public class InvoiceBillListUI extends AbstractInvoiceBillListUI
 		this.btnAdjust.setIcon(EASResource.getIcon("imgTbtn_blankout"));
 		this.btnAdjust.setVisible(true);
 		this.actionTraceDown.setVisible(true);
+		
+		String[] fields=new String[this.kdtTenancy.getColumnCount()];
+		for(int i=0;i<this.kdtTenancy.getColumnCount();i++){
+			fields[i]=this.kdtTenancy.getColumnKey(i);
+		}
+		KDTableHelper.setSortedColumn(this.kdtTenancy,fields);
 	}
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);
