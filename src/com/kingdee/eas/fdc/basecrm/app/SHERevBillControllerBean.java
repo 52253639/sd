@@ -32,9 +32,11 @@ import com.kingdee.eas.basedata.master.auxacct.GeneralAsstActTypeFactory;
 import com.kingdee.eas.basedata.master.auxacct.GeneralAsstActTypeGroupCollection;
 import com.kingdee.eas.basedata.master.auxacct.GeneralAsstActTypeGroupFactory;
 import com.kingdee.eas.basedata.master.auxacct.GeneralAsstActTypeInfo;
+import com.kingdee.eas.basedata.master.cssp.CustomerCompanyInfoFactory;
 import com.kingdee.eas.basedata.master.cssp.CustomerFactory;
 import com.kingdee.eas.basedata.master.cssp.CustomerInfo;
 import com.kingdee.eas.basedata.master.cssp.SupplierFactory;
+import com.kingdee.eas.basedata.org.OrgConstants;
 import com.kingdee.eas.basedata.org.OrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
@@ -186,7 +188,12 @@ public class SHERevBillControllerBean extends AbstractSHERevBillControllerBean
 							FDCMainCustomerFactory.getLocalInstance(ctx).addToSysCustomer(info.getCustomer().get(i).getCustomer().getMainCustomer());
 							customer=info.getCustomer().get(i).getCustomer().getMainCustomer().getSysCustomer();
 						}
-						CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId()));
+						FilterInfo filter=new FilterInfo();
+						filter.getFilterItems().add(new FilterItemInfo("customer.id",customer.getId().toString()));
+						filter.getFilterItems().add(new FilterItemInfo("companyOrgUnit.id",ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						if(!CustomerCompanyInfoFactory.getLocalInstance(ctx).exists(filter)){
+							CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						}
 					}
 				}
 			}else if(objectValue instanceof PrePurchaseManageInfo){
@@ -215,7 +222,12 @@ public class SHERevBillControllerBean extends AbstractSHERevBillControllerBean
 							FDCMainCustomerFactory.getLocalInstance(ctx).addToSysCustomer(info.getPrePurchaseCustomerEntry().get(i).getCustomer().getMainCustomer());
 							customer=info.getPrePurchaseCustomerEntry().get(i).getCustomer().getMainCustomer().getSysCustomer();
 						}
-						CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId()));
+						FilterInfo filter=new FilterInfo();
+						filter.getFilterItems().add(new FilterItemInfo("customer.id",customer.getId().toString()));
+						filter.getFilterItems().add(new FilterItemInfo("companyOrgUnit.id",ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						if(!CustomerCompanyInfoFactory.getLocalInstance(ctx).exists(filter)){
+							CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						}
 					}
 				}
 			}else if(objectValue instanceof PurchaseManageInfo){
@@ -244,7 +256,12 @@ public class SHERevBillControllerBean extends AbstractSHERevBillControllerBean
 							FDCMainCustomerFactory.getLocalInstance(ctx).addToSysCustomer(info.getPurCustomerEntry().get(i).getCustomer().getMainCustomer());
 							customer=info.getPurCustomerEntry().get(i).getCustomer().getMainCustomer().getSysCustomer();
 						}
-						CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId()));
+						FilterInfo filter=new FilterInfo();
+						filter.getFilterItems().add(new FilterItemInfo("customer.id",customer.getId().toString()));
+						filter.getFilterItems().add(new FilterItemInfo("companyOrgUnit.id",ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						if(!CustomerCompanyInfoFactory.getLocalInstance(ctx).exists(filter)){
+							CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						}
 					}
 				}
 			}else if(objectValue instanceof SignManageInfo){
@@ -273,7 +290,12 @@ public class SHERevBillControllerBean extends AbstractSHERevBillControllerBean
 							FDCMainCustomerFactory.getLocalInstance(ctx).addToSysCustomer(info.getSignCustomerEntry().get(i).getCustomer().getMainCustomer());
 							customer=info.getSignCustomerEntry().get(i).getCustomer().getMainCustomer().getSysCustomer();
 						}
-						CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId()));
+						FilterInfo filter=new FilterInfo();
+						filter.getFilterItems().add(new FilterItemInfo("customer.id",customer.getId().toString()));
+						filter.getFilterItems().add(new FilterItemInfo("companyOrgUnit.id",ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						if(!CustomerCompanyInfoFactory.getLocalInstance(ctx).exists(filter)){
+							CustomerFactory.getLocalInstance(ctx).assign(new ObjectUuidPK(customer.getAdminCU().getId()), new ObjectUuidPK(customer.getId()), new ObjectUuidPK(ContextUtil.getCurrentFIUnit(ctx).getId().toString()));
+						}
 					}
 				}
 			}

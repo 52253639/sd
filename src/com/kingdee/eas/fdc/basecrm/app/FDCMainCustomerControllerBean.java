@@ -29,6 +29,7 @@ import com.kingdee.eas.basedata.master.cssp.CustomerFactory;
 import com.kingdee.eas.basedata.master.cssp.CustomerGroupDetailInfo;
 import com.kingdee.eas.basedata.master.cssp.CustomerInfo;
 import com.kingdee.eas.basedata.master.cssp.StandardTypeEnum;
+import com.kingdee.eas.basedata.master.cssp.SupplierGroupDetailInfo;
 import com.kingdee.eas.basedata.master.cssp.UsedStatusEnum;
 import com.kingdee.eas.basedata.org.CompanyOrgUnitInfo;
 import com.kingdee.eas.basedata.org.CtrlUnitInfo;
@@ -87,9 +88,21 @@ public class FDCMainCustomerControllerBean extends AbstractFDCMainCustomerContro
         		cus.setCU(cu);
         		cus.setAdminCU(cu);
         		
+        		CSSPGroupInfo groupInfo =null;
+        		CustomerGroupDetailInfo Gdinfo = null;
+        		CSSPGroupCollection groupCol = CSSPGroupFactory.getLocalInstance(ctx).getCSSPGroupCollection("select number,name,groupStandard.id from where groupStandard.id='00000000-0000-0000-0000-000000000002BC122A7F' and cu.id='"+OrgConstants.DEF_CU_ID+"'");
+        		if(groupCol.size()>0){
+        			groupInfo=groupCol.get(0);
+        			cus.setBrowseGroup(groupInfo);
+            		
+            		Gdinfo = new CustomerGroupDetailInfo();
+            		Gdinfo.setCustomerGroup(groupInfo);
+            		Gdinfo.setCustomerGroupFullName(groupInfo.getName());
+            		Gdinfo.setCustomerGroupStandard(groupInfo.getGroupStandard());
+            		cus.getCustomerGroupDetails().add(Gdinfo);
+        		}
+        		
     			setSysCustomerValue(ctx, mainCus, cus);
-    			
-    			CSSPGroupInfo groupInfo = null;
     			
     			EntityViewInfo view = new EntityViewInfo();
     			FilterInfo filter = new FilterInfo();
@@ -124,35 +137,22 @@ public class FDCMainCustomerControllerBean extends AbstractFDCMainCustomerContro
     			}else{
     				groupInfo = sheGroupCol.get(0);
     			}
-    			cus.setBrowseGroup(groupInfo);
+    			if(cus.getBrowseGroup()!=null){
+        			cus.setBrowseGroup(groupInfo);
+        		}
     			
-    			CustomerGroupDetailInfo Gdinfo = new CustomerGroupDetailInfo();
+    			Gdinfo = new CustomerGroupDetailInfo();
     			Gdinfo.setCustomerGroup(groupInfo);
     			Gdinfo.setCustomerGroupFullName(groupInfo.getName());
     			Gdinfo.setCustomerGroupStandard(groupInfo.getGroupStandard());
     			cus.getCustomerGroupDetails().add(Gdinfo);
     			
-    			EntityViewInfo baseview = new EntityViewInfo();
-    			FilterInfo basefilter = new FilterInfo();
-    			baseview.setFilter(basefilter);
-    			basefilter.getFilterItems().add(new FilterItemInfo("number", "05.03"));
-    			basefilter.getFilterItems().add(new FilterItemInfo("name", "个人客户"));
-    			basefilter.getFilterItems().add(new FilterItemInfo("CU.id", OrgConstants.DEF_CU_ID));
-    			baseview.setFilter(basefilter);
-    			
-    			CSSPGroupCollection basesheGroupCol = CSSPGroupFactory.getLocalInstance(ctx).getCSSPGroupCollection(baseview);
-    			if(basesheGroupCol.size()>0){
-    				CustomerGroupDetailInfo baseGdinfo = new CustomerGroupDetailInfo();
-    				baseGdinfo.setCustomerGroup(basesheGroupCol.get(0));
-    				baseGdinfo.setCustomerGroupFullName(basesheGroupCol.get(0).getName());
-    				baseGdinfo.setCustomerGroupStandard(basesheGroupCol.get(0).getGroupStandard());
-    				cus.getCustomerGroupDetails().add(baseGdinfo);
-    			}
-
     			CustomerFactory.getLocalInstance(ctx).addnew(cus);
     			
     			CustomerCompanyInfoInfo info = new CustomerCompanyInfoInfo();
-				info.setCompanyOrgUnit((OrgUnitInfo) cu.cast(CompanyOrgUnitInfo.class));
+    			CompanyOrgUnitInfo company=new CompanyOrgUnitInfo();
+				company.setId(BOSUuid.read(OrgConstants.DEF_CU_ID));
+				info.setCompanyOrgUnit(company);
 				info.setCustomer(cus);
 				info.setCU(cu);
 				CustomerCompanyInfoFactory.getLocalInstance(ctx).addnew(info);
@@ -224,7 +224,9 @@ public class FDCMainCustomerControllerBean extends AbstractFDCMainCustomerContro
 			}else{
 				groupInfo = sheGroupCol.get(0);
 			}
-			cus.setBrowseGroup(groupInfo);
+			if(cus.getBrowseGroup()!=null){
+    			cus.setBrowseGroup(groupInfo);
+    		}
 			
 			CustomerGroupDetailInfo Gdinfo = new CustomerGroupDetailInfo();
 			Gdinfo.setCustomerGroup(groupInfo);
@@ -232,22 +234,6 @@ public class FDCMainCustomerControllerBean extends AbstractFDCMainCustomerContro
 			Gdinfo.setCustomerGroupStandard(groupInfo.getGroupStandard());
 			cus.getCustomerGroupDetails().add(Gdinfo);
 			
-			EntityViewInfo baseview = new EntityViewInfo();
-			FilterInfo basefilter = new FilterInfo();
-			baseview.setFilter(basefilter);
-			basefilter.getFilterItems().add(new FilterItemInfo("number", "05.03"));
-			basefilter.getFilterItems().add(new FilterItemInfo("name", "个人客户"));
-			basefilter.getFilterItems().add(new FilterItemInfo("CU.id", OrgConstants.DEF_CU_ID));
-			baseview.setFilter(basefilter);
-			
-			CSSPGroupCollection basesheGroupCol = CSSPGroupFactory.getLocalInstance(ctx).getCSSPGroupCollection(baseview);
-			if(basesheGroupCol.size()>0){
-				CustomerGroupDetailInfo baseGdinfo = new CustomerGroupDetailInfo();
-				baseGdinfo.setCustomerGroup(basesheGroupCol.get(0));
-				baseGdinfo.setCustomerGroupFullName(basesheGroupCol.get(0).getName());
-				baseGdinfo.setCustomerGroupStandard(basesheGroupCol.get(0).getGroupStandard());
-				cus.getCustomerGroupDetails().add(baseGdinfo);
-			}
     		CustomerFactory.getLocalInstance(ctx).submit(cus);
     		
     		cus.setCU(cu);

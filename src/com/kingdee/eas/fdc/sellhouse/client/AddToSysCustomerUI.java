@@ -30,6 +30,7 @@ import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
 import com.kingdee.bos.ctrl.swing.KDCheckBox;
 import com.kingdee.bos.ctrl.swing.KDComboBoxMultiColumnItem;
 import com.kingdee.bos.dao.IObjectValue;
+import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.basedata.master.cssp.CSSPGroupCollection;
 import com.kingdee.eas.basedata.master.cssp.CSSPGroupFactory;
@@ -49,6 +50,7 @@ import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basecrm.FDCMainCustomerFactory;
 import com.kingdee.eas.fdc.basecrm.FDCMainCustomerInfo;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.merch.common.KDTableHelper;
@@ -155,18 +157,36 @@ public class AddToSysCustomerUI extends AbstractAddToSysCustomerUI
 		return groupInfo;
     }
     protected void updateCusGroup(CustomerInfo customer,CSSPGroupInfo groupInfo) throws EASBizException, BOSException{
-    	SelectorItemCollection updateCus = new SelectorItemCollection();
-		updateCus.add("browseGroup.*");
-		updateCus.add("customerGroupDetails.*");
+    	
+    	SelectorItemCollection sel=new SelectorItemCollection();
+		sel.add("browseGroup.id");
+		sel.add("customerGroupDetails.customerGroup.id");
 		
-    	customer.setBrowseGroup(groupInfo);
+		customer=CustomerFactory.getRemoteInstance().getCustomerInfo(new ObjectUuidPK(customer.getId()),sel);
+//		if(customer.getBrowseGroup()!=null&&customer.getBrowseGroup().getId().toString().equals(groupInfo.getId().toString())){
+//			return;
+//		}
+		for(int i=0;i<customer.getCustomerGroupDetails().size();i++){
+			if(customer.getCustomerGroupDetails().get(i).getCustomerGroup()!=null
+					&&customer.getCustomerGroupDetails().get(i).getCustomerGroup().getId().toString().equals(groupInfo.getId().toString())){
+				return;
+			}
+		}
 		CustomerGroupDetailInfo Gdinfo = new CustomerGroupDetailInfo();
-		Gdinfo.setCustomerGroup(groupInfo);
-		Gdinfo.setCustomerGroupFullName(groupInfo.getName());
-		Gdinfo.setCustomerGroupStandard(groupInfo.getGroupStandard());
-		customer.getCustomerGroupDetails().add(Gdinfo);
+		FDCSQLBuilder fdcSB = new FDCSQLBuilder();
+		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
 		
-		CustomerFactory.getRemoteInstance().updatePartial(customer, updateCus);
+		StringBuffer idsql = new StringBuffer();
+		idsql.append("update t_bd_Customer set fBrowseGroupid ='"+groupInfo.getId().toString()+"' where fid = '").append(customer.getId().toString()).append("'");
+		fdcSB.addBatch(idsql.toString());
+		
+		idsql = new StringBuffer();
+		
+		idsql.append(" insert into t_bd_Customergroupdetail(FID, FCustomerGROUPSTANDARDID, FCustomerGROUPID, FCustomerID, FCustomerGROUPFULLNAME)");
+		idsql.append(" values ('"+BOSUuid.create(Gdinfo.getBOSType())+"', '"+groupInfo.getGroupStandard().getId().toString()+"', '"+groupInfo.getId().toString()+"', '"+customer.getId().toString()+"', N'"+groupInfo.getName()+"')");
+		fdcSB.addBatch(idsql.toString());
+		
+		fdcSB.executeBatch();
     }
     protected void btnYes_actionPerformed(java.awt.event.ActionEvent e) throws Exception
     {

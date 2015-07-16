@@ -1277,22 +1277,6 @@ public class SupplierStockControllerBean extends AbstractSupplierStockController
         		Gdinfo.setSupplierGroupStandard(groupInfo.getGroupStandard());
         		supplier.getSupplierGroupDetails().add(Gdinfo);
         		
-        		view = new EntityViewInfo();
-        		filter = new FilterInfo();
-        		view.setFilter(filter);
-        		filter.getFilterItems().add(new FilterItemInfo("name", "工程建设",CompareType.LIKE));
-        		filter.getFilterItems().add(new FilterItemInfo("CU.id", OrgConstants.DEF_CU_ID));
-        		
-        		sheGroupCol = CSSPGroupFactory.getLocalInstance(ctx).getCSSPGroupCollection(view);
-        		if(sheGroupCol.size()>0){
-        			groupInfo = sheGroupCol.get(0);
-        			
-        			Gdinfo = new SupplierGroupDetailInfo();
-            		Gdinfo.setSupplierGroup(groupInfo);
-            		Gdinfo.setSupplierGroupFullName(groupInfo.getName());
-            		Gdinfo.setSupplierGroupStandard(groupInfo.getGroupStandard());
-            		supplier.getSupplierGroupDetails().add(Gdinfo);
-        		}
     			SupplierFactory.getLocalInstance(ctx).addnew(supplier);
     			
     			SupplierCompanyInfoInfo com = new SupplierCompanyInfoInfo();

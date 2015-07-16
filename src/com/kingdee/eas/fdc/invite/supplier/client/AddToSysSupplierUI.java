@@ -407,9 +407,9 @@ public class AddToSysSupplierUI extends AbstractAddToSysSupplierUI
 		sel.add("supplierGroupDetails.supplierGroup.id");
 		
 		supplier=SupplierFactory.getRemoteInstance().getSupplierInfo(new ObjectUuidPK(supplier.getId()),sel);
-		if(supplier.getBrowseGroup()!=null&&supplier.getBrowseGroup().getId().toString().equals(groupInfo.getId().toString())){
-			return;
-		}
+//		if(supplier.getBrowseGroup()!=null&&supplier.getBrowseGroup().getId().toString().equals(groupInfo.getId().toString())){
+//			return;
+//		}
 		for(int i=0;i<supplier.getSupplierGroupDetails().size();i++){
 			if(supplier.getSupplierGroupDetails().get(i).getSupplierGroup()!=null
 					&&supplier.getSupplierGroupDetails().get(i).getSupplierGroup().getId().toString().equals(groupInfo.getId().toString())){
