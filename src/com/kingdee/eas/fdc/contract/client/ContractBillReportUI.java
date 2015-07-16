@@ -238,7 +238,7 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	                    row.getCell(k).setValue(rowData[k]);
          	        		 }
          	        		 srcAmount=FDCHelper.add(srcAmount, row.getCell("srcAmount").getValue());
-         	        		 amount=FDCHelper.add(srcAmount, row.getCell("amount").getValue());
+         	        		 amount=FDCHelper.add(amount, row.getCell("amount").getValue());
 //         	        		amount1=amount1.add(row.getCell("amount1").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount1").getValue());
 //         	        		amount2=amount2.add(row.getCell("amount2").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount2").getValue());
 //         	        		amount3=amount3.add(row.getCell("amount3").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount3").getValue());

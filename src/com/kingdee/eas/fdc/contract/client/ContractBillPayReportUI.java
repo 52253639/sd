@@ -251,7 +251,7 @@ public class ContractBillPayReportUI extends AbstractContractBillPayReportUI
          	        		 row.getCell("pcAmount").setValue(null);
          	        		 
          	        		 srcAmount=FDCHelper.add(srcAmount, row.getCell("srcAmount").getValue());
-         	        		 amount=FDCHelper.add(srcAmount, row.getCell("amount").getValue());
+         	        		 amount=FDCHelper.add(amount, row.getCell("amount").getValue());
          	        		 settleAmount=FDCHelper.add(settleAmount, row.getCell("settleAmount").getValue());
          	        		 
          	        		costAmount=FDCHelper.add(costAmount, row.getCell("costAmount").getValue());

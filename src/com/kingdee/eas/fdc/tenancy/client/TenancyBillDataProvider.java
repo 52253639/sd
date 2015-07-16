@@ -88,6 +88,24 @@ public class TenancyBillDataProvider extends FDCBillDataProvider {
 		}
 		else if(("TENANCYBILL").toUpperCase().equals(ds.getID().toUpperCase())){
 			return getEntryRowSet(ds,"id",new MetaDataPK("com.kingdee.eas.fdc.tenancy.app.TenancyBillPrintQuery"));
+		}else if (ds.getID().equalsIgnoreCase("AttachmentQuery")) {
+			IRowSet iRowSet = null;
+			try {
+				IQueryExecutor exec = QueryExecutorFactory
+						.getRemoteInstance(new MetaDataPK("com.kingdee.eas.fdc.basedata.app.AttachmentQuery"));
+				exec.option().isAutoTranslateEnum = true;
+				EntityViewInfo ev = new EntityViewInfo();
+				FilterInfo filter = new FilterInfo();
+				filter.getFilterItems().add(new FilterItemInfo("boAttchAsso.boID",billId));
+				ev.setFilter(filter);
+				exec.setObjectView(ev);
+				iRowSet = exec.executeQuery();
+				iRowSet.beforeFirst();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return iRowSet;
 		}
 		return getEntryRowSet(ds,"tenancy.id",new MetaDataPK("com.kingdee.eas.fdc.tenancy.app."+ds.getID()));
 		
