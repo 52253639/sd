@@ -272,10 +272,10 @@ public class QuitTenancyEditUI extends AbstractQuitTenancyEditUI
 			abort();
 		}
 		//add by warship at 2010/09/14
-		if(quitDate.after(ten.getEndDate())){
-			MsgBox.showInfo("退租日期不能在合同结束日期之后！");
-			abort();
-		}
+//		if(quitDate.after(ten.getEndDate())){
+//			MsgBox.showInfo("退租日期不能在合同结束日期之后！");
+//			abort();
+//		}
 		
 		super.actionSave_actionPerformed(e);
     }
@@ -310,10 +310,10 @@ public class QuitTenancyEditUI extends AbstractQuitTenancyEditUI
 			abort();
 		}
 		//add by warship at 2010/09/14
-		if(quitDate.after(ten.getEndDate())){
-			MsgBox.showInfo("退租日期不能在合同结束日期之后！");
-			abort();
-		}
+//		if(quitDate.after(ten.getEndDate())){
+//			MsgBox.showInfo("退租日期不能在合同结束日期之后！");
+//			abort();
+//		}
 			
     	/*
 		String exceptQuitBillId = this.editData.getId() == null ? null : this.editData.getId().toString();

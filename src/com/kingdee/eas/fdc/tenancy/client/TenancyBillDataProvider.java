@@ -21,6 +21,7 @@ import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.client.FDCBillDataProvider;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
@@ -106,6 +107,8 @@ public class TenancyBillDataProvider extends FDCBillDataProvider {
 			}
 
 			return iRowSet;
+		}else if (ds.getID().equalsIgnoreCase("TenancyBillTotalPrintQuery")) {
+			return getTotalEntryRowSet();
 		}
 		return getEntryRowSet(ds,"tenancy.id",new MetaDataPK("com.kingdee.eas.fdc.tenancy.app."+ds.getID()));
 		
@@ -152,7 +155,25 @@ public class TenancyBillDataProvider extends FDCBillDataProvider {
 		}
 		return rowSet;
 	}
-
+	private IRowSet getTotalEntryRowSet() {
+		FDCSQLBuilder _builder = new FDCSQLBuilder();
+		_builder.appendSql(" select t.moneyDefine,isnull(sum(t,appAmount),0) appAmount,isnull(sum(t,actRevAmount),0) actRevAmount from(");
+		_builder.appendSql(" select md.fnumber mdNumber,md.fname_l2 moneyDefine,entry.fappAmount appAmount,entry.factRevAmount actRevAmount from T_TEN_TenBillOtherPay entry left join T_SHE_MoneyDefine md on md.fid=entry.fmoneyDefineId");
+		_builder.appendSql(" where entry.fheadId='"+billId+"'");
+		_builder.appendSql(" uniaon all select md.fnumber mdNumber,md.fname_l2 moneyDefine,entry.fappAmount appAmount,entry.factRevAmount actRevAmount,entry.ftenBillId billId from T_TEN_TenancyRoomPayListEntry entry left join T_SHE_MoneyDefine md on md.fid=entry.fmoneyDefineId");
+		_builder.appendSql(" where entry.ftenBillId='"+billId+"'");
+		_builder.appendSql(" )t group by t.moneyDefine");
+		IRowSet rowSet=null;
+		try {
+			rowSet = _builder.executeQuery();
+			rowSet.beforeFirst();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowSet;
+	}
 	private Map getUpdateValues(String billId) throws BOSException {
 		Map value = new HashMap();
 		EntityViewInfo view = new EntityViewInfo();
@@ -189,7 +210,6 @@ public class TenancyBillDataProvider extends FDCBillDataProvider {
 		 */
 		return rowSet;
 	}
-
 	private IRowSet getTenancyRoomEntryRowSet(BOSQueryDataSource ds){
 		IRowSet rowSet = getEntryRowSet(ds,"tenancy.id",new MetaDataPK("com.kingdee.eas.fdc.tenancy.app.TenancyRoomEntryPrintQuery"));
 		/****

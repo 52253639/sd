@@ -272,8 +272,8 @@ public class TenancyBillListUI extends AbstractTenancyBillListUI
     	this.actionCopyTo.setVisible(false);
     	this.actionTraceUp.setVisible(false);
     	this.actionTraceDown.setVisible(false);
-    	this.actionAuditResult.setVisible(false);
-    	this.actionWorkFlowG.setVisible(false);   	
+    	this.actionAuditResult.setVisible(true);
+    	this.actionWorkFlowG.setVisible(true);   	
     	
     	this.actionUnAudit.setVisible(true);
     	this.actionFlagAtTerm.setVisible(false);

@@ -796,6 +796,11 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.txtName.setMaxLength(80);
 		this.txtNumber.setMaxLength(80);
 		this.actionAttachment.setVisible(true);
+		this.actionAuditResult.setVisible(true);
+		this.actionPre.setVisible(false);
+		this.actionNext.setVisible(false);
+		this.actionFirst.setVisible(false);
+		this.actionLast.setVisible(false);
 		//滞纳金比例 ,总成交租金进行 隐藏 2010.12.14 xin_wang
 		this.contLateFeeAmount.setVisible(false);
 		//由租售项目的属性来确认是否显示物业页签 2010.12.14 xin_wang
@@ -803,7 +808,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		if(sellProject!=null){
 			if(!sellProject.isIsForPPM()){
 				this.tabbedPaneContract.remove(panelProperty);
-				
 			}
 		}
 		//根据不同的收租日期类型 显示不同的控件 2010.12.15 xin_wang
