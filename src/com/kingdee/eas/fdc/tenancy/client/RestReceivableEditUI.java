@@ -234,8 +234,7 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 		if(editData.getOtherPayList() != null){
 			for(int i=0;i<editData.getOtherPayList().size();i++){
 				BigDecimal actrev = editData.getOtherPayList().get(i).getActRevAmount();
-				BigDecimal value = new BigDecimal("0.00");
-				if(value.compareTo(actrev)>0 ){
+				if(actrev.compareTo(FDCHelper.ZERO)!=0 ){
 					flag = false;
 					break;
 				} 
@@ -311,7 +310,7 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 			 */
 			if(editData.getOtherPayList().size() > 0){
 				for(int i=0;i<editData.getOtherPayList().size();i++){
-					if(editData.getOtherPayList().get(i).getActRevAmount() != null && editData.getOtherPayList().get(i).getActRevAmount().compareTo(FDCHelper.ZERO)>0){
+					if(editData.getOtherPayList().get(i).getActRevAmount() != null && editData.getOtherPayList().get(i).getActRevAmount().compareTo(FDCHelper.ZERO)!=0){
 						flag = false;
 						break;
 					}
@@ -637,7 +636,7 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 					}
 				}
 			}
-			if (row.getCell("actRevAmount").getValue() != null) {
+			if (row.getCell("actRevAmount").getValue() != null&&((BigDecimal)row.getCell("actRevAmount").getValue()).compareTo(FDCHelper.ZERO)!=0) {
 				if ("moneyDefine".equals(colKey)) {
 					MsgBox.showInfo(this, "该条目已经收款，款项名称不能修改！");
 					row.getCell("moneyDefine").setValue(e.getOldValue());
@@ -669,11 +668,10 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 			public void beforeEvent(DetailPanelEvent event) throws Exception {
 				IRow row = KDTableUtil.getSelectedRow(kdtEntrys);
 				
-					if (row.getCell("id").getValue() != null) {
+					if (row.getCell("actRevAmount").getValue() != null&&((BigDecimal)row.getCell("actRevAmount").getValue()).compareTo(FDCHelper.ZERO)!=0) {
 						MsgBox.showInfo("该分录已经对应生成收款单，无法删除！");
 						SysUtil.abort();
 					}
-				
 			}
 
 			public void afterEvent(DetailPanelEvent event) throws Exception {

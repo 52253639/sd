@@ -137,6 +137,12 @@ public class RestReceivableControllerBean extends AbstractRestReceivableControll
 		restRev.setAuditor(null);
 		restRev.setAuditDate(null);
 		restRev.setBillState(TenancyBillStateEnum.Submitted);
+		
+		if(restRev != null && restRev.getOtherPayList().size() > 0)
+        {
+			 for(int i = 0; i < restRev.getOtherPayList().size(); i++)
+				 restRev.getOtherPayList().get(i).setHead(null);
+        }
 		this.updatePartial(ctx, restRev, getUpdateSIC());
 	}
 
@@ -170,6 +176,13 @@ public class RestReceivableControllerBean extends AbstractRestReceivableControll
 		restRev.setAuditor(null);
 		restRev.setAuditDate(null);
 		restRev.setBillState(TenancyBillStateEnum.Submitted);
+		
+		 if(restRev != null && restRev.getOtherPayList().size() > 0)
+         {
+			 for(int i = 0; i < restRev.getOtherPayList().size(); i++)
+				 restRev.getOtherPayList().get(i).setHead(null);
+         }
+		 
 		this.updatePartial(ctx, restRev, getUpdateSIC());
 	}
 	
