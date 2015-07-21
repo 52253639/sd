@@ -178,6 +178,8 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 		this.actionAddNew.setVisible(false);
 		
 		this.tblEntry.getColumn("stleCount").getStyleAttributes().setHided(true);
+		
+		this.f7FdcCustomers.setEnabled(true);
 	}
 	
 	protected void comboRevBillType_itemStateChanged(ItemEvent e)
@@ -516,7 +518,7 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 		}
 		if(this.f7FdcCustomers.getValue() == null)
 		{
-			MsgBox.showInfo("交费客户不能为空!");
+			MsgBox.showInfo("客户信息不能为空!");
 			this.abort();
 		}		
 		

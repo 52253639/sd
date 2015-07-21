@@ -19,7 +19,7 @@ public class AbstractInvoiceBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("entry", new com.kingdee.eas.fdc.tenancy.InvoiceBillEntryCollection());
     }
     /**
-     * Object: 票据管理 's 租赁合同 property 
+     * Object: K票据管理 's 租赁合同 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyBillInfo getTenancyBill()
     {
@@ -30,14 +30,14 @@ public class AbstractInvoiceBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         put("tenancyBill", item);
     }
     /**
-     * Object: 票据管理 's 分录 property 
+     * Object: K票据管理 's 分录 property 
      */
     public com.kingdee.eas.fdc.tenancy.InvoiceBillEntryCollection getEntry()
     {
         return (com.kingdee.eas.fdc.tenancy.InvoiceBillEntryCollection)get("entry");
     }
     /**
-     * Object:票据管理's 票据类型property 
+     * Object:K票据管理's 票据类型property 
      */
     public com.kingdee.eas.fdc.sellhouse.ChequeTypeEnum getType()
     {
@@ -50,7 +50,7 @@ public class AbstractInvoiceBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
 		}
     }
     /**
-     * Object:票据管理's 是否生成凭证property 
+     * Object:K票据管理's 是否生成凭证property 
      */
     public boolean isFiVouchered()
     {
@@ -61,7 +61,7 @@ public class AbstractInvoiceBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setBoolean("fiVouchered", item);
     }
     /**
-     * Object:票据管理's 票据金额property 
+     * Object:K票据管理's 票据金额property 
      */
     public java.math.BigDecimal getAmount()
     {
@@ -70,6 +70,17 @@ public class AbstractInvoiceBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
     public void setAmount(java.math.BigDecimal item)
     {
         setBigDecimal("amount", item);
+    }
+    /**
+     * Object: K票据管理 's 客户 property 
+     */
+    public com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo getFdcCustomer()
+    {
+        return (com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo)get("fdcCustomer");
+    }
+    public void setFdcCustomer(com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo item)
+    {
+        put("fdcCustomer", item);
     }
     public BOSObjectType getBOSType()
     {

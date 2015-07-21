@@ -48,7 +48,6 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
     private static final Logger logger = CoreUIObject.getLogger(AbstractInvoiceBillEditUI.class);
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCompany;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRoom;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCustomer;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTenancy;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSellProject;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNumber;
@@ -62,9 +61,9 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBizDate;
     protected com.kingdee.bos.ctrl.swing.KDContainer contEntry;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAmount;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCustomer;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCompany;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtRoom;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtCustomer;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtTenancy;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtSellProject;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
@@ -79,6 +78,7 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtEntry;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtAmount;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCustomer;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnSubmitAudit;
     protected com.kingdee.eas.fdc.tenancy.InvoiceBillInfo editData = null;
     protected ActionSelect actionSelect = null;
@@ -129,7 +129,6 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
          this.actionSubmitAudit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.contCompany = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contRoom = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contCustomer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contTenancy = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contSellProject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -143,9 +142,9 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.contBizDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contEntry = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.contAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contCustomer = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtCompany = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtRoom = new com.kingdee.bos.ctrl.swing.KDTextField();
-        this.txtCustomer = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtTenancy = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtSellProject = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -160,10 +159,10 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.kdtEntry = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.txtAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.prmtCustomer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.btnSubmitAudit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.contCompany.setName("contCompany");
         this.contRoom.setName("contRoom");
-        this.contCustomer.setName("contCustomer");
         this.contTenancy.setName("contTenancy");
         this.contSellProject.setName("contSellProject");
         this.contNumber.setName("contNumber");
@@ -177,9 +176,9 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.contBizDate.setName("contBizDate");
         this.contEntry.setName("contEntry");
         this.contAmount.setName("contAmount");
+        this.contCustomer.setName("contCustomer");
         this.txtCompany.setName("txtCompany");
         this.txtRoom.setName("txtRoom");
-        this.txtCustomer.setName("txtCustomer");
         this.txtTenancy.setName("txtTenancy");
         this.txtSellProject.setName("txtSellProject");
         this.txtNumber.setName("txtNumber");
@@ -194,6 +193,7 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.pkBizDate.setName("pkBizDate");
         this.kdtEntry.setName("kdtEntry");
         this.txtAmount.setName("txtAmount");
+        this.prmtCustomer.setName("prmtCustomer");
         this.btnSubmitAudit.setName("btnSubmitAudit");
         // CoreUI		
         this.btnPageSetup.setVisible(false);		
@@ -272,10 +272,6 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.contRoom.setBoundLabelText(resHelper.getString("contRoom.boundLabelText"));		
         this.contRoom.setBoundLabelLength(100);		
         this.contRoom.setBoundLabelUnderline(true);
-        // contCustomer		
-        this.contCustomer.setBoundLabelText(resHelper.getString("contCustomer.boundLabelText"));		
-        this.contCustomer.setBoundLabelUnderline(true);		
-        this.contCustomer.setBoundLabelLength(100);
         // contTenancy		
         this.contTenancy.setBoundLabelText(resHelper.getString("contTenancy.boundLabelText"));		
         this.contTenancy.setBoundLabelLength(100);		
@@ -327,12 +323,14 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.contAmount.setBoundLabelText(resHelper.getString("contAmount.boundLabelText"));		
         this.contAmount.setBoundLabelLength(100);		
         this.contAmount.setBoundLabelUnderline(true);
+        // contCustomer		
+        this.contCustomer.setBoundLabelText(resHelper.getString("contCustomer.boundLabelText"));		
+        this.contCustomer.setBoundLabelUnderline(true);		
+        this.contCustomer.setBoundLabelLength(100);
         // txtCompany		
         this.txtCompany.setEnabled(false);
         // txtRoom		
         this.txtRoom.setEnabled(false);
-        // txtCustomer		
-        this.txtCustomer.setEnabled(false);
         // txtTenancy		
         this.txtTenancy.setEnabled(false);
         // txtSellProject		
@@ -378,6 +376,13 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.txtAmount.setDataType(1);		
         this.txtAmount.setPrecision(2);		
         this.txtAmount.setEnabled(false);
+        // prmtCustomer		
+        this.prmtCustomer.setQueryInfo("com.kingdee.eas.fdc.sellhouse.app.CustomerQuery");		
+        this.prmtCustomer.setCommitFormat("$number$");		
+        this.prmtCustomer.setDisplayFormat("$name$");		
+        this.prmtCustomer.setEditFormat("$name$");		
+        this.prmtCustomer.setEnabledMultiSelection(true);		
+        this.prmtCustomer.setRequired(true);
         // btnSubmitAudit
         this.btnSubmitAudit.setAction((IItemAction)ActionProxyFactory.getProxy(actionSubmitAudit, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnSubmitAudit.setText(resHelper.getString("btnSubmitAudit.text"));
@@ -412,16 +417,14 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.add(contCompany, new KDLayout.Constraints(10, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contRoom.setBounds(new Rectangle(367, 32, 270, 19));
         this.add(contRoom, new KDLayout.Constraints(367, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCustomer.setBounds(new Rectangle(10, 54, 270, 19));
-        this.add(contCustomer, new KDLayout.Constraints(10, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contTenancy.setBounds(new Rectangle(10, 32, 270, 19));
         this.add(contTenancy, new KDLayout.Constraints(10, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contSellProject.setBounds(new Rectangle(367, 10, 270, 19));
         this.add(contSellProject, new KDLayout.Constraints(367, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contNumber.setBounds(new Rectangle(733, 32, 270, 19));
         this.add(contNumber, new KDLayout.Constraints(733, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contSaleMan.setBounds(new Rectangle(367, 54, 270, 19));
-        this.add(contSaleMan, new KDLayout.Constraints(367, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSaleMan.setBounds(new Rectangle(10, 54, 270, 19));
+        this.add(contSaleMan, new KDLayout.Constraints(10, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contDescription.setBounds(new Rectangle(10, 77, 628, 72));
         this.add(contDescription, new KDLayout.Constraints(10, 77, 628, 72, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contCreator.setBounds(new Rectangle(10, 580, 270, 19));
@@ -440,12 +443,12 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.add(contEntry, new KDLayout.Constraints(10, 163, 983, 403, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contAmount.setBounds(new Rectangle(733, 77, 270, 19));
         this.add(contAmount, new KDLayout.Constraints(733, 77, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contCustomer.setBounds(new Rectangle(367, 54, 270, 19));
+        this.add(contCustomer, new KDLayout.Constraints(367, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contCompany
         contCompany.setBoundEditor(txtCompany);
         //contRoom
         contRoom.setBoundEditor(txtRoom);
-        //contCustomer
-        contCustomer.setBoundEditor(txtCustomer);
         //contTenancy
         contTenancy.setBoundEditor(txtTenancy);
         //contSellProject
@@ -474,6 +477,8 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
 contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.getContentPane().add(kdtEntry, BorderLayout.CENTER);
         //contAmount
         contAmount.setBoundEditor(txtAmount);
+        //contCustomer
+        contCustomer.setBoundEditor(prmtCustomer);
 
     }
 
@@ -654,7 +659,6 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 	private void registerBindings(){
 		dataBinder.registerBinding("orgUnit.name", String.class, this.txtCompany, "text");
 		dataBinder.registerBinding("tenancyBill.tenRoomsDes", String.class, this.txtRoom, "text");
-		dataBinder.registerBinding("tenancyBill.tenCustomerDes", String.class, this.txtCustomer, "text");
 		dataBinder.registerBinding("tenancyBill.tenancyName", String.class, this.txtTenancy, "text");
 		dataBinder.registerBinding("tenancyBill.sellProject.name", String.class, this.txtSellProject, "text");
 		dataBinder.registerBinding("number", String.class, this.txtNumber, "text");
@@ -669,7 +673,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		dataBinder.registerBinding("entry.reMark", String.class, this.kdtEntry, "description.text");
 		dataBinder.registerBinding("entry.amount", java.math.BigDecimal.class, this.kdtEntry, "amount.text");
 		dataBinder.registerBinding("entry", com.kingdee.eas.fdc.tenancy.InvoiceBillEntryInfo.class, this.kdtEntry, "userObject");
-		dataBinder.registerBinding("amount", java.math.BigDecimal.class, this.txtAmount, "value");		
+		dataBinder.registerBinding("amount", java.math.BigDecimal.class, this.txtAmount, "value");
+		dataBinder.registerBinding("fdcCustomer", com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo.class, this.prmtCustomer, "data");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -731,7 +736,6 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
     	getValidateHelper().setCustomValidator( getValidator() );
 		getValidateHelper().registerBindProperty("orgUnit.name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyBill.tenRoomsDes", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("tenancyBill.tenCustomerDes", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyBill.tenancyName", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyBill.sellProject.name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("number", ValidateHelper.ON_SAVE);    
@@ -746,7 +750,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		getValidateHelper().registerBindProperty("entry.reMark", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entry.amount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entry", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("amount", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("amount", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("fdcCustomer", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -783,7 +788,6 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		}
         sic.add(new SelectorItemInfo("orgUnit.name"));
         sic.add(new SelectorItemInfo("tenancyBill.tenRoomsDes"));
-        sic.add(new SelectorItemInfo("tenancyBill.tenCustomerDes"));
         sic.add(new SelectorItemInfo("tenancyBill.tenancyName"));
         sic.add(new SelectorItemInfo("tenancyBill.sellProject.name"));
         sic.add(new SelectorItemInfo("number"));
@@ -820,6 +824,15 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		else{
 		}
         sic.add(new SelectorItemInfo("amount"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("fdcCustomer.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("fdcCustomer.id"));
+        	sic.add(new SelectorItemInfo("fdcCustomer.number"));
+        	sic.add(new SelectorItemInfo("fdcCustomer.name"));
+		}
         return sic;
     }        
     	

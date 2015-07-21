@@ -8,13 +8,19 @@ import java.awt.event.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.entity.EntityViewInfo;
+import com.kingdee.bos.metadata.entity.FilterInfo;
+import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
@@ -52,6 +58,8 @@ import com.kingdee.eas.fdc.tenancy.TENRevHelper;
 import com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection;
 import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
+import com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryCollection;
+import com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyHelper;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
@@ -60,6 +68,7 @@ import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryInfo;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
+import com.kingdee.eas.util.client.MsgBox;
 
 /**
  * output class name
@@ -76,10 +85,11 @@ public class InvoiceBillEditUI extends AbstractInvoiceBillEditUI
 		super.loadFields();
 		setSaveActionStatus();
 		
-		for(int i=0;i<this.kdtEntry.getRowCount();i++){
-			IRow row=this.kdtEntry.getRow(i);
-			InvoiceBillEntryInfo entry=(InvoiceBillEntryInfo) row.getUserObject();
-			try {
+		try {
+			for(int i=0;i<this.kdtEntry.getRowCount();i++){
+				IRow row=this.kdtEntry.getRow(i);
+				InvoiceBillEntryInfo entry=(InvoiceBillEntryInfo) row.getUserObject();
+			
 				IRevListInfo revListInfo = TENRevHelper.getRevListInfo(entry.getRevListType(),entry.getRevListId());
 				
 				CRMClientHelper.setColValue(row, "moneyDefine", revListInfo.getMoneyDefine());
@@ -87,13 +97,22 @@ public class InvoiceBillEditUI extends AbstractInvoiceBillEditUI
 				CRMClientHelper.setColValue(row, "appAmount", revListInfo.getAppAmount());
 				CRMClientHelper.setColValue(row, "actRevAmount", revListInfo.getActRevAmount());
 				CRMClientHelper.setColValue(row, "invoiceAmount", revListInfo.getInvoiceAmount());
-			} catch (EASBizException e) {
-				e.printStackTrace();
-			} catch (BOSException e) {
-				e.printStackTrace();
 			}
+			TenancyCustomerEntryCollection col=TenancyCustomerEntryFactory.getRemoteInstance().getTenancyCustomerEntryCollection("select fdcCustomer.id from where tenancyBill.id='"+this.editData.getTenancyBill().getId().toString()+"'");
+			Set id=new HashSet();
+			for(int i=0;i<col.size();i++){
+				id.add(col.get(i).getFdcCustomer().getId().toString());
+			}
+			EntityViewInfo view=new EntityViewInfo();
+			FilterInfo filter=new FilterInfo();
+			filter.getFilterItems().add(new FilterItemInfo("id",id,CompareType.INCLUDE));
+			view.setFilter(filter);
+			this.prmtCustomer.setEntityViewInfo(view);
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
 		}
-		
 		setOprtState(this.oprtState);
 		attachListeners();
 		setAuditButtonStatus(this.getOprtState());
@@ -119,6 +138,13 @@ public class InvoiceBillEditUI extends AbstractInvoiceBillEditUI
 		InvoiceBillInfo info=new InvoiceBillInfo();
 		TenancyBillInfo ten = (TenancyBillInfo) this.getUIContext().get("tenancy");
 		info.setTenancyBill(ten);
+		try {
+			TenancyCustomerEntryCollection col=TenancyCustomerEntryFactory.getRemoteInstance().getTenancyCustomerEntryCollection("select fdcCustomer.* from where tenancyBill.id='"+ten.getId().toString()+"'");
+			info.setFdcCustomer(col.get(0).getFdcCustomer());
+		} catch (BOSException e1) {
+			e1.printStackTrace();
+		}
+		
 		info.setOrgUnit(ten.getOrgUnit());
 		try {
 			info.setBizDate(FDCCommonServerHelper.getServerTimeStamp());
@@ -327,7 +353,7 @@ public class InvoiceBillEditUI extends AbstractInvoiceBillEditUI
 		}
 		FDCClientVerifyHelper.verifyEmpty(this, this.pkBizDate);
 		FDCClientVerifyHelper.verifyEmpty(this, this.cbType);
-		
+		FDCClientVerifyHelper.verifyEmpty(this, this.prmtCustomer);
 		if(this.kdtEntry.getRowCount()==0){
 			FDCMsgBox.showWarning(this,"分录不能为空！");
 			SysUtil.abort();
