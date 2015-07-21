@@ -671,9 +671,6 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		} else {
 			this.txtDeductionAmount.setEnabled(false);
 		}
-		
-		
-		
 		//TODO 扣款可能修改为针对房间扣款，目前暂不实现扣款功能
 		this.contDeductionAmount.setVisible(false);
 	}
