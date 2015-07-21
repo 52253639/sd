@@ -234,6 +234,7 @@ public class ProgrammingImportUI extends AbstractProgrammingImportUI
 		PTECostCollection pteCostCollection = templateEntry.getPteCost();
 		// 合约中成本构成
 		ProgrammingContracCostCollection costEntries = programmingEntry.getCostEntries();
+		StringBuffer costAccountNames = new StringBuffer(); 
 		for (int i = 0, size = pteCostCollection.size(); i < size; i++) {
 			PTECostInfo pteCostInfo = pteCostCollection.get(i);
 			// 模板导入后产生的成本构成
@@ -245,9 +246,15 @@ public class ProgrammingImportUI extends AbstractProgrammingImportUI
 				ProgrammingContracCostInfo info = programmingCollection.get(j);
 				planAmountTotal = planAmountTotal.add(info.getContractAssign());
 				costEntries.add(programmingCollection.get(j));
+				
+				CostAccountInfo costAccountInfo = info.getCostAccount();
+				if(j > 0){
+					costAccountNames.append(";");
+				}
+				costAccountNames.append(costAccountInfo.getName());
 			}
 		}
-		
+		programmingEntry.setCostAccountNames(costAccountNames.toString());
 		programmingEntry.setAmount(planAmountTotal);
 		programmingEntry.setControlAmount(FDCHelper.ZERO);
 		// 模板中经济条款
