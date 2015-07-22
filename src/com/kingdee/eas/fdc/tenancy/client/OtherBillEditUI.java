@@ -923,12 +923,10 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		column = this.tblPayList.addColumn();
 		column.setKey(C_PAYS_START_DATE);
 		column.getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
-		column.getStyleAttributes().setLocked(true);
 
 		column = this.tblPayList.addColumn();
 		column.setKey(C_PAYS_END_DATE);
 		column.getStyleAttributes().setNumberFormat(DATE_FORMAT_STR);
-		column.getStyleAttributes().setLocked(true);
 
 		column = this.tblPayList.addColumn();
 		column.setKey(C_PAYS_APP_PAY_DATE);

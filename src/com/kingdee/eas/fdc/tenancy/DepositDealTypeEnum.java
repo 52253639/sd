@@ -15,9 +15,11 @@ public class DepositDealTypeEnum extends StringEnum
 {
     public static final String QUIT_VALUE = "QUIT";//alias=ÍËÑº½ðÉêÇë
     public static final String OFFSET_VALUE = "OFFSET";//alias=Ñº½ð³åµÖ×â½ðÉêÇë
+    public static final String NOTQUIT_VALUE = "NOTQUIT";//alias=Ñº½ð²»ÍË
 
     public static final DepositDealTypeEnum QUIT = new DepositDealTypeEnum("QUIT", QUIT_VALUE);
     public static final DepositDealTypeEnum OFFSET = new DepositDealTypeEnum("OFFSET", OFFSET_VALUE);
+    public static final DepositDealTypeEnum NOTQUIT = new DepositDealTypeEnum("NOTQUIT", NOTQUIT_VALUE);
 
     /**
      * construct function
