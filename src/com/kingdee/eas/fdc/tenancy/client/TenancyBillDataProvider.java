@@ -157,10 +157,10 @@ public class TenancyBillDataProvider extends FDCBillDataProvider {
 	}
 	private IRowSet getTotalEntryRowSet() {
 		FDCSQLBuilder _builder = new FDCSQLBuilder();
-		_builder.appendSql(" select t.moneyDefine,isnull(sum(t,appAmount),0) appAmount,isnull(sum(t,actRevAmount),0) actRevAmount from(");
-		_builder.appendSql(" select md.fnumber mdNumber,md.fname_l2 moneyDefine,entry.fappAmount appAmount,entry.factRevAmount actRevAmount from T_TEN_TenBillOtherPay entry left join T_SHE_MoneyDefine md on md.fid=entry.fmoneyDefineId");
+		_builder.appendSql(" select t.moneyDefine,isnull(sum(t.appAmount),0) appAmount,isnull(sum(t.actRevAmount),0) actRevAmount from(");
+		_builder.appendSql(" select md.fnumber mdNumber,md.fname_l2 moneyDefine,entry.fappAmount appAmount,isnull(entry.factRevAmount,0) actRevAmount from T_TEN_TenBillOtherPay entry left join T_SHE_MoneyDefine md on md.fid=entry.fmoneyDefineId");
 		_builder.appendSql(" where entry.fheadId='"+billId+"'");
-		_builder.appendSql(" uniaon all select md.fnumber mdNumber,md.fname_l2 moneyDefine,entry.fappAmount appAmount,entry.factRevAmount actRevAmount,entry.ftenBillId billId from T_TEN_TenancyRoomPayListEntry entry left join T_SHE_MoneyDefine md on md.fid=entry.fmoneyDefineId");
+		_builder.appendSql(" uniaon all select md.fnumber mdNumber,md.fname_l2 moneyDefine,entry.fappAmount appAmount,isnull(entry.factRevAmount,0) actRevAmount from T_TEN_TenancyRoomPayListEntry entry left join T_SHE_MoneyDefine md on md.fid=entry.fmoneyDefineId");
 		_builder.appendSql(" where entry.ftenBillId='"+billId+"'");
 		_builder.appendSql(" )t group by t.moneyDefine");
 		IRowSet rowSet=null;
