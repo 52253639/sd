@@ -365,7 +365,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         
 
         // kdtEntry
-		String kdtEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"-1\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"5\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{description}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		String kdtEntryStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles /><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"moneyDefine\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"-1\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"5\" /><t:Column t:key=\"price\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"workload\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{moneyDefine}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{price}</t:Cell><t:Cell>$Resource{workload}</t:Cell><t:Cell>$Resource{description}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.kdtEntry.setFormatXml(resHelper.translateString("kdtEntry",kdtEntryStrXML));
         this.kdtEntry.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
@@ -378,7 +378,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
             }
         });
 
-                this.kdtEntry.putBindContents("editData",new String[] {"moneyDefine","amount","description"});
+                this.kdtEntry.putBindContents("editData",new String[] {"moneyDefine","amount","price","workload","description"});
 
 
         // txtName		
@@ -711,6 +711,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		dataBinder.registerBinding("entry.amount", java.math.BigDecimal.class, this.kdtEntry, "amount.text");
 		dataBinder.registerBinding("entry.description", String.class, this.kdtEntry, "description.text");
 		dataBinder.registerBinding("entry.moneyDefine", com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo.class, this.kdtEntry, "moneyDefine.text");
+		dataBinder.registerBinding("entry.price", java.math.BigDecimal.class, this.kdtEntry, "price.text");
+		dataBinder.registerBinding("entry.workload", java.math.BigDecimal.class, this.kdtEntry, "workload.text");
 		dataBinder.registerBinding("name", String.class, this.txtName, "text");
 		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.prmtCreator, "data");
@@ -790,6 +792,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		getValidateHelper().registerBindProperty("entry.amount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entry.description", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entry.moneyDefine", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entry.price", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("entry.workload", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("name", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
@@ -879,6 +883,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 			sic.add(new SelectorItemInfo("entry.moneyDefine.name"));
         	sic.add(new SelectorItemInfo("entry.moneyDefine.number"));
 		}
+    	sic.add(new SelectorItemInfo("entry.price"));
+    	sic.add(new SelectorItemInfo("entry.workload"));
         sic.add(new SelectorItemInfo("name"));
         sic.add(new SelectorItemInfo("description"));
 		if(selectorAll.equalsIgnoreCase("true"))

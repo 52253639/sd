@@ -61,6 +61,28 @@ public class AbstractOtherBillEntryInfo extends com.kingdee.eas.framework.CoreBi
     {
         put("head", item);
     }
+    /**
+     * Object:款项明细's 单价property 
+     */
+    public java.math.BigDecimal getPrice()
+    {
+        return getBigDecimal("price");
+    }
+    public void setPrice(java.math.BigDecimal item)
+    {
+        setBigDecimal("price", item);
+    }
+    /**
+     * Object:款项明细's 面积/量property 
+     */
+    public java.math.BigDecimal getWorkload()
+    {
+        return getBigDecimal("workload");
+    }
+    public void setWorkload(java.math.BigDecimal item)
+    {
+        setBigDecimal("workload", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("220E0964");

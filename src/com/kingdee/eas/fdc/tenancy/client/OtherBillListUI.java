@@ -225,7 +225,7 @@ public class OtherBillListUI extends AbstractOtherBillListUI
     }
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);
-		CRMClientHelper.getFootRow(tblMain, new String[]{"entry.amount"});
+		CRMClientHelper.getFootRow(tblMain, new String[]{"entry.amount","entry.workload","entry.price"});
 	}
 
 	protected void setColGroups() {

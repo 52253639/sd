@@ -67,6 +67,7 @@ import com.kingdee.eas.fdc.aimcost.CostIndexEntryCollection;
 import com.kingdee.eas.fdc.aimcost.CostIndexEntryInfo;
 import com.kingdee.eas.fdc.aimcost.FieldTypeEnum;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.FDCBillInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
@@ -212,6 +213,8 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		}
 		updatePayList(tenancyRooms, new TenAttachResourceEntryCollection(), leaseList);// 生成付款明细列表
 		
+		CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"price","workload","amount"});
+		
 		setOprtState(this.oprtState);
 		attachListeners();
 		setAuditButtonStatus(this.getOprtState());
@@ -352,6 +355,14 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		this.kdtEntry.getColumn("amount").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 		this.kdtEntry.getColumn("amount").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 		
+		this.kdtEntry.getColumn("price").setEditor(numberEditor);
+		this.kdtEntry.getColumn("price").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
+		this.kdtEntry.getColumn("price").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		
+		this.kdtEntry.getColumn("workload").setEditor(numberEditor);
+		this.kdtEntry.getColumn("workload").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
+		this.kdtEntry.getColumn("workload").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		
 		this.kdtEntry.getColumn("amount").setRequired(true);
         this.kdtEntry.getColumn("moneyDefine").setRequired(true);
 
@@ -406,7 +417,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 				||this.kdtEntry.getColumnKey(e.getColIndex()).equals("amount")){
 			updatePayListInfo();
 		}
-		super.kdtEntry_editStopped(e);
+		CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"price","workload","amount"});
 	}
 	protected void pkStartDate_dataChanged(DataChangeEvent e) throws Exception {
 		Date startDate = (Date) this.pkStartDate.getValue();
