@@ -163,6 +163,8 @@ public class InvoiceBillEditUI extends AbstractInvoiceBillEditUI
 		return sels;
 	}
 	public void onLoad() throws Exception {
+		this.prmtCustomer.setEnabledMultiSelection(false);
+		
 		this.menuTable1.setVisible(false);
 		this.actionAddNew.setVisible(false);
 		super.onLoad();

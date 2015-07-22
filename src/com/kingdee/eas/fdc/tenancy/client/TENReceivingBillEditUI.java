@@ -132,6 +132,7 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 	}
 	
 	public void onLoad() throws Exception {
+		this.f7FdcCustomers.setEnabledMultiSelection(false);
 		this.contTransContract.setVisible(false);
 		super.onLoad();
 		initControl();	
