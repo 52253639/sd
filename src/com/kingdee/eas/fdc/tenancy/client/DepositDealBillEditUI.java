@@ -24,6 +24,8 @@ import javax.swing.event.ChangeListener;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.IMetaDataPK;
+import com.kingdee.bos.metadata.MetaDataPK;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
@@ -93,6 +95,8 @@ import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryInfo;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
+import com.kingdee.eas.util.client.MsgBox;
+import com.kingdee.util.StringUtils;
 
 /**
  * output class name
@@ -223,6 +227,10 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 		this.actionAddNew.setVisible(false);
 		super.onLoad();
 		
+		this.actionPrint.setVisible(true);
+		this.actionPrintPreview.setVisible(true);
+		this.actionPrint.setEnabled(true);
+		this.actionPrintPreview.setEnabled(true);
 		this.kdtEntry.checkParsed();
 		this.kdtEntry.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
 		this.actionAttachment.setVisible(true);
@@ -241,6 +249,52 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 			this.actionInsertLine.setEnabled(true);
 			this.actionRemoveLine.setEnabled(true);
 		}
+	}
+	public void actionPrint_actionPerformed(ActionEvent e) throws Exception {
+		ArrayList idList = new ArrayList();
+		if (editData != null && !StringUtils.isEmpty(editData.getString("id"))) {
+			idList.add(editData.getString("id"));
+		}
+		if (idList == null || idList.size() == 0 || getTDQueryPK() == null
+				|| getTDFileName() == null) {
+			MsgBox.showWarning(this, EASResource.getString(
+					"com.kingdee.eas.fdc.basedata.client.FdcResource",
+			"cantPrint"));
+			return;
+		}
+		DepositDealBillDataProvider data = new DepositDealBillDataProvider(
+				editData.getString("id"),this.editData.getTenancyBill().getId().toString(),getTDQueryPK());
+		com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
+		appHlp.print(getTDFileName(), data, javax.swing.SwingUtilities
+				.getWindowAncestor(this));
+	}
+	protected String getTDFileName() {
+		return "/bim/fdc/tenancy/DepositDealBill";
+	}
+
+	protected IMetaDataPK getTDQueryPK() {
+		return new MetaDataPK(
+		"com.kingdee.eas.fdc.tenancy.app.DepositDealBillPrintQuery");
+	}
+	public void actionPrintPreview_actionPerformed(ActionEvent e)
+	throws Exception {
+		ArrayList idList = new ArrayList();
+		if (editData != null && !StringUtils.isEmpty(editData.getString("id"))) {
+			idList.add(editData.getString("id"));
+		}
+		if (idList == null || idList.size() == 0 || getTDQueryPK() == null
+				|| getTDFileName() == null) {
+			MsgBox.showWarning(this, EASResource.getString(
+					"com.kingdee.eas.fdc.basedata.client.FdcResource",
+			"cantPrint"));
+			return;
+
+		}
+		DepositDealBillDataProvider data = new DepositDealBillDataProvider(
+				editData.getString("id"),this.editData.getTenancyBill().getId().toString(), getTDQueryPK());
+		com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
+		appHlp.printPreview(getTDFileName(), data, javax.swing.SwingUtilities
+				.getWindowAncestor(this));
 	}
 	protected IObjectValue createNewDetailData(KDTable table) {
 		return null;
