@@ -162,6 +162,7 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 			fields[i]=this.kdtTenancy.getColumnKey(i);
 		}
 		KDTableHelper.setSortedColumn(this.kdtTenancy,fields);
+		this.actionAttachment.setVisible(true);
 	}
 	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
 		checkSelected();

@@ -125,7 +125,7 @@ public class DepositDealBillListUI extends AbstractDepositDealBillListUI
 			fields[i]=this.kdtTenancy.getColumnKey(i);
 		}
 		KDTableHelper.setSortedColumn(this.kdtTenancy,fields);
-		
+		this.actionAttachment.setVisible(true);
     }
     protected void afterTableFillData(KDTDataRequestEvent e) {
 		super.afterTableFillData(e);

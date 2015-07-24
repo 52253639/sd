@@ -31,6 +31,7 @@ import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
@@ -49,6 +50,11 @@ import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.dao.IObjectCollection;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.eas.base.attachment.BizobjectFacadeFactory;
+import com.kingdee.eas.base.attachment.BoAttchAssoCollection;
+import com.kingdee.eas.base.attachment.BoAttchAssoFactory;
+import com.kingdee.eas.base.attachment.common.AttachmentClientManager;
+import com.kingdee.eas.base.attachment.common.AttachmentManagerFactory;
 import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -211,6 +217,7 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 	}
 	protected IObjectValue createNewData() {
 		DepositDealBillInfo info=new DepositDealBillInfo();
+		info.setId(BOSUuid.create(info.getBOSType()));
 		TenancyBillInfo ten = (TenancyBillInfo) this.getUIContext().get("tenancy");
 		info.setTenancyBill(ten);
 		info.setOrgUnit(ten.getOrgUnit());
@@ -234,6 +241,12 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 		this.kdtEntry.checkParsed();
 		this.kdtEntry.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
 		this.actionAttachment.setVisible(true);
+		
+		this.actionAuditResult.setVisible(true);
+		this.actionPre.setVisible(false);
+		this.actionNext.setVisible(false);
+		this.actionFirst.setVisible(false);
+		this.actionLast.setVisible(false);
 	}
 	
 	public void setOprtState(String oprtType) {
@@ -327,6 +340,57 @@ public class DepositDealBillEditUI extends AbstractDepositDealBillEditUI
 		}
 		FDCClientVerifyHelper.verifyEmpty(this, this.txtName);
 		FDCClientVerifyHelper.verifyEmpty(this, this.cbType);
+		FilterInfo filter = new FilterInfo();
+		
+		filter.getFilterItems().add(new FilterItemInfo("boID" , this.editData.getId().toString()));
+		if(!BoAttchAssoFactory.getRemoteInstance().exists(filter)){
+			FDCMsgBox.showWarning(this,"请先上传附件！");
+			SysUtil.abort();
+		}
 	}
-
+	public void actionAttachment_actionPerformed(ActionEvent e)throws Exception{
+		 AttachmentClientManager acm = AttachmentManagerFactory.getClientManager();
+		 String boID = getSelectBOID();
+		 if(boID == null)
+			 return;
+		 boolean isEdit = false;
+		 if("ADDNEW".equals(getOprtState()) || "EDIT".equals(getOprtState())){
+			 isEdit = true;
+        }
+		 acm.showAttachmentListUIByBoID(boID, this, isEdit);
+    }
+	 public boolean destroyWindow() {
+		 boolean b = super.destroyWindow();
+		 if(b){
+			 try {
+				 if(!DepositDealBillFactory.getRemoteInstance().exists(new ObjectUuidPK(this.editData.getId().toString()))){
+					 deleteAttachment(this.editData.getId().toString());
+				 }
+   		} catch (Exception e) {
+   			e.printStackTrace();
+   		}
+       }
+       return b;
+	}
+	 protected void deleteAttachment(String id) throws BOSException, EASBizException{
+		EntityViewInfo view=new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		
+		filter.getFilterItems().add(new FilterItemInfo("boID" , id));
+		view.setFilter(filter);
+		BoAttchAssoCollection col=BoAttchAssoFactory.getRemoteInstance().getBoAttchAssoCollection(view);
+		for(int i=0;i<col.size();i++){
+			EntityViewInfo attview=new EntityViewInfo();
+			FilterInfo attfilter = new FilterInfo();
+			
+			attfilter.getFilterItems().add(new FilterItemInfo("attachment.id" , col.get(i).getAttachment().getId().toString()));
+			attview.setFilter(attfilter);
+			BoAttchAssoCollection attcol=BoAttchAssoFactory.getRemoteInstance().getBoAttchAssoCollection(attview);
+			if(attcol.size()==1){
+				BizobjectFacadeFactory.getRemoteInstance().delTempAttachment(id);
+			}else if(attcol.size()>1){
+				BoAttchAssoFactory.getRemoteInstance().delete(filter);
+			}
+		}
+	}
 }
