@@ -220,6 +220,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtBailOriAmount;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtBailRate;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnProgram;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAccountView;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnSplit;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnDelSplit;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewContent;
@@ -250,6 +251,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
     protected ActionAgreementText actionAgreementText = null;
     protected ActionUpLoad actionUpLoad = null;
     protected ActionDownLoad actionDownLoad = null;
+    protected ActionAccountView actionAccountView = null;
     /**
      * output class constructor
      */
@@ -390,6 +392,10 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.actionDownLoad = new ActionDownLoad(this);
         getActionManager().registerAction("actionDownLoad", actionDownLoad);
          this.actionDownLoad.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionAccountView
+        this.actionAccountView = new ActionAccountView(this);
+        getActionManager().registerAction("actionAccountView", actionAccountView);
+         this.actionAccountView.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.kDScrollPane3 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.tabPanel = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.mainPanel = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -564,6 +570,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.txtBailOriAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtBailRate = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.btnProgram = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnAccountView = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnSplit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnDelSplit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnViewContent = new com.kingdee.bos.ctrl.swing.KDWorkButton();
@@ -753,6 +760,7 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.txtBailOriAmount.setName("txtBailOriAmount");
         this.txtBailRate.setName("txtBailRate");
         this.btnProgram.setName("btnProgram");
+        this.btnAccountView.setName("btnAccountView");
         this.btnSplit.setName("btnSplit");
         this.btnDelSplit.setName("btnDelSplit");
         this.btnViewContent.setName("btnViewContent");
@@ -1997,6 +2005,9 @@ public abstract class AbstractContractBillEditUI extends com.kingdee.eas.fdc.bas
         this.btnProgram.setText(resHelper.getString("btnProgram.text"));		
         this.btnProgram.setToolTipText(resHelper.getString("btnProgram.toolTipText"));		
         this.btnProgram.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_associatecreate"));
+        // btnAccountView
+        this.btnAccountView.setAction((IItemAction)ActionProxyFactory.getProxy(actionAccountView, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnAccountView.setText(resHelper.getString("btnAccountView.text"));
         // btnSplit
         this.btnSplit.setAction((IItemAction)ActionProxyFactory.getProxy(actionSplit, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnSplit.setText(resHelper.getString("btnSplit.text"));		
@@ -2618,6 +2629,7 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
         this.toolBar.add(btnCopyLine);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnProgram);
+        this.toolBar.add(btnAccountView);
         this.toolBar.add(btnMultiapprove);
         this.toolBar.add(btnWFViewdoProccess);
         this.toolBar.add(btnWFViewSubmitProccess);
@@ -3634,6 +3646,14 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
     public void actionDownLoad_actionPerformed(ActionEvent e) throws Exception
     {
     }
+    	
+
+    /**
+     * output actionAccountView_actionPerformed method
+     */
+    public void actionAccountView_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
 	public RequestContext prepareActionSubmit(IItemAction itemAction) throws Exception {
 			RequestContext request = super.prepareActionSubmit(itemAction);		
 		if (request != null) {
@@ -3830,6 +3850,17 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
     }
 	
 	public boolean isPrepareActionDownLoad() {
+    	return false;
+    }
+	public RequestContext prepareActionAccountView(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionAccountView() {
     	return false;
     }
 
@@ -4222,6 +4253,36 @@ contPayItem.getContentPane().setLayout(new BorderLayout(0, 0));        contPayIt
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractContractBillEditUI.this, "ActionDownLoad", "actionDownLoad_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionAccountView class
+     */     
+    protected class ActionAccountView extends ItemAction {     
+    
+        public ActionAccountView()
+        {
+            this(null);
+        }
+
+        public ActionAccountView(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionAccountView.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAccountView.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAccountView.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractContractBillEditUI.this, "ActionAccountView", "actionAccountView_actionPerformed", e);
         }
     }
 

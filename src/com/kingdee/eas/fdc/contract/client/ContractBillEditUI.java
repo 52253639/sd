@@ -231,6 +231,7 @@ import com.kingdee.eas.fdc.contract.programming.ProgrammingContractFactory;
 import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
 import com.kingdee.eas.fdc.contract.programming.client.ContractBillLinkProgContEditUI;
 import com.kingdee.eas.fdc.contract.programming.client.ProgrammingContractEditUI;
+import com.kingdee.eas.fdc.finance.PaymentSplitFactory;
 import com.kingdee.eas.fdc.finance.client.ContractPayPlanEditUI;
 import com.kingdee.eas.fdc.invite.DirectAccepterResultCollection;
 import com.kingdee.eas.fdc.invite.DirectAccepterResultFactory;
@@ -531,6 +532,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		setProgAndAccountState((ContractTypeInfo) prmtcontractType.getValue(),(ContractPropertyEnum) contractPropert.getSelectedItem());
 	}
 
 	protected void loadContractModel() throws EASBizException, BOSException {
@@ -866,18 +868,10 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 				ContractTypeInfo contractTypeInfo = null;
 
 				SelectorItemCollection selector = new SelectorItemCollection();
-				selector.add("id");
-				selector.add("number");
-				selector.add("name");
-				selector.add("longNumber");
-				selector.add("isLeaf");
+				selector.add("*");
 				selector.add("dutyOrgUnit.id");
 				selector.add("dutyOrgUnit.number");
 				selector.add("dutyOrgUnit.name");
-				selector.add("payScale");
-				selector.add("stampTaxRate");
-				selector.add("isCost");
-				selector.add("orgType");
 				selector.add("contractWFTypeEntry.contractWFType.*");
 				contractTypeInfo = ContractTypeFactory
 						.getRemoteInstance()
@@ -1033,7 +1027,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			contractPropertChanged(contractProp);
 
 		}
-
+		setProgAndAccountState((ContractTypeInfo) prmtcontractType.getValue(),(ContractPropertyEnum) contractPropert.getSelectedItem());
 		super.contractPropert_itemStateChanged(e);
 
 	}
@@ -1773,17 +1767,17 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		this.contPayItem.setContainerType(KDContainer.DISEXTENDSIBLE_STYLE);
 		this.contBailItem.setContainerType(KDContainer.DISEXTENDSIBLE_STYLE);
 		
-		JButton btnAdd = this.kDContainer1.add(this.actionAddLine);
-		JButton btnRemove = this.kDContainer1.add(this.actionRemoveLine);
-		this.kDContainer1.setVisibleOfExpandButton(true);
-		this.actionAddLine.setVisible(true);
-		this.actionAddLine.setEnabled(true);
-		this.actionRemoveLine.setVisible(true);
-		this.actionRemoveLine.setEnabled(true);
-		btnAdd.setRequestFocusEnabled(false);
-		btnRemove.setRequestFocusEnabled(false);
-		btnAdd.setIcon(EASResource.getIcon("imgTbtn_addline"));
-		btnRemove.setIcon(EASResource.getIcon("imgTbtn_deleteline"));
+//		JButton btnAdd = this.kDContainer1.add(this.actionAddLine);
+//		JButton btnRemove = this.kDContainer1.add(this.actionRemoveLine);
+//		this.kDContainer1.setVisibleOfExpandButton(true);
+//		this.actionAddLine.setVisible(true);
+//		this.actionAddLine.setEnabled(true);
+//		this.actionRemoveLine.setVisible(true);
+//		this.actionRemoveLine.setEnabled(true);
+//		btnAdd.setRequestFocusEnabled(false);
+//		btnRemove.setRequestFocusEnabled(false);
+//		btnAdd.setIcon(EASResource.getIcon("imgTbtn_addline"));
+//		btnRemove.setIcon(EASResource.getIcon("imgTbtn_deleteline"));
 		// 工作流处理时修改字段
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -2369,15 +2363,11 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			this.prmtpartB.setEnabled(true);
 			this.prmtlandDeveloper.setEnabled(true);
 		}
-		if(this.editData.getCurProject().isIsWholeAgeStage()){
-			this.btnProgram.setEnabled(false);
-		}
 		
 		labSettleType.setVisible(false);
 		btnAType.setVisible(false);
 		btnBType.setVisible(false);
 		BtnCType.setVisible(false);
-		
 		
 		this.actionViewContent.setVisible(false);
 		this.btnAgreement.setVisible(false);
@@ -2431,6 +2421,20 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		}
 		this.contNeedDept.setVisible(isNeed);
 		this.contNeedPerson.setVisible(isNeed);
+		
+		this.btnAccountView.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_associatecreate"));
+		this.actionPre.setVisible(false);
+		this.actionNext.setVisible(false);
+		this.actionFirst.setVisible(false);
+		this.actionLast.setVisible(false);
+		this.actionContractPlan.setVisible(false);
+	}
+	public void actionAccountView_actionPerformed(ActionEvent e)throws Exception {
+		if(!ContractBillFactory.getRemoteInstance().exists(new ObjectUuidPK(this.editData.getId()))){
+			FDCMsgBox.showWarning(this,"请先保存单据！");
+			SysUtil.abort();
+		}
+		showSplitUI(this,this.editData.getId().toString(),"contractBill.id",this.editData.getBOSType().toString(),true);
 	}
 
 	//业务日期变化引起,期间的变化
@@ -2632,19 +2636,20 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 	protected void prmtcontractType_dataChanged(DataChangeEvent e)
 			throws Exception {
 		Object newValue = e.getNewValue();
-		contractTypeChanged(newValue);
-		
-		super.prmtcontractType_dataChanged(e);
-		
-		detailTableAutoFitRowHeight();
-		
+		ContractTypeInfo info = (ContractTypeInfo) newValue;
 		boolean isChanged = true;
 		isChanged = BizCollUtil.isF7ValueChanged(e);
 		if (!isChanged) {
 			return;
 		}
+		setProgAndAccountState(info,(ContractPropertyEnum) contractPropert.getSelectedItem());
+		
+		contractTypeChanged(newValue);
+		super.prmtcontractType_dataChanged(e);
+		
+		detailTableAutoFitRowHeight();
 		this.prmtModel.setValue(null);
-		ContractTypeInfo info = (ContractTypeInfo) newValue;
+		
 		if(info!=null){
 			if(!ContractPropertyEnum.SUPPLY.equals(contractPropert.getSelectedItem())){
 				if(this.editData.getProgrammingContract()!=null&&this.editData.getProgrammingContract().getContractType()!=null
@@ -2990,16 +2995,6 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			actionContractPlan.setEnabled(true);
 		}
 
-		if (mainContractId != null) {
-			this.btnProgram.setEnabled(false);
-		} else {
-			this.btnProgram.setEnabled(true);
-		}
-		if(STATUS_ADDNEW.equals(oprtType) ||STATUS_EDIT.equals(oprtType)){
-			btnProgram.setEnabled(true);
-		}else{
-			btnProgram.setEnabled(false);
-		}
 		if (oprtType.equals(OprtState.VIEW)) {
 			this.actionUpLoad.setEnabled(false);
 			this.actionAgreementText.setEnabled(false);
@@ -3007,8 +3002,31 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			this.actionUpLoad.setEnabled(true);
 			this.actionAgreementText.setEnabled(true);
 		}
+		setProgAndAccountState((ContractTypeInfo) prmtcontractType.getValue(),(ContractPropertyEnum) contractPropert.getSelectedItem());
 	}
-
+	private void setProgAndAccountState(ContractTypeInfo contractType,ContractPropertyEnum contractProperty){
+		if(STATUS_ADDNEW.equals(this.getOprtState()) ||STATUS_EDIT.equals(this.getOprtState())){
+			if (ContractPropertyEnum.SUPPLY.equals(contractProperty)) {
+				this.btnProgram.setEnabled(false);
+				this.btnAccountView.setEnabled(false);
+			} else {
+				if(contractType!=null&&contractType.isIsAccountView()){
+					this.btnAccountView.setEnabled(true);
+					this.btnProgram.setEnabled(false);
+				}else{
+					if(this.editData!=null&&this.editData.getCurProject()!=null&&this.editData.getCurProject().isIsWholeAgeStage()){
+						this.btnProgram.setEnabled(false);
+					}else{
+						this.btnProgram.setEnabled(true);
+					}
+					this.btnAccountView.setEnabled(false);
+				}
+			}
+		}else{
+			btnProgram.setEnabled(false);
+			btnAccountView.setEnabled(false);
+		}
+	}
 	/*
 	 * 20070315 jack 没有完成审批(也包括归档，因为归档前提是完成审批)的合同的合同类型可以修改，合同编码也可以修改
 	 */
@@ -3041,12 +3059,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 
 		sic.add(new SelectorItemInfo("CU.id"));
 		sic.add(new SelectorItemInfo("orgUnit.id"));
-		sic.add(new SelectorItemInfo("contractType.isLeaf"));
-		sic.add(new SelectorItemInfo("contractType.level"));
-		sic.add(new SelectorItemInfo("contractType.number"));
-		sic.add(new SelectorItemInfo("contractType.longnumber"));
-		sic.add(new SelectorItemInfo("contractType.name"));
-		sic.add(new SelectorItemInfo("contractType.orgType"));
+		sic.add(new SelectorItemInfo("contractType.*"));
 		
 		sic.add(new SelectorItemInfo("codeType.id"));
 		sic.add(new SelectorItemInfo("codeType.name"));
@@ -4247,7 +4260,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 				.getCoreBillBaseCollection(view);
 		Iterator iter = coll.iterator();
 		if (iter.hasNext()) {
-			MsgBox.showWarning(this, ContractClientUtils.getRes("noRemove"));
+			MsgBox.showWarning(this, "请先删除对应合同拆分！");
 			SysUtil.abort();
 		}
 	}
@@ -4917,8 +4930,16 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		if(isRelatedTask()){
 			ContractClientUtils.checkConRelatedTaskSubmit(this.editData);
 		}
-		
-		verifyContractProgrammingPara();
+		FDCClientVerifyHelper.verifyEmpty(this, this.prmtcontractType);
+		ContractTypeInfo ct=(ContractTypeInfo)this.prmtcontractType.getValue();
+		if(ct.isIsAccountView()){
+			if(!ContractCostSplitFactory.getRemoteInstance().exists("select * from where contractBill.id='"+this.editData.getId().toString()+"' and splitState='3ALLSPLIT'")){
+				FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
+				SysUtil.abort();
+			}
+		}else{
+			verifyContractProgrammingPara();
+		}
 		
 		
 		//变态的需求： 集团的不需要检测合同结算类型
@@ -5954,6 +5975,8 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 				toolButtionsList.add(btnViewCost);
 				btnProgram.setVisible(true);
 				toolButtionsList.add(btnProgram);
+				btnAccountView.setVisible(true);
+				toolButtionsList.add(btnAccountView);
 				return toolButtionsList;
 			}
 		};

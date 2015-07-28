@@ -131,6 +131,17 @@ public class AbstractContractTypeInfo extends com.kingdee.eas.framework.TreeBase
     {
         return (com.kingdee.eas.fdc.basedata.ContractInviteTypeEntryCollection)get("inviteTypeEntry");
     }
+    /**
+     * Object:合同类型's 是否受控于成本科目控制property 
+     */
+    public boolean isIsAccountView()
+    {
+        return getBoolean("isAccountView");
+    }
+    public void setIsAccountView(boolean item)
+    {
+        setBoolean("isAccountView", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("B371775E");

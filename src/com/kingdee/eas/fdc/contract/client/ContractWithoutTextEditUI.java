@@ -144,11 +144,13 @@ import com.kingdee.eas.fdc.basedata.client.FDCContractParamUI;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
 import com.kingdee.eas.fdc.basedata.util.TableUtils;
+import com.kingdee.eas.fdc.contract.ConNoCostSplitFactory;
 import com.kingdee.eas.fdc.contract.ConSplitExecStateEnum;
 import com.kingdee.eas.fdc.contract.ContractBillFactory;
 import com.kingdee.eas.fdc.contract.ContractBillInfo;
 import com.kingdee.eas.fdc.contract.ContractCostSplitEntryCollection;
 import com.kingdee.eas.fdc.contract.ContractCostSplitEntryFactory;
+import com.kingdee.eas.fdc.contract.ContractCostSplitFactory;
 import com.kingdee.eas.fdc.contract.ContractFacadeFactory;
 import com.kingdee.eas.fdc.contract.ContractPropertyEnum;
 import com.kingdee.eas.fdc.contract.ContractWithoutTextBgEntryCollection;
@@ -172,6 +174,7 @@ import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
 import com.kingdee.eas.fdc.contract.programming.client.ContractBillLinkProgContEditUI;
 import com.kingdee.eas.fdc.contract.programming.client.ProgrammingContractEditUI;
 import com.kingdee.eas.fdc.finance.FDCDepConPayPlanNoContractInfo;
+import com.kingdee.eas.fdc.finance.PaymentSplitFactory;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherEntryCollection;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherEntryFactory;
 import com.kingdee.eas.fdc.finance.ProjectMonthPlanGatherEntryInfo;
@@ -184,6 +187,8 @@ import com.kingdee.eas.fi.cas.client.CasRecPayHandler;
 import com.kingdee.eas.fi.gl.GlUtils;
 import com.kingdee.eas.fm.common.ContextHelperFactory;
 import com.kingdee.eas.fm.common.FMConstants;
+import com.kingdee.eas.framework.CoreBaseCollection;
+import com.kingdee.eas.framework.CoreBillBaseCollection;
 import com.kingdee.eas.framework.batchHandler.RequestContext;
 import com.kingdee.eas.ma.budget.BgCtrlTypeEnum;
 import com.kingdee.eas.ma.budget.BgControlFacadeFactory;
@@ -644,6 +649,72 @@ public class ContractWithoutTextEditUI extends
 			this.prmtCostedCompany.setRequired(false);
 			this.prmtCostedDept.setRequired(false);
 		}
+		
+		this.btnAccountView.setIcon(EASResource.getIcon("imgTbtn_associatecreate"));
+		
+		this.actionCopy.setVisible(false);
+		this.actionPre.setVisible(false);
+		this.actionNext.setVisible(false);
+		this.actionFirst.setVisible(false);
+		this.actionLast.setVisible(false);
+	}
+	public void actionAccountView_actionPerformed(ActionEvent e)throws Exception {
+		if(!ContractWithoutTextFactory.getRemoteInstance().exists(new ObjectUuidPK(this.editData.getId()))){
+			FDCMsgBox.showWarning(this,"请先保存单据！");
+			SysUtil.abort();
+		}
+		
+		String splitBillID = null;
+
+		FDCBillInfo billInfo = null;
+		CoreBaseCollection coll = null;
+
+		String editName = null;
+
+		EntityViewInfo view = new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("conWithoutText.id", this.editData.getId().toString()));
+		view.setFilter(filter);
+		view.getSelector().add("id");
+		view.getSelector().add("state");
+
+		SelectorItemCollection selectors = new SelectorItemCollection();
+		selectors.add("id");
+			editName = com.kingdee.eas.fdc.finance.client.PaymentSplitEditUI.class.getName();
+			coll = PaymentSplitFactory.getRemoteInstance().getCollection(view);
+
+		boolean isSplited = false;
+		boolean isAudited = false;
+
+		if (coll.size() > 0) {
+			billInfo = (FDCBillInfo) coll.get(0);
+			splitBillID = billInfo.getId().toString();
+			isSplited = true;
+
+			if (billInfo.getState().equals(FDCBillStateEnum.AUDITTED)) {
+				isAudited = true;
+			}
+		}
+
+		UIContext uiContext = new UIContext(this);
+		String oprtState;
+
+		if (isSplited) {
+			uiContext.put(UIContext.ID, splitBillID);
+
+			if (isAudited) {
+				oprtState = OprtState.VIEW;
+			} else {
+				oprtState = OprtState.EDIT;
+			}
+		} else {
+			uiContext.put("costBillID", this.editData.getId().toString());
+			oprtState = OprtState.ADDNEW;
+		}
+
+		IUIWindow uiWin = UIFactory.createUIFactory(UIFactoryName.MODEL)
+				.create(editName, uiContext, null, oprtState);
+		uiWin.show();
 	}
 	boolean isOtherCostedDept=true;
 	protected Set getCostedDeptIdSet(CompanyOrgUnitInfo com) throws EASBizException, BOSException{
@@ -1879,14 +1950,29 @@ public class ContractWithoutTextEditUI extends
 			this.prmtcurProject.setAccessAuthority(CtrlCommonConstant.AUTHORITY_COMMON);
 			prmtcurProject.setEnabled(false);
 //		}
-		if(STATUS_ADDNEW.equals(oprtType) ||STATUS_EDIT.equals(oprtType)){
-			btnProgram.setEnabled(true);
-		}else{
-			btnProgram.setEnabled(false);
-		}
+			setProgAndAccountState((ContractTypeInfo) prmtContractType.getValue());
 		
 		txtPaymentRequestBillNumber.setEditable(false);
 		setBgEditState();
+	}
+	private void setProgAndAccountState(ContractTypeInfo contractType){
+		if(STATUS_ADDNEW.equals(this.getOprtState()) ||STATUS_EDIT.equals(this.getOprtState())){
+			if(contractType!=null&&contractType.isIsAccountView()){
+				this.btnAccountView.setEnabled(true);
+				this.btnProgram.setEnabled(false);
+			}else{
+				if(this.editData!=null&&this.editData.getCurrency()!=null&&this.editData.getCurProject().isIsWholeAgeStage()){
+					this.btnProgram.setEnabled(false);
+				}else{
+					this.btnProgram.setEnabled(true);
+				}
+				this.btnAccountView.setEnabled(false);
+			}
+		}else{
+			btnProgram.setEnabled(false);
+			btnAccountView.setEnabled(false);
+		}
+		btnAccountView.setVisible(false);
 	}
 	public void setBgEditState(){
 		if(this.cbIsBgControl.isSelected()){
@@ -2262,6 +2348,7 @@ public class ContractWithoutTextEditUI extends
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		setProgAndAccountState((ContractTypeInfo) prmtContractType.getValue());
 	}
 	
 	protected void comboPayeeType_itemStateChanged(ItemEvent e) throws Exception {
@@ -2483,7 +2570,16 @@ public class ContractWithoutTextEditUI extends
 		//预算控制
 		checkMbgCtrlBalance();
 
-		verifyContractProgrammingPara();
+		FDCClientVerifyHelper.verifyEmpty(this, this.prmtContractType);
+//		ContractTypeInfo ct=(ContractTypeInfo)this.prmtContractType.getValue();
+//		if(ct.isIsAccountView()){
+//			if(!PaymentSplitFactory.getRemoteInstance().exists("select * from where conWithoutText.id='"+this.editData.getId().toString()+"' and splitState='3ALLSPLIT'")){
+//				FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
+//				SysUtil.abort();
+//			}
+//		}else{
+			verifyContractProgrammingPara();
+//		}
 		
 		FDCClientVerifyHelper.verifyEmpty(this, this.prmtuseDepartment);
 		if(this.cbIsBgControl.isSelected()){
@@ -3827,8 +3923,10 @@ public class ContractWithoutTextEditUI extends
         if(!isChanged){
         	return;
         }
+        ContractTypeInfo ct=(ContractTypeInfo) this.prmtContractType.getValue();
+        setProgAndAccountState(ct);
+        
         Set id=new HashSet();
-		ContractTypeInfo ct=(ContractTypeInfo) this.prmtContractType.getValue();
 		if(ct!=null){
 			if(this.editData.getProgrammingContract()!=null&&this.editData.getProgrammingContract().getContractType()!=null
 					&&!this.editData.getProgrammingContract().getContractType().getId().equals(ct.getId())){
@@ -3872,6 +3970,18 @@ public class ContractWithoutTextEditUI extends
 
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
 		FDCClientUtils.checkBillInWorkflow(this, getSelectBOID());
+		EntityViewInfo view = new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("conWithoutText.id", editData.getId()));
+		view.setFilter(filter);
+		view.getSelector().add("id");
+		CoreBillBaseCollection coll = PaymentSplitFactory.getRemoteInstance()
+				.getCoreBillBaseCollection(view);
+		Iterator iter = coll.iterator();
+		if (iter.hasNext()) {
+			MsgBox.showWarning(this, "请先删除对应无合同拆分！");
+			SysUtil.abort();
+		}
 		super.actionRemove_actionPerformed(e);
 	}
 	protected void tblAttachement_tableClicked(KDTMouseEvent e)throws Exception {

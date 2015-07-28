@@ -79,4 +79,9 @@ public abstract class AbstractContractBillEditUIHandler extends com.kingdee.eas.
 	}
 	protected void _handleActionDownLoad(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionAccountView(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionAccountView(request,response,context);
+	}
+	protected void _handleActionAccountView(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

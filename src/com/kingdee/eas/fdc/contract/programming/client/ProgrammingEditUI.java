@@ -502,9 +502,9 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 			ProgrammingContracCostCollection costEntries = programmingContractInfo.getCostEntries();
 			ProgrammingContractEconomyCollection economyEntries = programmingContractInfo.getEconomyEntries();
 
-			BigDecimal newAmount = FDCHelper.ZERO;// 规划金额
-			BigDecimal oldAmount = programmingContractInfo.getAmount();
-			BigDecimal oldBalance = programmingContractInfo.getBalance();// 原规划余额
+			BigDecimal newAmount = programmingContractInfo.getAmount();// 规划金额
+//			BigDecimal oldAmount = programmingContractInfo.getAmount();
+//			BigDecimal oldBalance = programmingContractInfo.getBalance();// 原规划余额
 
 			if (costEntries.size() == 0) {
 				newAmount = programmingContractInfo.getAmount();// 原规划金额
@@ -513,64 +513,64 @@ public class ProgrammingEditUI extends AbstractProgrammingEditUI
 				for (int j = 0; j < costEntries.size(); j++) {
 					ProgrammingContracCostInfo pccInfo = costEntries.get(j);
 					CostAccountInfo costAccount = pccInfo.getCostAccount();// 成本科目
-					// 获取原"已分配"，原"目标成本","本合约分配"
-					BigDecimal oldAssigned = pccInfo.getAssigned();
-					BigDecimal oldGoalCost = pccInfo.getGoalCost();
-					BigDecimal oldContractAssign = pccInfo.getContractAssign();
-					// 获取新"目标成本"
-					BigDecimal newGoalCost = FDCHelper.ZERO;
+//					// 获取原"已分配"，原"目标成本","本合约分配"
+//					BigDecimal oldAssigned = pccInfo.getAssigned();
+//					BigDecimal oldGoalCost = pccInfo.getGoalCost();
+//					BigDecimal oldContractAssign = pccInfo.getContractAssign();
+//					// 获取新"目标成本"
+//					BigDecimal newGoalCost = FDCHelper.ZERO;
 					BigDecimal aimcostAccount=ProgrammingContractUtil.getGoalCostBy_costAcc_aimCost(costAccount, aimCost);
-					if(isAssignAimCost.get(aimCost.getId().toString())!=null){
-						Set isAssignCostAccount=(HashSet)isAssignAimCost.get(aimCost.getId().toString());
-						if(!isAssignCostAccount.contains(costAccount.getId().toString())){
-							newGoalCost=aimcostAccount;
-							isAssignCostAccount.add(costAccount.getId().toString());
-						}
-					}else{
-						newGoalCost=aimcostAccount;
-						Set isAssignCostAccount=new HashSet();
-						isAssignCostAccount.add(costAccount.getId().toString());
-						isAssignAimCost.put(aimCost.getId().toString(), isAssignCostAccount);
-					}
-					if (oldGoalCost.compareTo(oldContractAssign) == 0) {
-						// 若原"目标成本"=原"本合约分配"，则新"本合约分配" = 新"目标成本"
-						pccInfo.setContractAssign(newGoalCost);
-						// 算出 新"待分配" = 新"目标成本"
-						pccInfo.setAssigning(newGoalCost);
-						newAmount = newAmount.add(newGoalCost);
-					} else {
-						flagAllNoChange++;
-						// 若原"目标成本"!=原"本合约分配"，则新"本合约分配" 不变
-						// 算出 新"待分配" = 新"目标成本" - 原"已分配"
-						BigDecimal newAssigning = newGoalCost.subtract(oldAssigned);
-						pccInfo.setAssigning(newAssigning);
-						newAmount = newAmount.add(pccInfo.getContractAssign());
-						if (costEntries.size() == flagAllNoChange) {
-							newAmount = oldAmount;
-						}
-					}
+//					if(isAssignAimCost.get(aimCost.getId().toString())!=null){
+//						Set isAssignCostAccount=(HashSet)isAssignAimCost.get(aimCost.getId().toString());
+//						if(!isAssignCostAccount.contains(costAccount.getId().toString())){
+//							newGoalCost=aimcostAccount;
+//							isAssignCostAccount.add(costAccount.getId().toString());
+//						}
+//					}else{
+//						newGoalCost=aimcostAccount;
+//						Set isAssignCostAccount=new HashSet();
+//						isAssignCostAccount.add(costAccount.getId().toString());
+//						isAssignAimCost.put(aimCost.getId().toString(), isAssignCostAccount);
+//					}
+//					if (oldGoalCost.compareTo(oldContractAssign) == 0) {
+//						// 若原"目标成本"=原"本合约分配"，则新"本合约分配" = 新"目标成本"
+//						pccInfo.setContractAssign(newGoalCost);
+//						// 算出 新"待分配" = 新"目标成本"
+//						pccInfo.setAssigning(newGoalCost);
+//						newAmount = newAmount.add(newGoalCost);
+//					} else {
+//						flagAllNoChange++;
+//						// 若原"目标成本"!=原"本合约分配"，则新"本合约分配" 不变
+//						// 算出 新"待分配" = 新"目标成本" - 原"已分配"
+//						BigDecimal newAssigning = newGoalCost.subtract(oldAssigned);
+//						pccInfo.setAssigning(newAssigning);
+//						newAmount = newAmount.add(pccInfo.getContractAssign());
+//						if (costEntries.size() == flagAllNoChange) {
+//							newAmount = oldAmount;
+//						}
+//					}
 					pccInfo.setGoalCost(aimcostAccount);
 				}
 				// 规划金额动态更新
-				programmingContractInfo.setAmount(newAmount);
+//				programmingContractInfo.setAmount(newAmount);
 				// 控制金额 = 规划金额
-				programmingContractInfo.setControlAmount(newAmount);
+//				programmingContractInfo.setControlAmount(newAmount);
 				// 规划余额动态更新
 				
-				programmingContractInfo.setBalance(oldBalance.add(newAmount.subtract(oldAmount)));
+//				programmingContractInfo.setBalance(oldBalance.add(newAmount.subtract(oldAmount)));
 				// 经济条款"付款金额"动态更新
-				for (int k = 0; k < economyEntries.size(); k++) {
-					ProgrammingContractEconomyInfo pceInfo = economyEntries.get(k);
-					BigDecimal scale = pceInfo.getScale();
-					pceInfo.setAmount(FDCHelper.divide(newAmount.multiply(scale), FDCHelper.ONE_HUNDRED));
-				}
+//				for (int k = 0; k < economyEntries.size(); k++) {
+//					ProgrammingContractEconomyInfo pceInfo = economyEntries.get(k);
+//					BigDecimal scale = pceInfo.getScale();
+//					pceInfo.setAmount(FDCHelper.divide(newAmount.multiply(scale), FDCHelper.ONE_HUNDRED));
+//				}
 				dataBinder.loadLineFields(kdtEntries, kdtEntries.getRow(i), programmingContractInfo);
-				int level = new Integer(kdtEntries.getCell(i, "level").getValue().toString()).intValue();
-				if (level != 1) {
-					// 汇总
-					caclTotalAmount(i, kdtEntries.getColumnIndex("amount"), level);
-					caclTotalAmount(i, kdtEntries.getColumnIndex("balance"), level);
-				}
+//				int level = new Integer(kdtEntries.getCell(i, "level").getValue().toString()).intValue();
+//				if (level != 1) {
+//					// 汇总
+//					caclTotalAmount(i, kdtEntries.getColumnIndex("amount"), level);
+//					caclTotalAmount(i, kdtEntries.getColumnIndex("balance"), level);
+//				}
 				setMyFontColor();
 			}
 		}

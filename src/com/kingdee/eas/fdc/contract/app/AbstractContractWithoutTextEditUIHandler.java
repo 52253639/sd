@@ -39,4 +39,9 @@ public abstract class AbstractContractWithoutTextEditUIHandler extends com.kingd
 	}
 	protected void _handleActionViewProgramContract(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionAccountView(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionAccountView(request,response,context);
+	}
+	protected void _handleActionAccountView(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

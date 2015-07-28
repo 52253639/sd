@@ -162,9 +162,10 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
     protected com.kingdee.bos.ctrl.kdf.table.KDTable kdtTraEntry;
     protected com.kingdee.bos.ctrl.swing.KDTextArea txtMoneyDesc;
     protected com.kingdee.bos.ctrl.swing.KDComboBox cbFeeType;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnProgram;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAccountView;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewBgBalance;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewProgramContract;
-    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnProgram;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemViewBgBalance;
     protected com.kingdee.eas.fdc.contract.ContractWithoutTextInfo editData = null;
     protected ActionViewBgBalance actionViewBgBalance = null;
@@ -172,6 +173,7 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
     protected actionViewBudget actionViewBudget = null;
     protected ActionProgram actionProgram = null;
     protected ActionViewProgramContract actionViewProgramContract = null;
+    protected ActionAccountView actionAccountView = null;
     /**
      * output class constructor
      */
@@ -291,6 +293,10 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
         this.actionViewProgramContract = new ActionViewProgramContract(this);
         getActionManager().registerAction("actionViewProgramContract", actionViewProgramContract);
          this.actionViewProgramContract.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionAccountView
+        this.actionAccountView = new ActionAccountView(this);
+        getActionManager().registerAction("actionAccountView", actionAccountView);
+         this.actionAccountView.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.contCreator = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contCreateTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -407,9 +413,10 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
         this.kdtTraEntry = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.txtMoneyDesc = new com.kingdee.bos.ctrl.swing.KDTextArea();
         this.cbFeeType = new com.kingdee.bos.ctrl.swing.KDComboBox();
+        this.btnProgram = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnAccountView = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnViewBgBalance = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnViewProgramContract = new com.kingdee.bos.ctrl.swing.KDWorkButton();
-        this.btnProgram = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemViewBgBalance = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.contCreator.setName("contCreator");
         this.contCreateTime.setName("contCreateTime");
@@ -527,9 +534,10 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
         this.kdtTraEntry.setName("kdtTraEntry");
         this.txtMoneyDesc.setName("txtMoneyDesc");
         this.cbFeeType.setName("cbFeeType");
+        this.btnProgram.setName("btnProgram");
+        this.btnAccountView.setName("btnAccountView");
         this.btnViewBgBalance.setName("btnViewBgBalance");
         this.btnViewProgramContract.setName("btnViewProgramContract");
-        this.btnProgram.setName("btnProgram");
         this.menuItemViewBgBalance.setName("menuItemViewBgBalance");
         // CoreUI		
         this.setPreferredSize(new Dimension(1013,650));		
@@ -1533,15 +1541,18 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
                 }
             }
         });
+        // btnProgram
+        this.btnProgram.setAction((IItemAction)ActionProxyFactory.getProxy(actionProgram, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnProgram.setText(resHelper.getString("btnProgram.text"));
+        // btnAccountView
+        this.btnAccountView.setAction((IItemAction)ActionProxyFactory.getProxy(actionAccountView, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnAccountView.setText(resHelper.getString("btnAccountView.text"));
         // btnViewBgBalance
         this.btnViewBgBalance.setAction((IItemAction)ActionProxyFactory.getProxy(actionViewBgBalance, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnViewBgBalance.setText(resHelper.getString("btnViewBgBalance.text"));
         // btnViewProgramContract
         this.btnViewProgramContract.setAction((IItemAction)ActionProxyFactory.getProxy(actionViewProgramContract, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnViewProgramContract.setText(resHelper.getString("btnViewProgramContract.text"));
-        // btnProgram
-        this.btnProgram.setAction((IItemAction)ActionProxyFactory.getProxy(actionProgram, new Class[] { IItemAction.class }, getServiceContext()));		
-        this.btnProgram.setText(resHelper.getString("btnProgram.text"));
         // menuItemViewBgBalance
         this.menuItemViewBgBalance.setAction((IItemAction)ActionProxyFactory.getProxy(actionViewBgBalance, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemViewBgBalance.setText(resHelper.getString("menuItemViewBgBalance.text"));		
@@ -1970,6 +1981,8 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
         this.toolBar.add(btnVoucher);
         this.toolBar.add(btnDelVoucher);
         this.toolBar.add(btnAuditResult);
+        this.toolBar.add(btnProgram);
+        this.toolBar.add(btnAccountView);
         this.toolBar.add(btnMultiapprove);
         this.toolBar.add(btnWFViewdoProccess);
         this.toolBar.add(btnWFViewSubmitProccess);
@@ -1979,7 +1992,6 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
         this.toolBar.add(btnCalculator);
         this.toolBar.add(btnViewBgBalance);
         this.toolBar.add(btnViewProgramContract);
-        this.toolBar.add(btnProgram);
 
 
     }
@@ -2819,6 +2831,14 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
     public void actionViewProgramContract_actionPerformed(ActionEvent e) throws Exception
     {
     }
+    	
+
+    /**
+     * output actionAccountView_actionPerformed method
+     */
+    public void actionAccountView_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
 	public RequestContext prepareActionSubmit(IItemAction itemAction) throws Exception {
 			RequestContext request = super.prepareActionSubmit(itemAction);		
 		if (request != null) {
@@ -2938,6 +2958,17 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
     }
 	
 	public boolean isPrepareActionViewProgramContract() {
+    	return false;
+    }
+	public RequestContext prepareActionAccountView(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionAccountView() {
     	return false;
     }
 
@@ -3089,6 +3120,36 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractContractWithoutTextEditUI.this, "ActionViewProgramContract", "actionViewProgramContract_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionAccountView class
+     */     
+    protected class ActionAccountView extends ItemAction {     
+    
+        public ActionAccountView()
+        {
+            this(null);
+        }
+
+        public ActionAccountView(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionAccountView.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAccountView.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAccountView.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractContractWithoutTextEditUI.this, "ActionAccountView", "actionAccountView_actionPerformed", e);
         }
     }
 
