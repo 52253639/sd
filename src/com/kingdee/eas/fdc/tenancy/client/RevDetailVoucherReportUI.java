@@ -63,6 +63,7 @@ import com.kingdee.eas.fdc.sellhouse.client.PrePurchaseManageListUI;
 import com.kingdee.eas.fdc.sellhouse.client.PurchaseManageListUI;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SignManageListUI;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantCollection;
 import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysCollection;
 import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysFactory;
 import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysInfo;
@@ -412,11 +413,9 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			FDCMsgBox.showWarning(this, EASResource.getString(FrameWorkClientUtils.strResource + "Msg_MustSelected"));
 			return;
 		}
-		FeesWarrantInfo info=new FeesWarrantInfo();
-		info.setId(BOSUuid.create(info.getBOSType()));
-         
-        String mdName="";
-        Set conIdSet=new HashSet();
+		FeesWarrantCollection col=new FeesWarrantCollection();
+		
+        Map conMap=new HashMap();
         
         int year=params.getInt("year");
         int month=params.getInt("month");
@@ -434,20 +433,29 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 				continue;
 			}
 			
-			SellProjectInfo sp=new SellProjectInfo();
-			sp.setId(BOSUuid.read(row.getCell("spId").getValue().toString()));
-			info.setSellProject(sp);
-			info.setNumber(year+"年"+month+"月－"+row.getCell("conName").getValue().toString());
-	        info.setName(year+"年"+month+"月－"+row.getCell("conName").getValue().toString());
-	        
+			String conId=row.getCell("conId").getValue().toString();
+			String mdName=row.getCell("moneyDefine").getValue().toString()+";";
+			
+			FeesWarrantInfo info=null;
+			if(conMap.get(conId)!=null){
+				info=(FeesWarrantInfo) conMap.get(conId);
+				
+				info.setNumber(info.getNumber()+mdName);
+			    info.setName(info.getName()+mdName);
+			}else{
+				info=new FeesWarrantInfo();
+				info.setId(BOSUuid.create(info.getBOSType()));
+				SellProjectInfo sp=new SellProjectInfo();
+				sp.setId(BOSUuid.read(row.getCell("spId").getValue().toString()));
+				info.setSellProject(sp);
+				info.setNumber(year+"年"+month+"月－"+row.getCell("conName").getValue().toString()+"："+mdName);
+		        info.setName(year+"年"+month+"月－"+row.getCell("conName").getValue().toString()+"："+mdName);
+		        
+				conMap.put(conId, info);
+				col.add(info);
+			}
 			FeesWarrantEntrysInfo entry=new FeesWarrantEntrysInfo();
 			
-			String conId=row.getCell("conId").getValue().toString();
-			conIdSet.add(conId);
-			if(conIdSet.size()>1){
-				FDCMsgBox.showWarning(this,"请选择同一租赁合同！");
-				return;
-			}
 			TenancyBillInfo ten=new TenancyBillInfo();
 			ten.setId(BOSUuid.read(conId));
 			entry.setTenancyBill(ten);
@@ -464,20 +472,15 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			FDCCustomerInfo customer=new FDCCustomerInfo();
 			customer.setId(BOSUuid.read(row.getCell("customerId").getValue().toString()));
 			entry.setCustomer(customer);
-			
-			mdName=mdName+row.getCell("moneyDefine").getValue().toString()+";";
-			
 			entry.setAppAmount((BigDecimal) row.getCell(year+"Y"+month+"M"+"appAmount").getValue());
-			
 			entry.setAppDate(curEndDate);
 			
 			info.getFeesWarrantEntry().add(entry);
 		}
-		if(info.getFeesWarrantEntry().size()>0){
-			info.setNumber(info.getNumber()+"："+mdName);
-	        info.setName(info.getName()+"："+mdName);
-	        
-			FeesWarrantFactory.getRemoteInstance().submit(info);
+		if(col.size()>0){
+			for(int i=0;i<col.size();i++){
+				FeesWarrantFactory.getRemoteInstance().submit(col.get(i));
+			}
 			FDCClientUtils.showOprtOK(this);
 			this.query();
 		}else{

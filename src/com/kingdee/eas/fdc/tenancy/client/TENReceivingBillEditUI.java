@@ -181,6 +181,11 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 		this.tblEntry.getColumn("stleCount").getStyleAttributes().setHided(true);
 		
 		this.f7FdcCustomers.setEnabled(true);
+		
+		this.actionPre.setVisible(false);
+		this.actionNext.setVisible(false);
+		this.actionFirst.setVisible(false);
+		this.actionLast.setVisible(false);
 	}
 	
 	protected void comboRevBillType_itemStateChanged(ItemEvent e)

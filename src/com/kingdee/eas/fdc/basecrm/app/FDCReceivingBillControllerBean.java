@@ -1261,6 +1261,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		IORMappingDAO iReceiving = ORMappingDAO.getInstance(new ReceivingBillInfo().getBOSType(), ctx, getConnection(ctx));
 		IORMappingDAO iPay = ORMappingDAO.getInstance(new PaymentBillInfo().getBOSType(), ctx, getConnection(ctx));
 		
+		ReceivingBillInfo rev=null;
 		for (int i = 0; i < collection.size(); i++) {
 			FDCReceivingBillCollection billColl = null;
 			String id = collection.get(i).getId().toString();
@@ -1515,6 +1516,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							
 							receBillEntry.add(receBillEntryInfo);
 						}
+						rev=receivingBillInfo;
 						iReceiving.addNewBatch(receivingBillInfo);
 					}
 				}
@@ -1530,6 +1532,12 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		builder.appendParam("fid", updateIdSet.toArray());
 		
 		iReceiving.executeBatch();
+		
+		ReceivingBillFactory.getLocalInstance(ctx).submit(rev);
+		Set revId=new HashSet();
+		revId.add(rev.getId().toString());
+		ReceivingBillFactory.getLocalInstance(ctx).audit(revId);
+		ReceivingBillFactory.getLocalInstance(ctx).rec(revId);
 		builder.execute();
 	}
 	
