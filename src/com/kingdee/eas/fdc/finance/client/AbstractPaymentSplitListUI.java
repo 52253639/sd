@@ -242,17 +242,17 @@ public abstract class AbstractPaymentSplitListUI extends com.kingdee.eas.fdc.bas
         this.menuItemNoTextNoCost.setName("menuItemNoTextNoCost");
         this.menuItemClearSplit.setName("menuItemClearSplit");
         // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol3\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol15\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol16\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol17\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol18\"><c:NumberFormat>YYYY-MM-DD</c:NumberFormat></c:Style><c:Style id=\"sCol20\"><c:NumberFormat>YYYY-MM-DD</c:NumberFormat></c:Style><c:Style id=\"sCol27\"><c:NumberFormat>YYYY-MM-DD</c:NumberFormat></c:Style><c:Style id=\"sCol28\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol29\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol30\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol31\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"isContractWithoutText\" t:width=\"69\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"contractBill.isCostSplit\" t:width=\"59\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"costSplit.splitState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"costSplit.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol3\" /><t:Column t:key=\"billStatus\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"fdcPayType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"fiVouchered\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"voucherRefer\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"fdcPayReqNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"contractBill.number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"contractBill.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"contractBill.bookedDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"contractBill.auditTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"currency.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /><t:Column t:key=\"exchangeRate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" t:styleID=\"sCol16\" /><t:Column t:key=\"localAmt\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" t:styleID=\"sCol17\" /><t:Column t:key=\"payDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" t:styleID=\"sCol18\" /><t:Column t:key=\"costCreator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" /><t:Column t:key=\"costSplit.createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" t:styleID=\"sCol20\" /><t:Column t:key=\"fdcPayeeName.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" /><t:Column t:key=\"actFdcPayeeName.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" /><t:Column t:key=\"summary\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" /><t:Column t:key=\"payeeBank\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" /><t:Column t:key=\"payeeAccountBank\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" /><t:Column t:key=\"costAuditor.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"26\" /><t:Column t:key=\"costSplit.auditTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"27\" t:styleID=\"sCol27\" /><t:Column t:key=\"curProject.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"28\" t:styleID=\"sCol28\" /><t:Column t:key=\"contractId\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"29\" t:styleID=\"sCol29\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"30\" t:styleID=\"sCol30\" /><t:Column t:key=\"curProject.isEnabled\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"31\" t:styleID=\"sCol31\" /><t:Column t:key=\"costSplit.state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"32\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{isContractWithoutText}</t:Cell><t:Cell>$Resource{contractBill.isCostSplit}</t:Cell><t:Cell>$Resource{costSplit.splitState}</t:Cell><t:Cell>$Resource{costSplit.id}</t:Cell><t:Cell>$Resource{billStatus}</t:Cell><t:Cell>$Resource{fdcPayType}</t:Cell><t:Cell>$Resource{fiVouchered}</t:Cell><t:Cell>$Resource{voucherRefer}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{fdcPayReqNumber}</t:Cell><t:Cell>$Resource{contractBill.number}</t:Cell><t:Cell>$Resource{contractBill.name}</t:Cell><t:Cell>$Resource{contractBill.bookedDate}</t:Cell><t:Cell>$Resource{contractBill.auditTime}</t:Cell><t:Cell>$Resource{currency.name}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{exchangeRate}</t:Cell><t:Cell>$Resource{localAmt}</t:Cell><t:Cell>$Resource{payDate}</t:Cell><t:Cell>$Resource{costCreator.name}</t:Cell><t:Cell>$Resource{costSplit.createTime}</t:Cell><t:Cell>$Resource{fdcPayeeName.name}</t:Cell><t:Cell>$Resource{actFdcPayeeName.name}</t:Cell><t:Cell>$Resource{summary}</t:Cell><t:Cell>$Resource{payeeBank}</t:Cell><t:Cell>$Resource{payeeAccountBank}</t:Cell><t:Cell>$Resource{costAuditor.name}</t:Cell><t:Cell>$Resource{costSplit.auditTime}</t:Cell><t:Cell>$Resource{curProject.id}</t:Cell><t:Cell>$Resource{contractId}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{curProject.isEnabled}</t:Cell><t:Cell>$Resource{costSplit.state}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol16\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol17\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol18\"><c:NumberFormat>###,##0.00</c:NumberFormat><c:Alignment horizontal=\"right\" /></c:Style><c:Style id=\"sCol19\"><c:NumberFormat>YYYY-MM-DD</c:NumberFormat></c:Style><c:Style id=\"sCol21\"><c:NumberFormat>YYYY-MM-DD</c:NumberFormat></c:Style><c:Style id=\"sCol28\"><c:NumberFormat>YYYY-MM-DD</c:NumberFormat></c:Style><c:Style id=\"sCol29\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol30\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol31\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol32\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"isContractWithoutText\" t:width=\"69\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" /><t:Column t:key=\"contractBill.isCostSplit\" t:width=\"59\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"costSplit.splitState\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"contractBill.contractType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"costSplit.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" t:styleID=\"sCol4\" /><t:Column t:key=\"billStatus\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"fdcPayType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"fiVouchered\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"voucherRefer\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"fdcPayReqNumber\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"contractBill.number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"contractBill.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"contractBill.bookedDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"contractBill.auditTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"currency.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" t:styleID=\"sCol16\" /><t:Column t:key=\"exchangeRate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" t:styleID=\"sCol17\" /><t:Column t:key=\"localAmt\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" t:styleID=\"sCol18\" /><t:Column t:key=\"payDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" t:styleID=\"sCol19\" /><t:Column t:key=\"costCreator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" /><t:Column t:key=\"costSplit.createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"21\" t:styleID=\"sCol21\" /><t:Column t:key=\"fdcPayeeName.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"22\" /><t:Column t:key=\"actFdcPayeeName.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"23\" /><t:Column t:key=\"summary\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"24\" /><t:Column t:key=\"payeeBank\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"25\" /><t:Column t:key=\"payeeAccountBank\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"26\" /><t:Column t:key=\"costAuditor.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"27\" /><t:Column t:key=\"costSplit.auditTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"28\" t:styleID=\"sCol28\" /><t:Column t:key=\"curProject.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"29\" t:styleID=\"sCol29\" /><t:Column t:key=\"contractId\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"30\" t:styleID=\"sCol30\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"31\" t:styleID=\"sCol31\" /><t:Column t:key=\"curProject.isEnabled\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"32\" t:styleID=\"sCol32\" /><t:Column t:key=\"costSplit.state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"33\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{isContractWithoutText}</t:Cell><t:Cell>$Resource{contractBill.isCostSplit}</t:Cell><t:Cell>$Resource{costSplit.splitState}</t:Cell><t:Cell>$Resource{contractBill.contractType}</t:Cell><t:Cell>$Resource{costSplit.id}</t:Cell><t:Cell>$Resource{billStatus}</t:Cell><t:Cell>$Resource{fdcPayType}</t:Cell><t:Cell>$Resource{fiVouchered}</t:Cell><t:Cell>$Resource{voucherRefer}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{fdcPayReqNumber}</t:Cell><t:Cell>$Resource{contractBill.number}</t:Cell><t:Cell>$Resource{contractBill.name}</t:Cell><t:Cell>$Resource{contractBill.bookedDate}</t:Cell><t:Cell>$Resource{contractBill.auditTime}</t:Cell><t:Cell>$Resource{currency.name}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{exchangeRate}</t:Cell><t:Cell>$Resource{localAmt}</t:Cell><t:Cell>$Resource{payDate}</t:Cell><t:Cell>$Resource{costCreator.name}</t:Cell><t:Cell>$Resource{costSplit.createTime}</t:Cell><t:Cell>$Resource{fdcPayeeName.name}</t:Cell><t:Cell>$Resource{actFdcPayeeName.name}</t:Cell><t:Cell>$Resource{summary}</t:Cell><t:Cell>$Resource{payeeBank}</t:Cell><t:Cell>$Resource{payeeAccountBank}</t:Cell><t:Cell>$Resource{costAuditor.name}</t:Cell><t:Cell>$Resource{costSplit.auditTime}</t:Cell><t:Cell>$Resource{curProject.id}</t:Cell><t:Cell>$Resource{contractId}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{curProject.isEnabled}</t:Cell><t:Cell>$Resource{costSplit.state}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
-                this.tblMain.putBindContents("mainQuery",new String[] {"isContractWithoutText","contractBill.isCostSplit","costSplit.splitState","costSplit.id","billStatus","fdcPayType.name","costSplit.Fivouchered","voucherRefer","number","fdcPayReqNumber","contractBill.number","contractBill.name","contractBill.bookedDate","contractBill.auditTime","currency.name","amount","exchangeRate","localAmt","payDate","costCreator.name","costSplit.createTime","fdcPayeeName.name","actFdcPayeeName.name","summary","payeeBank","payeeAccountBank","costAuditor.name","costSplit.auditTime","curProject.id","contractId","id","curProject.isEnabled","costSplit.state"});
+                this.tblMain.putBindContents("mainQuery",new String[] {"isContractWithoutText","contractBill.isCostSplit","costSplit.splitState","contractBill.contractType","costSplit.id","billStatus","fdcPayType.name","costSplit.Fivouchered","voucherRefer","number","fdcPayReqNumber","contractBill.number","contractBill.name","contractBill.bookedDate","contractBill.auditTime","currency.name","amount","exchangeRate","localAmt","payDate","costCreator.name","costSplit.createTime","fdcPayeeName.name","actFdcPayeeName.name","summary","payeeBank","payeeAccountBank","costAuditor.name","costSplit.auditTime","curProject.id","contractId","id","curProject.isEnabled","costSplit.state"});
 
 
         this.tblMain.checkParsed();
         this.tblMain.getGroupManager().setGroup(true);		
+        this.btnTraceDown.setVisible(true);		
         this.btnVoucher.setVisible(true);		
         this.btnDelVoucher.setVisible(true);		
-        this.btnTraceDown.setVisible(true);		
         this.menuItemTraceDown.setVisible(true);		
         this.menuItemVoucher.setVisible(true);		
         this.menuItemDelVoucher.setVisible(true);
@@ -403,10 +403,14 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(menuItemImportData);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemExportData);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(separatorFile1);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(MenuItemAttachment);
         menuFile.add(kDSeparator1);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
@@ -438,8 +442,8 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
         menuView.add(menuItemSwitchView);
         menuView.add(menuItemTraceUp);
         menuView.add(menuItemTraceDown);
-        menuView.add(menuItemQueryScheme);
         menuView.add(kDSeparator6);
+        menuView.add(menuItemQueryScheme);
         menuView.add(menuItemViewPayment);
         menuView.add(menuItemViewContract);
         //menuBiz
@@ -467,6 +471,7 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkFlow
         menuWorkFlow.add(menuItemViewDoProccess);
         menuWorkFlow.add(menuItemMultiapprove);
@@ -502,8 +507,11 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnView);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnCostSplit);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnEdit);
         this.toolBar.add(btnRemove);
         this.toolBar.add(btnRefresh);
@@ -529,6 +537,7 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
         this.toolBar.add(btnTraceUp);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(btnWorkFlowG);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(btnTraceDown);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnWFViewdoProccess);
@@ -651,40 +660,10 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
         super.setOprtState(oprtType);
     }
 
-			public SelectorItemCollection getBOTPSelectors() {
+	public SelectorItemCollection getBOTPSelectors() {
 			SelectorItemCollection sic = new SelectorItemCollection();
-			sic.add(new SelectorItemInfo("*"));
-			sic.add(new SelectorItemInfo("creator.*"));
-			sic.add(new SelectorItemInfo("lastUpdateUser.*"));
-			sic.add(new SelectorItemInfo("CU.*"));
-			sic.add(new SelectorItemInfo("handler.*"));
-			sic.add(new SelectorItemInfo("auditor.*"));
-			sic.add(new SelectorItemInfo("orgUnit.*"));
-			sic.add(new SelectorItemInfo("period.*"));
-			sic.add(new SelectorItemInfo("contractBill.*"));
-			sic.add(new SelectorItemInfo("curProject.*"));
-			sic.add(new SelectorItemInfo("entrys.*"));
-			sic.add(new SelectorItemInfo("entrys.costAccount.*"));
-			sic.add(new SelectorItemInfo("entrys.product.*"));
-			sic.add(new SelectorItemInfo("entrys.apportionType.*"));
-			sic.add(new SelectorItemInfo("entrys.accountView.*"));
-			sic.add(new SelectorItemInfo("paymentBill.*"));
-			sic.add(new SelectorItemInfo("beAccount.*"));
-			sic.add(new SelectorItemInfo("hisStatus.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.bankAccount.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.accountView.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.currency.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.paymentBill.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.payRequestBill.*"));
-			sic.add(new SelectorItemInfo("voucherEntrys.transitAccount.*"));
-			sic.add(new SelectorItemInfo("hisVoucher.*"));
-			sic.add(new SelectorItemInfo("contractBaseData.*"));
-			sic.add(new SelectorItemInfo("transitAccount.*"));
-			sic.add(new SelectorItemInfo("conWithoutText.*"));
-			sic.add(new SelectorItemInfo("workLoadConfirmBill.*"));
 			return sic;
-		}
+	}
 
     /**
      * output getSelectors method
@@ -692,6 +671,10 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("id"));
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("amount"));
@@ -725,8 +708,19 @@ mainPanel.setLayout(new BorderLayout(0, 0));        mainPanel.add(tblMain, Borde
         sic.add(new SelectorItemInfo("voucherRefer"));
         sic.add(new SelectorItemInfo("contractBill.auditTime"));
         sic.add(new SelectorItemInfo("contractBill.bookedDate"));
+        sic.add(new SelectorItemInfo("contractBill.contractType"));
         return sic;
-    }        
+    }            protected java.util.List getQuerySorterFields() 
+    { 
+        java.util.List sorterFieldList = new ArrayList(); 
+        return sorterFieldList; 
+    } 
+    protected java.util.List getQueryPKFields() 
+    { 
+        java.util.List pkList = new ArrayList(); 
+        pkList.add("id"); 
+        return pkList;
+    }
     	
 
     /**

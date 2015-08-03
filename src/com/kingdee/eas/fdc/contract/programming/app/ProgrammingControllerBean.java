@@ -304,11 +304,11 @@ public class ProgrammingControllerBean extends AbstractProgrammingControllerBean
 					ContractWithoutTextFactory.getLocalInstance(ctx).synUpdateProgramming(wcol.get(0).getId().toString(), entry);
 				}
 				if(col.size()==0&&wcol.size()==0&&!entry.getId().toString().equals(srcId)){
-						idsql = new StringBuffer();
-						idsql.append("update T_CON_ProgrammingContract set fid ='"+srcId+"',fbudgetAmount=famount where fid = '").append(entry.getId().toString()).append("'");
-						fdcSB.addBatch(idsql.toString());
-					}
+					idsql = new StringBuffer();
+					idsql.append("update T_CON_ProgrammingContract set fid ='"+srcId+"',fisCiting=0,fisWTCiting=0,fbudgetAmount=famount where fid = '").append(entry.getId().toString()).append("'");
+					fdcSB.addBatch(idsql.toString());
 				}
+			}
 		}
 		fdcSB.executeBatch();
 	}

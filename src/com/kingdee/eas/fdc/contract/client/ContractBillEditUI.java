@@ -3583,11 +3583,11 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		Object obj = txtExRate.getValue();
 
 		//该合同已经进行了拆分，不能进行修改
-		if (editData.getSplitState() != null
-				&& !CostSplitStateEnum.NOSPLIT.equals(editData.getSplitState())) {
-			MsgBox.showWarning(this, "该合同已经进行了拆分，不能进行修改");
-			SysUtil.abort();
-		}
+//		if (editData.getSplitState() != null
+//				&& !CostSplitStateEnum.NOSPLIT.equals(editData.getSplitState())) {
+//			MsgBox.showWarning(this, "该合同已经进行了拆分，不能进行修改");
+//			SysUtil.abort();
+//		}
 
 		super.actionEdit_actionPerformed(e);
 		txtCreator.setEnabled(false);

@@ -243,6 +243,32 @@
                 <key name="name" value="PaymentType" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>contractType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[contractType].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="ContractType" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>wtContractType</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[wtContractType].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.basedata.app" />
+                <key name="name" value="ContractType" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <queryField>
@@ -280,6 +306,49 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="splitState" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>contractBill.contractType</name>
+            <userDefined>true</userDefined>
+            <formulaString>ISNULL ( #0 , #1 )</formulaString>
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.contractType].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>aeea0bbf-cfc9-499f-ae24-79f71b4cb972</key>
+                    <parentUnit>
+                        <key name="name" value="contractBill.contractType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="wtContractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+                <propertyRef>
+                    <key>0e4bb3e0-dd89-495a-b606-6068eba3ea42</key>
+                    <parentUnit>
+                        <key name="name" value="contractBill.contractType" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -2705,6 +2774,130 @@
                 <key name="name" value="PaymentSplitQuery" />
             </query>
         </propertyUnit>
+        <propertyUnit>
+            <name>e5b62d18-aa07-42ea-a4ca-34c0c3fea3c4</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[e5b62d18-aa07-42ea-a4ca-34c0c3fea3c4].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>d273c8c5-3515-43a8-be32-5eb7a6d69565</key>
+                    <parentUnit>
+                        <key name="name" value="e5b62d18-aa07-42ea-a4ca-34c0c3fea3c4" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contractType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>433d70e4-9257-407f-89e4-c878e204e348</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[433d70e4-9257-407f-89e4-c878e204e348].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>79a8685b-9e46-4202-8790-2dcb56b5a33e</key>
+                    <parentUnit>
+                        <key name="name" value="433d70e4-9257-407f-89e4-c878e204e348" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>6f108db9-119a-4220-bd54-640683206ea3</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[6f108db9-119a-4220-bd54-640683206ea3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>107f431b-e499-4624-8cc6-21fc5b768563</key>
+                    <parentUnit>
+                        <key name="name" value="6f108db9-119a-4220-bd54-640683206ea3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="contractWithouText" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="contractType" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>819cce88-eee3-4543-8a59-1bdc58570a1a</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[819cce88-eee3-4543-8a59-1bdc58570a1a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>55ed764d-f43e-4f47-8b5a-246f8a3e924c</key>
+                    <parentUnit>
+                        <key name="name" value="819cce88-eee3-4543-8a59-1bdc58570a1a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="wtContractType" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </propertyUnit>
     </units>
     <defaultFilter>
         <name>defaultFilter</name>
@@ -3236,805 +3429,917 @@
                 <key name="name" value="PaymentSplitQuery" />
             </query>
         </join>
+        <join>
+            <name>94e56dfb-58c5-4c0c-b706-bba121145c9a</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="contractBill" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="contractType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>539e40f4-7861-49ff-804f-d71c82b2e640</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="e5b62d18-aa07-42ea-a4ca-34c0c3fea3c4" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="433d70e4-9257-407f-89e4-c878e204e348" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="94e56dfb-58c5-4c0c-b706-bba121145c9a" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </join>
+        <join>
+            <name>1faa5ee2-ecde-419f-ba82-14e9d9d507cf</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="contractWithouText" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="wtContractType" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>3c020754-dc47-4f65-9fda-53f7544b2fab</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="6f108db9-119a-4220-bd54-640683206ea3" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="819cce88-eee3-4543-8a59-1bdc58570a1a" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="1faa5ee2-ecde-419f-ba82-14e9d9d507cf" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.finance.app" />
+                <key name="name" value="PaymentSplitQuery" />
+            </query>
+        </join>
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].alias">
-            <lang locale="zh_CN" value="付款单查询" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="付款单查询" />
             <lang locale="zh_HK" value="付款單查詢" />
             <lang locale="zh_TW" value="付款單查詢" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].queryPK[QueryPK].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].queryPK[QueryPK].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[PaymentBill].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[actFdcPayeeName].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[auditor].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[company].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[contractBill].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[contractType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[contractWithouText].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[costAuditor].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[costCreator].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[costSplit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[creator].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[curProject].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[currency].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[fdcPayType].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[fdcPayeeName].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[noCostSplit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[nocostAuditor].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[nocostCreator].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[settlementType].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].subObjects.subEntity[wtContractType].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[080ed340-d30e-4d2a-a9a5-c225f8c67670].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[0b9fbd3c-e2bb-42d6-ae9e-b8fe9c42971e].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[433d70e4-9257-407f-89e4-c878e204e348].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[517610c3-c74a-4459-9755-b64881848b16].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[523add77-1a51-4e27-a4fa-1ad214180a18].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[6f108db9-119a-4220-bd54-640683206ea3].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[715026a5-0fe1-4c9c-ad84-710448744602].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[819cce88-eee3-4543-8a59-1bdc58570a1a].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[82ace639-c543-49d9-8a94-a0fafb4020f8].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni10].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni11].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni12].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni13].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni14].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni15].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni19].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni20].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni21].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni22].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni25].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni26].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni27].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni28].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni29].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni30].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni31].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUni32].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit0].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit1].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit2].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit3].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit4].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit5].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit6].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit7].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit8].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[NewUnit9].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[c07c38ec-bd1c-46e6-8de0-927c31a9d282].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[ca17aac5-0118-1000-e000-0211c0a812a1].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[ca17aac5-0118-1000-e000-0212c0a812a1].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[e117cb07-74dd-4df4-a7fe-6d530efb81f6].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.propertyUnit[e5b62d18-aa07-42ea-a4ca-34c0c3fea3c4].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[actFdcPayeeName.name].displayName">
-            <lang locale="zh_CN" value="实际收款单位" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="实际收款单位" />
             <lang locale="zh_HK" value="實際收款單位" />
             <lang locale="zh_TW" value="實際收款單位" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[actFdcPayeeName.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[actFdcPayeeName.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[amount].displayName">
-            <lang locale="zh_CN" value="原币金额" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="原币金额" />
             <lang locale="zh_HK" value="原幣金額" />
             <lang locale="zh_TW" value="原幣金額" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[amount].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[amount].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[billStatus].displayName">
-            <lang locale="zh_CN" value="付款单状态" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="付款单状态" />
             <lang locale="zh_HK" value="付款單狀態" />
             <lang locale="zh_TW" value="付款單狀態" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[billStatus].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[billStatus].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[company.name].displayName">
-            <lang locale="zh_CN" value="名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="名称" />
             <lang locale="zh_HK" value="名稱" />
             <lang locale="zh_TW" value="名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.auditTime].displayName">
-            <lang locale="zh_CN" value="合同审批日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同审批日期" />
             <lang locale="zh_HK" value="合同審批日期" />
             <lang locale="zh_TW" value="合同審批日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.auditTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.auditTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.bookedDate].displayName">
-            <lang locale="zh_CN" value="合同业务日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同业务日期" />
             <lang locale="zh_HK" value="合同業務日期" />
             <lang locale="zh_TW" value="合同業務日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.bookedDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.bookedDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.conSplitExecState].displayName">
-            <lang locale="zh_CN" value="待处理状态" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="待处理状态" />
             <lang locale="zh_HK" value="待處理狀態" />
             <lang locale="zh_TW" value="待處理狀態" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.isCostSplit].displayName">
-            <lang locale="zh_CN" value="是否成本拆分" />
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.contractType].displayName">
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同类型" />
+            <lang locale="zh_HK" value="合同類型" />
+            <lang locale="zh_TW" value="合同類型" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.contractType].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.contractType].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.isCostSplit].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否成本拆分" />
             <lang locale="zh_HK" value="是否成本拆分" />
             <lang locale="zh_TW" value="是否成本拆分" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.name].displayName">
-            <lang locale="zh_CN" value="名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="名称" />
             <lang locale="zh_HK" value="名稱" />
             <lang locale="zh_TW" value="名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractBill.number].displayName">
-            <lang locale="zh_CN" value="单据编号" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单据编号" />
             <lang locale="zh_HK" value="單據編號" />
             <lang locale="zh_TW" value="單據編號" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[contractId].displayName">
-            <lang locale="zh_CN" value="合同Id" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="合同Id" />
             <lang locale="zh_HK" value="合同Id" />
             <lang locale="zh_TW" value="合同Id" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costAuditor.name].displayName">
-            <lang locale="zh_CN" value="审批人" />
             <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="审批人" />
             <lang locale="zh_HK" value="審批人" />
             <lang locale="zh_TW" value="審批人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costAuditor.name].extendedProperty.displayFormat">
+            <lang locale="en_US" value="$name$" />
             <lang locale="zh_CN" value="$name$" />
             <lang locale="zh_TW" value="$name$" />
-            <lang locale="en_US" value="$name$" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costAuditor.name].extendedProperty.editFormat">
+            <lang locale="en_US" value="$name$" />
             <lang locale="zh_CN" value="$name$" />
             <lang locale="zh_TW" value="$name$" />
-            <lang locale="en_US" value="$name$" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costAuditor.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costAuditor.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costAuditor.name].extendedProperty.isUsingF7">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costCreator.name].displayName">
-            <lang locale="zh_CN" value="制单人" />
             <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="制单人" />
             <lang locale="zh_HK" value="制單人" />
             <lang locale="zh_TW" value="制單人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costCreator.name].extendedProperty.displayFormat">
+            <lang locale="en_US" value="$name$" />
             <lang locale="zh_CN" value="$name$" />
             <lang locale="zh_TW" value="$name$" />
-            <lang locale="en_US" value="$name$" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costCreator.name].extendedProperty.editFormat">
+            <lang locale="en_US" value="$name$" />
             <lang locale="zh_CN" value="$name$" />
             <lang locale="zh_TW" value="$name$" />
-            <lang locale="en_US" value="$name$" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costCreator.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costCreator.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costCreator.name].extendedProperty.isUsingF7">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.Fivouchered].displayName">
-            <lang locale="zh_CN" value="是否生成凭证" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否生成凭证" />
             <lang locale="zh_HK" value="是否生成憑證" />
             <lang locale="zh_TW" value="是否生成憑證" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.auditTime].displayName">
-            <lang locale="zh_CN" value="审批日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="审批日期" />
             <lang locale="zh_HK" value="審批日期" />
             <lang locale="zh_TW" value="審批日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.auditTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.auditTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.createTime].displayName">
-            <lang locale="zh_CN" value="制单日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="制单日期" />
             <lang locale="zh_HK" value="制單日期" />
             <lang locale="zh_TW" value="制單日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.createTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.createTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.splitState].displayName">
-            <lang locale="zh_CN" value="拆分状态" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="拆分状态" />
             <lang locale="zh_HK" value="拆分狀態" />
             <lang locale="zh_TW" value="拆分狀態" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.splitState].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.splitState].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[costSplit.state].displayName">
-            <lang locale="zh_CN" value="单据状态" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="单据状态" />
             <lang locale="zh_HK" value="單據狀態" />
             <lang locale="zh_TW" value="單據狀態" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[curProject.id].displayName">
-            <lang locale="zh_CN" value="工程项目ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="工程项目ID" />
             <lang locale="zh_HK" value="工程項目ID" />
             <lang locale="zh_TW" value="工程項目ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[curProject.isEnabled].displayName">
-            <lang locale="zh_CN" value="启用" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="启用" />
             <lang locale="zh_HK" value="啟用" />
             <lang locale="zh_TW" value="啟用" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[currency.name].displayName">
-            <lang locale="zh_CN" value="币别" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="币别" />
             <lang locale="zh_HK" value="幣別" />
             <lang locale="zh_TW" value="幣別" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[currency.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[currency.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[exchangeRate].displayName">
-            <lang locale="zh_CN" value="汇率" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="汇率" />
             <lang locale="zh_HK" value="匯率" />
             <lang locale="zh_TW" value="匯率" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[fdcPayReqNumber].displayName">
-            <lang locale="zh_CN" value="付款申请单编码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="付款申请单编码" />
             <lang locale="zh_HK" value="付款申請單編碼" />
             <lang locale="zh_TW" value="付款申請單編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[fdcPayReqNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[fdcPayType.name].displayName">
-            <lang locale="zh_CN" value="名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="名称" />
             <lang locale="zh_HK" value="名稱" />
             <lang locale="zh_TW" value="名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[fdcPayeeName.name].displayName">
-            <lang locale="zh_CN" value="收款单位" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="收款单位" />
             <lang locale="zh_HK" value="收款單位" />
             <lang locale="zh_TW" value="收款單位" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[fdcPayeeName.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[fdcPayeeName.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[isContractWithoutText].displayName">
+            <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="" />
             <lang locale="zh_TW" value="null" />
-            <lang locale="en_US" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[localAmt].displayName">
-            <lang locale="zh_CN" value="本位币金额" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="本位币金额" />
             <lang locale="zh_HK" value="本位幣金額" />
             <lang locale="zh_TW" value="本位幣金額" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[localAmt].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[localAmt].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[number].displayName">
-            <lang locale="zh_CN" value="付款单编码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="付款单编码" />
             <lang locale="zh_HK" value="付款單編碼" />
             <lang locale="zh_TW" value="付款單編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[number].extendedProperty.displayFormat">
+            <lang locale="en_US" value="$number$" />
             <lang locale="zh_CN" value="$number$" />
             <lang locale="zh_TW" value="$number$" />
-            <lang locale="en_US" value="$number$" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[number].extendedProperty.editFormat">
+            <lang locale="en_US" value="$number$" />
             <lang locale="zh_CN" value="$number$" />
             <lang locale="zh_TW" value="$number$" />
-            <lang locale="en_US" value="$number$" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[number].extendedProperty.isUsingF7">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payDate].displayName">
-            <lang locale="zh_CN" value="付款日期" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="付款日期" />
             <lang locale="zh_HK" value="付款日期" />
             <lang locale="zh_TW" value="付款日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payeeAccountBank].displayName">
-            <lang locale="zh_CN" value="收款账户" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="收款账户" />
             <lang locale="zh_HK" value="收款賬戶" />
             <lang locale="zh_TW" value="收款賬戶" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payeeAccountBank].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payeeAccountBank].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payeeBank].displayName">
-            <lang locale="zh_CN" value="收款银行" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="收款银行" />
             <lang locale="zh_HK" value="收款銀行" />
             <lang locale="zh_TW" value="收款銀行" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payeeBank].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[payeeBank].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[summary].displayName">
-            <lang locale="zh_CN" value="付款说明" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="付款说明" />
             <lang locale="zh_HK" value="付款說明" />
             <lang locale="zh_TW" value="付款說明" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[summary].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[test].displayName">
-            <lang locale="zh_CN" value="判断是否是合同" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="判断是否是合同" />
             <lang locale="zh_HK" value="判斷是否是合同" />
             <lang locale="zh_TW" value="判斷是否是合同" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.finance.app.PaymentSplitQuery].units.queryField[voucherRefer].displayName">
-            <lang locale="zh_CN" value="是否引用" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否引用" />
             <lang locale="zh_HK" value="是否引用" />
             <lang locale="zh_TW" value="是否引用" />
         </rs>

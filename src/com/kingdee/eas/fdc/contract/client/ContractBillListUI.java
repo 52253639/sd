@@ -1293,10 +1293,10 @@ protected void tblMain_tableSelectChanged(
 		}
 		
 		//该合同已经进行了拆分，不能进行修改
-		if(contractBillInfo.getSplitState()!=null && !CostSplitStateEnum.NOSPLIT.equals(contractBillInfo.getSplitState())){
-			MsgBox.showWarning(this, "该合同已经进行了拆分，不能进行修改");
-			SysUtil.abort();
-		}
+//		if(contractBillInfo.getSplitState()!=null && !CostSplitStateEnum.NOSPLIT.equals(contractBillInfo.getSplitState())){
+//			MsgBox.showWarning(this, "该合同已经进行了拆分，不能进行修改");
+//			SysUtil.abort();
+//		}
     }
     
 	protected void checkBeforeCancel() throws Exception {
