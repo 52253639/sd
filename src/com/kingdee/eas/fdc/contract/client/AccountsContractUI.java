@@ -27,10 +27,12 @@ import javax.swing.tree.TreeNode;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.data.event.RequestRowSetEvent;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
+import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.query.SQLExecutorFactory;
@@ -63,6 +65,7 @@ import com.kingdee.eas.fdc.aimcost.FullDynamicCostMap;
 import com.kingdee.eas.fdc.aimcost.HappenDataGetter;
 import com.kingdee.eas.fdc.aimcost.HappenDataInfo;
 import com.kingdee.eas.fdc.aimcost.ProjectCostRptFacadeFactory;
+import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.AcctAccreditHelper;
 import com.kingdee.eas.fdc.basedata.ApportionTypeInfo;
 import com.kingdee.eas.fdc.basedata.ChangeTypeCollection;
@@ -81,6 +84,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCConstants;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCNumberHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.ICostAccount;
 import com.kingdee.eas.fdc.basedata.ParamValue;
 import com.kingdee.eas.fdc.basedata.ProjectHelper;
@@ -107,6 +111,13 @@ import com.kingdee.eas.fdc.contract.IContractCostSplitEntry;
 import com.kingdee.eas.fdc.contract.IPayRequestBill;
 import com.kingdee.eas.fdc.contract.PayRequestBillCollection;
 import com.kingdee.eas.fdc.contract.PayRequestBillFactory;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContracCostCollection;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContracCostFactory;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContractCollection;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContractFactory;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingContractInfo;
+import com.kingdee.eas.fdc.contract.programming.app.ProgrammingController;
+import com.kingdee.eas.fdc.contract.programming.client.ProgrammingContractEditUI;
 import com.kingdee.eas.fdc.finance.FDCBudgetAcctHelper;
 import com.kingdee.eas.fdc.finance.IPaymentSplitEntry;
 import com.kingdee.eas.fdc.finance.PaymentSplitEntryCollection;
@@ -201,59 +212,39 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				tblMain.getViewManager().freeze(0, acctNameIndex);
 		}});
 		FDCClientHelper.setUIMainMenuAsTitle(this);
-		//初始化新增列的显示格式
-		this.tblMain.getColumn("aimCost").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("dyCost").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("diff").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("hasHappen").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("indentingHappen").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("lastPrice").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("totalSettPrice").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("allNotPaid").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("payPercent").getStyleAttributes().setNumberFormat(
-				FDCHelper.getNumberFtm(2));
 		
-		//by Cassiel_peng
-		this.tblMain.getColumn("settSplitAmt").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("paymentSplitAmt").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		this.tblMain.getColumn("changeSplitAmt").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		FDCHelper.formatTableNumber(getMainTable(), "settSplitAmt");
-		FDCHelper.formatTableNumber(getMainTable(), "hasPayCostAmt");
-		FDCHelper.formatTableNumber(getMainTable(), "paymentSplitAmt");
-		FDCHelper.formatTableNumber(getMainTable(), "changeSplitAmt");
+		CRMClientHelper.changeTableNumberFormat(this.tblMain,new String[]{"aimCost","hasHappen","absolute","rate","amt","splitAmt","changeSplitAmt","settSplitAmt","paymentSplitAmt","lastPrice","hasPayAmt","allNotPaid","payPercent","sellPart","buildPart"});
 		
-		FDCHelper.formatTableNumber(getMainTable(), "aimCost");
-		FDCHelper.formatTableNumber(getMainTable(), "dyCost");
-		FDCHelper.formatTableNumber(getMainTable(), "diff");
-		FDCHelper.formatTableNumber(getMainTable(), "hasHappen");
-		FDCHelper.formatTableNumber(getMainTable(), "indentingHappen");
-		FDCHelper.formatTableNumber(getMainTable(), "lastPrice");
-		FDCHelper.formatTableNumber(getMainTable(), "payableAmt");
-		FDCHelper.formatTableNumber(getMainTable(), "totalSettPrice");
-		FDCHelper.formatTableNumber(getMainTable(), "allNotPaid");
-		FDCHelper.formatTableNumber(getMainTable(), "payPercent");
-		FDCHelper.formatTableNumber(getMainTable(), "sellPart");
-		FDCHelper.formatTableNumber(getMainTable(), "buildPart");
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				if(o==null){
+					return null;
+				}else{
+					String str = o.toString();
+					return str + "%";
+				}
+				
+			}
+		});
+		this.tblMain.getColumn("rate").setRenderer(render_scale);
+		this.tblMain.getColumn("payPercent").setRenderer(render_scale);
 		
-		//建筑面积、可售面积
-		txtBuildArea.setEditable(false);
-		txtBuildArea.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
-		txtBuildArea.setPrecision(2);
-		txtBuildArea.setHorizontalAlignment(JTextField.RIGHT);
-		txtBuildArea.setRemoveingZeroInDispaly(false);
-		txtSaleArea.setEditable(false);
-		txtSaleArea.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
-		txtSaleArea.setPrecision(2);
-		txtSaleArea.setRemoveingZeroInDispaly(false);
-		txtSaleArea.setHorizontalAlignment(JTextField.RIGHT);
+//		
+//		//建筑面积、可售面积
+//		txtBuildArea.setEditable(false);
+//		txtBuildArea.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
+//		txtBuildArea.setPrecision(2);
+//		txtBuildArea.setHorizontalAlignment(JTextField.RIGHT);
+//		txtBuildArea.setRemoveingZeroInDispaly(false);
+//		txtSaleArea.setEditable(false);
+//		txtSaleArea.setDataType(KDFormattedTextField.BIGDECIMAL_TYPE);
+//		txtSaleArea.setPrecision(2);
+//		txtSaleArea.setRemoveingZeroInDispaly(false);
+//		txtSaleArea.setHorizontalAlignment(JTextField.RIGHT);
+		
+		this.tblMain.getColumn("sellPart").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("buildPart").getStyleAttributes().setHided(true);
 	}
 
 	protected void initTree() throws Exception {
@@ -323,9 +314,14 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		actionDisplayAll.putValue(Action.SMALL_ICON,EASResource.getIcon("imgTbtn_assistantlistaccount"));
 		actionDisplayContract.putValue(Action.SMALL_ICON,EASResource.getIcon("imgTbtn_assistantlistaccount"));
 		actionDisplayConNoText.putValue(Action.SMALL_ICON,EASResource.getIcon("imgTbtn_assistantlistaccount"));
-		this.menuTool.add(actionDisplayAll);
-		this.menuTool.add(actionDisplayContract);
-		this.menuTool.add(actionDisplayConNoText);
+		
+		actionDisplayAll.setVisible(false);
+		actionDisplayContract.setVisible(false);
+		actionDisplayConNoText.setVisible(false);
+		
+//		this.menuTool.add(actionDisplayAll);
+//		this.menuTool.add(actionDisplayContract);
+//		this.menuTool.add(actionDisplayConNoText);
 	}
 
 	private DefaultKingdeeTreeNode findNode(DefaultKingdeeTreeNode node, String id) {
@@ -392,8 +388,21 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				ContractFullInfoUI.showDialogWindows(this, contractInfo.getId().toString());
 			}
 			if(value!=null&&value instanceof ContractWithoutTextInfo){
-				logger.info("此合同是无文本合同！");
-			    super.tblMain_tableClicked(e);
+				ContractWithoutTextInfo contractInfo=(ContractWithoutTextInfo)value;
+				UIContext uiContext = new UIContext(ui);
+				uiContext.put(UIContext.ID, contractInfo.getId().toString());
+				IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB)
+						.create(ContractWithoutTextEditUI.class.getName(), uiContext, null,"VIEW");
+				uiWindow.show();
+			}
+			if(value!=null&&value instanceof ProgrammingContractInfo){
+				ProgrammingContractInfo contractInfo=(ProgrammingContractInfo)value;
+				UIContext uiContext = new UIContext(ui);
+				contractInfo=ProgrammingContractFactory.getRemoteInstance().getProgrammingContractInfo("select costEntries.*,costEntries.costAccount.*,* from where id='"+contractInfo.getId().toString()+"'");
+				uiContext.put("programmingContract", contractInfo);
+				IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB)
+						.create(ProgrammingContractEditUI.class.getName(), uiContext, null,OprtState.VIEW);
+				uiWindow.show();
 			}
 			if(value!=null&&value instanceof CostAccountInfo){
 				CostAccountInfo accountInfo = (CostAccountInfo)value;
@@ -553,9 +562,9 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				fetchLeafData(resultMap);
 			}
 		} else {
-			Set leafPrjIds = FDCClientHelper.getProjectLeafsOfNode(node);
-			boolean selectObjIsPrj = node.getUserObject() instanceof CurProjectInfo;
-			fetchDataNotLeaf(selectObjId,leafPrjIds,selectObjIsPrj);
+//			Set leafPrjIds = FDCClientHelper.getProjectLeafsOfNode(node);
+//			boolean selectObjIsPrj = node.getUserObject() instanceof CurProjectInfo;
+//			fetchDataNotLeaf(selectObjId,leafPrjIds,selectObjIsPrj);
 		}
 		
 		return resultMap;
@@ -619,7 +628,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			nodeLevel = node.getLevel() - selectNode.getLevel()>nodeLevel?node.getLevel() - selectNode.getLevel():nodeLevel;
 		}
 		tblMain.getTreeColumn().setDepth(retValueNotLeaf.getInt("maxLevel")+nodeLevel+2);
-		setTableColumnShow(true);
+//		setTableColumnShow(true);
 		
 		for(Iterator it=costAccounts.iterator();it.hasNext();){
 			CostAccountInfo costAccountInfo = (CostAccountInfo)it.next();
@@ -635,24 +644,24 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				RetValue splitValue = (RetValue)splitValues.get(longNumber);
 				//建筑单方 可售单方
 				RetValue areaValue = (RetValue)retValueNotLeaf.get("areaValue");
-				if(costValue!=null&&costValue.getBigDecimal("dynCost")!=null&&costValue.getBigDecimal("dynCost").compareTo(FDCHelper.ZERO)!=0)
-					row.getCell("dyCost").setValue(costValue.getBigDecimal("dynCost"));
+//				if(costValue!=null&&costValue.getBigDecimal("dynCost")!=null&&costValue.getBigDecimal("dynCost").compareTo(FDCHelper.ZERO)!=0)
+//					row.getCell("dyCost").setValue(costValue.getBigDecimal("dynCost"));
 				if(costValue!=null&&costValue.getBigDecimal("aimCost")!=null&&costValue.getBigDecimal("aimCost").compareTo(FDCHelper.ZERO)!=0)
 					row.getCell("aimCost").setValue(costValue.getBigDecimal("aimCost"));
 				if(costValue!=null&&costValue.getBigDecimal("soFarHasAmt")!=null&&costValue.getBigDecimal("soFarHasAmt").compareTo(FDCHelper.ZERO)!=0)
 					row.getCell("hasHappen").setValue(costValue.getBigDecimal("soFarHasAmt"));
-				if(costValue!=null&&costValue.getBigDecimal("soFarToAmt")!=null&&costValue.getBigDecimal("soFarToAmt").compareTo(FDCHelper.ZERO)!=0)
-					row.getCell("indentingHappen").setValue(costValue.getBigDecimal("soFarToAmt"));
-				if(costValue!=null&&costValue.getBigDecimal("diffAmt")!=null&&costValue.getBigDecimal("diffAmt").compareTo(FDCHelper.ZERO)!=0)
-					row.getCell("diff").setValue(costValue.getBigDecimal("diffAmt"));
+//				if(costValue!=null&&costValue.getBigDecimal("soFarToAmt")!=null&&costValue.getBigDecimal("soFarToAmt").compareTo(FDCHelper.ZERO)!=0)
+//					row.getCell("indentingHappen").setValue(costValue.getBigDecimal("soFarToAmt"));
+//				if(costValue!=null&&costValue.getBigDecimal("diffAmt")!=null&&costValue.getBigDecimal("diffAmt").compareTo(FDCHelper.ZERO)!=0)
+//					row.getCell("diff").setValue(costValue.getBigDecimal("diffAmt"));
 				if(splitValue!=null&&splitValue.getBigDecimal("contractSplitAmt")!=null&&splitValue.getBigDecimal("contractSplitAmt").compareTo(FDCHelper.ZERO)!=0)
 					row.getCell("splitAmt").setValue(splitValue.getBigDecimal("contractSplitAmt"));
 				if(splitValue!=null&&splitValue.getBigDecimal("conChangeSplitAmt")!=null&&splitValue.getBigDecimal("conChangeSplitAmt").compareTo(FDCHelper.ZERO)!=0)
 					row.getCell("changeSplitAmt").setValue(splitValue.getBigDecimal("conChangeSplitAmt"));
 				if(splitValue!=null&&splitValue.getBigDecimal("settlementSplitAmt")!=null&&splitValue.getBigDecimal("settlementSplitAmt").compareTo(FDCHelper.ZERO)!=0)
 					row.getCell("settSplitAmt").setValue(splitValue.getBigDecimal("settlementSplitAmt"));
-				if(splitValue!=null&&splitValue.getBigDecimal("hasPayCostAmt")!=null&&splitValue.getBigDecimal("hasPayCostAmt").compareTo(FDCHelper.ZERO)!=0)
-					row.getCell("hasPayCostAmt").setValue(splitValue.getBigDecimal("hasPayCostAmt"));
+//				if(splitValue!=null&&splitValue.getBigDecimal("hasPayCostAmt")!=null&&splitValue.getBigDecimal("hasPayCostAmt").compareTo(FDCHelper.ZERO)!=0)
+//					row.getCell("hasPayCostAmt").setValue(splitValue.getBigDecimal("hasPayCostAmt"));
 				if(splitValue!=null&&splitValue.getBigDecimal("paymentSplitAmt")!=null&&splitValue.getBigDecimal("paymentSplitAmt").compareTo(FDCHelper.ZERO)!=0)
 					row.getCell("paymentSplitAmt").setValue(splitValue.getBigDecimal("paymentSplitAmt"));
 				if(areaValue!=null&&areaValue.getBigDecimal(ApportionTypeInfo.sellAreaType)!=null&&areaValue.getBigDecimal(ApportionTypeInfo.sellAreaType).compareTo(FDCHelper.ZERO)!=0&&costValue!=null&&costValue.getBigDecimal("dynCost")!=null&&costValue.getBigDecimal("dynCost").compareTo(FDCHelper.ZERO)!=0){
@@ -904,6 +913,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		if(accountUps.size()==0){
 			return;
 		}
+		Set hasCostAccount=new HashSet();
 		//
 		// IContractBill icb = ContractBillFactory.getRemoteInstance();
 		IContractCostSplitEntry icse = ContractCostSplitEntryFactory.getRemoteInstance();
@@ -920,6 +930,8 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			for (int i = 0; i < ccsec.size(); i++) {
 				if (ccsec.get(i).getParent()!=null&&ccsec.get(i).getParent().getContractBill()!=null&&!lnUps.contains(ccsec.get(i).getParent().getContractBill().getId().toString())) {
 					lnUps.add(ccsec.get(i).getParent().getContractBill().getId().toString());
+					
+					hasCostAccount.add(ccsec.get(i).getCostAccount().getId().toString());
 				}
 			}
 		}
@@ -955,6 +967,8 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		evi.getSelector().add(new SelectorItemInfo("*"));
 		evi.getSelector().add(new SelectorItemInfo("costAccount.id"));
 		evi.getSelector().add(new SelectorItemInfo("parent.conWithoutText.*"));
+		evi.getSelector().add(new SelectorItemInfo("parent.conWithoutText.person.*"));
+		evi.getSelector().add(new SelectorItemInfo("parent.conWithoutText.receiveUnit.*"));
 		if(accountUps.size() != 0){
 			filter.getFilterItems().add(new FilterItemInfo("costAccount.id", accountUps, CompareType.INCLUDE));
 			filter.getFilterItems().add(new FilterItemInfo("parent.state",FDCBillStateEnum.INVALID_VALUE,CompareType.NOTEQUALS));
@@ -964,12 +978,15 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		//清空原有数据
 		conWithoutMap.clear();
 		conWithoutSplitAmt.clear();
+		
 		//获得无文本合同ids
 		if(psec != null && psec.size() != 0){
 			for(int i = 0 ;i < psec.size();i++){
 				if(psec.get(i).getParent().getConWithoutText() != null
 						&& !conWithoutIds.contains(psec.get(i).getParent().getConWithoutText().getId().toString())){
 					conWithoutIds.add(psec.get(i).getParent().getConWithoutText().getId().toString());
+					
+					hasCostAccount.add(psec.get(i).getCostAccount().getId().toString());
 				}
 			}
 		}
@@ -1033,7 +1050,33 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				// TODO 自动生成 catch 块
 				e.printStackTrace();
 			}
-		}	
+		}
+		evi = new EntityViewInfo();
+		filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("costAccount.id", hasCostAccount, CompareType.NOTINCLUDE));
+		filter.getFilterItems().add(new FilterItemInfo("contract.programming.project.id", selectObjId));
+		filter.getFilterItems().add(new FilterItemInfo("contract.programming.isLatest", Boolean.TRUE));
+		evi.setFilter(filter);
+		evi.getSelector().add(new SelectorItemInfo("costAccount.id"));
+		evi.getSelector().add(new SelectorItemInfo("contract.longNumber"));
+		evi.getSelector().add(new SelectorItemInfo("contract.name"));
+		evi.getSelector().add(new SelectorItemInfo("contractAssign"));
+		
+		ProgrammingContracCostCollection pcCol=ProgrammingContracCostFactory.getRemoteInstance().getProgrammingContracCostCollection(evi);
+		pcMap.clear();
+		pcContractMap.clear();
+		for(int k=0;k<pcCol.size();k++){
+			if(pcMap.containsKey(pcCol.get(k).getCostAccount().getId().toString())){
+				ProgrammingContractCollection pcContractCol=(ProgrammingContractCollection) pcMap.get(pcCol.get(k).getCostAccount().getId().toString());
+				pcContractCol.add(pcCol.get(k).getContract());
+			}else{
+				ProgrammingContractCollection pcContractCol=new ProgrammingContractCollection();
+				pcContractCol.add(pcCol.get(k).getContract());
+				pcMap.put(pcCol.get(k).getCostAccount().getId().toString(), pcContractCol);
+			}
+			pcContractMap.put(pcCol.get(k).getCostAccount().getId().toString()+pcCol.get(k).getContract().getId().toString(), pcCol.get(k).getContractAssign());
+		}
+		
 		// ContractBillCollection cbc = icb.getContractBillCollection(evi);
 		// if (cbc.size() != 0) {
 		// for (int i = 0; i < cbc.size(); i++) {
@@ -1240,8 +1283,9 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	ArrayList cbList = new ArrayList();
 
 	Map realMap = new HashMap();
-
 	
+	Map pcMap=new HashMap();
+	Map pcContractMap=new HashMap();
 	public void fetchLeafData(HashMap resultMap) throws Exception {
 		this.realMap.clear();
 		this.splitAmtMap.clear();
@@ -1278,7 +1322,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		this.txtBuildArea.setValue(null);
 		this.txtSaleArea.setValue(null);
 		tblMain.removeRows();
-		setTableColumnShow(true);
+//		setTableColumnShow(true);
 		// this.paySplitAmtMap.clear();
 		tblMain.setUserObject(null);
 		CurProjectInfo project = getSelectProject();
@@ -1471,8 +1515,8 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				intendingHappen = intendingHappen.subtract(hasHappenAmount);
 			}
 			//待发生
-			row.getCell("indentingHappen").setValue(intendingHappen);
-			row.getCell("dyCost").setValue(dynamicAmount);
+//			row.getCell("indentingHappen").setValue(intendingHappen);
+//			row.getCell("dyCost").setValue(dynamicAmount);
 			//可售单方  建筑单方
 //			if(dynamicAmount!=null&&sellArea!=null&&sellArea.compareTo(FDCHelper.ZERO)!=0&&dynamicAmount.compareTo(FDCHelper.ZERO)!=0){
 //				row.getCell("sellPart").setValue(FDCHelper.divide(dynamicAmount, sellArea,2,BigDecimal.ROUND_HALF_UP));
@@ -1480,9 +1524,17 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 //			if(dynamicAmount!=null&&buildArea!=null&&buildArea.compareTo(FDCHelper.ZERO)!=0&&dynamicAmount.compareTo(FDCHelper.ZERO)!=0){
 //				row.getCell("buildPart").setValue(FDCHelper.divide(dynamicAmount, buildArea,2,BigDecimal.ROUND_HALF_UP));
 //			}
-			if(aimAmount != null && dynamicAmount != null){
-				row.getCell("diff").setValue(dynamicAmount.subtract(aimAmount));
-			}
+//			if(aimAmount != null && dynamicAmount != null){
+//				row.getCell("diff").setValue(dynamicAmount.subtract(aimAmount));
+//			}
+			row.getCell("absolute").setValue(FDCHelper.subtract(aimAmount, hasHappenAmount));
+       		 
+        	if(aimAmount==null||aimAmount.compareTo(FDCHelper.ZERO)==0){
+        		row.getCell("rate").setValue(null);
+        	}else{
+        		row.getCell("rate").setValue((FDCHelper.subtract(aimAmount, hasHappenAmount)).divide(aimAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+        	}
+        	 
 			//是否启用部分结算
 //			if(isUsePartSettle()){
 //				HappenDataInfo partSettInfo = this.happenGetter.getPartSettleInfo(acctId);
@@ -1552,40 +1604,51 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 					eRow.getCell("hasPayAmt").setValue(FDCHelper.ZERO);
 					if(pbAmtMap.containsKey(info.getId().toString())){
 						eRow.getCell("hasPayAmt").setValue(pbAmtMap.get(info.getId().toString()));// 已付款金额
-					}					
-					//完工未付款 = 合同已实现产值 - 合同已付款
-					BigDecimal hasPayAmt = (BigDecimal)eRow.getCell("hasPayAmt").getValue();
-					BigDecimal totalSettAmt = (BigDecimal)eRow.getCell("totalSettPrice").getValue();
-					BigDecimal complete = FDCHelper.ZERO;
-					BigDecimal allPaidAmt = FDCHelper.ZERO;
-					if(totalComplete.get(info.getId().toString()) != null){
-						complete = (BigDecimal) totalComplete.get(info.getId().toString());
-					}
-					if(hasPayAmt == null){
-						hasPayAmt = FDCHelper.ZERO;
-					}
-					if(totalSettAmt == null){
-						totalSettAmt = FDCHelper.ZERO;
 					}
 					
+					eRow.getCell("allNotPaid").setValue(FDCHelper.subtract(eRow.getCell("lastPrice").getValue(),eRow.getCell("hasPayAmt").getValue()));// 已付款金额
 					
+					BigDecimal hasPayAmt=(BigDecimal) eRow.getCell("hasPayAmt").getValue();
+					BigDecimal lastPrice=(BigDecimal) eRow.getCell("lastPrice").getValue();
+					if(lastPrice==null||lastPrice.compareTo(FDCHelper.ZERO)==0){
+						eRow.getCell("payPercent").setValue(null);
+		        	}else{
+		        		eRow.getCell("payPercent").setValue(hasPayAmt.divide(lastPrice, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+		        	}
 					
-					if(hasPayAmt != null ){
-						if(info.isHasSettled()){
-							allPaidAmt = info.getSettleAmt().subtract(hasPayAmt);
-						}else{
-							if(isUsePartSettle()){
-							   allPaidAmt = totalSettAmt.subtract(hasPayAmt);
-							}else{
-							   allPaidAmt = complete.subtract(hasPayAmt);	
-							}
-						}
-						eRow.getCell("allNotPaid").setValue(allPaidAmt);
-						if(totalSettAmt != null && !(totalSettAmt.compareTo(FDCHelper.ZERO)==0)){
-//							eRow.getCell("payPercent").setValue(hasPayAmt.multiply(FDCHelper.ONE_HUNDRED).divide(totalSettAmt,2,BigDecimal.ROUND_HALF_UP)+"%");
-							eRow.getCell("payPercent").setValue(FDCHelper.divide(FDCHelper.multiply(hasPayAmt, FDCHelper.ONE_HUNDRED), totalSettAmt,2,BigDecimal.ROUND_HALF_UP)+"%");
-						}
-					}
+//					//完工未付款 = 合同已实现产值 - 合同已付款
+//					BigDecimal hasPayAmt = (BigDecimal)eRow.getCell("hasPayAmt").getValue();
+////					BigDecimal totalSettAmt = (BigDecimal)eRow.getCell("totalSettPrice").getValue();
+//					BigDecimal complete = FDCHelper.ZERO;
+//					BigDecimal allPaidAmt = FDCHelper.ZERO;
+//					if(totalComplete.get(info.getId().toString()) != null){
+//						complete = (BigDecimal) totalComplete.get(info.getId().toString());
+//					}
+//					if(hasPayAmt == null){
+//						hasPayAmt = FDCHelper.ZERO;
+//					}
+////					if(totalSettAmt == null){
+////						totalSettAmt = FDCHelper.ZERO;
+////					}
+//					
+//					
+//					
+//					if(hasPayAmt != null ){
+//						if(info.isHasSettled()){
+//							allPaidAmt = info.getSettleAmt().subtract(hasPayAmt);
+//						}else{
+//							if(isUsePartSettle()){
+////							   allPaidAmt = totalSettAmt.subtract(hasPayAmt);
+//							}else{
+//							   allPaidAmt = complete.subtract(hasPayAmt);	
+//							}
+//						}
+//						eRow.getCell("allNotPaid").setValue(allPaidAmt);
+////						if(totalSettAmt != null && !(totalSettAmt.compareTo(FDCHelper.ZERO)==0)){
+//////							eRow.getCell("payPercent").setValue(hasPayAmt.multiply(FDCHelper.ONE_HUNDRED).divide(totalSettAmt,2,BigDecimal.ROUND_HALF_UP)+"%");
+////							eRow.getCell("payPercent").setValue(FDCHelper.divide(FDCHelper.multiply(hasPayAmt, FDCHelper.ONE_HUNDRED), totalSettAmt,2,BigDecimal.ROUND_HALF_UP)+"%");
+////						}
+//					}
 //					
 //					BigDecimal lastPrice = FDCHelper.ZERO;
 //					if(lastPriceMap != null){
@@ -1619,13 +1682,13 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 					 * 若合同未最终结算，则取本行合同拆分金额 + 变更拆分金额
 					 * 若合同已最终结算，则取本行结算拆分金额   by Cassiel_peng  2009-10-2
 					 */
-					if(eRow.getCell("contract").getValue()!=null){
-						if(!info.isHasSettled()){
-							eRow.getCell("hasHappen").setValue(FDCHelper.add(eRow.getCell("splitAmt").getValue(), eRow.getCell("changeSplitAmt").getValue()));
-						}else{
-							eRow.getCell("hasHappen").setValue(eRow.getCell("settSplitAmt").getValue());
-						}
-					}
+//					if(eRow.getCell("contract").getValue()!=null){
+//						if(!info.isHasSettled()){
+//							eRow.getCell("hasHappen").setValue(FDCHelper.add(eRow.getCell("splitAmt").getValue(), eRow.getCell("changeSplitAmt").getValue()));
+//						}else{
+//							eRow.getCell("hasHappen").setValue(eRow.getCell("settSplitAmt").getValue());
+//						}
+//					}
 				}
 			}
 			ContractWithoutTextCollection cwtc = (ContractWithoutTextCollection)this.conWithoutMap.get(acctId);
@@ -1645,6 +1708,15 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 					//已付款
 					newRow.getCell("hasPayAmt").setValue(pbAmtMap.get(info.getId().toString()));
 					
+					newRow.getCell("allNotPaid").setValue(FDCHelper.subtract(row.getCell("amt").getValue(),row.getCell("hasPayAmt").getValue()));// 已付款金额
+					
+					BigDecimal hasPayAmt=(BigDecimal) newRow.getCell("hasPayAmt").getValue();
+					BigDecimal amt=(BigDecimal) newRow.getCell("amt").getValue();
+					if(amt==null||amt.compareTo(FDCHelper.ZERO)==0){
+						newRow.getCell("payPercent").setValue(null);
+		        	}else{
+		        		newRow.getCell("payPercent").setValue(hasPayAmt.divide(amt, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+		        	}
 					/**
 					 * 结算拆分金额&付款拆分金额&变更拆分金额 by Cassiel_peng
 					 */
@@ -1664,14 +1736,26 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 					if(changeSplitMap!=null){
 						newRow.getCell("changeSplitAmt").setValue(changeSplitMap.get(info.getId().toString()));
 					}
-					if(newRow.getCell("contract").getValue()!=null){
-						newRow.getCell("hasHappen").setValue(newRow.getCell("splitAmt").getValue());
-					}
+//					if(newRow.getCell("contract").getValue()!=null){
+//						newRow.getCell("hasHappen").setValue(newRow.getCell("splitAmt").getValue());
+//					}
 				}
 			}
 		} else {
 		}
-
+		ProgrammingContractCollection pcCol = (ProgrammingContractCollection)this.pcMap.get(acctId);
+		if(pcCol!=null && pcCol.size() != 0){
+			for(int i = 0; i < pcCol.size();i++){
+				ProgrammingContractInfo info = pcCol.get(i);
+				IRow newRow = this.tblMain.addRow();
+				newRow.setTreeLevel(node.getLevel());
+				newRow.setUserObject(info);
+				newRow.getCell("contract").setValue(info.getName());
+				newRow.getCell("conNumber").setValue(info.getLongNumber());
+				newRow.getCell("type").setValue("合约规划");
+				newRow.getCell("amt").setValue(pcContractMap.get(acctId+info.getId().toString()));
+			}
+		}
 		//
 		for (int i = 0; i < node.getChildCount(); i++) {
 			this.fillNode((DefaultMutableTreeNode) node.getChildAt(i));
@@ -1685,16 +1769,14 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		List amountColumns = new ArrayList();
 		amountColumns.add("splitAmt");//合同拆分金额
 		amountColumns.add("aimCost");//目标成本
-		amountColumns.add("dyCost");//动态成本
-		amountColumns.add("diff");//差异
-		amountColumns.add("hasHappen");//目前已发生
-		amountColumns.add("indentingHappen");//目前待发生
+		amountColumns.add("hasHappen");//动态成本
+		amountColumns.add("absolute");//差异
 		amountColumns.add("settSplitAmt");//结算拆分
-		amountColumns.add("hasPayCostAmt");//付款拆分
+//		amountColumns.add("hasPayCostAmt");//付款拆分
 		amountColumns.add("paymentSplitAmt");//付款拆分
 		amountColumns.add("changeSplitAmt");//变更拆分
-		amountColumns.add("sellPart");//可售单方
-		amountColumns.add("buildPart");//建筑单方
+//		amountColumns.add("sellPart");//可售单方
+//		amountColumns.add("buildPart");//建筑单方
 		return amountColumns;
 	}
 	
@@ -1746,13 +1828,13 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				 * 报表的所有单方不存在上下级汇总关系，而应该是各个级次的都等于各自的对应成本除以对应的面积，而非下级的单方汇总 by cassiel_peng 2009-12-21
 				 */
 					if(colName.equals("sellPart")){
-						BigDecimal dyCost = FDCHelper.toBigDecimal(row.getCell("dyCost").getValue());
+						BigDecimal dyCost = FDCHelper.toBigDecimal(row.getCell("hasHappen").getValue());
 						amount = FDCNumberHelper.divide(dyCost, this.sellArea, 2, BigDecimal.ROUND_HALF_UP);
 						if(dyCost!=null&&dyCost.compareTo(FDCHelper.ZERO)!=0){
 							hasData=true;
 						}
 					} else if(colName.equals("buildPart")){
-						BigDecimal dyCost = FDCHelper.toBigDecimal(row.getCell("dyCost").getValue());
+						BigDecimal dyCost = FDCHelper.toBigDecimal(row.getCell("hasHappen").getValue());
 						amount = FDCNumberHelper.divide(dyCost, this.buildArea, 2, BigDecimal.ROUND_HALF_UP);
 						if(dyCost!=null&&dyCost.compareTo(FDCHelper.ZERO)!=0){
 							hasData=true;
@@ -1794,17 +1876,27 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			} else {
 
 			}
-			BigDecimal dyCost = (BigDecimal)row.getCell("dyCost").getValue();
-			BigDecimal aimCost = (BigDecimal)row.getCell("aimCost").getValue();
-			if(dyCost != null && aimCost != null){
-				row.getCell("diff").setValue(dyCost.subtract(aimCost));
-			}
+//			BigDecimal dyCost = (BigDecimal)row.getCell("dyCost").getValue();
+//			BigDecimal aimCost = (BigDecimal)row.getCell("aimCost").getValue();
+//			if(dyCost != null && aimCost != null){
+//				row.getCell("diff").setValue(dyCost.subtract(aimCost));
+//			}
+			BigDecimal aimAmount = (BigDecimal)row.getCell("aimCost").getValue();
+			BigDecimal hasHappenAmount = (BigDecimal)row.getCell("hasHappen").getValue();
+			row.getCell("absolute").setValue(FDCHelper.subtract(aimAmount, hasHappenAmount));
+      		 
+        	if(aimAmount==null||aimAmount.compareTo(FDCHelper.ZERO)==0){
+        		row.getCell("rate").setValue(null);
+        	}else{
+        		row.getCell("rate").setValue((FDCHelper.subtract(aimAmount, hasHappenAmount)).divide(aimAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+        	}
 		}
 	}
 
 	// /////////////////////////
 	public void loadRow(IRow row) throws BOSException {
 		ContractBillInfo info = (ContractBillInfo) row.getUserObject();
+		row.getCell("type").setValue("合同");
 		String contractId = info.getId().toString();
 		if(lastAmt.containsKey(contractId)){
 			row.getCell("lastPrice").setValue(lastAmt.get(contractId));
@@ -1817,11 +1909,11 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 //			row.getCell("payableAmt").setValue(
 //					((BigDecimal) lastAmt.get(contractId)).multiply(FDCConstants.ONE.subtract(info.getGrtRate().divide(FDCConstants.ONE_HUNDRED, 2,
 //							BigDecimal.ROUND_HALF_UP))));
-			row.getCell("payableAmt").setValue(
-					FDCHelper.multiply(lastAmt.get(contractId),
-							FDCConstants.ONE.subtract(FDCHelper.divide(info
-									.getGrtRate(), FDCConstants.ONE_HUNDRED, 2,
-									BigDecimal.ROUND_HALF_UP))));
+//			row.getCell("payableAmt").setValue(
+//					FDCHelper.multiply(lastAmt.get(contractId),
+//							FDCConstants.ONE.subtract(FDCHelper.divide(info
+//									.getGrtRate(), FDCConstants.ONE_HUNDRED, 2,
+//									BigDecimal.ROUND_HALF_UP))));
 					
 					
 			
@@ -1849,29 +1941,29 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		if(info.getPartB()!=null){
 			row.getCell("unit").setValue(info.getPartB().getName());
 		}
-		row.getCell("date").setValue(info.getSignDate());
+		row.getCell("date").setValue(info.getBookedDate());
 		
 		//by tim_gao 加个校验
-		if(FDCHelper.isEmpty(info.getContractSourceId())||"".equals(info.getContractSourceId())){
-			row.getCell("contractSource").setValue(null);
-		}else{
-			row.getCell("contractSource").setValue(info.getContractSourceId().getName());
-		}
+//		if(FDCHelper.isEmpty(info.getContractSourceId())||"".equals(info.getContractSourceId())){
+//			row.getCell("contractSource").setValue(null);
+//		}else{
+//			row.getCell("contractSource").setValue(info.getContractSourceId().getName());
+//		}
 		
-		if (info.getContractSourceId() != null && ContractSourceInfo.INVITE_VALUE.equals(info.getContractSourceId().getId())) {
-			row.getCell("isInvite").setValue(Boolean.valueOf(true));
-		} else {
-			row.getCell("isInvite").setValue(Boolean.valueOf(false));
-		}
+//		if (info.getContractSourceId() != null && ContractSourceInfo.INVITE_VALUE.equals(info.getContractSourceId().getId())) {
+//			row.getCell("isInvite").setValue(Boolean.valueOf(true));
+//		} else {
+//			row.getCell("isInvite").setValue(Boolean.valueOf(false));
+//		}
 		row.getCell("amt").setValue(info.getAmount());
 		//填充已实现产值
 		BigDecimal totalSettPrice ;
 		//默认值为0
-		row.getCell("totalSettPrice").setValue(FDCHelper.ZERO);
-		if(this.totalSettMap.containsKey(info.getId().toString().concat("_SettlePrice"))){//已实现产值应取本币而非原币,故取数的依据(Key值)应修改  by Cassiel_peng
-			totalSettPrice = (BigDecimal)totalSettMap.get(info.getId().toString().concat("_SettlePrice"));
-			row.getCell("totalSettPrice").setValue(totalSettPrice);
-		}
+//		row.getCell("totalSettPrice").setValue(FDCHelper.ZERO);
+//		if(this.totalSettMap.containsKey(info.getId().toString().concat("_SettlePrice"))){//已实现产值应取本币而非原币,故取数的依据(Key值)应修改  by Cassiel_peng
+//			totalSettPrice = (BigDecimal)totalSettMap.get(info.getId().toString().concat("_SettlePrice"));
+//			row.getCell("totalSettPrice").setValue(totalSettPrice);
+//		}
 		// BigDecimal workload = info.getWorkload();
 		// if (workload != null && workload.compareTo(FDCHelper.ZERO) == 0) {
 		// workload = null;
@@ -1909,25 +2001,29 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			row.getCell("contract").setValue(info.getName());
 			row.getCell("conNumber").setValue(info.getNumber());
 		}
-		row.getCell("date").setValue(info.getSignDate());
+		row.getCell("type").setValue("无文本合同");
+		row.getCell("date").setValue(info.getBookedDate());
 		row.getCell("amt").setValue(info.getAmount());
-		EntityViewInfo ev = new EntityViewInfo();
-		ev.getSelector().add("realSupplier.name");
-		FilterInfo fi = new FilterInfo();
-		fi.getFilterItems().add(new FilterItemInfo("contractId",info.getId().toString(),CompareType.EQUALS));
-		ev.setFilter(fi);
-		PayRequestBillCollection coll;
-		try {
-			coll = PayRequestBillFactory
-				.getRemoteInstance().getPayRequestBillCollection(ev);
-			if(coll.size() == 1 && coll.get(0).getRealSupplier() != null){
-				row.getCell("unit").setValue(coll.get(0).getRealSupplier().getName());						
-			}
-		} catch (BOSException e) {
-			// TODO 自动生成 catch 块
-			e.printStackTrace();
-		}
-		
+//		EntityViewInfo ev = new EntityViewInfo();
+//		ev.getSelector().add("realSupplier.name");
+//		FilterInfo fi = new FilterInfo();
+//		fi.getFilterItems().add(new FilterItemInfo("contractId",info.getId().toString(),CompareType.EQUALS));
+//		ev.setFilter(fi);
+//		PayRequestBillCollection coll;
+//		try {
+//			coll = PayRequestBillFactory
+//				.getRemoteInstance().getPayRequestBillCollection(ev);
+//			if(coll.size() == 1 && coll.get(0).getRealSupplier() != null){
+//				row.getCell("unit").setValue(coll.get(0).getRealSupplier().getName());						
+//			}
+//		} catch (BOSException e) {
+//			// TODO 自动生成 catch 块
+//			e.printStackTrace();
+//		}
+		if(info.getReceiveUnit()!=null)
+			row.getCell("unit").setValue(info.getReceiveUnit().getName());
+		if(info.getPerson()!=null)
+			row.getCell("unit").setValue(info.getPerson().getName());
 	}
 
 	/**
@@ -1983,7 +2079,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	}
 	
 	private void fetchSettAndPaymentAndChangeSplitData(String prjId) throws BOSException,EASBizException,SQLException{
-		hasPayCostAmtMap= FDCBudgetAcctHelper.getPayedAmtWithCost(null, prjId);
+//		hasPayCostAmtMap= FDCBudgetAcctHelper.getPayedAmtWithCost(null, prjId);
 		paymentSplitAmtMap= FDCBudgetAcctHelper.getPayedAmtWithPayment(null, prjId);
 	    settSplitAmtMap= FDCBudgetAcctHelper.getPayedAmtWithSettlement(null, prjId);
 	    changeSplitAmtMap=FDCBudgetAcctHelper.getAmtWithContractChange(null, prjId);
@@ -2050,6 +2146,6 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	 * @author owen_wen 2010-09-07
 	 */
 	protected String[] getLocateNames() {
-		return new String[] {"acctNumber", "acctName", "conNumber", "contract", "unit", "date", "amt",};
+		return new String[] {"acctNumber", "acctName"};
 	}
 }

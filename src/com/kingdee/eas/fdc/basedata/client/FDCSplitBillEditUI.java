@@ -3538,14 +3538,14 @@ public abstract class FDCSplitBillEditUI extends AbstractFDCSplitBillEditUI
 		
 		super.updateButtonStatus();
 		// 如果是虚体成本中心，则不能增、删、改
-		if (!SysContext.getSysContext().getCurrentCostUnit().isIsBizUnit()) {
-			actionAddNew.setEnabled(false);
-			actionEdit.setEnabled(false);
-			actionRemove.setEnabled(false);
-			actionAddNew.setVisible(false);
-			actionEdit.setVisible(false);
-			actionRemove.setVisible(false);
-		}
+//		if (!SysContext.getSysContext().getCurrentCostUnit().isIsBizUnit()) {
+//			actionAddNew.setEnabled(false);
+//			actionEdit.setEnabled(false);
+//			actionRemove.setEnabled(false);
+//			actionAddNew.setVisible(false);
+//			actionEdit.setVisible(false);
+//			actionRemove.setVisible(false);
+//		}
 		
 	}
 	

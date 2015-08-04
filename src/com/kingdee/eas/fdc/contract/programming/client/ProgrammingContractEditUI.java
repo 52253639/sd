@@ -383,6 +383,7 @@ public class ProgrammingContractEditUI extends AbstractProgrammingContractEditUI
 			this.btnAddnewLine_economy.setEnabled(true);
 			this.btnRemoveLines_economy.setEnabled(true);
 		}
+		kDTabbedPane1.remove(kDContainerEconomy);
 	}
 
 	/**
