@@ -92,6 +92,7 @@ import com.kingdee.eas.fdc.basedata.ProjectStageEnum;
 import com.kingdee.eas.fdc.basedata.RetValue;
 import com.kingdee.eas.fdc.basedata.TimeTools;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
+import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
 import com.kingdee.eas.fdc.basedata.client.ProjectTreeBuilder;
 import com.kingdee.eas.fdc.contract.ConChangeSplitEntryCollection;
 import com.kingdee.eas.fdc.contract.ConChangeSplitEntryFactory;
@@ -210,6 +211,12 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			public void run() {
 				int acctNameIndex=tblMain.getColumn("acctName").getColumnIndex()+1;
 				tblMain.getViewManager().freeze(0, acctNameIndex);
+				
+				tblMain.getColumn("sellPart").getStyleAttributes().setHided(true);
+				tblMain.getColumn("buildPart").getStyleAttributes().setHided(true);
+				
+				tblMain.getHead().getRow(0).setHeight(22);
+				tblMain.getHead().getRow(1).setHeight(22);
 		}});
 		FDCClientHelper.setUIMainMenuAsTitle(this);
 		
@@ -242,9 +249,6 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 //		txtSaleArea.setPrecision(2);
 //		txtSaleArea.setRemoveingZeroInDispaly(false);
 //		txtSaleArea.setHorizontalAlignment(JTextField.RIGHT);
-		
-		this.tblMain.getColumn("sellPart").getStyleAttributes().setHided(true);
-		this.tblMain.getColumn("buildPart").getStyleAttributes().setHided(true);
 	}
 
 	protected void initTree() throws Exception {
@@ -264,20 +268,32 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		table.setRefresh(false);
 		table.getDataRequestManager().setDataRequestMode(KDTDataRequestManager.REAL_MODE);
 		table.getViewManager().setFreezeView(-1, 2);
-		// table.getSelectManager().setSelectMode(
-		// KDTSelectManager.MULTIPLE_CELL_SELECT);
-		// table.setActiveCellStatus(KDTStyleConstants.ACTIVE_CELL_EDIT);
-		// table.getColumn("acctNumber").getStyleAttributes().setLocked(true);
-		// Color lockColor = new Color(0xF0AAD9);
-		// table.getColumn("acctNumber").getStyleAttributes().setBackground(
-		// lockColor);
-//		table.getColumn("conNumber").getStyleAttributes().setm(false);
-		table.getColumn("amt").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		table.getColumn("hasPayAmt").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		table.getColumn("splitAmt").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		table.getColumn("sellPart").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		table.getColumn("buildPart").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
-		table.setColumnMoveable(true);
+		
+		table.setColumnMoveable(false);
+		
+		CRMClientHelper.changeTableNumberFormat(this.tblMain,new String[]{"aimCost","hasHappen","absolute","rate","amt","splitAmt","changeSplitAmt","settSplitAmt","paymentSplitAmt","lastPrice","hasPayAmt","allNotPaid","payPercent","sellPart","buildPart"});
+		
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				if(o==null){
+					return null;
+				}else{
+					String str = o.toString();
+					return str + "%";
+				}
+				
+			}
+		});
+		this.tblMain.getColumn("rate").setRenderer(render_scale);
+		this.tblMain.getColumn("payPercent").setRenderer(render_scale);
+		
+		tblMain.getColumn("sellPart").getStyleAttributes().setHided(true);
+		tblMain.getColumn("buildPart").getStyleAttributes().setHided(true);
+		
+		tblMain.getHead().getRow(0).setHeight(22);
+		tblMain.getHead().getRow(1).setHeight(22);
+		
 //		FDCTableHelper.setColumnMoveable(table, true);
 		//tHelper.init() ;
 	}
@@ -1378,6 +1394,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		row.setTreeLevel(node.getLevel() - 1);
 		row.getCell("acctNumber").setValue(costAcct.getLongNumber().replace('!', '.'));
 		row.getCell("acctName").setValue(costAcct.getName());
+		row.getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 		if (node.isLeaf()) {
 			//目标成本
 			BigDecimal aimAmount = (BigDecimal) this.aimCostMap.get(acctId);
@@ -1706,8 +1723,10 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 						newRow.getCell("splitAmt").setValue(map.get(info.getId().toString()));
 					}
 					//已付款
-					newRow.getCell("hasPayAmt").setValue(pbAmtMap.get(info.getId().toString()));
-					
+					newRow.getCell("hasPayAmt").setValue(FDCHelper.ZERO);
+					if(pbAmtMap.containsKey(info.getId().toString())){
+						newRow.getCell("hasPayAmt").setValue(pbAmtMap.get(info.getId().toString()));
+					}
 					newRow.getCell("allNotPaid").setValue(FDCHelper.subtract(row.getCell("amt").getValue(),row.getCell("hasPayAmt").getValue()));// 已付款金额
 					
 					BigDecimal hasPayAmt=(BigDecimal) newRow.getCell("hasPayAmt").getValue();
@@ -1922,15 +1941,15 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 					.getContractSettlementBillCollection(
 					"where ContractBill.ID = '" + contractId + "'" + " and isFinalSettle = 1");
 			//by tim_gao 加个校验
-			if (conStlBillInfoCol.size() > 0){
-				if(FDCHelper.isEmpty(conStlBillInfoCol.get(0).getQualityGuaranteRate())||FDCHelper.isZero(conStlBillInfoCol.get(0).getQualityGuaranteRate())){
-					row.getCell("payableAmt").setValue(null);
-				}else{
-					row.getCell("payableAmt").setValue(
-							((BigDecimal) lastAmt.get(contractId)).multiply(FDCConstants.ONE.subtract(conStlBillInfoCol.get(0).getQualityGuaranteRate()
-									.divide(FDCConstants.ONE_HUNDRED, 2, BigDecimal.ROUND_HALF_UP))));
-				}
-			}
+//			if (conStlBillInfoCol.size() > 0){
+//				if(FDCHelper.isEmpty(conStlBillInfoCol.get(0).getQualityGuaranteRate())||FDCHelper.isZero(conStlBillInfoCol.get(0).getQualityGuaranteRate())){
+//					row.getCell("payableAmt").setValue(null);
+//				}else{
+//					row.getCell("payableAmt").setValue(
+//							((BigDecimal) lastAmt.get(contractId)).multiply(FDCConstants.ONE.subtract(conStlBillInfoCol.get(0).getQualityGuaranteRate()
+//									.divide(FDCConstants.ONE_HUNDRED, 2, BigDecimal.ROUND_HALF_UP))));
+//				}
+//			}
 		
 		}
 		
