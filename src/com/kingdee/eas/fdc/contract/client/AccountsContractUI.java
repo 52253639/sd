@@ -65,6 +65,7 @@ import com.kingdee.eas.fdc.aimcost.FullDynamicCostMap;
 import com.kingdee.eas.fdc.aimcost.HappenDataGetter;
 import com.kingdee.eas.fdc.aimcost.HappenDataInfo;
 import com.kingdee.eas.fdc.aimcost.ProjectCostRptFacadeFactory;
+import com.kingdee.eas.fdc.basecrm.CRMHelper;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.AcctAccreditHelper;
 import com.kingdee.eas.fdc.basedata.ApportionTypeInfo;
@@ -150,6 +151,8 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	private boolean isDisplayConNoText = false;
 	//是否只显示合同
 	private boolean isDisplayContract = false;
+	
+	private boolean isAccount = false;
 	//动态成本
 	private Map dyCostMap = new HashMap();
 	//目标成本
@@ -299,7 +302,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	}
     protected void initUserConfig()
     {
-    	super.initUserConfig();
+//    	super.initUserConfig();
     }
 
 	private void initControl() {
@@ -331,9 +334,11 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		actionDisplayContract.putValue(Action.SMALL_ICON,EASResource.getIcon("imgTbtn_assistantlistaccount"));
 		actionDisplayConNoText.putValue(Action.SMALL_ICON,EASResource.getIcon("imgTbtn_assistantlistaccount"));
 		
-		actionDisplayAll.setVisible(false);
-		actionDisplayContract.setVisible(false);
+//		actionDisplayAll.setVisible(false);
+//		actionDisplayContract.setVisible(false);
 		actionDisplayConNoText.setVisible(false);
+		
+		this.btnDisplayContract.setText("只显示科目");
 		
 //		this.menuTool.add(actionDisplayAll);
 //		this.menuTool.add(actionDisplayContract);
@@ -414,7 +419,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			if(value!=null&&value instanceof ProgrammingContractInfo){
 				ProgrammingContractInfo contractInfo=(ProgrammingContractInfo)value;
 				UIContext uiContext = new UIContext(ui);
-				contractInfo=ProgrammingContractFactory.getRemoteInstance().getProgrammingContractInfo("select costEntries.*,costEntries.costAccount.*,* from where id='"+contractInfo.getId().toString()+"'");
+				contractInfo=ProgrammingContractFactory.getRemoteInstance().getProgrammingContractInfo("select costEntries.*,costEntries.costAccount.*,costEntries.costAccount.curProject.*,* from where id='"+contractInfo.getId().toString()+"'");
 				uiContext.put("programmingContract", contractInfo);
 				IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB)
 						.create(ProgrammingContractEditUI.class.getName(), uiContext, null,OprtState.VIEW);
@@ -946,7 +951,6 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			for (int i = 0; i < ccsec.size(); i++) {
 				if (ccsec.get(i).getParent()!=null&&ccsec.get(i).getParent().getContractBill()!=null&&!lnUps.contains(ccsec.get(i).getParent().getContractBill().getId().toString())) {
 					lnUps.add(ccsec.get(i).getParent().getContractBill().getId().toString());
-					
 					hasCostAccount.add(ccsec.get(i).getCostAccount().getId().toString());
 				}
 			}
@@ -1001,7 +1005,6 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 				if(psec.get(i).getParent().getConWithoutText() != null
 						&& !conWithoutIds.contains(psec.get(i).getParent().getConWithoutText().getId().toString())){
 					conWithoutIds.add(psec.get(i).getParent().getConWithoutText().getId().toString());
-					
 					hasCostAccount.add(psec.get(i).getCostAccount().getId().toString());
 				}
 			}
@@ -1072,6 +1075,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		filter.getFilterItems().add(new FilterItemInfo("costAccount.id", hasCostAccount, CompareType.NOTINCLUDE));
 		filter.getFilterItems().add(new FilterItemInfo("contract.programming.project.id", selectObjId));
 		filter.getFilterItems().add(new FilterItemInfo("contract.programming.isLatest", Boolean.TRUE));
+		filter.getFilterItems().add(new FilterItemInfo("contract.isCiting", Boolean.FALSE));
 		evi.setFilter(filter);
 		evi.getSelector().add(new SelectorItemInfo("costAccount.id"));
 		evi.getSelector().add(new SelectorItemInfo("contract.longNumber"));
@@ -1549,7 +1553,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
         	if(aimAmount==null||aimAmount.compareTo(FDCHelper.ZERO)==0){
         		row.getCell("rate").setValue(null);
         	}else{
-        		row.getCell("rate").setValue((FDCHelper.subtract(aimAmount, hasHappenAmount)).divide(aimAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+        		row.getCell("rate").setValue(FDCHelper.divide(hasHappenAmount, aimAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
         	}
         	 
 			//是否启用部分结算
@@ -1568,9 +1572,11 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 //			if (cbc != null) {
 			//如果全部显示 或者 只显示合同信息
 			if (cbc != null && (isDisplayAll || isDisplayContract)) {
+				CRMHelper.sortCollection(cbc, "number", true);
 				for (int i = 0; i < cbc.size(); i++) {
 					ContractBillInfo info = cbc.get(i);
 					IRow eRow = this.tblMain.addRow();
+					eRow.getStyleAttributes().setHided(isAccount);
 					eRow.setTreeLevel(node.getLevel());
 					eRow.setUserObject(info);
 					loadRow(eRow);// 合同数据填充
@@ -1711,9 +1717,11 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			ContractWithoutTextCollection cwtc = (ContractWithoutTextCollection)this.conWithoutMap.get(acctId);
 			//如果全部显示 或者 只显示无文本合同信息
 			if(cwtc!=null && cwtc.size() != 0 && (isDisplayAll || isDisplayConNoText)){
+				CRMHelper.sortCollection(cwtc, "number", true);
 				for(int i = 0; i < cwtc.size();i++){
 					ContractWithoutTextInfo info = cwtc.get(i);
 					IRow newRow = this.tblMain.addRow();
+					newRow.getStyleAttributes().setHided(isAccount);
 					newRow.setTreeLevel(node.getLevel());
 					newRow.setUserObject(info);
 					//填充无文本合同
@@ -1727,7 +1735,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 					if(pbAmtMap.containsKey(info.getId().toString())){
 						newRow.getCell("hasPayAmt").setValue(pbAmtMap.get(info.getId().toString()));
 					}
-					newRow.getCell("allNotPaid").setValue(FDCHelper.subtract(row.getCell("amt").getValue(),row.getCell("hasPayAmt").getValue()));// 已付款金额
+					newRow.getCell("allNotPaid").setValue(FDCHelper.subtract(newRow.getCell("amt").getValue(),newRow.getCell("hasPayAmt").getValue()));// 已付款金额
 					
 					BigDecimal hasPayAmt=(BigDecimal) newRow.getCell("hasPayAmt").getValue();
 					BigDecimal amt=(BigDecimal) newRow.getCell("amt").getValue();
@@ -1764,9 +1772,11 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		}
 		ProgrammingContractCollection pcCol = (ProgrammingContractCollection)this.pcMap.get(acctId);
 		if(pcCol!=null && pcCol.size() != 0){
+			CRMHelper.sortCollection(pcCol, "longNumber", true);
 			for(int i = 0; i < pcCol.size();i++){
 				ProgrammingContractInfo info = pcCol.get(i);
 				IRow newRow = this.tblMain.addRow();
+				newRow.getStyleAttributes().setHided(isAccount);
 				newRow.setTreeLevel(node.getLevel());
 				newRow.setUserObject(info);
 				newRow.getCell("contract").setValue(info.getName());
@@ -1907,7 +1917,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
         	if(aimAmount==null||aimAmount.compareTo(FDCHelper.ZERO)==0){
         		row.getCell("rate").setValue(null);
         	}else{
-        		row.getCell("rate").setValue((FDCHelper.subtract(aimAmount, hasHappenAmount)).divide(aimAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+        		row.getCell("rate").setValue(FDCHelper.divide(hasHappenAmount, aimAmount, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
         	}
 		}
 	}
@@ -2066,9 +2076,10 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	}
 	//全部显示
 	public void actionDisplayAll_actionPerformed(ActionEvent e) throws Exception {
-		this.isDisplayAll = true;
-		this.isDisplayConNoText = false;
-		this.isDisplayContract = false;
+		this.isAccount = false;
+//		this.isDisplayAll = true;
+//		this.isDisplayConNoText = false;
+//		this.isDisplayContract = false;
 		this.actionRefresh_actionPerformed(e);
 	}
 	//只显示无文本合同
@@ -2080,9 +2091,10 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	}
 	//只显示合同
 	public void actionDisplayContract_actionPerformed(ActionEvent e) throws Exception {
-		this.isDisplayAll = false;
-		this.isDisplayConNoText = false;
-		this.isDisplayContract = true;
+		this.isAccount = true;
+//		this.isDisplayAll = false;
+//		this.isDisplayConNoText = false;
+//		this.isDisplayContract = true;
 		this.actionRefresh_actionPerformed(e);
 	}
 	

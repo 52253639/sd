@@ -3936,6 +3936,7 @@ public class ContractWithoutTextEditUI extends
 			}
 			SelectorItemCollection sel=new SelectorItemCollection();
 			sel.add("entry.payContentType.*");
+			sel.add("*");
 			ct=ContractTypeFactory.getRemoteInstance().getContractTypeInfo(new ObjectUuidPK(ct.getId()),sel);
 			this.prmtPayContentType.setEnabled(true);
 			

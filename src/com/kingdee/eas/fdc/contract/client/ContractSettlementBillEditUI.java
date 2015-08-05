@@ -1416,7 +1416,8 @@ public class ContractSettlementBillEditUI extends
 				for(int i=0;i<col.size();i++){
 					amount =FDCHelper.add(amount,col.get(i).getAmount()) ;
 				}
-				if(this.txtOriginalAmount.getBigDecimalValue().compareTo(this.editData.getContractBill().getProgrammingContract().getAmount().subtract(amount))>0){
+				BigDecimal pcAmount=ProgrammingContractFactory.getRemoteInstance().getProgrammingContractInfo(new ObjectUuidPK(this.editData.getContractBill().getProgrammingContract().getId())).getAmount();
+				if(this.txtOriginalAmount.getBigDecimalValue().compareTo(pcAmount.subtract(amount))>0){
 					FDCMsgBox.showWarning(this,"结算造价原币大于（合同对应合约规划金额-合约规划关联无文本合同金额）！");
 					abort();
 				}
