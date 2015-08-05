@@ -1262,6 +1262,8 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		IORMappingDAO iPay = ORMappingDAO.getInstance(new PaymentBillInfo().getBOSType(), ctx, getConnection(ctx));
 		
 		ReceivingBillInfo rev=null;
+		PaymentBillInfo pay=null;
+		RevBillTypeEnum type=null;
 		for (int i = 0; i < collection.size(); i++) {
 			FDCReceivingBillCollection billColl = null;
 			String id = collection.get(i).getId().toString();
@@ -1270,6 +1272,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 				for (int j = 0; j < billColl.size(); j++) {
 					FDCReceivingBillInfo fdcReceivingBillInfo = billColl.get(j);
 					FDCReceivingBillEntryCollection billEntry = fdcReceivingBillInfo.getEntries();
+					type=fdcReceivingBillInfo.getRevBillType();
 					if(fdcReceivingBillInfo.getRevBillType().equals(RevBillTypeEnum.refundment)){
 						PaymentBillTypeInfo payemtnBillTypeInfo = getPaymentBillType(ctx);
 						
@@ -1378,6 +1381,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							
 							payBillEntry.add(payBillEntryInfo);
 						}
+						pay=paymentBillInfo;
 						iPay.addNewBatch(paymentBillInfo);
 					}else{
 						ReceivingBillTypeInfo receivingBillTypeInfo = getReceivingBillType(ctx);
@@ -1533,11 +1537,21 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		
 		iReceiving.executeBatch();
 		
-		ReceivingBillFactory.getLocalInstance(ctx).submit(rev);
-		Set revId=new HashSet();
-		revId.add(rev.getId().toString());
-		ReceivingBillFactory.getLocalInstance(ctx).audit(revId);
-		ReceivingBillFactory.getLocalInstance(ctx).rec(revId);
+		if(type.equals(RevBillTypeEnum.refundment)){
+			PaymentBillFactory.getLocalInstance(ctx).submit(pay);
+			Set payId=new HashSet();
+			payId.add(pay.getId().toString());
+			PaymentBillFactory.getLocalInstance(ctx).audit(payId);
+			PaymentBillFactory.getLocalInstance(ctx).pay(payId);
+		}else{
+			ReceivingBillFactory.getLocalInstance(ctx).submit(rev);
+			Set revId=new HashSet();
+			revId.add(rev.getId().toString());
+			ReceivingBillFactory.getLocalInstance(ctx).audit(revId);
+			ReceivingBillFactory.getLocalInstance(ctx).rec(revId);
+		}
+		
+		
 		builder.execute();
 	}
 	

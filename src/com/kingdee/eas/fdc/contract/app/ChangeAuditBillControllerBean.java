@@ -463,6 +463,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
 					change.setIsImportChange(info.isIsImportChange());
 					change.setConstructPrice(entry.getConstructPrice());
 					change.setIsFee(info.getIsFee());
+					change.setWfType(info.getWfType());
 					
 					SupplierContentEntryCollection coll = new SupplierContentEntryCollection();
 					EntityViewInfo vit = new EntityViewInfo();
@@ -652,6 +653,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
 					change.setCostUnit(info.getCostUnit());
 					change.setReaDesc(info.getReaDesc());
 					change.setIsFee(info.getIsFee());
+					change.setWfType(info.getWfType());
 					
 					EntityViewInfo vit = new EntityViewInfo();
 					FilterInfo fit = new FilterInfo();
@@ -737,6 +739,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
 					selector.add("costUnit");
 					selector.add("reaDesc");
 					selector.add("isFee");
+					selector.add("wfType");
 					ContractChangeBillFactory.getLocalInstance(ctx).updatePartial(change, selector);
 				}
 			}

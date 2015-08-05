@@ -61,7 +61,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChangeSubject;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contUrgentDegree;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCurProject;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contJobType;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contWFType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSpecialtyType;
     protected com.kingdee.bos.ctrl.swing.KDCheckBox chkIsDeduct;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDeductAmount;
@@ -128,7 +128,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
     protected com.kingdee.bos.ctrl.swing.KDTextField txtChangeSubject;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboUrgentDegree;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCurProject;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtJobType;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtWFType;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtSpecialtyType;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDeductAmount;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtBudgetAmount;
@@ -279,7 +279,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.contChangeSubject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contUrgentDegree = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contCurProject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contJobType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contWFType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contSpecialtyType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.chkIsDeduct = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.contDeductAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -346,7 +346,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.txtChangeSubject = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.comboUrgentDegree = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.prmtCurProject = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
-        this.prmtJobType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtWFType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtSpecialtyType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtDeductAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtBudgetAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
@@ -410,7 +410,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.contChangeSubject.setName("contChangeSubject");
         this.contUrgentDegree.setName("contUrgentDegree");
         this.contCurProject.setName("contCurProject");
-        this.contJobType.setName("contJobType");
+        this.contWFType.setName("contWFType");
         this.contSpecialtyType.setName("contSpecialtyType");
         this.chkIsDeduct.setName("chkIsDeduct");
         this.contDeductAmount.setName("contDeductAmount");
@@ -474,7 +474,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.txtChangeSubject.setName("txtChangeSubject");
         this.comboUrgentDegree.setName("comboUrgentDegree");
         this.prmtCurProject.setName("prmtCurProject");
-        this.prmtJobType.setName("prmtJobType");
+        this.prmtWFType.setName("prmtWFType");
         this.prmtSpecialtyType.setName("prmtSpecialtyType");
         this.txtDeductAmount.setName("txtDeductAmount");
         this.txtBudgetAmount.setName("txtBudgetAmount");
@@ -667,10 +667,10 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.contCurProject.setBoundLabelText(resHelper.getString("contCurProject.boundLabelText"));		
         this.contCurProject.setBoundLabelLength(100);		
         this.contCurProject.setBoundLabelUnderline(true);
-        // contJobType		
-        this.contJobType.setBoundLabelText(resHelper.getString("contJobType.boundLabelText"));		
-        this.contJobType.setBoundLabelLength(100);		
-        this.contJobType.setBoundLabelUnderline(true);
+        // contWFType		
+        this.contWFType.setBoundLabelText(resHelper.getString("contWFType.boundLabelText"));		
+        this.contWFType.setBoundLabelLength(100);		
+        this.contWFType.setBoundLabelUnderline(true);
         // contSpecialtyType		
         this.contSpecialtyType.setBoundLabelText(resHelper.getString("contSpecialtyType.boundLabelText"));		
         this.contSpecialtyType.setBoundLabelLength(100);		
@@ -956,13 +956,13 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.prmtCurProject.setRequired(true);		
         this.prmtCurProject.setEnabled(false);		
         this.prmtCurProject.setEditable(true);
-        // prmtJobType		
-        this.prmtJobType.setDisplayFormat("$name$");		
-        this.prmtJobType.setEditFormat("$number$");		
-        this.prmtJobType.setCommitFormat("$number$");		
-        this.prmtJobType.setQueryInfo("com.kingdee.eas.fdc.basedata.app.F7JobTypeQuery");		
-        this.prmtJobType.setRequired(true);		
-        this.prmtJobType.setEditable(true);
+        // prmtWFType		
+        this.prmtWFType.setDisplayFormat("$name$");		
+        this.prmtWFType.setEditFormat("$number$");		
+        this.prmtWFType.setCommitFormat("$number$");		
+        this.prmtWFType.setQueryInfo("com.kingdee.eas.fdc.contract.app.ChangeWFTypeQuery");		
+        this.prmtWFType.setRequired(true);		
+        this.prmtWFType.setEditable(true);
         // prmtSpecialtyType		
         this.prmtSpecialtyType.setDisplayFormat("$name$");		
         this.prmtSpecialtyType.setEditFormat("$number$");		
@@ -1176,7 +1176,7 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         // menuItemVisa
         this.menuItemVisa.setAction((IItemAction)ActionProxyFactory.getProxy(actionVisa, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemVisa.setText(resHelper.getString("menuItemVisa.text"));
-        this.setFocusTraversalPolicy(new com.kingdee.bos.ui.UIFocusTraversalPolicy(new java.awt.Component[] {txtNumber,txtName,prmtCurProject,prmtChangeReason,prmtChangeType,prmtJobType,comboUrgentDegree,prmtSpecialtyType,cbPeriod,prmtConductDept,txtChangeSubject,comboGraphCount,prmtConductUnit,comboOffer,prmtConstrUnit,txtConstrSite,prmtVisaType,kdtEntrys,prmtContractBill,chkIsDeduct,txtDeductAmount,txtDeductReason,txtBudgetOriAmount,prmtValidReason}));
+        this.setFocusTraversalPolicy(new com.kingdee.bos.ui.UIFocusTraversalPolicy(new java.awt.Component[] {txtNumber,txtName,prmtCurProject,prmtChangeReason,prmtChangeType,prmtWFType,comboUrgentDegree,prmtSpecialtyType,cbPeriod,prmtConductDept,txtChangeSubject,comboGraphCount,prmtConductUnit,comboOffer,prmtConstrUnit,txtConstrSite,prmtVisaType,kdtEntrys,prmtContractBill,chkIsDeduct,txtDeductAmount,txtDeductReason,txtBudgetOriAmount,prmtValidReason}));
         this.setFocusCycleRoot(true);
 		//Register control's property binding
 		registerBindings();
@@ -1241,8 +1241,8 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         this.add(contUrgentDegree, new KDLayout.Constraints(721, 44, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contCurProject.setBounds(new Rectangle(369, 22, 270, 19));
         this.add(contCurProject, new KDLayout.Constraints(369, 22, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contJobType.setBounds(new Rectangle(369, 88, 270, 19));
-        this.add(contJobType, new KDLayout.Constraints(369, 88, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contWFType.setBounds(new Rectangle(369, 88, 270, 19));
+        this.add(contWFType, new KDLayout.Constraints(369, 88, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contSpecialtyType.setBounds(new Rectangle(721, 88, 270, 19));
         this.add(contSpecialtyType, new KDLayout.Constraints(721, 88, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         chkIsDeduct.setBounds(new Rectangle(7, 706, 270, 19));
@@ -1369,8 +1369,8 @@ public abstract class AbstractContractChangeBillEditUI extends com.kingdee.eas.f
         contUrgentDegree.setBoundEditor(comboUrgentDegree);
         //contCurProject
         contCurProject.setBoundEditor(prmtCurProject);
-        //contJobType
-        contJobType.setBoundEditor(prmtJobType);
+        //contWFType
+        contWFType.setBoundEditor(prmtWFType);
         //contSpecialtyType
         contSpecialtyType.setBoundEditor(prmtSpecialtyType);
         //contDeductAmount
@@ -1650,7 +1650,7 @@ pnlExecute.setLayout(new BorderLayout(0, 0));        pnlExecute.add(ctnExecute, 
 		dataBinder.registerBinding("changeSubject", String.class, this.txtChangeSubject, "text");
 		dataBinder.registerBinding("urgentDegree", com.kingdee.eas.fdc.contract.ChangeUrgentDegreeEnum.class, this.comboUrgentDegree, "selectedItem");
 		dataBinder.registerBinding("curProject", com.kingdee.eas.fdc.basedata.CurProjectInfo.class, this.prmtCurProject, "data");
-		dataBinder.registerBinding("jobType", com.kingdee.eas.fdc.basedata.JobTypeInfo.class, this.prmtJobType, "data");
+		dataBinder.registerBinding("wfType", com.kingdee.eas.fdc.contract.ChangeWFTypeInfo.class, this.prmtWFType, "data");
 		dataBinder.registerBinding("deductAmount", java.math.BigDecimal.class, this.txtDeductAmount, "value");
 		dataBinder.registerBinding("amount", java.math.BigDecimal.class, this.txtBudgetAmount, "value");
 		dataBinder.registerBinding("balanceAmount", java.math.BigDecimal.class, this.txtBalanceAmount, "value");
@@ -1773,7 +1773,7 @@ pnlExecute.setLayout(new BorderLayout(0, 0));        pnlExecute.add(ctnExecute, 
 		getValidateHelper().registerBindProperty("changeSubject", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("urgentDegree", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("curProject", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("jobType", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("wfType", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("deductAmount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("amount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("balanceAmount", ValidateHelper.ON_SAVE);    
@@ -1974,12 +1974,12 @@ pnlExecute.setLayout(new BorderLayout(0, 0));        pnlExecute.add(ctnExecute, 
 		}
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
-			sic.add(new SelectorItemInfo("jobType.*"));
+			sic.add(new SelectorItemInfo("wfType.*"));
 		}
 		else{
-        	sic.add(new SelectorItemInfo("jobType.id"));
-        	sic.add(new SelectorItemInfo("jobType.number"));
-        	sic.add(new SelectorItemInfo("jobType.name"));
+        	sic.add(new SelectorItemInfo("wfType.id"));
+        	sic.add(new SelectorItemInfo("wfType.number"));
+        	sic.add(new SelectorItemInfo("wfType.name"));
 		}
         sic.add(new SelectorItemInfo("deductAmount"));
         sic.add(new SelectorItemInfo("amount"));

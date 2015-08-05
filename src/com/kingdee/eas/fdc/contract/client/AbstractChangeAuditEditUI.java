@@ -57,7 +57,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChangeReason;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChangeState;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contUrgentDegree;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contJobType;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contWFType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSpecialtyType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChangeSubject;
     protected com.kingdee.bos.ctrl.swing.KDTabbedPane tbpChangAudit;
@@ -100,7 +100,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtChangeReason;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboChangeState;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboUrgentDegree;
-    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtJobType;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtWFType;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtSpecialtyType;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtChangeSubject;
     protected com.kingdee.bos.ctrl.swing.KDPanel pnlContent;
@@ -282,7 +282,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.contChangeReason = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contChangeState = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contUrgentDegree = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contJobType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contWFType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contSpecialtyType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contChangeSubject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.tbpChangAudit = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
@@ -325,7 +325,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.prmtChangeReason = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.comboChangeState = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboUrgentDegree = new com.kingdee.bos.ctrl.swing.KDComboBox();
-        this.prmtJobType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.prmtWFType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtSpecialtyType = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtChangeSubject = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.pnlContent = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -382,7 +382,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.contChangeReason.setName("contChangeReason");
         this.contChangeState.setName("contChangeState");
         this.contUrgentDegree.setName("contUrgentDegree");
-        this.contJobType.setName("contJobType");
+        this.contWFType.setName("contWFType");
         this.contSpecialtyType.setName("contSpecialtyType");
         this.contChangeSubject.setName("contChangeSubject");
         this.tbpChangAudit.setName("tbpChangAudit");
@@ -422,7 +422,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.prmtChangeReason.setName("prmtChangeReason");
         this.comboChangeState.setName("comboChangeState");
         this.comboUrgentDegree.setName("comboUrgentDegree");
-        this.prmtJobType.setName("prmtJobType");
+        this.prmtWFType.setName("prmtWFType");
         this.prmtSpecialtyType.setName("prmtSpecialtyType");
         this.txtChangeSubject.setName("txtChangeSubject");
         this.pnlContent.setName("pnlContent");
@@ -531,10 +531,10 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.contUrgentDegree.setBoundLabelText(resHelper.getString("contUrgentDegree.boundLabelText"));		
         this.contUrgentDegree.setBoundLabelLength(100);		
         this.contUrgentDegree.setBoundLabelUnderline(true);
-        // contJobType		
-        this.contJobType.setBoundLabelText(resHelper.getString("contJobType.boundLabelText"));		
-        this.contJobType.setBoundLabelLength(100);		
-        this.contJobType.setBoundLabelUnderline(true);
+        // contWFType		
+        this.contWFType.setBoundLabelText(resHelper.getString("contWFType.boundLabelText"));		
+        this.contWFType.setBoundLabelLength(100);		
+        this.contWFType.setBoundLabelUnderline(true);
         // contSpecialtyType		
         this.contSpecialtyType.setBoundLabelText(resHelper.getString("contSpecialtyType.boundLabelText"));		
         this.contSpecialtyType.setBoundLabelLength(100);		
@@ -697,13 +697,13 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         // comboUrgentDegree		
         this.comboUrgentDegree.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.contract.ChangeUrgentDegreeEnum").toArray());		
         this.comboUrgentDegree.setRequired(true);
-        // prmtJobType		
-        this.prmtJobType.setDisplayFormat("$name$");		
-        this.prmtJobType.setEditFormat("$number$");		
-        this.prmtJobType.setRequired(true);		
-        this.prmtJobType.setQueryInfo("com.kingdee.eas.fdc.basedata.app.F7JobTypeQuery");		
-        this.prmtJobType.setEditable(true);		
-        this.prmtJobType.setCommitFormat("$number$");
+        // prmtWFType		
+        this.prmtWFType.setDisplayFormat("$name$");		
+        this.prmtWFType.setEditFormat("$number$");		
+        this.prmtWFType.setRequired(true);		
+        this.prmtWFType.setQueryInfo("com.kingdee.eas.fdc.contract.app.ChangeWFTypeQuery");		
+        this.prmtWFType.setEditable(true);		
+        this.prmtWFType.setCommitFormat("$number$");
         // prmtSpecialtyType		
         this.prmtSpecialtyType.setDisplayFormat("$name$");		
         this.prmtSpecialtyType.setEditFormat("$number$");		
@@ -1019,8 +1019,8 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.add(contChangeState, new KDLayout.Constraints(842, 188, 158, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contUrgentDegree.setBounds(new Rectangle(730, 30, 270, 19));
         this.add(contUrgentDegree, new KDLayout.Constraints(730, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contJobType.setBounds(new Rectangle(377, 74, 270, 19));
-        this.add(contJobType, new KDLayout.Constraints(377, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contWFType.setBounds(new Rectangle(377, 74, 270, 19));
+        this.add(contWFType, new KDLayout.Constraints(377, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contSpecialtyType.setBounds(new Rectangle(730, 74, 270, 19));
         this.add(contSpecialtyType, new KDLayout.Constraints(730, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contChangeSubject.setBounds(new Rectangle(767, 154, 270, 19));
@@ -1099,8 +1099,8 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         contChangeState.setBoundEditor(comboChangeState);
         //contUrgentDegree
         contUrgentDegree.setBoundEditor(comboUrgentDegree);
-        //contJobType
-        contJobType.setBoundEditor(prmtJobType);
+        //contWFType
+        contWFType.setBoundEditor(prmtWFType);
         //contSpecialtyType
         contSpecialtyType.setBoundEditor(prmtSpecialtyType);
         //contChangeSubject
@@ -1377,7 +1377,7 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
 		dataBinder.registerBinding("changeReason", com.kingdee.eas.fdc.basedata.ChangeReasonInfo.class, this.prmtChangeReason, "data");
 		dataBinder.registerBinding("changeState", com.kingdee.eas.fdc.contract.ChangeBillStateEnum.class, this.comboChangeState, "selectedItem");
 		dataBinder.registerBinding("urgentDegree", com.kingdee.eas.fdc.contract.ChangeUrgentDegreeEnum.class, this.comboUrgentDegree, "selectedItem");
-		dataBinder.registerBinding("jobType", com.kingdee.eas.fdc.basedata.JobTypeInfo.class, this.prmtJobType, "data");
+		dataBinder.registerBinding("wfType", com.kingdee.eas.fdc.contract.ChangeWFTypeInfo.class, this.prmtWFType, "data");
 		dataBinder.registerBinding("changeSubject", String.class, this.txtChangeSubject, "text");
 		dataBinder.registerBinding("entrys.changeContent", String.class, this.kdtEntrys, "changeContent.text");
 		dataBinder.registerBinding("entrys.isBack", boolean.class, this.kdtEntrys, "isBack.text");
@@ -1485,7 +1485,7 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
 		getValidateHelper().registerBindProperty("changeReason", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("changeState", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("urgentDegree", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("jobType", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("wfType", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("changeSubject", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entrys.changeContent", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("entrys.isBack", ValidateHelper.ON_SAVE);    
@@ -1680,12 +1680,12 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
         sic.add(new SelectorItemInfo("urgentDegree"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
-			sic.add(new SelectorItemInfo("jobType.*"));
+			sic.add(new SelectorItemInfo("wfType.*"));
 		}
 		else{
-        	sic.add(new SelectorItemInfo("jobType.id"));
-        	sic.add(new SelectorItemInfo("jobType.number"));
-        	sic.add(new SelectorItemInfo("jobType.name"));
+        	sic.add(new SelectorItemInfo("wfType.id"));
+        	sic.add(new SelectorItemInfo("wfType.number"));
+        	sic.add(new SelectorItemInfo("wfType.name"));
 		}
         sic.add(new SelectorItemInfo("changeSubject"));
     	sic.add(new SelectorItemInfo("entrys.changeContent"));

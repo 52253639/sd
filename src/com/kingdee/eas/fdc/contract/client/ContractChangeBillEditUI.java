@@ -553,6 +553,7 @@ public class ContractChangeBillEditUI extends AbstractContractChangeBillEditUI
         sic.add("costUnit");
         sic.add("reaDesc");
         sic.add("isFee");
+        sic.add("wfType.*");
     	return sic;
     }
     
@@ -877,7 +878,7 @@ public class ContractChangeBillEditUI extends AbstractContractChangeBillEditUI
 			txtBudgetOriAmount.setRequired(true);
 			prmtVisaType.setRequired(true);
 			// 非必录
-			prmtJobType.setRequired(false);
+//			prmtJobType.setRequired(false);
 			comboUrgentDegree.setRequired(false);
 			//不可用
 			prmtChangeReason.setEnabled(false);

@@ -113,10 +113,13 @@ import com.kingdee.eas.fdc.tenancy.TenancyHelper;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
 import com.kingdee.eas.fi.cas.IReceivingBill;
+import com.kingdee.eas.fi.cas.PaymentBillCollection;
 import com.kingdee.eas.fi.cas.PaymentBillFactory;
 import com.kingdee.eas.fi.cas.ReceivingBillCollection;
 import com.kingdee.eas.fi.cas.ReceivingBillFactory;
+import com.kingdee.eas.fi.cas.client.CasPaymentBillUI;
 import com.kingdee.eas.fi.cas.client.CasReceivingBillUI;
+import com.kingdee.eas.fi.cas.client.PaymentBillUI;
 import com.kingdee.eas.fi.cas.client.ReceivingBillUI;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.client.FindDialog;
@@ -223,6 +226,15 @@ public class TenancyRevListUI extends AbstractTenancyRevListUI
 			uiContext.put("ID", col.get(0).getId().toString());
 	        IUIFactory uiFactory = UIFactory.createUIFactory(UIFactoryName.MODEL);
 	        IUIWindow uiWindow = uiFactory.create(CasReceivingBillUI.class.getName(), uiContext,null,OprtState.VIEW);
+	        uiWindow.show();
+	        return;
+		}
+		PaymentBillCollection paycol=PaymentBillFactory.getRemoteInstance().getPaymentBillCollection("select id from where sourceBillId='"+id+"'");
+		if(paycol.size()>0){
+			UIContext uiContext = new UIContext(this);
+			uiContext.put("ID",  paycol.get(0).getId().toString());
+	        IUIFactory uiFactory = UIFactory.createUIFactory(UIFactoryName.MODEL);
+	        IUIWindow uiWindow = uiFactory.create(CasPaymentBillUI.class.getName(), uiContext,null,OprtState.VIEW);
 	        uiWindow.show();
 	        return;
 		}

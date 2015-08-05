@@ -695,6 +695,17 @@ public class AbstractContractChangeBillInfo extends com.kingdee.eas.fdc.basedata
         setString("isFee", item.getValue());
 		}
     }
+    /**
+     * Object: 变更指令单 's 流程类型 property 
+     */
+    public com.kingdee.eas.fdc.contract.ChangeWFTypeInfo getWfType()
+    {
+        return (com.kingdee.eas.fdc.contract.ChangeWFTypeInfo)get("wfType");
+    }
+    public void setWfType(com.kingdee.eas.fdc.contract.ChangeWFTypeInfo item)
+    {
+        put("wfType", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("F2141C04");

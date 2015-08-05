@@ -191,6 +191,13 @@ public class ChangeAuditFullListUI extends AbstractChangeAuditFullListUI
 		this.actionAudit.setVisible(true);
 		
 		FDCClientHelper.initTable(tblMain);
+		
+		this.tblMain.getColumn("jobType.name").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("specialtyType.name").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("changeSubject").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("isNoUse").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("invalidCostReason.name").getStyleAttributes().setHided(true);
+		this.tblMain.getColumn("costNouse").getStyleAttributes().setHided(true);
 	}
 	
 	public void onGetRowSet(IRowSet rowSet) {

@@ -568,6 +568,8 @@ public class ChangeAuditListUI extends AbstractChangeAuditListUI
 	                }
 	            }
 	        });
+		
+		this.tblMain.getColumn("jobType.name").getStyleAttributes().setHided(true);
 	}
 	public void btnMultiSubmit_actionPerformed(ActionEvent e) {
 		checkSelected();

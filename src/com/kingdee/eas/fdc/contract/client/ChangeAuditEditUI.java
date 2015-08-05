@@ -1644,6 +1644,11 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 				handleException(e1);
 			}
 		}
+		EntityViewInfo view=new EntityViewInfo();
+		FilterInfo filter = new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("isEnabled",Boolean.TRUE));
+		view.setFilter(filter);
+		this.prmtWFType.setEntityViewInfo(view);
 	}
 	
 	
