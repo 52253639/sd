@@ -186,6 +186,8 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 		this.actionNext.setVisible(false);
 		this.actionFirst.setVisible(false);
 		this.actionLast.setVisible(false);
+		
+		contRevBillType.setVisible(false);
 	}
 	
 	protected void comboRevBillType_itemStateChanged(ItemEvent e)
