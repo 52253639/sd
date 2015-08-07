@@ -94,13 +94,13 @@ public class ContractChangeBillReportUI extends AbstractContractChangeBillReport
 		tblMain.removeColumns();
 		tblMain.removeRows();
 		
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"amount","cbAmount","UNCONFIRM","CONFIRM","amount1","amount2","amount3","amount4","amount5","amount6","amount7","amount8","amount9","amount10","amount11","amount12"});
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"amount","cbAmount","UNCONFIRM","CONFIRM"});
 		FDCHelper.formatTableDate(tblMain, "caBizDate");
 		FDCHelper.formatTableDate(tblMain, "csAuditDate");
 		
 		tblMain.getColumn("caNumber").getStyleAttributes().setFontColor(Color.BLUE);
 		tblMain.getColumn("cbNumber").getStyleAttributes().setFontColor(Color.BLUE);
-		ContractBillReportUI.getFootRow(tblMain, new String[]{"amount","cbAmount","UNCONFIRM","CONFIRM","copies","confirmCopies","amount1","amount2","amount3","amount4","amount5","amount6","amount7","amount8","amount9","amount10","amount11","amount12"});
+		ContractBillReportUI.getFootRow(tblMain, new String[]{"amount","cbAmount","UNCONFIRM","CONFIRM","copies","confirmCopies"});
 	}
 	public void tableDataRequest(KDTDataRequestEvent kdtdatarequestevent) {
 		if(isQuery) return;
@@ -129,6 +129,8 @@ public class ContractChangeBillReportUI extends AbstractContractChangeBillReport
                      
                      Map value = (HashMap)((RptParams)result).getObject("value");
                      Map detailValue = (HashMap)((RptParams)result).getObject("detailValue");
+                     Map spMap = (HashMap)((RptParams)result).getObject("spMap");
+                     
          	         Object[] key=(Object[])((RptParams)result).getObject("key");
          	         tblMain.setRefresh(false);
         	         for (int sort = 0;sort < key.length; sort++) { 
@@ -142,18 +144,6 @@ public class ContractChangeBillReportUI extends AbstractContractChangeBillReport
          	        	 BigDecimal cbAmount=FDCHelper.ZERO;
          	        	 BigDecimal UNCONFIRM=FDCHelper.ZERO;
          	        	 BigDecimal CONFIRM=FDCHelper.ZERO;
-         	        	 BigDecimal amount1=FDCHelper.ZERO;
-         	        	 BigDecimal amount2=FDCHelper.ZERO;
-         	        	 BigDecimal amount3=FDCHelper.ZERO;
-         	        	 BigDecimal amount4=FDCHelper.ZERO;
-         	        	 BigDecimal amount5=FDCHelper.ZERO;
-         	        	 BigDecimal amount6=FDCHelper.ZERO;
-         	        	 BigDecimal amount7=FDCHelper.ZERO;
-         	        	 BigDecimal amount8=FDCHelper.ZERO;
-         	        	 BigDecimal amount9=FDCHelper.ZERO;
-         	        	 BigDecimal amount10=FDCHelper.ZERO;
-         	        	 BigDecimal amount11=FDCHelper.ZERO;
-         	        	 BigDecimal amount12=FDCHelper.ZERO;
          	        	 int copies=0;
          	        	 int confirmCopies=0;
          	        	 for(int i=0;i<list.size();i++){
@@ -171,20 +161,6 @@ public class ContractChangeBillReportUI extends AbstractContractChangeBillReport
          	        		 copies=copies+Integer.parseInt(row.getCell("copies").getValue().toString());
          	        		 confirmCopies=confirmCopies+Integer.parseInt(row.getCell("confirmCopies").getValue().toString());
          	        		
-         	        		amount1=amount1.add(row.getCell("amount1").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount1").getValue());
-         	        		amount2=amount2.add(row.getCell("amount2").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount2").getValue());
-         	        		amount3=amount3.add(row.getCell("amount3").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount3").getValue());
-         	        		amount4=amount4.add(row.getCell("amount4").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount4").getValue());
-         	        		amount5=amount5.add(row.getCell("amount5").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount5").getValue());
-         	        		amount6=amount6.add(row.getCell("amount6").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount6").getValue());
-         	        		
-         	        		amount7=amount7.add(row.getCell("amount7").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount7").getValue());
-         	        		amount8=amount8.add(row.getCell("amount8").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount8").getValue());
-         	        		amount9=amount9.add(row.getCell("amount9").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount9").getValue());
-         	        		amount10=amount10.add(row.getCell("amount10").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount10").getValue());
-         	        		amount11=amount11.add(row.getCell("amount11").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount11").getValue());
-         	        		amount12=amount12.add(row.getCell("amount12").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount12").getValue());
-        	        		 
          	        		 if(row.getCell("id").getValue()==null) continue;
          	        		 String id=row.getCell("id").getValue().toString();
      	        			 List detailList = (ArrayList) detailValue.get(id);
@@ -195,6 +171,20 @@ public class ContractChangeBillReportUI extends AbstractContractChangeBillReport
             	        		 for(int k=0;k<detailRowData.length;k++){
             	        			 detailRow.getCell(k).setValue(detailRowData[k]);
             	        		 }
+            	        		 
+            	        		 String cbId=(String)detailRow.getCell("cbId").getValue();
+            	        		 if(cbId!=null&&spMap.containsKey(cbId)){
+            	        			 List spList=(List) spMap.get(cbId);
+            	        			 String spName="";
+            	        			 for(int k=0;k<spList.size();k++){
+            	        				 if(k==0){
+            	        					 spName=spList.get(k).toString();
+            	        				 }else{
+            	        					 spName=spName+","+spList.get(k).toString();
+            	        				 }
+            	        			 }
+            	        			 detailRow.getCell("specialtyTypeName").setValue(spName);
+            	        		 }
      	        			 }
          	        	 }
          	        	 addRow.getCell("amount").setValue(amount);
@@ -203,18 +193,6 @@ public class ContractChangeBillReportUI extends AbstractContractChangeBillReport
          	        	 addRow.getCell("CONFIRM").setValue(CONFIRM);
          	        	 addRow.getCell("copies").setValue(copies);
          	        	 addRow.getCell("confirmCopies").setValue(confirmCopies);
-         	        	addRow.getCell("amount1").setValue(amount1);
-         	        	addRow.getCell("amount2").setValue(amount2);
-         	        	addRow.getCell("amount3").setValue(amount3);
-         	        	addRow.getCell("amount4").setValue(amount4);
-         	        	addRow.getCell("amount5").setValue(amount5);
-         	        	addRow.getCell("amount6").setValue(amount6);
-         	        	addRow.getCell("amount7").setValue(amount7);
-         	        	addRow.getCell("amount8").setValue(amount8);
-         	        	addRow.getCell("amount9").setValue(amount9);
-         	        	addRow.getCell("amount10").setValue(amount10);
-         	        	addRow.getCell("amount11").setValue(amount11);
-         	        	addRow.getCell("amount12").setValue(amount12);
          	         }
          	         tblMain.setRowCount(tblMain.getRowCount());
          	         tblMain.setRefresh(true);

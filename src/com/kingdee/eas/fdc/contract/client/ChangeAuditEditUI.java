@@ -4346,7 +4346,7 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 			return;
         }          
 //      ChangeAuditBillProvider data = new ChangeAuditBillProvider(editData.getString("id"),getTDQueryPK(),getATTCHQueryPK());
-        ChangeAuditBillDataProvider data = new ChangeAuditBillDataProvider(editData.getString("id"),getTDQueryPK());
+        ChangeAuditBillDataProvider data = new ChangeAuditBillDataProvider(editData.getString("id"),getTDQueryPK(),this.prmtSpecialtyType.getText());
         com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
         appHlp.print(getTDFileName(), data, javax.swing.SwingUtilities.getWindowAncestor(this));
 	}
@@ -4361,7 +4361,7 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 			return;
         }
 //        ChangeAuditBillProvider data = new ChangeAuditBillProvider(editData.getString("id"),getTDQueryPK(),getATTCHQueryPK());
-        ChangeAuditBillDataProvider data = new ChangeAuditBillDataProvider(editData.getString("id"),getTDQueryPK());
+        ChangeAuditBillDataProvider data = new ChangeAuditBillDataProvider(editData.getString("id"),getTDQueryPK(),this.prmtSpecialtyType.getText());
         com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
         appHlp.printPreview(getTDFileName(), data, javax.swing.SwingUtilities.getWindowAncestor(this));
 	}

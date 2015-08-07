@@ -30,12 +30,14 @@ import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
+import com.kingdee.bos.ctrl.kdf.table.KDTDefaultCellEditor;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.foot.KDTFootManager;
+import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
 import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDCheckBox;
 import com.kingdee.bos.ctrl.swing.KDLayout;
@@ -120,13 +122,12 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 				return super.getText(obj);
 			}
 		});
-		
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"srcAmount","originalAmount","amount","amount1","amount2","amount3","amount4","amount5","amount6"});
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"srcAmount","originalAmount","amount"});
 		FDCHelper.formatTableDate(tblMain, "bizDate");
 		FDCHelper.formatTableDate(tblMain, "auditDate");
 		
 		tblMain.getColumn("number").getStyleAttributes().setFontColor(Color.BLUE);
-		getFootRow(tblMain, new String[]{"srcAmount","amount","amount1","amount2","amount3","amount4","amount5","amount6"});
+		getFootRow(tblMain, new String[]{"srcAmount","amount"});
 	}
 	public static void getFootRow(KDTable tblMain,String[] columnName){
 		IRow footRow = null;
@@ -224,12 +225,6 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	        	 List list = (ArrayList) value.get(contractType);
          	        	 BigDecimal srcAmount=FDCHelper.ZERO;
          	        	 BigDecimal amount=FDCHelper.ZERO;
-//         	        	 BigDecimal amount1=FDCHelper.ZERO;
-//         	        	 BigDecimal amount2=FDCHelper.ZERO;
-//         	        	 BigDecimal amount3=FDCHelper.ZERO;
-//         	        	 BigDecimal amount4=FDCHelper.ZERO;
-//         	        	 BigDecimal amount5=FDCHelper.ZERO;
-//         	        	 BigDecimal amount6=FDCHelper.ZERO;
          	        	 for(int i=0;i<list.size();i++){
          	        		 IRow row=tblMain.addRow();
          	        		 row.setTreeLevel(1);
@@ -239,21 +234,15 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	        		 }
          	        		 srcAmount=FDCHelper.add(srcAmount, row.getCell("srcAmount").getValue());
          	        		 amount=FDCHelper.add(amount, row.getCell("amount").getValue());
-//         	        		amount1=amount1.add(row.getCell("amount1").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount1").getValue());
-//         	        		amount2=amount2.add(row.getCell("amount2").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount2").getValue());
-//         	        		amount3=amount3.add(row.getCell("amount3").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount3").getValue());
-//         	        		amount4=amount4.add(row.getCell("amount4").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount4").getValue());
-//         	        		amount5=amount5.add(row.getCell("amount5").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount5").getValue());
-//         	        		amount6=amount6.add(row.getCell("amount6").getValue()==null?FDCHelper.ZERO:(BigDecimal)row.getCell("amount6").getValue());
+         	        		 
+         	        		 if(row.getCell("hasSettled").getValue().toString().equals("0")){
+         	        			row.getCell("hasSettled").setValue(Boolean.FALSE);
+         	        		 }else{
+         	        			row.getCell("hasSettled").setValue(Boolean.TRUE);
+         	        		 }
          	        	 }
          	        	 addRow.getCell("srcAmount").setValue(srcAmount);
          	        	 addRow.getCell("amount").setValue(amount);
-//         	        	addRow.getCell("amount1").setValue(amount1);
-//         	        	addRow.getCell("amount2").setValue(amount2);
-//         	        	addRow.getCell("amount3").setValue(amount3);
-//         	        	addRow.getCell("amount4").setValue(amount4);
-//         	        	addRow.getCell("amount5").setValue(amount5);
-//         	        	addRow.getCell("amount6").setValue(amount6);
          	         }
          	         tblMain.setRowCount(tblMain.getRowCount());
          	         tblMain.setRefresh(true);

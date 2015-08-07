@@ -38,10 +38,12 @@ public class ChangeAuditBillDataProvider extends FDCBillDataProvider {
 	private Set idSet = new HashSet();
 
 	private Date createTime = null;
+	private String spName="";
 
-	public ChangeAuditBillDataProvider(String billId, IMetaDataPK mainQuery) {
+	public ChangeAuditBillDataProvider(String billId, IMetaDataPK mainQuery,String spName) {
 		super(billId, mainQuery);
 		this.billId = billId;
+		this.spName=spName;
 	}
 
 	public IRowSet getMainBillRowSet(BOSQueryDataSource ds) {
@@ -50,6 +52,7 @@ public class ChangeAuditBillDataProvider extends FDCBillDataProvider {
 			iRowSet.beforeFirst();
 			while (iRowSet.next()) {
 				createTime = iRowSet.getDate("createTime");
+				iRowSet.updateObject("specialtyType.name", spName);
 			}
 			iRowSet.beforeFirst();
 		} catch (SQLException e) {
