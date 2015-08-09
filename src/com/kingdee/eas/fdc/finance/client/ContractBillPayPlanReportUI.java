@@ -1,18 +1,16 @@
 /**
  * output package name
  */
-package com.kingdee.eas.fdc.contract.client;
+package com.kingdee.eas.fdc.finance.client;
 
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
-import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,19 +26,16 @@ import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
+import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
-import com.kingdee.bos.ctrl.kdf.table.KDTDefaultCellEditor;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.foot.KDTFootManager;
-import com.kingdee.bos.ctrl.kdf.util.editor.ICellEditor;
 import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
-import com.kingdee.bos.ctrl.swing.KDCheckBox;
-import com.kingdee.bos.ctrl.swing.KDLayout;
 import com.kingdee.bos.ctrl.swing.KDTree;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
@@ -49,24 +44,19 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
-import com.kingdee.eas.fdc.basedata.ChangeTypeCollection;
-import com.kingdee.eas.fdc.basedata.CurProjectInfo;
-import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.ProjectTreeBuilder;
 import com.kingdee.eas.fdc.contract.ContractBillReportFacadeFactory;
 import com.kingdee.eas.fdc.contract.ContractPropertyEnum;
-import com.kingdee.eas.fdc.contract.DynamicCostControlFacadeFactory;
+import com.kingdee.eas.fdc.contract.client.ContractBillEditUI;
+import com.kingdee.eas.fdc.finance.ContractBillPayPlanReportFacadeFactory;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
-import com.kingdee.eas.framework.report.util.DefaultKDTableInsertHandler;
-import com.kingdee.eas.framework.report.util.KDTableInsertHandler;
 import com.kingdee.eas.framework.report.util.KDTableUtil;
 import com.kingdee.eas.framework.report.util.RptParams;
-import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
 import com.kingdee.eas.util.client.EASResource;
@@ -74,13 +64,12 @@ import com.kingdee.eas.util.client.EASResource;
 /**
  * output class name
  */
-public class ContractBillReportUI extends AbstractContractBillReportUI
+public class ContractBillPayPlanReportUI extends AbstractContractBillPayPlanReportUI
 {
-    private static final Logger logger = CoreUIObject.getLogger(ContractBillReportUI.class);
-    
+    private static final Logger logger = CoreUIObject.getLogger(ContractBillPayPlanReportUI.class);
     private boolean isQuery=false;
     private boolean isOnLoad=false;
-    public ContractBillReportUI() throws Exception
+    public ContractBillPayPlanReportUI() throws Exception
     {
         super();
         tblMain.checkParsed();
@@ -93,11 +82,11 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 	}
 
 	protected CommRptBaseConditionUI getQueryDialogUserPanel() throws Exception {
-		return null;
+		return new ContractBillPayPlanReportFilterUI();
 	}
 
 	protected ICommRptBase getRemoteInstance() throws BOSException {
-		return ContractBillReportFacadeFactory.getRemoteInstance();
+		return ContractBillPayPlanReportFacadeFactory.getRemoteInstance();
 	}
 
 	protected KDTable getTableForPrintSetting() {
@@ -122,12 +111,50 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 				return super.getText(obj);
 			}
 		});
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"srcAmount","originalAmount","amount"});
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				String str = o.toString();
+				if (!FDCHelper.isEmpty(str)) {
+					return str + "%";
+				}
+				return str;
+			}
+		});
+		tblMain.getColumn("payRate").setRenderer(render_scale);
+		
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"srcAmount","originalAmount","amount","lastPrice","payAmount","payRate","unPayAmount"});
 		FDCHelper.formatTableDate(tblMain, "bizDate");
 		FDCHelper.formatTableDate(tblMain, "auditDate");
 		
 		tblMain.getColumn("number").getStyleAttributes().setFontColor(Color.BLUE);
-		getFootRow(tblMain, new String[]{"srcAmount","amount"});
+		getFootRow(tblMain, new String[]{"srcAmount","amount","lastPrice","payAmount","unPayAmount"});
+		
+		KDTFootManager footRowManager = tblMain.getFootManager();
+		BigDecimal lp=(BigDecimal)footRowManager.getFootRow(0).getCell("lastPrice").getValue();
+ 		BigDecimal pa=(BigDecimal)footRowManager.getFootRow(0).getCell("payAmount").getValue();
+ 		if(pa!=null&&lp!=null&&lp.compareTo(FDCHelper.ZERO)!=0){
+ 			footRowManager.getFootRow(0).getCell("payRate").setValue(FDCHelper.divide(pa, lp, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+ 		}
+		Integer syear = (Integer)params.getObject("syear");
+	     Integer smonth =   (Integer)params.getObject("smonth");
+	    
+		 Integer eyear = (Integer)params.getObject("eyear");
+	     Integer emonth =   (Integer)params.getObject("emonth");
+	    
+	     int year=syear;
+	     int month=smonth;
+
+	     while(!(year>eyear||(year==eyear&&month>emonth))){
+	    	 String planKey=year+"Y"+month+"M"+"planAmount";
+ 	    	 String payKey=year+"Y"+month+"M"+"payAmount";
+	    	 getFootRow(tblMain, new String[]{planKey,payKey});
+	    	month=month+1;
+	    	if(month>12){
+	    		month=1;
+	    		year=year+1;
+	    	}
+	     }
 	}
 	public static void getFootRow(KDTable tblMain,String[] columnName){
 		IRow footRow = null;
@@ -192,7 +219,7 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 		if(isQuery) return;
 		isQuery=true;
 		DefaultKingdeeTreeNode treeNode = (DefaultKingdeeTreeNode)this.treeMain.getLastSelectedPathComponent();
-    	if(treeNode!=null||isThrough){
+    	if(treeNode!=null){
     		Window win = SwingUtilities.getWindowAncestor(this);
             LongTimeDialog dialog = null;
             if(win instanceof Frame){
@@ -213,8 +240,48 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
                      RptTableHeader header = (RptTableHeader)rpt.getObject("header");
                      KDTableUtil.setHeader(header, tblMain);
                      
+                     Integer syear = (Integer)params.getObject("syear");
+             	     Integer smonth =   (Integer)params.getObject("smonth");
+             	    
+             		 Integer eyear = (Integer)params.getObject("eyear");
+             	     Integer emonth =   (Integer)params.getObject("emonth");
+             	    
+             	     int year=syear;
+             	     int month=smonth;
+
+             	     while(!(year>eyear||(year==eyear&&month>emonth))){
+             	    	 IColumn column=tblMain.addColumn();
+        	        	 column.setKey(year+"Y"+month+"M"+"planAmount");
+        	        	 column.setWidth(70);
+        	        	 int merge=tblMain.getHeadRow(0).getCell(column.getKey()).getColumnIndex();
+        	        	 
+        	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+        	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("计划金额");
+        	        	 CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	        	 
+        	        	 column=tblMain.addColumn();
+           	        	 column.setKey(year+"Y"+month+"M"+"payAmount");
+           	        	 column.setWidth(70);
+           	        	 
+           	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+           	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("实付金额");
+           	        	 CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+           	        	 
+        	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+1);
+             	    	
+             	    	month=month+1;
+             	    	if(month>12){
+             	    		month=1;
+             	    		year=year+1;
+             	    	}
+             	     }
+             	    
                      Map value = (HashMap)((RptParams)result).getObject("value");
                      Object[] key=(Object[])((RptParams)result).getObject("key");
+                     
+                     Map planValue = (HashMap)((RptParams)result).getObject("planValue");
+                     Map payValue = (HashMap)((RptParams)result).getObject("payValue");
+                     Map lastMap=(HashMap)((RptParams)result).getObject("lastMap");
          	         tblMain.setRefresh(false);
          	         for (int sort = 0;sort < key.length; sort++) { 
          	        	 String contractType = (String) key[sort];
@@ -225,6 +292,11 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	        	 List list = (ArrayList) value.get(contractType);
          	        	 BigDecimal srcAmount=FDCHelper.ZERO;
          	        	 BigDecimal amount=FDCHelper.ZERO;
+         	        	 BigDecimal lastPrice=FDCHelper.ZERO;
+         	        	 BigDecimal payAmount=FDCHelper.ZERO;
+         	        	 BigDecimal unPayAmount=FDCHelper.ZERO;
+         	        	 
+         	        	 Map totalAmount=new HashMap();
          	        	 for(int i=0;i<list.size();i++){
          	        		 IRow row=tblMain.addRow();
          	        		 row.setTreeLevel(1);
@@ -232,21 +304,88 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
          	        		 for(int k=0;k<rowData.length;k++){
          	                    row.getCell(k).setValue(rowData[k]);
          	        		 }
-         	        		 srcAmount=FDCHelper.add(srcAmount, row.getCell("srcAmount").getValue());
-         	        		 amount=FDCHelper.add(amount, row.getCell("amount").getValue());
          	        		 
          	        		 if(row.getCell("hasSettled").getValue().toString().equals("0")){
          	        			row.getCell("hasSettled").setValue(Boolean.FALSE);
          	        		 }else{
          	        			row.getCell("hasSettled").setValue(Boolean.TRUE);
          	        		 }
-         	        		if(row.getCell("contractPropert").getValue().toString().equals(ContractPropertyEnum.SUPPLY_VALUE)){
+         	        		 String id=row.getCell("id").getValue().toString();
+         	        		 if(!row.getCell("contractPropert").getValue().toString().equals(ContractPropertyEnum.SUPPLY_VALUE)){
+         	        			 row.getCell("lastPrice").setValue(lastMap.get(id));
+             	        		  
+             	        		BigDecimal lp=(BigDecimal)row.getCell("lastPrice").getValue();
+             	        		BigDecimal pa=(BigDecimal)row.getCell("payAmount").getValue();
+             	        		if(pa!=null&&lp!=null&&lp.compareTo(FDCHelper.ZERO)!=0){
+             	        			row.getCell("payRate").setValue(FDCHelper.divide(pa, lp, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+             	        			row.getCell("unPayAmount").setValue(FDCHelper.subtract(lp,pa));
+             	        		}
+             	        		 
+             	        		 syear = (Integer)params.getObject("syear");
+                         	     smonth = (Integer)params.getObject("smonth");
+                         	    
+                         		 eyear = (Integer)params.getObject("eyear");
+                         	     emonth = (Integer)params.getObject("emonth");
+                         	    
+                         	     year=syear;
+                         	     month=smonth;
+
+                         	     while(!(year>eyear||(year==eyear&&month>emonth))){
+                         	    	 String planKey=year+"Y"+month+"M"+"planAmount";
+                         	    	 String payKey=year+"Y"+month+"M"+"payAmount";
+                         	    	 row.getCell(planKey).setValue(planValue.get(id+planKey));
+                         	    	 row.getCell(payKey).setValue(payValue.get(id+payKey));
+                         	    	 
+                         	    	totalAmount.put(planKey, FDCHelper.add(planValue.get(id+planKey),totalAmount.get(planKey)));
+                         	    	totalAmount.put(payKey, FDCHelper.add(payValue.get(id+planKey),totalAmount.get(payKey)));
+                         	    	month=month+1;
+                         	    	if(month>12){
+                         	    		month=1;
+                         	    		year=year+1;
+                         	    	}
+                         	     }
+         	        		 }else{
          	        			 row.getCell("amount").setValue(null);
          	        			 row.getCell("originalAmount").setValue(null);
-         	        		}
+         	        		 }
+         	        		 srcAmount=FDCHelper.add(srcAmount, row.getCell("srcAmount").getValue());
+       	        		     amount=FDCHelper.add(amount, row.getCell("amount").getValue());
+       	        		     lastPrice=FDCHelper.add(lastPrice, row.getCell("lastPrice").getValue());
+       	        		     payAmount=FDCHelper.add(payAmount, row.getCell("payAmount").getValue());
+       	        		     unPayAmount=FDCHelper.add(unPayAmount, row.getCell("unPayAmount").getValue());
          	        	 }
          	        	 addRow.getCell("srcAmount").setValue(srcAmount);
          	        	 addRow.getCell("amount").setValue(amount);
+         	        	 addRow.getCell("lastPrice").setValue(lastPrice);
+         	        	 addRow.getCell("payAmount").setValue(payAmount);
+         	        	 addRow.getCell("unPayAmount").setValue(unPayAmount);
+         	        	 
+         	        	BigDecimal lp=(BigDecimal)addRow.getCell("lastPrice").getValue();
+     	        		BigDecimal pa=(BigDecimal)addRow.getCell("payAmount").getValue();
+     	        		if(pa!=null&&lp!=null&&lp.compareTo(FDCHelper.ZERO)!=0){
+     	        			addRow.getCell("payRate").setValue(FDCHelper.divide(pa, lp, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+     	        		}
+         	        	 syear = (Integer)params.getObject("syear");
+                 	     smonth =   (Integer)params.getObject("smonth");
+                 	    
+                 		 eyear = (Integer)params.getObject("eyear");
+                 	     emonth =   (Integer)params.getObject("emonth");
+                 	    
+                 	     year=syear;
+                 	     month=smonth;
+
+                 	     while(!(year>eyear||(year==eyear&&month>emonth))){
+                 	    	 String planKey=year+"Y"+month+"M"+"planAmount";
+                 	    	 String payKey=year+"Y"+month+"M"+"payAmount";
+                 	    	addRow.getCell(planKey).setValue(totalAmount.get(planKey));
+                 	    	addRow.getCell(payKey).setValue(totalAmount.get(payKey));
+                 	    	 
+                 	    	month=month+1;
+                 	    	if(month>12){
+                 	    		month=1;
+                 	    		year=year+1;
+                 	    	}
+                 	     }
          	         }
          	         tblMain.setRowCount(tblMain.getRowCount());
          	         tblMain.setRefresh(true);
@@ -288,29 +427,17 @@ public class ContractBillReportUI extends AbstractContractBillReportUI
 	protected void treeMain_valueChanged(TreeSelectionEvent e) throws Exception {
 		this.refresh();
 	}
-	boolean isThrough=false;
 	public void onLoad() throws Exception {
-		if(this.getUIContext().get("title")!=null){
-			isThrough=true;
-		}
 		isOnLoad=true;
-		setShowDialogOnLoad(false);
+		setShowDialogOnLoad(true);
 		tblMain.getStyleAttributes().setLocked(true);
 		super.onLoad();
-		if(!isThrough){
-			buildOrgTree();
-		}
+		buildOrgTree();
 		tblMain.getSelectManager().setSelectMode(KDTSelectManager.MULTIPLE_CELL_SELECT);
 		this.actionPrint.setVisible(false);
 		this.actionPrintPreview.setVisible(false);
 		isOnLoad=false;
 		
-		if(isThrough){
-			this.setUITitle(this.getUITitle()+" - "+this.getUIContext().get("title").toString());
-			kDTreeView1.setVisible(false);
-			query();
-		}
-		this.actionQuery.setVisible(false);
 		this.refresh();
 	}
 	protected void tblMain_tableClicked(KDTMouseEvent e) throws Exception {
