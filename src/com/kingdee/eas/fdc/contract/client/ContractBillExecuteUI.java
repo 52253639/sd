@@ -12,15 +12,18 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.swing.Action;
+import javax.swing.SwingUtilities;
 
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.data.event.RequestRowSetEvent;
 import com.kingdee.bos.ctrl.kdf.servertable.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
+import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
@@ -87,8 +90,22 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 		FDCClientHelper.addSqlMenu(this, this.menuEdit);
 		this.btnQueryScheme.setVisible(false);
 //		getSytemParm();
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				tblMain.getViewManager().freeze(0, 4);
+				tblMain.getColumn("contractBill.name").setWidth(200);
+				tblMain.getColumn("contractBill.hasSettled").setWidth(70);
+		}});
+		
+		this.actionViewContract.setVisible(false);
+		this.actionViewPayment.setVisible(false);
+		
 	}
-
+	 protected void initUserConfig()
+	    {
+//	    	super.initUserConfig();
+	    }
 	/**
 	 * 设置表格属性
 	 */
@@ -116,6 +133,20 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 		this.menuBiz.add(actionDisplayAll);
 		this.menuBiz.add(actionDisplayContract);
 		this.menuBiz.add(actionDisplayConNoText);
+		
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				if(o==null){
+					return null;
+				}else{
+					String str = o.toString();
+					return str + "%";
+				}
+				
+			}
+		});
+		this.tblMain.getColumn("payRate").setRenderer(render_scale);
 	}
 	
 	protected void initWorkButton() {
@@ -234,9 +265,16 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 		if (contract.getCreator() != null) {
 			row.getCell("creator").setValue(contract.getCreator().getName());
 		}
-		if (contract.getCreateDept() != null) {
-			row.getCell("createDept").setValue(contract.getCreateDept().getName());
-		}
+		
+		BigDecimal hasPayAmt=(BigDecimal) row.getCell("payRealAmt").getValue();
+		BigDecimal lastPrice=(BigDecimal) row.getCell("contractBillLastAmt").getValue();
+		if(hasPayAmt==null||lastPrice==null||lastPrice.compareTo(FDCHelper.ZERO)==0){
+			row.getCell("payRate").setValue(null);
+    	}else{
+    		row.getCell("payRate").setValue(hasPayAmt.divide(lastPrice, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+    	}
+		row.getCell("reAmt").setValue(data.getPlanPayAmount());
+		row.getCell("reOriAmt").setValue(data.getPlanPaySrcAmount());
 	}
 
 	private void fillRowByNotTextContractExeData(IRow row, ContractExecuteData data) {
@@ -256,8 +294,20 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 		row.getCell("contract.id").setValue(contract.getId().toString());
 		row.getCell("partB").setValue(data.getPartB());
 		// row.getCell("projectPriceInContract").setValue(data.getProjectPriceInContract());
-		row.getCell("allNotPaid").setValue(data.getCompleteNotPay());
-		row.getCell("completePrjAmt").setValue(data.getCompleteProjectAmount());
+//		row.getCell("allNotPaid").setValue(data.getCompleteNotPay());
+//		row.getCell("completePrjAmt").setValue(data.getCompleteProjectAmount());
+		
+		if (contract.getCreator() != null) {
+			row.getCell("creator").setValue(contract.getCreator().getName());
+		}
+		
+		BigDecimal hasPayAmt=(BigDecimal) row.getCell("payRealAmt").getValue();
+		BigDecimal lastPrice=(BigDecimal) row.getCell("contractBill.amt").getValue();
+		if(hasPayAmt==null||lastPrice==null||lastPrice.compareTo(FDCHelper.ZERO)==0){
+			row.getCell("payRate").setValue(null);
+    	}else{
+    		row.getCell("payRate").setValue(hasPayAmt.divide(lastPrice, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+    	}
 	}
 	private void fillPayDatas(IRow row, ContractExecuteData child) {
 //		row.getCell("payPlan.id").setValue(child.getPlanPayId());
@@ -267,11 +317,23 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 		row.getCell("paymentBill.id").setValue(child.getRealPayId());
 		//R101221-207合同执行情况表优的实际付款日期改为付款单上的业务日期 by zhiyuan_tang
 //		row.getCell("payRealDate").setValue(child.getRealPayDate());
-		row.getCell("payRealDate").setValue(child.getPayBizDate());
+		row.getCell("payRealDate").setValue(child.getRealPayDate());
 		row.getCell("payRealAmt").setValue(child.getRealPayAmount());
 		row.getCell("payRealSrcAmt").setValue(child.getRealPaySrcAmount());
 //		row.getCell("projectPriceInContract").setValue(child.getProjectPriceInContract());
 		
+		BigDecimal hasPayAmt=(BigDecimal) row.getCell("payRealAmt").getValue();
+		BigDecimal lastPrice=(BigDecimal) row.getCell("contractBill.amt").getValue();
+		if(hasPayAmt==null||lastPrice==null||lastPrice.compareTo(FDCHelper.ZERO)==0){
+			row.getCell("payRate").setValue(null);
+    	}else{
+    		row.getCell("payRate").setValue(hasPayAmt.divide(lastPrice, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+    	}
+		
+		row.getCell("reBookedDate").setValue(child.getPlanPayDate());
+		row.getCell("reAmt").setValue(child.getPlanPayAmount());
+		row.getCell("reOriAmt").setValue(child.getPlanPaySrcAmount());
+		row.getCell("paymentBill.id").setValue(child.getPlanPayId());
 	}
 	private void fillTable(List datas) {
 		if (datas != null && !datas.isEmpty()) {
@@ -287,8 +349,10 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 			BigDecimal noPayAmt = FDCConstants.ZERO;
 			for (int i = 0; i < datas.size(); ++i) {
 				ContractExecuteData data = (ContractExecuteData) datas.get(i);
+				IRow row=null;
 				if (data.getContract() != null || data.getNoTextContract() != null) {
-					IRow row = tblMain.addRow();
+					row = tblMain.addRow();
+					row.getStyleAttributes().setBackground(FDCTableHelper.cantEditColor);
 					row.setTreeLevel(0);
 					if (data.getContract() != null) {
 						fillRowByContractExeData(row, data);
@@ -308,10 +372,11 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 				if(data.getChildren() != null && !data.getChildren().isEmpty()){
 					for(int j = 0; j < data.getChildren().size(); ++j){
 						ContractExecuteData child = (ContractExecuteData) data.getChildren().get(j);
-						IRow row = tblMain.addRow();
-						row.setTreeLevel(1);
-						fillPayDatas(row, child);
+						IRow childRow = tblMain.addRow();
+						childRow.setTreeLevel(1);
+						fillPayDatas(childRow, child);
 					}
+					row.getCell("reAmount").setValue(data.getChildren().size());
 				}
 			}
 			IRow row = this.tblMain.addRow();
@@ -381,7 +446,7 @@ public class ContractBillExecuteUI extends AbstractContractBillExecuteUI {
 					}
 					
 				} else if (tblMain.getRow(rowIndex).getCell("paymentBill.id").getValue() != null) {
-					view(null, tblMain, "paymentBill.id", PaymentBillEditUI.class.getName());
+					view(null, tblMain, "paymentBill.id", PayRequestBillEditUI.class.getName());
 				} else if(tblMain.getRow(rowIndex).getCell("payPlan.id").getValue() != null){
 					view(null,tblMain,"payPlan.id",ContractPayPlanEditUI.class.getName());
 				}
