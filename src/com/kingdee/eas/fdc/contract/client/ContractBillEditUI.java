@@ -4932,15 +4932,16 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		}
 		FDCClientVerifyHelper.verifyEmpty(this, this.prmtcontractType);
 		ContractTypeInfo ct=(ContractTypeInfo)this.prmtcontractType.getValue();
-		if(ct.isIsAccountView()){
-			if(!ContractCostSplitFactory.getRemoteInstance().exists("select * from where contractBill.id='"+this.editData.getId().toString()+"' and splitState='3ALLSPLIT'")){
-				FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
-				SysUtil.abort();
+		if(!ContractPropertyEnum.SUPPLY.equals(this.contractPropert.getSelectedItem())){
+			if(ct.isIsAccountView()){
+				if(!ContractCostSplitFactory.getRemoteInstance().exists("select * from where contractBill.id='"+this.editData.getId().toString()+"' and splitState='3ALLSPLIT'")){
+					FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
+					SysUtil.abort();
+				}
+			}else{
+				verifyContractProgrammingPara();
 			}
-		}else{
-			verifyContractProgrammingPara();
 		}
-		
 		
 		//变态的需求： 集团的不需要检测合同结算类型
 //		String orgName = this.editData.getOrgUnit().getDisplayName();
