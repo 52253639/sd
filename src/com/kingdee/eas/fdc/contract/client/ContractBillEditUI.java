@@ -4934,6 +4934,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 					FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
 					SysUtil.abort();
 				}
+				this.editData.setSplitState(CostSplitStateEnum.ALLSPLIT);
 			}else{
 				verifyContractProgrammingPara();
 			}
