@@ -2434,7 +2434,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			FDCMsgBox.showWarning(this,"请先保存单据！");
 			SysUtil.abort();
 		}
-		showSplitUI(this,this.editData.getId().toString(),"contractBill.id",this.editData.getBOSType().toString(),true);
+		showSplitUI(this,this.editData.getId().toString(),"contractBill.id",this.editData.getBOSType().toString(),true,this.txtamount.getBigDecimalValue());
 	}
 
 	//业务日期变化引起,期间的变化
@@ -3762,8 +3762,8 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		}
 	}
 
-	public static void showSplitUI(CoreUIObject parentUI, String billId,
-			String billPropName, String bosType, boolean isCostSplit)
+	public void showSplitUI(CoreUIObject parentUI, String billId,
+			String billPropName, String bosType, boolean isCostSplit,BigDecimal amount)
 			throws BOSException, UIException {
 		String splitBillID = null;
 
@@ -3819,7 +3819,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			uiContext.put("costBillID", billId);
 			oprtState = OprtState.ADDNEW;
 		}
-
+		uiContext.put("amount", amount);
 		IUIWindow uiWin = UIFactory.createUIFactory(UIFactoryName.MODEL)
 				.create(editName, uiContext, null, oprtState);
 
@@ -4251,18 +4251,18 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 	protected void checkBeforeRemove() throws Exception {
 		//检查单据是否在工作流中
 		FDCClientUtils.checkBillInWorkflow(this, getSelectBOID());
-		EntityViewInfo view = new EntityViewInfo();
-		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("contractBill", editData.getId()));
-		view.setFilter(filter);
-		view.getSelector().add("id");
-		CoreBillBaseCollection coll = ContractCostSplitFactory.getRemoteInstance()
-				.getCoreBillBaseCollection(view);
-		Iterator iter = coll.iterator();
-		if (iter.hasNext()) {
-			MsgBox.showWarning(this, "请先删除对应合同拆分！");
-			SysUtil.abort();
-		}
+//		EntityViewInfo view = new EntityViewInfo();
+//		FilterInfo filter = new FilterInfo();
+//		filter.getFilterItems().add(new FilterItemInfo("contractBill", editData.getId()));
+//		view.setFilter(filter);
+//		view.getSelector().add("id");
+//		CoreBillBaseCollection coll = ContractCostSplitFactory.getRemoteInstance()
+//				.getCoreBillBaseCollection(view);
+//		Iterator iter = coll.iterator();
+//		if (iter.hasNext()) {
+//			MsgBox.showWarning(this, "请先删除对应合同拆分！");
+//			SysUtil.abort();
+//		}
 	}
 
 	public void actionCopy_actionPerformed(ActionEvent e) throws Exception {
@@ -4385,15 +4385,6 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		super.checkRef(id);
 
 		ContractClientUtils.checkContractBillRef(this, id);
-
-		if (!splitBeforeAudit) {
-			boolean hasSettleSplit = checkContractHasSplit(id);
-			if (hasSettleSplit) {
-				MsgBox.showWarning("合同已经拆分,不能反审批!");
-				SysUtil.abort();
-				return;
-			}
-		}
 	}
 
 	private boolean checkContractHasSplit(String id) throws EASBizException,
@@ -4934,7 +4925,12 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		ContractTypeInfo ct=(ContractTypeInfo)this.prmtcontractType.getValue();
 		if(!ContractPropertyEnum.SUPPLY.equals(this.contractPropert.getSelectedItem())){
 			if(ct.isIsAccountView()){
-				if(!ContractCostSplitFactory.getRemoteInstance().exists("select * from where contractBill.id='"+this.editData.getId().toString()+"' and splitState='3ALLSPLIT'")){
+				ContractCostSplitCollection col=ContractCostSplitFactory.getRemoteInstance().getContractCostSplitCollection("select amount from where contractBill.id='"+this.editData.getId().toString()+"'");
+				if(col.size()==0){
+					FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
+					SysUtil.abort();
+				}
+				if(col.get(0).getAmount().compareTo(this.txtamount.getBigDecimalValue())!=0){
 					FDCMsgBox.showWarning(this,"请先关联成本科目，并且完全拆分！");
 					SysUtil.abort();
 				}
@@ -6028,6 +6024,15 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 	    if(rs!=null&&rs.size()>0){
 			FDCMsgBox.showWarning(this, "您所选择的数据存在被补充合同引用的合同，不能进行此操作!");
 			this.abort();
+		}
+	    
+	    if (!splitBeforeAudit) {
+			boolean hasSettleSplit = checkContractHasSplit(this.editData.getId().toString());
+			if (hasSettleSplit) {
+				MsgBox.showWarning("合同已经拆分,不能反审批!");
+				SysUtil.abort();
+				return;
+			}
 		}
 	    
 	  //R110603-0148:如果存在变更审批单，则不允许反审批

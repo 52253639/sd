@@ -656,7 +656,7 @@ ContractBillInfo contractBillInfo = ContractBillFactory.getRemoteInstance().getC
         selectors.add("id");
 		selectors.add("number");
 		selectors.add("name");
-		selectors.add("srcAmount");
+		selectors.add("amount");
 		selectors.add("curProject.id");
 		selectors.add("curProject.longNumber");
 		selectors.add(new SelectorItemInfo("state"));
@@ -673,7 +673,7 @@ ContractBillInfo contractBillInfo = ContractBillFactory.getRemoteInstance().getC
     		objectValue.setCurProject(costBillInfo.getCurProject());
         txtCostBillNumber.setText(costBillInfo.getNumber());
         //txtCostBillName.setText(costBillInfo());    	
-        txtAmount.setValue(costBillInfo.getSrcAmount());
+        txtAmount.setValue(costBillInfo.getAmount());
         objectValue.setIsInvalid(false);
 		setContractBillId(costBillInfo.getId().toString());
 		objectValue.setIsConfirm(true);        
@@ -777,6 +777,10 @@ ContractBillInfo contractBillInfo = ContractBillFactory.getRemoteInstance().getC
 		 if(ContractCostSplitFactory.getRemoteInstance().checkIsExistProg(this.getContractBillId().toString())!=null){
 			 this.actionAcctSelect.setEnabled(false);
 			 this.btnAcctSelect.setEnabled(false);
+		 }
+		 
+		 if(this.getUIContext().get("amount")!=null){
+			 this.txtAmount.setValue(this.getUIContext().get("amount"));
 		 }
 	}
 	

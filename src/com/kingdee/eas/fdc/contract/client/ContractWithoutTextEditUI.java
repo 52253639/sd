@@ -711,7 +711,7 @@ public class ContractWithoutTextEditUI extends
 			uiContext.put("costBillID", this.editData.getId().toString());
 			oprtState = OprtState.ADDNEW;
 		}
-
+		uiContext.put("amount", this.txtamount.getBigDecimalValue());
 		IUIWindow uiWin = UIFactory.createUIFactory(UIFactoryName.MODEL)
 				.create(editName, uiContext, null, oprtState);
 		uiWin.show();
@@ -3971,18 +3971,18 @@ public class ContractWithoutTextEditUI extends
 
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
 		FDCClientUtils.checkBillInWorkflow(this, getSelectBOID());
-		EntityViewInfo view = new EntityViewInfo();
-		FilterInfo filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("conWithoutText.id", editData.getId()));
-		view.setFilter(filter);
-		view.getSelector().add("id");
-		CoreBillBaseCollection coll = PaymentSplitFactory.getRemoteInstance()
-				.getCoreBillBaseCollection(view);
-		Iterator iter = coll.iterator();
-		if (iter.hasNext()) {
-			MsgBox.showWarning(this, "请先删除对应无合同拆分！");
-			SysUtil.abort();
-		}
+//		EntityViewInfo view = new EntityViewInfo();
+//		FilterInfo filter = new FilterInfo();
+//		filter.getFilterItems().add(new FilterItemInfo("conWithoutText.id", editData.getId()));
+//		view.setFilter(filter);
+//		view.getSelector().add("id");
+//		CoreBillBaseCollection coll = PaymentSplitFactory.getRemoteInstance()
+//				.getCoreBillBaseCollection(view);
+//		Iterator iter = coll.iterator();
+//		if (iter.hasNext()) {
+//			MsgBox.showWarning(this, "请先删除对应无合同拆分！");
+//			SysUtil.abort();
+//		}
 		super.actionRemove_actionPerformed(e);
 	}
 	protected void tblAttachement_tableClicked(KDTMouseEvent e)throws Exception {

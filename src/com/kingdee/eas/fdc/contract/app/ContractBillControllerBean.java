@@ -692,33 +692,45 @@ public class ContractBillControllerBean extends
 						for(int i=0;i < col.size();i++){
 							ContractCostSplitInfo info = col.get(i);
 							if(info!=null){
-//								if(!isSplitBaseOnProp){
-//									//如果补充合同+主合同金额大于主合同已拆分金额 则变更主合同拆分状态为部分拆分
-//									//R110608-0383: 录入金额为0的主合同的拆分金额存在为0的情况
-//									BigDecimal splitAmount = info.getBigDecimal("amount");
-//									if (splitAmount == null) {
-//										splitAmount = FDCHelper.ZERO;
-//									}
-//									if((mainAmount.add(revAmount)).compareTo(splitAmount)==1
-//											&& splitState.equals(CostSplitStateEnum.ALLSPLIT_VALUE)){
-//										builder.appendSql("update T_CON_ContractBill set fsplitState=? where fid=?");
-//										builder.addParam(CostSplitStateEnum.PARTSPLIT_VALUE);
-//										builder.addParam(mainId.toString());
-//										builder.getSql();
-//										builder.execute();
-//										builder.clear();//不用再New
-//										builder.appendSql("update T_CON_ContractCostSplit set fsplitState=? where fcontractbillid=?");
-//										builder.addParam(CostSplitStateEnum.PARTSPLIT_VALUE);
-//										builder.addParam(mainId.toString());
-//										builder.execute();
-//										builder.clear();
-//									}
-//								}
+								if(!isSplitBaseOnProp){
+									//如果补充合同+主合同金额大于主合同已拆分金额 则变更主合同拆分状态为部分拆分
+									//R110608-0383: 录入金额为0的主合同的拆分金额存在为0的情况
+									BigDecimal splitAmount = info.getBigDecimal("amount");
+									if (splitAmount == null) {
+										splitAmount = FDCHelper.ZERO;
+									}
+									if((mainAmount.add(revAmount)).compareTo(splitAmount)!=0
+											&& splitState.equals(CostSplitStateEnum.ALLSPLIT_VALUE)){
+										builder.appendSql("update T_CON_ContractBill set fsplitState=? where fid=?");
+										builder.addParam(CostSplitStateEnum.PARTSPLIT_VALUE);
+										builder.addParam(mainId.toString());
+										builder.getSql();
+										builder.execute();
+										builder.clear();//不用再New
+										builder.appendSql("update T_CON_ContractCostSplit set fsplitState=? where fcontractbillid=?");
+										builder.addParam(CostSplitStateEnum.PARTSPLIT_VALUE);
+										builder.addParam(mainId.toString());
+										builder.execute();
+										builder.clear();
+									}
+								}
 							}
 						}
 						
 						if(isSplitBaseOnProp){
 							ContractCostSplitFactory.getLocalInstance(ctx).autoSplit4(BOSUuid.read(mainId));
+							builder.appendSql("update T_CON_ContractBill set fsplitState=? where fid=?");
+							builder.addParam(CostSplitStateEnum.ALLSPLIT_VALUE);
+							builder.addParam(mainId.toString());
+							builder.getSql();
+							builder.execute();
+							builder.clear();
+
+							builder.appendSql("update T_CON_ContractCostSplit set fsplitState=? where fcontractbillid=?");
+							builder.addParam(CostSplitStateEnum.ALLSPLIT_VALUE);
+							builder.addParam(mainId.toString());
+							builder.execute();
+							builder.clear();
 						}
 						
 					} else {
@@ -2215,6 +2227,8 @@ public class ContractBillControllerBean extends
 			deleteAttachment(ctx,contractInfo.getAgreementID());
 		}
 		deleteAttachment(ctx,pk.toString());
+		
+		this.autoDelSplit(ctx, pk);
 		super._delete(ctx, pk);	
 	}
 	protected void deleteAttachment(Context ctx,String id) throws BOSException, EASBizException{

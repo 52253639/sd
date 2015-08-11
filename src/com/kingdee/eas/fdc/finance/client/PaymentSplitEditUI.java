@@ -991,6 +991,9 @@ public class PaymentSplitEditUI extends AbstractPaymentSplitEditUI {
 		calInvoiceAmt();
 		calPayedAmt();
 		
+		if(this.getUIContext().get("amount")!=null){
+			 this.txtAmount.setValue(this.getUIContext().get("amount"));
+		 }
 	}
 
 	/**

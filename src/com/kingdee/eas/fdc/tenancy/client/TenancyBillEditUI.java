@@ -980,7 +980,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.tblRentSet.getColumn(C_RENT_FIRST_RENT).getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 
 		this.tblRentSet.getColumn(C_RENT_TENANCY_MODEL).setEditor(createComboCellEditor(TenancyModeEnum.getEnumList()));
-		this.tblRentSet.getColumn(C_RENT_TENANCY_MODEL).getStyleAttributes().setLocked(true);
+//		this.tblRentSet.getColumn(C_RENT_TENANCY_MODEL).getStyleAttributes().setLocked(true);
 		this.tblRentSet.getColumn(C_RENT_RENT_TYPE).setEditor(createComboCellEditor(RentTypeEnum.getEnumList()));
 //		this.tblRentSet.getColumn(C_RENT_RENT_TYPE).getStyleAttributes().setLocked(true);
 
