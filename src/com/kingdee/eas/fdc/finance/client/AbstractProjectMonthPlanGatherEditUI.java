@@ -114,6 +114,7 @@ public abstract class AbstractProjectMonthPlanGatherEditUI extends com.kingdee.e
         actionSubmit.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
         _tempStr = resHelper.getString("ActionSubmit.NAME");
         actionSubmit.putValue(ItemAction.NAME, _tempStr);
+        this.actionSubmit.setBindWorkFlow(true);
         this.actionSubmit.setExtendProperty("canForewarn", "true");
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
          this.actionSubmit.addService(new com.kingdee.eas.framework.client.service.NetFunctionService());
@@ -1040,6 +1041,13 @@ public abstract class AbstractProjectMonthPlanGatherEditUI extends com.kingdee.e
     public IMetaDataPK getMetaDataPK()
     {
         return new MetaDataPK("com.kingdee.eas.fdc.finance.client", "ProjectMonthPlanGatherEditUI");
+    }
+    /**
+     * output isBindWorkFlow method
+     */
+    public boolean isBindWorkFlow()
+    {
+        return true;
     }
 
 
