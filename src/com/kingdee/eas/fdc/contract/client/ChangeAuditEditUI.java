@@ -2599,7 +2599,7 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
         prmtReckonor.setDisplayFormat("$name$");
         prmtReckonor.setEditFormat("$name$");
         prmtReckonor.setCommitFormat("$name$");
-        prmtReckonor.setRequired(true);
+//        prmtReckonor.setRequired(true);
         prmtReckonor.setQueryInfo("com.kingdee.eas.base.permission.app.F7UserQuery");
 //        prmtReckonor.getQueryAgent().getRuntimeEntityView().getFilter().mergeFilter(getReckonorF7Filter(), "and");
         
@@ -2609,7 +2609,7 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
         ObjectValueRender reck = new ObjectValueRender();
         reck.setFormat(new BizDataFormat("$name$"));
         table.getCell(i+curRow+number, 3).setRenderer(reck);
-        table.getRow(i+curRow).getCell(3).getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_COMMON_BG_COLOR);
+//        table.getRow(i+curRow).getCell(3).getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_COMMON_BG_COLOR);
         curRow++;
         
         //责任部门
@@ -4070,12 +4070,12 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 				}
 			}
 			
-			Object contentBP = getSecondTable().getCell(i*suppRows+ROW_reckoner, "content").getValue();
-			if(contentBP == null){
-				getSecondTable().getEditManager().editCellAt(i*suppRows+ROW_reckoner, 3);
-				MsgBox.showWarning(this,ChangeAuditUtil.getRes("personNoNull"));
-				SysUtil.abort();				
-			}
+//			Object contentBP = getSecondTable().getCell(i*suppRows+ROW_reckoner, "content").getValue();
+//			if(contentBP == null){
+//				getSecondTable().getEditManager().editCellAt(i*suppRows+ROW_reckoner, 3);
+//				MsgBox.showWarning(this,ChangeAuditUtil.getRes("personNoNull"));
+//				SysUtil.abort();				
+//			}
 		}
 		boolean isWarn=false;
 		String str="如下编码的合同的变更指令金额累计已达到了变更提示的比例:\n";
