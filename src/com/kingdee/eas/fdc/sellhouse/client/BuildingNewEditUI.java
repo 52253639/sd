@@ -368,6 +368,10 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 		this.kdtEntry.getColumn("area").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
 		this.kdtEntry.getColumn("area").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
 		
+		this.kdtEntry.getColumn("buildArea").setEditor(cellEditor);
+		this.kdtEntry.getColumn("buildArea").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.RIGHT);
+		this.kdtEntry.getColumn("buildArea").getStyleAttributes().setNumberFormat(FDCHelper.getNumberFtm(2));
+		
 		this.kdtEntry.getColumn("floor").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
 	}
 
@@ -519,9 +523,10 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 			IRow row=this.kdtEntry.addRow();
 			row.setUserObject(buildingInfo.getAreaEntry().get(i));
 			row.getCell("area").setValue(buildingInfo.getAreaEntry().get(i).getArea());
+			row.getCell("buildArea").setValue(buildingInfo.getAreaEntry().get(i).getBuildArea());
 			row.getCell("floor").setValue(i+1);
 		}
-		CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"area"});
+		CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"area","buildArea"});
 	}
 	
 	private BuildingFloorEntryCollection getBuildingFloorEntryColl(BuildingInfo building)
@@ -664,6 +669,7 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 			IRow row=this.kdtEntry.getRow(i);
 			BuildingAreaEntryInfo areaEntry=(BuildingAreaEntryInfo) row.getUserObject();
 			areaEntry.setArea((BigDecimal) row.getCell("area").getValue());
+			areaEntry.setBuildArea((BigDecimal) row.getCell("buildArea").getValue());
 			buildingInfo.getAreaEntry().add(areaEntry);
 		}
 	}
@@ -906,7 +912,7 @@ public class BuildingNewEditUI extends AbstractBuildingNewEditUI {
 			 row.getCell("floor").setValue(i+1);
 			 row.setUserObject(new BuildingAreaEntryInfo());
 		 }
-		 CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"area"});
+		 CRMClientHelper.getFootRow(this.kdtEntry, new String[]{"area","buildArea"});
 	}
 	
 	  /**

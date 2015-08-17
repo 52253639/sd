@@ -326,5 +326,8 @@ public class SpecialScheduleEditUI extends AbstractSpecialScheduleEditUI {
 		actionSave.setEnabled(isEnable);
 		actionSubmit.setEnabled(isEnable);
 	}
-	
+	protected String getPropertityUIName() {
+		String propertyUIName = FDCSpecialScheduleTaskPropertiesUI.class.getName();
+		return propertyUIName;
+	}
 }

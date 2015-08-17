@@ -27,6 +27,8 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.metadata.entity.SorterItemCollection;
+import com.kingdee.bos.metadata.entity.SorterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.metadata.resource.BizEnumValueInfo;
 import com.kingdee.bos.ui.face.CoreUIObject;
@@ -422,6 +424,7 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.AUDITED_VALUE));
 		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.EXECUTING_VALUE));
+		filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.CONTINUETENANCYING_VALUE));
 		if(this.cbIsAll.isSelected()){
 			filter.getFilterItems().add(new FilterItemInfo("tenancyState",TenancyBillStateEnum.EXPIRATION_VALUE));
 		}
@@ -432,11 +435,14 @@ public class OtherBillListUI extends AbstractOtherBillListUI
 			filter.getFilterItems().add(new FilterItemInfo("id", null));
 		}
 		if(this.cbIsAll.isSelected()){
-			filter.setMaskString("(#0 or #1 or #2) and #3");
+			filter.setMaskString("(#0 or #1 or #2 or #3) and #4");
 		}else{
-			filter.setMaskString("(#0 or #1) and #2");
+			filter.setMaskString("(#0 or #1 or #2) and #3");
 		}
 		vi.setFilter(filter);
+		SorterItemCollection sort=new SorterItemCollection();
+		sort.add(new SorterItemInfo("name"));
+		vi.setSorter(sort);
 		SelectorItemCollection sels =new SelectorItemCollection();
 		sels.add("*");
 		sels.add("oldTenancyBill.*");

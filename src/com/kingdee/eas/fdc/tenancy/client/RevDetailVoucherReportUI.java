@@ -192,26 +192,62 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
       	        	 column.setKey(year+"Y"+month+"M"+"isGen");
       	        	 column.setWidth(130);
       	        	 int merge=tblMain.getHeadRow(0).getCell(column.getKey()).getColumnIndex();
-      	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+      	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue("应收金额"+"("+year+"-"+month+")");
       	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("是否生成应收费用汇总");
       	        	 
       	        	 column=tblMain.addColumn();
         	         column.setKey(year+"Y"+month+"M"+"appAmount");
         	         column.setWidth(70);
-        	         
-        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+        	         column.getStyleAttributes().setHided(true);
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("应收金额"+"("+year+"-"+month+")");
         	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("应收金额");
         	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
         	         
         	         column=tblMain.addColumn();
         	         column.setKey(year+"Y"+month+"M"+"feeAmount");
-        	         column.setWidth(120);
-        	         
-        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
-        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("累计确认收入金额");
+        	         column.setWidth(70);
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("应收金额"+"("+year+"-"+month+")");
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("确认收入");
         	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
         	         
-	   	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+2);
+        	         column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"rateAmount");
+        	         column.setWidth(70);
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("应收金额"+"("+year+"-"+month+")");
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("销项");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+        	         column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"allAmount");
+        	         column.setWidth(70);
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("应收金额"+"("+year+"-"+month+")");
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("小计");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+        	         tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+4);
+        	         column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"totalFeeAmount");
+        	         column.setWidth(110);
+        	         merge=tblMain.getHeadRow(0).getCell(column.getKey()).getColumnIndex();
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("累计确认应收金额");
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("确认收入");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+        	         column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"totalRateAmount");
+        	         column.setWidth(110);
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("累计确认应收金额");
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("销项");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+        	         column=tblMain.addColumn();
+        	         column.setKey(year+"Y"+month+"M"+"totalAllAmount");
+        	         column.setWidth(110);
+        	         tblMain.getHeadRow(0).getCell(column.getKey()).setValue("累计确认应收金额");
+        	         tblMain.getHeadRow(1).getCell(column.getKey()).setValue("小计");
+        	         CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+        	         
+        	         tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+2);
          	         
 	   	        	 Calendar cal = Calendar.getInstance();
 	        		 cal.set(Calendar.YEAR, year);
@@ -220,6 +256,8 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 	        		 Date curEndDate=FDCDateHelper.getSQLBegin(FDCDateHelper.getLastDayOfMonth(cal.getTime()));
 	        		
          	         RptRowSet detailrs = (RptRowSet)((RptParams)result).getObject("detailrs");
+         	         
+         	         BigDecimal rate=FDCHelper.ZERO;
         	         while(detailrs.next()){
         	        	 String key=detailrs.getString("conId")+detailrs.getString("mdId");
         	        	 
@@ -228,21 +266,29 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
         	        		if(row.getCell(year+"Y"+month+"M"+"appAmount")==null){
         	        			continue;
         	        		}
+        	        		EntityViewInfo view=new EntityViewInfo();
         	        		FilterInfo filter=new FilterInfo();
         	        		filter.getFilterItems().add(new FilterItemInfo("tenancyBill.id",detailrs.getString("conId")));
         	        		filter.getFilterItems().add(new FilterItemInfo("moneyDefine.id",detailrs.getString("mdId")));
         	        		filter.getFilterItems().add(new FilterItemInfo("appDate",curEndDate));
+        	        		view.setFilter(filter);
         	        		
-        	        		if(FeesWarrantEntrysFactory.getRemoteInstance().exists(filter)){
+        	        		FeesWarrantEntrysCollection col=FeesWarrantEntrysFactory.getRemoteInstance().getFeesWarrantEntrysCollection(view);
+        	        		if(col.size()>0){
         	        			row.getCell(year+"Y"+month+"M"+"isGen").setValue(Boolean.TRUE);
+        	        			row.getCell(year+"Y"+month+"M"+"feeAmount").setValue(col.get(0).getAppAmount());
         	        		}else{
         	        			row.getCell(year+"Y"+month+"M"+"isGen").setValue(Boolean.FALSE);
+        	        			row.getCell(year+"Y"+month+"M"+"feeAmount").setValue(FDCHelper.ZERO);
         	        		}
+        	        		row.getCell(year+"Y"+month+"M"+"rateAmount").setValue(FDCHelper.multiply(row.getCell(year+"Y"+month+"M"+"feeAmount").getValue(), rate));
+        	        		row.getCell(year+"Y"+month+"M"+"allAmount").setValue(FDCHelper.add(row.getCell(year+"Y"+month+"M"+"feeAmount").getValue(), row.getCell(year+"Y"+month+"M"+"rateAmount").getValue()));
+        	        		
         	        		Date startDate=(Date) row.getCell("startDate").getValue();
            	        	    Date endDate=(Date) row.getCell("endDate").getValue();
         	        		int monthDiff=getMonthDiff(startDate,endDate)+1;
         	        		BigDecimal appAmount=detailrs.getBigDecimal("appAmount");
-        	        		BigDecimal feeAmount=detailrs.getBigDecimal("feeAmount");
+        	        		BigDecimal totalFeeAmount=detailrs.getBigDecimal("totalFeeAmount");
         	        		if(monthDiff!=1){
         	        			int dayDiff=FDCDateHelper.getDiffDays(startDate, endDate);
             	        		BigDecimal avg=FDCHelper.divide(appAmount, dayDiff, 2, BigDecimal.ROUND_HALF_UP);
@@ -275,11 +321,16 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
             	        		}
         	        		}
         	        		row.getCell(year+"Y"+month+"M"+"appAmount").setValue(appAmount);
-        	        		row.getCell(year+"Y"+month+"M"+"feeAmount").setValue(feeAmount);
+        	        		row.getCell(year+"Y"+month+"M"+"totalFeeAmount").setValue(totalFeeAmount);
+        	        		row.getCell(year+"Y"+month+"M"+"totalRateAmount").setValue(FDCHelper.multiply(row.getCell(year+"Y"+month+"M"+"totalFeeAmount").getValue(), rate));
+        	        		row.getCell(year+"Y"+month+"M"+"totalAllAmount").setValue(FDCHelper.add(row.getCell(year+"Y"+month+"M"+"totalFeeAmount").getValue(), row.getCell(year+"Y"+month+"M"+"totalRateAmount").getValue()));
+        	        		
         	        		if(totalrowMap.containsKey(detailrs.getString("conId"))){
         	        			IRow totalrow=(IRow) totalrowMap.get(detailrs.getString("conId"));
         	        			totalrow.getCell(year+"Y"+month+"M"+"appAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue(), appAmount));
-        	        			totalrow.getCell(year+"Y"+month+"M"+"feeAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"feeAmount").getValue(), feeAmount));
+        	        			totalrow.getCell(year+"Y"+month+"M"+"totalFeeAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"totalFeeAmount").getValue(), totalFeeAmount));
+        	        			totalrow.getCell(year+"Y"+month+"M"+"totalRateAmount").setValue(FDCHelper.multiply(totalrow.getCell(year+"Y"+month+"M"+"totalFeeAmount").getValue(), rate));
+        	        			totalrow.getCell(year+"Y"+month+"M"+"totalAllAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"totalFeeAmount").getValue(), totalrow.getCell(year+"Y"+month+"M"+"totalRateAmount").getValue()));
         	        		}
         	        	 }
         	         }

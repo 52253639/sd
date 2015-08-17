@@ -1307,11 +1307,11 @@ public class ScheduleGanttProject extends GanttProject {
 	private String propertityUIName = null;
 
 	public String getPropertityUIName() {
-		if (this.getUIContext().get("Owner") instanceof SpecialScheduleEditUI) {
-			return "com.kingdee.eas.fdc.schedule.client.FDCSpecialScheduleTaskPropertiesUI";
-		} else {
+//		if (this.getUIContext().get("Owner") instanceof SpecialScheduleEditUI) {
+//			return "com.kingdee.eas.fdc.schedule.client.FDCSpecialScheduleTaskPropertiesUI";
+//		} else {
 			return this.propertityUIName;
-		}
+//		}
 	}
 
 	public void setPropertityUIName(String propertityUIName) {

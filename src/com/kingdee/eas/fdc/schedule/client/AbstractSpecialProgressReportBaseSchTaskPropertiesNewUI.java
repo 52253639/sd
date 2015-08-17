@@ -46,6 +46,8 @@ import com.kingdee.bos.appframework.uip.UINavigator;
 public abstract class AbstractSpecialProgressReportBaseSchTaskPropertiesNewUI extends com.kingdee.eas.fdc.schedule.client.ProgressReportBaseSchTaskPropertiesNewUI
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractSpecialProgressReportBaseSchTaskPropertiesNewUI.class);
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer2;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtRelationMainTask;
     /**
      * output class constructor
      */
@@ -64,9 +66,20 @@ public abstract class AbstractSpecialProgressReportBaseSchTaskPropertiesNewUI ex
     {
         this.resHelper = new ResourceBundleHelper(AbstractSpecialProgressReportBaseSchTaskPropertiesNewUI.class.getName());
         this.setUITitle(resHelper.getString("this.title"));
-        // CoreUI
+        this.kDLabelContainer2 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.prmtRelationMainTask = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.kDLabelContainer2.setName("kDLabelContainer2");
+        this.prmtRelationMainTask.setName("prmtRelationMainTask");
+        // CoreUI		
+        this.contBizType.setVisible(false);		
+        this.txtYes.setVisible(false);		
+        this.contIsAssessPoint.setVisible(false);		
+        this.txtNo.setVisible(false);		
+        this.contAccessDate.setVisible(false);		
+        this.contAchievementType.setVisible(false);
         this.kDButtonGroup1.add(this.txtYes);
         this.kDButtonGroup1.add(this.txtNo);		
+        this.contCheckNode.setVisible(false);		
         this.kDPanelRelevanceCompact.setVisible(false);
 		String kDTableTaskGuideAStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol3\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol4\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol5\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:configured=\"false\" t:styleID=\"sCol0\" /><t:Column t:key=\"docPath\" t:width=\"100\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:configured=\"false\" /><t:Column t:key=\"docName\" t:width=\"260\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:configured=\"false\" /><t:Column t:key=\"docID\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:configured=\"false\" t:styleID=\"sCol3\" /><t:Column t:key=\"isCPFile\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:configured=\"false\" t:styleID=\"sCol4\" /><t:Column t:key=\"guideType\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:configured=\"false\" t:styleID=\"sCol5\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:configured=\"false\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{docPath}</t:Cell><t:Cell>$Resource{docName}</t:Cell><t:Cell>$Resource{docID}</t:Cell><t:Cell>$Resource{isCPFile}</t:Cell><t:Cell>$Resource{guideType}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 
@@ -122,7 +135,17 @@ public abstract class AbstractSpecialProgressReportBaseSchTaskPropertiesNewUI ex
 
 
         
-
+		
+        this.contCompletePercent.setBoundLabelText(resHelper.getString("contCompletePercent.boundLabelText"));
+        // kDLabelContainer2		
+        this.kDLabelContainer2.setBoundLabelText(resHelper.getString("kDLabelContainer2.boundLabelText"));		
+        this.kDLabelContainer2.setBoundLabelLength(100);		
+        this.kDLabelContainer2.setBoundLabelUnderline(true);
+        // prmtRelationMainTask		
+        this.prmtRelationMainTask.setEditFormat("$name$");		
+        this.prmtRelationMainTask.setDisplayFormat("$name$");		
+        this.prmtRelationMainTask.setCommitFormat("$name$");		
+        this.prmtRelationMainTask.setQueryInfo("com.kingdee.eas.basedata.person.app.PersonQuery");
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -147,70 +170,89 @@ public abstract class AbstractSpecialProgressReportBaseSchTaskPropertiesNewUI ex
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 933, 700));
-        this.setLayout(new KDLayout());
-        this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 933, 700));
-        kDTabbedPane1.setBounds(new Rectangle(10, 10, 913, 679));
-        this.add(kDTabbedPane1, new KDLayout.Constraints(10, 10, 913, 679, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        this.setBounds(new Rectangle(10, 10, 960, 550));
+this.setLayout(new BorderLayout(0, 0));
+        this.add(kDScrollPane1, BorderLayout.CENTER);
+        //kDScrollPane1
+        kDScrollPane1.getViewport().add(kDTabbedPane1, null);
         //kDTabbedPane1
         kDTabbedPane1.add(pnlBaseInfo, resHelper.getString("pnlBaseInfo.constraints"));
         kDTabbedPane1.add(pnlAdvanced, resHelper.getString("pnlAdvanced.constraints"));
         //pnlBaseInfo
-        pnlBaseInfo.setLayout(new KDLayout());
-        pnlBaseInfo.putClientProperty("OriginalBounds", new Rectangle(0, 0, 912, 646));        kDTSchedulePane.setBounds(new Rectangle(10, 297, 890, 341));
-        pnlBaseInfo.add(kDTSchedulePane, new KDLayout.Constraints(10, 297, 890, 341, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        contPlanStart.setBounds(new Rectangle(10, 70, 270, 19));
-        pnlBaseInfo.add(contPlanStart, new KDLayout.Constraints(10, 70, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contBizType.setBounds(new Rectangle(320, 41, 270, 19));
-        pnlBaseInfo.add(contBizType, new KDLayout.Constraints(320, 41, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        pnlBaseInfo.setLayout(null);        kDTSchedulePane.setBounds(new Rectangle(8, 289, 921, 341));
+        pnlBaseInfo.add(kDTSchedulePane, null);
+        contPlanStart.setBounds(new Rectangle(8, 51, 270, 19));
+        pnlBaseInfo.add(contPlanStart, null);
+        contBizType.setBounds(new Rectangle(847, 116, 270, 19));
+        pnlBaseInfo.add(contBizType, null);
         kDWorkButton1.setBounds(new Rectangle(610, 351, 22, 19));
-        pnlBaseInfo.add(kDWorkButton1, new KDLayout.Constraints(610, 351, 22, 19, 0));
+        pnlBaseInfo.add(kDWorkButton1, null);
         kDWorkButton2.setBounds(new Rectangle(670, 350, 22, 19));
-        pnlBaseInfo.add(kDWorkButton2, new KDLayout.Constraints(670, 350, 22, 19, 0));
-        contTaskName.setBounds(new Rectangle(10, 10, 270, 19));
-        pnlBaseInfo.add(contTaskName, new KDLayout.Constraints(10, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contNumber.setBounds(new Rectangle(320, 10, 270, 19));
-        pnlBaseInfo.add(contNumber, new KDLayout.Constraints(320, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDutyDep.setBounds(new Rectangle(320, 130, 270, 19));
-        pnlBaseInfo.add(contDutyDep, new KDLayout.Constraints(320, 130, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTaskType.setBounds(new Rectangle(10, 40, 270, 19));
-        pnlBaseInfo.add(contTaskType, new KDLayout.Constraints(10, 40, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        txtYes.setBounds(new Rectangle(114, 102, 33, 19));
-        pnlBaseInfo.add(txtYes, new KDLayout.Constraints(114, 102, 33, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contIsAssessPoint.setBounds(new Rectangle(10, 100, 100, 19));
-        pnlBaseInfo.add(contIsAssessPoint, new KDLayout.Constraints(10, 100, 100, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        txtNo.setBounds(new Rectangle(161, 102, 33, 19));
-        pnlBaseInfo.add(txtNo, new KDLayout.Constraints(161, 102, 33, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDutyPerson.setBounds(new Rectangle(10, 130, 270, 19));
-        pnlBaseInfo.add(contDutyPerson, new KDLayout.Constraints(10, 130, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contPlanEnd.setBounds(new Rectangle(320, 70, 270, 19));
-        pnlBaseInfo.add(contPlanEnd, new KDLayout.Constraints(320, 70, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAccessDate.setBounds(new Rectangle(320, 100, 270, 19));
-        pnlBaseInfo.add(contAccessDate, new KDLayout.Constraints(320, 100, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contTaskGuide.setBounds(new Rectangle(630, 10, 270, 19));
-        pnlBaseInfo.add(contTaskGuide, new KDLayout.Constraints(630, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contAchievementType.setBounds(new Rectangle(630, 40, 270, 19));
-        pnlBaseInfo.add(contAchievementType, new KDLayout.Constraints(630, 40, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contWorkDay.setBounds(new Rectangle(630, 70, 270, 19));
-        pnlBaseInfo.add(contWorkDay, new KDLayout.Constraints(630, 70, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contScheduleAppraisePerson.setBounds(new Rectangle(630, 130, 270, 19));
-        pnlBaseInfo.add(contScheduleAppraisePerson, new KDLayout.Constraints(630, 130, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contQualityAppraisePerson.setBounds(new Rectangle(10, 159, 270, 19));
-        pnlBaseInfo.add(contQualityAppraisePerson, new KDLayout.Constraints(10, 159, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        pnlBaseInfo.add(kDWorkButton2, null);
+        contTaskName.setBounds(new Rectangle(8, 7, 270, 19));
+        pnlBaseInfo.add(contTaskName, null);
+        contNumber.setBounds(new Rectangle(333, 7, 270, 19));
+        pnlBaseInfo.add(contNumber, null);
+        contTaskType.setBounds(new Rectangle(8, 29, 270, 19));
+        pnlBaseInfo.add(contTaskType, null);
+        txtYes.setBounds(new Rectangle(915, 136, 33, 19));
+        pnlBaseInfo.add(txtYes, null);
+        contIsAssessPoint.setBounds(new Rectangle(809, 136, 100, 19));
+        pnlBaseInfo.add(contIsAssessPoint, null);
+        txtNo.setBounds(new Rectangle(962, 136, 33, 19));
+        pnlBaseInfo.add(txtNo, null);
+        contPlanEnd.setBounds(new Rectangle(333, 51, 270, 19));
+        pnlBaseInfo.add(contPlanEnd, null);
+        contAccessDate.setBounds(new Rectangle(820, 105, 270, 19));
+        pnlBaseInfo.add(contAccessDate, null);
+        contTaskGuide.setBounds(new Rectangle(658, 7, 270, 19));
+        pnlBaseInfo.add(contTaskGuide, null);
+        contAchievementType.setBounds(new Rectangle(685, 93, 270, 19));
+        pnlBaseInfo.add(contAchievementType, null);
+        contWorkDay.setBounds(new Rectangle(658, 51, 270, 19));
+        pnlBaseInfo.add(contWorkDay, null);
         btnAdd.setBounds(new Rectangle(626, 305, 22, 19));
-        pnlBaseInfo.add(btnAdd, new KDLayout.Constraints(626, 305, 22, 19, 0));
+        pnlBaseInfo.add(btnAdd, null);
         schedulereportbtn.setBounds(new Rectangle(681, 320, 85, 19));
-        pnlBaseInfo.add(schedulereportbtn, new KDLayout.Constraints(681, 320, 85, 19, 0));
+        pnlBaseInfo.add(schedulereportbtn, null);
         schedulereportbtndel.setBounds(new Rectangle(782, 319, 93, 19));
-        pnlBaseInfo.add(schedulereportbtndel, new KDLayout.Constraints(782, 319, 93, 19, 0));
-        pnlExecuteInfo.setBounds(new Rectangle(2, 184, 902, 111));
-        pnlBaseInfo.add(pnlExecuteInfo, new KDLayout.Constraints(2, 184, 902, 111, 0));
+        pnlBaseInfo.add(schedulereportbtndel, null);
+        pnlExecuteInfo.setBounds(new Rectangle(742, 104, 79, 58));
+        pnlBaseInfo.add(pnlExecuteInfo, null);
         btnDel.setBounds(new Rectangle(651, 308, 22, 19));
-        pnlBaseInfo.add(btnDel, new KDLayout.Constraints(651, 308, 22, 19, 0));
-        contBelongToSpecial.setBounds(new Rectangle(319, 158, 270, 19));
-        pnlBaseInfo.add(contBelongToSpecial, new KDLayout.Constraints(319, 158, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contCheckNode.setBounds(new Rectangle(630, 100, 270, 19));
-        pnlBaseInfo.add(contCheckNode, new KDLayout.Constraints(630, 100, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        pnlBaseInfo.add(btnDel, null);
+        kDLabelContainer1.setBounds(new Rectangle(8, 207, 920, 65));
+        pnlBaseInfo.add(kDLabelContainer1, null);
+        contCheckNode.setBounds(new Rectangle(719, 83, 270, 19));
+        pnlBaseInfo.add(contCheckNode, null);
+        contDutyDep.setBounds(new Rectangle(8, 84, 270, 19));
+        pnlBaseInfo.add(contDutyDep, null);
+        contHelpDep.setBounds(new Rectangle(8, 106, 270, 19));
+        pnlBaseInfo.add(contHelpDep, null);
+        contScheduleAppraisePerson.setBounds(new Rectangle(8, 128, 270, 19));
+        pnlBaseInfo.add(contScheduleAppraisePerson, null);
+        contDutyPerson.setBounds(new Rectangle(333, 84, 270, 19));
+        pnlBaseInfo.add(contDutyPerson, null);
+        contHelpPerson.setBounds(new Rectangle(333, 106, 270, 19));
+        pnlBaseInfo.add(contHelpPerson, null);
+        contQualityAppraisePerson.setBounds(new Rectangle(333, 128, 270, 19));
+        pnlBaseInfo.add(contQualityAppraisePerson, null);
+        kDSeparator2.setBounds(new Rectangle(1, 76, 953, 10));
+        pnlBaseInfo.add(kDSeparator2, null);
+        kDSeparator3.setBounds(new Rectangle(1, 154, 953, 10));
+        pnlBaseInfo.add(kDSeparator3, null);
+        contActualStartDate.setBounds(new Rectangle(333, 162, 270, 19));
+        pnlBaseInfo.add(contActualStartDate, null);
+        conIntendEndDate.setBounds(new Rectangle(658, 162, 270, 19));
+        pnlBaseInfo.add(conIntendEndDate, null);
+        contWorkLoad.setBounds(new Rectangle(8, 184, 270, 19));
+        pnlBaseInfo.add(contWorkLoad, null);
+        contCompletePercent.setBounds(new Rectangle(8, 162, 270, 19));
+        pnlBaseInfo.add(contCompletePercent, null);
+        contTotalWorkLoad.setBounds(new Rectangle(333, 184, 270, 19));
+        pnlBaseInfo.add(contTotalWorkLoad, null);
+        kDLabelContainer2.setBounds(new Rectangle(333, 29, 270, 19));
+        pnlBaseInfo.add(kDLabelContainer2, null);
         //kDTSchedulePane
         kDTSchedulePane.add(kDPanelTaskGuide, resHelper.getString("kDPanelTaskGuide.constraints"));
         kDTSchedulePane.add(kDPanelPreposeTask, resHelper.getString("kDPanelPreposeTask.constraints"));
@@ -240,47 +282,32 @@ kDPanelPreposeTask.setLayout(new BorderLayout(0, 0));        kDPanelPreposeTask.
         //kDContainer1
 kDContainer1.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainer1.getContentPane().add(kDTablePredecessor, BorderLayout.CENTER);
         //kDPanelScheduleReport
-        kDPanelScheduleReport.setLayout(new KDLayout());
-        kDPanelScheduleReport.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        scheduleReportContainer.setBounds(new Rectangle(0, 0, 886, 345));
-        kDPanelScheduleReport.add(scheduleReportContainer, new KDLayout.Constraints(0, 0, 886, 345, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelScheduleReport.setLayout(new BorderLayout(0, 0));        kDPanelScheduleReport.add(scheduleReportContainer, BorderLayout.CENTER);
         //scheduleReportContainer
 scheduleReportContainer.getContentPane().setLayout(new BorderLayout(0, 0));        scheduleReportContainer.getContentPane().add(scheduleReportTable, BorderLayout.CENTER);
         //kDPanelTaskAppraise
-        kDPanelTaskAppraise.setLayout(new KDLayout());
-        kDPanelTaskAppraise.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        kDContainerTaskApprise.setBounds(new Rectangle(0, -1, 884, 344));
-        kDPanelTaskAppraise.add(kDContainerTaskApprise, new KDLayout.Constraints(0, -1, 884, 344, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelTaskAppraise.setLayout(new BorderLayout(0, 0));        kDPanelTaskAppraise.add(kDContainerTaskApprise, BorderLayout.CENTER);
         //kDContainerTaskApprise
 kDContainerTaskApprise.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainerTaskApprise.getContentPane().add(tblTaskApprise, BorderLayout.CENTER);
         //kDPanelStageAchievement
-        kDPanelStageAchievement.setLayout(new KDLayout());
-        kDPanelStageAchievement.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        kDContainer5.setBounds(new Rectangle(1, 1, 885, 342));
-        kDPanelStageAchievement.add(kDContainer5, new KDLayout.Constraints(1, 1, 885, 342, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelStageAchievement.setLayout(new BorderLayout(0, 0));        kDPanelStageAchievement.add(kDContainer5, BorderLayout.CENTER);
         //kDContainer5
 kDContainer5.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainer5.getContentPane().add(tblAchievement, BorderLayout.CENTER);
         //kDPanelQualityInspectPoint
-        kDPanelQualityInspectPoint.setLayout(new KDLayout());
-        kDPanelQualityInspectPoint.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        kDContainer6.setBounds(new Rectangle(-1, 0, 886, 344));
-        kDPanelQualityInspectPoint.add(kDContainer6, new KDLayout.Constraints(-1, 0, 886, 344, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelQualityInspectPoint.setLayout(new BorderLayout(0, 0));        kDPanelQualityInspectPoint.add(kDContainer6, BorderLayout.CENTER);
         //kDContainer6
 kDContainer6.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainer6.getContentPane().add(tblQuality, BorderLayout.CENTER);
         //kDPanelFigureSchedule
-        kDPanelFigureSchedule.setLayout(new KDLayout());
-        kDPanelFigureSchedule.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        contaner.setBounds(new Rectangle(-1, -1, 885, 344));
-        kDPanelFigureSchedule.add(contaner, new KDLayout.Constraints(-1, -1, 885, 344, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelFigureSchedule.setLayout(new BorderLayout(0, 0));        kDPanelFigureSchedule.add(contaner, BorderLayout.CENTER);
         //contaner
 contaner.getContentPane().setLayout(new BorderLayout(0, 0));        contaner.getContentPane().add(tblPSchedule, BorderLayout.CENTER);
         //kDPanelRelevanceSpecialTask
-        kDPanelRelevanceSpecialTask.setLayout(new KDLayout());
-        kDPanelRelevanceSpecialTask.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        kDContainerSpe.setBounds(new Rectangle(-1, -1, 885, 345));
-        kDPanelRelevanceSpecialTask.add(kDContainerSpe, new KDLayout.Constraints(-1, -1, 885, 345, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelRelevanceSpecialTask.setLayout(new BorderLayout(0, 0));        kDPanelRelevanceSpecialTask.add(kDContainerSpe, BorderLayout.CENTER);
         //kDContainerSpe
 kDContainerSpe.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainerSpe.getContentPane().add(tblSpecially, BorderLayout.CENTER);
         //kDPanelRelevanceCompact
-        kDPanelRelevanceCompact.setLayout(new KDLayout());
-        kDPanelRelevanceCompact.putClientProperty("OriginalBounds", new Rectangle(0, 0, 889, 308));        kDContainerCon.setBounds(new Rectangle(-1, -1, 887, 161));
-        kDPanelRelevanceCompact.add(kDContainerCon, new KDLayout.Constraints(-1, -1, 887, 161, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDContainer7.setBounds(new Rectangle(-1, 160, 889, 183));
-        kDPanelRelevanceCompact.add(kDContainer7, new KDLayout.Constraints(-1, 160, 889, 183, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+kDPanelRelevanceCompact.setLayout(new BorderLayout(0, 0));        kDPanelRelevanceCompact.add(kDContainerCon, BorderLayout.NORTH);
+        kDPanelRelevanceCompact.add(kDContainer7, BorderLayout.CENTER);
         //kDContainerCon
 kDContainerCon.getContentPane().setLayout(new BorderLayout(0, 0));        kDContainerCon.getContentPane().add(tblContract, BorderLayout.CENTER);
         //kDContainer7
@@ -293,12 +320,8 @@ kDContainer7.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
         contTaskName.setBoundEditor(txtTaskName);
         //contNumber
         contNumber.setBoundEditor(txtNumber);
-        //contDutyDep
-        contDutyDep.setBoundEditor(prmtDutyDep);
         //contTaskType
         contTaskType.setBoundEditor(cbTaskType);
-        //contDutyPerson
-        contDutyPerson.setBoundEditor(prmtDutyPerson);
         //contPlanEnd
         contPlanEnd.setBoundEditor(pkPlanEnd);
         //contAccessDate
@@ -309,26 +332,23 @@ kDContainer7.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
         contAchievementType.setBoundEditor(prmtAchievementType);
         //contWorkDay
         contWorkDay.setBoundEditor(txtWorkDay);
+        pnlExecuteInfo.setLayout(new KDLayout());
+        pnlExecuteInfo.putClientProperty("OriginalBounds", new Rectangle(742, 104, 79, 58));        //kDLabelContainer1
+        kDLabelContainer1.setBoundEditor(txtDesciption);
+        //contCheckNode
+        contCheckNode.setBoundEditor(prmtCheckNode);
+        //contDutyDep
+        contDutyDep.setBoundEditor(prmtDutyDep);
+        //contHelpDep
+        contHelpDep.setBoundEditor(prmtHelpDep);
         //contScheduleAppraisePerson
         contScheduleAppraisePerson.setBoundEditor(prmtScheduleAppraisePerson);
+        //contDutyPerson
+        contDutyPerson.setBoundEditor(prmtDutyPerson);
+        //contHelpPerson
+        contHelpPerson.setBoundEditor(prmtHelpPerson);
         //contQualityAppraisePerson
         contQualityAppraisePerson.setBoundEditor(prmtQualityAppraisePerson);
-        //pnlExecuteInfo
-        pnlExecuteInfo.setLayout(new KDLayout());
-        pnlExecuteInfo.putClientProperty("OriginalBounds", new Rectangle(2, 184, 902, 111));        kDLabelContainer1.setBounds(new Rectangle(10, 69, 884, 33));
-        pnlExecuteInfo.add(kDLabelContainer1, new KDLayout.Constraints(10, 69, 884, 33, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
-        contActualStartDate.setBounds(new Rectangle(10, 13, 270, 19));
-        pnlExecuteInfo.add(contActualStartDate, new KDLayout.Constraints(10, 13, 270, 19, 0));
-        conIntendEndDate.setBounds(new Rectangle(315, 12, 270, 19));
-        pnlExecuteInfo.add(conIntendEndDate, new KDLayout.Constraints(315, 12, 270, 19, 0));
-        contWorkLoad.setBounds(new Rectangle(624, 14, 270, 19));
-        pnlExecuteInfo.add(contWorkLoad, new KDLayout.Constraints(624, 14, 270, 19, 0));
-        contCompletePercent.setBounds(new Rectangle(10, 43, 270, 19));
-        pnlExecuteInfo.add(contCompletePercent, new KDLayout.Constraints(10, 43, 270, 19, 0));
-        contTotalWorkLoad.setBounds(new Rectangle(624, 43, 270, 19));
-        pnlExecuteInfo.add(contTotalWorkLoad, new KDLayout.Constraints(624, 43, 270, 19, 0));
-        //kDLabelContainer1
-        kDLabelContainer1.setBoundEditor(txtDesciption);
         //contActualStartDate
         contActualStartDate.setBoundEditor(kdDpActualStartDate);
         //conIntendEndDate
@@ -339,40 +359,31 @@ kDContainer7.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
         contCompletePercent.setBoundEditor(txtCompletePercent);
         //contTotalWorkLoad
         contTotalWorkLoad.setBoundEditor(txtTotalWorkload);
-        //contBelongToSpecial
-        contBelongToSpecial.setBoundEditor(prmtBelongSpecial);
-        //contCheckNode
-        contCheckNode.setBoundEditor(prmtCheckNode);
+        //kDLabelContainer2
+        kDLabelContainer2.setBoundEditor(prmtRelationMainTask);
         //pnlAdvanced
-        pnlAdvanced.setLayout(new KDLayout());
-        pnlAdvanced.putClientProperty("OriginalBounds", new Rectangle(0, 0, 912, 646));        contEndSchdule.setBounds(new Rectangle(630, 10, 270, 19));
-        pnlAdvanced.add(contEndSchdule, new KDLayout.Constraints(630, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contHelpPerson.setBounds(new Rectangle(10, 40, 270, 19));
-        pnlAdvanced.add(contHelpPerson, new KDLayout.Constraints(10, 40, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        pnlAdvanced.setLayout(null);        contEndSchdule.setBounds(new Rectangle(658, 10, 270, 19));
+        pnlAdvanced.add(contEndSchdule, null);
         contRealityStart.setBounds(new Rectangle(10, 10, 270, 19));
-        pnlAdvanced.add(contRealityStart, new KDLayout.Constraints(10, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contPriorityLevel.setBounds(new Rectangle(10, 70, 270, 19));
-        pnlAdvanced.add(contPriorityLevel, new KDLayout.Constraints(10, 70, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTaskCalendar.setBounds(new Rectangle(10, 100, 270, 19));
-        pnlAdvanced.add(contTaskCalendar, new KDLayout.Constraints(10, 100, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRealityEnd.setBounds(new Rectangle(320, 10, 270, 19));
-        pnlAdvanced.add(contRealityEnd, new KDLayout.Constraints(320, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contHelpDep.setBounds(new Rectangle(320, 40, 270, 19));
-        pnlAdvanced.add(contHelpDep, new KDLayout.Constraints(320, 40, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contShape.setBounds(new Rectangle(320, 70, 270, 19));
-        pnlAdvanced.add(contShape, new KDLayout.Constraints(320, 70, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contAppendEndQuantity.setBounds(new Rectangle(630, 40, 270, 19));
-        pnlAdvanced.add(contAppendEndQuantity, new KDLayout.Constraints(630, 40, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contColour.setBounds(new Rectangle(630, 70, 100, 19));
-        pnlAdvanced.add(contColour, new KDLayout.Constraints(630, 70, 100, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contRiskChargePerson.setBounds(new Rectangle(630, 100, 270, 19));
-        pnlAdvanced.add(contRiskChargePerson, new KDLayout.Constraints(630, 100, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        cbColour.setBounds(new Rectangle(730, 70, 170, 19));
-        pnlAdvanced.add(cbColour, new KDLayout.Constraints(730, 70, 170, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        pnlAdvanced.add(contRealityStart, null);
+        contPriorityLevel.setBounds(new Rectangle(10, 32, 270, 19));
+        pnlAdvanced.add(contPriorityLevel, null);
+        contTaskCalendar.setBounds(new Rectangle(10, 54, 270, 19));
+        pnlAdvanced.add(contTaskCalendar, null);
+        contRealityEnd.setBounds(new Rectangle(334, 10, 270, 19));
+        pnlAdvanced.add(contRealityEnd, null);
+        contShape.setBounds(new Rectangle(334, 32, 270, 19));
+        pnlAdvanced.add(contShape, null);
+        contAppendEndQuantity.setBounds(new Rectangle(658, 32, 270, 19));
+        pnlAdvanced.add(contAppendEndQuantity, null);
+        contRiskChargePerson.setBounds(new Rectangle(334, 54, 270, 19));
+        pnlAdvanced.add(contRiskChargePerson, null);
+        contBelongToSpecial.setBounds(new Rectangle(10, 76, 270, 19));
+        pnlAdvanced.add(contBelongToSpecial, null);
+        contColour.setBounds(new Rectangle(658, 54, 270, 19));
+        pnlAdvanced.add(contColour, null);
         //contEndSchdule
         contEndSchdule.setBoundEditor(txtEndSchedule);
-        //contHelpPerson
-        contHelpPerson.setBoundEditor(prmtHelpPerson);
         //contRealityStart
         contRealityStart.setBoundEditor(pkRealityStart);
         //contPriorityLevel
@@ -381,14 +392,16 @@ kDContainer7.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
         contTaskCalendar.setBoundEditor(prmtTaskCalendar);
         //contRealityEnd
         contRealityEnd.setBoundEditor(pkRealityEnd);
-        //contHelpDep
-        contHelpDep.setBoundEditor(prmtHelpDep);
         //contShape
         contShape.setBoundEditor(cbShape);
         //contAppendEndQuantity
         contAppendEndQuantity.setBoundEditor(txtAppendEndQuantity);
         //contRiskChargePerson
         contRiskChargePerson.setBoundEditor(prmtRiskChargePerson);
+        //contBelongToSpecial
+        contBelongToSpecial.setBoundEditor(prmtBelongSpecial);
+        //contColour
+        contColour.setBoundEditor(cbColour);
 
     }
 
@@ -439,8 +452,8 @@ kDContainer7.getContentPane().setLayout(new BorderLayout(0, 0));        kDContai
         this.toolBar.add(btnPageSetup);
         this.toolBar.add(btnCloud);
         this.toolBar.add(saveBtn);
-        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnReport);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnFirst);
         this.toolBar.add(btnPreview);

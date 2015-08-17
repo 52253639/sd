@@ -384,6 +384,8 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		this.actionNext.setVisible(false);
 		this.actionFirst.setVisible(false);
 		this.actionLast.setVisible(false);
+		
+		FDCClientUtils.setRespDeptF7(this.prmtDept,null);
 	}
 	public void setOprtState(String oprtType) {
 		super.setOprtState(oprtType);
@@ -1093,6 +1095,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 			FDCClientVerifyHelper.verifyEmpty(this, getNumberCtrl());
 		}
 		FDCClientVerifyHelper.verifyEmpty(this, this.txtName);
+		FDCClientVerifyHelper.verifyEmpty(this, this.prmtDept);
 		FDCClientVerifyHelper.verifyEmpty(this, this.pkStartDate);
 		FDCClientVerifyHelper.verifyEmpty(this, this.pkEndDate);
 		

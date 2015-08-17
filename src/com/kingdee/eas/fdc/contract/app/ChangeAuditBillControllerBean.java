@@ -550,6 +550,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
 						it.add(new FilterItemInfo("parent.id", change.getId().toString(),CompareType.EQUALS));
 						ContractChangeEntryFactory.getLocalInstance(ctx).delete(fi);
 					}
+					change.setName(info.getName()+"_"+(i+1));
 					if(info.getNumber()!=null)
 						change.setChangeAuditNumber(info.getNumber());
 					//效成本金额只登记在第1个变更指令单上，并且在变更指令单上增加“无效成本金额”、“无效成本原因”  20080324
@@ -740,6 +741,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
 					selector.add("reaDesc");
 					selector.add("isFee");
 					selector.add("wfType");
+					selector.add("name");
 					ContractChangeBillFactory.getLocalInstance(ctx).updatePartial(change, selector);
 				}
 			}

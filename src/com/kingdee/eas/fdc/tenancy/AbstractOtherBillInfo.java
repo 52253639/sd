@@ -20,7 +20,7 @@ public class AbstractOtherBillInfo extends com.kingdee.eas.fdc.tenancy.TenBillBa
         put("entry", new com.kingdee.eas.fdc.tenancy.OtherBillEntryCollection());
     }
     /**
-     * Object: 其他合同 's 租赁合同 property 
+     * Object: K其他合同 's 租赁合同 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenancyBillInfo getTenancyBill()
     {
@@ -31,21 +31,21 @@ public class AbstractOtherBillInfo extends com.kingdee.eas.fdc.tenancy.TenBillBa
         put("tenancyBill", item);
     }
     /**
-     * Object: 其他合同 's 款项明细 property 
+     * Object: K其他合同 's 款项明细 property 
      */
     public com.kingdee.eas.fdc.tenancy.OtherBillEntryCollection getEntry()
     {
         return (com.kingdee.eas.fdc.tenancy.OtherBillEntryCollection)get("entry");
     }
     /**
-     * Object: 其他合同 's 其他合同应付明细 property 
+     * Object: K其他合同 's 其他合同应付明细 property 
      */
     public com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection getPayEntry()
     {
         return (com.kingdee.eas.fdc.tenancy.TenBillOtherPayCollection)get("payEntry");
     }
     /**
-     * Object:其他合同's 收取周期property 
+     * Object:K其他合同's 收取周期property 
      */
     public int getLeaseTime()
     {
@@ -56,7 +56,7 @@ public class AbstractOtherBillInfo extends com.kingdee.eas.fdc.tenancy.TenBillBa
         setInt("leaseTime", item);
     }
     /**
-     * Object:其他合同's 开始日期property 
+     * Object:K其他合同's 开始日期property 
      */
     public java.util.Date getStartDate()
     {
@@ -67,7 +67,7 @@ public class AbstractOtherBillInfo extends com.kingdee.eas.fdc.tenancy.TenBillBa
         setDate("startDate", item);
     }
     /**
-     * Object:其他合同's 结束日期property 
+     * Object:K其他合同's 结束日期property 
      */
     public java.util.Date getEndDate()
     {
@@ -76,6 +76,28 @@ public class AbstractOtherBillInfo extends com.kingdee.eas.fdc.tenancy.TenBillBa
     public void setEndDate(java.util.Date item)
     {
         setDate("endDate", item);
+    }
+    /**
+     * Object: K其他合同 's 部门 property 
+     */
+    public com.kingdee.eas.basedata.org.AdminOrgUnitInfo getDept()
+    {
+        return (com.kingdee.eas.basedata.org.AdminOrgUnitInfo)get("dept");
+    }
+    public void setDept(com.kingdee.eas.basedata.org.AdminOrgUnitInfo item)
+    {
+        put("dept", item);
+    }
+    /**
+     * Object:K其他合同's 手工合同号property 
+     */
+    public String getContractNo()
+    {
+        return getString("contractNo");
+    }
+    public void setContractNo(String item)
+    {
+        setString("contractNo", item);
     }
     public BOSObjectType getBOSType()
     {

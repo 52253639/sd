@@ -44,4 +44,9 @@ public abstract class AbstractTenancyBillEditUIHandler extends com.kingdee.eas.f
 	}
 	protected void _handleActionRemoveCustomer(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionAdust(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionAdust(request,response,context);
+	}
+	protected void _handleActionAdust(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

@@ -1300,6 +1300,7 @@ public class TENReceivingBillEditUI extends AbstractTENReceivingBillEditUI {
 //		}else{
 			uiContext.put("ISBYCUSTOMER", "false");
 //		}
+		uiContext.put("tenancyBill", this.editData.getTenancyObj());
 		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(SelectRevListUI.class.getName(), uiContext, null,OprtState.VIEW);
 		uiWindow.show();
 		

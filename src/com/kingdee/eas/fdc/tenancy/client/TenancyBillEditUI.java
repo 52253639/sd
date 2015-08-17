@@ -68,6 +68,7 @@ import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDTextField;
 import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
+import com.kingdee.bos.ctrl.swing.util.CtrlCommonConstant;
 import com.kingdee.bos.dao.IObjectCollection;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
@@ -80,6 +81,7 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.bos.metadata.entity.SelectorItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
@@ -115,6 +117,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
@@ -224,6 +227,7 @@ import com.kingdee.eas.fdc.tenancy.TenancyRoomEntryInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyRoomPayListEntryInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyStateEnum;
+import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
 import com.kingdee.util.StringUtils;
@@ -876,13 +880,60 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		
 		this.tabbedPaneContract.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
-				if(tabbedPaneContract.getSelectedIndex()==0&&(getOprtState().equals("ADDNEW") || getOprtState().equals("EDIT"))){
-					storePayList();
+				if(tabbedPaneContract.getSelectedIndex()==0){
+//					storePayList();
 					storeOtherPayList();
 					loadTotalPayList();
 				}
 			}
 		});
+		
+		if((TenancyBillStateEnum.Audited.equals(this.editData.getTenancyState())||TenancyBillStateEnum.Executing.equals(this.editData.getTenancyState()))
+				&&this.oprtState.equals(OprtState.VIEW)){
+ 			this.actionAdjust.setEnabled(true);
+ 			this.tblPayList.setEditable(true);
+ 			for(int i=0;i<this.tblPayList.getRowCount();i++){
+ 				IRow row=this.tblPayList.getRow(i);
+ 				IRow nextRow=this.tblPayList.getRow(i+1);
+ 				for(int k=0;k<this.tblPayList.getColumnCount();k++){
+// 					if(this.tblPayList.getColumnKey(k).equals(C_PAYS_APP_PAY_DATE)
+// 							||this.tblPayList.getColumnKey(k).equals(C_PAYS_START_DATE)
+// 								||this.tblPayList.getColumnKey(k).equals(C_PAYS_END_DATE)){
+// 						if(nextRow==null||nextRow.getTreeLevel()>=row.getTreeLevel()){
+// 							row.getCell(k).getStyleAttributes().setLocked(false);
+// 						}else{
+// 							row.getCell(k).getStyleAttributes().setLocked(true);
+// 						}
+// 					}else 
+ 					if(this.tblPayList.getColumnKey(k).indexOf(POSTFIX_C_PAYS_APP_AMOUNT)>=0){
+ 						if(nextRow==null||nextRow.getTreeLevel()<=row.getTreeLevel()){
+ 							row.getCell(k).getStyleAttributes().setLocked(false);
+ 						}else{
+ 							row.getCell(k).getStyleAttributes().setLocked(true);
+ 						}
+ 					}else{
+ 						row.getCell(k).getStyleAttributes().setLocked(true);
+ 					}
+ 				}
+ 			}
+ 			if(isEdit){
+ 				this.tblOtherPayList.setEditable(true);
+ 				for(int k=0;k<this.tblOtherPayList.getColumnCount();k++){
+ 					if(
+// 							this.tblOtherPayList.getColumnKey(k).equals("appDate")
+// 							||this.tblOtherPayList.getColumnKey(k).equals("startDate")
+// 								||this.tblOtherPayList.getColumnKey(k).equals("endDate")
+// 									||
+ 									this.tblOtherPayList.getColumnKey(k).equals("appAmount")){
+ 						this.tblOtherPayList.getColumn(k).getStyleAttributes().setLocked(false);
+ 					}else{
+ 						this.tblOtherPayList.getColumn(k).getStyleAttributes().setLocked(true);
+ 					}
+ 				}
+ 			}
+ 		}else{
+ 			this.actionAdjust.setEnabled(false);
+ 		}
 	}
 	private void initF7Bussinss() {
 		this.f7BussinessDepartMent.setQueryInfo("com.kingdee.eas.basedata.org.app.OUQuery");
@@ -1296,7 +1347,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		this.actionTraceUp.setVisible(false);
 		this.actionTraceDown.setVisible(false);
 		this.actionCopyFrom.setVisible(false);
-		this.actionSave.setVisible(false);
+//		this.actionSave.setVisible(false);
 
 		this.actionCreateFrom.setVisible(false);
 
@@ -1382,6 +1433,8 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		} catch (BOSException e) {
 			e.printStackTrace();
 		}
+		
+		this.btnAdjust.setIcon(EASResource.getIcon("imgTbtn_assistantlistaccount"));
 	}
 
 	//注KDSpinner控件的界面更新通过内部的一个ChangeListener来完成,所有不能直接将所有的listener删除,这里定义业务处理监听器
@@ -2461,6 +2514,18 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			if (e.getValue() != null) {
 				newAppAmount = (BigDecimal) e.getValue();
 			}
+			BigDecimal actRevAmount=FDCHelper.ZERO;
+			for(int k=0;k<this.tblPayList.getColumnCount();k++){
+				if(this.tblPayList.getColumnKey(k).indexOf(POSTFIX_C_PAYS_ACT_AMOUNT)>=0&&
+						this.tblPayList.getColumnKey(k).indexOf(POSTFIX_C_PAYS_ACT_PAY_DATE)<0){
+					actRevAmount=(BigDecimal) row.getCell(k).getValue();
+				}
+			}
+			if(newAppAmount.compareTo(actRevAmount)<0){
+				FDCMsgBox.showWarning(this,"应收金额不能小于实收金额！");
+				row.getCell(key).setValue(oldAppAmount);
+				SysUtil.abort();
+			}
 			BigDecimal difAmount = newAppAmount.subtract(oldAppAmount);
 			int leaseSeq = ((Integer)row.getCell(C_PAYS_LEASE_SEQ).getValue()).intValue();
 			for(int i=0;i<tblPayList.getRowCount();i++)
@@ -2518,6 +2583,31 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		updatePayListInfo();
 		isEditPayList=false;
 	}
+	protected void tblOtherPayList_editStopped(KDTEditEvent e) throws Exception {
+		int colIndex = e.getColIndex();
+		int rowIndex = e.getRowIndex();
+		IColumn col = tblPayList.getColumn(colIndex);
+		IRow row = tblPayList.getRow(rowIndex);
+		if(col.getKey().equals("appAmount")){
+			BigDecimal oldAppAmount = FDCHelper.ZERO;
+			BigDecimal newAppAmount = FDCHelper.ZERO;
+			if (e.getOldValue() != null) {
+				oldAppAmount = (BigDecimal) e.getOldValue();
+			}
+			if (e.getValue() != null) {
+				newAppAmount = (BigDecimal) e.getValue();
+			}
+			
+			BigDecimal actRevAmount=FDCHelper.ZERO;
+			if(row.getCell("actRevAmount").getValue()!=null)actRevAmount=(BigDecimal) row.getCell("actRevAmount").getValue();
+			if(newAppAmount.compareTo(actRevAmount)<0){
+				FDCMsgBox.showWarning(this,"应收金额不能小于实收金额！");
+				row.getCell("appAmount").setValue(oldAppAmount);
+				SysUtil.abort();
+			}
+		}
+	}
+
 	/**
 	 * @修改人: 高明
 	 * @修改时间: 2010-9-7
@@ -2836,7 +2926,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 								//如果是租金，需要汇总 xin_wang 2010.11.24
 								if(money!=null){
 									if(MoneyTypeEnum.RentAmount.equals(money.getMoneyType())){
-										oneEntryTotalRent =oneEntryTotalRent.add(appAmount);
+										oneEntryTotalRent =FDCHelper.add(oneEntryTotalRent, appAmount);
 									}
 								}
 								tay.setTenRoom(tenPayInfo.getTenRoom());
@@ -5242,7 +5332,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		//
 
 		storeTenRoomPropertyEntrys();
-		//storePayList();
+//		storePayList();
 		storeOtherPayList();
 	}
 	
@@ -6831,13 +6921,13 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		row.getCell("actRevDate").setValue(tenOtherInfo.getActRevDate());
 		row.getCell("description").setValue(tenOtherInfo.getDescription());
 		
-		if (tenOtherInfo.getActRevAmount() != null && tenOtherInfo.getActRevAmount().compareTo(FDCHelper.ZERO) > 0) {
-			row.getStyleAttributes().setLocked(true);
-			row.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_SUBTOTAL_BG_COLOR);
-		}
-		if(tenOtherInfo.getOtherBill()!=null){
-			row.getStyleAttributes().setLocked(true);
-		}
+//		if (tenOtherInfo.getActRevAmount() != null && tenOtherInfo.getActRevAmount().compareTo(FDCHelper.ZERO) > 0) {
+//			row.getStyleAttributes().setLocked(true);
+//			row.getStyleAttributes().setBackground(FDCClientHelper.KDTABLE_SUBTOTAL_BG_COLOR);
+//		}
+//		if(tenOtherInfo.getOtherBill()!=null){
+//			row.getStyleAttributes().setLocked(true);
+//		}
 	}
 	
 	protected void btnDelOtherPaylist_actionPerformed(ActionEvent e)
@@ -7568,5 +7658,34 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				BoAttchAssoFactory.getRemoteInstance().delete(filter);
 			}
 		}
+	}
+	public void actionAdust_actionPerformed(ActionEvent e) throws Exception {
+		if (MsgBox.showConfirm2("是否确定修改？") == MsgBox.CANCEL) {
+			return;
+		}
+		verifyInput(null);
+		chkIsFreeContract.setSelected(true);
+		this.storeFields();
+		TenancyBillFactory.getRemoteInstance().updatePartial(editData, this.getSelectors());
+		FDCSQLBuilder fdcSB = new FDCSQLBuilder();
+		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+		for (int i = 0; i < tblPayList.getRowCount(); i++) {
+			IRow row = this.tblPayList.getRow(i);
+			if(row.getUserObject()!=null)
+			{
+				TenancyRoomPayListEntryInfo payListInfo =(TenancyRoomPayListEntryInfo)row.getUserObject();
+				String id=payListInfo.getId().toString();
+				BigDecimal appAmount=null;
+				for(int k=0;k<this.tblPayList.getColumnCount();k++){
+ 					if(this.tblPayList.getColumnKey(k).indexOf(POSTFIX_C_PAYS_APP_AMOUNT)>=0){
+ 						appAmount=(BigDecimal) row.getCell(k).getValue();
+ 					}
+ 				}
+				StringBuffer sql = new StringBuffer();
+				sql.append("update T_TEN_TenancyRoomPayListEntry set fappAmount = "+appAmount+" where fid = '"+id+"'");
+				fdcSB.addBatch(sql.toString());
+			}	
+		}
+		fdcSB.executeBatch();
 	}
 }

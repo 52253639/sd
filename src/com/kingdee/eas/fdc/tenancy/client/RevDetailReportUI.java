@@ -32,6 +32,7 @@ import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
@@ -40,6 +41,7 @@ import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
+import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDTree;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
@@ -51,6 +53,7 @@ import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
+import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.FDCConstants;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
@@ -113,12 +116,25 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
 		tblMain.removeColumns();
 		tblMain.removeRows();
 	    
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"buildArea","tenancyArea","dealTotal","dealPrice","roomPrice","appAmount","invoiceAmount","actRevAmount"});
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"buildArea","tenancyArea","dealTotal","dealPrice","roomPrice","appAmount","invoiceAmount","actRevAmount","accountRate"});
 		CRMClientHelper.fmtDate(tblMain, new String[]{"startDate","endDate"});
 		
 		tblMain.getColumn("conName").getStyleAttributes().setFontColor(Color.BLUE);
-		    
-		mergerTable(tblMain,new String[]{"conId"},new String[]{"sellProject","build","room","buildArea","tenancyArea","conNumber","conName","customer","startDate","endDate","freeDays","dealTotal","dealPrice","roomPrice"});
+		
+		ObjectValueRender render_scale = new ObjectValueRender();
+		render_scale.setFormat(new IDataFormat() {
+			public String format(Object o) {
+				if(o==null){
+					return null;
+				}else{
+					String str = o.toString();
+					return str + "%";
+				}
+				
+			}
+		});
+		this.tblMain.getColumn("accountRate").setRenderer(render_scale);
+		mergerTable(tblMain,new String[]{"conId"},new String[]{"sellProject","build","room","buildArea","tenancyArea","conNumber","conName","customer","startDate","endDate","freeDays","dealTotal","dealPrice","roomPrice","remainingDays"});
 	}
 	public void tableDataRequest(KDTDataRequestEvent kdtdatarequestevent) {
 		if(isQuery) return;
@@ -150,6 +166,7 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
          	         Map rowMap=new HashMap();
          	         Map totalrowMap=new HashMap();
          	         String conId=null;
+         	         Date now=FDCCommonServerHelper.getServerTimeStamp();
          	         while(rs.next()){
 	                   	 if(conId!=null&&!conId.equals(rs.getString("conId"))){
 	                   		IRow totalrow=tblMain.addRow();
@@ -164,6 +181,8 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
 	                   	 
 	                   	 IRow row=tblMain.addRow();
 	                   	 ((KDTableInsertHandler)(new DefaultKDTableInsertHandler(rs))).setTableRowData(row, rs.toRowArray());
+	                   	 int remainingDays=(int) FDCDateHelper.dateDiff("d", now, (Date) row.getCell("endDate").getValue());
+	                   	 row.getCell("remainingDays").setValue(remainingDays<0?0:remainingDays);
 	                   	 rowMap.put(rs.getString("conId")+rs.getString("mdId"), row);
          	         }
          	         if(tblMain.getRowCount()>0){
@@ -221,7 +240,36 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
             	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("实收金额");
             	        	 CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
             	        	 
-            	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+2);
+            	        	 column=tblMain.addColumn();
+            	        	 column.setKey(year+"Y"+month+"M"+"overdueDays");
+            	        	 column.setWidth(70);
+            	        	
+            	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+            	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("过期天数");
+            	        	 CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+            	        	 
+            	        	 column=tblMain.addColumn();
+            	        	 column.setKey(year+"Y"+month+"M"+"accountRate");
+            	        	 column.setWidth(70);
+            	        	
+            	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+            	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("账款回收率");
+            	        	 CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
+            	        	 
+            	        	 ObjectValueRender render_scale = new ObjectValueRender();
+            	     		 render_scale.setFormat(new IDataFormat() {
+            	     			 public String format(Object o) {
+            	     				 if(o==null){
+            	     					 return null;
+            	     				 }else{
+            	     					 String str = o.toString();
+            	     					 return str + "%";
+            	     				 }
+            	     			 }
+            	     		 });
+            	     		 tblMain.getColumn(column.getKey()).setRenderer(render_scale);
+            	        	 
+            	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+4);
             	         }
          	         }
          	         
@@ -238,36 +286,78 @@ public class RevDetailReportUI extends AbstractRevDetailReportUI
         	        		row.getCell(year+"Y"+month+"M"+"appAmount").setValue(detailrs.getBigDecimal("appAmount"));
         	        		row.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(detailrs.getBigDecimal("invoiceAmount"));
         	        		row.getCell(year+"Y"+month+"M"+"actRevAmount").setValue(detailrs.getBigDecimal("actRevAmount"));
+        	        		row.getCell(year+"Y"+month+"M"+"overdueDays").setValue(detailrs.getBigDecimal("overdueDays"));
+        	        		if(detailrs.getBigDecimal("appAmount")!=null&&detailrs.getBigDecimal("appAmount").compareTo(FDCHelper.ZERO)!=0){
+        	        			row.getCell(year+"Y"+month+"M"+"accountRate").setValue(FDCHelper.divide(detailrs.getBigDecimal("actRevAmount"),detailrs.getBigDecimal("appAmount"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+        	        		}else{
+        	        			row.getCell(year+"Y"+month+"M"+"accountRate").setValue(FDCHelper.ZERO);
+        	        		}
         	        		
         	        		row.getCell("appAmount").setValue(FDCHelper.add(row.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        		row.getCell("invoiceAmount").setValue(FDCHelper.add(row.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        		row.getCell("actRevAmount").setValue(FDCHelper.add(row.getCell("actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
-        	        		
+        	        		row.getCell("overdueDays").setValue(FDCHelper.add(row.getCell("overdueDays").getValue(), detailrs.getBigDecimal("overdueDays")));
+        	        		if(row.getCell("appAmount").getValue()!=null&&((BigDecimal)(row.getCell("appAmount").getValue())).compareTo(FDCHelper.ZERO)!=0){
+        	        			row.getCell("accountRate").setValue(FDCHelper.divide(row.getCell("actRevAmount").getValue(),row.getCell("appAmount").getValue(), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+        	        		}else{
+        	        			row.getCell("accountRate").setValue(FDCHelper.ZERO);
+        	        		}
         	        		if(totalrowMap.containsKey(detailrs.getString("conId"))){
         	        			IRow totalrow=(IRow) totalrowMap.get(detailrs.getString("conId"));
         	        			totalrow.getCell("appAmount").setValue(FDCHelper.add(totalrow.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        			totalrow.getCell("invoiceAmount").setValue(FDCHelper.add(totalrow.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        			totalrow.getCell("actRevAmount").setValue(FDCHelper.add(totalrow.getCell("actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
-        	        		
+        	        			totalrow.getCell("overdueDays").setValue(FDCHelper.add(totalrow.getCell("overdueDays").getValue(), detailrs.getBigDecimal("overdueDays")));
+        	        			if(totalrow.getCell("appAmount").getValue()!=null&&((BigDecimal)(totalrow.getCell("appAmount").getValue())).compareTo(FDCHelper.ZERO)!=0){
+        	        				totalrow.getCell("accountRate").setValue(FDCHelper.divide(totalrow.getCell("actRevAmount").getValue(),totalrow.getCell("appAmount").getValue(), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+            	        		}else{
+            	        			totalrow.getCell("accountRate").setValue(FDCHelper.ZERO);
+            	        		}
+        	        			
         	        			totalrow.getCell(year+"Y"+month+"M"+"appAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        			totalrow.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        			totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
-    	        			}
+        	        			totalrow.getCell(year+"Y"+month+"M"+"overdueDays").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"overdueDays").getValue(), detailrs.getBigDecimal("overdueDays")));
+        	        			if(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue()!=null&&((BigDecimal)(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue())).compareTo(FDCHelper.ZERO)!=0){
+        	        				totalrow.getCell(year+"Y"+month+"M"+"accountRate").setValue(FDCHelper.divide(totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").getValue(),totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue(), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
+            	        		}else{
+            	        			totalrow.getCell(year+"Y"+month+"M"+"accountRate").setValue(FDCHelper.ZERO);
+            	        		}
+        	        		}
         	        		if(detailrs.getBigDecimal("appAmount").compareTo(detailrs.getBigDecimal("actRevAmount"))==0){
         	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.GREEN);
         	        			row.getCell(year+"Y"+month+"M"+"invoiceAmount").getStyleAttributes().setBackground(Color.GREEN);
         	        			row.getCell(year+"Y"+month+"M"+"actRevAmount").getStyleAttributes().setBackground(Color.GREEN);
+        	        			row.getCell(year+"Y"+month+"M"+"overdueDays").getStyleAttributes().setBackground(Color.GREEN);
+        	        			row.getCell(year+"Y"+month+"M"+"accountRate").getStyleAttributes().setBackground(Color.GREEN);
         	        		}
         	        		if(detailrs.getBigDecimal("appAmount").compareTo(detailrs.getBigDecimal("actRevAmount"))>0){
         	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.YELLOW);
         	        			row.getCell(year+"Y"+month+"M"+"invoiceAmount").getStyleAttributes().setBackground(Color.YELLOW);
         	        			row.getCell(year+"Y"+month+"M"+"actRevAmount").getStyleAttributes().setBackground(Color.YELLOW);
+        	        			row.getCell(year+"Y"+month+"M"+"overdueDays").getStyleAttributes().setBackground(Color.YELLOW);
+        	        			row.getCell(year+"Y"+month+"M"+"accountRate").getStyleAttributes().setBackground(Color.YELLOW);
+        	        		}
+        	        		Date quitRoomDate=(Date)row.getCell("quitRoomDate").getValue();
+        	        		
+        	        		Boolean isShow=true;
+        	        		if(quitRoomDate!=null){
+        	        			cal = Calendar.getInstance();
+            	    			cal.setTime(quitRoomDate);
+            	    			int quitYear=cal.get(Calendar.YEAR);
+            	    			int quitMonth=cal.get(Calendar.MONTH)+1;
+            	    			if(!(quitYear>year||quitYear==year&&quitMonth>month)){
+            	    				isShow=false;
+            	    			}
         	        		}
         	        		if(detailrs.getBigDecimal("appAmount").compareTo(FDCHelper.ZERO)>0
-        	        				&&detailrs.getBigDecimal("actRevAmount").compareTo(FDCHelper.ZERO)==0){
+        	        				&&detailrs.getBigDecimal("actRevAmount").compareTo(FDCHelper.ZERO)==0
+        	        					&&isShow){
         	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.RED);
         	        			row.getCell(year+"Y"+month+"M"+"invoiceAmount").getStyleAttributes().setBackground(Color.RED);
         	        			row.getCell(year+"Y"+month+"M"+"actRevAmount").getStyleAttributes().setBackground(Color.RED);
+        	        			row.getCell(year+"Y"+month+"M"+"overdueDays").getStyleAttributes().setBackground(Color.RED);
+        	        			row.getCell(year+"Y"+month+"M"+"accountRate").getStyleAttributes().setBackground(Color.RED);
         	        		}
         	        	 }
         	         }

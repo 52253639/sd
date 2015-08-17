@@ -63,6 +63,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contEndDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseTime;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractNo;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDept;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCompany;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtRoom;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCustomer;
@@ -83,6 +85,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkEndDate;
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinLeaseTime;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtContractNo;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtDept;
     protected com.kingdee.eas.fdc.tenancy.OtherBillInfo editData = null;
     /**
      * output class constructor
@@ -138,6 +142,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.contStartDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contLeaseTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contContractNo = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDept = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtCompany = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtRoom = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtCustomer = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -158,6 +164,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.spinLeaseTime = new com.kingdee.bos.ctrl.swing.KDSpinner();
+        this.txtContractNo = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.prmtDept = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contCompany.setName("contCompany");
         this.contRoom.setName("contRoom");
         this.contCustomer.setName("contCustomer");
@@ -175,6 +183,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.contStartDate.setName("contStartDate");
         this.contEndDate.setName("contEndDate");
         this.contLeaseTime.setName("contLeaseTime");
+        this.contContractNo.setName("contContractNo");
+        this.contDept.setName("contDept");
         this.txtCompany.setName("txtCompany");
         this.txtRoom.setName("txtRoom");
         this.txtCustomer.setName("txtCustomer");
@@ -195,6 +205,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.pkStartDate.setName("pkStartDate");
         this.pkEndDate.setName("pkEndDate");
         this.spinLeaseTime.setName("spinLeaseTime");
+        this.txtContractNo.setName("txtContractNo");
+        this.prmtDept.setName("prmtDept");
         // CoreUI		
         this.btnPageSetup.setVisible(false);		
         this.btnCloud.setVisible(false);		
@@ -335,6 +347,16 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.contLeaseTime.setBoundLabelText(resHelper.getString("contLeaseTime.boundLabelText"));		
         this.contLeaseTime.setBoundLabelLength(100);		
         this.contLeaseTime.setBoundLabelUnderline(true);
+        // contContractNo		
+        this.contContractNo.setBoundLabelText(resHelper.getString("contContractNo.boundLabelText"));		
+        this.contContractNo.setBoundLabelLength(100);		
+        this.contContractNo.setBoundLabelUnderline(true);		
+        this.contContractNo.setVisible(true);		
+        this.contContractNo.setBoundLabelAlignment(7);
+        // contDept		
+        this.contDept.setBoundLabelText(resHelper.getString("contDept.boundLabelText"));		
+        this.contDept.setBoundLabelLength(100);		
+        this.contDept.setBoundLabelUnderline(true);
         // txtCompany		
         this.txtCompany.setEnabled(false);
         // txtRoom		
@@ -423,6 +445,18 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         });
         // spinLeaseTime		
         this.spinLeaseTime.setRequired(true);
+        // txtContractNo		
+        this.txtContractNo.setVisible(true);		
+        this.txtContractNo.setHorizontalAlignment(2);		
+        this.txtContractNo.setMaxLength(50);		
+        this.txtContractNo.setEnabled(true);
+        // prmtDept		
+        this.prmtDept.setDisplayFormat("$name$");		
+        this.prmtDept.setEditFormat("$number");		
+        this.prmtDept.setDefaultF7UIName("com.kingdee.eas.basedata.org.client.f7.AdminF7");		
+        this.prmtDept.setCommitFormat("$number$");		
+        this.prmtDept.setEditable(true);		
+        this.prmtDept.setRequired(true);
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -464,12 +498,12 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.add(contNumber, new KDLayout.Constraints(733, 10, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contSaleMan.setBounds(new Rectangle(367, 54, 270, 19));
         this.add(contSaleMan, new KDLayout.Constraints(367, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        panel.setBounds(new Rectangle(10, 182, 994, 392));
-        this.add(panel, new KDLayout.Constraints(10, 182, 994, 392, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        panel.setBounds(new Rectangle(10, 220, 994, 354));
+        this.add(panel, new KDLayout.Constraints(10, 220, 994, 354, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contName.setBounds(new Rectangle(733, 32, 270, 19));
         this.add(contName, new KDLayout.Constraints(733, 32, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contDescription.setBounds(new Rectangle(10, 98, 628, 72));
-        this.add(contDescription, new KDLayout.Constraints(10, 98, 628, 72, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDescription.setBounds(new Rectangle(10, 120, 628, 92));
+        this.add(contDescription, new KDLayout.Constraints(10, 120, 628, 92, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contCreator.setBounds(new Rectangle(10, 580, 270, 19));
         this.add(contCreator, new KDLayout.Constraints(10, 580, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contAuditor.setBounds(new Rectangle(10, 602, 270, 19));
@@ -482,8 +516,12 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.add(contStartDate, new KDLayout.Constraints(10, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contEndDate.setBounds(new Rectangle(367, 76, 270, 19));
         this.add(contEndDate, new KDLayout.Constraints(367, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contLeaseTime.setBounds(new Rectangle(733, 76, 270, 19));
-        this.add(contLeaseTime, new KDLayout.Constraints(733, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contLeaseTime.setBounds(new Rectangle(10, 98, 270, 19));
+        this.add(contLeaseTime, new KDLayout.Constraints(10, 98, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contContractNo.setBounds(new Rectangle(733, 76, 270, 19));
+        this.add(contContractNo, new KDLayout.Constraints(733, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDept.setBounds(new Rectangle(733, 54, 270, 19));
+        this.add(contDept, new KDLayout.Constraints(733, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contCompany
         contCompany.setBoundEditor(txtCompany);
         //contRoom
@@ -523,6 +561,10 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
         contEndDate.setBoundEditor(pkEndDate);
         //contLeaseTime
         contLeaseTime.setBoundEditor(spinLeaseTime);
+        //contContractNo
+        contContractNo.setBoundEditor(txtContractNo);
+        //contDept
+        contDept.setBoundEditor(prmtDept);
 
     }
 
@@ -721,7 +763,9 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		dataBinder.registerBinding("auditTime", java.util.Date.class, this.pkAuditTime, "value");
 		dataBinder.registerBinding("startDate", java.util.Date.class, this.pkStartDate, "value");
 		dataBinder.registerBinding("endDate", java.util.Date.class, this.pkEndDate, "value");
-		dataBinder.registerBinding("leaseTime", int.class, this.spinLeaseTime, "value");		
+		dataBinder.registerBinding("leaseTime", int.class, this.spinLeaseTime, "value");
+		dataBinder.registerBinding("contractNo", String.class, this.txtContractNo, "text");
+		dataBinder.registerBinding("dept", com.kingdee.eas.basedata.org.AdminOrgUnitInfo.class, this.prmtDept, "data");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -802,7 +846,9 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		getValidateHelper().registerBindProperty("auditTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("startDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("endDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("leaseTime", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("leaseTime", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("contractNo", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("dept", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -910,6 +956,16 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
         sic.add(new SelectorItemInfo("startDate"));
         sic.add(new SelectorItemInfo("endDate"));
         sic.add(new SelectorItemInfo("leaseTime"));
+        sic.add(new SelectorItemInfo("contractNo"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("dept.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("dept.id"));
+        	sic.add(new SelectorItemInfo("dept.number"));
+        	sic.add(new SelectorItemInfo("dept.name"));
+		}
         return sic;
     }        
     	

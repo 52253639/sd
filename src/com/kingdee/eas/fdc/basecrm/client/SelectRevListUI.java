@@ -13,6 +13,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
@@ -29,22 +30,30 @@ import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.eas.base.param.ParamControlFactory;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
 import com.kingdee.eas.fdc.basecrm.IRevListInfo;
 import com.kingdee.eas.fdc.basecrm.RevBillTypeEnum;
 import com.kingdee.eas.fdc.basecrm.RevBizTypeEnum;
 import com.kingdee.eas.fdc.basecrm.RevMoneyTypeEnum;
+import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.FDCTableHelper;
 import com.kingdee.eas.fdc.merch.common.KDTableHelper;
+import com.kingdee.eas.fdc.sellhouse.MoneyDefine;
 import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
 import com.kingdee.eas.fdc.sellhouse.MoneyTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.tenancy.ITenancyPayListInfo;
+import com.kingdee.eas.fdc.tenancy.QuitTenancyFactory;
 import com.kingdee.eas.fdc.tenancy.TenBillOtherPayInfo;
+import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
+import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.MsgBox;
 /**
  * 选择界面暂时公用1个,可选数据由编辑界面扩展获取,并全部从编辑界面传入.再选择界面选择后,将选择后的结果再返回编辑界面
@@ -605,6 +614,33 @@ public class SelectRevListUI extends AbstractSelectRevListUI
         	this.getUIContext().put(KEY_RES_DIR_REV_LIST, getDirRevList(tblDirRev));
         	this.getUIContext().put(KEY_RES_PRE_REV_LIST, getSelectedRevList(tblPreRev));	
     	}else if(RevBillTypeEnum.refundment.equals(resRevBillType)){
+    		TenancyBillInfo ten=(TenancyBillInfo) this.getUIContext().get("tenancyBill");
+    		if(ten!=null){
+    			String[] moneyDefine=null;
+            	HashMap hmParamIn = new HashMap();
+            	hmParamIn.put("ISCHECKQUIT", null);
+    			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+    			if(hmAllParam.get("ISCHECKQUIT")!=null&&!"".equals(hmAllParam.get("ISCHECKQUIT"))){
+    				moneyDefine=hmAllParam.get("ISCHECKQUIT").toString().split(";");
+    			}
+    			if(moneyDefine!=null&&moneyDefine.length>0){
+    				for(int i=0;i<tblAppRevRefundment.getRowCount();i++){
+    					IRow row=tblAppRevRefundment.getRow(i);
+    					Boolean isSelect = (Boolean) row.getCell(COL_IS_SELECTED).getValue();
+    					MoneyDefineInfo md=(MoneyDefineInfo)row.getCell(COL_MONEY_DEFINE).getValue();
+    					if(isSelect!=null&&isSelect.booleanValue()&&md!=null){
+    						boolean isCheck=false;
+    						for(int k=0;k<moneyDefine.length;k++){
+    							if(moneyDefine[k].equals(md.getNumber())
+    									&&!QuitTenancyFactory.getRemoteInstance().exists("select * from where tenancyBill.id='"+ten.getId().toString()+"' and state='"+FDCBillStateEnum.AUDITTED_VALUE+"'")){
+    								FDCMsgBox.showWarning(this, "请先进行租赁合同退租申请！");
+    								SysUtil.abort();
+    							}
+    						}
+    					}
+    				}
+    			}
+    		}
     		this.getUIContext().put(KEY_RES_APP_REV_REFUNDMENT_LIST, getSelectedRevList(tblAppRevRefundment));
         	this.getUIContext().put(KEY_RES_APP_REFUNDMENT_LIST, getSelectedRevList(tblAppRefundment));
     	}else if(RevBillTypeEnum.transfer.equals(resRevBillType)){

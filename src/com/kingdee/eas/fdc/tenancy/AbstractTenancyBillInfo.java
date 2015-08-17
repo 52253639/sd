@@ -968,6 +968,17 @@ public class AbstractTenancyBillInfo extends com.kingdee.eas.fdc.tenancy.TenBill
         setString("tenBillRoomState", item.getValue());
 		}
     }
+    /**
+     * Object:K租赁合同's 手工合同号property 
+     */
+    public String getContractNo()
+    {
+        return getString("contractNo");
+    }
+    public void setContractNo(String item)
+    {
+        setString("contractNo", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("7BA91DDE");

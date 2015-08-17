@@ -261,10 +261,7 @@ public class SpecialScheduleExecuteUI extends AbstractSpecialScheduleExecuteUI {
 		this.btnHideOther.setVisible(false);
 		this.btnDisplayAll.setVisible(false);
 		this.btnProperty.setText("查看");
-		this.btnProperty.setAction(actionProperty);
-		
 		btnProperty.setIcon(EASResource.getIcon("imgTbtn_view"));
-
 		/*
 		 * 任务状态pane
 		 */

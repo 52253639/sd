@@ -82,6 +82,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAddCustomer;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRemoveCustomer;
     protected com.kingdee.bos.ctrl.swing.KDContainer panelTotal;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractNo;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboTenancyType;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkTenancyDate;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7OldContract;
@@ -123,6 +124,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblRoom;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblCustomer;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblTotal;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtContractNo;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSpecialClause;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer conttenRevBank;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardTotalRent;
@@ -260,6 +262,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTotalAttachResDealRent;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalAttachResStandardRent;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalAttachResDealRent;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAdjust;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnCarryForward;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnCollectProtocol;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemCarryForward;
@@ -270,6 +273,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected ActionRemoveRoom actionRemoveRoom = null;
     protected ActionAddCustomer actionAddCustomer = null;
     protected ActionRemoveCustomer actionRemoveCustomer = null;
+    protected ActionAdust actionAdjust = null;
     /**
      * output class constructor
      */
@@ -371,6 +375,10 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.actionRemoveCustomer = new ActionRemoveCustomer(this);
         getActionManager().registerAction("actionRemoveCustomer", actionRemoveCustomer);
          this.actionRemoveCustomer.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionAdjust
+        this.actionAdjust = new ActionAdust(this);
+        getActionManager().registerAction("actionAdjust", actionAdjust);
+         this.actionAdjust.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.tabbedPaneContract = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.tabbedPaneRoom = new com.kingdee.bos.ctrl.swing.KDTabbedPane();
         this.panelTenancyRoomInfo = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -407,6 +415,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.btnAddCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnRemoveCustomer = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.panelTotal = new com.kingdee.bos.ctrl.swing.KDContainer();
+        this.contContractNo = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.comboTenancyType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.pkTenancyDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.f7OldContract = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -448,6 +457,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.tblRoom = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.tblCustomer = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.tblTotal = new com.kingdee.bos.ctrl.kdf.table.KDTable();
+        this.txtContractNo = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.contSpecialClause = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.conttenRevBank = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStandardTotalRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -585,6 +595,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contTotalAttachResDealRent = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtTotalAttachResStandardRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtTotalAttachResDealRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.btnAdjust = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnCarryForward = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnCollectProtocol = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemCarryForward = new com.kingdee.bos.ctrl.swing.KDMenuItem();
@@ -624,6 +635,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.btnAddCustomer.setName("btnAddCustomer");
         this.btnRemoveCustomer.setName("btnRemoveCustomer");
         this.panelTotal.setName("panelTotal");
+        this.contContractNo.setName("contContractNo");
         this.comboTenancyType.setName("comboTenancyType");
         this.pkTenancyDate.setName("pkTenancyDate");
         this.f7OldContract.setName("f7OldContract");
@@ -665,6 +677,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.tblRoom.setName("tblRoom");
         this.tblCustomer.setName("tblCustomer");
         this.tblTotal.setName("tblTotal");
+        this.txtContractNo.setName("txtContractNo");
         this.contSpecialClause.setName("contSpecialClause");
         this.conttenRevBank.setName("conttenRevBank");
         this.contStandardTotalRent.setName("contStandardTotalRent");
@@ -802,6 +815,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contTotalAttachResDealRent.setName("contTotalAttachResDealRent");
         this.txtTotalAttachResStandardRent.setName("txtTotalAttachResStandardRent");
         this.txtTotalAttachResDealRent.setName("txtTotalAttachResDealRent");
+        this.btnAdjust.setName("btnAdjust");
         this.btnCarryForward.setName("btnCarryForward");
         this.btnCollectProtocol.setName("btnCollectProtocol");
         this.menuItemCarryForward.setName("menuItemCarryForward");
@@ -1028,6 +1042,12 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         });
         // panelTotal		
         this.panelTotal.setTitle(resHelper.getString("panelTotal.title"));
+        // contContractNo		
+        this.contContractNo.setBoundLabelText(resHelper.getString("contContractNo.boundLabelText"));		
+        this.contContractNo.setBoundLabelLength(100);		
+        this.contContractNo.setBoundLabelUnderline(true);		
+        this.contContractNo.setVisible(true);		
+        this.contContractNo.setBoundLabelAlignment(7);
         // comboTenancyType		
         this.comboTenancyType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.TenancyContractTypeEnum").toArray());
         // pkTenancyDate
@@ -1348,6 +1368,11 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         
 
         this.tblTotal.checkParsed();
+        // txtContractNo		
+        this.txtContractNo.setVisible(true);		
+        this.txtContractNo.setHorizontalAlignment(2);		
+        this.txtContractNo.setMaxLength(50);		
+        this.txtContractNo.setEnabled(true);
         // contSpecialClause		
         this.contSpecialClause.setBoundLabelText(resHelper.getString("contSpecialClause.boundLabelText"));		
         this.contSpecialClause.setBoundLabelLength(100);		
@@ -1933,6 +1958,15 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
 		String tblOtherPayListStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol6\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"leaseSeq\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" /><t:Column t:key=\"moneyTypeName\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"appDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"true\" t:index=\"2\" /><t:Column t:key=\"startDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"endDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"appAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"currency\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" t:styleID=\"sCol6\" /><t:Column t:key=\"actRevAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"actRevDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" /><t:Column t:key=\"isCollect\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header1\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{leaseSeq}</t:Cell><t:Cell>$Resource{moneyTypeName}</t:Cell><t:Cell>$Resource{appDate}</t:Cell><t:Cell>$Resource{startDate}</t:Cell><t:Cell>$Resource{endDate}</t:Cell><t:Cell>$Resource{appAmount}</t:Cell><t:Cell>$Resource{currency}</t:Cell><t:Cell>$Resource{actRevAmount}</t:Cell><t:Cell>$Resource{actRevDate}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{isCollect}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblOtherPayList.setFormatXml(resHelper.translateString("tblOtherPayList",tblOtherPayListStrXML));
+        this.tblOtherPayList.addKDTEditListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTEditAdapter() {
+            public void editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) {
+                try {
+                    tblOtherPayList_editStopped(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
 
         
 
@@ -2323,6 +2357,9 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.txtTotalAttachResDealRent.setPrecision(2);		
         this.txtTotalAttachResDealRent.setRequired(false);		
         this.txtTotalAttachResDealRent.setEnabled(true);
+        // btnAdjust
+        this.btnAdjust.setAction((IItemAction)ActionProxyFactory.getProxy(actionAdjust, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnAdjust.setText(resHelper.getString("btnAdjust.text"));
         // btnCarryForward
         this.btnCarryForward.setAction((IItemAction)ActionProxyFactory.getProxy(actionCarryForward, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnCarryForward.setText(resHelper.getString("btnCarryForward.text"));		
@@ -2382,18 +2419,18 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         tabbedPaneContract.add(panelCommissionSetting, resHelper.getString("panelCommissionSetting.constraints"));
         //kDPanel2
         kDPanel2.setLayout(new KDLayout());
-        kDPanel2.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        contTenancyType.setBounds(new Rectangle(11, 4, 236, 19));
-        kDPanel2.add(contTenancyType, new KDLayout.Constraints(11, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contTenancyDate.setBounds(new Rectangle(11, 26, 236, 19));
-        kDPanel2.add(contTenancyDate, new KDLayout.Constraints(11, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contOldContract.setBounds(new Rectangle(313, 4, 236, 19));
-        kDPanel2.add(contOldContract, new KDLayout.Constraints(313, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contNumber.setBounds(new Rectangle(313, 26, 236, 19));
-        kDPanel2.add(contNumber, new KDLayout.Constraints(313, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contChangeDes.setBounds(new Rectangle(610, 4, 236, 19));
-        kDPanel2.add(contChangeDes, new KDLayout.Constraints(610, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contname.setBounds(new Rectangle(610, 26, 236, 19));
-        kDPanel2.add(contname, new KDLayout.Constraints(610, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDPanel2.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        contTenancyType.setBounds(new Rectangle(10, 4, 236, 19));
+        kDPanel2.add(contTenancyType, new KDLayout.Constraints(10, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contTenancyDate.setBounds(new Rectangle(10, 26, 236, 19));
+        kDPanel2.add(contTenancyDate, new KDLayout.Constraints(10, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contOldContract.setBounds(new Rectangle(257, 4, 236, 19));
+        kDPanel2.add(contOldContract, new KDLayout.Constraints(257, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contNumber.setBounds(new Rectangle(257, 26, 236, 19));
+        kDPanel2.add(contNumber, new KDLayout.Constraints(257, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contChangeDes.setBounds(new Rectangle(505, 4, 236, 19));
+        kDPanel2.add(contChangeDes, new KDLayout.Constraints(505, 4, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contname.setBounds(new Rectangle(505, 26, 236, 19));
+        kDPanel2.add(contname, new KDLayout.Constraints(505, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         chkIsByAgency.setBounds(new Rectangle(906, 0, 102, 19));
         kDPanel2.add(chkIsByAgency, new KDLayout.Constraints(906, 0, 102, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         kDPanel1.setBounds(new Rectangle(-3, 49, 1008, 115));
@@ -2428,6 +2465,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel2.add(btnRemoveCustomer, new KDLayout.Constraints(935, 389, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         panelTotal.setBounds(new Rectangle(1, 168, 999, 181));
         kDPanel2.add(panelTotal, new KDLayout.Constraints(1, 168, 999, 181, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contContractNo.setBounds(new Rectangle(756, 26, 236, 19));
+        kDPanel2.add(contContractNo, new KDLayout.Constraints(756, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contTenancyType
         contTenancyType.setBoundEditor(comboTenancyType);
         //contTenancyDate
@@ -2511,6 +2550,8 @@ panelRoom.getContentPane().setLayout(new BorderLayout(0, 0));        panelRoom.g
 panelCustomer.getContentPane().setLayout(new BorderLayout(0, 0));        panelCustomer.getContentPane().add(tblCustomer, BorderLayout.CENTER);
         //panelTotal
 panelTotal.getContentPane().setLayout(new BorderLayout(0, 0));        panelTotal.getContentPane().add(tblTotal, BorderLayout.CENTER);
+        //contContractNo
+        contContractNo.setBoundEditor(txtContractNo);
         //panelContractInfo
         panelContractInfo.setLayout(new KDLayout());
         panelContractInfo.putClientProperty("OriginalBounds", new Rectangle(0, 0, 1005, 588));        contSpecialClause.setBounds(new Rectangle(588, 398, 270, 19));
@@ -2949,6 +2990,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         this.toolBar.add(btnTraceDown);
         this.toolBar.add(btnWorkFlowG);
         this.toolBar.add(btnSignature);
+        this.toolBar.add(btnAdjust);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnNumberSign);
@@ -3003,6 +3045,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.f7Creator, "data");
 		dataBinder.registerBinding("tenancyRoomList.roomEntryId", String.class, this.tblRoom, "roomEntryId.text");
+		dataBinder.registerBinding("contractNo", String.class, this.txtContractNo, "text");
 		dataBinder.registerBinding("specialClause", String.class, this.txtSpecialClause, "text");
 		dataBinder.registerBinding("payeeBank", com.kingdee.eas.basedata.assistant.BankInfo.class, this.f7TenRevBank, "data");
 		dataBinder.registerBinding("standardTotalRent", java.math.BigDecimal.class, this.txtStandardTotalRent, "value");
@@ -3186,6 +3229,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyRoomList.roomEntryId", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("contractNo", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("specialClause", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("payeeBank", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("standardTotalRent", ValidateHelper.ON_SAVE);    
@@ -3566,6 +3610,13 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     }
 
     /**
+     * output tblOtherPayList_editStopped method
+     */
+    protected void tblOtherPayList_editStopped(com.kingdee.bos.ctrl.kdf.table.event.KDTEditEvent e) throws Exception
+    {
+    }
+
+    /**
      * output btnAddOtherPaylist_actionPerformed method
      */
     protected void btnAddOtherPaylist_actionPerformed(java.awt.event.ActionEvent e) throws Exception
@@ -3752,6 +3803,7 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         	sic.add(new SelectorItemInfo("creator.name"));
 		}
     	sic.add(new SelectorItemInfo("tenancyRoomList.roomEntryId"));
+        sic.add(new SelectorItemInfo("contractNo"));
         sic.add(new SelectorItemInfo("specialClause"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{
@@ -3942,6 +3994,14 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     public void actionRemoveCustomer_actionPerformed(ActionEvent e) throws Exception
     {
     }
+    	
+
+    /**
+     * output actionAdust_actionPerformed method
+     */
+    public void actionAdust_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
 	public RequestContext prepareActionSubmit(IItemAction itemAction) throws Exception {
 			RequestContext request = super.prepareActionSubmit(itemAction);		
 		if (request != null) {
@@ -4050,6 +4110,17 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
     }
 	
 	public boolean isPrepareActionRemoveCustomer() {
+    	return false;
+    }
+	public RequestContext prepareActionAdust(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionAdust() {
     	return false;
     }
 
@@ -4230,6 +4301,36 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionRemoveCustomer", "actionRemoveCustomer_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionAdust class
+     */     
+    protected class ActionAdust extends ItemAction {     
+    
+        public ActionAdust()
+        {
+            this(null);
+        }
+
+        public ActionAdust(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionAdust.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAdust.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionAdust.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractTenancyBillEditUI.this, "ActionAdust", "actionAdust_actionPerformed", e);
         }
     }
 

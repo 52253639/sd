@@ -39,6 +39,17 @@ public class AbstractBuildingAreaEntryInfo extends com.kingdee.eas.framework.Cor
     {
         setBigDecimal("area", item);
     }
+    /**
+     * Object:楼层面积分录's 建筑面积property 
+     */
+    public java.math.BigDecimal getBuildArea()
+    {
+        return getBigDecimal("buildArea");
+    }
+    public void setBuildArea(java.math.BigDecimal item)
+    {
+        setBigDecimal("buildArea", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("ED873A16");
