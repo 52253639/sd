@@ -142,25 +142,9 @@ public class RevDetailFinReportFacadeControllerBean extends AbstractRevDetailFin
             	}
             }
 	    }
-	    Integer syear = (Integer)params.getObject("syear");
-	    Integer smonth =   (Integer)params.getObject("smonth");
-	    
-		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, syear);
-		cal.set(Calendar.MONTH, smonth-1);
-
-		Date fromDate=FDCDateHelper.getFirstDayOfMonth(cal.getTime());
-		
-		
-		Integer eyear = (Integer)params.getObject("eyear");
-	    Integer emonth =   (Integer)params.getObject("emonth");
-	    
-		cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, eyear);
-		cal.set(Calendar.MONTH, emonth-1);
-
-		Date toDate=FDCDateHelper.getLastDayOfMonth(cal.getTime());
-		
+	    Date fromDate = (Date)params.getObject("fromDate");
+    	Date toDate =   (Date)params.getObject("toDate");
+    	
 	    Boolean isAll=params.getBoolean("isAll");
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select * from (select distinct t.mdNumber,t.mdId,t.conId,t.quitRoomDate,t.sellProject,t.build,t.room,t.buildArea,t.tenancyArea,");
@@ -240,8 +224,8 @@ public class RevDetailFinReportFacadeControllerBean extends AbstractRevDetailFin
 		params.setObject("rs", rs);
 		
 		sb=new StringBuffer();
-    	sb.append(" select md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount,");
-    	sb.append(" (case when datediff(day,pay.fappDate,isnull(pay.factRevDate,now()))<0 then 0 else datediff(day,pay.fappDate,isnull(pay.factRevDate,now())) end) overdueDays from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
+    	sb.append(" select md.fid mdId,con.fid conId,pay.fappDate appDate,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount");
+    	sb.append(" from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
@@ -271,8 +255,8 @@ public class RevDetailFinReportFacadeControllerBean extends AbstractRevDetailFin
 		if(toDate!=null){
 			sb.append(" and pay.fappDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}
-    	sb.append(" union all select md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount,");
-    	sb.append(" (case when datediff(day,pay.fappDate,isnull(pay.factRevDate,now()))<0 then 0 else datediff(day,pay.fappDate,isnull(pay.factRevDate,now())) end) overdueDays from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
+    	sb.append(" union all select md.fid mdId,con.fid conId,pay.fappDate appDate,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount");
+    	sb.append(" from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");

@@ -82,7 +82,7 @@ public class RevDetailFinReportUI extends AbstractRevDetailFinReportUI
 	}
 
 	protected CommRptBaseConditionUI getQueryDialogUserPanel() throws Exception {
-		return new RevDetailReportFilterUI();
+		return new RevDetailFinReportFilterUI();
 	}
 
 	protected ICommRptBase getRemoteInstance() throws BOSException {
@@ -135,7 +135,6 @@ public class RevDetailFinReportUI extends AbstractRevDetailFinReportUI
          	         Map rowMap=new HashMap();
          	         Map totalrowMap=new HashMap();
          	         String conId=null;
-         	         Date now=FDCCommonServerHelper.getServerTimeStamp();
          	         while(rs.next()){
 	                   	 if(conId!=null&&!conId.equals(rs.getString("conId"))){
 	                   		IRow totalrow=tblMain.addRow();
@@ -232,12 +231,16 @@ public class RevDetailFinReportUI extends AbstractRevDetailFinReportUI
         	        		row.getCell(year+"Y"+month+"M"+"appAmount").setValue(detailrs.getBigDecimal("appAmount"));
         	        		row.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(detailrs.getBigDecimal("invoiceAmount"));
         	        		row.getCell(year+"Y"+month+"M"+"actRevAmount").setValue(detailrs.getBigDecimal("actRevAmount"));
-        	        		row.getCell(year+"Y"+month+"M"+"overdueDays").setValue(detailrs.getBigDecimal("overdueDays"));
+        	        		
+        	        		Date appDate=(Date) detailrs.getObject("appDate");
+        	        		int overdueDays=FDCDateHelper.getDiffDays(appDate, (Date) params.getObject("toDate"));
+        	        		if(overdueDays<0)overdueDays=0;
+        	        		row.getCell(year+"Y"+month+"M"+"overdueDays").setValue(overdueDays);
         	        		
         	        		row.getCell("appAmount").setValue(FDCHelper.add(row.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        		row.getCell("invoiceAmount").setValue(FDCHelper.add(row.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        		row.getCell("actRevAmount").setValue(FDCHelper.add(row.getCell("actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
-        	        		row.getCell("overdueDays").setValue(FDCHelper.add(row.getCell("overdueDays").getValue(), detailrs.getBigDecimal("overdueDays")));
+        	        		row.getCell("overdueDays").setValue(FDCHelper.add(row.getCell("overdueDays").getValue(), overdueDays));
         	        		row.getCell("bookAmount").setValue(FDCHelper.subtract(row.getCell("appAmount").getValue(), row.getCell("actRevAmount").getValue()));
 
         	        		if(totalrowMap.containsKey(detailrs.getString("conId"))){
@@ -245,14 +248,14 @@ public class RevDetailFinReportUI extends AbstractRevDetailFinReportUI
         	        			totalrow.getCell("appAmount").setValue(FDCHelper.add(totalrow.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        			totalrow.getCell("invoiceAmount").setValue(FDCHelper.add(totalrow.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        			totalrow.getCell("actRevAmount").setValue(FDCHelper.add(totalrow.getCell("actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
-        	        			totalrow.getCell("overdueDays").setValue(FDCHelper.add(totalrow.getCell("overdueDays").getValue(), detailrs.getBigDecimal("overdueDays")));
+        	        			totalrow.getCell("overdueDays").setValue(FDCHelper.add(totalrow.getCell("overdueDays").getValue(), overdueDays));
         	        			totalrow.getCell("bookAmount").setValue(FDCHelper.subtract(totalrow.getCell("appAmount").getValue(), totalrow.getCell("actRevAmount").getValue()));
 
         	        			
         	        			totalrow.getCell(year+"Y"+month+"M"+"appAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        			totalrow.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
         	        			totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"actRevAmount").getValue(), detailrs.getBigDecimal("actRevAmount")));
-        	        			totalrow.getCell(year+"Y"+month+"M"+"overdueDays").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"overdueDays").getValue(), detailrs.getBigDecimal("overdueDays")));
+        	        			totalrow.getCell(year+"Y"+month+"M"+"overdueDays").setValue(FDCHelper.add(totalrow.getCell(year+"Y"+month+"M"+"overdueDays").getValue(), overdueDays));
         	        		}
 //        	        		if(detailrs.getBigDecimal("appAmount").compareTo(detailrs.getBigDecimal("actRevAmount"))==0){
 //        	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.GREEN);
