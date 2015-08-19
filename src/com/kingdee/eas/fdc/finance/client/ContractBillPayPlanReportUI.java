@@ -296,7 +296,6 @@ public class ContractBillPayPlanReportUI extends AbstractContractBillPayPlanRepo
          	        	 BigDecimal payAmount=FDCHelper.ZERO;
          	        	 BigDecimal unPayAmount=FDCHelper.ZERO;
          	        	 
-         	        	 Map totalAmount=new HashMap();
          	        	 for(int i=0;i<list.size();i++){
          	        		 IRow row=tblMain.addRow();
          	        		 row.setTreeLevel(1);
@@ -336,8 +335,9 @@ public class ContractBillPayPlanReportUI extends AbstractContractBillPayPlanRepo
                          	    	 row.getCell(planKey).setValue(planValue.get(id+planKey));
                          	    	 row.getCell(payKey).setValue(payValue.get(id+payKey));
                          	    	 
-                         	    	totalAmount.put(planKey, FDCHelper.add(planValue.get(id+planKey),totalAmount.get(planKey)));
-                         	    	totalAmount.put(payKey, FDCHelper.add(payValue.get(id+planKey),totalAmount.get(payKey)));
+                         	    	addRow.getCell(planKey).setValue(FDCHelper.add(planValue.get(id+planKey),addRow.getCell(planKey).getValue()));
+                         	    	addRow.getCell(payKey).setValue(FDCHelper.add(payValue.get(id+payKey),addRow.getCell(payKey).getValue()));
+                         	    	
                          	    	month=month+1;
                          	    	if(month>12){
                          	    		month=1;
@@ -365,27 +365,6 @@ public class ContractBillPayPlanReportUI extends AbstractContractBillPayPlanRepo
      	        		if(pa!=null&&lp!=null&&lp.compareTo(FDCHelper.ZERO)!=0){
      	        			addRow.getCell("payRate").setValue(FDCHelper.divide(pa, lp, 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)));
      	        		}
-         	        	 syear = (Integer)params.getObject("syear");
-                 	     smonth =   (Integer)params.getObject("smonth");
-                 	    
-                 		 eyear = (Integer)params.getObject("eyear");
-                 	     emonth =   (Integer)params.getObject("emonth");
-                 	    
-                 	     year=syear;
-                 	     month=smonth;
-
-                 	     while(!(year>eyear||(year==eyear&&month>emonth))){
-                 	    	 String planKey=year+"Y"+month+"M"+"planAmount";
-                 	    	 String payKey=year+"Y"+month+"M"+"payAmount";
-                 	    	addRow.getCell(planKey).setValue(totalAmount.get(planKey));
-                 	    	addRow.getCell(payKey).setValue(totalAmount.get(payKey));
-                 	    	 
-                 	    	month=month+1;
-                 	    	if(month>12){
-                 	    		month=1;
-                 	    		year=year+1;
-                 	    	}
-                 	     }
          	         }
          	         tblMain.setRowCount(tblMain.getRowCount());
          	         tblMain.setRefresh(true);
