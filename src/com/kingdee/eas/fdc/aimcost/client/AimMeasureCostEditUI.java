@@ -1773,10 +1773,10 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 		prmtProjectType.addDataChangeListener(new DataChangeListener(){
 			public void dataChanged(DataChangeEvent e) {
 				if(e.getNewValue()==null){
-					prmtProject.setData(null);
+//					prmtProject.setData(null);
 				}
 				if(e.getOldValue()==null?e.getNewValue()!=null:!e.getOldValue().equals(e.getNewValue())){
-					prmtProject.setData(null);
+//					prmtProject.setData(null);
 				}
 				
 			}

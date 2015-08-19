@@ -25,6 +25,10 @@ import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCSplitClientHelper;
 import com.kingdee.eas.fdc.schedule.FDCScheduleTaskInfo;
+import com.kingdee.eas.fdc.schedule.HelpDeptEntryFactory;
+import com.kingdee.eas.fdc.schedule.HelpDeptEntryInfo;
+import com.kingdee.eas.fdc.schedule.HelpPersonEntryFactory;
+import com.kingdee.eas.fdc.schedule.HelpPersonEntryInfo;
 import com.kingdee.eas.fdc.schedule.framework.ScheduleBaseInfo;
 import com.kingdee.eas.fdc.schedule.framework.ScheduleCalendarFactory;
 import com.kingdee.eas.fdc.schedule.framework.ScheduleCalendarInfo;
@@ -215,10 +219,14 @@ public class KDTask extends GanttTask{
 					String helpDeptEntry="";
 					if(((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpDeptEntry().size()>0){
 						for(int j=0;j<((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpDeptEntry().size();j++){
-							if(j==0){
-								helpDeptEntry=((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpDeptEntry().get(j).getDept().getName();
-							}else{
-								helpDeptEntry=helpDeptEntry+";"+((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpDeptEntry().get(j).getDept().getName();
+							HelpDeptEntryInfo info=((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpDeptEntry().get(j);
+							if(info!=null){
+								info=HelpDeptEntryFactory.getRemoteInstance().getHelpDeptEntryInfo("select dept.* from where id='"+info.getId().toString()+"'");
+								if(j==0){
+									helpDeptEntry=info.getDept().getName();
+								}else{
+									helpDeptEntry=helpDeptEntry+";"+info.getDept().getName();
+								}
 							}
 						}
 					}else{
@@ -229,10 +237,14 @@ public class KDTask extends GanttTask{
 					String helpPersonEntry="";
 					if(((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpPersonEntry().size()>0){
 						for(int j=0;j<((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpPersonEntry().size();j++){
-							if(j==0){
-								helpPersonEntry=((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpPersonEntry().get(j).getPerson().getName();
-							}else{
-								helpPersonEntry=helpPersonEntry+";"+((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpPersonEntry().get(j).getPerson().getName();
+							HelpPersonEntryInfo info=((FDCScheduleTaskInfo)scheduleTaskInfo).getHelpPersonEntry().get(j);
+							if(info!=null){
+								info=HelpPersonEntryFactory.getRemoteInstance().getHelpPersonEntryInfo("select person.* from where id='"+info.getId().toString()+"'");
+								if(j==0){
+									helpPersonEntry=info.getPerson().getName();
+								}else{
+									helpPersonEntry=helpPersonEntry+";"+info.getPerson().getName();
+								}
 							}
 						}
 					}else{
@@ -246,6 +258,10 @@ public class KDTask extends GanttTask{
 							prop.getName(),scheduleTaskInfo.getCustomPropertyValue(prop.getMapKey()));
 				}
 			} catch (CustomColumnsException e) {
+				e.printStackTrace();
+			} catch (EASBizException e) {
+				e.printStackTrace();
+			} catch (BOSException e) {
 				e.printStackTrace();
 			}
     	}
