@@ -106,11 +106,11 @@ public class ProgrammingImportUI extends AbstractProgrammingImportUI
 		DataChangeListener dataChangeListener = (DataChangeListener) uiContext.get("dataChangeListener");
 		//导入模板的时候默认是没有目标成本的
 		ProgrammingEditUI editUI = (ProgrammingEditUI)uiContext.get("Owner");
-		editUI.prmtAimCost.removeDataChangeListener(dataChangeListener);
-		editUI.prmtAimCost.setValue(null);
-		editUI.prmtAimCost.addDataChangeListener(dataChangeListener);
+//		editUI.prmtAimCost.removeDataChangeListener(dataChangeListener);
+//		editUI.prmtAimCost.setValue(null);
+//		editUI.prmtAimCost.addDataChangeListener(dataChangeListener);
 		AimCostInfo aimCost = (AimCostInfo) uiContext.get("aimCost"); // 目标成本
-		aimCost = null;
+//		aimCost = null;
 		programming.setAimCost(aimCost);
 		CurProjectInfo project = (CurProjectInfo) uiContext.get("project"); // 框架合约的关联的工程项目
 		if (programming == null || project == null) {
