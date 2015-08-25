@@ -33,6 +33,10 @@ import com.kingdee.eas.base.codingrule.CodingRuleManagerFactory;
 import com.kingdee.eas.base.codingrule.ICodingRuleManager;
 import com.kingdee.eas.base.dap.DAPTransformResult;
 import com.kingdee.eas.base.permission.UserInfo;
+import com.kingdee.eas.basedata.master.auxacct.AsstAccountFactory;
+import com.kingdee.eas.basedata.master.auxacct.AsstAccountInfo;
+import com.kingdee.eas.basedata.master.auxacct.AsstActGroupDetailCollection;
+import com.kingdee.eas.basedata.master.auxacct.AsstActTypeInfo;
 import com.kingdee.eas.basedata.master.cssp.CustomerInfo;
 import com.kingdee.eas.basedata.org.CtrlUnitInfo;
 import com.kingdee.eas.basedata.org.OrgUnitInfo;
@@ -78,6 +82,8 @@ import com.kingdee.eas.fdc.sellhouse.PurchaseStateEnum;
 import com.kingdee.eas.fdc.sellhouse.ReceiptInvoiceFacadeFactory;
 import com.kingdee.eas.fdc.sellhouse.ReceiptStatusEnum;
 import com.kingdee.eas.fdc.sellhouse.RecordTypeEnum;
+import com.kingdee.eas.fi.cas.AssItemsForCashPayInfo;
+import com.kingdee.eas.fi.cas.AssItemsForCashRecInfo;
 import com.kingdee.eas.fi.cas.BillStatusEnum;
 import com.kingdee.eas.fi.cas.CasRecPayBillTypeEnum;
 import com.kingdee.eas.fi.cas.IPaymentBillType;
@@ -1264,6 +1270,11 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		ReceivingBillInfo rev=null;
 		PaymentBillInfo pay=null;
 		RevBillTypeEnum type=null;
+		
+		SelectorItemCollection sels = new SelectorItemCollection();
+    	sels.add("asstActGpDt.asstActType.*");
+    	sels.add("asstActGpDt.*");
+    	
 		for (int i = 0; i < collection.size(); i++) {
 			FDCReceivingBillCollection billColl = null;
 			String id = collection.get(i).getId().toString();
@@ -1376,11 +1387,39 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							payBillEntryInfo.setActualAmt(billEntry.get(k).getRevAmount().abs());
 							//对方科目
 							if(billEntry.get(i).getOppAccount()!=null){
-								payBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());	
+								payBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());
+								
+								if(payBillEntryInfo.getOppAccount().getCAA()!=null){
+									AsstAccountInfo account=AsstAccountFactory.getLocalInstance(ctx).getAsstAccountInfo(new ObjectUuidPK(payBillEntryInfo.getOppAccount().getCAA().getId()),sels);
+									AsstActGroupDetailCollection aacol=account.getAsstActGpDt();
+									CRMHelper.sortCollection(aacol, "seq", true);
+									for(int l=0;l<aacol.size();l++){
+										AsstActTypeInfo asstActType=aacol.get(l).getAsstActType();
+										AssItemsForCashPayInfo ass=new AssItemsForCashPayInfo();
+										ass.setTableName(asstActType.getRealtionDataObject());
+										ass.setMappingFileds(asstActType.getMappingFieldName());
+										ass.setAsstActType(asstActType);
+										ass.setIsSelected(false);
+										ass.setSeq(aacol.get(l).getSeq());
+										ass.setEntrySeq(i+1);
+										
+										if(asstActType.getRealtionDataObject().equals("T_BD_Customer")){
+											if(custInfo!=null){
+												ass.setFromID(custInfo.getId().toString());
+												ass.setFromNumber(custInfo.getNumber());
+												ass.setIsSelected(true);
+											}
+										}
+										payBillEntryInfo.getAssItemsEntries().add(ass);
+									}
+								}
 							}
 							
 							payBillEntry.add(payBillEntryInfo);
 						}
+						if(fdcReceivingBillInfo.getRoom()!=null)
+							paymentBillInfo.setDescription(fdcReceivingBillInfo.getRoom().getName());
+						
 						pay=paymentBillInfo;
 						iPay.addNewBatch(paymentBillInfo);
 					}else{
@@ -1516,10 +1555,36 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							//对方科目
 							if(billEntry.get(i).getOppAccount()!=null){
 								receBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());	
+								
+								if(receBillEntryInfo.getOppAccount().getCAA()!=null){
+									AsstAccountInfo account=AsstAccountFactory.getLocalInstance(ctx).getAsstAccountInfo(new ObjectUuidPK(receBillEntryInfo.getOppAccount().getCAA().getId()),sels);
+									AsstActGroupDetailCollection aacol=account.getAsstActGpDt();
+									CRMHelper.sortCollection(aacol, "seq", true);
+									for(int l=0;l<aacol.size();l++){
+										AsstActTypeInfo asstActType=aacol.get(l).getAsstActType();
+										AssItemsForCashRecInfo ass=new AssItemsForCashRecInfo();
+										ass.setTableName(asstActType.getRealtionDataObject());
+										ass.setMappingFileds(asstActType.getMappingFieldName());
+										ass.setAsstActType(asstActType);
+										ass.setIsSelected(false);
+										ass.setSeq(aacol.get(l).getSeq());
+										ass.setEntrySeq(i+1);
+										
+										if(asstActType.getRealtionDataObject().equals("T_BD_Customer")){
+											if(custInfo!=null){
+												ass.setFromID(custInfo.getId().toString());
+												ass.setFromNumber(custInfo.getNumber());
+												ass.setIsSelected(true);
+											}
+										}
+										receBillEntryInfo.getAssItemsEntries().add(ass);
+									}
+								}
 							}
-							
 							receBillEntry.add(receBillEntryInfo);
 						}
+						if(fdcReceivingBillInfo.getRoom()!=null)
+							receivingBillInfo.setDescription(fdcReceivingBillInfo.getRoom().getName());
 						rev=receivingBillInfo;
 						iReceiving.addNewBatch(receivingBillInfo);
 					}
