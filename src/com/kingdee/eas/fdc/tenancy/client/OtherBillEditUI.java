@@ -26,6 +26,8 @@ import javax.swing.event.ChangeListener;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.IMetaDataPK;
+import com.kingdee.bos.metadata.MetaDataPK;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
@@ -124,6 +126,7 @@ import com.kingdee.eas.framework.*;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.eas.util.client.MsgBox;
+import com.kingdee.util.StringUtils;
 import com.kingdee.util.UuidException;
 
 /**
@@ -1167,5 +1170,52 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 				BoAttchAssoFactory.getRemoteInstance().delete(filter);
 			}
 		}
+	}
+	 public void actionPrint_actionPerformed(ActionEvent e) throws Exception {
+		ArrayList idList = new ArrayList();
+		if (editData != null && !StringUtils.isEmpty(editData.getString("id"))) {
+			idList.add(editData.getString("id"));
+		}
+		if (idList == null || idList.size() == 0 || getTDQueryPK() == null
+				|| getTDFileName() == null) {
+			MsgBox.showWarning(this, EASResource.getString(
+					"com.kingdee.eas.fdc.basedata.client.FdcResource",
+			"cantPrint"));
+			return;
+		}
+		OtherBillDataProvider data = new OtherBillDataProvider(
+				editData.getString("id"),editData.getTenancyBill().getId().toString(),getTDQueryPK());
+		com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
+		appHlp.print(getTDFileName(), data, javax.swing.SwingUtilities
+				.getWindowAncestor(this));
+	}
+
+	public void actionPrintPreview_actionPerformed(ActionEvent e)
+	throws Exception {
+		ArrayList idList = new ArrayList();
+		if (editData != null && !StringUtils.isEmpty(editData.getString("id"))) {
+			idList.add(editData.getString("id"));
+		}
+		if (idList == null || idList.size() == 0 || getTDQueryPK() == null
+				|| getTDFileName() == null) {
+			MsgBox.showWarning(this, EASResource.getString(
+					"com.kingdee.eas.fdc.basedata.client.FdcResource",
+			"cantPrint"));
+			return;
+
+		}
+		OtherBillDataProvider data = new OtherBillDataProvider(
+				editData.getString("id"),editData.getTenancyBill().getId().toString(),getTDQueryPK());
+		com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper appHlp = new com.kingdee.bos.ctrl.report.forapp.kdnote.client.KDNoteHelper();
+		appHlp.printPreview(getTDFileName(), data, javax.swing.SwingUtilities
+				.getWindowAncestor(this));
+	}
+	protected String getTDFileName() {
+		return "/bim/fdc/tenancy/OtherBill";
+	}
+
+	protected IMetaDataPK getTDQueryPK() {
+		return new MetaDataPK(
+		"com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery");
 	}
 }
