@@ -2578,7 +2578,7 @@ public class ContractWithoutTextEditUI extends
 //				SysUtil.abort();
 //			}
 //		}else{
-			verifyContractProgrammingPara();
+//			verifyContractProgrammingPara();
 //		}
 		
 		FDCClientVerifyHelper.verifyEmpty(this, this.prmtuseDepartment);
@@ -2688,25 +2688,43 @@ public class ContractWithoutTextEditUI extends
 			}
 		}
 		if(this.editData.getCurProject()!=null){
-			Map param=new HashMap();
-			param.put("isContract", Boolean.FALSE);
-			param.put("contractId", this.editData.getCurProject().getId().toString());
-			if (editData.getId() != null) {
-				param.put("billId", editData.getId().toString());
+			ContractTypeInfo ct=(ContractTypeInfo) this.prmtContractType.getValue();
+			String[] contractType=null;
+        	HashMap hmParamIn = new HashMap();
+        	hmParamIn.put("PAYPLAN_NOTEXT", null);
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("PAYPLAN_NOTEXT")!=null&&!"".equals(hmAllParam.get("PAYPLAN_NOTEXT"))){
+				contractType=hmAllParam.get("PAYPLAN_NOTEXT").toString().split(";");
 			}
-			if(editData.getCurProject().getFullOrgUnit()!=null){
-				param.put("orgId", editData.getCurProject().getFullOrgUnit().getId().toString());
+			boolean isCheck=false;
+			if(contractType!=null&&contractType.length>0){
+				for(int i=0;i<contractType.length;i++){
+        			if(ct.getLongNumber().indexOf(contractType[i])>=0){
+        				isCheck=true;
+        			}
+        		}
 			}
-			if(editData.getCurProject()!=null){
-				param.put("curProjectId", editData.getCurProject().getId().toString());
-			}
-			param.put("bizDate", this.pkbookedDate.getValue());
-			param.put("amount", this.txtamount.getBigDecimalValue());
-			Map result=ProjectMonthPlanGatherFactory.getRemoteInstance().checkPass(param);
-			if(result!=null&&result.get("isPass")!=null){
-				if(!((Boolean)result.get("isPass")).booleanValue()&&result.get("warning")!=null){
-					FDCMsgBox.showWarning(this,result.get("warning").toString());
-					SysUtil.abort();
+			if(isCheck){
+				Map param=new HashMap();
+				param.put("isContract", Boolean.FALSE);
+				param.put("contractId", this.editData.getCurProject().getId().toString());
+				if (editData.getId() != null) {
+					param.put("billId", editData.getId().toString());
+				}
+				if(editData.getCurProject().getFullOrgUnit()!=null){
+					param.put("orgId", editData.getCurProject().getFullOrgUnit().getId().toString());
+				}
+				if(editData.getCurProject()!=null){
+					param.put("curProjectId", editData.getCurProject().getId().toString());
+				}
+				param.put("bizDate", this.pkbookedDate.getValue());
+				param.put("amount", this.txtamount.getBigDecimalValue());
+				Map result=ProjectMonthPlanGatherFactory.getRemoteInstance().checkPass(param);
+				if(result!=null&&result.get("isPass")!=null){
+					if(!((Boolean)result.get("isPass")).booleanValue()&&result.get("warning")!=null){
+						FDCMsgBox.showWarning(this,result.get("warning").toString());
+						SysUtil.abort();
+					}
 				}
 			}
 		}

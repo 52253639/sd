@@ -359,12 +359,16 @@ public class ProjectMonthPlanProEditUI extends AbstractProjectMonthPlanProEditUI
 			remarkColumn.setEditor(remarkEditor);
 			remarkColumn.setKey(key+"remark");
 			remarkColumn.getStyleAttributes().setLocked(false);
-			remarkColumn.setRequired(true);
+			if(i==0){
+				remarkColumn.setRequired(true);
+			}
 			
 			IColumn bgItemColumn=table.addColumn();
 			bgItemColumn.setKey(key+"bgItem");
 			bgItemColumn.getStyleAttributes().setLocked(false);
-			bgItemColumn.setRequired(true);
+			if(i==0){
+				bgItemColumn.setRequired(true);
+			}
 			
 			table.getColumn(key+"bgItem").setEditor(f7Editor);
 			

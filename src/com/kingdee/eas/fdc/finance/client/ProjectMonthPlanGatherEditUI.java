@@ -1067,7 +1067,7 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 			
 			IRow proRow=null;
 			if(proIndex==0){
-				proRow=this.contractTable.addRow();
+				proRow=this.contractTable.addRow(1);
 				proIndex=proRow.getRowIndex();
 			}else{
 				proRow=this.contractTable.addRow(proIndex);

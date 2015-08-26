@@ -576,7 +576,7 @@ public class ContractPayPlanEditUI extends AbstractContractPayPlanEditUI
 				FDCMsgBox.showWarning(this,"完成工程量不能为空！");
 				SysUtil.abort();
 			}
-			if(this.kdtEntry.getRow(i).getCell("bgItem")==null){
+			if(this.kdtEntry.getRow(i).getCell("bgItem").getValue()==null){
 				FDCMsgBox.showWarning(this,"预算项目不能为空！");
 				SysUtil.abort();
 			}

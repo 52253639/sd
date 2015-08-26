@@ -340,36 +340,39 @@ public class ProjectMonthPlanGatherControllerBean extends AbstractProjectMonthPl
     	}else{
     		ProjectMonthPlanGatherEntryCollection col=ProjectMonthPlanGatherEntryFactory.getLocalInstance(ctx).getProjectMonthPlanGatherEntryCollection(view);
 			if(col.size()>0){
-				String headId=null;
-	        	BigDecimal accPayAmount=FDCHelper.ZERO;
-				try {
-					accPayAmount=getAccWTPayAmount(ctx,curProjectId,billId,bizDate);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				BigDecimal payAmount=FDCHelper.ZERO;
-	        	for(int k=0;k<col.size();k++){
-	    			ProjectMonthPlanGatherEntryInfo ppEntry=col.get(k);
-	    			if(headId==null||headId.equals(ppEntry.getHead().getId().toString())){
-	    				headId=ppEntry.getHead().getId().toString();
-	    			}else{
-	    				break;
-	    			}
-	        		for(int i=0;i<ppEntry.getDateEntry().size();i++){
-	        			int comYear=ppEntry.getDateEntry().get(i).getYear();
-	        			int comMonth=ppEntry.getDateEntry().get(i).getMonth();
-	        			if(comYear==year&&comMonth==month){
-	        				payAmount=FDCHelper.add(payAmount, ppEntry.getDateEntry().get(i).getAmount());
+				for(int k=0;k<col.size();k++){
+        			Calendar comcal = Calendar.getInstance();
+	        		comcal.setTime(col.get(k).getHead().getBizDate());
+	        		int comyear=cal.get(Calendar.YEAR);
+	        		int commonth=cal.get(Calendar.MONTH)+1;
+	        		if(comyear==year&&commonth==month){
+	        			if(!OrgUnitMonthPlanGatherEntryFactory.getLocalInstance(ctx).exists("select * from where head.state='4AUDITTED' and srcId='"+col.get(k).getHead().getId().toString()+"'")){
+	        				continue;
 	        			}
+	        			BigDecimal accPayAmount=FDCHelper.ZERO;
+	    				try {
+	    					accPayAmount=getAccWTPayAmount(ctx,curProjectId,billId,bizDate);
+	    				} catch (SQLException e) {
+	    					e.printStackTrace();
+	    				}
+	    				BigDecimal payAmount=FDCHelper.ZERO;
+	    				ProjectMonthPlanGatherEntryInfo ppEntry=col.get(k);
+    	        		for(int i=0;i<ppEntry.getDateEntry().size();i++){
+    	        			int comYear=ppEntry.getDateEntry().get(i).getYear();
+		        			int comMonth=ppEntry.getDateEntry().get(i).getMonth();
+		        			if(comYear==year&&comMonth==month){
+    	        				payAmount=FDCHelper.add(payAmount, ppEntry.getDateEntry().get(i).getAmount());
+    	        			}
+	    	        	}
+	    	        	if(payAmount.subtract(accPayAmount).compareTo(amount)<0){
+	    					result.put("isPass", Boolean.FALSE);
+	    					result.put("warning", "该笔付款超过月度付款计划，不允许发起付款！");
+	    					return result;
+	    				}else{
+	    					result.put("isPass", Boolean.TRUE);
+	    					return result;
+	    				}
 	        		}
-	        	}
-	        	if(payAmount.subtract(accPayAmount).compareTo(amount)<0){
-					result.put("isPass", Boolean.FALSE);
-					result.put("warning", "该笔付款超过月度付款计划，不允许发起付款！");
-					return result;
-				}else{
-					result.put("isPass", Boolean.TRUE);
-					return result;
 				}
 			}
     	}
