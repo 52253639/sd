@@ -389,6 +389,11 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 		this.actionLast.setVisible(false);
 		
 		FDCClientUtils.setRespDeptF7(this.prmtDept,null);
+		
+		this.actionPrint.setVisible(true);
+		this.actionPrintPreview.setVisible(true);
+		this.actionPrint.setEnabled(true);
+		this.actionPrintPreview.setEnabled(true);
 	}
 	public void setOprtState(String oprtType) {
 		super.setOprtState(oprtType);
