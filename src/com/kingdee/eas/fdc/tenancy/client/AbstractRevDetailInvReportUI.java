@@ -50,6 +50,7 @@ public abstract class AbstractRevDetailInvReportUI extends com.kingdee.eas.frame
     protected com.kingdee.bos.ctrl.swing.KDTreeView treeView;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblMain;
     protected com.kingdee.bos.ctrl.swing.KDTree treeMain;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnGen;
     /**
      * output class constructor
      */
@@ -72,10 +73,12 @@ public abstract class AbstractRevDetailInvReportUI extends com.kingdee.eas.frame
         this.treeView = new com.kingdee.bos.ctrl.swing.KDTreeView();
         this.tblMain = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.treeMain = new com.kingdee.bos.ctrl.swing.KDTree();
+        this.btnGen = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.kDSplitPane1.setName("kDSplitPane1");
         this.treeView.setName("treeView");
         this.tblMain.setName("tblMain");
         this.treeMain.setName("treeMain");
+        this.btnGen.setName("btnGen");
         // CoreUI
         // kDSplitPane1		
         this.kDSplitPane1.setDividerLocation(200);
@@ -102,6 +105,20 @@ public abstract class AbstractRevDetailInvReportUI extends com.kingdee.eas.frame
                 } catch (Exception exc) {
                     handUIException(exc);
                 } finally {
+                }
+            }
+        });
+        // btnGen		
+        this.btnGen.setText(resHelper.getString("btnGen.text"));
+        this.btnGen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                beforeActionPerformed(e);
+                try {
+                    btnGen_actionPerformed(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                    afterActionPerformed(e);
                 }
             }
         });
@@ -205,6 +222,7 @@ public abstract class AbstractRevDetailInvReportUI extends com.kingdee.eas.frame
         this.toolBar.add(btnPrintPreview);
         this.toolBar.add(separator2);
         this.toolBar.add(btnChart);
+        this.toolBar.add(btnGen);
 
 
     }
@@ -292,6 +310,13 @@ public abstract class AbstractRevDetailInvReportUI extends com.kingdee.eas.frame
      * output treeMain_valueChanged method
      */
     protected void treeMain_valueChanged(javax.swing.event.TreeSelectionEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output btnGen_actionPerformed method
+     */
+    protected void btnGen_actionPerformed(java.awt.event.ActionEvent e) throws Exception
     {
     }
 

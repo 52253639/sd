@@ -220,7 +220,7 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 		sb=new StringBuffer();
     	sb.append(" select sum(area.FBuildArea) buildArea,sum(area.FArea)tenArea");
     	sb.append(" from t_she_building build left join t_she_sellProject sp on sp.fid=build.fsellProjectid left join T_SHE_BuildingAreaEntry area on area.fheadId=build.fid");
-    	sb.append(" where sp.fisForSHE=1");
+    	sb.append(" where sp.fisForTen=1");
     	if(building!=null&&!"".equals(building)){
     		sb.append(" and build.fid in("+building+")");
     	}else{

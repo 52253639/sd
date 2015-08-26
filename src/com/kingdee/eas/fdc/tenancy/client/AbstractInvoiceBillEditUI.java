@@ -196,6 +196,7 @@ public abstract class AbstractInvoiceBillEditUI extends com.kingdee.eas.fdc.tena
         this.prmtCustomer.setName("prmtCustomer");
         this.btnSubmitAudit.setName("btnSubmitAudit");
         // CoreUI		
+        this.setPreferredSize(new Dimension(1013,629));		
         this.btnPageSetup.setVisible(false);		
         this.btnCloud.setVisible(false);		
         this.btnXunTong.setVisible(false);		

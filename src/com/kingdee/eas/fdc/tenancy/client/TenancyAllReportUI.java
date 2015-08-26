@@ -438,6 +438,7 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
 		tblMain.getSelectManager().setSelectMode(KDTSelectManager.MULTIPLE_CELL_SELECT);
 		this.actionPrint.setVisible(false);
 		this.actionPrintPreview.setVisible(false);
+		this.actionQuery.setVisible(false);
 		buildTree();
 		isOnLoad=false;
 		this.refresh();

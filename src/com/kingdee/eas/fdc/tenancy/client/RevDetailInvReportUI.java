@@ -8,6 +8,7 @@ import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.*;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,9 +21,11 @@ import javax.swing.tree.TreeNode;
 import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
@@ -36,6 +39,7 @@ import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.swing.KDTree;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
+import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
@@ -45,11 +49,24 @@ import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.FDCDateHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
+import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
+import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo;
+import com.kingdee.eas.fdc.sellhouse.MoneyDefineInfo;
+import com.kingdee.eas.fdc.sellhouse.RoomInfo;
+import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SHEHelper;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantCollection;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantEntrysInfo;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantFactory;
+import com.kingdee.eas.fdc.tenancy.FeesWarrantInfo;
 import com.kingdee.eas.fdc.tenancy.RevDetailFinReportFacadeFactory;
 import com.kingdee.eas.fdc.tenancy.RevDetailInvReportFacadeFactory;
+import com.kingdee.eas.fdc.tenancy.TenancyBillFactory;
+import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
 import com.kingdee.eas.framework.*;
+import com.kingdee.eas.framework.client.FrameWorkClientUtils;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
 import com.kingdee.eas.framework.report.util.DefaultKDTableInsertHandler;
@@ -59,6 +76,7 @@ import com.kingdee.eas.framework.report.util.RptParams;
 import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.util.client.EASResource;
 
 /**
  * output class name
@@ -230,6 +248,12 @@ public class RevDetailInvReportUI extends AbstractRevDetailInvReportUI
         	        		row.getCell(year+"Y"+month+"M"+"startDate").setValue(detailrs.getObject("startDate"));
         	        		row.getCell(year+"Y"+month+"M"+"endDate").setValue(detailrs.getObject("endDate"));
         	        		row.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(detailrs.getBigDecimal("invoiceAmount"));
+        	        		if(detailrs.getBigDecimal("invoiceAmount").compareTo(FDCHelper.ZERO)>0){
+        	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.GREEN);
+        	        			row.getCell(year+"Y"+month+"M"+"startDate").getStyleAttributes().setBackground(Color.GREEN);
+        	        			row.getCell(year+"Y"+month+"M"+"endDate").getStyleAttributes().setBackground(Color.GREEN);
+        	        			row.getCell(year+"Y"+month+"M"+"invoiceAmount").getStyleAttributes().setBackground(Color.GREEN);
+        	        		}
         	        		
         	        		row.getCell("appAmount").setValue(FDCHelper.add(row.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));
         	        		row.getCell("invoiceAmount").setValue(FDCHelper.add(row.getCell("invoiceAmount").getValue(), detailrs.getBigDecimal("invoiceAmount")));
@@ -352,6 +376,7 @@ public class RevDetailInvReportUI extends AbstractRevDetailInvReportUI
 		tblMain.getSelectManager().setSelectMode(KDTSelectManager.MULTIPLE_CELL_SELECT);
 		this.actionPrint.setVisible(false);
 		this.actionPrintPreview.setVisible(false);
+		this.btnGen.setIcon(EASResource.getIcon("imgTbtn_createcredence"));
 		buildTree();
 		isOnLoad=false;
 		this.refresh();
@@ -367,5 +392,30 @@ public class RevDetailInvReportUI extends AbstractRevDetailInvReportUI
 			}
 		}
 	}
-
+	protected void btnGen_actionPerformed(ActionEvent e) throws Exception {
+		int[] selectRows = KDTableUtil.getSelectedRows(this.tblMain);
+		if(selectRows==null || selectRows.length==0){
+			FDCMsgBox.showWarning(this, EASResource.getString(FrameWorkClientUtils.strResource + "Msg_MustSelected"));
+			return;
+		}
+		if(selectRows.length>1){
+			FDCMsgBox.showWarning(this,"请选择一行记录！");
+			return;
+		}
+		IRow row = this.tblMain.getRow(selectRows[0]);
+		
+		String conId=row.getCell("conId").getValue().toString();
+		UIContext uiContext = new UIContext(this);
+		uiContext.put(UIContext.OWNER, this);
+		SelectorItemCollection sel=new SelectorItemCollection();
+		sel.add("sellProject.*");
+		sel.add("orgUnit.*");
+		sel.add("tenancyAdviser.*");
+		sel.add("*");
+		TenancyBillInfo ten=TenancyBillFactory.getRemoteInstance().getTenancyBillInfo(new ObjectUuidPK(conId),sel);
+		uiContext.put("tenancy", ten);
+		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(InvoiceBillEditUI.class.getName(), uiContext, null, OprtState.ADDNEW);
+		uiWindow.show();
+		this.query();
+	}
 }
