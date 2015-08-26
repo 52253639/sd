@@ -43,6 +43,7 @@ import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.eas.base.attachment.common.AttachmentClientManager;
 import com.kingdee.eas.base.attachment.common.AttachmentManagerFactory;
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.basedata.org.FullOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.eas.common.client.OprtState;
@@ -80,9 +81,24 @@ import com.kingdee.util.NumericExceptionSubItem;
 public class ContractPayPlanListUI extends AbstractContractPayPlanListUI
 {
     private static final Logger logger = CoreUIObject.getLogger(ContractPayPlanListUI.class);
+    private boolean isShow=false;
     public ContractPayPlanListUI() throws Exception
     {
         super();
+        HashMap hmParamIn = new HashMap();
+    	hmParamIn.put("PAYPLAN_ISSHOWAUDITTING", null);
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("PAYPLAN_ISSHOWAUDITTING")!=null){
+				isShow=Boolean.parseBoolean(hmAllParam.get("PAYPLAN_ISSHOWAUDITTING").toString());
+			}else{
+				isShow=false;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
     }
 	protected String[] getLocateNames() {
 		return new String[] {"number", "contractName",  "partB.name", "contractType.name", "signDate"};
@@ -381,5 +397,12 @@ public class ContractPayPlanListUI extends AbstractContractPayPlanListUI
 			btnAddNew.setEnabled(false);
 		}
 	}
-	
+	protected Set getContractBillStateSet() {
+		Set set=new HashSet();
+		if(isShow){
+			set.add(FDCBillStateEnum.AUDITTING_VALUE);
+		}
+		set.add(FDCBillStateEnum.AUDITTED_VALUE);
+		return set;
+	}
 }
