@@ -6038,7 +6038,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 				}
 			}
 		}
-		vifyDisAmount();
+//		vifyDisAmount();
 		vifyPayListAmount();
 	}
 	

@@ -89,6 +89,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
     protected com.kingdee.bos.ctrl.swing.KDButtonGroup kDButtonGroup2;
     protected com.kingdee.bos.ctrl.swing.KDButtonGroup kDButtonGroup3;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contIsFee;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDesc;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCreator;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
@@ -141,6 +142,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
     protected com.kingdee.bos.ctrl.swing.KDComboBox cmbAttachment;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCostUnit;
     protected com.kingdee.bos.ctrl.swing.KDComboBox cbIsFee;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizMultiLangArea txtDesc;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnPassHistory;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnRegister;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnDisPatch;
@@ -314,6 +316,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.kDButtonGroup2 = new com.kingdee.bos.ctrl.swing.KDButtonGroup();
         this.kDButtonGroup3 = new com.kingdee.bos.ctrl.swing.KDButtonGroup();
         this.contIsFee = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDesc = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.prmtCreator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -366,6 +369,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.cmbAttachment = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.txtCostUnit = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.cbIsFee = new com.kingdee.bos.ctrl.swing.KDComboBox();
+        this.txtDesc = new com.kingdee.bos.ctrl.extendcontrols.KDBizMultiLangArea();
         this.btnPassHistory = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnRegister = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnDisPatch = new com.kingdee.bos.ctrl.swing.KDWorkButton();
@@ -411,6 +415,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.rbIsBigChangeNo.setName("rbIsBigChangeNo");
         this.contIsBigChange.setName("contIsBigChange");
         this.contIsFee.setName("contIsFee");
+        this.contDesc.setName("contDesc");
         this.prmtCreator.setName("prmtCreator");
         this.pkCreateTime.setName("pkCreateTime");
         this.txtNumber.setName("txtNumber");
@@ -463,6 +468,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.cmbAttachment.setName("cmbAttachment");
         this.txtCostUnit.setName("txtCostUnit");
         this.cbIsFee.setName("cbIsFee");
+        this.txtDesc.setName("txtDesc");
         this.btnPassHistory.setName("btnPassHistory");
         this.btnRegister.setName("btnRegister");
         this.btnDisPatch.setName("btnDisPatch");
@@ -642,6 +648,10 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.contIsFee.setBoundLabelText(resHelper.getString("contIsFee.boundLabelText"));		
         this.contIsFee.setBoundLabelLength(100);		
         this.contIsFee.setBoundLabelUnderline(true);
+        // contDesc		
+        this.contDesc.setBoundLabelText(resHelper.getString("contDesc.boundLabelText"));		
+        this.contDesc.setBoundLabelLength(100);		
+        this.contDesc.setBoundLabelUnderline(true);
         // prmtCreator		
         this.prmtCreator.setEnabled(false);		
         this.prmtCreator.setDisplayFormat("$name$");		
@@ -938,6 +948,7 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         // cbIsFee		
         this.cbIsFee.setRequired(true);		
         this.cbIsFee.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.contract.app.YesOrNoEnum").toArray());
+        // txtDesc
         // btnPassHistory
         this.btnPassHistory.setAction((IItemAction)ActionProxyFactory.getProxy(actionPassHistory, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnPassHistory.setText(resHelper.getString("btnPassHistory.text"));
@@ -1015,16 +1026,16 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.add(contAuditType, new KDLayout.Constraints(377, 52, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contChangeReason.setBounds(new Rectangle(730, 52, 270, 19));
         this.add(contChangeReason, new KDLayout.Constraints(730, 52, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contChangeState.setBounds(new Rectangle(842, 188, 158, 19));
-        this.add(contChangeState, new KDLayout.Constraints(842, 188, 158, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contChangeState.setBounds(new Rectangle(955, 179, 158, 19));
+        this.add(contChangeState, new KDLayout.Constraints(955, 179, 158, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contUrgentDegree.setBounds(new Rectangle(730, 30, 270, 19));
         this.add(contUrgentDegree, new KDLayout.Constraints(730, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contWFType.setBounds(new Rectangle(377, 74, 270, 19));
         this.add(contWFType, new KDLayout.Constraints(377, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contSpecialtyType.setBounds(new Rectangle(730, 74, 270, 19));
         this.add(contSpecialtyType, new KDLayout.Constraints(730, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contChangeSubject.setBounds(new Rectangle(767, 154, 270, 19));
-        this.add(contChangeSubject, new KDLayout.Constraints(767, 154, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contChangeSubject.setBounds(new Rectangle(966, 140, 270, 19));
+        this.add(contChangeSubject, new KDLayout.Constraints(966, 140, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         tbpChangAudit.setBounds(new Rectangle(9, 228, 993, 327));
         this.add(tbpChangAudit, new KDLayout.Constraints(9, 228, 993, 327, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contAheadDisPatch.setBounds(new Rectangle(10, 565, 991, 53));
@@ -1039,12 +1050,12 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.add(kDLabelContainer2, new KDLayout.Constraints(12, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contOffer.setBounds(new Rectangle(12, 96, 270, 19));
         this.add(contOffer, new KDLayout.Constraints(12, 96, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contReaDesc.setBounds(new Rectangle(377, 142, 625, 43));
-        this.add(contReaDesc, new KDLayout.Constraints(377, 142, 625, 43, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        contConstrUnit.setBounds(new Rectangle(755, 174, 270, 19));
-        this.add(contConstrUnit, new KDLayout.Constraints(755, 174, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDesignUnit.setBounds(new Rectangle(761, 202, 270, 19));
-        this.add(contDesignUnit, new KDLayout.Constraints(761, 202, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contReaDesc.setBounds(new Rectangle(377, 142, 270, 43));
+        this.add(contReaDesc, new KDLayout.Constraints(377, 142, 270, 43, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contConstrUnit.setBounds(new Rectangle(957, 158, 270, 19));
+        this.add(contConstrUnit, new KDLayout.Constraints(957, 158, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDesignUnit.setBounds(new Rectangle(918, 199, 270, 19));
+        this.add(contDesignUnit, new KDLayout.Constraints(918, 199, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contConstrSite.setBounds(new Rectangle(921, 117, 270, 19));
         this.add(contConstrSite, new KDLayout.Constraints(921, 117, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contConductUnit.setBounds(new Rectangle(730, 96, 270, 19));
@@ -1053,8 +1064,8 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.add(lblAttachmentContainer, new KDLayout.Constraints(13, 193, 379, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         btnViewAttachment.setBounds(new Rectangle(482, 188, 101, 21));
         this.add(btnViewAttachment, new KDLayout.Constraints(482, 188, 101, 21, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        chkIsImportChange.setBounds(new Rectangle(730, 188, 99, 19));
-        this.add(chkIsImportChange, new KDLayout.Constraints(730, 188, 99, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        chkIsImportChange.setBounds(new Rectangle(920, 139, 99, 19));
+        this.add(chkIsImportChange, new KDLayout.Constraints(920, 139, 99, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         rbIsChangeContractYes.setBounds(new Rectangle(117, 119, 51, 19));
         this.add(rbIsChangeContractYes, new KDLayout.Constraints(117, 119, 51, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contIsChangeContract.setBounds(new Rectangle(13, 119, 101, 19));
@@ -1077,6 +1088,8 @@ public abstract class AbstractChangeAuditEditUI extends com.kingdee.eas.fdc.base
         this.add(contIsBigChange, new KDLayout.Constraints(15, 165, 101, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contIsFee.setBounds(new Rectangle(730, 8, 270, 19));
         this.add(contIsFee, new KDLayout.Constraints(730, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDesc.setBounds(new Rectangle(730, 142, 272, 43));
+        this.add(contDesc, new KDLayout.Constraints(730, 142, 272, 43, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contCreator
         contCreator.setBoundEditor(prmtCreator);
         //contCreateTime
@@ -1186,6 +1199,8 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
         contCostUnit.setBoundEditor(txtCostUnit);
         //contIsFee
         contIsFee.setBoundEditor(cbIsFee);
+        //contDesc
+        contDesc.setBoundEditor(txtDesc);
 
     }
 
@@ -1406,7 +1421,8 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
 		dataBinder.registerBinding("constrSite", String.class, this.txtConstrSite, "text");
 		dataBinder.registerBinding("conductUnit", com.kingdee.eas.basedata.master.cssp.SupplierInfo.class, this.prmtConductUnit, "data");
 		dataBinder.registerBinding("costUnit", String.class, this.txtCostUnit, "text");
-		dataBinder.registerBinding("isFee", com.kingdee.eas.fdc.contract.app.YesOrNoEnum.class, this.cbIsFee, "selectedItem");		
+		dataBinder.registerBinding("isFee", com.kingdee.eas.fdc.contract.app.YesOrNoEnum.class, this.cbIsFee, "selectedItem");
+		dataBinder.registerBinding("description", String.class, this.txtDesc, "_multiLangItem");		
 	}
 	//Regiester UI State
 	private void registerUIState(){					 	        		
@@ -1514,7 +1530,8 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
 		getValidateHelper().registerBindProperty("constrSite", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("conductUnit", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("costUnit", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("isFee", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("isFee", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -1768,6 +1785,7 @@ pnlSupp.setLayout(new BorderLayout(0, 0));        pnlSupp.add(ctnSuppEntrys, Bor
 		}
         sic.add(new SelectorItemInfo("costUnit"));
         sic.add(new SelectorItemInfo("isFee"));
+        sic.add(new SelectorItemInfo("description"));
         return sic;
     }        
     	
