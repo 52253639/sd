@@ -1251,7 +1251,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 		coll.add(new SelectorItemInfo("settlementType.*"));
 		coll.add(new SelectorItemInfo("settlementNumber"));
 		coll.add(new SelectorItemInfo("bank.*"));
-		
+		coll.add(new SelectorItemInfo("room.name"));
 		evi.setSelector(coll);
 
 		
@@ -1377,6 +1377,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 						//原始单据id
 						paymentBillInfo.setSourceBillId(id);
 						
+						Set mdName=new HashSet();
 						for (int k = 0; k < billEntry.size(); k++) {
 							/**
 							 * 以下是分录内容
@@ -1386,7 +1387,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							//收款金额
 							payBillEntryInfo.setActualAmt(billEntry.get(k).getRevAmount().abs());
 							//对方科目
-							if(billEntry.get(i).getOppAccount()!=null){
+							if(billEntry.get(k).getOppAccount()!=null){
 								payBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());
 								
 								if(payBillEntryInfo.getOppAccount().getCAA()!=null){
@@ -1416,9 +1417,17 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							}
 							
 							payBillEntry.add(payBillEntryInfo);
+							if(billEntry.get(k).getMoneyDefine()!=null)
+								mdName.add(billEntry.get(k).getMoneyDefine().getName());
 						}
-						if(fdcReceivingBillInfo.getRoom()!=null)
+						if(fdcReceivingBillInfo.getRoom()!=null){
 							paymentBillInfo.setDescription(fdcReceivingBillInfo.getRoom().getName());
+							Iterator<String> it = mdName.iterator();  
+							while (it.hasNext()) {
+								String str = it.next();
+								paymentBillInfo.setDescription(paymentBillInfo.getDescription()+";"+str);
+							}  
+						}
 						
 						pay=paymentBillInfo;
 						iPay.addNewBatch(paymentBillInfo);
@@ -1544,6 +1553,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 						//原始单据id
 						receivingBillInfo.setSourceBillId(id);
 						
+						Set mdName=new HashSet();
 						for (int k = 0; k < billEntry.size(); k++) {
 							/**
 							 * 以下是分录内容
@@ -1553,7 +1563,7 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 							//收款金额
 							receBillEntryInfo.setActualAmt(billEntry.get(k).getRevAmount());
 							//对方科目
-							if(billEntry.get(i).getOppAccount()!=null){
+							if(billEntry.get(k).getOppAccount()!=null){
 								receBillEntryInfo.setOppAccount(billEntry.get(k).getOppAccount());	
 								
 								if(receBillEntryInfo.getOppAccount().getCAA()!=null){
@@ -1582,9 +1592,17 @@ public class FDCReceivingBillControllerBean extends AbstractFDCReceivingBillCont
 								}
 							}
 							receBillEntry.add(receBillEntryInfo);
+							if(billEntry.get(k).getMoneyDefine()!=null)
+								mdName.add(billEntry.get(k).getMoneyDefine().getName());
 						}
-						if(fdcReceivingBillInfo.getRoom()!=null)
+						if(fdcReceivingBillInfo.getRoom()!=null){
 							receivingBillInfo.setDescription(fdcReceivingBillInfo.getRoom().getName());
+							Iterator<String> it = mdName.iterator();  
+							while (it.hasNext()) {
+								String str = it.next();
+								receivingBillInfo.setDescription(receivingBillInfo.getDescription()+";"+str);
+							}  
+						}
 						rev=receivingBillInfo;
 						iReceiving.addNewBatch(receivingBillInfo);
 					}
