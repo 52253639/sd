@@ -3031,8 +3031,8 @@ public class ContractWithoutTextEditUI extends
 				localamount = amount;
 			}
 			//发票金额
-			txtInvoiceAmt.setValue(txtBcAmount.getBigDecimalValue());
-			txtAllInvoiceAmt.setValue(txtBcAmount.getBigDecimalValue());
+//			txtInvoiceAmt.setValue(txtBcAmount.getBigDecimalValue());
+//			txtAllInvoiceAmt.setValue(txtBcAmount.getBigDecimalValue());
 			//本期已完工工程量
 			txtcompletePrjAmt.setValue(txtBcAmount.getBigDecimalValue());
 			//大写金额为本位币金额

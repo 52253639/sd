@@ -2,7 +2,9 @@ package com.kingdee.eas.fdc.contract.programming.app;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -309,6 +311,25 @@ public class ProgrammingControllerBean extends AbstractProgrammingControllerBean
 					fdcSB.addBatch(idsql.toString());
 				}
 			}
+		}
+		fdcSB.executeBatch();
+		
+		fdcSB = new FDCSQLBuilder(ctx);
+		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+		
+		FDCSQLBuilder _builder = new FDCSQLBuilder(ctx);
+		_builder.appendSql(" select a.fid,a.flongnumber from T_CON_ProgrammingContract a left join T_CON_ProgrammingContract b on a.fparentid=b.fid where a.fprogrammingid='"+info.getId().toString()+"' and b.fid is null and a.fsortnumber!=0");
+		IRowSet rowSet = _builder.executeQuery();
+		try {
+			while(rowSet.next()){
+				String longNumber=rowSet.getString("flongnumber");
+				longNumber=longNumber.substring(0,longNumber.lastIndexOf("."));
+				sql = new StringBuffer();
+				sql.append("update T_CON_ProgrammingContract set fparentid =(select fid from T_CON_ProgrammingContract where fprogrammingid='"+info.getId().toString()+"' and flongnumber='"+longNumber+"') where fid='"+rowSet.getString("fid")+"'");
+				fdcSB.addBatch(sql.toString());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		fdcSB.executeBatch();
 	}
