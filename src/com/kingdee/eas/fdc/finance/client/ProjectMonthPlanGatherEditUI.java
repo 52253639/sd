@@ -994,7 +994,7 @@ public class ProjectMonthPlanGatherEditUI extends AbstractProjectMonthPlanGather
 						row.getCell("respPerson").setUserObject(respPerson);
 					}
 					if(respDept!=null){
-						row.getCell("respDept").setValue(respDept.getName());
+						row.getCell("respDept").setValue(respDept.getDisplayName());
 						row.getCell("respDept").setUserObject(respDept);
 					}
 					row.getCell("amount").setValue(entry.getAmount());
