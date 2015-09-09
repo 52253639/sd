@@ -4515,6 +4515,14 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			room=room+"("+FDCDateHelper.DateToString((Date) this.pkTenancyDate.getValue())+")";
 		}
 		this.txtName.setText(room);
+		
+		FilterInfo filter = new FilterInfo();
+		
+		filter.getFilterItems().add(new FilterItemInfo("boID" , this.editData.getId().toString()));
+		if(!BoAttchAssoFactory.getRemoteInstance().exists(filter)){
+			FDCMsgBox.showWarning(this,"请先上传附件！");
+			SysUtil.abort();
+		}
 	}
 	
 	
