@@ -238,7 +238,7 @@ public class RoomLoanEditUI extends AbstractRoomLoanEditUI {
 			}
 		}
 
-		loadLoanAndAccumulationFundAmount(this.editData);
+//		loadLoanAndAccumulationFundAmount(this.editData);
 		
 		if(!this.kDCheckBox1.isSelected()){
 			this.pkProcessLoanDate.setValue(null);
@@ -294,7 +294,9 @@ public class RoomLoanEditUI extends AbstractRoomLoanEditUI {
 				}
 			}
 		}
-		else if(info.getSign() != null){  //签约单
+		else 
+			
+		if(info.getSign() != null){  //签约单
 			SignManageInfo signInfo = info.getSign();
 			if (info.getMmType() != null && info.getMmType().getMoneyType() != null) {
 				if (info.getMmType().getMoneyType().equals(MoneyTypeEnum.LoanAmount)) {  //按揭

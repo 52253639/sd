@@ -1431,9 +1431,7 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 			//检查按揭状态
 			if (curRow.getCell("loanState").getValue() != null) {
 				BizEnumValueInfo state = (BizEnumValueInfo) curRow.getCell("loanState").getValue();
-				if (!state.getName().equals(AFMortgagedStateEnum.TRANSACTING.getName())
-						&& !state.getName().equals(AFMortgagedStateEnum.TRANSACTED.getName())
-						&& !state.getName().equals(AFMortgagedStateEnum.UNTRANSACT.getName())) {
+				if (!state.getName().equals(AFMortgagedStateEnum.TRANSACTED.getName())) {
 					FDCMsgBox.showInfo(this, "状态为" + state.getAlias() + "的单据不能进行银行放款操作！");
 					abort();
 				}
@@ -1483,6 +1481,7 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 		IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.MODEL).create(BankPaymentEditUI.class.getName(), 
 				uiContext, null, OprtState.ADDNEW);
 		uiWindow.show();
+		this.refresh(null);
 	}
 	
 	/**
