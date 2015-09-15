@@ -62,6 +62,7 @@ import com.kingdee.eas.fdc.basecrm.client.FDCSysContext;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
+import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.sellhouse.AFMmmTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.AFMortgagedApproachEntryCollection;
@@ -1335,82 +1336,84 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 		return number;
 	}
 
-	public void actionUpdateLoanAmount_actionPerformed(ActionEvent e)
-			throws Exception {
+	public void actionUpdateLoanAmount_actionPerformed(ActionEvent e)throws Exception {
 		super.actionUpdateLoanAmount_actionPerformed(e);
 		
 		checkSelected();
+		boolean isUpdate = false;
+		int[] rowIndexArray = KDTableUtil.getSelectedRows(tblMain);
 		
-		IRow row = KDTableUtil.getSelectedRow(tblMain);
-		String id = row.getCell("id").getValue().toString();
-		String mmTypeId = row.getCell("mmTypeId").getValue().toString();
-		BigDecimal afmAmount = FDCHelper.ZERO;
-		if(row.getCell("afmAmount").getValue() != null){
-			afmAmount = new BigDecimal(row.getCell("afmAmount").getValue().toString());
-		}
-		
-		RoomLoanInfo roomLoanInfo = RoomLoanFactory.getRemoteInstance().getRoomLoanInfo(new ObjectUuidPK(id));
-		boolean isUpdate = false;  //是否更新
-		if(roomLoanInfo.getSign() != null){  //先看签约
-			SelectorItemCollection selCol = new SelectorItemCollection();
-			selCol.add(new SelectorItemInfo("signPayListEntry.*"));
-			selCol.add(new SelectorItemInfo("signPayListEntry.moneyDefine.*"));
+		for(int i=0; i<rowIndexArray.length; i++){
+			IRow row = tblMain.getRow(rowIndexArray[i]);
 			
-			SignManageInfo signInfo = SignManageFactory.getRemoteInstance()
-				.getSignManageInfo(new ObjectUuidPK(roomLoanInfo.getSign().getId().toString()), selCol);
-			if(signInfo.getSignPayListEntry() != null){
-				for(int i=0; i<signInfo.getSignPayListEntry().size(); i++){
-					SignPayListEntryInfo payListEntry = signInfo.getSignPayListEntry().get(i);
-					if(payListEntry.getMoneyDefine()!=null && payListEntry.getMoneyDefine().getId().toString().equals(mmTypeId)
-							&& payListEntry.getActRevAmount()!=null){
-						//按揭金额 = 实收金额 - 应收金额
-						BigDecimal actLoanAmount = payListEntry.getAppAmount().subtract(payListEntry.getActRevAmount());
-						if(afmAmount.compareTo(actLoanAmount) != 0 ){
-							row.getCell("afmAmount").setValue(payListEntry.getAppAmount());
-							roomLoanInfo.setActualLoanAmt(payListEntry.getAppAmount());
-							
-							SelectorItemCollection selector = new SelectorItemCollection();
-							selector.add("actualLoanAmt");
-							RoomLoanFactory.getRemoteInstance().updatePartial(roomLoanInfo, selector);
-							
-							isUpdate = true;
+			String id = row.getCell("id").getValue().toString();
+			String mmTypeId = row.getCell("mmTypeId").getValue().toString();
+			BigDecimal afmAmount = FDCHelper.ZERO;
+			if(row.getCell("afmAmount").getValue() != null){
+				afmAmount = new BigDecimal(row.getCell("afmAmount").getValue().toString());
+			}
+			
+			RoomLoanInfo roomLoanInfo = RoomLoanFactory.getRemoteInstance().getRoomLoanInfo(new ObjectUuidPK(id));
+			if(roomLoanInfo.getSign() != null){  //先看签约
+				SelectorItemCollection selCol = new SelectorItemCollection();
+				selCol.add(new SelectorItemInfo("signPayListEntry.*"));
+				selCol.add(new SelectorItemInfo("signPayListEntry.moneyDefine.*"));
+				
+				SignManageInfo signInfo = SignManageFactory.getRemoteInstance()
+					.getSignManageInfo(new ObjectUuidPK(roomLoanInfo.getSign().getId().toString()), selCol);
+				if(signInfo.getSignPayListEntry() != null){
+					for(int j=0; j<signInfo.getSignPayListEntry().size(); j++){
+						SignPayListEntryInfo payListEntry = signInfo.getSignPayListEntry().get(j);
+						if(payListEntry.getMoneyDefine()!=null && payListEntry.getMoneyDefine().getId().toString().equals(mmTypeId)
+								&& payListEntry.getActRevAmount()!=null){
+							//按揭金额 = 实收金额 - 应收金额
+							BigDecimal actLoanAmount = payListEntry.getAppAmount().subtract(payListEntry.getActRevAmount());
+							if(afmAmount.compareTo(actLoanAmount) != 0 ){
+								row.getCell("afmAmount").setValue(payListEntry.getAppAmount());
+								roomLoanInfo.setActualLoanAmt(payListEntry.getAppAmount());
+								
+								SelectorItemCollection selector = new SelectorItemCollection();
+								selector.add("actualLoanAmt");
+								RoomLoanFactory.getRemoteInstance().updatePartial(roomLoanInfo, selector);
+								
+								isUpdate = true;
+							}
 						}
 					}
 				}
 			}
 		}
-		else if(roomLoanInfo.getPurchase() != null){  //再看认购
-			SelectorItemCollection selCol = new SelectorItemCollection();
-			selCol.add(new SelectorItemInfo("purPayListEntry.*"));
-			selCol.add(new SelectorItemInfo("purPayListEntry.moneyDefine.*"));
-			
-			PurchaseManageInfo purInfo = PurchaseManageFactory.getRemoteInstance()
-				.getPurchaseManageInfo(new ObjectUuidPK(roomLoanInfo.getPurchase().getId().toString()), selCol);
-			if(purInfo.getPurPayListEntry() != null){
-				for(int i=0; i<purInfo.getPurPayListEntry().size(); i++){
-					PurPayListEntryInfo payListEntry = purInfo.getPurPayListEntry().get(i);
-					if(payListEntry.getMoneyDefine()!=null && payListEntry.getMoneyDefine().getId().toString().equals(mmTypeId)
-							&& payListEntry.getActRevAmount()!=null){
-						//按揭金额 = 实收金额 - 应收金额
-						BigDecimal actLoanAmount = payListEntry.getAppAmount().subtract(payListEntry.getActRevAmount());
-						if(afmAmount.compareTo(actLoanAmount) != 0 ){
-							row.getCell("afmAmount").setValue(payListEntry.getAppAmount());
-							roomLoanInfo.setActualLoanAmt(payListEntry.getAppAmount());
-							
-							SelectorItemCollection selector = new SelectorItemCollection();
-							selector.add("actualLoanAmt");
-							RoomLoanFactory.getRemoteInstance().updatePartial(roomLoanInfo, selector);
-							
-							isUpdate = true;
-						}
-					}
-				}
-			}
-		}
+//		else if(roomLoanInfo.getPurchase() != null){  //再看认购
+//			SelectorItemCollection selCol = new SelectorItemCollection();
+//			selCol.add(new SelectorItemInfo("purPayListEntry.*"));
+//			selCol.add(new SelectorItemInfo("purPayListEntry.moneyDefine.*"));
+//			
+//			PurchaseManageInfo purInfo = PurchaseManageFactory.getRemoteInstance()
+//				.getPurchaseManageInfo(new ObjectUuidPK(roomLoanInfo.getPurchase().getId().toString()), selCol);
+//			if(purInfo.getPurPayListEntry() != null){
+//				for(int i=0; i<purInfo.getPurPayListEntry().size(); i++){
+//					PurPayListEntryInfo payListEntry = purInfo.getPurPayListEntry().get(i);
+//					if(payListEntry.getMoneyDefine()!=null && payListEntry.getMoneyDefine().getId().toString().equals(mmTypeId)
+//							&& payListEntry.getActRevAmount()!=null){
+//						//按揭金额 = 实收金额 - 应收金额
+//						BigDecimal actLoanAmount = payListEntry.getAppAmount().subtract(payListEntry.getActRevAmount());
+//						if(afmAmount.compareTo(actLoanAmount) != 0 ){
+//							row.getCell("afmAmount").setValue(payListEntry.getAppAmount());
+//							roomLoanInfo.setActualLoanAmt(payListEntry.getAppAmount());
+//							
+//							SelectorItemCollection selector = new SelectorItemCollection();
+//							selector.add("actualLoanAmt");
+//							RoomLoanFactory.getRemoteInstance().updatePartial(roomLoanInfo, selector);
+//							
+//							isUpdate = true;
+//						}
+//					}
+//				}
+//			}
+//		}
 		if(isUpdate){
 			FDCMsgBox.showInfo("更新成功");
-		}
-		else{
+		}else{
 			FDCMsgBox.showInfo("按揭金额没有变化，不需要更新");
 		}
 	}
