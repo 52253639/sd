@@ -354,6 +354,8 @@ public class RoomLoanEditUI extends AbstractRoomLoanEditUI {
 		this.isOnload = false;
 		
 		this.actionAttachment.setVisible(true);
+		
+		this.f7Creator.setDisplayFormat("$name$");
 	}
 
 	/**

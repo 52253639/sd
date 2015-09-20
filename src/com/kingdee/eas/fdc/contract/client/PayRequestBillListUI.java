@@ -202,6 +202,7 @@ public class PayRequestBillListUI extends AbstractPayRequestBillListUI {
 		            }
 		        });
 		}
+		this.actionTraceUp.setVisible(false);
 	}
 	protected void btnUpdate_actionPerformed(ActionEvent e) throws Exception {
 		int m=0;
