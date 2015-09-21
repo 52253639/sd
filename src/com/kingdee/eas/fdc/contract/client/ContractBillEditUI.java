@@ -2434,7 +2434,7 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 			FDCMsgBox.showWarning(this,"请先保存单据！");
 			SysUtil.abort();
 		}
-		showSplitUI(this,this.editData.getId().toString(),"contractBill.id",this.editData.getBOSType().toString(),true,this.txtamount.getBigDecimalValue());
+		showSplitUI(this,this.editData.getId().toString(),"contractBill.id",this.editData.getBOSType().toString(),true,this.txtLocalAmount.getBigDecimalValue());
 	}
 
 	//业务日期变化引起,期间的变化

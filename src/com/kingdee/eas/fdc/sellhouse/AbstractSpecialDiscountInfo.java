@@ -350,17 +350,6 @@ public class AbstractSpecialDiscountInfo extends com.kingdee.eas.framework.CoreB
         setBigDecimal("baseStandardPrice", item);
     }
     /**
-     * Object:特殊折扣优惠单's 底价下优惠点数property 
-     */
-    public java.math.BigDecimal getBasePercent()
-    {
-        return getBigDecimal("basePercent");
-    }
-    public void setBasePercent(java.math.BigDecimal item)
-    {
-        setBigDecimal("basePercent", item);
-    }
-    /**
      * Object:特殊折扣优惠单's 折扣说明property 
      */
     public String getAgioDesc()
@@ -410,6 +399,28 @@ public class AbstractSpecialDiscountInfo extends com.kingdee.eas.framework.CoreB
     public void setProductTyupe(com.kingdee.eas.fdc.basedata.ProductTypeInfo item)
     {
         put("productTyupe", item);
+    }
+    /**
+     * Object:特殊折扣优惠单's 特殊折扣优惠比例property 
+     */
+    public java.math.BigDecimal getBasePercent()
+    {
+        return getBigDecimal("basePercent");
+    }
+    public void setBasePercent(java.math.BigDecimal item)
+    {
+        setBigDecimal("basePercent", item);
+    }
+    /**
+     * Object:特殊折扣优惠单's 单价差额property 
+     */
+    public java.math.BigDecimal getSubPrice()
+    {
+        return getBigDecimal("subPrice");
+    }
+    public void setSubPrice(java.math.BigDecimal item)
+    {
+        setBigDecimal("subPrice", item);
     }
     public BOSObjectType getBOSType()
     {

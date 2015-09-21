@@ -80,6 +80,7 @@ import com.kingdee.eas.base.attachment.BoAttchAssoFactory;
 import com.kingdee.eas.base.attachment.BoAttchAssoInfo;
 import com.kingdee.eas.base.attachment.common.AttachmentClientManager;
 import com.kingdee.eas.base.attachment.common.AttachmentManagerFactory;
+import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.base.permission.OrgRangeCollection;
 import com.kingdee.eas.base.permission.OrgRangeFactory;
 import com.kingdee.eas.base.permission.UserInfo;
@@ -1649,6 +1650,24 @@ public class ChangeAuditEditUI extends AbstractChangeAuditEditUI
 		filter.getFilterItems().add(new FilterItemInfo("isEnabled",Boolean.TRUE));
 		view.setFilter(filter);
 		this.prmtWFType.setEntityViewInfo(view);
+		
+		
+		HashMap hmParamIn = new HashMap();
+		hmParamIn.put("FDC_ISCHANGEWFTYPE", null);
+		boolean isWF=true;
+		try {
+			HashMap hmAllParam = ParamControlFactory.getRemoteInstance().getParamHashMap(hmParamIn);
+			if(hmAllParam.get("FDC_ISCHANGEWFTYPE")!=null){
+				isWF=Boolean.parseBoolean(hmAllParam.get("FDC_ISCHANGEWFTYPE").toString());
+			}else{
+				isWF=true;
+			}
+		} catch (EASBizException e) {
+			e.printStackTrace();
+		} catch (BOSException e) {
+			e.printStackTrace();
+		}
+		this.prmtWFType.setRequired(isWF);
 	}
 	
 	

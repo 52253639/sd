@@ -248,6 +248,28 @@ public class AbstractSpecialDiscountEntryInfo extends com.kingdee.eas.framework.
     {
         setBigDecimal("agioAmount", item);
     }
+    /**
+     * Object:特殊优惠折扣单分录's 底单价property 
+     */
+    public java.math.BigDecimal getBasePrice()
+    {
+        return getBigDecimal("basePrice");
+    }
+    public void setBasePrice(java.math.BigDecimal item)
+    {
+        setBigDecimal("basePrice", item);
+    }
+    /**
+     * Object:特殊优惠折扣单分录's 单价差额property 
+     */
+    public java.math.BigDecimal getSubPrice()
+    {
+        return getBigDecimal("subPrice");
+    }
+    public void setSubPrice(java.math.BigDecimal item)
+    {
+        setBigDecimal("subPrice", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("8D90D2D3");

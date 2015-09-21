@@ -83,6 +83,7 @@ import com.kingdee.eas.fdc.sellhouse.SHECustomerInfo;
 import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
 import com.kingdee.eas.fdc.sellhouse.SHEParamConstant;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
+import com.kingdee.eas.fdc.sellhouse.SellTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.SignAgioEntryInfo;
 import com.kingdee.eas.fdc.sellhouse.SignManageCollection;
 import com.kingdee.eas.fdc.sellhouse.SignManageFactory;
@@ -150,19 +151,22 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 		percent.setMaximumValue(new BigDecimal(100));
 		KDTDefaultCellEditor percentEditor = new KDTDefaultCellEditor(percent);
 		
-		this.kdtEntry.getColumn("agioPrice").setEditor(amountEditor);
-		this.kdtEntry.getColumn("agioAmount").setEditor(amountEditor);
+		this.kdtEntry.getColumn("basePrice").setEditor(amountEditor);
+		this.kdtEntry.getColumn("subPrice").setEditor(amountEditor);
 		this.kdtEntry.getColumn("discountAmount").setEditor(amountEditor);
-		this.kdtEntry.getColumn("discountAmount").setRequired(true);
-		this.kdtEntry.getColumn("discountPercent").setEditor(percentEditor);
-		this.kdtEntry.getColumn("discountPercent").setRequired(true);
-		this.kdtEntry.getColumn("discountPercent").getStyleAttributes().setLocked(true);
+//		this.kdtEntry.getColumn("discountAmount").setRequired(true);
+//		this.kdtEntry.getColumn("discountPercent").setEditor(percentEditor);
+//		this.kdtEntry.getColumn("discountPercent").setRequired(true);
+//		this.kdtEntry.getColumn("discountPercent").getStyleAttributes().setLocked(true);
 		this.kdtEntry.getColumn("baseStandardPrice").setEditor(amountEditor);
 		this.kdtEntry.getColumn("baseDiscountAmount").setEditor(amountEditor);
 		this.kdtEntry.getColumn("basePercent").setEditor(percentEditor);
 		
+		this.kdtEntry.getColumn("discountAfAmount").setEditor(amountEditor);
+		
 		this.kdtEntry.getColumn("discountAfBPrice").getStyleAttributes().setFontColor(Color.RED);
 		this.kdtEntry.getColumn("discountAfAmount").getStyleAttributes().setFontColor(Color.RED);
+		this.kdtEntry.getColumn("basePercent").getStyleAttributes().setFontColor(Color.RED);
 		ObjectValueRender render_scale = new ObjectValueRender();
 		render_scale.setFormat(new IDataFormat() {
 			public String format(Object o) {
@@ -175,7 +179,7 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 				
 			}
 		});
-		this.kdtEntry.getColumn("discountPercent").setRenderer(render_scale);
+//		this.kdtEntry.getColumn("discountPercent").setRenderer(render_scale);
 		this.kdtEntry.getColumn("basePercent").setRenderer(render_scale);
 		
 		KDWorkButton btnRoomSelect = new KDWorkButton();
@@ -365,7 +369,8 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 			editData.getAgioEntry().add(entryInfo);
 		}
 		if(this.kdtEntry.getRowCount()>0){
-			this.editData.setDiscountPercent((BigDecimal) this.kdtEntry.getRow(0).getCell("discountPercent").getValue());
+			this.editData.setBasePercent(((BigDecimal) this.kdtEntry.getRow(0).getCell("basePercent").getValue()));
+			this.editData.setSubPrice(((BigDecimal) this.kdtEntry.getRow(0).getCell("subPrice").getValue()));
 			RoomInfo room = (RoomInfo)this.kdtEntry.getRow(0).getCell("room").getValue();
 			if(room!=null){
 				this.editData.setProductTyupe(room.getProductType());
@@ -373,7 +378,8 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 				this.editData.setProductTyupe(null);
 			}
 		}else{
-			this.editData.setDiscountPercent(null);
+			this.editData.setBasePercent(null);
+			this.editData.setSubPrice(null);
 			this.editData.setProductTyupe(null);
 		}
 		super.storeFields();
@@ -526,10 +532,13 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 		if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("room")){
 			RoomInfo room = (RoomInfo)row.getCell("room").getValue();
 			if(room!=null){
-				row.getCell("buildingArea").setValue(room.getBuildingArea());
-				row.getCell("buildingPrice").setValue(room.getBuildPrice());
+				row.getCell("buildingArea").setValue(room.getActualBuildingArea()==null?room.getBuildingArea():room.getActualBuildingArea());
+				
+				row.getCell("buildingPrice").setValue(FDCHelper.divide(room.getStandardTotalAmount(), row.getCell("buildingArea").getValue(), 2, BigDecimal.ROUND_HALF_UP));
 				row.getCell("standardTotalAmount").setValue(room.getStandardTotalAmount());
 				row.getCell("baseStandardPrice").setValue(room.getBaseStandardPrice());
+				row.getCell("basePrice").setValue(FDCHelper.divide(room.getBaseStandardPrice(), row.getCell("buildingArea").getValue(), 2, BigDecimal.ROUND_HALF_UP));
+				
 				IObjectValue objectValue=SHEManageHelper.getCurTransactionBill(room.getId());
 				SHECustomerInfo customer=null;
 				if(objectValue!=null){
@@ -565,103 +574,123 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 				}
 				loadPurInfo(row);
 				
-				AgioParam agioParam = AgioSelectUI.showUI(this, room.getId().toString(), 
-						(AgioEntryCollection)this.txtAgioDesc.getUserObject(), this.currAgioParam ,this.editData,false,false);
-				if (agioParam != null&&!this.currAgioParam.equals(agioParam)) {
-					this.currAgioParam = agioParam;
-					this.txtAgioDesc.setUserObject(agioParam.getAgios());
-					
-					PurchaseParam purParam = SHEManageHelper.getAgioParam(this.currAgioParam, room, 
-							null,room.getCalcType(),false,room.getRoomArea(),room.getBuildingArea(),room.getRoomPrice(),room.getBuildPrice(),room.getStandardTotalAmount(),null,null,null,SpecialAgioEnum.DaZhe,null,null);
-					if(purParam!=null) {
-						this.txtAgioDesc.setText(purParam.getAgioDes());
-						this.kdtEntry.getRow(0).getCell("agioPrice").setValue(purParam.getContractBuildPrice());
-						this.kdtEntry.getRow(0).getCell("agioAmount").setValue(purParam.getContractTotalAmount());
-						KDTEditEvent ee = new KDTEditEvent(this.kdtEntry.getRow(0).getCell("discountAmount"));
-						ee.setRowIndex(0);
-						ee.setColIndex(this.kdtEntry.getColumnIndex("discountAmount"));
-						ee.setValue(this.kdtEntry.getRow(0).getCell("discountAmount").getValue());
-						kdtEntry_editStopped(ee);
-					}
-				}else{
-					this.kdtEntry.getRow(0).getCell("agioPrice").setValue(room.getStandardTotalAmount());
-					this.kdtEntry.getRow(0).getCell("agioAmount").setValue(room.getBaseStandardPrice());
-				}
+//				AgioParam agioParam = AgioSelectUI.showUI(this, room.getId().toString(), 
+//						(AgioEntryCollection)this.txtAgioDesc.getUserObject(), this.currAgioParam ,this.editData,false,false);
+//				if (agioParam != null&&!this.currAgioParam.equals(agioParam)) {
+//					this.currAgioParam = agioParam;
+//					this.txtAgioDesc.setUserObject(agioParam.getAgios());
+//					
+//					BigDecimal buildingArea=room.getActualBuildingArea()==null?room.getBuildingArea():room.getActualBuildingArea();
+//					
+//					PurchaseParam purParam = SHEManageHelper.getAgioParam(this.currAgioParam, room, 
+//							null,room.getCalcType(),false,room.getRoomArea(),buildingArea,room.getRoomPrice(),room.getBuildPrice(),room.getStandardTotalAmount(),null,null,null,SpecialAgioEnum.DaZhe,null,null);
+//					if(purParam!=null) {
+//						this.txtAgioDesc.setText(purParam.getAgioDes());
+//						this.kdtEntry.getRow(0).getCell("agioPrice").setValue(purParam.getContractBuildPrice());
+//						this.kdtEntry.getRow(0).getCell("agioAmount").setValue(purParam.getContractTotalAmount());
+//						KDTEditEvent ee = new KDTEditEvent(this.kdtEntry.getRow(0).getCell("discountAmount"));
+//						ee.setRowIndex(0);
+//						ee.setColIndex(this.kdtEntry.getColumnIndex("discountAmount"));
+//						ee.setValue(this.kdtEntry.getRow(0).getCell("discountAmount").getValue());
+//						kdtEntry_editStopped(ee);
+//					}
+//				}else{
+//					this.kdtEntry.getRow(0).getCell("agioPrice").setValue(room.getStandardTotalAmount());
+//					this.kdtEntry.getRow(0).getCell("agioAmount").setValue(room.getBaseStandardPrice());
+//				}
 			}else{
 				row.getCell("buildingArea").setValue(null);
 				row.getCell("buildingPrice").setValue(null);
 				row.getCell("standardTotalAmount").setValue(null);
 				row.getCell("baseStandardPrice").setValue(null);
+				row.getCell("basePrice").setValue(null);
 			}
-			e = new KDTEditEvent(row.getCell("discountAmount"));
+			e = new KDTEditEvent(row.getCell("discountAfAmount"));
 			e.setRowIndex(row.getRowIndex());
-			e.setColIndex(this.kdtEntry.getColumnIndex("discountAmount"));
-			e.setValue(row.getCell("discountAmount").getValue());
+			e.setColIndex(this.kdtEntry.getColumnIndex("discountAfAmount"));
+			e.setValue(row.getCell("discountAfAmount").getValue());
 			kdtEntry_editStopped(e);
-		}else if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountAmount")){
-			BigDecimal amount=(BigDecimal) row.getCell("discountAmount").getValue();
-//			if(amount!=null){
-//				amount=amount.setScale(0, BigDecimal.ROUND_UP);
-//				row.getCell("discountAmount").setValue(amount);
-//			}
-			BigDecimal standardTotalAmount=(BigDecimal) row.getCell("agioAmount").getValue();
-			BigDecimal buildingArea=(BigDecimal) row.getCell("buildingArea").getValue();
-			
-			row.getCell("discountAfAmount").setValue(FDCHelper.subtract(standardTotalAmount, amount).setScale(0, BigDecimal.ROUND_HALF_UP));
-			
+		}else if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountAfAmount")){
+			BigDecimal standardTotalAmount=(BigDecimal) row.getCell("standardTotalAmount").getValue();
 			BigDecimal discountAfAmount=(BigDecimal) row.getCell("discountAfAmount").getValue();
-			row.getCell("discountAfBPrice").setValue(FDCHelper.divide(discountAfAmount, buildingArea));
-			row.getCell("discountPercent").setValue(FDCHelper.subtract(new BigDecimal(100),FDCHelper.multiply(FDCHelper.divide(discountAfAmount, standardTotalAmount,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100))));
-			
 			BigDecimal baseStandardPrice=(BigDecimal) row.getCell("baseStandardPrice").getValue();
-			BigDecimal basePercent=FDCHelper.multiply(FDCHelper.divide(FDCHelper.subtract(baseStandardPrice, discountAfAmount), baseStandardPrice,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
-			if(basePercent!=null&&basePercent.compareTo(FDCHelper.ZERO)<=0){
-				basePercent=null;
-			}
-			row.getCell("basePercent").setValue(basePercent);
 			
-			BigDecimal baseDiscountAmount=FDCHelper.subtract(baseStandardPrice, discountAfAmount);
-			if(baseDiscountAmount!=null&&baseDiscountAmount.compareTo(FDCHelper.ZERO)<=0){
-				baseDiscountAmount=null;
-			}
-			row.getCell("baseDiscountAmount").setValue(baseDiscountAmount);
-			
-		}else if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountPercent")){
-			BigDecimal percent=(BigDecimal) row.getCell("discountPercent").getValue();
-			BigDecimal standardTotalAmount=(BigDecimal) row.getCell("agioAmount").getValue();
-			BigDecimal buildingArea=(BigDecimal) row.getCell("buildingArea").getValue();
-			
-			
-			row.getCell("discountAfAmount").setValue(FDCHelper.divide(FDCHelper.multiply(standardTotalAmount, percent),new BigDecimal(100)).setScale(0, BigDecimal.ROUND_HALF_UP));
-			
-			BigDecimal discountAfAmount=(BigDecimal) row.getCell("discountAfAmount").getValue();
-			row.getCell("discountAfBPrice").setValue(FDCHelper.divide(discountAfAmount, buildingArea));
 			row.getCell("discountAmount").setValue(FDCHelper.subtract(standardTotalAmount, discountAfAmount).setScale(0, BigDecimal.ROUND_HALF_UP));
+			row.getCell("baseDiscountAmount").setValue(FDCHelper.subtract(baseStandardPrice, discountAfAmount).setScale(0, BigDecimal.ROUND_HALF_UP));
 			
-			BigDecimal baseStandardPrice=(BigDecimal) row.getCell("baseStandardPrice").getValue();
-			BigDecimal basePercent=FDCHelper.multiply(FDCHelper.divide(FDCHelper.subtract(baseStandardPrice, discountAfAmount), baseStandardPrice,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
-			if(basePercent!=null&&basePercent.compareTo(FDCHelper.ZERO)<=0){
-				basePercent=null;
-			}
+			BigDecimal baseDiscountAmount=(BigDecimal) row.getCell("baseDiscountAmount").getValue();
+			BigDecimal basePercent=FDCHelper.multiply(FDCHelper.divide(baseDiscountAmount, baseStandardPrice,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
 			row.getCell("basePercent").setValue(basePercent);
 			
-			BigDecimal baseDiscountAmount=FDCHelper.subtract(baseStandardPrice, discountAfAmount);
-			if(baseDiscountAmount!=null&&baseDiscountAmount.compareTo(FDCHelper.ZERO)<=0){
-				baseDiscountAmount=null;
-			}
-			row.getCell("baseDiscountAmount").setValue(baseDiscountAmount);
-		}
-		
-		if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountAmount")||
-				this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountPercent")){
-			BigDecimal percent=(BigDecimal) row.getCell("discountPercent").getValue();
-			RoomInfo room = (RoomInfo)row.getCell("room").getValue();
+			BigDecimal buildingArea=(BigDecimal) row.getCell("buildingArea").getValue();
 			
-			SpecialDiscountEntryInfo entry=(SpecialDiscountEntryInfo) row.getUserObject();
-			entry.setSubManagerAgio(FDCHelper.subtract(percent, room.getManagerAgio()));
-			entry.setSubSalesDirectorAgio(FDCHelper.subtract(percent, room.getSalesDirectorAgio()));
-			entry.setSubSceneManagerAgio(FDCHelper.subtract(percent, room.getSceneManagerAgio()));
+			row.getCell("discountAfBPrice").setValue(FDCHelper.divide(discountAfAmount,buildingArea, 2, BigDecimal.ROUND_HALF_UP));
+			row.getCell("subPrice").setValue(FDCHelper.subtract(row.getCell("basePrice").getValue(), row.getCell("discountAfBPrice").getValue()));
 		}
+//		else if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountAmount")){
+//			BigDecimal amount=(BigDecimal) row.getCell("discountAmount").getValue();
+////			if(amount!=null){
+////				amount=amount.setScale(0, BigDecimal.ROUND_UP);
+////				row.getCell("discountAmount").setValue(amount);
+////			}
+//			BigDecimal standardTotalAmount=(BigDecimal) row.getCell("standardTotalAmount").getValue();
+//			BigDecimal buildingArea=(BigDecimal) row.getCell("buildingArea").getValue();
+//			
+//			row.getCell("discountAfAmount").setValue(FDCHelper.subtract(standardTotalAmount, amount).setScale(0, BigDecimal.ROUND_HALF_UP));
+//			
+//			BigDecimal discountAfAmount=(BigDecimal) row.getCell("discountAfAmount").getValue();
+//			row.getCell("discountAfBPrice").setValue(FDCHelper.divide(discountAfAmount, buildingArea));
+////			row.getCell("discountPercent").setValue(FDCHelper.subtract(new BigDecimal(100),FDCHelper.multiply(FDCHelper.divide(discountAfAmount, standardTotalAmount,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100))));
+//			
+//			BigDecimal baseStandardPrice=(BigDecimal) row.getCell("baseStandardPrice").getValue();
+//			BigDecimal basePercent=FDCHelper.multiply(FDCHelper.divide(FDCHelper.subtract(baseStandardPrice, discountAfAmount), baseStandardPrice,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
+//			if(basePercent!=null&&basePercent.compareTo(FDCHelper.ZERO)<=0){
+//				basePercent=null;
+//			}
+//			row.getCell("basePercent").setValue(basePercent);
+//			
+//			BigDecimal baseDiscountAmount=FDCHelper.subtract(baseStandardPrice, discountAfAmount);
+//			if(baseDiscountAmount!=null&&baseDiscountAmount.compareTo(FDCHelper.ZERO)<=0){
+//				baseDiscountAmount=null;
+//			}
+//			row.getCell("baseDiscountAmount").setValue(baseDiscountAmount);
+//			
+//		}else if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountPercent")){
+//			BigDecimal percent=(BigDecimal) row.getCell("discountPercent").getValue();
+//			BigDecimal standardTotalAmount=(BigDecimal) row.getCell("standardTotalAmount").getValue();
+//			BigDecimal buildingArea=(BigDecimal) row.getCell("buildingArea").getValue();
+//			
+//			
+//			row.getCell("discountAfAmount").setValue(FDCHelper.divide(FDCHelper.multiply(standardTotalAmount, percent),new BigDecimal(100)).setScale(0, BigDecimal.ROUND_HALF_UP));
+//			
+//			BigDecimal discountAfAmount=(BigDecimal) row.getCell("discountAfAmount").getValue();
+//			row.getCell("discountAfBPrice").setValue(FDCHelper.divide(discountAfAmount, buildingArea));
+//			row.getCell("discountAmount").setValue(FDCHelper.subtract(standardTotalAmount, discountAfAmount).setScale(0, BigDecimal.ROUND_HALF_UP));
+//			
+//			BigDecimal baseStandardPrice=(BigDecimal) row.getCell("baseStandardPrice").getValue();
+//			BigDecimal basePercent=FDCHelper.multiply(FDCHelper.divide(FDCHelper.subtract(baseStandardPrice, discountAfAmount), baseStandardPrice,6,BigDecimal.ROUND_HALF_UP), new BigDecimal(100));
+//			if(basePercent!=null&&basePercent.compareTo(FDCHelper.ZERO)<=0){
+//				basePercent=null;
+//			}
+//			row.getCell("basePercent").setValue(basePercent);
+//			
+//			BigDecimal baseDiscountAmount=FDCHelper.subtract(baseStandardPrice, discountAfAmount);
+//			if(baseDiscountAmount!=null&&baseDiscountAmount.compareTo(FDCHelper.ZERO)<=0){
+//				baseDiscountAmount=null;
+//			}
+//			row.getCell("baseDiscountAmount").setValue(baseDiscountAmount);
+//		}
+//		
+//		if(this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountAmount")||
+//				this.kdtEntry.getColumnKey(e.getColIndex()).equals("discountPercent")){
+////			BigDecimal percent=(BigDecimal) row.getCell("discountPercent").getValue();
+////			RoomInfo room = (RoomInfo)row.getCell("room").getValue();
+//			
+////			SpecialDiscountEntryInfo entry=(SpecialDiscountEntryInfo) row.getUserObject();
+////			entry.setSubManagerAgio(FDCHelper.subtract(percent, room.getManagerAgio()));
+////			entry.setSubSalesDirectorAgio(FDCHelper.subtract(percent, room.getSalesDirectorAgio()));
+////			entry.setSubSceneManagerAgio(FDCHelper.subtract(percent, room.getSceneManagerAgio()));
+//		}
 	}
 	/**
 	 * 选择客户后单价名称显示
@@ -767,26 +796,26 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 //				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("room"));
 //				SysUtil.abort();
 //			}
-			if(row.getCell("discountAmount").getValue()==null){
-				FDCMsgBox.showWarning(this,"优惠金额不能为空！");
-				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountAmount"));
+			if(row.getCell("discountAfAmount").getValue()==null){
+				FDCMsgBox.showWarning(this,"最终成交总价不能为空！");
+				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountAfAmount"));
 				SysUtil.abort();
 			}
-			if(((BigDecimal)row.getCell("discountAmount").getValue()).compareTo(FDCHelper.ZERO)==0){
-				FDCMsgBox.showWarning(this,"优惠金额不能为0！");
-				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountAmount"));
+			if(((BigDecimal)row.getCell("discountAfAmount").getValue()).compareTo(FDCHelper.ZERO)==0){
+				FDCMsgBox.showWarning(this,"最终成交总价不能为0！");
+				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountAfAmount"));
 				SysUtil.abort();
 			}
-			if(row.getCell("discountPercent").getValue()==null){
-				FDCMsgBox.showWarning(this,"表价优惠折扣比例%不能为空！");
-				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountPercent"));
-				SysUtil.abort();
-			}
-			if(((BigDecimal)row.getCell("discountPercent").getValue()).compareTo(FDCHelper.ZERO)==0){
-				FDCMsgBox.showWarning(this,"表价优惠折扣比例%不能为0！");
-				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountPercent"));
-				SysUtil.abort();
-			}
+//			if(row.getCell("discountPercent").getValue()==null){
+//				FDCMsgBox.showWarning(this,"表价优惠折扣比例%不能为空！");
+//				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountPercent"));
+//				SysUtil.abort();
+//			}
+//			if(((BigDecimal)row.getCell("discountPercent").getValue()).compareTo(FDCHelper.ZERO)==0){
+//				FDCMsgBox.showWarning(this,"表价优惠折扣比例%不能为0！");
+//				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("discountPercent"));
+//				SysUtil.abort();
+//			}
 			Map detailSet = RoomDisplaySetting.getNewProjectSet(null,this.editData.getSellProject().getId().toString());
 			boolean isBasePriceSell=false;
 			if(detailSet!=null){
@@ -799,10 +828,10 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 						FDCMsgBox.showWarning(this,room.getName()+"底价不能为空！");
 						SysUtil.abort();
 					}
-					if(FDCHelper.subtract(row.getCell("discountAfAmount").getValue(),room.getBaseStandardPrice()).compareTo(FDCHelper.ZERO)<0){
-						FDCMsgBox.showWarning(this,room.getName()+"破底价，不能进行特殊优惠折扣申请！");
-						SysUtil.abort();
-					}
+//					if(FDCHelper.subtract(row.getCell("discountAfAmount").getValue(),room.getBaseStandardPrice()).compareTo(FDCHelper.ZERO)<0){
+//						FDCMsgBox.showWarning(this,room.getName()+"破底价，不能进行特殊优惠折扣申请！");
+//						SysUtil.abort();
+//					}
 				}
 //			}
 		}
@@ -1013,6 +1042,8 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
     	sel.add("agioEntry.*");
 		sel.add("agioEntry.agio.*");
 		sel.add("productType.*");
+		sel.add("subPrice");
+		sel.add("basePercent");
     	return sel;
     }
 	protected IObjectValue createNewDetailData(KDTable arg0) {
@@ -1090,8 +1121,10 @@ public class SpecialDiscountEditUI extends AbstractSpecialDiscountEditUI
 			this.currAgioParam = agioParam;
 			this.txtAgioDesc.setUserObject(agioParam.getAgios());
 			
+			BigDecimal buildingArea=room.getActualBuildingArea()==null?room.getBuildingArea():room.getActualBuildingArea();
+			
 			PurchaseParam purParam = SHEManageHelper.getAgioParam(this.currAgioParam, room, 
-					null,room.getCalcType(),false,room.getRoomArea(),room.getBuildingArea(),room.getRoomPrice(),room.getBuildPrice(),room.getStandardTotalAmount(),null,null,null,SpecialAgioEnum.DaZhe,null,null);
+					null,room.getCalcType(),false,room.getRoomArea(),buildingArea,room.getRoomPrice(),room.getBuildPrice(),room.getStandardTotalAmount(),null,null,null,SpecialAgioEnum.DaZhe,null,null);
 			if(purParam!=null) {
 				this.txtAgioDesc.setText(purParam.getAgioDes());
 				this.kdtEntry.getRow(0).getCell("agioPrice").setValue(purParam.getContractBuildPrice());
