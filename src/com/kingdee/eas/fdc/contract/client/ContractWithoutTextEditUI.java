@@ -2578,7 +2578,7 @@ public class ContractWithoutTextEditUI extends
 //				SysUtil.abort();
 //			}
 //		}else{
-//			verifyContractProgrammingPara();
+			verifyContractProgrammingPara();
 //		}
 		
 		FDCClientVerifyHelper.verifyEmpty(this, this.prmtuseDepartment);
