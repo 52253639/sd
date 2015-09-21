@@ -165,6 +165,32 @@
                 <key name="name" value="MoneyDefine" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>bankPaymentEntry</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[bankPaymentEntry].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentEntry" />
+            </entityRef>
+        </subEntity>
+        <subEntity>
+            <name>room</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[room].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="Room" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <propertyUnit>
@@ -748,6 +774,68 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="number" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>room.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[room.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ebd67497-b5a4-4e19-a220-40ffe92f9e68</key>
+                    <parentUnit>
+                        <key name="name" value="room.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>bankPaymentEntry.appAmount</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[bankPaymentEntry.appAmount].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Number</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>5561cb3b-64d6-419d-a7d7-c1f2901a8629</key>
+                    <parentUnit>
+                        <key name="name" value="bankPaymentEntry.appAmount" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="bankPaymentEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="appAmount" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -1841,6 +1929,130 @@
                 <key name="name" value="BankPaymentQuery" />
             </query>
         </queryField>
+        <propertyUnit>
+            <name>0d7ff20a-c0a6-468e-8751-164fd091ea87</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[0d7ff20a-c0a6-468e-8751-164fd091ea87].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>6c0c2996-20b4-4080-bffe-54d24175d92c</key>
+                    <parentUnit>
+                        <key name="name" value="0d7ff20a-c0a6-468e-8751-164fd091ea87" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="BankPayment" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>20fd8e3a-b638-49b4-a92e-00205145e742</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[20fd8e3a-b638-49b4-a92e-00205145e742].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>57d9b191-fce3-4edc-9e78-385a65e68093</key>
+                    <parentUnit>
+                        <key name="name" value="20fd8e3a-b638-49b4-a92e-00205145e742" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="bankPaymentEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="payment" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>cba28fce-1506-4d33-a65b-53653bbaece6</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[cba28fce-1506-4d33-a65b-53653bbaece6].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>48ea34d6-35b9-414c-b10e-ed7ca78fb33f</key>
+                    <parentUnit>
+                        <key name="name" value="cba28fce-1506-4d33-a65b-53653bbaece6" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="bankPaymentEntry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="room" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>584f92e6-bed4-4c79-8614-6848ac5c74b3</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[584f92e6-bed4-4c79-8614-6848ac5c74b3].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>a7446d1d-d719-40ed-9ee9-bc6c8f2497a5</key>
+                    <parentUnit>
+                        <key name="name" value="584f92e6-bed4-4c79-8614-6848ac5c74b3" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="room" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </propertyUnit>
     </units>
     <defaultFilter>
         <name>defaultFilter</name>
@@ -2192,672 +2404,800 @@
                 <key name="name" value="BankPaymentQuery" />
             </query>
         </join>
+        <join>
+            <name>210f8e2a-04fc-4bbe-a2d3-506d06c6f59d</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="BankPayment" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="bankPaymentEntry" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>9978e6f7-f71e-4705-ab05-d902bb2f4bef</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="0d7ff20a-c0a6-468e-8751-164fd091ea87" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="20fd8e3a-b638-49b4-a92e-00205145e742" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="210f8e2a-04fc-4bbe-a2d3-506d06c6f59d" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </join>
+        <join>
+            <name>40fb5773-dd04-4aa9-aed0-dddb1b5a7c96</name>
+            <formulaString>#0</formulaString>
+            <type>INNER JOIN</type>
+            <leftObject>
+                <key name="name" value="bankPaymentEntry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="room" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>85c5c0bf-ee8d-48a3-9276-ad3e03ad4493</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="cba28fce-1506-4d33-a65b-53653bbaece6" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="584f92e6-bed4-4c79-8614-6848ac5c74b3" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="40fb5773-dd04-4aa9-aed0-dddb1b5a7c96" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="BankPaymentQuery" />
+            </query>
+        </join>
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="銀行放款查詢" />
-            <lang locale="zh_HK" value="銀行放款查詢" />
             <lang locale="zh_CN" value="银行放款查询" />
+            <lang locale="zh_HK" value="銀行放款查詢" />
+            <lang locale="zh_TW" value="銀行放款查詢" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].description">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="銀行放款查詢" />
-            <lang locale="zh_HK" value="銀行放款查詢" />
             <lang locale="zh_CN" value="银行放款查询" />
+            <lang locale="zh_HK" value="銀行放款查詢" />
+            <lang locale="zh_TW" value="銀行放款查詢" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].queryPK[QueryPK].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].queryPK[QueryPK].description">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[BankPayment].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[auditor].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[bankPaymentEntry].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[creator].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[moneyDefine].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[oppAccount].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[paymentAccountBank].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[paymentBank].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[project].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[revAccountBank].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[revAccount].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[revBank].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[room].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].subObjects.subEntity[settlementType].alias">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[00c4eb3a-f276-449c-acf9-8ebf080eac3f].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[0873101c-112f-4d06-b0c5-0414039fd525].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[0d7ff20a-c0a6-468e-8751-164fd091ea87].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[1fa2db83-9551-49af-8386-d4c5e4aae553].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[20fd8e3a-b638-49b4-a92e-00205145e742].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[2135a175-2e49-4270-adf5-86979798a90b].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[2c27db1d-ba70-4e9b-bc60-cedaeffff112].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[44d41d13-447f-408c-9562-0dd2c78686ad].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[5510b237-2d57-44e0-ba46-95aaff6f6084].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[584f92e6-bed4-4c79-8614-6848ac5c74b3].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[67541dda-9eae-4f27-9cbb-63f3b44f0324].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[6770770c-30ab-4df9-bd0e-238048368264].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[701728db-fbd3-4013-a493-23b5322324bf].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[8146fca9-5b61-4a93-bc64-e257c83287af].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[c0ef0ded-53ad-4e61-b3fc-c07af57ba1d3].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[c2fde6c9-0a2b-43a8-bd95-f5a34ba23644].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[cba28fce-1506-4d33-a65b-53653bbaece6].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[cc649a55-f689-4193-a88e-c96b6d2fbb38].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[ce011106-866a-4507-baf4-6660227f6050].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[d9842df7-628b-467a-be7e-12eeae8dd442].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[dee3730b-9ad1-4e64-a9c2-8ee723b7202e].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[ecc2cf31-9db8-49c9-8cf3-c9395d4d0f2a].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[f2e9906d-7aab-47dd-a158-06b3868a18c2].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[f7e307c0-6391-44bb-81bf-96a339e8918a].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[fb8121f6-2d9a-4a3c-9c76-eb4871597638].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.propertyUnit[feee5610-c21e-4c28-a25e-f2b048fcd7f4].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="null" />
-            <lang locale="zh_HK" value="null" />
             <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[auditTime].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="審批日期" />
-            <lang locale="zh_HK" value="審批日期" />
             <lang locale="zh_CN" value="审批日期" />
+            <lang locale="zh_HK" value="審批日期" />
+            <lang locale="zh_TW" value="審批日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[auditTime].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[auditTime].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[auditor.name].displayName">
             <lang locale="en_US" value="用户别名" />
-            <lang locale="zh_TW" value="審批人" />
-            <lang locale="zh_HK" value="審批人" />
             <lang locale="zh_CN" value="审批人" />
+            <lang locale="zh_HK" value="審批人" />
+            <lang locale="zh_TW" value="審批人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[auditor.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[auditor.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[bankPaymentEntry.appAmount].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="贷款金额" />
+            <lang locale="zh_HK" value="貸款金額" />
+            <lang locale="zh_TW" value="貸款金額" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[bankPaymentEntry.appAmount].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[bankPaymentEntry.appAmount].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[createTime].displayName">
             <lang locale="en_US" value="createTime" />
-            <lang locale="zh_TW" value="制單日期" />
-            <lang locale="zh_HK" value="制單日期" />
             <lang locale="zh_CN" value="制单日期" />
+            <lang locale="zh_HK" value="制單日期" />
+            <lang locale="zh_TW" value="制單日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[createTime].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[createTime].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[creator.name].displayName">
             <lang locale="en_US" value="用户别名" />
-            <lang locale="zh_TW" value="制單人" />
-            <lang locale="zh_HK" value="制單人" />
             <lang locale="zh_CN" value="制单人" />
+            <lang locale="zh_HK" value="制單人" />
+            <lang locale="zh_TW" value="制單人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[creator.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[creator.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[description].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="備註" />
-            <lang locale="zh_HK" value="備註" />
             <lang locale="zh_CN" value="备注" />
+            <lang locale="zh_HK" value="備註" />
+            <lang locale="zh_TW" value="備註" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[id].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="ID" />
-            <lang locale="zh_HK" value="ID" />
             <lang locale="zh_CN" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.id].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="款項ID" />
-            <lang locale="zh_HK" value="款項ID" />
             <lang locale="zh_CN" value="款项ID" />
+            <lang locale="zh_HK" value="款項ID" />
+            <lang locale="zh_TW" value="款項ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.id].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="款項名稱" />
-            <lang locale="zh_HK" value="款項名稱" />
             <lang locale="zh_CN" value="款项名称" />
+            <lang locale="zh_HK" value="款項名稱" />
+            <lang locale="zh_TW" value="款項名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="款項編碼" />
-            <lang locale="zh_HK" value="款項編碼" />
             <lang locale="zh_CN" value="款项编码" />
+            <lang locale="zh_HK" value="款項編碼" />
+            <lang locale="zh_TW" value="款項編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[moneyDefine.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="單據名稱" />
-            <lang locale="zh_HK" value="單據名稱" />
             <lang locale="zh_CN" value="单据名称" />
+            <lang locale="zh_HK" value="單據名稱" />
+            <lang locale="zh_TW" value="單據名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="單據編碼" />
-            <lang locale="zh_HK" value="單據編碼" />
             <lang locale="zh_CN" value="单据编码" />
+            <lang locale="zh_HK" value="單據編碼" />
+            <lang locale="zh_TW" value="單據編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[number].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[number].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[oppAccount.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="對方科目名稱" />
-            <lang locale="zh_HK" value="對方科目名稱" />
             <lang locale="zh_CN" value="对方科目名称" />
+            <lang locale="zh_HK" value="對方科目名稱" />
+            <lang locale="zh_TW" value="對方科目名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[oppAccount.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[oppAccount.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[oppAccount.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="對方科目編碼" />
-            <lang locale="zh_HK" value="對方科目編碼" />
             <lang locale="zh_CN" value="对方科目编码" />
+            <lang locale="zh_HK" value="對方科目編碼" />
+            <lang locale="zh_TW" value="對方科目編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[oppAccount.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAccountBank.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="貸款銀行賬戶名稱" />
-            <lang locale="zh_HK" value="貸款銀行賬戶名稱" />
             <lang locale="zh_CN" value="贷款银行账户名称" />
+            <lang locale="zh_HK" value="貸款銀行賬戶名稱" />
+            <lang locale="zh_TW" value="貸款銀行賬戶名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAccountBank.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAccountBank.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAccountBank.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="貸款銀行賬戶編碼" />
-            <lang locale="zh_HK" value="貸款銀行賬戶編碼" />
             <lang locale="zh_CN" value="贷款银行账户编码" />
+            <lang locale="zh_HK" value="貸款銀行賬戶編碼" />
+            <lang locale="zh_TW" value="貸款銀行賬戶編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAccountBank.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAmout].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="放款總額" />
-            <lang locale="zh_HK" value="放款總額" />
             <lang locale="zh_CN" value="放款总额" />
+            <lang locale="zh_HK" value="放款總額" />
+            <lang locale="zh_TW" value="放款總額" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAmout].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentAmout].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentBank.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="貸款銀行名稱" />
-            <lang locale="zh_HK" value="貸款銀行名稱" />
             <lang locale="zh_CN" value="贷款银行名称" />
+            <lang locale="zh_HK" value="貸款銀行名稱" />
+            <lang locale="zh_TW" value="貸款銀行名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentBank.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentBank.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentBank.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="貸款銀行編碼" />
-            <lang locale="zh_HK" value="貸款銀行編碼" />
             <lang locale="zh_CN" value="贷款银行编码" />
+            <lang locale="zh_HK" value="貸款銀行編碼" />
+            <lang locale="zh_TW" value="貸款銀行編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentBank.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentDate].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="放款日期" />
-            <lang locale="zh_HK" value="放款日期" />
             <lang locale="zh_CN" value="放款日期" />
+            <lang locale="zh_HK" value="放款日期" />
+            <lang locale="zh_TW" value="放款日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentDate].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[paymentDate].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.id].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="ID" />
-            <lang locale="zh_HK" value="ID" />
             <lang locale="zh_CN" value="ID" />
+            <lang locale="zh_HK" value="ID" />
+            <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.id].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="項目名稱" />
-            <lang locale="zh_HK" value="項目名稱" />
             <lang locale="zh_CN" value="项目名称" />
+            <lang locale="zh_HK" value="項目名稱" />
+            <lang locale="zh_TW" value="項目名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="項目編碼" />
-            <lang locale="zh_HK" value="項目編碼" />
             <lang locale="zh_CN" value="项目编码" />
+            <lang locale="zh_HK" value="項目編碼" />
+            <lang locale="zh_TW" value="項目編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[project.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccount.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="收款科目名稱" />
-            <lang locale="zh_HK" value="收款科目名稱" />
             <lang locale="zh_CN" value="收款科目名称" />
+            <lang locale="zh_HK" value="收款科目名稱" />
+            <lang locale="zh_TW" value="收款科目名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccount.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccount.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccount.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="收款科目編碼" />
-            <lang locale="zh_HK" value="收款科目編碼" />
             <lang locale="zh_CN" value="收款科目编码" />
+            <lang locale="zh_HK" value="收款科目編碼" />
+            <lang locale="zh_TW" value="收款科目編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccount.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccountBank.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="入賬銀行賬戶名稱" />
-            <lang locale="zh_HK" value="入賬銀行賬戶名稱" />
             <lang locale="zh_CN" value="入账银行账户名称" />
+            <lang locale="zh_HK" value="入賬銀行賬戶名稱" />
+            <lang locale="zh_TW" value="入賬銀行賬戶名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccountBank.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccountBank.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccountBank.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="入賬銀行賬戶編碼" />
-            <lang locale="zh_HK" value="入賬銀行賬戶編碼" />
             <lang locale="zh_CN" value="入账银行账户编码" />
+            <lang locale="zh_HK" value="入賬銀行賬戶編碼" />
+            <lang locale="zh_TW" value="入賬銀行賬戶編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revAccountBank.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revBank.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="入賬銀行名稱" />
-            <lang locale="zh_HK" value="入賬銀行名稱" />
             <lang locale="zh_CN" value="入账银行名称" />
+            <lang locale="zh_HK" value="入賬銀行名稱" />
+            <lang locale="zh_TW" value="入賬銀行名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revBank.name].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revBank.name].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revBank.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="入賬銀行編碼" />
-            <lang locale="zh_HK" value="入賬銀行編碼" />
             <lang locale="zh_CN" value="入账银行编码" />
+            <lang locale="zh_HK" value="入賬銀行編碼" />
+            <lang locale="zh_TW" value="入賬銀行編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[revBank.number].extendedProperty.isVisibleForKDTable">
-            <lang locale="zh_TW" value="false" />
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
+            <lang locale="zh_TW" value="false" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[room.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="房间" />
+            <lang locale="zh_HK" value="房間" />
+            <lang locale="zh_TW" value="房間" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[room.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[room.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementNumber].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="結算單號" />
-            <lang locale="zh_HK" value="結算單號" />
             <lang locale="zh_CN" value="结算单号" />
+            <lang locale="zh_HK" value="結算單號" />
+            <lang locale="zh_TW" value="結算單號" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementNumber].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementNumber].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementType.name].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="結算方式名稱" />
-            <lang locale="zh_HK" value="結算方式名稱" />
             <lang locale="zh_CN" value="结算方式名称" />
+            <lang locale="zh_HK" value="結算方式名稱" />
+            <lang locale="zh_TW" value="結算方式名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementType.number].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="結算方式編碼" />
-            <lang locale="zh_HK" value="結算方式編碼" />
             <lang locale="zh_CN" value="结算方式编码" />
+            <lang locale="zh_HK" value="結算方式編碼" />
+            <lang locale="zh_TW" value="結算方式編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementType.number].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[settlementType.number].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[state].displayName">
             <lang locale="en_US" value="null" />
-            <lang locale="zh_TW" value="單據狀態" />
-            <lang locale="zh_HK" value="單據狀態" />
             <lang locale="zh_CN" value="单据状态" />
+            <lang locale="zh_HK" value="單據狀態" />
+            <lang locale="zh_TW" value="單據狀態" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[state].extendedProperty.isCommonQueryFilter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.BankPaymentQuery].units.queryField[state].extendedProperty.isCommonQuerySorter">
-            <lang locale="zh_TW" value="true" />
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
     </resource>
 </joinQuery>

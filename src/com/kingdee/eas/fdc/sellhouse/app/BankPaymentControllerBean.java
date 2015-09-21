@@ -126,7 +126,7 @@ public class BankPaymentControllerBean extends AbstractBankPaymentControllerBean
     		}
     	} 	  
     	if(isCreate){
-    		this.createRoomLoanBill(ctx, bankPayInfo);    			
+//    		this.createRoomLoanBill(ctx, bankPayInfo);    			
     	}
     }
     
