@@ -57,10 +57,13 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("67ab7a2d-b051-410b-819a-4d0b5b3e2822"), new Object[]{ctx, pk});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SHECustomerInfo retValue = (SHECustomerInfo)_getValue(ctx, pk);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SHECustomerInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -79,10 +82,13 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("8b78a773-9f45-45e8-a00e-a2c3df53e4f9"), new Object[]{ctx, pk, selector});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SHECustomerInfo retValue = (SHECustomerInfo)_getValue(ctx, pk, selector);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SHECustomerInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -101,10 +107,13 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("35e0c1a1-9a36-4df8-8453-ae852fa421c8"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SHECustomerInfo retValue = (SHECustomerInfo)_getValue(ctx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SHECustomerInfo)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -123,10 +132,13 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("ce6d6c3f-c06d-44ab-b635-ce097e732abf"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SHECustomerCollection retValue = (SHECustomerCollection)_getCollection(ctx, svcCtx);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SHECustomerCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -143,10 +155,13 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("fdf820a9-5fb4-49d3-82b7-295f26eb2eee"), new Object[]{ctx, view});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SHECustomerCollection retValue = (SHECustomerCollection)_getCollection(ctx, svcCtx, view);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SHECustomerCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -163,10 +178,13 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("142b9278-ac43-4ae6-9701-4e9684ae85a8"), new Object[]{ctx, oql});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             SHECustomerCollection retValue = (SHECustomerCollection)_getCollection(ctx, svcCtx, oql);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+        
+          return (SHECustomerCollection)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } finally {
@@ -183,7 +201,9 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("639ec97b-6973-43ee-b151-782f94ac4028"), new Object[]{ctx, ids});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _updateData(ctx, ids);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -195,14 +215,19 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _updateData(Context ctx, List ids) throws BOSException, EASBizException;
+    protected void _updateData(Context ctx, List ids) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void mergeCustomer(Context ctx, List srcIds, String toId) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("f20eba83-c6ed-4960-9a1c-112f7aee7c5f"), new Object[]{ctx, srcIds, toId});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _mergeCustomer(ctx, srcIds, toId);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -214,14 +239,19 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _mergeCustomer(Context ctx, List srcIds, String toId) throws BOSException, EASBizException;
+    protected void _mergeCustomer(Context ctx, List srcIds, String toId) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void changeName(Context ctx, SHECustomerInfo model, Map map) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("422f5b86-0548-4b03-8ee9-cfb9efbb1019"), new Object[]{ctx, model, map});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _changeName(ctx, model, map);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -233,14 +263,19 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _changeName(Context ctx, IObjectValue model, Map map) throws BOSException, EASBizException;
+    protected void _changeName(Context ctx, IObjectValue model, Map map) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void shareCustomer(Context ctx, SHECustomerCollection objectColl, Map map) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("a03e91c5-5277-490f-a445-4631d01c698d"), new Object[]{ctx, objectColl, map});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _shareCustomer(ctx, objectColl, map);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -252,14 +287,19 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _shareCustomer(Context ctx, IObjectCollection objectColl, Map map) throws BOSException, EASBizException;
+    protected void _shareCustomer(Context ctx, IObjectCollection objectColl, Map map) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void deliverCustomer(Context ctx, SHECustomerInfo model, Map map) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("e5611d2c-292d-4544-8180-d6c1f3720b13"), new Object[]{ctx, model, map});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _deliverCustomer(ctx, model, map);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -271,14 +311,19 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _deliverCustomer(Context ctx, IObjectValue model, Map map) throws BOSException, EASBizException;
+    protected void _deliverCustomer(Context ctx, IObjectValue model, Map map) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void importCustomer(Context ctx, SHECustomerCollection res, SellProjectInfo sellProject) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("59fc12a2-19eb-46b3-9c8f-025fe71ad616"), new Object[]{ctx, res, sellProject});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _importCustomer(ctx, res, sellProject);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -290,14 +335,19 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _importCustomer(Context ctx, IObjectCollection res, IObjectValue sellProject) throws BOSException, EASBizException;
+    protected void _importCustomer(Context ctx, IObjectCollection res, IObjectValue sellProject) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public void submitEnterpriceCustomer(Context ctx, SHECustomerInfo model, String name, String phone) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("2c3ee0e0-2743-405a-b064-996b74408e3c"), new Object[]{ctx, model, name, phone});
             invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
             _submitEnterpriceCustomer(ctx, model, name, phone);
+            }
             invokeServiceAfter(svcCtx);
         } catch (BOSException ex) {
             this.setRollbackOnly();
@@ -309,17 +359,22 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract void _submitEnterpriceCustomer(Context ctx, IObjectValue model, String name, String phone) throws BOSException, EASBizException;
+    protected void _submitEnterpriceCustomer(Context ctx, IObjectValue model, String name, String phone) throws BOSException, EASBizException
+    {    	
+        return;
+    }
 
     public IObjectPK submitAll(Context ctx, HashMap hashMap, IObjectValue editData) throws BOSException, EASBizException
     {
         try {
             ServiceContext svcCtx = createServiceContext(new MetaDataPK("5a6c1b28-d8f5-4c22-a769-bc82b77d77c8"), new Object[]{ctx, hashMap, editData});
             invokeServiceBefore(svcCtx);
+            if(!svcCtx.invokeBreak()) {
             IObjectPK retValue = (IObjectPK)_submitAll(ctx, hashMap, editData);
             svcCtx.setMethodReturnValue(retValue);
+            }
             invokeServiceAfter(svcCtx);
-            return retValue;
+            return (IObjectPK)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             this.setRollbackOnly();
             throw ex;
@@ -330,7 +385,10 @@ public abstract class AbstractSHECustomerControllerBean extends FDCBaseCustomerC
             super.cleanUpServiceState();
         }
     }
-    protected abstract IObjectPK _submitAll(Context ctx, HashMap hashMap, IObjectValue editData) throws BOSException, EASBizException;
+    protected IObjectPK _submitAll(Context ctx, HashMap hashMap, IObjectValue editData) throws BOSException, EASBizException
+    {    	
+        return null;
+    }
 
     public FDCBaseCustomerCollection getFDCBaseCustomerCollection (Context ctx) throws BOSException
     {

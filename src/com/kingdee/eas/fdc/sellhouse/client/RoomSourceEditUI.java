@@ -442,7 +442,7 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 			this.actionEdit.setEnabled(true);
 			this.actionRemove.setEnabled(true);
 		}
-		loadRoomBill(room);
+//		loadRoomBill(room);
 	}
 
 		
@@ -980,6 +980,10 @@ public class RoomSourceEditUI extends AbstractRoomSourceEditUI {
 		}
 		
 		}
+		
+		kDTabbedPane1.remove(this.panelBizBill);
+		kDTabbedPane1.remove(this.panelPriceBill);
+		kDTabbedPane1.remove(this.panelReceiveBill);
 		
 		if(OprtState.ADDNEW.equals(this.getOprtState())){
 			this.actionEdit.setEnabled(false);

@@ -3,6 +3,7 @@
  */
 package com.kingdee.eas.fdc.sellhouse.client;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -42,11 +43,16 @@ import com.kingdee.bos.ui.face.UIException;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.base.uiframe.client.UIFactoryHelper;
+import com.kingdee.eas.basedata.master.cssp.CustomerCompanyInfoFactory;
+import com.kingdee.eas.basedata.master.cssp.CustomerFactory;
+import com.kingdee.eas.basedata.master.cssp.CustomerInfo;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.CRMHelper;
+import com.kingdee.eas.fdc.basecrm.FDCMainCustomerFactory;
+import com.kingdee.eas.fdc.basecrm.SHERevBillFactory;
 import com.kingdee.eas.fdc.basecrm.client.NewCommerceHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
@@ -101,11 +107,13 @@ import com.kingdee.eas.fdc.sellhouse.RoomPropertyBookInfo;
 import com.kingdee.eas.fdc.sellhouse.RoomSellStateEnum;
 import com.kingdee.eas.fdc.sellhouse.RoomSignContractInfo;
 import com.kingdee.eas.fdc.sellhouse.SHECustomerCollection;
+import com.kingdee.eas.fdc.sellhouse.SHECustomerInfo;
 import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
 import com.kingdee.eas.fdc.sellhouse.SHEPayTypeFactory;
 import com.kingdee.eas.fdc.sellhouse.SHEPayTypeInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.SellTypeEnum;
+import com.kingdee.eas.fdc.sellhouse.SignCustomerEntryInfo;
 import com.kingdee.eas.fdc.sellhouse.SignManageCollection;
 import com.kingdee.eas.fdc.sellhouse.SignManageFactory;
 import com.kingdee.eas.fdc.sellhouse.SignManageInfo;
@@ -122,6 +130,7 @@ import com.kingdee.eas.fdc.sellhouse.TransactionStateEnum;
 import com.kingdee.eas.framework.ICoreBase;
 import com.kingdee.eas.framework.client.ListUiHelper;
 import com.kingdee.eas.util.SysUtil;
+import com.kingdee.eas.util.app.ContextUtil;
 import com.kingdee.jdbc.rowset.IRowSet;
 
 /**
@@ -183,20 +192,25 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		this.comboHouseProperty.setSelectedItem(room.getHouseProperty());
 		this.txtPricingType.setText(room.getCalcType()!=null?room.getCalcType().getAlias():"");
 //		this.txtSellType.setText(room.getSellType()!=null?room.getSellType().getAlias():"");
-		SellTypeEnum sellType = (SellTypeEnum)room.getSellType();
-		if(SellTypeEnum.LocaleSell.equals(sellType)){
-			this.txtBuildingArea.setValue(room.getActualBuildingArea());
-			this.txtRoomArea.setValue(room.getActualRoomArea());
-		}
-		else if(SellTypeEnum.PreSell.equals(sellType)){
+//		SellTypeEnum sellType = (SellTypeEnum)room.getSellType();
+//		if(SellTypeEnum.LocaleSell.equals(sellType)){
+//			this.txtBuildingArea.setValue(room.getActualBuildingArea());
+//			this.txtRoomArea.setValue(room.getActualRoomArea());
+//		}
+//		else if(SellTypeEnum.PreSell.equals(sellType)){
 			this.txtBuildingArea.setValue(room.getBuildingArea());
 			this.txtRoomArea.setValue(room.getRoomArea());
-		}else{
-			this.txtBuildingArea.setValue(room.getPlanBuildingArea());
-			this.txtRoomArea.setValue(room.getPlanRoomArea());
-		}
-		this.txtStandardBuildPrice.setValue(room.getBuildPrice());
-		this.txtStandardRoomPrice.setValue(room.getRoomPrice());
+//		}else{
+//			this.txtBuildingArea.setValue(room.getPlanBuildingArea());
+//			this.txtRoomArea.setValue(room.getPlanRoomArea());
+//		}
+		this.txtActBuildArea.setValue(room.getActualBuildingArea());
+		this.txtActRoomArea.setValue(room.getActualRoomArea());
+		BigDecimal buildArea=room.getActualBuildingArea()==null?room.getBuildingArea():room.getActualBuildingArea();
+		BigDecimal roomArea=room.getActualRoomArea()==null?room.getRoomArea():room.getActualRoomArea();
+		
+		this.txtStandardBuildPrice.setValue(FDCHelper.divide(room.getStandardTotalAmount(), buildArea, 2, BigDecimal.ROUND_HALF_UP));
+		this.txtStandardRoomPrice.setValue(FDCHelper.divide(room.getStandardTotalAmount(), roomArea, 2, BigDecimal.ROUND_HALF_UP));
 		this.txtStandardTotalAmount.setValue(room.getStandardTotalAmount());
 		
 		RoomSellStateEnum state = room.getSellState();
@@ -209,18 +223,18 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 				if(RoomSellStateEnum.PrePurchase.equals(state)){
 					PrePurchaseManageCollection prePurchaseInfo = PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
 					if(prePurchaseInfo.size()>0){
-						this.txtDealTotalAmount.setVisible(false);
-						this.txtDealBuildPrice.setVisible(false);
-						this.txtDealRoomPrice.setVisible(false);
+//						this.txtDealTotalAmount.setVisible(false);
+//						this.txtDealBuildPrice.setVisible(false);
+//						this.txtDealRoomPrice.setVisible(false);
 						this.txtSaleMan.setText(prePurchaseInfo.get(0).getSaleManNames());
 					}
 				}
 				if(RoomSellStateEnum.Purchase.equals(state)){
 					PurchaseManageCollection purchaseInfo = PurchaseManageFactory.getRemoteInstance().getPurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
 					if(purchaseInfo.size()>0){
-						this.txtDealTotalAmount.setVisible(false);
-						this.txtDealBuildPrice.setVisible(false);
-						this.txtDealRoomPrice.setVisible(false);
+//						this.txtDealTotalAmount.setVisible(false);
+//						this.txtDealBuildPrice.setVisible(false);
+//						this.txtDealRoomPrice.setVisible(false);
 						this.txtSaleMan.setText(purchaseInfo.get(0).getSaleManNames());
 					}
 				}
@@ -953,6 +967,7 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 				row.getCell("id").setValue(spInfo.getId());
 				row.getCell("biz").setValue("预约排号");
 				row.getCell("value").setValue(Boolean.TRUE);
+				row.getCell("customer").setValue(spInfo.getCustomerNames());
 				if(col != null && col.size()> 0){
 					boolean change=false;
 					if(!change){
@@ -966,6 +981,7 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 									PrePurchaseManageCollection ppmCol=PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageCollection(evInfo);
 									if(!ppmCol.isEmpty()){
 										row.getCell("actDate").setValue(ppmCol.get(0).getBizDate());
+										
 										change=true;
 									}
 								} catch (BOSException e) {
@@ -985,6 +1001,7 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 							try {
 								PurchaseManageCollection ppmCol=PurchaseManageFactory.getRemoteInstance().getPurchaseManageCollection(evInfo);
 								row.getCell("actDate").setValue(ppmCol.get(0).getBizDate());
+								
 								change=true;
 							} catch (BOSException e) {
 								this.handUIException(e);
@@ -1003,6 +1020,7 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 							try {
 								SignManageCollection ppmCol=SignManageFactory.getRemoteInstance().getSignManageCollection(evInfo);
 								row.getCell("actDate").setValue(ppmCol.get(0).getBizDate());
+								
 								change=true;
 							} catch (BOSException e) {
 								this.handUIException(e);
@@ -1027,6 +1045,43 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		TransactionInfo transactionInfo = null;
 		try {
 			transactionInfo = SHEManageHelper.getTransactionInfo(null, room);//交易主线
+			
+			SelectorItemCollection sel=new SelectorItemCollection();
+			ObjectUuidPK pk=new ObjectUuidPK(transactionInfo.getBillId());
+			IObjectValue objectValue=DynamicObjectFactory.getRemoteInstance().getValue(pk.getObjectType(),pk,SHEManageHelper.getBizSelectors(pk.getObjectType()));
+			
+			ArrayList customer=new ArrayList();
+			if(objectValue instanceof SincerityPurchaseInfo){
+				sel.add("customer.customer.*");
+				sel.add("customer.*");
+				SincerityPurchaseInfo info=SincerityPurchaseFactory.getRemoteInstance().getSincerityPurchaseInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
+				for(int i=0;i<info.getCustomer().size();i++){
+					customer.add(info.getCustomer().get(i));
+				}
+			}else if(objectValue instanceof PrePurchaseManageInfo){
+				sel.add("prePurchaseCustomerEntry.customer.*");
+				sel.add("prePurchaseCustomerEntry.*");
+				PrePurchaseManageInfo info=PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
+				for(int i=0;i<info.getPrePurchaseCustomerEntry().size();i++){
+					customer.add(info.getPrePurchaseCustomerEntry().get(i));
+				}
+			}else if(objectValue instanceof PurchaseManageInfo){
+				sel.add("purCustomerEntry.customer.*");
+				sel.add("purCustomerEntry.*");
+				PurchaseManageInfo info=PurchaseManageFactory.getRemoteInstance().getPurchaseManageInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
+				for(int i=0;i<info.getPurCustomerEntry().size();i++){
+					customer.add(info.getPurCustomerEntry().get(i));
+				}
+			}else if(objectValue instanceof SignManageInfo){
+				sel.add("signCustomerEntry.customer.*");
+				sel.add("signCustomerEntry.*");
+				SignManageInfo info=SignManageFactory.getRemoteInstance().getSignManageInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
+				for(int i=0;i<info.getSignCustomerEntry().size();i++){
+					customer.add(info.getSignCustomerEntry().get(i));
+				}
+			}
+			SHEManageHelper.loadCustomer(labelCustomer1, labelCustomer2, labelCustomer3,labelCustomer4,labelCustomer5, customer, null, null);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1706,8 +1761,40 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		}
 		sellProject = (SellProjectInfo)this.getUIContext().get("sellProject");
 		this.totalFlowTable.getSelectManager().setSelectMode(KDTSelectManager.ROW_SELECT);
+		
+		this.labelCustomer1.setForeground(Color.BLUE);
+		this.labelCustomer2.setForeground(Color.BLUE);
+		this.labelCustomer3.setForeground(Color.BLUE);
+		this.labelCustomer4.setForeground(Color.BLUE);
+		this.labelCustomer5.setForeground(Color.BLUE);
+		kDLabel1.setForeground(Color.RED);
+	}
+	protected void labelCustomer1_mouseClicked(MouseEvent e) throws Exception {
+		if(e.getClickCount()==2){
+			SHEManageHelper.openCustomerInformation(this,(SHECustomerInfo)labelCustomer1.getUserObject());
+		}
+	}
+	protected void labelCustomer2_mouseClicked(MouseEvent e) throws Exception {
+		if(e.getClickCount()==2){
+			SHEManageHelper.openCustomerInformation(this, (SHECustomerInfo)labelCustomer2.getUserObject());
+		}
+	}
+	protected void labelCustomer3_mouseClicked(MouseEvent e) throws Exception {
+		if(e.getClickCount()==2){
+			SHEManageHelper.openCustomerInformation(this, (SHECustomerInfo)labelCustomer3.getUserObject());
+		}
 	}
 	
+	protected void labelCustomer4_mouseClicked(MouseEvent e) throws Exception {
+		if(e.getClickCount()==2){
+			SHEManageHelper.openCustomerInformation(this, (SHECustomerInfo)labelCustomer4.getUserObject());
+		}
+	}
+	protected void labelCustomer5_mouseClicked(MouseEvent e) throws Exception {
+		if(e.getClickCount()==2){
+			SHEManageHelper.openCustomerInformation(this, (SHECustomerInfo)labelCustomer5.getUserObject());
+		}
+	}
 	private void initBuyRoomPlan() {
 		Object isVirtual = this.getUIContext().get("isVirtual");
 		Boolean virtual = (Boolean)isVirtual;

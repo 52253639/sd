@@ -65,6 +65,7 @@ public abstract class AbstractOrgUnitMonthPlanGatherEditUI extends com.kingdee.e
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contVersionType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contExecuteAmount;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnExport;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel3;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtOrgUnit;
@@ -136,6 +137,7 @@ public abstract class AbstractOrgUnitMonthPlanGatherEditUI extends com.kingdee.e
         this.contVersionType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contExecuteAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.btnExport = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.kDLabel3 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.prmtOrgUnit = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -169,6 +171,7 @@ public abstract class AbstractOrgUnitMonthPlanGatherEditUI extends com.kingdee.e
         this.contVersionType.setName("contVersionType");
         this.contExecuteAmount.setName("contExecuteAmount");
         this.btnExport.setName("btnExport");
+        this.kDLabel3.setName("kDLabel3");
         this.txtNumber.setName("txtNumber");
         this.txtName.setName("txtName");
         this.prmtOrgUnit.setName("prmtOrgUnit");
@@ -321,6 +324,9 @@ public abstract class AbstractOrgUnitMonthPlanGatherEditUI extends com.kingdee.e
                 }
             }
         });
+        // kDLabel3		
+        this.kDLabel3.setText(resHelper.getString("kDLabel3.text"));		
+        this.kDLabel3.setForeground(new java.awt.Color(0,0,255));
         // txtNumber		
         this.txtNumber.setRequired(true);
         // txtName		
@@ -436,8 +442,8 @@ public abstract class AbstractOrgUnitMonthPlanGatherEditUI extends com.kingdee.e
         this.add(contCreateTime, new KDLayout.Constraints(371, 576, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contAuditTime.setBounds(new Rectangle(371, 598, 270, 19));
         this.add(contAuditTime, new KDLayout.Constraints(371, 598, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        pnlBig.setBounds(new Rectangle(10, 147, 991, 419));
-        this.add(pnlBig, new KDLayout.Constraints(10, 147, 991, 419, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        pnlBig.setBounds(new Rectangle(10, 162, 991, 404));
+        this.add(pnlBig, new KDLayout.Constraints(10, 162, 991, 404, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contVersion.setBounds(new Rectangle(732, 8, 270, 19));
         this.add(contVersion, new KDLayout.Constraints(732, 8, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contYear.setBounds(new Rectangle(732, 53, 189, 19));
@@ -450,14 +456,16 @@ public abstract class AbstractOrgUnitMonthPlanGatherEditUI extends com.kingdee.e
         this.add(kDLabel2, new KDLayout.Constraints(990, 53, 15, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contCycle.setBounds(new Rectangle(371, 30, 270, 19));
         this.add(contCycle, new KDLayout.Constraints(371, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        btnGet.setBounds(new Rectangle(882, 118, 119, 25));
-        this.add(btnGet, new KDLayout.Constraints(882, 118, 119, 25, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        btnGet.setBounds(new Rectangle(882, 129, 119, 25));
+        this.add(btnGet, new KDLayout.Constraints(882, 129, 119, 25, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contVersionType.setBounds(new Rectangle(732, 30, 270, 19));
         this.add(contVersionType, new KDLayout.Constraints(732, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contExecuteAmount.setBounds(new Rectangle(732, 75, 270, 19));
         this.add(contExecuteAmount, new KDLayout.Constraints(732, 75, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        btnExport.setBounds(new Rectangle(757, 118, 119, 25));
-        this.add(btnExport, new KDLayout.Constraints(757, 118, 119, 25, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        btnExport.setBounds(new Rectangle(757, 129, 119, 25));
+        this.add(btnExport, new KDLayout.Constraints(757, 129, 119, 25, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabel3.setBounds(new Rectangle(732, 100, 209, 19));
+        this.add(kDLabel3, new KDLayout.Constraints(732, 100, 209, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contNumber
         contNumber.setBoundEditor(txtNumber);
         //contName

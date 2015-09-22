@@ -373,6 +373,19 @@
                 <key name="name" value="User" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>commerceLevel</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[commerceLevel].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHECustomerQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="CommerceChanceAssistant" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <propertyUnit>
@@ -1762,6 +1775,68 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHECustomerQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>commerceLevel.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[commerceLevel.name].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>ed923171-ba3b-4cc3-93b0-c2b8f0b10193</key>
+                    <parentUnit>
+                        <key name="name" value="commerceLevel.name" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="commerceLevel" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="name" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHECustomerQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>trackDate</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[trackDate].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Date</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>913f790e-bd13-4c99-99d0-2c5ed667967d</key>
+                    <parentUnit>
+                        <key name="name" value="trackDate" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHECustomer" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="trackDate" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -3263,6 +3338,68 @@
                 <key name="name" value="SHECustomerQuery" />
             </query>
         </queryField>
+        <propertyUnit>
+            <name>8e82c8bb-4bcf-430a-87a2-f22493587daf</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[8e82c8bb-4bcf-430a-87a2-f22493587daf].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>916f8632-cde5-4721-bf38-673730961d73</key>
+                    <parentUnit>
+                        <key name="name" value="8e82c8bb-4bcf-430a-87a2-f22493587daf" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="SHECustomer" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="commerceLevel" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHECustomerQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>8ebd853b-e4dd-4621-8ad4-3d4ff56f3515</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[8ebd853b-e4dd-4621-8ad4-3d4ff56f3515].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType />
+            <propertyRefs>
+                <propertyRef>
+                    <key>5f93b077-cdb3-4a25-b79f-bbd263801299</key>
+                    <parentUnit>
+                        <key name="name" value="8ebd853b-e4dd-4621-8ad4-3d4ff56f3515" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="commerceLevel" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHECustomerQuery" />
+            </query>
+        </propertyUnit>
     </units>
     <defaultFilter>
         <name>defaultFilter</name>
@@ -4094,976 +4231,1056 @@
                 <key name="name" value="SHECustomerQuery" />
             </query>
         </join>
+        <join>
+            <name>f2b60098-2c50-4a44-9ade-5bd53eadc166</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="SHECustomer" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="commerceLevel" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>62642e3a-88ef-4473-900e-da4e2c11bdae</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="8e82c8bb-4bcf-430a-87a2-f22493587daf" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="8ebd853b-e4dd-4621-8ad4-3d4ff56f3515" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="f2b60098-2c50-4a44-9ade-5bd53eadc166" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="SHECustomerQuery" />
+            </query>
+        </join>
     </joins>
     <resource>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].alias">
-            <lang locale="zh_CN" value="客户查询" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户查询" />
             <lang locale="zh_HK" value="客戶查詢" />
             <lang locale="zh_TW" value="客戶查詢" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].description">
-            <lang locale="zh_CN" value="客户查询" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户查询" />
             <lang locale="zh_HK" value="客戶查詢" />
             <lang locale="zh_TW" value="客戶查詢" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].queryPK[QueryPK].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].queryPK[QueryPK].description">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[CU].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[SHECustomer].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[bookedPlace].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[certificateType].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[city].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[commerceLevel].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[cooperateModel].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[country].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[createUnit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[creator].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[customerOrigin].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[enterpriceProperty].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[enterpriceSize].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[firstConsultant].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[habitationArea].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[identity].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[industry].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[insider].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[lastUpdateUnit].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[lastUpdateUser].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[mainCustomer].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[nativePlace].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[propertyConsultant].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[province].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[region].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[sellProject].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[shareProject].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[shareProperty].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].subObjects.subEntity[workArea].alias">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[0436e14a-9242-4e9d-aca6-d00f3b027317].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[0a61b6d6-d4f1-4a69-bda7-042a5eadaef3].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[0b389dc0-9c03-418a-abe3-110a2c162311].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[10904cfe-0dc4-4086-be9b-c9e062c23464].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[1fe25f19-07d1-45a9-a681-263519ec75f0].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[23386810-a5bc-4301-8135-522f40256ce8].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[28091ce7-4b2a-42c2-9662-89eea42e7a51].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[36bd38c7-0ca7-44a1-bcf4-20fde7d65f9a].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3a193948-41b2-491b-ac7b-5f4183315961].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3a8ec69e-b6f5-4dad-8bb7-509c07db9ca9].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3b140aac-812d-4ef3-b6bf-aad9918a438c].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3b4257a2-7af9-4597-90eb-bab91e2020f1].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3b97639b-8b63-42e8-82c7-995267a4b8cd].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3bd22ef4-f5d1-4fa5-9c90-ed040de9fe07].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[3fedf86a-7e5c-4034-a49a-18021d99685c].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[433e4ef3-a96a-4961-b696-3aba90039c45].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[515782a9-7ffb-4486-ad06-f1874b05e9e0].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[5a2a6f12-7a38-4873-997d-10e88240388b].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[5c7b7571-7d21-4f7c-9555-0f764a3d9044].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[5e7a4bf7-12a4-49d9-95bf-a4fbadb66a44].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[5fa7965d-b572-42f7-9330-73e948a7025a].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[64b7a6d5-afeb-4c5a-866c-be70a798979d].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[65af1b95-dbab-4a9b-a72d-3e1baa1b5b03].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[6b072e4b-e62e-4f05-94d3-dc94b65bd32d].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[6bd70406-ad54-466c-8343-af9b69370bcb].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[6ca7216c-0ccc-4d76-a4da-373fd8b65211].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[6d56faa3-56f4-417f-8023-0dc36ea54bef].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[71277c26-69fc-4585-ba2a-596dd50f80c1].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[813514d3-e8f1-41bc-8c4e-b0d684e68dc0].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[859988f4-2537-4686-a9bf-a6e9cf80aa3e].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[869c0200-16f9-400f-a007-9761f957afd7].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[87c5a0dc-9b65-4a52-b572-808b20e0740a].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[8e82c8bb-4bcf-430a-87a2-f22493587daf].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[8ebd853b-e4dd-4621-8ad4-3d4ff56f3515].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[9c3dc8e7-634e-4539-ba03-466ab907c72e].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[a2c23803-1b6d-4ac8-8a6a-4151211094ba].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[a7b9d5b4-f961-4f8e-b806-304d34398093].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[b623575c-8551-4e32-b20e-a389d63cf3fc].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[c00f407e-200b-4e15-a9d9-10f2fd142873].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[c854a2c8-50f4-400c-b3af-532933c88bf3].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[cebae32b-3446-4bdf-8987-53191951f2fd].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[d41ca7ff-0459-4802-85e4-fcab1e5f1f87].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[d50848b0-caa4-4215-9564-c3db6fa6b3b2].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[d6bc45fa-02ca-4c2d-9f11-2cff73107fd2].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[df645dec-8e8e-4323-9936-f51681c6ee4a].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[e62a0f82-0ea1-4f14-a9fe-bbbc995ad60d].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[e896b99a-7c1c-422c-af46-96bdcae8f0a7].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[ec4791e1-095b-4d30-b2df-1096e3b23f45].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[ed775655-0da7-47e5-a1cc-e217e7deb2ef].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[f04c2283-964b-4c5c-b421-990c2367da09].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[f49b8ef6-cb34-46b4-9a41-be060c8d7faf].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[f4c3a5cc-9a53-4d39-81b5-207772f3c541].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[f6fcc1d8-6f31-4e65-af0d-7b2df5bd9c66].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[f8172ae1-a6f3-4206-8fab-d106682ec61a].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[f8710136-c34e-4a3f-949b-70cbbd157e65].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.propertyUnit[ffb7ef4f-5e04-480e-a6ac-c41dd9e5d924].displayName">
-            <lang locale="zh_CN" value="null" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[bookedAddress].displayName">
-            <lang locale="zh_CN" value="证件/注册地址" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="证件/注册地址" />
             <lang locale="zh_HK" value="證件/註冊地址" />
             <lang locale="zh_TW" value="證件/註冊地址" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[bookedAddress].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[bookedAddress].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[bookedPlace.name].displayName">
-            <lang locale="zh_CN" value="国籍/注册地" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="国籍/注册地" />
             <lang locale="zh_HK" value="國籍/註冊地" />
             <lang locale="zh_TW" value="國籍/註冊地" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[certificateNumber].displayName">
-            <lang locale="zh_CN" value="证件号码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="证件号码" />
             <lang locale="zh_HK" value="證件號碼" />
             <lang locale="zh_TW" value="證件號碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[certificateNumber].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[certificateNumber].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[code].displayName">
-            <lang locale="zh_CN" value="客户代码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户代码" />
             <lang locale="zh_HK" value="客戶代碼" />
             <lang locale="zh_TW" value="客戶代碼" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporateTel].displayName">
-            <lang locale="zh_CN" value="企业法人移动电话" />
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[commerceLevel.name].displayName">
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="商机级别" />
+            <lang locale="zh_HK" value="商機級別" />
+            <lang locale="zh_TW" value="商機級別" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[commerceLevel.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[commerceLevel.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporateTel].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="企业法人移动电话" />
             <lang locale="zh_HK" value="企業法人移動電話" />
             <lang locale="zh_TW" value="企業法人移動電話" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporateTel].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporateTel].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporate].displayName">
-            <lang locale="zh_CN" value="企业法人" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="企业法人" />
             <lang locale="zh_HK" value="企業法人" />
             <lang locale="zh_TW" value="企業法人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporate].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[corporate].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createTime].displayName">
-            <lang locale="zh_CN" value="创建日期" />
             <lang locale="en_US" value="createTime" />
+            <lang locale="zh_CN" value="创建日期" />
             <lang locale="zh_HK" value="創建日期" />
             <lang locale="zh_TW" value="創建日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createUnit.name].displayName">
-            <lang locale="zh_CN" value="创建组织" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="创建组织" />
             <lang locale="zh_HK" value="創建組織" />
             <lang locale="zh_TW" value="創建組織" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createWay].displayName">
-            <lang locale="zh_CN" value="建立方式" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="建立方式" />
             <lang locale="zh_HK" value="建立方式" />
             <lang locale="zh_TW" value="建立方式" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createWay].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[createWay].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[creator.name].displayName">
-            <lang locale="zh_CN" value="创建人" />
             <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="创建人" />
             <lang locale="zh_HK" value="創建人" />
             <lang locale="zh_TW" value="創建人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[creator.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[creator.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[customerType].displayName">
-            <lang locale="zh_CN" value="客户类型" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户类型" />
             <lang locale="zh_HK" value="客戶類型" />
             <lang locale="zh_TW" value="客戶類型" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[customerType].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[customerType].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[description].displayName">
-            <lang locale="zh_CN" value="备注" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="备注" />
             <lang locale="zh_HK" value="備註" />
             <lang locale="zh_TW" value="備註" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[description].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[description].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[email].displayName">
-            <lang locale="zh_CN" value="Email" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="Email" />
             <lang locale="zh_HK" value="Email" />
             <lang locale="zh_TW" value="Email" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[enterpriceProperty.name].displayName">
-            <lang locale="zh_CN" value="企业性质" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="企业性质" />
             <lang locale="zh_HK" value="企業性質" />
             <lang locale="zh_TW" value="企業性質" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[enterpriceProperty.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[enterpriceProperty.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[firstConsultant.id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[firstConsultant.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[firstConsultant.name].displayName">
-            <lang locale="zh_CN" value="用户实名" />
             <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="用户实名" />
             <lang locale="zh_HK" value="用戶實名" />
             <lang locale="zh_TW" value="用戶實名" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[firstLinkman].displayName">
-            <lang locale="zh_CN" value="首选联系人" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="首选联系人" />
             <lang locale="zh_HK" value="首選聯繫人" />
             <lang locale="zh_TW" value="首選聯繫人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[id].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[identity.name].displayName">
-            <lang locale="zh_CN" value="客户身份" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户身份" />
             <lang locale="zh_HK" value="客戶身份" />
             <lang locale="zh_TW" value="客戶身份" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[industry.name].displayName">
-            <lang locale="zh_CN" value="所属行业" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="所属行业" />
             <lang locale="zh_HK" value="所屬行業" />
             <lang locale="zh_TW" value="所屬行業" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isChooseRoom].displayName">
-            <lang locale="zh_CN" value="是否选房客户" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否选房客户" />
             <lang locale="zh_HK" value="是否選房客戶" />
             <lang locale="zh_TW" value="是否選房客戶" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isEnabled].displayName">
-            <lang locale="zh_CN" value="是否启用" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否启用" />
             <lang locale="zh_HK" value="是否啟用" />
             <lang locale="zh_TW" value="是否啟用" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isEnabled].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isEnabled].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isInsider].displayName">
-            <lang locale="zh_CN" value="是否会员" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否会员" />
             <lang locale="zh_HK" value="是否會員" />
             <lang locale="zh_TW" value="是否會員" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isInsider].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isInsider].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[isPublic].displayName">
-            <lang locale="zh_CN" value="是否公共客户" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="是否公共客户" />
             <lang locale="zh_HK" value="是否公共客戶" />
             <lang locale="zh_TW" value="是否公共客戶" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateTime].displayName">
-            <lang locale="zh_CN" value="最后修改日期" />
             <lang locale="en_US" value="lastUpdateTime" />
+            <lang locale="zh_CN" value="最后修改日期" />
             <lang locale="zh_HK" value="最後修改日期" />
             <lang locale="zh_TW" value="最後修改日期" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateTime].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateTime].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateUnit.name].displayName">
-            <lang locale="zh_CN" value="最后修改组织" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="最后修改组织" />
             <lang locale="zh_HK" value="最後修改組織" />
             <lang locale="zh_TW" value="最後修改組織" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateUser.name].displayName">
-            <lang locale="zh_CN" value="最后修改人" />
             <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="最后修改人" />
             <lang locale="zh_HK" value="最後修改人" />
             <lang locale="zh_TW" value="最後修改人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateUser.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[lastUpdateUser.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[mailAddress].displayName">
-            <lang locale="zh_CN" value="通信/公司地址" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="通信/公司地址" />
             <lang locale="zh_HK" value="通信/公司地址" />
             <lang locale="zh_TW" value="通信/公司地址" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[mailAddress].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[mailAddress].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[name].displayName">
-            <lang locale="zh_CN" value="客户名称" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户名称" />
             <lang locale="zh_HK" value="客戶名稱" />
             <lang locale="zh_TW" value="客戶名稱" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[number].displayName">
-            <lang locale="zh_CN" value="客户编码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户编码" />
             <lang locale="zh_HK" value="客戶編碼" />
             <lang locale="zh_TW" value="客戶編碼" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[phone].displayName">
-            <lang locale="zh_CN" value="移动电话" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="移动电话" />
             <lang locale="zh_HK" value="移動電話" />
             <lang locale="zh_TW" value="移動電話" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[phone].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[phone].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[postalCode].displayName">
-            <lang locale="zh_CN" value="邮政编码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="邮政编码" />
             <lang locale="zh_HK" value="郵遞區號" />
             <lang locale="zh_TW" value="郵遞區號" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[postalCode].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[postalCode].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[propertyConsultant.id].displayName">
-            <lang locale="zh_CN" value="ID" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="ID" />
             <lang locale="zh_HK" value="ID" />
             <lang locale="zh_TW" value="ID" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[propertyConsultant.id].extendedProperty.isVisibleForKDTable">
+            <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
             <lang locale="zh_TW" value="false" />
-            <lang locale="en_US" value="false" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[propertyConsultant.name].displayName">
-            <lang locale="zh_CN" value="置业顾问" />
             <lang locale="en_US" value="用户别名" />
+            <lang locale="zh_CN" value="置业顾问" />
             <lang locale="zh_HK" value="置業顧問" />
             <lang locale="zh_TW" value="置業顧問" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[propertyConsultant.name].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[propertyConsultant.name].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[recommended].displayName">
-            <lang locale="zh_CN" value="推荐人" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="推荐人" />
             <lang locale="zh_HK" value="推薦人" />
             <lang locale="zh_TW" value="推薦人" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[recommended].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[recommended].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[sellProject.name].displayName">
-            <lang locale="zh_CN" value="来源项目" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="来源项目" />
             <lang locale="zh_HK" value="來源項目" />
             <lang locale="zh_TW" value="來源項目" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[sex].displayName">
-            <lang locale="zh_CN" value="性别" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="性别" />
             <lang locale="zh_HK" value="性別" />
             <lang locale="zh_TW" value="性別" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[sex].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[sex].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />
-            <lang locale="en_US" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[simpleCode].displayName">
-            <lang locale="zh_CN" value="客户简码" />
             <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="客户简码" />
             <lang locale="zh_HK" value="客戶簡碼" />
             <lang locale="zh_TW" value="客戶簡碼" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[trackDate].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="跟进日期" />
+            <lang locale="zh_HK" value="跟進日期" />
+            <lang locale="zh_TW" value="跟進日期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[trackDate].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.sellhouse.app.SHECustomerQuery].units.queryField[trackDate].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
         </rs>
     </resource>
 </joinQuery>

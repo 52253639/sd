@@ -818,6 +818,7 @@ public class SHEManageHelper {
 		view.getSelector().add("currentLink");
 		view.getSelector().add("billId");
 		view.getSelector().add("tranBusinessOverView.*");
+		view.getSelector().add("customerNames");
 		
 		FilterInfo filter = new FilterInfo();
 		filter.getFilterItems().add(new FilterItemInfo("room.id", room.getId().toString()));

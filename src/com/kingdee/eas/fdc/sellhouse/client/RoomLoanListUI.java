@@ -27,6 +27,7 @@ import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTSelectEvent;
 import com.kingdee.bos.ctrl.kdf.table.util.KDTableUtil;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
+import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.IQueryExecutor;
@@ -296,8 +297,10 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 		actionBatchLoan.setVisible(false);
 		actionLocate.setVisible(false);
 		
-		this.actionRemove.setVisible(false);
+		this.actionRemove.setVisible(true);
+		this.btnRemove.setEnabled(true);
 		this.actionBatchReceiveBill.setVisible(false);
+		
 		
 	}
 
@@ -713,19 +716,19 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 			FDCMsgBox.showWarning(this, "请先选择项目!");
 			this.abort();
 		}
-		comfim = MsgBox.showConfirm2New(this, "是否生成"+sellProject.getName().toString()+"下所有认购和签约房间的按揭服务记录?");
+		comfim = MsgBox.showConfirm2New(this, "是否生成"+sellProject.getName().toString()+"下所有签约房间的按揭服务记录?");
 		
 		if (comfim == MsgBox.YES) {
 			creataNewLoanRecoard(sellProject.getId().toString());
+			refresh(null);
 		}else{
-			UIContext uiContext = new UIContext(this);
-			uiContext.put("selectProject", sellProject);
-			IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(RoomLoanProcessUI.class.getName(), 
-					uiContext, null, OprtState.VIEW);
-			uiWindow.show();
+//			UIContext uiContext = new UIContext(this);
+//			uiContext.put("selectProject", sellProject);
+//			IUIWindow uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(RoomLoanProcessUI.class.getName(), 
+//					uiContext, null, OprtState.VIEW);
+//			uiWindow.show();
+			return;
 		}
-		
-		refresh(null);
 	}
 
 	private void creataNewLoanRecoard(String projectId) {
@@ -1607,45 +1610,45 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
 		checkSelected();
-		/*Set purchaseSet = new HashSet();
-		Set moneyTypeSet = new HashSet();
-		int selectedRows[] = KDTableUtil.getSelectedRows(this.tblMain);
-		for (int i = 0; i < selectedRows.length; i++) {
-			IRow row = this.tblMain.getRow(selectedRows[i]);
-//			String purchaseID = ((BOSUuid) row.getCell("id").getValue()).toString();
-			BizEnumValueInfo moneyType = (BizEnumValueInfo) row.getCell("afmType").getValue();
-//			purchaseSet.add(purchaseID);
-			moneyTypeSet.add(moneyType);
-		}
-		if (moneyTypeSet.size() > 1) {
-			MsgBox.showInfo("所选的房间按揭款项不一致");
-			this.abort();
-		}
-		if (purchaseSet.size() > 0) {
-			FDCSQLBuilder builder = new FDCSQLBuilder();
-			builder.appendSql(" select count(*) count from T_SHE_Purchase purchase ");
-			builder.appendSql(" left join T_SHE_PurchasePayListEntry payList on payList.fHeadID = purchase.fid ");
-			builder.appendSql(" left join T_SHE_moneyDefine moneyDefine on payList.fMoneyDefineID = moneyDefine.fid where ");
-			builder.appendParam("purchase.fid", purchaseSet.toArray());
-			builder.appendSql(" and isnull(payList.FActRevAmount,0)>0 ");
-			Iterator iter = moneyTypeSet.iterator();
-			MoneyTypeEnum monType = (MoneyTypeEnum) iter.next();
-			if (MoneyTypeEnum.LoanAmount.equals(monType)) {
-				builder.appendSql(" and moneyDefine.FMoneyType='LoanAmount' ");
-			} else if (MoneyTypeEnum.AccFundAmount.equals(monType)) {
-				builder.appendSql(" and moneyDefine.FMoneyType='AccFundAmount' ");
-			}
-			IRowSet countSet = builder.executeQuery();
-			while (countSet.next()) {
-				int count = countSet.getInt("count");
-				if (count > 0) {
-					MsgBox.showInfo("所选的房间已经收取" + monType + "不能删除!");
-					this.abort();
-				}
-			}
-		}
-		if (checkEditAndRemove("删除")) {
-			isAddNew = false;
+//		Set purchaseSet = new HashSet();
+//		Set moneyTypeSet = new HashSet();
+//		int selectedRows[] = KDTableUtil.getSelectedRows(this.tblMain);
+//		for (int i = 0; i < selectedRows.length; i++) {
+//			IRow row = this.tblMain.getRow(selectedRows[i]);
+////			String purchaseID = ((BOSUuid) row.getCell("id").getValue()).toString();
+//			BizEnumValueInfo moneyType = (BizEnumValueInfo) row.getCell("afmType").getValue();
+////			purchaseSet.add(purchaseID);
+//			moneyTypeSet.add(moneyType);
+//		}
+//		if (moneyTypeSet.size() > 1) {
+//			MsgBox.showInfo("所选的房间按揭款项不一致");
+//			this.abort();
+//		}
+//		if (purchaseSet.size() > 0) {
+//			FDCSQLBuilder builder = new FDCSQLBuilder();
+//			builder.appendSql(" select count(*) count from T_SHE_Purchase purchase ");
+//			builder.appendSql(" left join T_SHE_PurchasePayListEntry payList on payList.fHeadID = purchase.fid ");
+//			builder.appendSql(" left join T_SHE_moneyDefine moneyDefine on payList.fMoneyDefineID = moneyDefine.fid where ");
+//			builder.appendParam("purchase.fid", purchaseSet.toArray());
+//			builder.appendSql(" and isnull(payList.FActRevAmount,0)>0 ");
+//			Iterator iter = moneyTypeSet.iterator();
+//			MoneyTypeEnum monType = (MoneyTypeEnum) iter.next();
+//			if (MoneyTypeEnum.LoanAmount.equals(monType)) {
+//				builder.appendSql(" and moneyDefine.FMoneyType='LoanAmount' ");
+//			} else if (MoneyTypeEnum.AccFundAmount.equals(monType)) {
+//				builder.appendSql(" and moneyDefine.FMoneyType='AccFundAmount' ");
+//			}
+//			IRowSet countSet = builder.executeQuery();
+//			while (countSet.next()) {
+//				int count = countSet.getInt("count");
+//				if (count > 0) {
+//					MsgBox.showInfo("所选的房间已经收取" + monType + "不能删除!");
+//					this.abort();
+//				}
+//			}
+//		}
+//		if (checkEditAndRemove("删除")) {
+//			isAddNew = false;
 			int[] rows = KDTableUtil.getSelectedRows(tblMain);
 			IRoomLoan ir = RoomLoanFactory.getRemoteInstance();
 			if (rows != null && rows.length > 0) {
@@ -1656,14 +1659,14 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 						row = this.tblMain.getRow(rows[i]);
 						pks[i] = new ObjectUuidPK(row.getCell("id").getValue().toString());
 						//删除或重置总览中的业务
-						this.deleteTransactionBiz(row.getCell("id").getValue().toString());
+//						this.deleteTransactionBiz(row.getCell("id").getValue().toString());
 					}
 					ir.delete(pks);
 					MsgBox.showWarning("删除成功！");
 					refresh(null);
 				}
 			}
-		}*/
+//		}
 	}
 	
 	/**

@@ -66,6 +66,7 @@ public abstract class AbstractContractPayPlanEditUI extends com.kingdee.eas.fdc.
     protected com.kingdee.bos.ctrl.swing.KDContainer contAct;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRespPerson;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contRespDept;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtOrg;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane1;
@@ -158,6 +159,7 @@ public abstract class AbstractContractPayPlanEditUI extends com.kingdee.eas.fdc.
         this.contAct = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.contRespPerson = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contRespDept = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtOrg = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.kDScrollPane1 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
@@ -198,6 +200,7 @@ public abstract class AbstractContractPayPlanEditUI extends com.kingdee.eas.fdc.
         this.contAct.setName("contAct");
         this.contRespPerson.setName("contRespPerson");
         this.contRespDept.setName("contRespDept");
+        this.kDLabel1.setName("kDLabel1");
         this.txtNumber.setName("txtNumber");
         this.txtOrg.setName("txtOrg");
         this.kDScrollPane1.setName("kDScrollPane1");
@@ -332,6 +335,9 @@ public abstract class AbstractContractPayPlanEditUI extends com.kingdee.eas.fdc.
         this.contRespDept.setBoundLabelText(resHelper.getString("contRespDept.boundLabelText"));		
         this.contRespDept.setBoundLabelLength(100);		
         this.contRespDept.setBoundLabelUnderline(true);
+        // kDLabel1		
+        this.kDLabel1.setText(resHelper.getString("kDLabel1.text"));		
+        this.kDLabel1.setForeground(new java.awt.Color(0,0,255));
         // txtNumber		
         this.txtNumber.setRequired(true);
         // txtOrg		
@@ -507,6 +513,8 @@ public abstract class AbstractContractPayPlanEditUI extends com.kingdee.eas.fdc.
         payPlan.add(contRespPerson, new KDLayout.Constraints(728, 52, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contRespDept.setBounds(new Rectangle(728, 74, 270, 19));
         payPlan.add(contRespDept, new KDLayout.Constraints(728, 74, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDLabel1.setBounds(new Rectangle(728, 97, 209, 19));
+        payPlan.add(kDLabel1, new KDLayout.Constraints(728, 97, 209, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contNumber
         contNumber.setBoundEditor(txtNumber);
         //contOrg

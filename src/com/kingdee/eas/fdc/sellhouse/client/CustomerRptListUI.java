@@ -158,6 +158,9 @@ public class CustomerRptListUI extends AbstractCustomerRptListUI {
 				"yyyy-MM-dd");
 		tblMain.getColumn("lastUpdateTime").getStyleAttributes()
 				.setNumberFormat("yyyy-MM-dd");
+		
+		tblMain.getColumn("trackDate").getStyleAttributes()
+		.setNumberFormat("yyyy-MM-dd");
 
 		this.btnImport.setVisible(true);
 		this.btnAttachment.setVisible(true);

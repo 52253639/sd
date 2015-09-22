@@ -538,8 +538,8 @@ public class ContractWithoutTextControllerBean extends
 		return null;
 	}
 	
-	private int isCitingByContractWithoutText(String proContId) {
-		FDCSQLBuilder buildSQL = new FDCSQLBuilder();
+	private int isCitingByContractWithoutText(Context ctx,String proContId) {
+		FDCSQLBuilder buildSQL = new FDCSQLBuilder(ctx);
 		buildSQL.appendSql("select count(*) count from T_CON_ContractWithoutText ");
 		buildSQL.appendSql("where FProgrammingContract = '" + proContId + "' ");
 		int count = 0;
@@ -564,7 +564,7 @@ public class ContractWithoutTextControllerBean extends
 	private void updateOldProg(Context ctx, IObjectPK pk) throws Exception {
 		String checkReaPre = checkReaPre(ctx, pk);
 		if(checkReaPre!=null){
-			int linkContractWithoutText = isCitingByContractWithoutText(checkReaPre);// 本合约关联无文本合同招立项数
+			int linkContractWithoutText = isCitingByContractWithoutText(ctx,checkReaPre);// 本合约关联无文本合同招立项数
 			if (linkContractWithoutText <= 1 ) {
 				updateProgrammingContract(ctx, checkReaPre, 0);
 			}

@@ -62,6 +62,7 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBizDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractInfo;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contNumber;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtGCL;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtAmount;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkAuditTime;
@@ -147,6 +148,7 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.contBizDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contContractInfo = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contNumber = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.txtGCL = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.pkAuditTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
@@ -179,6 +181,7 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.contBizDate.setName("contBizDate");
         this.contContractInfo.setName("contContractInfo");
         this.contNumber.setName("contNumber");
+        this.kDLabel1.setName("kDLabel1");
         this.txtGCL.setName("txtGCL");
         this.txtAmount.setName("txtAmount");
         this.pkAuditTime.setName("pkAuditTime");
@@ -295,6 +298,9 @@ public abstract class AbstractContractOutPayPlanEditUI extends com.kingdee.eas.f
         this.contNumber.setBoundLabelText(resHelper.getString("contNumber.boundLabelText"));		
         this.contNumber.setBoundLabelLength(100);		
         this.contNumber.setBoundLabelUnderline(true);
+        // kDLabel1		
+        this.kDLabel1.setText(resHelper.getString("kDLabel1.text"));		
+        this.kDLabel1.setForeground(new java.awt.Color(0,0,255));
         // txtGCL		
         this.txtGCL.setEnabled(false);		
         this.txtGCL.setDataType(1);		
@@ -397,8 +403,8 @@ this.setLayout(new BorderLayout(0, 0));
         kDPanel1.add(contAuditor, new KDLayout.Constraints(128, 539, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contCreator.setBounds(new Rectangle(128, 491, 270, 19));
         kDPanel1.add(contCreator, new KDLayout.Constraints(128, 491, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDescription.setBounds(new Rectangle(128, 199, 700, 164));
-        kDPanel1.add(contDescription, new KDLayout.Constraints(128, 199, 700, 164, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDescription.setBounds(new Rectangle(128, 241, 700, 164));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(128, 241, 700, 164, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contOrg.setBounds(new Rectangle(557, 23, 270, 19));
         kDPanel1.add(contOrg, new KDLayout.Constraints(557, 23, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contContractAmount.setBounds(new Rectangle(557, 67, 270, 19));
@@ -411,6 +417,8 @@ this.setLayout(new BorderLayout(0, 0));
         kDPanel1.add(contContractInfo, new KDLayout.Constraints(128, 67, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contNumber.setBounds(new Rectangle(128, 23, 270, 19));
         kDPanel1.add(contNumber, new KDLayout.Constraints(128, 23, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabel1.setBounds(new Rectangle(128, 200, 209, 19));
+        kDPanel1.add(kDLabel1, new KDLayout.Constraints(128, 200, 209, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contGCL
         contGCL.setBoundEditor(txtGCL);
         //contAmount

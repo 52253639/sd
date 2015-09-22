@@ -334,6 +334,9 @@ public class CustomerRptEditUI extends AbstractCustomerRptEditUI {
 		this.f7Recommended.setEntityViewInfo(review);
 		
 		this.tblLinkman.getColumn("number").getStyleAttributes().setHided(true);
+		
+		this.tblCommerceChance.getColumn("worth").getStyleAttributes().setHided(true);
+		this.tblCommerceChance.getColumn("probability").getStyleAttributes().setHided(true);
 	}
 	
 	public void initCom(){
@@ -487,10 +490,17 @@ public class CustomerRptEditUI extends AbstractCustomerRptEditUI {
 		}
 		FullOrgUnitInfo orgUnit = SysContext.getSysContext().getCurrentSaleUnit().castToFullOrgUnitInfo();
 		sheCustomerInfo.setCreator((UserInfo) (SysContext.getSysContext().getCurrentUserInfo()));
-		sheCustomerInfo.setCreateTime(new Timestamp(new Date().getTime()));
+		try {
+			Timestamp now=FDCCommonServerHelper.getServerTimeStamp();
+			sheCustomerInfo.setCreateTime(now);
+			sheCustomerInfo.setLastUpdateTime(now);
+		} catch (BOSException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		sheCustomerInfo.setCreateUnit(orgUnit);
 		sheCustomerInfo.setLastUpdateUser((UserInfo) ((UserInfo) (SysContext.getSysContext().getCurrentUserInfo())));
-		sheCustomerInfo.setLastUpdateTime(new Timestamp(new Date().getTime()));
+		
 		sheCustomerInfo.setLastUpdateUnit(orgUnit);
 		SellProjectInfo sellProjectInfo = (SellProjectInfo) this.getUIContext().get("sellProject");
 		if (sellProjectInfo != null) {
@@ -3173,8 +3183,8 @@ public class CustomerRptEditUI extends AbstractCustomerRptEditUI {
 		sic.add("status");
 		sic.add("number");
 		sic.add("name");
-		sic.add("commerceLevel.id");
-		sic.add("commerceLevel.name");
+		sic.add("newLevel.id");
+		sic.add("newLevel.name");
 		sic.add("commerceChanceStage.id");
 		sic.add("commerceChanceStage.name");
 		sic.add("effectiveDate");
@@ -3220,8 +3230,8 @@ public class CustomerRptEditUI extends AbstractCustomerRptEditUI {
 						addRow.getCell("status").setValue(commerceChanceInfo.getStatus());
 						addRow.getCell("number").setValue(commerceChanceInfo.getNumber());
 						addRow.getCell("name").setValue(commerceChanceInfo.getName());
-						if (commerceChanceInfo.getCommerceLevel() != null) {
-							addRow.getCell("commerceLevel.name").setValue(commerceChanceInfo.getCommerceLevel().getName());
+						if (commerceChanceInfo.getNewLevel() != null) {
+							addRow.getCell("commerceLevel.name").setValue(commerceChanceInfo.getNewLevel().getName());
 						} else {
 							addRow.getCell("commerceLevel.name").setValue("");
 						}

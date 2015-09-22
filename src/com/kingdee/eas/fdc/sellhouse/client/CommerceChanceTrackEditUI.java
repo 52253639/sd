@@ -59,6 +59,7 @@ import com.kingdee.eas.fdc.sellhouse.CommerceChanceTrackInfo;
 import com.kingdee.eas.fdc.sellhouse.CommerceChangeNewStatusEnum;
 import com.kingdee.eas.fdc.sellhouse.InteractionTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.RoomModelInfo;
+import com.kingdee.eas.fdc.sellhouse.SHECustomerFactory;
 import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.TrackEventEnum;
@@ -483,6 +484,15 @@ public class CommerceChanceTrackEditUI extends AbstractCommerceChanceTrackEditUI
     			for(int i=0;i<col.size();i++){
     				col.get(i).setClassify(lastTrackInfo.getClassify());
     				CommerceChanceTrackFactory.getRemoteInstance().updatePartial(col.get(i), updatesic);
+    			}
+    			
+    			if(editData.getCommerceChance().getCustomer()!=null){
+    				sic = new SelectorItemCollection();
+                    sic.add(new SelectorItemInfo("trackDate"));
+                    sic.add(new SelectorItemInfo("commerceLevel"));
+                    editData.getCommerceChance().getCustomer().setTrackDate(lastTrackInfo.getTrackDate());
+                    editData.getCommerceChance().getCustomer().setCommerceLevel(lastTrackInfo.getCommerceLevel());
+                    SHECustomerFactory.getRemoteInstance().updatePartial(editData.getCommerceChance().getCustomer(), sic);
     			}
     		}
     	}

@@ -61,9 +61,12 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardTotalAmount;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealRoomPrice;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStandardBuildPrice;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealTotalAmount;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDealBuildPrice;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSaleMan;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer1;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer2;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel1;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer4;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtRoomModelType;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7RoomModel;
@@ -76,9 +79,11 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtStandardTotalAmount;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealRoomPrice;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtStandardBuildPrice;
-    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealTotalAmount;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealBuildPrice;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtSaleMan;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtActBuildArea;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtActRoomArea;
+    protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtDealTotalAmount;
     protected com.kingdee.bos.ctrl.swing.KDScrollPane buyRoomPlanPane;
     protected com.kingdee.bos.ctrl.swing.KDPanel bizTotalFlow;
     protected com.kingdee.bos.ctrl.swing.KDPanel roomPropertyBook;
@@ -87,6 +92,17 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
     protected com.kingdee.bos.ctrl.swing.KDPanel keepDown;
     protected com.kingdee.bos.ctrl.swing.KDPanel roomLoanPanel;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable totalFlowTable;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer kDLabelContainer3;
+    protected com.kingdee.bos.ctrl.swing.KDLabel labelCustomer1;
+    protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator5;
+    protected com.kingdee.bos.ctrl.swing.KDLabel labelCustomer2;
+    protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator6;
+    protected com.kingdee.bos.ctrl.swing.KDLabel labelCustomer3;
+    protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator7;
+    protected com.kingdee.bos.ctrl.swing.KDLabel labelCustomer4;
+    protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator8;
+    protected com.kingdee.bos.ctrl.swing.KDLabel labelCustomer5;
+    protected com.kingdee.bos.ctrl.swing.KDSeparator kDSeparator9;
     protected com.kingdee.bos.ctrl.swing.KDContainer kDContainer6;
     protected com.kingdee.bos.ctrl.swing.KDContainer kDContainer7;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblPBProcesser;
@@ -137,9 +153,12 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contStandardTotalAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contDealRoomPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contStandardBuildPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contDealTotalAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contDealBuildPrice = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contSaleMan = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kDLabelContainer1 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kDLabelContainer2 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.kDLabel1 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDLabelContainer4 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtRoomModelType = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.f7RoomModel = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -152,9 +171,11 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.txtStandardTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtDealRoomPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtStandardBuildPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
-        this.txtDealTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtDealBuildPrice = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.txtSaleMan = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtActBuildArea = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtActRoomArea = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
+        this.txtDealTotalAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.buyRoomPlanPane = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.bizTotalFlow = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.roomPropertyBook = new com.kingdee.bos.ctrl.swing.KDPanel();
@@ -163,6 +184,17 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.keepDown = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.roomLoanPanel = new com.kingdee.bos.ctrl.swing.KDPanel();
         this.totalFlowTable = new com.kingdee.bos.ctrl.kdf.table.KDTable();
+        this.kDLabelContainer3 = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.labelCustomer1 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDSeparator5 = new com.kingdee.bos.ctrl.swing.KDSeparator();
+        this.labelCustomer2 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDSeparator6 = new com.kingdee.bos.ctrl.swing.KDSeparator();
+        this.labelCustomer3 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDSeparator7 = new com.kingdee.bos.ctrl.swing.KDSeparator();
+        this.labelCustomer4 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDSeparator8 = new com.kingdee.bos.ctrl.swing.KDSeparator();
+        this.labelCustomer5 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.kDSeparator9 = new com.kingdee.bos.ctrl.swing.KDSeparator();
         this.kDContainer6 = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.kDContainer7 = new com.kingdee.bos.ctrl.swing.KDContainer();
         this.tblPBProcesser = new com.kingdee.bos.ctrl.kdf.table.KDTable();
@@ -190,9 +222,12 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contStandardTotalAmount.setName("contStandardTotalAmount");
         this.contDealRoomPrice.setName("contDealRoomPrice");
         this.contStandardBuildPrice.setName("contStandardBuildPrice");
-        this.contDealTotalAmount.setName("contDealTotalAmount");
         this.contDealBuildPrice.setName("contDealBuildPrice");
         this.contSaleMan.setName("contSaleMan");
+        this.kDLabelContainer1.setName("kDLabelContainer1");
+        this.kDLabelContainer2.setName("kDLabelContainer2");
+        this.kDLabel1.setName("kDLabel1");
+        this.kDLabelContainer4.setName("kDLabelContainer4");
         this.txtNumber.setName("txtNumber");
         this.txtRoomModelType.setName("txtRoomModelType");
         this.f7RoomModel.setName("f7RoomModel");
@@ -205,9 +240,11 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.txtStandardTotalAmount.setName("txtStandardTotalAmount");
         this.txtDealRoomPrice.setName("txtDealRoomPrice");
         this.txtStandardBuildPrice.setName("txtStandardBuildPrice");
-        this.txtDealTotalAmount.setName("txtDealTotalAmount");
         this.txtDealBuildPrice.setName("txtDealBuildPrice");
         this.txtSaleMan.setName("txtSaleMan");
+        this.txtActBuildArea.setName("txtActBuildArea");
+        this.txtActRoomArea.setName("txtActRoomArea");
+        this.txtDealTotalAmount.setName("txtDealTotalAmount");
         this.buyRoomPlanPane.setName("buyRoomPlanPane");
         this.bizTotalFlow.setName("bizTotalFlow");
         this.roomPropertyBook.setName("roomPropertyBook");
@@ -216,6 +253,17 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.keepDown.setName("keepDown");
         this.roomLoanPanel.setName("roomLoanPanel");
         this.totalFlowTable.setName("totalFlowTable");
+        this.kDLabelContainer3.setName("kDLabelContainer3");
+        this.labelCustomer1.setName("labelCustomer1");
+        this.kDSeparator5.setName("kDSeparator5");
+        this.labelCustomer2.setName("labelCustomer2");
+        this.kDSeparator6.setName("kDSeparator6");
+        this.labelCustomer3.setName("labelCustomer3");
+        this.kDSeparator7.setName("kDSeparator7");
+        this.labelCustomer4.setName("labelCustomer4");
+        this.kDSeparator8.setName("kDSeparator8");
+        this.labelCustomer5.setName("labelCustomer5");
+        this.kDSeparator9.setName("kDSeparator9");
         this.kDContainer6.setName("kDContainer6");
         this.kDContainer7.setName("kDContainer7");
         this.tblPBProcesser.setName("tblPBProcesser");
@@ -281,10 +329,6 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contStandardBuildPrice.setBoundLabelText(resHelper.getString("contStandardBuildPrice.boundLabelText"));		
         this.contStandardBuildPrice.setBoundLabelLength(75);		
         this.contStandardBuildPrice.setBoundLabelUnderline(true);
-        // contDealTotalAmount		
-        this.contDealTotalAmount.setBoundLabelText(resHelper.getString("contDealTotalAmount.boundLabelText"));		
-        this.contDealTotalAmount.setBoundLabelLength(75);		
-        this.contDealTotalAmount.setBoundLabelUnderline(true);
         // contDealBuildPrice		
         this.contDealBuildPrice.setBoundLabelText(resHelper.getString("contDealBuildPrice.boundLabelText"));		
         this.contDealBuildPrice.setBoundLabelLength(75);		
@@ -293,6 +337,19 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.contSaleMan.setBoundLabelText(resHelper.getString("contSaleMan.boundLabelText"));		
         this.contSaleMan.setBoundLabelLength(75);		
         this.contSaleMan.setBoundLabelUnderline(true);
+        // kDLabelContainer1		
+        this.kDLabelContainer1.setBoundLabelText(resHelper.getString("kDLabelContainer1.boundLabelText"));		
+        this.kDLabelContainer1.setBoundLabelLength(75);		
+        this.kDLabelContainer1.setBoundLabelUnderline(true);
+        // kDLabelContainer2		
+        this.kDLabelContainer2.setBoundLabelText(resHelper.getString("kDLabelContainer2.boundLabelText"));		
+        this.kDLabelContainer2.setBoundLabelLength(75);		
+        this.kDLabelContainer2.setBoundLabelUnderline(true);
+        // kDLabel1		
+        this.kDLabel1.setText(resHelper.getString("kDLabel1.text"));
+        // kDLabelContainer4		
+        this.kDLabelContainer4.setBoundLabelLength(75);		
+        this.kDLabelContainer4.setBoundLabelUnderline(true);
         // txtNumber		
         this.txtNumber.setEnabled(false);
         // txtRoomModelType		
@@ -329,14 +386,20 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         // txtStandardBuildPrice		
         this.txtStandardBuildPrice.setDataType(1);		
         this.txtStandardBuildPrice.setEnabled(false);
-        // txtDealTotalAmount		
-        this.txtDealTotalAmount.setDataType(1);		
-        this.txtDealTotalAmount.setEnabled(false);
         // txtDealBuildPrice		
         this.txtDealBuildPrice.setDataType(1);		
         this.txtDealBuildPrice.setEnabled(false);
         // txtSaleMan		
         this.txtSaleMan.setEnabled(false);
+        // txtActBuildArea		
+        this.txtActBuildArea.setDataType(1);		
+        this.txtActBuildArea.setEnabled(false);
+        // txtActRoomArea		
+        this.txtActRoomArea.setDataType(1);		
+        this.txtActRoomArea.setEnabled(false);
+        // txtDealTotalAmount		
+        this.txtDealTotalAmount.setDataType(1);		
+        this.txtDealTotalAmount.setEnabled(false);
         // buyRoomPlanPane
         // bizTotalFlow		
         this.bizTotalFlow.setAutoscrolls(true);
@@ -346,7 +409,7 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         // keepDown
         // roomLoanPanel
         // totalFlowTable
-		String totalFlowTableStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol2\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol4\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"biz\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"apDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" t:styleID=\"sCol2\" /><t:Column t:key=\"value\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"actDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" t:styleID=\"sCol4\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{biz}</t:Cell><t:Cell>$Resource{apDate}</t:Cell><t:Cell>$Resource{value}</t:Cell><t:Cell>$Resource{actDate}</t:Cell><t:Cell>$Resource{description}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		String totalFlowTableStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol0\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol2\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style><c:Style id=\"sCol4\"><c:NumberFormat>yyyy-MM-dd</c:NumberFormat></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"0\" t:styleID=\"sCol0\" /><t:Column t:key=\"biz\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"1\" /><t:Column t:key=\"apDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" t:styleID=\"sCol2\" /><t:Column t:key=\"value\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"actDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" t:styleID=\"sCol4\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{biz}</t:Cell><t:Cell>$Resource{apDate}</t:Cell><t:Cell>$Resource{value}</t:Cell><t:Cell>$Resource{actDate}</t:Cell><t:Cell>$Resource{description}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.totalFlowTable.setFormatXml(resHelper.translateString("totalFlowTable",totalFlowTableStrXML));
         this.totalFlowTable.addKDTMouseListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener() {
@@ -362,6 +425,70 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
 
         
 
+        // kDLabelContainer3		
+        this.kDLabelContainer3.setBoundLabelText(resHelper.getString("kDLabelContainer3.boundLabelText"));		
+        this.kDLabelContainer3.setBoundLabelUnderline(true);		
+        this.kDLabelContainer3.setBoundLabelLength(30);
+        // labelCustomer1		
+        this.labelCustomer1.setOpaque(true);
+        this.labelCustomer1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                try {
+                    labelCustomer1_mouseClicked(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
+        // kDSeparator5
+        // labelCustomer2		
+        this.labelCustomer2.setOpaque(true);
+        this.labelCustomer2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                try {
+                    labelCustomer2_mouseClicked(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
+        // kDSeparator6
+        // labelCustomer3		
+        this.labelCustomer3.setOpaque(true);
+        this.labelCustomer3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                try {
+                    labelCustomer3_mouseClicked(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
+        // kDSeparator7
+        // labelCustomer4		
+        this.labelCustomer4.setOpaque(true);
+        this.labelCustomer4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                try {
+                    labelCustomer4_mouseClicked(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
+        // kDSeparator8
+        // labelCustomer5		
+        this.labelCustomer5.setOpaque(true);
+        this.labelCustomer5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                try {
+                    labelCustomer5_mouseClicked(e);
+                } catch(Exception exc) {
+                    handUIException(exc);
+                }
+            }
+        });
+        // kDSeparator9
         // kDContainer6
         // kDContainer7
         // tblPBProcesser
@@ -515,13 +642,13 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         this.setBounds(new Rectangle(10, 10, 500, 829));
         this.setLayout(new KDLayout());
         this.putClientProperty("OriginalBounds", new Rectangle(10, 10, 500, 829));
-        kDContainer1.setBounds(new Rectangle(2, 1, 492, 209));
-        this.add(kDContainer1, new KDLayout.Constraints(2, 1, 492, 209, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        tabBizInfo.setBounds(new Rectangle(4, 212, 492, 609));
-        this.add(tabBizInfo, new KDLayout.Constraints(4, 212, 492, 609, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDContainer1.setBounds(new Rectangle(2, 1, 492, 236));
+        this.add(kDContainer1, new KDLayout.Constraints(2, 1, 492, 236, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        tabBizInfo.setBounds(new Rectangle(4, 248, 492, 573));
+        this.add(tabBizInfo, new KDLayout.Constraints(4, 248, 492, 573, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //kDContainer1
         kDContainer1.getContentPane().setLayout(new KDLayout());
-        kDContainer1.getContentPane().putClientProperty("OriginalBounds", new Rectangle(2, 1, 492, 209));        conNumber.setBounds(new Rectangle(6, 6, 474, 19));
+        kDContainer1.getContentPane().putClientProperty("OriginalBounds", new Rectangle(2, 1, 492, 236));        conNumber.setBounds(new Rectangle(6, 6, 474, 19));
         kDContainer1.getContentPane().add(conNumber, new KDLayout.Constraints(6, 6, 474, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contRoomModelType.setBounds(new Rectangle(6, 28, 222, 19));
         kDContainer1.getContentPane().add(contRoomModelType, new KDLayout.Constraints(6, 28, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
@@ -531,26 +658,32 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         kDContainer1.getContentPane().add(contRoomState, new KDLayout.Constraints(258, 50, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contHouseProperty.setBounds(new Rectangle(6, 50, 222, 19));
         kDContainer1.getContentPane().add(contHouseProperty, new KDLayout.Constraints(6, 50, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contPricingType.setBounds(new Rectangle(258, 94, 222, 19));
-        kDContainer1.getContentPane().add(contPricingType, new KDLayout.Constraints(258, 94, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contPricingType.setBounds(new Rectangle(258, 116, 222, 19));
+        kDContainer1.getContentPane().add(contPricingType, new KDLayout.Constraints(258, 116, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contBuildingArea.setBounds(new Rectangle(6, 72, 222, 19));
         kDContainer1.getContentPane().add(contBuildingArea, new KDLayout.Constraints(6, 72, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contRoomArea.setBounds(new Rectangle(258, 72, 222, 19));
         kDContainer1.getContentPane().add(contRoomArea, new KDLayout.Constraints(258, 72, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStandardRoomPrice.setBounds(new Rectangle(258, 116, 222, 19));
-        kDContainer1.getContentPane().add(contStandardRoomPrice, new KDLayout.Constraints(258, 116, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStandardTotalAmount.setBounds(new Rectangle(6, 94, 222, 19));
-        kDContainer1.getContentPane().add(contStandardTotalAmount, new KDLayout.Constraints(6, 94, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDealRoomPrice.setBounds(new Rectangle(258, 160, 222, 19));
-        kDContainer1.getContentPane().add(contDealRoomPrice, new KDLayout.Constraints(258, 160, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contStandardBuildPrice.setBounds(new Rectangle(6, 116, 222, 19));
-        kDContainer1.getContentPane().add(contStandardBuildPrice, new KDLayout.Constraints(6, 116, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDealTotalAmount.setBounds(new Rectangle(6, 138, 222, 19));
-        kDContainer1.getContentPane().add(contDealTotalAmount, new KDLayout.Constraints(6, 138, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDealBuildPrice.setBounds(new Rectangle(6, 160, 222, 19));
-        kDContainer1.getContentPane().add(contDealBuildPrice, new KDLayout.Constraints(6, 160, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contSaleMan.setBounds(new Rectangle(258, 138, 222, 19));
-        kDContainer1.getContentPane().add(contSaleMan, new KDLayout.Constraints(258, 138, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contStandardRoomPrice.setBounds(new Rectangle(258, 138, 222, 19));
+        kDContainer1.getContentPane().add(contStandardRoomPrice, new KDLayout.Constraints(258, 138, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contStandardTotalAmount.setBounds(new Rectangle(6, 116, 222, 19));
+        kDContainer1.getContentPane().add(contStandardTotalAmount, new KDLayout.Constraints(6, 116, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDealRoomPrice.setBounds(new Rectangle(258, 182, 222, 19));
+        kDContainer1.getContentPane().add(contDealRoomPrice, new KDLayout.Constraints(258, 182, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contStandardBuildPrice.setBounds(new Rectangle(6, 138, 222, 19));
+        kDContainer1.getContentPane().add(contStandardBuildPrice, new KDLayout.Constraints(6, 138, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDealBuildPrice.setBounds(new Rectangle(6, 182, 222, 19));
+        kDContainer1.getContentPane().add(contDealBuildPrice, new KDLayout.Constraints(6, 182, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contSaleMan.setBounds(new Rectangle(258, 160, 222, 19));
+        kDContainer1.getContentPane().add(contSaleMan, new KDLayout.Constraints(258, 160, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabelContainer1.setBounds(new Rectangle(6, 94, 222, 19));
+        kDContainer1.getContentPane().add(kDLabelContainer1, new KDLayout.Constraints(6, 94, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabelContainer2.setBounds(new Rectangle(258, 94, 222, 19));
+        kDContainer1.getContentPane().add(kDLabelContainer2, new KDLayout.Constraints(258, 94, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabel1.setBounds(new Rectangle(6, 163, 75, 19));
+        kDContainer1.getContentPane().add(kDLabel1, new KDLayout.Constraints(6, 163, 75, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabelContainer4.setBounds(new Rectangle(6, 160, 222, 19));
+        kDContainer1.getContentPane().add(kDLabelContainer4, new KDLayout.Constraints(6, 160, 222, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //conNumber
         conNumber.setBoundEditor(txtNumber);
         //contRoomModelType
@@ -575,12 +708,16 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         contDealRoomPrice.setBoundEditor(txtDealRoomPrice);
         //contStandardBuildPrice
         contStandardBuildPrice.setBoundEditor(txtStandardBuildPrice);
-        //contDealTotalAmount
-        contDealTotalAmount.setBoundEditor(txtDealTotalAmount);
         //contDealBuildPrice
         contDealBuildPrice.setBoundEditor(txtDealBuildPrice);
         //contSaleMan
         contSaleMan.setBoundEditor(txtSaleMan);
+        //kDLabelContainer1
+        kDLabelContainer1.setBoundEditor(txtActBuildArea);
+        //kDLabelContainer2
+        kDLabelContainer2.setBoundEditor(txtActRoomArea);
+        //kDLabelContainer4
+        kDLabelContainer4.setBoundEditor(txtDealTotalAmount);
         //tabBizInfo
         tabBizInfo.add(buyRoomPlanPane, resHelper.getString("buyRoomPlanPane.constraints"));
         tabBizInfo.add(bizTotalFlow, resHelper.getString("bizTotalFlow.constraints"));
@@ -591,11 +728,33 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         tabBizInfo.add(roomLoanPanel, resHelper.getString("roomLoanPanel.constraints"));
         //bizTotalFlow
         bizTotalFlow.setLayout(new KDLayout());
-        bizTotalFlow.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 576));        totalFlowTable.setBounds(new Rectangle(6, 6, 474, 559));
-        bizTotalFlow.add(totalFlowTable, new KDLayout.Constraints(6, 6, 474, 559, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        bizTotalFlow.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 540));        totalFlowTable.setBounds(new Rectangle(6, 37, 474, 500));
+        bizTotalFlow.add(totalFlowTable, new KDLayout.Constraints(6, 37, 474, 500, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDLabelContainer3.setBounds(new Rectangle(12, 12, 30, 19));
+        bizTotalFlow.add(kDLabelContainer3, new KDLayout.Constraints(12, 12, 30, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        labelCustomer1.setBounds(new Rectangle(44, 10, 56, 19));
+        bizTotalFlow.add(labelCustomer1, new KDLayout.Constraints(44, 10, 56, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDSeparator5.setBounds(new Rectangle(44, 30, 56, 10));
+        bizTotalFlow.add(kDSeparator5, new KDLayout.Constraints(44, 30, 56, 10, 0));
+        labelCustomer2.setBounds(new Rectangle(101, 10, 56, 19));
+        bizTotalFlow.add(labelCustomer2, new KDLayout.Constraints(101, 10, 56, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDSeparator6.setBounds(new Rectangle(101, 30, 56, 10));
+        bizTotalFlow.add(kDSeparator6, new KDLayout.Constraints(101, 30, 56, 10, 0));
+        labelCustomer3.setBounds(new Rectangle(158, 10, 56, 19));
+        bizTotalFlow.add(labelCustomer3, new KDLayout.Constraints(158, 10, 56, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDSeparator7.setBounds(new Rectangle(158, 30, 56, 10));
+        bizTotalFlow.add(kDSeparator7, new KDLayout.Constraints(158, 30, 56, 10, 0));
+        labelCustomer4.setBounds(new Rectangle(215, 10, 56, 19));
+        bizTotalFlow.add(labelCustomer4, new KDLayout.Constraints(215, 10, 56, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDSeparator8.setBounds(new Rectangle(215, 30, 56, 10));
+        bizTotalFlow.add(kDSeparator8, new KDLayout.Constraints(215, 30, 56, 10, 0));
+        labelCustomer5.setBounds(new Rectangle(273, 10, 56, 19));
+        bizTotalFlow.add(labelCustomer5, new KDLayout.Constraints(273, 10, 56, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        kDSeparator9.setBounds(new Rectangle(273, 30, 56, 10));
+        bizTotalFlow.add(kDSeparator9, new KDLayout.Constraints(273, 30, 56, 10, 0));
         //roomPropertyBook
         roomPropertyBook.setLayout(new KDLayout());
-        roomPropertyBook.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 576));        kDContainer6.setBounds(new Rectangle(8, 8, 470, 303));
+        roomPropertyBook.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 540));        kDContainer6.setBounds(new Rectangle(8, 8, 470, 303));
         roomPropertyBook.add(kDContainer6, new KDLayout.Constraints(8, 8, 470, 303, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDContainer7.setBounds(new Rectangle(8, 320, 470, 247));
         roomPropertyBook.add(kDContainer7, new KDLayout.Constraints(8, 320, 470, 247, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
@@ -609,7 +768,7 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         kDContainer7.getContentPane().add(tblPBData, new KDLayout.Constraints(0, 0, 460, 221, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //roomJoin
         roomJoin.setLayout(new KDLayout());
-        roomJoin.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 576));        kDContainer4.setBounds(new Rectangle(8, 8, 470, 303));
+        roomJoin.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 540));        kDContainer4.setBounds(new Rectangle(8, 8, 470, 303));
         roomJoin.add(kDContainer4, new KDLayout.Constraints(8, 8, 470, 303, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         kDContainer5.setBounds(new Rectangle(8, 320, 470, 247));
         roomJoin.add(kDContainer5, new KDLayout.Constraints(8, 320, 470, 247, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
@@ -623,15 +782,15 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
         kDContainer5.getContentPane().add(tblJoinData, new KDLayout.Constraints(0, 0, 460, 221, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //sincerityPurchase
         sincerityPurchase.setLayout(new KDLayout());
-        sincerityPurchase.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 576));        sincerityPurchaseTable.setBounds(new Rectangle(6, 6, 474, 559));
+        sincerityPurchase.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 540));        sincerityPurchaseTable.setBounds(new Rectangle(6, 6, 474, 559));
         sincerityPurchase.add(sincerityPurchaseTable, new KDLayout.Constraints(6, 6, 474, 559, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //keepDown
         keepDown.setLayout(new KDLayout());
-        keepDown.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 576));        keepDownTable.setBounds(new Rectangle(2, 3, 482, 567));
+        keepDown.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 540));        keepDownTable.setBounds(new Rectangle(2, 3, 482, 567));
         keepDown.add(keepDownTable, new KDLayout.Constraints(2, 3, 482, 567, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         //roomLoanPanel
         roomLoanPanel.setLayout(new KDLayout());
-        roomLoanPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 576));        kDContainer2.setBounds(new Rectangle(8, 8, 470, 512));
+        roomLoanPanel.putClientProperty("OriginalBounds", new Rectangle(0, 0, 491, 540));        kDContainer2.setBounds(new Rectangle(8, 8, 470, 512));
         roomLoanPanel.add(kDContainer2, new KDLayout.Constraints(8, 8, 470, 512, KDLayout.Constraints.ANCHOR_TOP_SCALE | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //kDContainer2
         kDContainer2.getContentPane().setLayout(new KDLayout());
@@ -838,6 +997,41 @@ public abstract class AbstractVirtualRoomFullInfoUI extends com.kingdee.eas.fram
      * output totalFlowTable_tableClicked method
      */
     protected void totalFlowTable_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output labelCustomer1_mouseClicked method
+     */
+    protected void labelCustomer1_mouseClicked(java.awt.event.MouseEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output labelCustomer2_mouseClicked method
+     */
+    protected void labelCustomer2_mouseClicked(java.awt.event.MouseEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output labelCustomer3_mouseClicked method
+     */
+    protected void labelCustomer3_mouseClicked(java.awt.event.MouseEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output labelCustomer4_mouseClicked method
+     */
+    protected void labelCustomer4_mouseClicked(java.awt.event.MouseEvent e) throws Exception
+    {
+    }
+
+    /**
+     * output labelCustomer5_mouseClicked method
+     */
+    protected void labelCustomer5_mouseClicked(java.awt.event.MouseEvent e) throws Exception
     {
     }
 

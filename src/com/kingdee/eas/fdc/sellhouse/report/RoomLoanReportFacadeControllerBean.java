@@ -100,9 +100,9 @@ public class RoomLoanReportFacadeControllerBean extends AbstractRoomLoanReportFa
     	sb.append(" left join t_she_signManage sign on sign.fid =loan.fsignId left join T_SHE_AFMortgaged scheme on scheme.fid=loan.forsoMortgagedid");
     	sb.append(" left join t_she_room room on room.fid =sign.froomId left join t_she_moneyDefine md on md.fid=loan.FMmType left join T_BD_Bank bank on bank.fid=loan.fBankId");
     	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='签署购房合同')approach1 on approach1.fparentid=loan.fid");
-    	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='按揭资料准备完毕')approach2 on approach2.fparentid=loan.fid");
+    	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='按揭资料准备完成')approach2 on approach2.fparentid=loan.fid");
     	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='银行审批完成')approach3 on approach3.fparentid=loan.fid");
-    	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='银行预抵（抵押）完成')approach4 on approach4.fparentid=loan.fid");
+    	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='银行预抵（抵押）')approach4 on approach4.fparentid=loan.fid");
     	sb.append(" left join (select FActualFinishDate actdate,fparentid from T_SHE_RoomLoanAFMEntrys where FApproach='收到银行按揭款')approach5 on approach5.fparentid=loan.fid");
     	sb.append(" left join (select sum(bo.fappAmount-isnull(act.factRevAmount,0)) famount,bo.fheadId fid from T_SHE_SignPayListEntry bo ");
 		sb.append(" left join t_she_moneyDefine moneyDefine on bo.fmoneyDefineid=moneyDefine.fid ");

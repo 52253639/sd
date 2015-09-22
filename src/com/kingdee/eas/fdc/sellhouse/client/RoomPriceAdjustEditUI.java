@@ -334,6 +334,8 @@ public class RoomPriceAdjustEditUI extends AbstractRoomPriceAdjustEditUI {
 		
 		this.kdtPriceAdjustEntry.getColumn("oldSalesDirectorAgio").getStyleAttributes().setHided(true);
 		this.kdtPriceAdjustEntry.getColumn("newSalesDirectorAgio").getStyleAttributes().setHided(true);
+		
+		this.txtDescription.setMaxLength(500);
 	}
 	
 	public void onShow() throws Exception {
@@ -3536,11 +3538,11 @@ public class RoomPriceAdjustEditUI extends AbstractRoomPriceAdjustEditUI {
 //			this.managerAgio.requestFocus();
 //			this.abort();
 //		}
-		if(this.txtDescription.getText()!=null && this.txtDescription.getText().length()>80){
-			FDCMsgBox.showInfo("参考消息长度不能超过80个字符!");
-			this.txtDescription.requestFocus();
-			this.abort();
-		}
+//		if(this.txtDescription.getText()!=null && this.txtDescription.getText().length()>80){
+//			FDCMsgBox.showInfo("参考消息长度不能超过80个字符!");
+//			this.txtDescription.requestFocus();
+//			this.abort();
+//		}
 		FDCClientVerifyHelper.verifyEmpty(this, this.cbOpenBatch);
 		//忽略合计行和不参与定价调价的房源
 		if(this.kdtPriceAdjustEntry.getRowCount() <= 0){

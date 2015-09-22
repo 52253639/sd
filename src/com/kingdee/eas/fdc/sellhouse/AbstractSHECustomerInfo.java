@@ -97,7 +97,7 @@ public class AbstractSHECustomerInfo extends com.kingdee.eas.fdc.basecrm.FDCBase
         setBoolean("isPublic", item);
     }
     /**
-     * Object:售楼客户's recommendedproperty 
+     * Object:售楼客户's 推荐人property 
      */
     public String getRecommended()
     {
@@ -128,6 +128,28 @@ public class AbstractSHECustomerInfo extends com.kingdee.eas.fdc.basecrm.FDCBase
     public void setRecommendDate(java.util.Date item)
     {
         setDate("recommendDate", item);
+    }
+    /**
+     * Object: 售楼客户 's 商机级别 property 
+     */
+    public com.kingdee.eas.fdc.sellhouse.CommerceChanceAssistantInfo getCommerceLevel()
+    {
+        return (com.kingdee.eas.fdc.sellhouse.CommerceChanceAssistantInfo)get("commerceLevel");
+    }
+    public void setCommerceLevel(com.kingdee.eas.fdc.sellhouse.CommerceChanceAssistantInfo item)
+    {
+        put("commerceLevel", item);
+    }
+    /**
+     * Object:售楼客户's 跟进日期property 
+     */
+    public java.util.Date getTrackDate()
+    {
+        return getDate("trackDate");
+    }
+    public void setTrackDate(java.util.Date item)
+    {
+        setDate("trackDate", item);
     }
     public BOSObjectType getBOSType()
     {

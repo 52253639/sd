@@ -62,6 +62,7 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
     protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel2;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contCycle;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnGet;
+    protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel3;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtNumber;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCurProject;
@@ -144,6 +145,7 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         this.kDLabel2 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.contCycle = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.btnGet = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.kDLabel3 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.txtNumber = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.prmtCurProject = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -174,6 +176,7 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         this.kDLabel2.setName("kDLabel2");
         this.contCycle.setName("contCycle");
         this.btnGet.setName("btnGet");
+        this.kDLabel3.setName("kDLabel3");
         this.txtNumber.setName("txtNumber");
         this.txtName.setName("txtName");
         this.prmtCurProject.setName("prmtCurProject");
@@ -197,31 +200,31 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         this.btnAttachment.setVisible(false);		
         this.menuSubmitOption.setEnabled(false);		
         this.menuSubmitOption.setVisible(false);		
-        this.btnInsertLine.setEnabled(false);		
-        this.btnInsertLine.setVisible(false);		
-        this.btnCreateFrom.setEnabled(false);		
-        this.btnCreateFrom.setVisible(false);		
         this.btnTraceUp.setEnabled(false);		
         this.btnTraceUp.setVisible(false);		
         this.btnTraceDown.setEnabled(false);		
         this.btnTraceDown.setVisible(false);		
+        this.btnCreateFrom.setEnabled(false);		
+        this.btnCreateFrom.setVisible(false);		
+        this.btnInsertLine.setEnabled(false);		
+        this.btnInsertLine.setVisible(false);		
+        this.btnMultiapprove.setVisible(false);		
+        this.btnMultiapprove.setEnabled(false);		
+        this.btnNextPerson.setEnabled(false);		
+        this.btnNextPerson.setVisible(false);		
         this.menuItemCreateFrom.setVisible(false);		
         this.menuItemCreateFrom.setEnabled(false);		
+        this.menuItemCreateTo.setEnabled(false);		
         this.menuItemCopyFrom.setEnabled(false);		
         this.menuItemCopyFrom.setVisible(false);		
         this.menuItemTraceUp.setEnabled(false);		
         this.menuItemTraceUp.setVisible(false);		
         this.menuItemTraceDown.setEnabled(false);		
         this.menuItemTraceDown.setVisible(false);		
-        this.btnMultiapprove.setVisible(false);		
-        this.btnMultiapprove.setEnabled(false);		
-        this.menuItemMultiapprove.setEnabled(false);		
-        this.menuItemMultiapprove.setVisible(false);		
-        this.btnNextPerson.setEnabled(false);		
-        this.btnNextPerson.setVisible(false);		
         this.menuTable1.setEnabled(false);		
         this.menuTable1.setVisible(false);		
-        this.menuItemCreateTo.setEnabled(false);		
+        this.menuItemMultiapprove.setEnabled(false);		
+        this.menuItemMultiapprove.setVisible(false);		
         this.btnCalculator.setVisible(false);		
         this.btnCalculator.setEnabled(false);
         // contNumber		
@@ -301,6 +304,9 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
                 }
             }
         });
+        // kDLabel3		
+        this.kDLabel3.setText(resHelper.getString("kDLabel3.text"));		
+        this.kDLabel3.setForeground(new java.awt.Color(0,0,255));
         // txtNumber		
         this.txtNumber.setRequired(true);
         // txtName		
@@ -419,6 +425,8 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         this.add(contCycle, new KDLayout.Constraints(371, 30, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         btnGet.setBounds(new Rectangle(882, 118, 119, 25));
         this.add(btnGet, new KDLayout.Constraints(882, 118, 119, 25, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDLabel3.setBounds(new Rectangle(732, 53, 209, 19));
+        this.add(kDLabel3, new KDLayout.Constraints(732, 53, 209, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contNumber
         contNumber.setBoundEditor(txtNumber);
         //contName
@@ -464,9 +472,13 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -529,6 +541,7 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkflow
         menuWorkflow.add(menuItemStartWorkFlow);
         menuWorkflow.add(separatorWF1);
@@ -560,8 +573,11 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnSave);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnReset);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -585,6 +601,7 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
         this.toolBar.add(btnAuditResult);
         this.toolBar.add(separatorFW4);
         this.toolBar.add(btnSignature);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(separatorFW7);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(btnCreateFrom);
@@ -736,16 +753,53 @@ public abstract class AbstractProjectMonthPlanEditUI extends com.kingdee.eas.fdc
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("number"));
         sic.add(new SelectorItemInfo("name"));
-        sic.add(new SelectorItemInfo("curProject.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("curProject.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("curProject.id"));
+        	sic.add(new SelectorItemInfo("curProject.number"));
+        	sic.add(new SelectorItemInfo("curProject.name"));
+		}
         sic.add(new SelectorItemInfo("description"));
-        sic.add(new SelectorItemInfo("creator.*"));
-        sic.add(new SelectorItemInfo("auditor.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("auditor.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("auditor.id"));
+        	sic.add(new SelectorItemInfo("auditor.number"));
+        	sic.add(new SelectorItemInfo("auditor.name"));
+		}
         sic.add(new SelectorItemInfo("createTime"));
         sic.add(new SelectorItemInfo("auditTime"));
         sic.add(new SelectorItemInfo("version"));
-        sic.add(new SelectorItemInfo("cycle.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("cycle.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("cycle.id"));
+        	sic.add(new SelectorItemInfo("cycle.number"));
+        	sic.add(new SelectorItemInfo("cycle.name"));
+        	sic.add(new SelectorItemInfo("cycle.cycle"));
+		}
         return sic;
     }        
     	

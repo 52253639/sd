@@ -1,6 +1,7 @@
 package com.kingdee.eas.fdc.sellhouse.report;
 
 import com.kingdee.bos.BOSException;
+import com.kingdee.bos.ctrl.extendcontrols.IDataFormat;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IColumn;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
@@ -10,6 +11,8 @@ import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
+import com.kingdee.bos.ctrl.kdf.table.foot.KDTFootManager;
+import com.kingdee.bos.ctrl.kdf.util.render.ObjectValueRender;
 import com.kingdee.bos.ctrl.kdf.util.style.StyleAttributes;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIFactory;
@@ -19,18 +22,27 @@ import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
+import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.sellhouse.client.SignManageEditUI;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
+import com.kingdee.eas.framework.report.util.DefaultKDTableInsertHandler;
+import com.kingdee.eas.framework.report.util.KDTableInsertHandler;
 import com.kingdee.eas.framework.report.util.KDTableUtil;
 import com.kingdee.eas.framework.report.util.RptParams;
 import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.util.client.EASResource;
+
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.swing.SwingUtilities;
 import org.apache.log4j.Logger;
 
@@ -77,9 +89,20 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
     this.tblMain.removeRows();
 
     CRMClientHelper.fmtDate(this.tblMain, new String[] { "bizDate" });
-    CRMClientHelper.changeTableNumberFormat(this.tblMain, new String[] { "contractTotalAmount", "revAmount", "amount", "appRevAmount" });
-    CRMClientHelper.getFootRow(this.tblMain, new String[] { "revAmount", "amount", "appRevAmount" });
+    CRMClientHelper.changeTableNumberFormat(this.tblMain, new String[] { "contractTotalAmount","appRevAmount","onLoadAmount","rate"});
     this.tblMain.getColumn("room").getStyleAttributes().setFontColor(Color.BLUE);
+    
+    ObjectValueRender render_scale = new ObjectValueRender();
+	render_scale.setFormat(new IDataFormat() {
+		public String format(Object o) {
+			String str = o.toString();
+			if (!FDCHelper.isEmpty(str)) {
+				return str + "%";
+			}
+			return str;
+		}
+	});
+	this.tblMain.getColumn("rate").setRenderer(render_scale);
   }
   public void tableDataRequest(KDTDataRequestEvent kdtdatarequestevent) {
     if (this.isQuery) return;
@@ -107,7 +130,35 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
         KDTableUtil.setHeader(header, tblMain);
 
         RptRowSet rs = (RptRowSet)((RptParams)result).getObject("rowset");
-        KDTableUtil.insertRows(rs, 0, tblMain);
+        
+        BigDecimal contractTotalAmount=FDCHelper.ZERO;
+        BigDecimal onLoadAmount=FDCHelper.ZERO;
+        Set idSet=new HashSet();
+        while(rs.next()){
+    		IRow addRow=tblMain.addRow();
+			((KDTableInsertHandler)(new DefaultKDTableInsertHandler(rs))).setTableRowData(addRow, rs.toRowArray());
+			String id=addRow.getCell("id").getValue().toString();
+			if(!idSet.contains(id)){
+				idSet.add(id);
+				contractTotalAmount=FDCHelper.add(contractTotalAmount, addRow.getCell("contractTotalAmount").getValue());
+				onLoadAmount=FDCHelper.add(onLoadAmount, addRow.getCell("onLoadAmount").getValue());
+			}
+        }
+        CRMClientHelper.getFootRow(tblMain, new String[] {"appRevAmount" });
+        
+        KDTFootManager footRowManager = tblMain.getFootManager();
+        IRow footRow = footRowManager.getFootRow(0);
+        footRow.getCell("contractTotalAmount").setValue(contractTotalAmount);
+        footRow.getCell("onLoadAmount").setValue(onLoadAmount);
+        
+        footRow.getCell("contractTotalAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+        footRow.getCell("contractTotalAmount").getStyleAttributes().setHorizontalAlign(com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment.getAlignment("right"));
+        footRow.getCell("contractTotalAmount").getStyleAttributes().setFontColor(java.awt.Color.BLACK);
+        
+        footRow.getCell("onLoadAmount").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+        footRow.getCell("onLoadAmount").getStyleAttributes().setHorizontalAlign(com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment.getAlignment("right"));
+        footRow.getCell("onLoadAmount").getStyleAttributes().setFontColor(java.awt.Color.BLACK);
+        
         tblMain.setRowCount(rs.getRowCount());
 
         if (rs.getRowCount() > 0)
@@ -131,8 +182,17 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
         tblMain.getColumn("contractTotalAmount").setGroup(true);
         tblMain.getColumn("contractTotalAmount").setMergeable(true);
 
+        tblMain.getColumn("onLoadAmount").setGroup(true);
+        tblMain.getColumn("onLoadAmount").setMergeable(true);
+        
         tblMain.getColumn("bizDate").setGroup(true);
         tblMain.getColumn("bizDate").setMergeable(true);
+        
+        tblMain.getColumn("rate").setGroup(true);
+        tblMain.getColumn("rate").setMergeable(true);
+        
+        tblMain.getColumn("saleMans").setGroup(true);
+        tblMain.getColumn("saleMans").setMergeable(true);
       }
     });
     dialog.show();

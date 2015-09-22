@@ -2428,6 +2428,8 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		this.actionFirst.setVisible(false);
 		this.actionLast.setVisible(false);
 		this.actionContractPlan.setVisible(false);
+		
+		this.txtRemark.setMaxLength(500);
 	}
 	public void actionAccountView_actionPerformed(ActionEvent e)throws Exception {
 		if(!ContractBillFactory.getRemoteInstance().exists(new ObjectUuidPK(this.editData.getId()))){
@@ -3052,7 +3054,8 @@ public class ContractBillEditUI extends AbstractContractBillEditUI implements IW
 		sic.add(new SelectorItemInfo("curProject.codingNumber"));
 		sic.add(new SelectorItemInfo("curProject.displayName"));
 		sic.add(new SelectorItemInfo("curProject.fullOrgUnit.name"));
-
+		sic.add(new SelectorItemInfo("curProject.isWholeAgeStage"));
+		
 		sic.add(new SelectorItemInfo("currency.number"));
 		sic.add(new SelectorItemInfo("currency.name"));
 		sic.add(new SelectorItemInfo("currency.precision"));

@@ -356,6 +356,8 @@ public class RoomLoanEditUI extends AbstractRoomLoanEditUI {
 		this.actionAttachment.setVisible(true);
 		
 		this.f7Creator.setDisplayFormat("$name$");
+		
+		this.kDTextArea1.setMaxLength(500);
 	}
 
 	/**
@@ -836,11 +838,11 @@ public class RoomLoanEditUI extends AbstractRoomLoanEditUI {
 	protected void verifyInput(ActionEvent e) throws Exception {
 		FDCClientVerifyHelper.verifyUIControlEmpty(this);
 		
-		if(this.kDTextArea1.getText()!=null && this.kDTextArea1.getText().length()>80){
-			FDCMsgBox.showInfo(this, "说明长度不能超过80个字符");
-			this.kDTextArea1.requestFocus();
-			SysUtil.abort();
-		}
+//		if(this.kDTextArea1.getText()!=null && this.kDTextArea1.getText().length()>80){
+//			FDCMsgBox.showInfo(this, "说明长度不能超过80个字符");
+//			this.kDTextArea1.requestFocus();
+//			SysUtil.abort();
+//		}
 		if (kDTable1.getRowCount() == 0) {
 			MsgBox.showInfo(this, "本项目未启用公积金/按揭方案，无法保存！");
 			SysUtil.abort();
