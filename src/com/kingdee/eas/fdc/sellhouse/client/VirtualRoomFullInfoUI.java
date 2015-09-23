@@ -214,51 +214,51 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		this.txtStandardTotalAmount.setValue(room.getStandardTotalAmount());
 		
 		RoomSellStateEnum state = room.getSellState();
-		PurchaseManageCollection col = null;
-		if (RoomSellStateEnum.PrePurchase.equals(state)
-				||RoomSellStateEnum.Purchase.equals(state)
-				||RoomSellStateEnum.Sign.equals(state)){
-			//得到预定单
-			try {
-				if(RoomSellStateEnum.PrePurchase.equals(state)){
-					PrePurchaseManageCollection prePurchaseInfo = PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
-					if(prePurchaseInfo.size()>0){
-//						this.txtDealTotalAmount.setVisible(false);
-//						this.txtDealBuildPrice.setVisible(false);
-//						this.txtDealRoomPrice.setVisible(false);
-						this.txtSaleMan.setText(prePurchaseInfo.get(0).getSaleManNames());
-					}
-				}
-				if(RoomSellStateEnum.Purchase.equals(state)){
-					PurchaseManageCollection purchaseInfo = PurchaseManageFactory.getRemoteInstance().getPurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
-					if(purchaseInfo.size()>0){
-//						this.txtDealTotalAmount.setVisible(false);
-//						this.txtDealBuildPrice.setVisible(false);
-//						this.txtDealRoomPrice.setVisible(false);
-						this.txtSaleMan.setText(purchaseInfo.get(0).getSaleManNames());
-					}
-				}
-				if(RoomSellStateEnum.Sign.equals(state)){
-					SignManageCollection signInfp = SignManageFactory.getRemoteInstance().getSignManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.* where room.id='"+room.getId().toString()+ "'");
-					if(signInfp.size()>0){
-						this.txtDealTotalAmount.setVisible(true);
-						this.txtDealBuildPrice.setVisible(true);
-						this.txtDealRoomPrice.setVisible(true);
-						this.txtDealTotalAmount.setValue(signInfp.get(0).getDealTotalAmount());
-						this.txtDealBuildPrice.setValue(signInfp.get(0).getDealBuildPrice());
-						this.txtDealRoomPrice.setValue(signInfp.get(0).getDealRoomPrice());
-						this.txtSaleMan.setText(signInfp.get(0).getSaleManNames());
-					}
-				}
-			} catch (Exception e1) {
-				logger.warn(e1);
-				logger.debug("", e1);
-			}
+//		PurchaseManageCollection col = null;
+//		if (RoomSellStateEnum.PrePurchase.equals(state)
+//				||RoomSellStateEnum.Purchase.equals(state)
+//				||RoomSellStateEnum.Sign.equals(state)){
+//			//得到预定单
+//			try {
+//				if(RoomSellStateEnum.PrePurchase.equals(state)){
+//					PrePurchaseManageCollection prePurchaseInfo = PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.*,bizState from where room.id='"+room.getId().toString()+ "' and bizState in('PreApple','PreAudit')");
+//					if(prePurchaseInfo.size()>0){
+////						this.txtDealTotalAmount.setVisible(false);
+////						this.txtDealBuildPrice.setVisible(false);
+////						this.txtDealRoomPrice.setVisible(false);
+//						this.txtSaleMan.setText(prePurchaseInfo.get(0).getSaleManNames());
+//					}
+//				}
+//				if(RoomSellStateEnum.Purchase.equals(state)){
+//					PurchaseManageCollection purchaseInfo = PurchaseManageFactory.getRemoteInstance().getPurchaseManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.*,bizState from where room.id='"+room.getId().toString()+ "' and bizState in('PurApple','PurAudit')");
+//					if(purchaseInfo.size()>0){
+////						this.txtDealTotalAmount.setVisible(false);
+////						this.txtDealBuildPrice.setVisible(false);
+////						this.txtDealRoomPrice.setVisible(false);
+//						this.txtSaleMan.setText(purchaseInfo.get(0).getSaleManNames());
+//					}
+//				}
+//				if(RoomSellStateEnum.Sign.equals(state)){
+//					SignManageCollection signInfp = SignManageFactory.getRemoteInstance().getSignManageCollection("select saleManNames,dealTotalAmount,dealBuildPrice,dealRoomPrice,id,bizDate,payType.*,bizState from where room.id='"+room.getId().toString()+ "' and bizState in('SignApple','SignAudit')");
+//					if(signInfp.size()>0){
+//						this.txtDealTotalAmount.setVisible(true);
+//						this.txtDealBuildPrice.setVisible(true);
+//						this.txtDealRoomPrice.setVisible(true);
+//						this.txtDealTotalAmount.setValue(signInfp.get(0).getDealTotalAmount());
+//						this.txtDealBuildPrice.setValue(signInfp.get(0).getDealBuildPrice());
+//						this.txtDealRoomPrice.setValue(signInfp.get(0).getDealRoomPrice());
+//						this.txtSaleMan.setText(signInfp.get(0).getSaleManNames());
+//					}
+//				}
+//			} catch (Exception e1) {
+//				logger.warn(e1);
+//				logger.debug("", e1);
+//			}
 //			join = SHEHelper.getRoomJoinIn(room);
 //			areaCompensate = SHEHelper.getRoomAreaCompensation(room);
 //			loan = SHEHelper.getRoomLoan(room);
 //			propertyBook = SHEHelper.getRoomPropertyBook(room);
-		} else{
+//		} else{
 //			prePurchaseInfo = null;
 //			purchaseInfo = null;
 //			signInfo = null;
@@ -266,7 +266,7 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 //			areaCompensate = null;
 //			loan = null;
 //			propertyBook = null;
-		}
+//		}
 
 		if (state.equals(RoomSellStateEnum.Init)) {
 			tabBizInfo.removeAll();
@@ -1052,33 +1052,48 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 			
 			ArrayList customer=new ArrayList();
 			if(objectValue instanceof SincerityPurchaseInfo){
+				sel.add("salesman.name");
 				sel.add("customer.customer.*");
 				sel.add("customer.*");
 				SincerityPurchaseInfo info=SincerityPurchaseFactory.getRemoteInstance().getSincerityPurchaseInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
 				for(int i=0;i<info.getCustomer().size();i++){
 					customer.add(info.getCustomer().get(i));
 				}
+				this.txtSaleMan.setText(info.getSalesman().getName());
 			}else if(objectValue instanceof PrePurchaseManageInfo){
+				sel.add("saleManNames");
 				sel.add("prePurchaseCustomerEntry.customer.*");
 				sel.add("prePurchaseCustomerEntry.*");
 				PrePurchaseManageInfo info=PrePurchaseManageFactory.getRemoteInstance().getPrePurchaseManageInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
 				for(int i=0;i<info.getPrePurchaseCustomerEntry().size();i++){
 					customer.add(info.getPrePurchaseCustomerEntry().get(i));
 				}
+				this.txtSaleMan.setText(info.getSaleManNames());
 			}else if(objectValue instanceof PurchaseManageInfo){
+				sel.add("saleManNames");
 				sel.add("purCustomerEntry.customer.*");
 				sel.add("purCustomerEntry.*");
 				PurchaseManageInfo info=PurchaseManageFactory.getRemoteInstance().getPurchaseManageInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
 				for(int i=0;i<info.getPurCustomerEntry().size();i++){
 					customer.add(info.getPurCustomerEntry().get(i));
 				}
+				this.txtSaleMan.setText(info.getSaleManNames());
 			}else if(objectValue instanceof SignManageInfo){
+				sel.add("saleManNames");
+				sel.add("dealTotalAmount");
+				sel.add("dealBuildPrice");
+				sel.add("dealRoomPrice");
+				
 				sel.add("signCustomerEntry.customer.*");
 				sel.add("signCustomerEntry.*");
 				SignManageInfo info=SignManageFactory.getRemoteInstance().getSignManageInfo(new ObjectUuidPK(transactionInfo.getBillId()),sel);
 				for(int i=0;i<info.getSignCustomerEntry().size();i++){
 					customer.add(info.getSignCustomerEntry().get(i));
 				}
+				this.txtDealTotalAmount.setValue(info.getDealTotalAmount());
+				this.txtDealBuildPrice.setValue(info.getDealBuildPrice());
+				this.txtDealRoomPrice.setValue(info.getDealRoomPrice());
+				this.txtSaleMan.setText(info.getSaleManNames());
 			}
 			SHEManageHelper.loadCustomer(labelCustomer1, labelCustomer2, labelCustomer3,labelCustomer4,labelCustomer5, customer, null, null);
 			
@@ -1733,6 +1748,8 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		
 		setTextFormat(txtBuildingArea);
 		setTextFormat(txtRoomArea);
+		setTextFormat(txtActBuildArea);
+		setTextFormat(txtActRoomArea);
 		setTextFormat(txtStandardBuildPrice);
 		setTextFormat(txtStandardRoomPrice);
 		setTextFormat(txtStandardTotalAmount);
