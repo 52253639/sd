@@ -55,6 +55,7 @@ import com.kingdee.bos.ctrl.swing.KDDatePicker;
 import com.kingdee.bos.ctrl.swing.KDFormattedTextField;
 import com.kingdee.bos.ctrl.swing.KDPromptBox;
 import com.kingdee.bos.ctrl.swing.KDTextField;
+import com.kingdee.bos.ctrl.swing.KDWorkButton;
 import com.kingdee.bos.ctrl.swing.event.DataChangeEvent;
 import com.kingdee.bos.ctrl.swing.event.DataChangeListener;
 import com.kingdee.bos.ctrl.swing.event.SelectorEvent;
@@ -99,6 +100,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.IFDCBill;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
@@ -106,6 +108,7 @@ import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
 import com.kingdee.eas.fdc.basedata.client.FDCUIWeightWorker;
 import com.kingdee.eas.fdc.basedata.client.IFDCWork;
+import com.kingdee.eas.fdc.contract.programming.ProgrammingFactory;
 import com.kingdee.eas.fdc.market.MarketDisplaySetting;
 import com.kingdee.eas.fdc.sellhouse.BaseTransactionInfo;
 import com.kingdee.eas.fdc.sellhouse.CRMChequeFactory;
@@ -146,6 +149,8 @@ import com.kingdee.eas.fdc.sellhouse.SincerityPurchaseCustomerEntryFactory;
 import com.kingdee.eas.fdc.sellhouse.SincerityPurchaseFactory;
 import com.kingdee.eas.fdc.sellhouse.SincerityPurchaseInfo;
 import com.kingdee.eas.fdc.sellhouse.TranCustomerEntryCollection;
+import com.kingdee.eas.fdc.sellhouse.TransactionFactory;
+import com.kingdee.eas.fdc.sellhouse.TransactionInfo;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.MakeInvoiceEditUI;
 import com.kingdee.eas.fdc.sellhouse.client.NewFDCRoomPromptDialog;
@@ -934,7 +939,45 @@ public class NewSHERevBillEditUI extends AbstractNewSHERevBillEditUI
 //    	handleCodingRule();
 		SHEManageHelper.handleCodingRule(this.txtNumber, this.oprtState, editData, this.getBizInterface(),null);
     	initControl();
+    	
+    	if(SysContext.getSysContext().getCurrentUserInfo().getNumber().equals("ppl")){
+    		this.kdtEntrys.setEditable(true);
+    		this.kdtEntrys.getColumn("moneyDefine").getStyleAttributes().setLocked(false);
+			KDWorkButton btnReCal=new KDWorkButton();
+			btnReCal.setText("跟新分录款项");
+			btnReCal.addActionListener(new java.awt.event.ActionListener() {
+		            public void actionPerformed(java.awt.event.ActionEvent e) {
+		                beforeActionPerformed(e);
+		                try {
+		                	btnReCal_actionPerformed(e);
+		                } catch (Exception exc) {
+		                    handUIException(exc);
+		                } finally {
+		                    afterActionPerformed(e);
+		                }
+		            }
+		        });
+			this.toolBar.add(btnReCal);
+    	}
     }
+    protected void btnReCal_actionPerformed(ActionEvent e) throws Exception {
+    	if (MsgBox.showConfirm2("是否确定修改？") == MsgBox.CANCEL) {
+			return;
+		}
+    	FDCSQLBuilder fdcSB = new FDCSQLBuilder();
+		fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+		
+    	for(int i=0;i<this.kdtEntrys.getRowCount();i++){
+    		String id=this.kdtEntrys.getRow(i).getCell("id").getValue().toString();
+    		MoneyDefineInfo md=(MoneyDefineInfo)this.kdtEntrys.getRow(i).getCell("moneyDefine").getValue();
+    		
+    		StringBuffer sql = new StringBuffer();
+    		sql.append("update T_BDC_SHERevBillEntry set fmoneyDefineId = '"+md.getId().toString()+"' where fid = '").append(id).append("'");
+    		fdcSB.addBatch(sql.toString());
+    	}
+    	fdcSB.executeBatch();
+    	FDCClientUtils.showOprtOK(this);
+	}
     public void setOprtState(String oprtType) {
 		super.setOprtState(oprtType);
 		this.revBillType.setAccessAuthority(CtrlCommonConstant.AUTHORITY_COMMON);

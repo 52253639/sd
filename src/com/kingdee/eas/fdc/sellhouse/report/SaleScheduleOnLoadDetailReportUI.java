@@ -40,7 +40,9 @@ import java.awt.Dialog;
 import java.awt.Frame;
 import java.awt.Window;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.SwingUtilities;
@@ -88,8 +90,8 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
     this.tblMain.removeColumns();
     this.tblMain.removeRows();
 
-    CRMClientHelper.fmtDate(this.tblMain, new String[] { "bizDate","afbizDate","approach2","approach3","approach4" });
-    CRMClientHelper.changeTableNumberFormat(this.tblMain, new String[] { "contractTotalAmount","onLoadAmount","rate"});
+    CRMClientHelper.fmtDate(this.tblMain, new String[] { "bizDate","afbizDate","approach2","approach3","approach4","appDate","actDate"});
+    CRMClientHelper.changeTableNumberFormat(this.tblMain, new String[] { "contractTotalAmount","onLoadAmount","rate","appAmount","actAmount"});
     this.tblMain.getColumn("room").getStyleAttributes().setFontColor(Color.BLUE);
     
     ObjectValueRender render_scale = new ObjectValueRender();
@@ -143,8 +145,12 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
 				contractTotalAmount=FDCHelper.add(contractTotalAmount, addRow.getCell("contractTotalAmount").getValue());
 				onLoadAmount=FDCHelper.add(onLoadAmount, addRow.getCell("onLoadAmount").getValue());
 			}
-        }
-        CRMClientHelper.getFootRow(tblMain, new String[] {"appRevAmount" });
+			if(FDCHelper.subtract(addRow.getCell("checkAmount").getValue(), FDCHelper.ZERO).compareTo(FDCHelper.ZERO)!=0){
+				addRow.getCell("onLoadAmount").getStyleAttributes().setBackground(Color.RED);
+			}
+		}
+		
+        CRMClientHelper.getFootRow(tblMain, new String[] {"appRevAmount","appAmount","actAmount"});
         
         KDTFootManager footRowManager = tblMain.getFootManager();
         IRow footRow = footRowManager.getFootRow(0);
