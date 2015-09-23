@@ -88,8 +88,8 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
     this.tblMain.removeColumns();
     this.tblMain.removeRows();
 
-    CRMClientHelper.fmtDate(this.tblMain, new String[] { "bizDate" });
-    CRMClientHelper.changeTableNumberFormat(this.tblMain, new String[] { "contractTotalAmount","appRevAmount","onLoadAmount","rate"});
+    CRMClientHelper.fmtDate(this.tblMain, new String[] { "bizDate","afbizDate","approach2","approach3","approach4" });
+    CRMClientHelper.changeTableNumberFormat(this.tblMain, new String[] { "contractTotalAmount","onLoadAmount","rate"});
     this.tblMain.getColumn("room").getStyleAttributes().setFontColor(Color.BLUE);
     
     ObjectValueRender render_scale = new ObjectValueRender();
@@ -193,6 +193,21 @@ public class SaleScheduleOnLoadDetailReportUI extends AbstractSaleScheduleOnLoad
         
         tblMain.getColumn("saleMans").setGroup(true);
         tblMain.getColumn("saleMans").setMergeable(true);
+        
+        tblMain.getColumn("srcsaleMans").setGroup(true);
+        tblMain.getColumn("srcsaleMans").setMergeable(true);
+        
+        Boolean type = (Boolean)params.getObject("type");
+        if(type){
+        	tblMain.getColumn("afbizDate").setGroup(true);
+            tblMain.getColumn("afbizDate").setMergeable(true);
+
+            tblMain.getColumn("afdays").setGroup(true);
+            tblMain.getColumn("afdays").setMergeable(true);
+            
+            tblMain.getColumn("blrq").setGroup(true);
+            tblMain.getColumn("blrq").setMergeable(true);
+        }
       }
     });
     dialog.show();

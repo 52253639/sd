@@ -107,7 +107,7 @@ public class RoomLoanReportFacadeControllerBean extends AbstractRoomLoanReportFa
     	sb.append(" left join (select sum(bo.fappAmount-isnull(act.factRevAmount,0)) famount,bo.fheadId fid from T_SHE_SignPayListEntry bo ");
 		sb.append(" left join t_she_moneyDefine moneyDefine on bo.fmoneyDefineid=moneyDefine.fid ");
     	sb.append(" left join t_she_TranBusinessOverView act on bo.ftanPayListEntryId=act.fid where moneyDefine.fmoneyType in('LoanAmount','AccFundAmount') group by bo.fheadId)onload on onload.fid=sign.fid");
-    	sb.append(" left join t_she_sellproject sp on sp.fid =sign.fsellProjectId where sign.fid is not null");
+    	sb.append(" left join t_she_sellproject sp on sp.fid =sign.fsellProjectId where sign.fid is not null and loan.FAFMortgagedState!=4");
     	if(buildUnit!=null){
     		sb.append(" and room.FBuildUnitID = '"+buildUnit.getId()+"' ");
     	}

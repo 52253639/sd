@@ -112,6 +112,8 @@ public class RoomLoanReportUI extends AbstractRoomLoanReportUI
         				return null;
         			}
         		});
+                FDCHelper.formatTableDate(tblMain, "bizDate");
+                FDCHelper.formatTableDate(tblMain, "actDate");
                 FDCHelper.formatTableDate(tblMain, "approach1");
                 FDCHelper.formatTableDate(tblMain, "approach2");
                 FDCHelper.formatTableDate(tblMain, "approach3");

@@ -504,9 +504,13 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(kDTable2, Border
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemSave);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(menuItemSubmit);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuSubmitOption);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(rMenuItemSubmit);
         menuFile.add(rMenuItemSubmitAndAddNew);
         menuFile.add(rMenuItemSubmitAndPrint);
@@ -544,6 +548,7 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(kDTable2, Border
         menuTool.add(menuItemMsgFormat);
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuHelp
         menuHelp.add(menuItemHelp);
         menuHelp.add(kDSeparator12);
@@ -562,8 +567,11 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(kDTable2, Border
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnReset);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnSave);
         this.toolBar.add(btnSubmit);
         this.toolBar.add(btnCopy);
@@ -587,6 +595,7 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(kDTable2, Border
 
 	//Regiester control's property binding.
 	private void registerBindings(){
+		dataBinder.registerBinding("description", String.class, this.kDTextArea1, "text");
 		dataBinder.registerBinding("actualFinishDate", java.util.Date.class, this.pkProcessLoanDate, "value");
 		dataBinder.registerBinding("actualLoanAmt", java.math.BigDecimal.class, this.txtActualLoanAmt, "value");
 		dataBinder.registerBinding("loanFixedYear", int.class, this.txtLoanFixedYear, "value");
@@ -657,6 +666,7 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(kDTable2, Border
 	 */
 	protected void registerValidator() {
     	getValidateHelper().setCustomValidator( getValidator() );
+		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("actualFinishDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("actualLoanAmt", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("loanFixedYear", ValidateHelper.ON_SAVE);    
@@ -760,16 +770,53 @@ kDPanel2.setLayout(new BorderLayout(0, 0));        kDPanel2.add(kDTable2, Border
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
+        sic.add(new SelectorItemInfo("description"));
         sic.add(new SelectorItemInfo("actualFinishDate"));
         sic.add(new SelectorItemInfo("actualLoanAmt"));
         sic.add(new SelectorItemInfo("loanFixedYear"));
         sic.add(new SelectorItemInfo("number"));
-        sic.add(new SelectorItemInfo("mmType.*"));
-        sic.add(new SelectorItemInfo("loanBank.*"));
-        sic.add(new SelectorItemInfo("oRSOMortgaged.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("mmType.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("mmType.id"));
+        	sic.add(new SelectorItemInfo("mmType.number"));
+        	sic.add(new SelectorItemInfo("mmType.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("loanBank.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("loanBank.id"));
+        	sic.add(new SelectorItemInfo("loanBank.number"));
+        	sic.add(new SelectorItemInfo("loanBank.name"));
+		}
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("oRSOMortgaged.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("oRSOMortgaged.id"));
+        	sic.add(new SelectorItemInfo("oRSOMortgaged.number"));
+        	sic.add(new SelectorItemInfo("oRSOMortgaged.name"));
+		}
         sic.add(new SelectorItemInfo("applicationDate"));
         sic.add(new SelectorItemInfo("promiseDate"));
-        sic.add(new SelectorItemInfo("creator.*"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("creator.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("creator.id"));
+        	sic.add(new SelectorItemInfo("creator.number"));
+        	sic.add(new SelectorItemInfo("creator.name"));
+		}
         sic.add(new SelectorItemInfo("createTime"));
         return sic;
     }        
