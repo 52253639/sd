@@ -967,7 +967,6 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 				row.getCell("id").setValue(spInfo.getId());
 				row.getCell("biz").setValue("Ô¤Ô¼ÅÅºÅ");
 				row.getCell("value").setValue(Boolean.TRUE);
-				row.getCell("customer").setValue(spInfo.getCustomerNames());
 				if(col != null && col.size()> 0){
 					boolean change=false;
 					if(!change){
