@@ -63,6 +63,8 @@ public class RestReceivableListUI extends AbstractRestReceivableListUI {
 			actionImport.setEnabled(false);
 		}
 		tblMain.getColumn("auditDate").getStyleAttributes().setHided(true);
+		
+		this.btnMAudit.setText("≈˙¡ø…Û≈˙");
 	}
 	 public TenancyBillStateEnum getBizState(String id) throws EASBizException, BOSException, Exception{
 	    	if(id==null) return null;

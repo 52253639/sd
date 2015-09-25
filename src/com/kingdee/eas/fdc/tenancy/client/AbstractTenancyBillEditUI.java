@@ -108,6 +108,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboChargeDateType;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboFirstLeaseType;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkEndDate;
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane2;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtDescription;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFristLeaseDate;
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinLeaseTime;
@@ -441,6 +442,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.comboChargeDateType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboFirstLeaseType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.pkEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
+        this.kDScrollPane2 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
         this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.pkFristLeaseDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.spinLeaseTime = new com.kingdee.bos.ctrl.swing.KDSpinner();
@@ -661,6 +663,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.comboChargeDateType.setName("comboChargeDateType");
         this.comboFirstLeaseType.setName("comboFirstLeaseType");
         this.pkEndDate.setName("pkEndDate");
+        this.kDScrollPane2.setName("kDScrollPane2");
         this.txtDescription.setName("txtDescription");
         this.pkFristLeaseDate.setName("pkFristLeaseDate");
         this.spinLeaseTime.setName("spinLeaseTime");
@@ -1206,8 +1209,9 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
                 }
             }
         });
+        // kDScrollPane2
         // txtDescription		
-        this.txtDescription.setMaxLength(80);		
+        this.txtDescription.setMaxLength(500);		
         this.txtDescription.setVisible(true);		
         this.txtDescription.setEnabled(true);		
         this.txtDescription.setHorizontalAlignment(2);		
@@ -2433,8 +2437,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel2.add(contname, new KDLayout.Constraints(505, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         chkIsByAgency.setBounds(new Rectangle(906, 0, 102, 19));
         kDPanel2.add(chkIsByAgency, new KDLayout.Constraints(906, 0, 102, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        kDPanel1.setBounds(new Rectangle(-3, 49, 1008, 115));
-        kDPanel2.add(kDPanel1, new KDLayout.Constraints(-3, 49, 1008, 115, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        kDPanel1.setBounds(new Rectangle(-3, 49, 1008, 161));
+        kDPanel2.add(kDPanel1, new KDLayout.Constraints(-3, 49, 1008, 161, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_BOTTOM_SCALE | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contCreateTime.setBounds(new Rectangle(426, 566, 270, 19));
         kDPanel2.add(contCreateTime, new KDLayout.Constraints(426, 566, 270, 19, KDLayout.Constraints.ANCHOR_BOTTOM | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contCreator.setBounds(new Rectangle(8, 565, 270, 19));
@@ -2463,8 +2467,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel2.add(btnAddCustomer, new KDLayout.Constraints(868, 385, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         btnRemoveCustomer.setBounds(new Rectangle(935, 389, 67, 19));
         kDPanel2.add(btnRemoveCustomer, new KDLayout.Constraints(935, 389, 67, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
-        panelTotal.setBounds(new Rectangle(1, 168, 999, 181));
-        kDPanel2.add(panelTotal, new KDLayout.Constraints(1, 168, 999, 181, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
+        panelTotal.setBounds(new Rectangle(1, 213, 999, 136));
+        kDPanel2.add(panelTotal, new KDLayout.Constraints(1, 213, 999, 136, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT));
         contContractNo.setBounds(new Rectangle(756, 26, 236, 19));
         kDPanel2.add(contContractNo, new KDLayout.Constraints(756, 26, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contTenancyType
@@ -2482,7 +2486,7 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contname.setBoundEditor(txtName);
         //kDPanel1
         kDPanel1.setLayout(new KDLayout());
-        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(-3, 49, 1008, 115));        contRentStartType.setBounds(new Rectangle(259, 58, 236, 19));
+        kDPanel1.putClientProperty("OriginalBounds", new Rectangle(-3, 49, 1008, 161));        contRentStartType.setBounds(new Rectangle(259, 58, 236, 19));
         kDPanel1.add(contRentStartType, new KDLayout.Constraints(259, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contFlagAtTerm.setBounds(new Rectangle(507, 58, 236, 19));
         kDPanel1.add(contFlagAtTerm, new KDLayout.Constraints(507, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
@@ -2492,8 +2496,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel1.add(contFirstLeaseType, new KDLayout.Constraints(11, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contEndDate.setBounds(new Rectangle(259, 14, 236, 19));
         kDPanel1.add(contEndDate, new KDLayout.Constraints(259, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDescription.setBounds(new Rectangle(11, 80, 484, 19));
-        kDPanel1.add(contDescription, new KDLayout.Constraints(11, 80, 484, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
+        contDescription.setBounds(new Rectangle(11, 80, 733, 65));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(11, 80, 733, 65, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contFristRevDate.setBounds(new Rectangle(259, 36, 236, 19));
         kDPanel1.add(contFristRevDate, new KDLayout.Constraints(259, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLeaseTime.setBounds(new Rectangle(507, 14, 236, 19));
@@ -2519,7 +2523,9 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         //contEndDate
         contEndDate.setBoundEditor(pkEndDate);
         //contDescription
-        contDescription.setBoundEditor(txtDescription);
+        contDescription.setBoundEditor(kDScrollPane2);
+        //kDScrollPane2
+        kDScrollPane2.getViewport().add(txtDescription, null);
         //contFristRevDate
         contFristRevDate.setBoundEditor(pkFristLeaseDate);
         //contLeaseTime
