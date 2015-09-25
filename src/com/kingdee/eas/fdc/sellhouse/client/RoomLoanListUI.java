@@ -766,7 +766,7 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 			_builder.appendSql(" select md.fid mdId,md.fmoneyType mdType,sum(payEntry.fappAmount) amount,sign.fid signId,sign.froomId roomId,sign.floanBank loanBankId,sign.facfBank acfBankId,sign.fpayTypeId payTypeId from t_she_signManage sign ");
 			_builder.appendSql(" left join T_SHE_SignPayListEntry payEntry on payEntry.fheadId=sign.fid left join t_she_moneyDefine md on payEntry.fmoneyDefineId=md.fid where sign.fbizState in ('SignApply','SignAudit') ");
 			_builder.appendSql(" and sign.fsellProjectId='"+projectId+"' and md.fmoneyType in('LoanAmount','AccFundAmount') ");
-			_builder.appendSql(" and sign.fid='d90AAAAQ0ZXYQDad' and not exists(select roomloan.fsignId,moneyType.fmoneyType from T_SHE_RoomLoan roomloan left join T_SHE_MoneyDefine moneyType on roomloan.FMmType = moneyType.fid where roomloan.fafmortgagedState in ('0', '1', '3', '8') and sign.fid=roomloan.fsignId and md.fmoneyType=moneyType.fmoneyType)");
+			_builder.appendSql(" and not exists(select roomloan.fsignId,moneyType.fmoneyType from T_SHE_RoomLoan roomloan left join T_SHE_MoneyDefine moneyType on roomloan.FMmType = moneyType.fid where roomloan.fafmortgagedState in ('0', '1', '3', '8') and sign.fid=roomloan.fsignId and md.fmoneyType=moneyType.fmoneyType)");
 			_builder.appendSql(" group by md.fid,md.fmoneyType,sign.fid,sign.froomId,sign.floanBank,sign.facfBank,sign.fpayTypeId ");
 			IRowSet rowSet = _builder.executeQuery();
 			while(rowSet.next()){
