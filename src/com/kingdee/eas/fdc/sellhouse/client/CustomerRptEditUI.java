@@ -335,6 +335,7 @@ public class CustomerRptEditUI extends AbstractCustomerRptEditUI {
 		
 		this.tblLinkman.getColumn("number").getStyleAttributes().setHided(true);
 		
+		this.tblCommerceChance.checkParsed();
 		this.tblCommerceChance.getColumn("worth").getStyleAttributes().setHided(true);
 		this.tblCommerceChance.getColumn("probability").getStyleAttributes().setHided(true);
 	}
