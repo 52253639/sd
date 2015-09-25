@@ -61,6 +61,7 @@ import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.FDCSysContext;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
+import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
@@ -141,34 +142,34 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 
 	RoomDisplaySetting roomSetting = new RoomDisplaySetting();
 	
-	private List loanList = new ArrayList();
-	private List accList = new ArrayList();
+//	private List loanList = new ArrayList();
+//	private List accList = new ArrayList();
 	private Map customerMap = new HashMap();
 	
 	/**
 	 * 款项为按揭
 	 */
-	private final int moneyTypeOfLoan = 0;
+//	private final int moneyTypeOfLoan = 0;
 	
 	/**
 	 * 款项为公积金
 	 */
-	private final int moneyTypeOfAfm = 1;
+//	private final int moneyTypeOfAfm = 1;
 	
 	/**
 	 * 款项类别为按揭和公积金
 	 */
-	private final int moneyTypeOfLoanAndAfm = 2;
+//	private final int moneyTypeOfLoanAndAfm = 2;
 	
 	/**
 	 * 用于保存房间对应的款项对象，避免重复查询
 	 */
-	private HashMap moneyDefineMap = new HashMap();
+//	private HashMap moneyDefineMap = new HashMap();
 	
 	/**
 	 * 用于新增按揭单据时，保存认购单或者签约单
 	 */
-	private HashMap billObjectMap = new HashMap();
+//	private HashMap billObjectMap = new HashMap();
 
 	public RoomLoanListUI() throws Exception {
 		super();
@@ -732,45 +733,113 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 	}
 
 	private void creataNewLoanRecoard(String projectId) {
-		this.loanList.clear();
-		this.accList.clear();
-		
+//		this.loanList.clear();
+//		this.accList.clear();
 		try{
-			IRowSet rs = RoomLoanFactory.getRemoteInstance().getRoomList(projectId);
-			while(rs.next()){
-				if (rs.getString("moneyType") != null) {
-					if(rs.getString("moneyType").equals("LoanAmount")){
-						if (rs.getString("roomId") != null) {
-							if(!this.loanList.contains(rs.getString("roomId") )){
-								this.loanList.add(rs.getString("roomId"));
-							}
-						}
-					}else if(rs.getString("moneyType").equals("AccFundAmount")){
-						if (rs.getString("roomId") != null) {
-							if(!this.accList.contains(rs.getString("roomId") )){
-								this.accList.add(rs.getString("roomId"));
-							}
-						}
-					}
+//			IRowSet rs = RoomLoanFactory.getRemoteInstance().getRoomList(projectId);
+//			while(rs.next()){
+//				if (rs.getString("moneyType") != null) {
+//					if(rs.getString("moneyType").equals("LoanAmount")){
+//						if (rs.getString("roomId") != null) {
+//							if(!this.loanList.contains(rs.getString("roomId") )){
+//								this.loanList.add(rs.getString("roomId"));
+//							}
+//						}
+//					}else if(rs.getString("moneyType").equals("AccFundAmount")){
+//						if (rs.getString("roomId") != null) {
+//							if(!this.accList.contains(rs.getString("roomId") )){
+//								this.accList.add(rs.getString("roomId"));
+//							}
+//						}
+//					}
+//				}
+//			}
+//			logger.error("create loan servier: the loanList's size is :"+this.loanList.size());
+//			if(this.loanList!=null && this.loanList.size()>0){
+//				createLoanRecord(this.loanList);
+//			}
+//			logger.error("create loan servier: the accList's size is :"+this.accList.size());
+//			if(this.accList!=null && this.accList.size()>0){
+//				createAccRecord(this.accList);
+//			}
+			FDCSQLBuilder _builder = new FDCSQLBuilder();
+			_builder.appendSql(" select md.fid mdId,md.fmoneyType mdType,sum(payEntry.fappAmount) amount,sign.fid signId,sign.froomId roomId,sign.floanBank loanBankId,sign.facfBank acfBankId,sign.fpayTypeId payTypeId from t_she_signManage sign ");
+			_builder.appendSql(" left join T_SHE_SignPayListEntry payEntry on payEntry.fheadId=sign.fid left join t_she_moneyDefine md on payEntry.fmoneyDefineId=md.fid where sign.fbizState in ('SignApply','SignAudit') ");
+			_builder.appendSql(" and sign.fsellProjectId='"+projectId+"' and md.fmoneyType in('LoanAmount','AccFundAmount') ");
+			_builder.appendSql(" and sign.fid='d90AAAAQ0ZXYQDad' and not exists(select roomloan.fsignId,moneyType.fmoneyType from T_SHE_RoomLoan roomloan left join T_SHE_MoneyDefine moneyType on roomloan.FMmType = moneyType.fid where roomloan.fafmortgagedState in ('0', '1', '3', '8') and sign.fid=roomloan.fsignId and md.fmoneyType=moneyType.fmoneyType)");
+			_builder.appendSql(" group by md.fid,md.fmoneyType,sign.fid,sign.froomId,sign.floanBank,sign.facfBank,sign.fpayTypeId ");
+			IRowSet rowSet = _builder.executeQuery();
+			while(rowSet.next()){
+				String roomId=rowSet.getString("roomId");
+				String mdId=rowSet.getString("mdId");
+				String signId=rowSet.getString("signId");
+				String loanBankId=rowSet.getString("loanBankId");
+				String acfBankId=rowSet.getString("acfBankId");
+				String payTypeId=rowSet.getString("payTypeId");
+				RoomLoanInfo roomLoan = new RoomLoanInfo();
+				
+				RoomInfo room = new RoomInfo();
+				room.setId(BOSUuid.read(roomId));
+				roomLoan.setRoom(room);
+				
+				SignManageInfo sign=new SignManageInfo();
+				sign.setId(BOSUuid.read(signId));
+				
+				SHEPayTypeInfo payType=new SHEPayTypeInfo();
+				payType.setId(BOSUuid.read(payTypeId));
+				sign.setPayType(payType);
+				
+				roomLoan.setSign(sign);
+				
+				String number ="";
+				number = createNumber();
+				if(number!=null && !"".equals(number)){
+					roomLoan.setNumber(number);
+				}else{
+					FDCMsgBox.showInfo("请启用编码规则");
+					SysUtil.abort();
+				}
+				roomLoan.setAFMortgagedState(AFMortgagedStateEnum.UNTRANSACT);
+				roomLoan.setCreator(SysContext.getSysContext().getCurrentUserInfo());
+				roomLoan.setActualLoanAmt(rowSet.getBigDecimal("amount"));
+				if(rowSet.getString("mdType").equals("LoanAmount")){
+					BankInfo bank=new BankInfo();
+					bank.setId(BOSUuid.read(loanBankId));
+					roomLoan.setLoanBank(bank);
+					
+					MoneyDefineInfo md=new MoneyDefineInfo();
+					md.setId(BOSUuid.read(mdId));
+					md.setMoneyType(MoneyTypeEnum.LoanAmount);
+					roomLoan.setMmType(md);
+					
+					//初始化按揭信息
+					this.initLoanData(roomLoan);
+					
+					//更新业务总览对应的服务
+					SHEManageHelper.updateTransactionOverView(null, roomLoan.getRoom(), SHEManageHelper.MORTGAGE,roomLoan.getPromiseDate(), null, false);
+					RoomLoanFactory.getRemoteInstance().save(roomLoan);
+				}else{
+					BankInfo bank=new BankInfo();
+					bank.setId(BOSUuid.read(acfBankId));
+					roomLoan.setLoanBank(bank);
+					
+					MoneyDefineInfo md=new MoneyDefineInfo();
+					md.setId(BOSUuid.read(mdId));
+					md.setMoneyType(MoneyTypeEnum.AccFundAmount);
+					roomLoan.setMmType(md);
+					
+					//初始化按揭信息
+					this.initLoanData(roomLoan);
+					
+					SHEManageHelper.updateTransactionOverView(null, roomLoan.getRoom(), SHEManageHelper.ACCFUND, roomLoan.getPromiseDate(), null, false);
+					RoomLoanFactory.getRemoteInstance().save(roomLoan);
 				}
 			}
-			logger.error("create loan servier: the loanList's size is :"+this.loanList.size());
-			if(this.loanList!=null && this.loanList.size()>0){
-				createLoanRecord(this.loanList);
-			}
-			logger.error("create loan servier: the accList's size is :"+this.accList.size());
-			if(this.accList!=null && this.accList.size()>0){
-				createAccRecord(this.accList);
-			}
-			
 			FDCMsgBox.showInfo("操作成功!");
-			this.abort();
-			
+			return;
 		}catch(Exception ex){
 			logger.error(ex.getMessage()+"批量生成按揭服务单据失败!");
 		}
-		
-	
 	}
 
 	private TransactionInfo getTransactionInfo(String roomId) throws BOSException{
@@ -801,83 +870,83 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 	 * @throws BOSException 
 	 * @throws EASBizException 
 	 */
-	private int checkRoomMoneyType(String roomId) throws BOSException, EASBizException{
-		this.moneyDefineMap.clear();
-		int retMoneyType = -1;
-		
-		TransactionInfo transactionInfo = this.getTransactionInfo(roomId);
-		if(transactionInfo != null){
-			if(transactionInfo.getCurrentLink()!=null && (transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Purchase)
-					|| transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Sign))){  //认购或签约状态
-				//保存认购单或签约单
-				if(transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Sign)){  //暂存签约单
-					SignManageInfo signInfo = SignManageFactory.getRemoteInstance()
-						.getSignManageInfo(new ObjectUuidPK(transactionInfo.getBillId().toString()));
-					this.billObjectMap.put("sign", signInfo);
-					
-					SignPayListEntryCollection payListEntry = this.getSignPayEntry(transactionInfo.getBillId().toString());
-					if(payListEntry!=null && !payListEntry.isEmpty()){  //检查付款明细中是否包含按揭或公积金款项
-						for(int i=0; i<payListEntry.size(); i++){
-							SignPayListEntryInfo payListInfo = payListEntry.get(i);
-							if(payListInfo.getMoneyDefine()!=null) {
-								if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){
-									moneyDefineMap.put(new Integer(this.moneyTypeOfLoan), payListInfo.getMoneyDefine());
-									if(retMoneyType == this.moneyTypeOfAfm){  //既有按揭，又有公积金
-										return this.moneyTypeOfLoanAndAfm;
-									}
-									else{  //按揭
-										retMoneyType = this.moneyTypeOfLoan;
-									}
-								}
-								else if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.AccFundAmount)){
-									moneyDefineMap.put(new Integer(this.moneyTypeOfAfm), payListInfo.getMoneyDefine());
-									if(retMoneyType == this.moneyTypeOfLoan){  //既有按揭，又有公积金
-										return this.moneyTypeOfLoanAndAfm;
-									}
-									else{  //公积金
-										retMoneyType = this.moneyTypeOfAfm;
-									}
-								}
-							}
-						}
-					}
-				}
-				else if(transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Purchase)){  //暂存认购单
-					PurchaseManageInfo purInfo = PurchaseManageFactory.getRemoteInstance()
-						.getPurchaseManageInfo(new ObjectUuidPK(transactionInfo.getBillId().toString()));
-					this.billObjectMap.put("purchase", purInfo);
-					PurPayListEntryCollection payListEntry = this.getPurchasePayEntry(transactionInfo.getBillId().toString());
-					if(payListEntry!=null && !payListEntry.isEmpty()){  //检查付款明细中是否包含按揭或公积金款项
-						for(int i=0; i<payListEntry.size(); i++){
-							PurPayListEntryInfo payListInfo = payListEntry.get(i);
-							if(payListInfo.getMoneyDefine()!=null) {
-								if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){
-									moneyDefineMap.put(new Integer(this.moneyTypeOfLoan), payListInfo.getMoneyDefine());
-									if(retMoneyType == this.moneyTypeOfAfm){  //既有按揭，又有公积金
-										return this.moneyTypeOfLoanAndAfm;
-									}
-									else{  //按揭
-										retMoneyType = this.moneyTypeOfLoan;
-									}
-								}
-								else if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.AccFundAmount)){
-									moneyDefineMap.put(new Integer(this.moneyTypeOfAfm), payListInfo.getMoneyDefine());
-									if(retMoneyType == this.moneyTypeOfLoan){  //既有按揭，又有公积金
-										return this.moneyTypeOfLoanAndAfm;
-									}
-									else{  //公积金
-										retMoneyType = this.moneyTypeOfAfm;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		
-		return retMoneyType;
-	}
+//	private int checkRoomMoneyType(String roomId) throws BOSException, EASBizException{
+//		this.moneyDefineMap.clear();
+//		int retMoneyType = -1;
+//		
+//		TransactionInfo transactionInfo = this.getTransactionInfo(roomId);
+//		if(transactionInfo != null){
+//			if(transactionInfo.getCurrentLink()!=null && (transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Purchase)
+//					|| transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Sign))){  //认购或签约状态
+//				//保存认购单或签约单
+//				if(transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Sign)){  //暂存签约单
+//					SignManageInfo signInfo = SignManageFactory.getRemoteInstance()
+//						.getSignManageInfo(new ObjectUuidPK(transactionInfo.getBillId().toString()));
+//					this.billObjectMap.put("sign", signInfo);
+//					
+//					SignPayListEntryCollection payListEntry = this.getSignPayEntry(transactionInfo.getBillId().toString());
+//					if(payListEntry!=null && !payListEntry.isEmpty()){  //检查付款明细中是否包含按揭或公积金款项
+//						for(int i=0; i<payListEntry.size(); i++){
+//							SignPayListEntryInfo payListInfo = payListEntry.get(i);
+//							if(payListInfo.getMoneyDefine()!=null) {
+//								if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){
+//									moneyDefineMap.put(new Integer(this.moneyTypeOfLoan), payListInfo.getMoneyDefine());
+//									if(retMoneyType == this.moneyTypeOfAfm){  //既有按揭，又有公积金
+//										return this.moneyTypeOfLoanAndAfm;
+//									}
+//									else{  //按揭
+//										retMoneyType = this.moneyTypeOfLoan;
+//									}
+//								}
+//								else if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.AccFundAmount)){
+//									moneyDefineMap.put(new Integer(this.moneyTypeOfAfm), payListInfo.getMoneyDefine());
+//									if(retMoneyType == this.moneyTypeOfLoan){  //既有按揭，又有公积金
+//										return this.moneyTypeOfLoanAndAfm;
+//									}
+//									else{  //公积金
+//										retMoneyType = this.moneyTypeOfAfm;
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//				else if(transactionInfo.getCurrentLink().equals(RoomSellStateEnum.Purchase)){  //暂存认购单
+//					PurchaseManageInfo purInfo = PurchaseManageFactory.getRemoteInstance()
+//						.getPurchaseManageInfo(new ObjectUuidPK(transactionInfo.getBillId().toString()));
+//					this.billObjectMap.put("purchase", purInfo);
+//					PurPayListEntryCollection payListEntry = this.getPurchasePayEntry(transactionInfo.getBillId().toString());
+//					if(payListEntry!=null && !payListEntry.isEmpty()){  //检查付款明细中是否包含按揭或公积金款项
+//						for(int i=0; i<payListEntry.size(); i++){
+//							PurPayListEntryInfo payListInfo = payListEntry.get(i);
+//							if(payListInfo.getMoneyDefine()!=null) {
+//								if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){
+//									moneyDefineMap.put(new Integer(this.moneyTypeOfLoan), payListInfo.getMoneyDefine());
+//									if(retMoneyType == this.moneyTypeOfAfm){  //既有按揭，又有公积金
+//										return this.moneyTypeOfLoanAndAfm;
+//									}
+//									else{  //按揭
+//										retMoneyType = this.moneyTypeOfLoan;
+//									}
+//								}
+//								else if(payListInfo.getMoneyDefine().getMoneyType().equals(MoneyTypeEnum.AccFundAmount)){
+//									moneyDefineMap.put(new Integer(this.moneyTypeOfAfm), payListInfo.getMoneyDefine());
+//									if(retMoneyType == this.moneyTypeOfLoan){  //既有按揭，又有公积金
+//										return this.moneyTypeOfLoanAndAfm;
+//									}
+//									else{  //公积金
+//										retMoneyType = this.moneyTypeOfAfm;
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//		
+//		return retMoneyType;
+//	}
 	
 	/**
 	 * 根据认购单id，获取付款明细
@@ -923,68 +992,68 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 		return entryCol;
 	}
 	
-	private void createAccRecord(List accList) throws Exception {
-		logger.error("entern createAccRecord function!");
-		if (accList != null && !accList.isEmpty()) { // 新增单据
-			String roomId = "";
-			for (int i = 0; i < accList.size(); i++) {
-				roomId = "";
-				roomId = accList.get(i).toString();
-				//this.getTransactionInfo(room); // 用于总览服务更新
-				this.checkRoomMoneyType(roomId);
-				RoomLoanInfo roomLoan = new RoomLoanInfo();
-				RoomInfo room = new RoomInfo();
-				room.setId(BOSUuid.read(roomId));
-				roomLoan.setRoom(room);
-				// 根据编码规则来生成编码
-				String number = "";
-				number = createNumber();
-				if (number != null && !"".equals(number)) {
-					roomLoan.setNumber(number);
-				}
-				else{
-					FDCMsgBox.showInfo("请启用编码规则");
-					SysUtil.abort();
-				}
-				roomLoan.setAFMortgagedState(AFMortgagedStateEnum.UNTRANSACT);
-				roomLoan.setMmType((MoneyDefineInfo) this.moneyDefineMap
-						.get(new Integer(this.moneyTypeOfAfm)));
-				roomLoan.setCreator(SysContext.getSysContext()
-						.getCurrentUserInfo());
-				if (this.billObjectMap.get("sign") != null) {
-					roomLoan.setSign((SignManageInfo) this.billObjectMap.get("sign"));
-//					String id = ((SignManageInfo) this.billObjectMap.get("sign")).toString();  //add by shilei
-//					SignManageInfo smi = SignManageFactory.getRemoteInstance().getSignManageInfo(new ObjectUuidPK(id));
-//					if(smi.getAcfBank()!=null){
-//						String loanbank = smi.getLoanBank().getId().toString();
-//						BankInfo loanbankinfo = BankFactory.getRemoteInstance().getBankInfo(new ObjectUuidPK(loanbank));
-//						roomLoan.setLoanBank(loanbankinfo);
-//					}
-					roomLoan.setLoanBank(((SignManageInfo) this.billObjectMap.get("sign")).getAcfBank());
-				} else if (this.billObjectMap.get("purchase") != null) {
-					roomLoan
-							.setPurchase((PurchaseManageInfo) this.billObjectMap
-									.get("purchase"));
-				}
-
-				logger.error("初始化按揭信息:this.initLoanData");
-				// 初始化按揭信息
-				this.initLoanData(roomLoan);
-
-				logger.error("更新业务总览对应的服务:updateTransactionOverView");
-				// 更新业务总览对应的服务
-				SHEManageHelper.updateTransactionOverView(null, roomLoan
-						.getRoom(), SHEManageHelper.ACCFUND, roomLoan
-						.getPromiseDate(), null, false);
-
-				logger.error("新增公积金单据开始..........");
-				RoomLoanFactory.getRemoteInstance().save(roomLoan);
-				logger.error("新增公积金单据据结束..........");
-
-			}
-
-		}
-	}
+//	private void createAccRecord(List accList) throws Exception {
+//		logger.error("entern createAccRecord function!");
+//		if (accList != null && !accList.isEmpty()) { // 新增单据
+//			String roomId = "";
+//			for (int i = 0; i < accList.size(); i++) {
+//				roomId = "";
+//				roomId = accList.get(i).toString();
+//				//this.getTransactionInfo(room); // 用于总览服务更新
+//				this.checkRoomMoneyType(roomId);
+//				RoomLoanInfo roomLoan = new RoomLoanInfo();
+//				RoomInfo room = new RoomInfo();
+//				room.setId(BOSUuid.read(roomId));
+//				roomLoan.setRoom(room);
+//				// 根据编码规则来生成编码
+//				String number = "";
+//				number = createNumber();
+//				if (number != null && !"".equals(number)) {
+//					roomLoan.setNumber(number);
+//				}
+//				else{
+//					FDCMsgBox.showInfo("请启用编码规则");
+//					SysUtil.abort();
+//				}
+//				roomLoan.setAFMortgagedState(AFMortgagedStateEnum.UNTRANSACT);
+//				roomLoan.setMmType((MoneyDefineInfo) this.moneyDefineMap
+//						.get(new Integer(this.moneyTypeOfAfm)));
+//				roomLoan.setCreator(SysContext.getSysContext()
+//						.getCurrentUserInfo());
+//				if (this.billObjectMap.get("sign") != null) {
+//					roomLoan.setSign((SignManageInfo) this.billObjectMap.get("sign"));
+////					String id = ((SignManageInfo) this.billObjectMap.get("sign")).toString();  //add by shilei
+////					SignManageInfo smi = SignManageFactory.getRemoteInstance().getSignManageInfo(new ObjectUuidPK(id));
+////					if(smi.getAcfBank()!=null){
+////						String loanbank = smi.getLoanBank().getId().toString();
+////						BankInfo loanbankinfo = BankFactory.getRemoteInstance().getBankInfo(new ObjectUuidPK(loanbank));
+////						roomLoan.setLoanBank(loanbankinfo);
+////					}
+//					roomLoan.setLoanBank(((SignManageInfo) this.billObjectMap.get("sign")).getAcfBank());
+//				} else if (this.billObjectMap.get("purchase") != null) {
+//					roomLoan
+//							.setPurchase((PurchaseManageInfo) this.billObjectMap
+//									.get("purchase"));
+//				}
+//
+//				logger.error("初始化按揭信息:this.initLoanData");
+//				// 初始化按揭信息
+//				this.initLoanData(roomLoan);
+//
+//				logger.error("更新业务总览对应的服务:updateTransactionOverView");
+//				// 更新业务总览对应的服务
+//				SHEManageHelper.updateTransactionOverView(null, roomLoan
+//						.getRoom(), SHEManageHelper.ACCFUND, roomLoan
+//						.getPromiseDate(), null, false);
+//
+//				logger.error("新增公积金单据开始..........");
+//				RoomLoanFactory.getRemoteInstance().save(roomLoan);
+//				logger.error("新增公积金单据据结束..........");
+//
+//			}
+//
+//		}
+//	}
 	
 	/**
 	 * 根据认购或签约单中的付款方案，初始化按揭数据
@@ -992,16 +1061,16 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 	 * @throws BOSException 
 	 * @throws EASBizException 
 	 */
+	Map payListMap=new HashMap();
 	private void initLoanData(RoomLoanInfo roomLoan) throws EASBizException, BOSException{
-		String payTypeId = null;
-		if(roomLoan.getSign() != null && roomLoan.getSign().getPayType().getId() != null){  //签约
-			payTypeId = roomLoan.getSign().getPayType().getId().toString();
+		if(roomLoan.getSign().getPayType()==null||roomLoan.getSign().getPayType().getId()==null){
+			return;
 		}
-		else if(roomLoan.getPurchase() != null && roomLoan.getPurchase().getPayType().getId() != null){  //认购
-			payTypeId = roomLoan.getPurchase().getPayType().getId().toString();
-		}
-		
-		if(payTypeId != null){
+		String payTypeId = roomLoan.getSign().getPayType().getId().toString();
+		SHEPayTypeInfo payType=null;
+		if(payListMap.containsKey(payTypeId)){
+			payType=(SHEPayTypeInfo) payListMap.get(payTypeId);
+		}else{
 			//获取付款方案
 			SelectorItemCollection selector = new SelectorItemCollection();
 			selector.add(new SelectorItemInfo("isLoan"));
@@ -1011,32 +1080,29 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 			selector.add(new SelectorItemInfo("afScheme.*"));
 			selector.add(new SelectorItemInfo("bizLists.*"));
 			
-			SHEPayTypeInfo payType = SHEPayTypeFactory.getRemoteInstance()
-				.getSHEPayTypeInfo(new ObjectUuidPK(payTypeId), selector);
+			selector.add(new SelectorItemInfo("loanScheme.ApproachEntrys.*"));
+			selector.add(new SelectorItemInfo("afScheme.DataEntrys.*"));
 			
-			if(payType != null ){
-				if(payType.isIsLoan()){  //若按揭，则将信息保存到按揭单据
-					if(roomLoan.getMmType().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){  //按揭
-						roomLoan.setLoanBank(payType.getLoanBank());
-						roomLoan.setORSOMortgaged(payType.getLoanScheme());
-						this.setLoanEntry(roomLoan, payType.getLoanScheme());
-					}
-					else{  //公积金
-						roomLoan.setLoanBank(payType.getAcfBank());
-						roomLoan.setORSOMortgaged(payType.getAfScheme());
-						this.setLoanEntry(roomLoan, payType.getAfScheme());
-					}
-				}
-				//遍历付款业务明细，计算承诺完成日期
-				if(payType.getBizLists()!=null && !payType.getBizLists().isEmpty()){
-					for(int i=0; i<payType.getBizLists().size(); i++){
-						BizListEntryInfo bizEntry = payType.getBizLists().get(i);
-						if(bizEntry.getPayTypeBizFlow().equals(BizNewFlowEnum.LOAN)){
-							Date promDate = this.getBizPromiseDate(payType.getBizLists(), bizEntry);
-							roomLoan.setPromiseDate(promDate);
-							break;
-						}
-					}
+			payType = SHEPayTypeFactory.getRemoteInstance().getSHEPayTypeInfo(new ObjectUuidPK(payTypeId), selector);
+		}
+
+		if(payType.isIsLoan()){  //若按揭，则将信息保存到按揭单据
+			if(roomLoan.getMmType().getMoneyType().equals(MoneyTypeEnum.LoanAmount)){  //按揭
+				roomLoan.setORSOMortgaged(payType.getLoanScheme());
+				this.setLoanEntry(roomLoan, payType.getLoanScheme());
+			}else{  //公积金
+				roomLoan.setORSOMortgaged(payType.getAfScheme());
+				this.setLoanEntry(roomLoan, payType.getAfScheme());
+			}
+		}
+		//遍历付款业务明细，计算承诺完成日期
+		if(payType.getBizLists()!=null && !payType.getBizLists().isEmpty()){
+			for(int i=0; i<payType.getBizLists().size(); i++){
+				BizListEntryInfo bizEntry = payType.getBizLists().get(i);
+				if(bizEntry.getPayTypeBizFlow().equals(BizNewFlowEnum.LOAN)){
+					Date promDate = this.getBizPromiseDate(payType.getBizLists(), bizEntry);
+					roomLoan.setPromiseDate(promDate);
+					break;
 				}
 			}
 		}
@@ -1085,12 +1151,11 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 		if(afmScheme == null){
 			return;
 		}
-		SelectorItemCollection selector = new SelectorItemCollection();
-		selector.add(new SelectorItemInfo("ApproachEntrys.*"));
-		selector.add(new SelectorItemInfo("DataEntrys.*"));
-		
-		afmScheme = AFMortgagedFactory.getRemoteInstance()
-			.getAFMortgagedInfo(new ObjectUuidPK(afmScheme.getId().toString()), selector);
+//		SelectorItemCollection selector = new SelectorItemCollection();
+//		selector.add(new SelectorItemInfo("ApproachEntrys.*"));
+//		selector.add(new SelectorItemInfo("DataEntrys.*"));
+//		
+//		afmScheme = AFMortgagedFactory.getRemoteInstance().getAFMortgagedInfo(new ObjectUuidPK(afmScheme.getId().toString()), selector);
 		
 		roomLoan.getAFMortgaged().clear();
 		
@@ -1168,63 +1233,63 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 	}
 	
 
-	private void createLoanRecord(List loanList) throws EASBizException, BOSException {
-		logger.error("entern createLoanRecord function!");
-		if (loanList != null && !loanList.isEmpty()) { // 新增单据
-			String roomId = "";
-			for (int i = 0; i < loanList.size(); i++) {
-				roomId = "";
-				roomId = loanList.get(i).toString();
-				this.checkRoomMoneyType(roomId);
-				RoomLoanInfo roomLoan = new RoomLoanInfo();
-				RoomInfo room = new RoomInfo();
-				room.setId(BOSUuid.read(roomId));
-				roomLoan.setRoom(room);
-				//根据编码规则来生成编码
-				String number ="";
-				number = createNumber();
-				if(number!=null && !"".equals(number)){
-					roomLoan.setNumber(number);
-				}
-				else{
-					FDCMsgBox.showInfo("请启用编码规则");
-					SysUtil.abort();
-				}
-				roomLoan.setAFMortgagedState(AFMortgagedStateEnum.UNTRANSACT);
-				roomLoan.setMmType((MoneyDefineInfo)this.moneyDefineMap.get(new Integer(this.moneyTypeOfLoan)));
-				roomLoan.setCreator(SysContext.getSysContext().getCurrentUserInfo());
-				if(this.billObjectMap.get("sign") != null){
-					roomLoan.setSign((SignManageInfo)this.billObjectMap.get("sign"));
-//					String id = ((SignManageInfo)this.billObjectMap.get("sign")).getId().toString(); //add by shilei
-//					SignManageInfo smi = SignManageFactory.getRemoteInstance().getSignManageInfo(new ObjectUuidPK(id));
-//					if(smi.getLoanBank()!=null){
-//						String Loanbank = smi.getLoanBank().getId().toString();
-//						BankInfo loanBankInfo = BankFactory.getRemoteInstance().getBankInfo(new ObjectUuidPK(Loanbank)); 
-//						roomLoan.setLoanBank(loanBankInfo);
-//					}
-					roomLoan.setLoanBank(((SignManageInfo) this.billObjectMap.get("sign")).getLoanBank());
-				}
-				else if(this.billObjectMap.get("purchase") != null){
-					roomLoan.setPurchase((PurchaseManageInfo)this.billObjectMap.get("purchase"));
-				}
-				
-				logger.error("初始化按揭信息:this.initLoanData");
-				//初始化按揭信息
-				this.initLoanData(roomLoan);
-				
-				logger.error("更新业务总览对应的服务:updateTransactionOverView");
-				//更新业务总览对应的服务
-				SHEManageHelper.updateTransactionOverView(null, roomLoan.getRoom(), SHEManageHelper.MORTGAGE,
-						roomLoan.getPromiseDate(), null, false);
-				
-				logger.error("新增按揭单据开始..........");
-				RoomLoanFactory.getRemoteInstance().save(roomLoan);
-				logger.error("新增按揭单据结束..........");
-			}
-
-		}
-		
-	}
+//	private void createLoanRecord(List loanList) throws EASBizException, BOSException {
+//		logger.error("entern createLoanRecord function!");
+//		if (loanList != null && !loanList.isEmpty()) { // 新增单据
+//			String roomId = "";
+//			for (int i = 0; i < loanList.size(); i++) {
+//				roomId = "";
+//				roomId = loanList.get(i).toString();
+//				this.checkRoomMoneyType(roomId);
+//				RoomLoanInfo roomLoan = new RoomLoanInfo();
+//				RoomInfo room = new RoomInfo();
+//				room.setId(BOSUuid.read(roomId));
+//				roomLoan.setRoom(room);
+//				//根据编码规则来生成编码
+//				String number ="";
+//				number = createNumber();
+//				if(number!=null && !"".equals(number)){
+//					roomLoan.setNumber(number);
+//				}
+//				else{
+//					FDCMsgBox.showInfo("请启用编码规则");
+//					SysUtil.abort();
+//				}
+//				roomLoan.setAFMortgagedState(AFMortgagedStateEnum.UNTRANSACT);
+//				roomLoan.setMmType((MoneyDefineInfo)this.moneyDefineMap.get(new Integer(this.moneyTypeOfLoan)));
+//				roomLoan.setCreator(SysContext.getSysContext().getCurrentUserInfo());
+//				if(this.billObjectMap.get("sign") != null){
+//					roomLoan.setSign((SignManageInfo)this.billObjectMap.get("sign"));
+////					String id = ((SignManageInfo)this.billObjectMap.get("sign")).getId().toString(); //add by shilei
+////					SignManageInfo smi = SignManageFactory.getRemoteInstance().getSignManageInfo(new ObjectUuidPK(id));
+////					if(smi.getLoanBank()!=null){
+////						String Loanbank = smi.getLoanBank().getId().toString();
+////						BankInfo loanBankInfo = BankFactory.getRemoteInstance().getBankInfo(new ObjectUuidPK(Loanbank)); 
+////						roomLoan.setLoanBank(loanBankInfo);
+////					}
+//					roomLoan.setLoanBank(((SignManageInfo) this.billObjectMap.get("sign")).getLoanBank());
+//				}
+//				else if(this.billObjectMap.get("purchase") != null){
+//					roomLoan.setPurchase((PurchaseManageInfo)this.billObjectMap.get("purchase"));
+//				}
+//				
+//				logger.error("初始化按揭信息:this.initLoanData");
+//				//初始化按揭信息
+//				this.initLoanData(roomLoan);
+//				
+//				logger.error("更新业务总览对应的服务:updateTransactionOverView");
+//				//更新业务总览对应的服务
+//				SHEManageHelper.updateTransactionOverView(null, roomLoan.getRoom(), SHEManageHelper.MORTGAGE,
+//						roomLoan.getPromiseDate(), null, false);
+//				
+//				logger.error("新增按揭单据开始..........");
+//				RoomLoanFactory.getRemoteInstance().save(roomLoan);
+//				logger.error("新增按揭单据结束..........");
+//			}
+//
+//		}
+//		
+//	}
 	
 	private String createNumber() throws BOSException, CodingRuleException,
 			EASBizException {
