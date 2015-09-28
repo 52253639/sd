@@ -1443,9 +1443,9 @@ public class ChangeManageEditUI extends AbstractChangeManageEditUI
 		objectValue=SHEManageHelper.getCurTransactionBill(room.getId());
 		if(objectValue!=null){
 			if(objectValue instanceof SignManageInfo){
-				if(ChangeBizTypeEnum.CHANGENAME.equals(comboBizType.getSelectedItem())){
-					setRoomNull(oldRoom,"该房间已经签约，不适合做更名业务！");
-				}
+//				if(ChangeBizTypeEnum.CHANGENAME.equals(comboBizType.getSelectedItem())){
+//					setRoomNull(oldRoom,"该房间已经签约，不适合做更名业务！");
+//				}
 				if(checkIsHasBankPayment(((BaseTransactionInfo)objectValue).getId().toString())){
 					setRoomNull(oldRoom,"该房间存在银行放款，不适合做变更业务！");
 				}

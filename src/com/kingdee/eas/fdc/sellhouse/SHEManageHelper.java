@@ -324,11 +324,11 @@ public class SHEManageHelper {
 //					return;
 //				}
 				FilterInfo filter = new FilterInfo();
-//				filter.getFilterItems().add(new FilterItemInfo("signManager.id", srcId));
-//				if(BankPaymentEntryFactory.getRemoteInstance().exists(filter)){
-//					FDCMsgBox.showWarning(owner,"该房间存在银行放款，不适合做变更业务！");
-//					return;
-//				}
+				filter.getFilterItems().add(new FilterItemInfo("signManager.id", srcId));
+				if(BankPaymentEntryFactory.getRemoteInstance().exists(filter)){
+					FDCMsgBox.showWarning(owner,"该房间存在银行放款，不适合做变更业务！");
+					return;
+				}
 				filter = new FilterInfo();
 				filter.getFilterItems().add(new FilterItemInfo("sign.id", srcId));
 				if(CompensateRoomListFactory.getRemoteInstance().exists(filter)&&!bizType.equals(ChangeBizTypeEnum.QUITROOM)){
