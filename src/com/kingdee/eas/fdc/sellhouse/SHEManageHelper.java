@@ -315,14 +315,14 @@ public class SHEManageHelper {
 		}
 		if(objectValue!=null){
 			if(objectValue instanceof SignManageInfo){
-				if(bizType.equals(ChangeBizTypeEnum.CHANGENAME)){
-					FDCMsgBox.showWarning(owner,"该房间已经签约，不适合做更名业务！");
-					return;
-				}
-				if(bizType.equals(ChangeBizTypeEnum.CHANGEROOM)){
-					FDCMsgBox.showWarning(owner,"该房间已经签约，不适合做换房业务！");
-					return;
-				}
+//				if(bizType.equals(ChangeBizTypeEnum.CHANGENAME)){
+//					FDCMsgBox.showWarning(owner,"该房间已经签约，不适合做更名业务！");
+//					return;
+//				}
+//				if(bizType.equals(ChangeBizTypeEnum.CHANGEROOM)){
+//					FDCMsgBox.showWarning(owner,"该房间已经签约，不适合做换房业务！");
+//					return;
+//				}
 				FilterInfo filter = new FilterInfo();
 //				filter.getFilterItems().add(new FilterItemInfo("signManager.id", srcId));
 //				if(BankPaymentEntryFactory.getRemoteInstance().exists(filter)){

@@ -167,12 +167,44 @@ public class ChangeManageControllerBean extends AbstractChangeManageControllerBe
 				if(ChangeBizTypeEnum.CHANGENAME.equals(info.getBizType())){
 					SHEManageHelper.updateTransaction(ctx, (BaseTransactionInfo)newobjectValue, this.getRoomSellState(newobjectValue),false);
 				
-					boolean isClearActRevAmount=isExistSameCustomer(objectValue,info);
-					if(isClearActRevAmount){
-						ObjectUuidPK tranpk=new ObjectUuidPK(info.getTransactionID());
-						TransactionInfo	tranInfo=TransactionFactory.getLocalInstance(ctx).getTransactionInfo(tranpk);
-						SHERevBillFactory.getLocalInstance(ctx).whenTransCustChange(tranInfo);
+//					boolean isClearActRevAmount=isExistSameCustomer(objectValue,info);
+//					if(isClearActRevAmount){
+//						ObjectUuidPK tranpk=new ObjectUuidPK(info.getTransactionID());
+//						TransactionInfo	tranInfo=TransactionFactory.getLocalInstance(ctx).getTransactionInfo(tranpk);
+//						SHERevBillFactory.getLocalInstance(ctx).whenTransCustChange(tranInfo);
+//					}
+					FDCSQLBuilder fdcSB = new FDCSQLBuilder(ctx);
+					fdcSB.setBatchType(FDCSQLBuilder.STATEMENT_TYPE);
+					
+					StringBuffer sql = new StringBuffer();
+					sql.append("update T_BDC_SHERevBill set frelateBizBillId='"+info.getNewId()+"' where frelateBizBillId='"+info.getSrcId()+"'");
+					fdcSB.addBatch(sql.toString());
+					
+					sql = new StringBuffer();
+					sql.append("update T_BDC_SHERevBill set frelateBizBillNumber='"+((BaseTransactionInfo)newobjectValue).getNumber()+"' where frelateBizBillId='"+info.getNewId()+"'");
+					fdcSB.addBatch(sql.toString());
+					
+					String customerIds="";
+					if(info.getCustomerEntry().size()==1){
+						customerIds=info.getCustomerEntry().get(0).getCustomer().getId().toString();
+					}else{
+						for(int i=0;i<info.getCustomerEntry().size();i++){
+							if(i==info.getCustomerEntry().size()-1){
+								customerIds=customerIds+info.getCustomerEntry().get(i).getCustomer().getId().toString();
+							}else{
+								customerIds=customerIds+info.getCustomerEntry().get(i).getCustomer().getId().toString()+",";
+							}
+						}
 					}
+					sql = new StringBuffer();
+					sql.append("update T_BDC_SHERevBill set fcustomerids='"+customerIds+"' where frelateTransId='"+info.getTransactionID()+"'");
+					fdcSB.addBatch(sql.toString());
+					
+					sql = new StringBuffer();
+					sql.append("update T_BDC_SHERevBill set fcustomernames='"+info.getCustomerNames()+"' where frelateTransId='"+info.getTransactionID()+"'");
+					fdcSB.addBatch(sql.toString());
+					
+					fdcSB.executeBatch();
 				}
 				setBizState(ctx,newobjectValue,info.getBizType(),FDCBillStateEnum.AUDITTED,true);
 			}
@@ -191,6 +223,11 @@ public class ChangeManageControllerBean extends AbstractChangeManageControllerBe
 		selector.add("auditor");
 		selector.add("auditTime");
 		selector.add("sheRevBill");
+		
+		if(ChangeBizTypeEnum.CHANGENAME.equals(info.getBizType())){
+			selector.add("dealState");
+			info.setDealState(DealStateEnum.DEAL);
+		}
 		_updatePartial(ctx, billInfo, selector);
 	}
     private RoomSellStateEnum getRoomSellState(IObjectValue objectValue){

@@ -1137,7 +1137,7 @@ public class ChangeManageEditUI extends AbstractChangeManageEditUI
 			MsgBox.showWarning(this,"请先选择房间！");
 			return;
 		}
-		this.customer =SHEManageHelper.customerSelect(this,this.customer,editData.getSellProject(),true,false);
+		this.customer =SHEManageHelper.customerSelect(this,this.customer,editData.getSellProject(),true,true);
 		this.storeCustomerEntry();
 		this.loadCustomerEntry(editData);
 	}

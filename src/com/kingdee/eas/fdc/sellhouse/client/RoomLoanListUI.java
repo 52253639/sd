@@ -803,9 +803,11 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 				roomLoan.setCreator(SysContext.getSysContext().getCurrentUserInfo());
 				roomLoan.setActualLoanAmt(rowSet.getBigDecimal("amount"));
 				if(rowSet.getString("mdType").equals("LoanAmount")){
-					BankInfo bank=new BankInfo();
-					bank.setId(BOSUuid.read(loanBankId));
-					roomLoan.setLoanBank(bank);
+					if(loanBankId!=null){
+						BankInfo bank=new BankInfo();
+						bank.setId(BOSUuid.read(loanBankId));
+						roomLoan.setLoanBank(bank);
+					}
 					
 					MoneyDefineInfo md=new MoneyDefineInfo();
 					md.setId(BOSUuid.read(mdId));
@@ -819,9 +821,11 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 					SHEManageHelper.updateTransactionOverView(null, roomLoan.getRoom(), SHEManageHelper.MORTGAGE,roomLoan.getPromiseDate(), null, false);
 					RoomLoanFactory.getRemoteInstance().save(roomLoan);
 				}else{
-					BankInfo bank=new BankInfo();
-					bank.setId(BOSUuid.read(acfBankId));
-					roomLoan.setLoanBank(bank);
+					if(acfBankId!=null){
+						BankInfo bank=new BankInfo();
+						bank.setId(BOSUuid.read(acfBankId));
+						roomLoan.setLoanBank(bank);
+					}
 					
 					MoneyDefineInfo md=new MoneyDefineInfo();
 					md.setId(BOSUuid.read(mdId));
