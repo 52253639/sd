@@ -157,6 +157,8 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 	private Map dyCostMap = new HashMap();
 	//目标成本
 	private Map aimCostMap = new HashMap();
+	//目标成本
+	private Map noHappenMap = new HashMap();
 	
 	//可售面积
 	private BigDecimal sellArea = null;
@@ -223,7 +225,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		}});
 		FDCClientHelper.setUIMainMenuAsTitle(this);
 		
-		CRMClientHelper.changeTableNumberFormat(this.tblMain,new String[]{"aimCost","hasHappen","absolute","rate","amt","splitAmt","changeSplitAmt","settSplitAmt","paymentSplitAmt","lastPrice","hasPayAmt","allNotPaid","payPercent","sellPart","buildPart"});
+		CRMClientHelper.changeTableNumberFormat(this.tblMain,new String[]{"aimCost","hasHappen","noHappen","absolute","rate","amt","splitAmt","changeSplitAmt","settSplitAmt","paymentSplitAmt","lastPrice","hasPayAmt","allNotPaid","payPercent","sellPart","buildPart"});
 		
 		ObjectValueRender render_scale = new ObjectValueRender();
 		render_scale.setFormat(new IDataFormat() {
@@ -274,7 +276,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		
 		table.setColumnMoveable(false);
 		
-		CRMClientHelper.changeTableNumberFormat(this.tblMain,new String[]{"aimCost","hasHappen","absolute","rate","amt","splitAmt","changeSplitAmt","settSplitAmt","paymentSplitAmt","lastPrice","hasPayAmt","allNotPaid","payPercent","sellPart","buildPart"});
+		CRMClientHelper.changeTableNumberFormat(this.tblMain,new String[]{"aimCost","hasHappen","noHappen","absolute","rate","amt","splitAmt","changeSplitAmt","settSplitAmt","paymentSplitAmt","lastPrice","hasPayAmt","allNotPaid","payPercent","sellPart","buildPart"});
 		
 		ObjectValueRender render_scale = new ObjectValueRender();
 		render_scale.setFormat(new IDataFormat() {
@@ -1507,6 +1509,8 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 			//已发生
 			row.getCell("hasHappen").setValue(hasHappenAmount);
 			
+			row.getCell("noHappen").setValue(this.noHappenMap.get(acctId));
+			
 			BigDecimal adjustAmount = null;
 			BigDecimal dynamicAmount = null;
 			// 动态成本跟节点要求汇总
@@ -1799,6 +1803,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		amountColumns.add("splitAmt");//合同拆分金额
 		amountColumns.add("aimCost");//目标成本
 		amountColumns.add("hasHappen");//动态成本
+		amountColumns.add("noHappen");//动态成本
 		amountColumns.add("absolute");//差异
 		amountColumns.add("settSplitAmt");//结算拆分
 //		amountColumns.add("hasPayCostAmt");//付款拆分
@@ -2107,6 +2112,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		this.aimCostMap=fullDynamicCostMap.getAimCostMap();
 		this.dyCostMap=fullDynamicCostMap.getDynamicCostMapp();
 		this.happenGetter=fullDynamicCostMap.getHappenDataGetter();
+		this.noHappenMap=fullDynamicCostMap.getNoHappen();
 	}
 	
 	private void fetchSettAndPaymentAndChangeSplitData(String prjId) throws BOSException,EASBizException,SQLException{

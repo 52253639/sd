@@ -27,6 +27,7 @@ import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fm.common.DateHelper;
 import com.kingdee.eas.fm.common.FMHelper;
+import com.kingdee.eas.util.app.ContextUtil;
 import com.kingdee.eas.util.app.DbUtil;
 import com.kingdee.jdbc.rowset.IRowSet;
 
@@ -56,7 +57,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
     	.appendSql("  join T_TEN_TenancyBill tenancyBill        on tenancyBill.fid = tenancyCustomerEntry.ftenancybillid ")
     	.appendSql("  left join T_SHE_FDCCustomer fdccustomer   on fdccustomer.fid = tenancyCustomerEntry.ffdccustomerid ")
     	.appendSql(" left join T_SHE_SellProject SellProject on  tenancyBill.FSellProjectID =SellProject.Fid ")
-    	.appendSql(" where 1=1 ");
+    	.appendSql(" where tenancyBill.forgunitid='"+ContextUtil.getCurrentOrgUnit(ctx).getId().toString()+"' and 1=1 ");
     	if(param.get("sellProject")!=null){
     		zfsqlBuilder.appendSql("  and SellProject.fname_l2 =? ");
     		zfsqlBuilder.addParam(param.get("sellProject"));
@@ -125,7 +126,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql("			     left join (	 ")
 		.appendSql(" 				select tenancyBill.fnumber,tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.fname ,tenancyBill.FtenancyState ")
 		.appendSql(" 			 from T_TEN_TenancyBill tenancyBill  ")
-		.appendSql("			 where tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid ")
+		.appendSql("			 where tenancyBill.forgunitid='"+ContextUtil.getCurrentOrgUnit(ctx).getId().toString()+"' and tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid ")
 		.appendSql(" 			 from T_TEN_TenancyCustomerEntry tenancyCustomerEntry  ")
 		.appendSql(" 			 where 1=1  ");
 		//提交用户的过滤条件
@@ -165,7 +166,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql("				left join (  ")
 		.appendSql("				select tenancyBill.fnumber,tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.ftenRoomsDes fname ,tenancyBill.fstate,tenancyBill.FtenancyState  ")
 		.appendSql("				 from T_TEN_TenancyBill tenancyBill  ")
-		.appendSql("					where tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid  ")
+		.appendSql("					where tenancyBill.forgunitid='"+ContextUtil.getCurrentOrgUnit(ctx).getId().toString()+"' and tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid  ")
 		.appendSql("				 from T_TEN_TenancyCustomerEntry tenancyCustomerEntry   ")
 		
 		.appendSql(" 			 where 1=1  ");
@@ -400,7 +401,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql("			     left join (	 ")
 		.appendSql(" 				select tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.fname ,tenancyBill.FtenancyState ")
 		.appendSql(" 			 from T_TEN_TenancyBill tenancyBill  ")
-		.appendSql("			 where tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid ")
+		.appendSql("			 where tenancyBill.forgunitid='"+ContextUtil.getCurrentOrgUnit(ctx).getId().toString()+"' and tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid ")
 		.appendSql(" 			 from T_TEN_TenancyCustomerEntry tenancyCustomerEntry  ");
 //		.appendSql(" 			 where 1=1  ");
 //		//提交用户的过滤条件
@@ -423,7 +424,7 @@ public class PaymentAdvicePrintFacadeControllerBean extends AbstractPaymentAdvic
 		.appendSql("				left join (  ")
 		.appendSql("				select tenancyBill.FID,tenancyBill.FSellProjectID, tenancyBill.ftenRoomsDes fname ,tenancyBill.fstate,tenancyBill.FtenancyState  ")
 		.appendSql("				 from T_TEN_TenancyBill tenancyBill  ")
-		.appendSql("					where tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid  ")
+		.appendSql("					where tenancyBill.forgunitid='"+ContextUtil.getCurrentOrgUnit(ctx).getId().toString()+"' and tenancyBill.fid in (select  tenancyCustomerEntry.ftenancybillid  ")
 		.appendSql("				 from T_TEN_TenancyCustomerEntry tenancyCustomerEntry   ")
 		.appendSql(" 			 where 1=1  ");
 //		//提交用户的过滤条件

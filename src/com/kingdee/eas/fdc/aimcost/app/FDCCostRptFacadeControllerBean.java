@@ -138,6 +138,24 @@ public class FDCCostRptFacadeControllerBean extends AbstractFDCCostRptFacadeCont
 
 		fullDynamicCostMap.setAimCostMap(getAcctAimCostData(ctx, prjId));
 		fullDynamicCostMap.setDynamicCostMapp(getAcctAdjustCostData(ctx, prjId));
+		
+		
+		Map noHappen=new HashMap();
+		FDCSQLBuilder builder = new FDCSQLBuilder(ctx);
+		builder.appendSql(" select cost.fcostAccountId as acctid,sum(fcontractAssign) as amount from T_CON_ProgrammingContracCost cost");
+		builder.appendSql(" left join T_CON_ProgrammingContract pc on pc.fid=cost.fcontractId left join T_CON_Programming pro on pro.fid=pc.fProgrammingId");
+		builder.appendSql(" where pc.fisCiting=0 and pro.FIsLatest=1 and pro.fstate='4AUDITTED' and pro.fprojectID ='"+prjId+"' group by cost.fcostAccountId");
+		IRowSet rowSet = builder.executeQuery();
+		try {
+			while (rowSet.next()) {
+				noHappen.put(rowSet.getString("acctid"), rowSet.getBigDecimal("amount"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		fullDynamicCostMap.setNoHappen(noHappen);
 		return fullDynamicCostMap;
 	}
 

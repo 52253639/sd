@@ -76,11 +76,11 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
 	    initColoum(header,col,"invoiceAmount",80,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
-	    			"mdNumber","mdId","conId","quitRoomDate","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","租金信息","租金信息","租金信息","款项类别","累计金额","累计金额"
+	    			"mdNumber","mdId","conId","quitRoomDate","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","款项类别","累计金额","累计金额"
 	    		}
 	    		,
 	    		{
-	    			"mdNumber","mdId","conId","quitRoomDate","项目分期","楼栋","房间","建筑面积","租赁面积","合同编码","合同名称","客户名称","合同起始日","合同终止日","免租期（按日）","租金总额","租金（按月）","租金单价（每月元/平米）","款项类别","应收金额","票据金额"
+	    			"mdNumber","mdId","conId","quitRoomDate","项目分期","楼栋","房间","建筑面积","租赁面积","合同编码","合同名称","客户名称","合同起始日","合同终止日","免租期（按日）","合同总额（租金+周期性费用）","租金单价","租金单价（每月元/平米）","款项类别","应收金额","票据金额"
 		    	}
 	    },true);
 	    params.setObject("header", header);
@@ -165,10 +165,11 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     	sb.append(" t.conNumber,t.conName,t.customer,t.startDate,t.endDate,t.freeDays,t.dealTotal,");
     	sb.append(" t.dealPrice,t.roomPrice,t.moneyDefine from ("); 
     	sb.append(" select md.fnumber mdNumber,md.fid mdId,con.fid conId,con.fquitRoomDate quitRoomDate,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
-    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
+    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate)+1 freeDays,con.fdealTotalRent+isnull(other.amount,0) dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenancyRoomPayListEntry pay on pay.ftenRoomId=roomEntry.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
+    	sb.append(" left join (select sum(fappAmount) amount,bill.FTenancyBillId conId from T_TEN_OtherBill bill left join  T_TEN_TenBillOtherPay entry on bill.fid=entry.FOtherBillId group by bill.FTenancyBillId) other on other.conId=con.fid");
     	sb.append(" where md.fid is not null");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
@@ -199,10 +200,11 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
 			sb.append(" and pay.fappDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}
     	sb.append(" union all select md.fnumber mdNumber,md.fid mdId,con.fid conId,con.fquitRoomDate quitRoomDate,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
-    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
+    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate)+1 freeDays,con.fdealTotalRent+isnull(other.amount,0) dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenBillOtherPay pay on pay.fheadId=con.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
+    	sb.append(" left join (select sum(fappAmount) amount,bill.FTenancyBillId conId from T_TEN_OtherBill bill left join  T_TEN_TenBillOtherPay entry on bill.fid=entry.FOtherBillId group by bill.FTenancyBillId) other on other.conId=con.fid");
     	sb.append(" where md.fid is not null");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
@@ -238,9 +240,11 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
 		params.setObject("rs", rs);
 		
 		sb=new StringBuffer();
-    	sb.append(" select md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,");
+    	sb.append(" select inv.invNumber,inv.invDate,md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,");
     	sb.append(" pay.fstartDate startDate,pay.fendDate endDate from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
-    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
+    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
+    	sb.append(" left join (select invEntry.frevListId revListId,inv.fnumber invNumber,max(inv.fbizDate) invDate from T_TEN_InvoiceBillEntry invEntry left join T_TEN_InvoiceBill inv on inv.fid=invEntry.fheadId group by invEntry.frevListId,inv.fnumber) inv on inv.revListId=pay.fid");
+    	sb.append(" where 1=1");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
     	}else{
@@ -269,9 +273,11 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
 		if(toDate!=null){
 			sb.append(" and pay.fappDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}
-    	sb.append(" union all select md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,");
+    	sb.append(" union all select inv.invNumber,inv.invDate,md.fid mdId,con.fid conId,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,");
     	sb.append(" pay.fstartDate startDate,pay.fendDate endDate from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
-    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
+    	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
+    	sb.append(" left join (select invEntry.frevListId revListId,inv.fnumber invNumber,max(inv.fbizDate) invDate from T_TEN_InvoiceBillEntry invEntry left join T_TEN_InvoiceBill inv on inv.fid=invEntry.fheadId group by invEntry.frevListId,inv.fnumber) inv on inv.revListId=pay.fid");
+    	sb.append(" where 1=1");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
     	}else{
@@ -370,7 +376,6 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     	sb.append(" )");
     	RptRowSet appdaters = executeQuery(sb.toString(), null, ctx);
 		params.setObject("appdaters", appdaters);
-		
 		return params;
     }
 }

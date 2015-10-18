@@ -99,7 +99,7 @@ public class RevDetailInvReportUI extends AbstractRevDetailInvReportUI
 	}
 
 	protected CommRptBaseConditionUI getQueryDialogUserPanel() throws Exception {
-		return new RevDetailReportFilterUI();
+		return new RevDetailInvReportFilterUI();
 	}
 
 	protected ICommRptBase getRemoteInstance() throws BOSException {
@@ -230,7 +230,21 @@ public class RevDetailInvReportUI extends AbstractRevDetailInvReportUI
 	           	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("票据金额");
 	           	        	 CRMClientHelper.changeTableNumberFormat(tblMain, column.getKey());
 	           	        	 
-            	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+3);
+	           	        	 column=tblMain.addColumn();
+	           	        	 column.setKey(year+"Y"+month+"M"+"invNumber");
+	           	        	 column.setWidth(120);
+	           	        	 
+	           	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+	           	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("票据号");
+	           	        	 
+	           	        	 column=tblMain.addColumn();
+	           	        	 column.setKey(year+"Y"+month+"M"+"invDate");
+	           	        	 column.setWidth(70);
+	           	        	 CRMClientHelper.fmtDate(tblMain, new String[]{year+"Y"+month+"M"+"invDate"});
+	           	        	
+	           	        	 tblMain.getHeadRow(0).getCell(column.getKey()).setValue(year+"-"+month);
+	           	        	 tblMain.getHeadRow(1).getCell(column.getKey()).setValue("开票日期");
+            	        	 tblMain.getHeadMergeManager().mergeBlock(0, merge, 0, merge+5);
             	         }
          	         }
          	         
@@ -248,6 +262,8 @@ public class RevDetailInvReportUI extends AbstractRevDetailInvReportUI
         	        		row.getCell(year+"Y"+month+"M"+"startDate").setValue(detailrs.getObject("startDate"));
         	        		row.getCell(year+"Y"+month+"M"+"endDate").setValue(detailrs.getObject("endDate"));
         	        		row.getCell(year+"Y"+month+"M"+"invoiceAmount").setValue(detailrs.getBigDecimal("invoiceAmount"));
+        	        		row.getCell(year+"Y"+month+"M"+"invNumber").setValue(detailrs.getObject("invNumber"));
+        	        		row.getCell(year+"Y"+month+"M"+"invDate").setValue(detailrs.getObject("invDate"));
         	        		if(detailrs.getBigDecimal("invoiceAmount").compareTo(FDCHelper.ZERO)>0){
         	        			row.getCell(year+"Y"+month+"M"+"appAmount").getStyleAttributes().setBackground(Color.GREEN);
         	        			row.getCell(year+"Y"+month+"M"+"startDate").getStyleAttributes().setBackground(Color.GREEN);

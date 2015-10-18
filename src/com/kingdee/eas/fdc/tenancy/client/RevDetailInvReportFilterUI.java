@@ -11,24 +11,19 @@ import javax.swing.SpinnerNumberModel;
 
 import org.apache.log4j.Logger;
 
-import bsh.This;
-
 import com.kingdee.bos.BOSException;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
-import com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.fdc.basedata.FDCCommonServerHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
-import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.FDCRoomPromptDialog;
-import com.kingdee.eas.fdc.sellhouse.client.NewFDCRoomPromptDialog;
 import com.kingdee.eas.fdc.tenancy.TenancyBillStateEnum;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.framework.report.util.RptParams;
@@ -36,10 +31,10 @@ import com.kingdee.eas.framework.report.util.RptParams;
 /**
  * output class name
  */
-public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
+public class RevDetailInvReportFilterUI extends AbstractRevDetailInvReportFilterUI
 {
-    private static final Logger logger = CoreUIObject.getLogger(RevDetailReportFilterUI.class);
-    public RevDetailReportFilterUI() throws Exception
+    private static final Logger logger = CoreUIObject.getLogger(RevDetailInvReportFilterUI.class);
+    public RevDetailInvReportFilterUI() throws Exception
     {
         super();
     }
@@ -105,14 +100,6 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
     }
     public boolean verify()
     {
-    	if(this.pkToODDate.getValue()==null){
-    		FDCMsgBox.showWarning(this,"过期天数截止日期不能为空！");
-    		return false;
-    	}
-    	if(this.pkToRDDate.getValue()==null){
-    		FDCMsgBox.showWarning(this,"合同剩余天数截止日期不能为空！");
-    		return false;
-    	}
         return true;
     }
 	public RptParams getCustomCondition() {
@@ -142,8 +129,6 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
          pp.setObject("eyear", this.spEYear.getIntegerVlaue());
          pp.setObject("emonth", this.spEMonth.getIntegerVlaue());
 		 pp.setObject("isAll", this.cbIsAll.isSelected());
-		 pp.setObject("toODDate", this.pkToODDate.getValue());
-         pp.setObject("toRDDate", this.pkToRDDate.getValue());
 		 return pp;
 	}
 	public void onInit(RptParams params) throws Exception {
@@ -177,5 +162,5 @@ public class RevDetailReportFilterUI extends AbstractRevDetailReportFilterUI
 		vi.setFilter(filter);
 		this.prmtTanancyBill.setEntityViewInfo(vi);
 	}
-	
+
 }

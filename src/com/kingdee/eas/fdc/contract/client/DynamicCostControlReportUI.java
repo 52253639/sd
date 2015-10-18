@@ -235,6 +235,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
              	        	 BigDecimal unContractAmount=FDCHelper.ZERO;
              	        	 BigDecimal dynamicTotalAmount=FDCHelper.ZERO;
              	        	 BigDecimal happenedAmount=FDCHelper.ZERO;
+             	        	 BigDecimal unHappenedAmount=FDCHelper.ZERO;
              	        	 BigDecimal payAmount=rs.getBigDecimal("payAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("payAmount");
              	        	 Boolean isContract=rs.getBoolean("isContract", false);
              	       	 	 Boolean isSettle=rs.getBoolean("isSettle",false);
@@ -302,6 +303,9 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
                 	        	 row.getCell("dynamicTotalAmount").setValue(FDCHelper.subtract(row.getCell("dynamicTotalAmount").getValue(), dynamicTotalAmount));
                 	        	 row.getCell("happenedAmount").setValue(FDCHelper.subtract(row.getCell("happenedAmount").getValue(), happenedAmount));
             	        	 
+                	        	 unHappenedAmount=unContractAmount.add(estimateAmount);
+            	           		 row.getCell("unHappenedAmount").setValue(FDCHelper.subtract(row.getCell("unHappenedAmount").getValue(), unHappenedAmount));
+            	           		
                 	        	 setColor(row.getCell("unContractAmount"));
         	        			 setColor(row.getCell("dynamicTotalAmount"));
         	        			 setColor(row.getCell("happenedAmount"));
@@ -349,7 +353,10 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
                  	        			 prow.getCell("unContractAmount").setValue(FDCHelper.subtract(prow.getCell("unContractAmount").getValue(), unContractAmount));
                 	        			 prow.getCell("dynamicTotalAmount").setValue(FDCHelper.subtract(prow.getCell("dynamicTotalAmount").getValue(), dynamicTotalAmount));
                 	        			 prow.getCell("happenedAmount").setValue(FDCHelper.subtract(prow.getCell("happenedAmount").getValue(), happenedAmount));
-                 	        		
+                	        			
+                	        			 prow.getCell("unHappenedAmount").setValue(FDCHelper.subtract(prow.getCell("unHappenedAmount").getValue(), unHappenedAmount));
+                      	        		
+                	        			 
                 	        			 setColor(prow.getCell("estimateAmount"));
                         	        	 setColor(prow.getCell("settleAmount"));
                         	        	 setColor(prow.getCell("unContractAmount"));
@@ -415,6 +422,7 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
     	 BigDecimal unContractAmount=FDCHelper.ZERO;
     	 BigDecimal dynamicTotalAmount=FDCHelper.ZERO;
     	 BigDecimal happenedAmount=FDCHelper.ZERO;
+    	 BigDecimal unHappenedAmount=FDCHelper.ZERO;
     	 BigDecimal payAmount=rs.getBigDecimal("payAmount")==null?FDCHelper.ZERO:rs.getBigDecimal("payAmount");
     	 BigDecimal totalAmount=FDCHelper.ZERO;
     	 Boolean isContract=rs.getBoolean("isContract", false);
@@ -520,6 +528,10 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
        		 row.getCell("unContractAmount").setValue(unContractAmount);
         	 row.getCell("dynamicTotalAmount").setValue(dynamicTotalAmount);
         	 row.getCell("happenedAmount").setValue(happenedAmount);
+        	 
+        	 unHappenedAmount=unContractAmount.add(estimateAmount);
+       		 row.getCell("unHappenedAmount").setValue(unHappenedAmount);
+       		
         	 if(contractAmount.add(supplyAmount).compareTo(FDCHelper.ZERO)==0){
         		 row.getCell("changeRate").setValue(FDCHelper.ZERO);
         	 }else{
@@ -630,6 +642,13 @@ public class DynamicCostControlReportUI extends AbstractDynamicCostControlReport
         			 }else{
         				 prow.getCell("happenedAmount").setValue(happenedAmount);
         			 }
+        			 
+        			 if(prow.getCell("unHappenedAmount").getValue()!=null){
+        				 prow.getCell("unHappenedAmount").setValue(((BigDecimal)prow.getCell("unHappenedAmount").getValue()).add(unHappenedAmount));
+        			 }else{
+        				 prow.getCell("unHappenedAmount").setValue(unHappenedAmount);
+        			 }
+        			 
         			 if(FDCHelper.add(prow.getCell("contractAmount").getValue(), prow.getCell("supplyAmount").getValue()).compareTo(FDCHelper.ZERO)==0){
         				 prow.getCell("changeRate").setValue(FDCHelper.ZERO);
                 	 }else{

@@ -233,8 +233,14 @@ public class RevDetailFinReportUI extends AbstractRevDetailFinReportUI
         	        		row.getCell(year+"Y"+month+"M"+"actRevAmount").setValue(detailrs.getBigDecimal("actRevAmount"));
         	        		
         	        		Date appDate=(Date) detailrs.getObject("appDate");
-        	        		int overdueDays=FDCDateHelper.getDiffDays(appDate, (Date) params.getObject("toDate"));
-        	        		if(overdueDays<0)overdueDays=0;
+        	        		int overdueDays=0;
+        	        		if(detailrs.getBigDecimal("appAmount").compareTo(FDCHelper.ZERO)==0
+        	        				||detailrs.getBigDecimal("appAmount").compareTo(detailrs.getBigDecimal("actRevAmount"))==0){
+        	        			overdueDays=0;
+        	        		}else{
+        	        			FDCDateHelper.getDiffDays(appDate, (Date) params.getObject("toDate"));
+        	        			if(overdueDays<0)overdueDays=0;
+        	        		}
         	        		row.getCell(year+"Y"+month+"M"+"overdueDays").setValue(overdueDays);
         	        		
         	        		row.getCell("appAmount").setValue(FDCHelper.add(row.getCell("appAmount").getValue(), detailrs.getBigDecimal("appAmount")));

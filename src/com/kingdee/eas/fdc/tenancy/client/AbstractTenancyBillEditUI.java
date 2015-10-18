@@ -95,7 +95,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChargeDateType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFirstLeaseType;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contEndDate;
-    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFristRevDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseTime;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contChargeOffsetDays;
@@ -103,13 +102,12 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contStartDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contFirstLeaseEndDate;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contTenBillRoomState;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDescription;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboRentStartType;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboFlagAtTerm;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboChargeDateType;
     protected com.kingdee.bos.ctrl.swing.KDComboBox comboFirstLeaseType;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkEndDate;
-    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane2;
-    protected com.kingdee.bos.ctrl.swing.KDTextField txtDescription;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFristLeaseDate;
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinLeaseTime;
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinChargeOffsetDays;
@@ -117,6 +115,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkStartDate;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkFirstLeaseEndDate;
     protected com.kingdee.bos.ctrl.swing.KDComboBox cbTenBillRoomState;
+    protected com.kingdee.bos.ctrl.swing.KDScrollPane kDScrollPane2;
+    protected com.kingdee.bos.ctrl.swing.KDTextArea txtDescription;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkCreateTime;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox f7Creator;
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtTotalRoomStandardRent;
@@ -429,7 +429,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contChargeDateType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contFirstLeaseType = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
-        this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contFristRevDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contLeaseTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contChargeOffsetDays = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
@@ -437,13 +436,12 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contStartDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contTenBillRoomState = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDescription = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.comboRentStartType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboFlagAtTerm = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboChargeDateType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.comboFirstLeaseType = new com.kingdee.bos.ctrl.swing.KDComboBox();
         this.pkEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
-        this.kDScrollPane2 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
-        this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.pkFristLeaseDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.spinLeaseTime = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.spinChargeOffsetDays = new com.kingdee.bos.ctrl.swing.KDSpinner();
@@ -451,6 +449,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.pkStartDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkFirstLeaseEndDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.cbTenBillRoomState = new com.kingdee.bos.ctrl.swing.KDComboBox();
+        this.kDScrollPane2 = new com.kingdee.bos.ctrl.swing.KDScrollPane();
+        this.txtDescription = new com.kingdee.bos.ctrl.swing.KDTextArea();
         this.pkCreateTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.f7Creator = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.txtTotalRoomStandardRent = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
@@ -650,7 +650,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contChargeDateType.setName("contChargeDateType");
         this.contFirstLeaseType.setName("contFirstLeaseType");
         this.contEndDate.setName("contEndDate");
-        this.contDescription.setName("contDescription");
         this.contFristRevDate.setName("contFristRevDate");
         this.contLeaseTime.setName("contLeaseTime");
         this.contChargeOffsetDays.setName("contChargeOffsetDays");
@@ -658,13 +657,12 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contStartDate.setName("contStartDate");
         this.contFirstLeaseEndDate.setName("contFirstLeaseEndDate");
         this.contTenBillRoomState.setName("contTenBillRoomState");
+        this.contDescription.setName("contDescription");
         this.comboRentStartType.setName("comboRentStartType");
         this.comboFlagAtTerm.setName("comboFlagAtTerm");
         this.comboChargeDateType.setName("comboChargeDateType");
         this.comboFirstLeaseType.setName("comboFirstLeaseType");
         this.pkEndDate.setName("pkEndDate");
-        this.kDScrollPane2.setName("kDScrollPane2");
-        this.txtDescription.setName("txtDescription");
         this.pkFristLeaseDate.setName("pkFristLeaseDate");
         this.spinLeaseTime.setName("spinLeaseTime");
         this.spinChargeOffsetDays.setName("spinChargeOffsetDays");
@@ -672,6 +670,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.pkStartDate.setName("pkStartDate");
         this.pkFirstLeaseEndDate.setName("pkFirstLeaseEndDate");
         this.cbTenBillRoomState.setName("cbTenBillRoomState");
+        this.kDScrollPane2.setName("kDScrollPane2");
+        this.txtDescription.setName("txtDescription");
         this.pkCreateTime.setName("pkCreateTime");
         this.f7Creator.setName("f7Creator");
         this.txtTotalRoomStandardRent.setName("txtTotalRoomStandardRent");
@@ -1108,12 +1108,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contEndDate.setBoundLabelUnderline(true);		
         this.contEndDate.setVisible(true);		
         this.contEndDate.setBoundLabelAlignment(7);
-        // contDescription		
-        this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
-        this.contDescription.setBoundLabelLength(100);		
-        this.contDescription.setBoundLabelUnderline(true);		
-        this.contDescription.setBoundLabelAlignment(7);		
-        this.contDescription.setVisible(true);
         // contFristRevDate		
         this.contFristRevDate.setBoundLabelText(resHelper.getString("contFristRevDate.boundLabelText"));		
         this.contFristRevDate.setBoundLabelLength(100);		
@@ -1147,6 +1141,12 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         this.contTenBillRoomState.setBoundLabelLength(100);		
         this.contTenBillRoomState.setBoundLabelUnderline(true);		
         this.contTenBillRoomState.setEnabled(false);
+        // contDescription		
+        this.contDescription.setBoundLabelText(resHelper.getString("contDescription.boundLabelText"));		
+        this.contDescription.setBoundLabelLength(100);		
+        this.contDescription.setBoundLabelUnderline(true);		
+        this.contDescription.setBoundLabelAlignment(7);		
+        this.contDescription.setVisible(true);
         // comboRentStartType		
         this.comboRentStartType.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.RentStartTypeEnum").toArray());
         this.comboRentStartType.addItemListener(new java.awt.event.ItemListener() {
@@ -1209,25 +1209,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
                 }
             }
         });
-        // kDScrollPane2
-        // txtDescription		
-        this.txtDescription.setMaxLength(500);		
-        this.txtDescription.setVisible(true);		
-        this.txtDescription.setEnabled(true);		
-        this.txtDescription.setHorizontalAlignment(2);		
-        this.txtDescription.setRequired(false);
-        this.txtDescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                beforeActionPerformed(e);
-                try {
-                    txtDescription_actionPerformed(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                    afterActionPerformed(e);
-                }
-            }
-        });
         // pkFristLeaseDate
         this.pkFristLeaseDate.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
             public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
@@ -1277,6 +1258,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         // cbTenBillRoomState		
         this.cbTenBillRoomState.addItems(EnumUtils.getEnumList("com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum").toArray());		
         this.cbTenBillRoomState.setRequired(true);
+        // kDScrollPane2
+        // txtDescription
         // pkCreateTime		
         this.pkCreateTime.setEnabled(false);		
         this.pkCreateTime.setVisible(true);
@@ -2496,8 +2479,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel1.add(contFirstLeaseType, new KDLayout.Constraints(11, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contEndDate.setBounds(new Rectangle(259, 14, 236, 19));
         kDPanel1.add(contEndDate, new KDLayout.Constraints(259, 14, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
-        contDescription.setBounds(new Rectangle(11, 80, 733, 65));
-        kDPanel1.add(contDescription, new KDLayout.Constraints(11, 80, 733, 65, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contFristRevDate.setBounds(new Rectangle(259, 36, 236, 19));
         kDPanel1.add(contFristRevDate, new KDLayout.Constraints(259, 36, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contLeaseTime.setBounds(new Rectangle(507, 14, 236, 19));
@@ -2512,6 +2493,8 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         kDPanel1.add(contFirstLeaseEndDate, new KDLayout.Constraints(11, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         contTenBillRoomState.setBounds(new Rectangle(756, 58, 236, 19));
         kDPanel1.add(contTenBillRoomState, new KDLayout.Constraints(756, 58, 236, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDescription.setBounds(new Rectangle(11, 82, 732, 64));
+        kDPanel1.add(contDescription, new KDLayout.Constraints(11, 82, 732, 64, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT | KDLayout.Constraints.ANCHOR_RIGHT_SCALE));
         //contRentStartType
         contRentStartType.setBoundEditor(comboRentStartType);
         //contFlagAtTerm
@@ -2522,10 +2505,6 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contFirstLeaseType.setBoundEditor(comboFirstLeaseType);
         //contEndDate
         contEndDate.setBoundEditor(pkEndDate);
-        //contDescription
-        contDescription.setBoundEditor(kDScrollPane2);
-        //kDScrollPane2
-        kDScrollPane2.getViewport().add(txtDescription, null);
         //contFristRevDate
         contFristRevDate.setBoundEditor(pkFristLeaseDate);
         //contLeaseTime
@@ -2540,6 +2519,10 @@ public abstract class AbstractTenancyBillEditUI extends com.kingdee.eas.fdc.tena
         contFirstLeaseEndDate.setBoundEditor(pkFirstLeaseEndDate);
         //contTenBillRoomState
         contTenBillRoomState.setBoundEditor(cbTenBillRoomState);
+        //contDescription
+        contDescription.setBoundEditor(kDScrollPane2);
+        //kDScrollPane2
+        kDScrollPane2.getViewport().add(txtDescription, null);
         //contCreateTime
         contCreateTime.setBoundEditor(pkCreateTime);
         //contCreator
@@ -3041,13 +3024,13 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		dataBinder.registerBinding("chargeDateType", com.kingdee.eas.fdc.tenancy.ChargeDateTypeEnum.class, this.comboChargeDateType, "selectedItem");
 		dataBinder.registerBinding("firstLeaseType", com.kingdee.eas.fdc.tenancy.FirstLeaseTypeEnum.class, this.comboFirstLeaseType, "selectedItem");
 		dataBinder.registerBinding("endDate", java.util.Date.class, this.pkEndDate, "value");
-		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
 		dataBinder.registerBinding("leaseTime", int.class, this.spinLeaseTime, "value");
 		dataBinder.registerBinding("chargeOffsetDays", int.class, this.spinChargeOffsetDays, "value");
 		dataBinder.registerBinding("leaseCount", java.math.BigDecimal.class, this.txtLeaseCount, "value");
 		dataBinder.registerBinding("startDate", java.util.Date.class, this.pkStartDate, "value");
 		dataBinder.registerBinding("firstLeaseEndDate", java.util.Date.class, this.pkFirstLeaseEndDate, "value");
 		dataBinder.registerBinding("tenBillRoomState", com.kingdee.eas.fdc.tenancy.TenBillRoomStateEnum.class, this.cbTenBillRoomState, "selectedItem");
+		dataBinder.registerBinding("description", String.class, this.txtDescription, "text");
 		dataBinder.registerBinding("createTime", java.sql.Timestamp.class, this.pkCreateTime, "value");
 		dataBinder.registerBinding("creator", com.kingdee.eas.base.permission.UserInfo.class, this.f7Creator, "data");
 		dataBinder.registerBinding("tenancyRoomList.roomEntryId", String.class, this.tblRoom, "roomEntryId.text");
@@ -3225,13 +3208,13 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
 		getValidateHelper().registerBindProperty("chargeDateType", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("firstLeaseType", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("endDate", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("leaseTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("chargeOffsetDays", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("leaseCount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("startDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("firstLeaseEndDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenBillRoomState", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("description", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("createTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("creator", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("tenancyRoomList.roomEntryId", ValidateHelper.ON_SAVE);    
@@ -3385,13 +3368,6 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
      * output pkEndDate_dataChanged method
      */
     protected void pkEndDate_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
-    {
-    }
-
-    /**
-     * output txtDescription_actionPerformed method
-     */
-    protected void txtDescription_actionPerformed(java.awt.event.ActionEvent e) throws Exception
     {
     }
 
@@ -3791,13 +3767,13 @@ panelAttachRes.setLayout(new BorderLayout(0, 0));        panelAttachRes.add(tblA
         sic.add(new SelectorItemInfo("chargeDateType"));
         sic.add(new SelectorItemInfo("firstLeaseType"));
         sic.add(new SelectorItemInfo("endDate"));
-        sic.add(new SelectorItemInfo("description"));
         sic.add(new SelectorItemInfo("leaseTime"));
         sic.add(new SelectorItemInfo("chargeOffsetDays"));
         sic.add(new SelectorItemInfo("leaseCount"));
         sic.add(new SelectorItemInfo("startDate"));
         sic.add(new SelectorItemInfo("firstLeaseEndDate"));
         sic.add(new SelectorItemInfo("tenBillRoomState"));
+        sic.add(new SelectorItemInfo("description"));
         sic.add(new SelectorItemInfo("createTime"));
 		if(selectorAll.equalsIgnoreCase("true"))
 		{

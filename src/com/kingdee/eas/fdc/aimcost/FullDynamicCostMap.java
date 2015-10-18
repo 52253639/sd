@@ -45,6 +45,10 @@ public class FullDynamicCostMap extends CostMap{
 	public void setDynamicCostMapp(Map dynamicCostMap){
 		put("dynamicCostMap",dynamicCostMap);
 	}
-	
-	
+	public void setNoHappen(Map noHappenMap){
+		put("noHappenMap",noHappenMap);
+	}
+	public Map getNoHappen(){
+		return (Map)get("noHappenMap");
+	}
 }

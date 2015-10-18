@@ -239,6 +239,12 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
         	         while(rentAreaRS.next()){
         	        	 rentArea=rentAreaRS.getBigDecimal("tenArea");
         	         }
+        	         
+        	         BigDecimal sellArea=FDCHelper.ZERO;
+        	         RptRowSet sellAreaRS = (RptRowSet)((RptParams)result).getObject("sellAreaRS");
+        	         while(sellAreaRS.next()){
+        	        	 sellArea=sellAreaRS.getBigDecimal("sellArea");
+        	         }
         	         tblMain.getColumn("type").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
         	         tblMain.getColumn("value").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
     	        	 IRow row=tblMain.addRow();
@@ -247,7 +253,6 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
     	        	 row.getCell("value").setValue(buildArea);
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	
-    	        	 
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("不可租面积：");
@@ -264,6 +269,12 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("已租面积：");
     	        	 row.getCell("value").setValue(rentArea);
+    	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+    	        	 
+    	        	 row=tblMain.addRow();
+    	        	 row.setHeight(50);
+    	        	 row.getCell("type").setValue("已售面积：");
+    	        	 row.getCell("value").setValue(sellArea);
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	 
     	        	 row=tblMain.addRow();

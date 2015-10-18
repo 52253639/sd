@@ -65,6 +65,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contLeaseTime;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContractNo;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDept;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contDes;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCompany;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtRoom;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtCustomer;
@@ -87,6 +88,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
     protected com.kingdee.bos.ctrl.swing.KDSpinner spinLeaseTime;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtContractNo;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtDept;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtDes;
     protected com.kingdee.eas.fdc.tenancy.OtherBillInfo editData = null;
     /**
      * output class constructor
@@ -144,6 +146,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.contLeaseTime = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contContractNo = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contDept = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contDes = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtCompany = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtRoom = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtCustomer = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -166,6 +169,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.spinLeaseTime = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.txtContractNo = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.prmtDept = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.txtDes = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.contCompany.setName("contCompany");
         this.contRoom.setName("contRoom");
         this.contCustomer.setName("contCustomer");
@@ -185,6 +189,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.contLeaseTime.setName("contLeaseTime");
         this.contContractNo.setName("contContractNo");
         this.contDept.setName("contDept");
+        this.contDes.setName("contDes");
         this.txtCompany.setName("txtCompany");
         this.txtRoom.setName("txtRoom");
         this.txtCustomer.setName("txtCustomer");
@@ -207,6 +212,7 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.spinLeaseTime.setName("spinLeaseTime");
         this.txtContractNo.setName("txtContractNo");
         this.prmtDept.setName("prmtDept");
+        this.txtDes.setName("txtDes");
         // CoreUI		
         this.btnPageSetup.setVisible(false);		
         this.btnCloud.setVisible(false);		
@@ -357,6 +363,12 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.contDept.setBoundLabelText(resHelper.getString("contDept.boundLabelText"));		
         this.contDept.setBoundLabelLength(100);		
         this.contDept.setBoundLabelUnderline(true);
+        // contDes		
+        this.contDes.setBoundLabelText(resHelper.getString("contDes.boundLabelText"));		
+        this.contDes.setBoundLabelLength(100);		
+        this.contDes.setBoundLabelUnderline(true);		
+        this.contDes.setVisible(true);		
+        this.contDes.setBoundLabelAlignment(7);
         // txtCompany		
         this.txtCompany.setEnabled(false);
         // txtRoom		
@@ -457,6 +469,11 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.prmtDept.setCommitFormat("$number$");		
         this.prmtDept.setEditable(true);		
         this.prmtDept.setRequired(true);
+        // txtDes		
+        this.txtDes.setVisible(true);		
+        this.txtDes.setHorizontalAlignment(2);		
+        this.txtDes.setMaxLength(50);		
+        this.txtDes.setEnabled(true);
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -522,6 +539,8 @@ public abstract class AbstractOtherBillEditUI extends com.kingdee.eas.fdc.tenanc
         this.add(contContractNo, new KDLayout.Constraints(733, 76, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         contDept.setBounds(new Rectangle(733, 54, 270, 19));
         this.add(contDept, new KDLayout.Constraints(733, 54, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
+        contDes.setBounds(new Rectangle(733, 98, 270, 19));
+        this.add(contDes, new KDLayout.Constraints(733, 98, 270, 19, KDLayout.Constraints.ANCHOR_TOP | KDLayout.Constraints.ANCHOR_LEFT_SCALE | KDLayout.Constraints.ANCHOR_RIGHT));
         //contCompany
         contCompany.setBoundEditor(txtCompany);
         //contRoom
@@ -565,6 +584,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
         contContractNo.setBoundEditor(txtContractNo);
         //contDept
         contDept.setBoundEditor(prmtDept);
+        //contDes
+        contDes.setBoundEditor(txtDes);
 
     }
 
@@ -765,7 +786,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		dataBinder.registerBinding("endDate", java.util.Date.class, this.pkEndDate, "value");
 		dataBinder.registerBinding("leaseTime", int.class, this.spinLeaseTime, "value");
 		dataBinder.registerBinding("contractNo", String.class, this.txtContractNo, "text");
-		dataBinder.registerBinding("dept", com.kingdee.eas.basedata.org.AdminOrgUnitInfo.class, this.prmtDept, "data");		
+		dataBinder.registerBinding("dept", com.kingdee.eas.basedata.org.AdminOrgUnitInfo.class, this.prmtDept, "data");
+		dataBinder.registerBinding("des", String.class, this.txtDes, "text");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -848,7 +870,8 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
 		getValidateHelper().registerBindProperty("endDate", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("leaseTime", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("contractNo", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("dept", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("dept", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("des", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -966,6 +989,7 @@ contEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contEntry.g
         	sic.add(new SelectorItemInfo("dept.number"));
         	sic.add(new SelectorItemInfo("dept.name"));
 		}
+        sic.add(new SelectorItemInfo("des"));
         return sic;
     }        
     	

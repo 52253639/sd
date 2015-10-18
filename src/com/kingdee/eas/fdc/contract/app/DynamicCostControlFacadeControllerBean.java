@@ -115,9 +115,9 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 		RptRowSet rs = executeQuery(sb.toString(), null,ctx);
 		List changeTypeCol=new ArrayList();
 		
-	    Object[] one=new Object[23+rs.getRowCount()*2];
-	    Object[] two=new Object[23+rs.getRowCount()*2];
-	    Object[] three=new Object[23+rs.getRowCount()*2];
+	    Object[] one=new Object[24+rs.getRowCount()*2];
+	    Object[] two=new Object[24+rs.getRowCount()*2];
+	    Object[] three=new Object[24+rs.getRowCount()*2];
 	    
 	    String balance="";
 	    if(params.getObject("fromDate")!=null&&params.getObject("toDate")!=null){
@@ -176,22 +176,26 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    initColoum(header,col,"unContractAmount",140,false);
     	initColoum(header,col,"estimateAmount",140,false);
     	initColoum(header,col,"settleAdjustAmount",140,false);
-    	initColoum(header,col,"dynamicTotalAmount",160,false);
     	initColoum(header,col,"settleAmount",140,false);
+    	initColoum(header,col,"dynamicTotalAmount",160,false);
+    	initColoum(header,col,"happenedAmount",140,false);
+    	initColoum(header,col,"unHappenedAmount",140,false);
+    	if(!balance.equals("")){
+    		initColoum(header,col,"absolute",100,true);
+        	initColoum(header,col,"rate",100,true);
+    	}else{
+    		initColoum(header,col,"absolute",100,false);
+        	initColoum(header,col,"rate",100,false);
+    	}
     	if(!balance.equals("")){
     		initColoum(header,col,"changeRate",140,true);
     	}else{
     		initColoum(header,col,"changeRate",140,false);
     	}
-    	initColoum(header,col,"happenedAmount",140,false);
     	if(!balance.equals("")){
-    		initColoum(header,col,"absolute",100,true);
-        	initColoum(header,col,"rate",100,true);
         	initColoum(header,col,"payAmount",140,true);
         	initColoum(header,col,"payRate",140,true);
     	}else{
-    		initColoum(header,col,"absolute",100,false);
-        	initColoum(header,col,"rate",100,false);
         	initColoum(header,col,"payAmount",140,false);
         	initColoum(header,col,"payRate",140,false);
     	}
@@ -202,47 +206,56 @@ public class DynamicCostControlFacadeControllerBean extends AbstractDynamicCostC
 	    one[k]="未签合同(C)"+balance;
 		one[k+1]="预估合同变动(D)"+balance;
 		one[k+2]="结算调整(E)"+balance;
-		one[k+3]="动态成本总额(A+B+C+D+E)"+balance;
-		one[k+4]="合同结算金额"+balance;
-		one[k+5]="变更签证比例"+balance;
-		one[k+6]="已发生金额"+balance;
-		one[k+7]="变化值";
-		one[k+8]="变化值";
-		one[k+9]="累计实付金额";
-		one[k+10]="累计实付比例(%)";
-		one[k+11]="totalAmount";
-		one[k+12]="isContract";
-		one[k+13]="isSettle";
+		one[k+3]="合同结算金额"+balance;
+		
+		
+		one[k+4]="动态成本总额(A+B+C+D+E)"+balance;
+		
+		one[k+5]="已发生金额(A+B+D)"+balance;
+		one[k+6]="待发生(C+D)"+balance;
+		
+		one[k+7]="规划余量";
+		one[k+8]="规划余量";
+		
+		one[k+9]="变更签证比例"+balance;
+		
+		one[k+10]="累计实付金额";
+		one[k+11]="累计实付比例(%)";
+		one[k+12]="totalAmount";
+		one[k+13]="isContract";
+		one[k+14]="isSettle";
 		
 		two[k]="未签合同(C)"+balance;
 		two[k+1]="预估合同变动(D)"+balance;
 		two[k+2]="结算调整(E)"+balance;
-		two[k+3]="动态成本总额(A+B+C+D+E)"+balance;
-		two[k+4]="合同结算金额"+balance;
-		two[k+5]="变更签证比例"+balance;
-		two[k+6]="已发生金额"+balance;
-		two[k+7]="变化值";
-		two[k+8]="变化值";
-		two[k+9]="累计实付金额";
-		two[k+10]="累计实付比例(%)";
-		two[k+11]="totalAmount";
-		two[k+12]="isContract";
-		two[k+13]="isSettle";
+		two[k+3]="合同结算金额"+balance;
+		two[k+4]="动态成本总额(A+B+C+D+E)"+balance;
+		two[k+5]="已发生金额(A+B+D)"+balance;
+		two[k+6]="待发生(C+D)"+balance;
+		two[k+7]="规划余量";
+		two[k+8]="规划余量";
+		two[k+9]="变更签证比例"+balance;
+		two[k+10]="累计实付金额";
+		two[k+11]="累计实付比例(%)";
+		two[k+12]="totalAmount";
+		two[k+13]="isContract";
+		two[k+14]="isSettle";
 		
 		three[k]="未签合同(C)"+balance;
 		three[k+1]="预估合同变动(D)"+balance;
 		three[k+2]="结算调整(E)"+balance;
-		three[k+3]="动态成本总额(A+B+C+D+E)"+balance;
-		three[k+4]="合同结算金额"+balance;
-		three[k+5]="变更签证比例"+balance;
-		three[k+6]="已发生金额"+balance;
+		three[k+3]="合同结算金额"+balance;
+		three[k+4]="动态成本总额(A+B+C+D+E)"+balance;
+		three[k+5]="已发生金额(A+B+D)"+balance;
+		three[k+6]="待发生(C+D)"+balance;
 		three[k+7]="绝对值";
 		three[k+8]="比例(%)";
-		three[k+9]="累计实付金额";
-		three[k+10]="累计实付比例(%)";
-		three[k+11]="totalAmount";
-		three[k+12]="isContract";
-		three[k+13]="isSettle";
+		three[k+9]="变更签证比例"+balance;
+		three[k+10]="累计实付金额";
+		three[k+11]="累计实付比例(%)";
+		three[k+12]="totalAmount";
+		three[k+13]="isContract";
+		three[k+14]="isSettle";
 		
 		header.setLabels(new Object[][]{one,two,three},true);
 	    params.setObject("header", header);

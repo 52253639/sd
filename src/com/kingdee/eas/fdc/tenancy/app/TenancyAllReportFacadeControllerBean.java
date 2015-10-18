@@ -63,11 +63,11 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 	    initColoum(header,col,"moneyDefine",100,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
-	    			"mdNumber","mdId","conId","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","租金信息","租金信息","租金信息","款项类别"
+	    			"mdNumber","mdId","conId","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","款项类别"
 	    		}
 	    		,
 	    		{
-	    			"mdNumber","mdId","conId","项目分期","楼栋","房间","建筑面积","租赁面积","合同编码","合同名称","客户名称","合同起始日","合同终止日","免租期（按日）","租金总额","租金（按月）","租金单价（每月元/平米）","款项类别"
+	    			"mdNumber","mdId","conId","项目分期","楼栋","房间","建筑面积","租赁面积","合同编码","合同名称","客户名称","合同起始日","合同终止日","免租期（按日）","合同总额（租金+周期性费用）","租金单价","租金单价（每月元/平米）","款项类别"
 		    	}
 	    },true);
 	    params.setObject("rentHeader", header);
@@ -141,10 +141,11 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
     	sb.append(" t.conNumber,t.conName,t.customer,t.startDate,t.endDate,t.freeDays,t.dealTotal,");
     	sb.append(" t.dealPrice,t.roomPrice,t.moneyDefine from ("); 
     	sb.append(" select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
-    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
+    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate)+1 freeDays,con.fdealTotalRent+isnull(other.amount,0) dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenancyRoomPayListEntry pay on pay.ftenRoomId=roomEntry.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
+    	sb.append(" left join (select sum(fappAmount) amount,bill.FTenancyBillId conId from T_TEN_OtherBill bill left join  T_TEN_TenBillOtherPay entry on bill.fid=entry.FOtherBillId group by bill.FTenancyBillId) other on other.conId=con.fid");
     	sb.append(" where md.fid is not null");
 //    	if(isAll){
 //    		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
@@ -157,10 +158,11 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
     		sb.append(" and sp.fid in('null')");
     	}
     	sb.append(" union all select md.fnumber mdNumber,md.fid mdId,con.fid conId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,room.FBuildingArea buildArea,roomEntry.fbuildingArea tenancyArea,");
-    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate) freeDays,con.fdealTotalRent dealTotal,");
+    	sb.append(" con.fnumber conNumber,con.ftenancyName conName,con.ftencustomerDes customer,con.fstartDate startDate,con.fendDate endDate,datediff(day,rent.ffreeStartDate,rent.ffreeEndDate)+1 freeDays,con.fdealTotalRent+isnull(other.amount,0) dealTotal,");
     	sb.append(" roomEntry.fdealRoomRentPrice dealPrice,roomEntry.fdealRoomRentPrice/roomEntry.fbuildingArea roomPrice,md.fname_l2 moneyDefine from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join T_TEN_TenancyCustomerEntry customerEntry on con.fid=customerEntry.ftenancyBillId"); 
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenBillOtherPay pay on pay.fheadId=con.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
+    	sb.append(" left join (select sum(fappAmount) amount,bill.FTenancyBillId conId from T_TEN_OtherBill bill left join  T_TEN_TenBillOtherPay entry on bill.fid=entry.FOtherBillId group by bill.FTenancyBillId) other on other.conId=con.fid");
     	sb.append(" where md.fid is not null");
 //    	if(isAll){
 //    		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
@@ -180,19 +182,6 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 		sb=new StringBuffer();
     	sb.append(" select sp.fname_l2 sellProject,build.fname_l2 build,room.fname_l2 room,room.fbuildingArea buildArea,room.ftenancyArea tenancyArea");
     	sb.append(" from t_she_room room left join t_she_building build on room.fbuildingId=build.fid left join t_she_sellProject sp on sp.fid=build.fsellProjectId");
-    	sb.append(" where room.fisForTen=1");
-    	if(building!=null&&!"".equals(building)){
-    		sb.append(" and room.fbuildingid in("+building+")");
-    	}else{
-    		sb.append(" and sp.fid in('null')");
-    	}
-    	
-    	rs = executeQuery(sb.toString(), null, ctx);
-		params.setObject("unRentRS", rs);
-		
-		sb=new StringBuffer();
-    	sb.append(" select sp.fname_l2 sellProject,build.fname_l2 build,room.fname_l2 room,room.fbuildingArea buildArea,room.ftenancyArea tenancyArea");
-    	sb.append(" from t_she_room room left join t_she_building build on room.fbuildingId=build.fid left join t_she_sellProject sp on sp.fid=build.fsellProjectId");
     	sb.append(" where room.fisForTen=1 and room.FTenancyState!='KeepTenancy'");
     	sb.append(" and NOT EXISTS(select roomEntry.froomId from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId where con.ftenancyState in('Audited','Executing','ContinueTenancying') and roomEntry.froomId=room.fid )");
     	if(building!=null&&!"".equals(building)){
@@ -205,9 +194,10 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 		params.setObject("unRentRS", rs);
 		
 		sb=new StringBuffer();
-    	sb.append(" select sp.fname_l2 sellProject,build.fname_l2 build,room.fname_l2 room,room.fbuildingArea buildArea,room.ftenancyArea tenancyArea");
+    	sb.append(" select sp.fname_l2 sellProject,build.fname_l2 build,room.fname_l2 room,room.fbuildingArea buildArea");
     	sb.append(" from t_she_room room left join t_she_building build on room.fbuildingId=build.fid left join t_she_sellProject sp on sp.fid=build.fsellProjectId");
-    	sb.append(" where room.fisForSHE=1 and room.FSellState='Sign'");
+    	sb.append(" where room.fisForTen=1");
+    	sb.append(" and EXISTS(select roomEntry.froomId from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId where con.fTenBillRoomState='SELL' and con.ftenancyState in('Audited','Executing','ContinueTenancying') and roomEntry.froomId=room.fid )");
     	if(building!=null&&!"".equals(building)){
     		sb.append(" and room.fbuildingid in("+building+")");
     	}else{
@@ -216,6 +206,19 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
     	sb.append(" order by sp.fnumber,build.fnumber,room.funit,room.ffloor,room.fnumber");
     	rs = executeQuery(sb.toString(), null, ctx);
 		params.setObject("sellRS", rs);
+		
+//		sb=new StringBuffer();
+//    	sb.append(" select sp.fname_l2 sellProject,build.fname_l2 build,room.fname_l2 room,room.fbuildingArea buildArea,room.ftenancyArea tenancyArea");
+//    	sb.append(" from t_she_room room left join t_she_building build on room.fbuildingId=build.fid left join t_she_sellProject sp on sp.fid=build.fsellProjectId");
+//    	sb.append(" where room.fisForSHE=1 and room.FSellState='Sign'");
+//    	if(building!=null&&!"".equals(building)){
+//    		sb.append(" and room.fbuildingid in("+building+")");
+//    	}else{
+//    		sb.append(" and sp.fid in('null')");
+//    	}
+//    	sb.append(" order by sp.fnumber,build.fnumber,room.funit,room.ffloor,room.fnumber");
+//    	rs = executeQuery(sb.toString(), null, ctx);
+//		params.setObject("sellRS", rs);
 		
 		sb=new StringBuffer();
     	sb.append(" select sum(area.FBuildArea) buildArea,sum(area.FArea)tenArea");
@@ -245,6 +248,19 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 		}
     	rs = executeQuery(sb.toString(), null, ctx);
 		params.setObject("rentAreaRS", rs);
+		
+		sb=new StringBuffer();
+    	sb.append(" select sum(roomEntry.fbuildingArea) sellArea");
+    	sb.append(" from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId");
+    	sb.append(" where con.fTenBillRoomState='SELL'");
+		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
+		if(building!=null&&!"".equals(building)){
+			sb.append(" and room.fbuildingid in("+building+")");
+		}else{
+			sb.append(" and room.fbuildingid in('null')");
+		}
+    	rs = executeQuery(sb.toString(), null, ctx);
+		params.setObject("sellAreaRS", rs);
 		return params;
     }
 }
