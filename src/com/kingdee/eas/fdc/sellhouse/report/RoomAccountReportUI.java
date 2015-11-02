@@ -3,6 +3,7 @@
  */
 package com.kingdee.eas.fdc.sellhouse.report;
 
+import java.awt.Color;
 import java.awt.event.*;
 import java.math.BigDecimal;
 
@@ -14,19 +15,28 @@ import org.apache.log4j.Logger;
 
 import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.bos.ui.face.IUIWindow;
+import com.kingdee.bos.ui.face.UIFactory;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTDataRequestManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTSelectManager;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
+import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.basedata.org.OrgStructureInfo;
 import com.kingdee.eas.common.EASBizException;
+import com.kingdee.eas.common.client.OprtState;
+import com.kingdee.eas.common.client.UIContext;
+import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.basedata.ProductTypeInfo;
+import com.kingdee.eas.fdc.basedata.ProjectTypeInfo;
+import com.kingdee.eas.fdc.contract.client.AccActOnLoadBgUI;
 import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
@@ -79,7 +89,12 @@ public class RoomAccountReportUI extends AbstractRoomAccountReportUI
 		tblMain.removeColumns();
 		tblMain.removeRows();
 		sum();
-		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"canSellPrice","canSellBuildArea","canSellRoomArea","canSellAccount","onSellPrice","onSellBuildArea","onSellRoomArea","onSellAccount","prePrice","preBuildArea","preRoomArea","preAccount","purPrice","purBuildArea","purRoomArea","purAccount","signPrice","signBuildArea","signRoomArea","signAccount"});
+		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"hz2","hz4","hz6","canSellPrice","canSellBuildArea","canSellRoomArea","canSellAccount","onSellPrice","onSellBuildArea","onSellRoomArea","onSellAccount","prePrice","preBuildArea","preRoomArea","preAccount","purPrice","purBuildArea","purRoomArea","purAccount","signPrice","signBuildArea","signRoomArea","signAccount"});
+	
+		tblMain.getColumn("canSellAmount").getStyleAttributes().setFontColor(Color.BLUE);
+		tblMain.getColumn("onSellAmount").getStyleAttributes().setFontColor(Color.BLUE);
+		tblMain.getColumn("purAmount").getStyleAttributes().setFontColor(Color.BLUE);
+		tblMain.getColumn("signAmount").getStyleAttributes().setFontColor(Color.BLUE);
 	}
 	
 	public void addSumRow(DefaultKingdeeTreeNode node,int dep) throws EASBizException, BOSException{
@@ -129,7 +144,7 @@ public class RoomAccountReportUI extends AbstractRoomAccountReportUI
 					IRow sumRow=this.tblMain.getRow(j);
 					if(sumRow.getCell("sellProjectId").getValue().toString().indexOf(id)>0&&sumRow.getCell("sellProjectId").getValue().toString().indexOf("'")==0){
 						
-						SHEManageHelper.addSumColoum(sumRow,row,new String[]{"canSellAmount","canSellBuildArea","canSellRoomArea","canSellAccount","onSellAmount","onSellBuildArea","onSellRoomArea","onSellAccount","preAmount","preBuildArea","preRoomArea","preAccount","purAmount","purBuildArea","purRoomArea","purAccount","signAmount","signBuildArea","signRoomArea","signAccount"});
+						SHEManageHelper.addSumColoum(sumRow,row,new String[]{"hz1","hz2","hz3","hz4","hz5","hz6","canSellAmount","canSellBuildArea","canSellRoomArea","canSellAccount","onSellAmount","onSellBuildArea","onSellRoomArea","onSellAccount","preAmount","preBuildArea","preRoomArea","preAccount","purAmount","purBuildArea","purRoomArea","purAccount","signAmount","signBuildArea","signRoomArea","signAccount"});
 				    	
 						sumRow.getCell("canSellPrice").setValue(((BigDecimal)sumRow.getCell("canSellBuildArea").getValue()).compareTo(FDCHelper.ZERO)==0?FDCHelper.ZERO:((BigDecimal)sumRow.getCell("canSellAccount").getValue()).divide((BigDecimal)sumRow.getCell("canSellBuildArea").getValue(), 2,BigDecimal.ROUND_HALF_UP));
 				    	sumRow.getCell("onSellPrice").setValue(((BigDecimal)sumRow.getCell("onSellBuildArea").getValue()).compareTo(FDCHelper.ZERO)==0?FDCHelper.ZERO:((BigDecimal)sumRow.getCell("onSellAccount").getValue()).divide((BigDecimal)sumRow.getCell("onSellBuildArea").getValue(), 2,BigDecimal.ROUND_HALF_UP));
@@ -240,5 +255,57 @@ public class RoomAccountReportUI extends AbstractRoomAccountReportUI
 			query();
 		}
 	}
+	protected void tblMain_tableClicked(KDTMouseEvent e) throws Exception {
+		if(e.getType() == 1 && e.getButton() == 1 && e.getClickCount() == 2)
+        {
+			IRow row = tblMain.getRow(e.getRowIndex());
+			BigDecimal amount = (BigDecimal)row.getCell(e.getColIndex()).getValue();
+			if(amount == null || !(amount instanceof BigDecimal) || amount.compareTo(FDCHelper.ZERO) <= 0)
+				return;
 
+			String sellState=null;
+			if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("canSellAmount")){
+
+			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("onSellAmount")){
+				sellState="('Onshow','Init')";
+			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("purAmount")){
+				sellState="('Purchase')";
+			}else if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("signAmount")){
+				sellState="('Sign')";
+			}else{
+				return;
+			}
+			 UIContext uiContext = new UIContext(this);
+			 uiContext.put("Owner", this);
+			 RptParams param = new RptParams();
+			 param.setObject("sellState", sellState);
+			 if(row.getCell("productTypeId").getValue()!=null){
+				 Object[] pr=new Object[1];
+				 ProductTypeInfo pt=new ProductTypeInfo();
+				 pt.setId(BOSUuid.read(row.getCell("productTypeId").getValue().toString()));
+				 pr[0]=pt;
+				 param.setObject("productType", pr);
+			 }
+			 String sp=(String)row.getCell("sellProjectId").getValue();
+			 if(sp!=null){
+				 String sellProjectId=getSellProjectId(sp);
+				 param.setObject("sellProject", sellProjectId);
+			 }
+			 uiContext.put("RPTFilter", param);
+			 uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(RoomSourceReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+			 uiWindow.show();
+        }
+	}
+	 IUIWindow uiWindow;
+	 protected String getSellProjectId(String id){
+			if(id.indexOf("*PSP*")>0){
+				return id.replace("*PSP*", "");
+			}else if(id.indexOf("*SP*")>0){
+				return id.replace("*SP*", "");
+			}else if(id.indexOf("*ORG*")>0){
+				return id.replace("*ORG*", "");
+			}else{
+				return "'"+id+"'";
+			}
+		}
 }

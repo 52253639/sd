@@ -453,9 +453,9 @@ public class CommerceChanceTrackEditUI extends AbstractCommerceChanceTrackEditUI
     	
     	if(editData.getCommerceChance()!=null){
     		SelectorItemCollection sic = new SelectorItemCollection();
-            sic.add(new SelectorItemInfo("newLevel.*"));
-            sic.add(new SelectorItemInfo("classify.*"));
-            sic.add(new SelectorItemInfo("commerceChanceStage.*"));
+            sic.add(new SelectorItemInfo("newLevel"));
+            sic.add(new SelectorItemInfo("classify"));
+            sic.add(new SelectorItemInfo("commerceChanceStage"));
             sic.add(new SelectorItemInfo("trackDate"));
             sic.add(new SelectorItemInfo("trackContent"));
             SelectorItemCollection updatesic = new SelectorItemCollection();

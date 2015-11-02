@@ -45,6 +45,7 @@ import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.base.permission.client.longtime.ILongTimeTask;
 import com.kingdee.eas.common.client.OprtState;
+import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
@@ -320,6 +321,10 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
             	        			}
             	        		}
         	        		}
+        	        		Boolean isHasZero=params.getBoolean("isHasZero");
+        	        		if(isHasZero&&appAmount.compareTo(FDCHelper.ZERO)==0){
+        	        			row.getStyleAttributes().setHided(true);
+        	        		}
         	        		row.getCell(year+"Y"+month+"M"+"appAmount").setValue(appAmount);
         	        		row.getCell(year+"Y"+month+"M"+"totalFeeAmount").setValue(totalFeeAmount);
         	        		row.getCell(year+"Y"+month+"M"+"totalRateAmount").setValue(FDCHelper.multiply(row.getCell(year+"Y"+month+"M"+"totalFeeAmount").getValue(), rate));
@@ -493,6 +498,8 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 				
 				info.setNumber(info.getNumber()+mdName);
 			    info.setName(info.getName()+mdName);
+			    info.setCU(SysContext.getSysContext().getCurrentCtrlUnit());
+			    info.setOrgUnit(SysContext.getSysContext().getCurrentCtrlUnit().castToFullOrgUnitInfo());
 			}else{
 				info=new FeesWarrantInfo();
 				info.setId(BOSUuid.create(info.getBOSType()));

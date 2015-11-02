@@ -165,7 +165,12 @@ public class RoomSourceReportUI extends AbstractRoomSourceReportUI
 		FDCSysContext.getInstance().checkIsSHEOrg(this);
 		setShowDialogOnLoad(false);
 		super.onLoad();
-		initTree();
+		if(getUIContext().get("RPTFilter") == null){
+			initTree();
+		}else{
+			this.actionQuery.setVisible(false);
+			treeView.setVisible(false);
+		}
 		this.actionPrint.setVisible(false);
 		this.actionPrintPreview.setVisible(false);
 	}

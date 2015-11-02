@@ -94,6 +94,7 @@ import com.kingdee.eas.fdc.sellhouse.RoomDisplaySetting;
 import com.kingdee.eas.fdc.sellhouse.RoomFactory;
 import com.kingdee.eas.fdc.sellhouse.RoomInfo;
 import com.kingdee.eas.fdc.sellhouse.RoomLoanAFMEntrysCollection;
+import com.kingdee.eas.fdc.sellhouse.RoomLoanAFMEntrysFactory;
 import com.kingdee.eas.fdc.sellhouse.RoomLoanAFMEntrysInfo;
 import com.kingdee.eas.fdc.sellhouse.RoomLoanCollection;
 import com.kingdee.eas.fdc.sellhouse.RoomLoanFactory;
@@ -1507,7 +1508,7 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 			if (curRow.getCell("loanState").getValue() != null) {
 				BizEnumValueInfo state = (BizEnumValueInfo) curRow.getCell("loanState").getValue();
 				if (!state.getName().equals(AFMortgagedStateEnum.TRANSACTED.getName())) {
-					FDCMsgBox.showInfo(this, "状态为" + state.getAlias() + "的单据不能进行银行放款操作！");
+					FDCMsgBox.showWarning(this, "状态为" + state.getAlias() + "的单据不能进行银行放款操作！");
 					abort();
 				}
 				if(0 < i){  //与前一个按揭款项做比较
@@ -1516,14 +1517,21 @@ public class RoomLoanListUI extends AbstractRoomLoanListUI {
 						BizEnumValueInfo curAfmType = (BizEnumValueInfo) curRow.getCell("afmType").getValue();
 						BizEnumValueInfo preAfmType = (BizEnumValueInfo) preRow.getCell("afmType").getValue();
 						if(!curAfmType.getName().equals(preAfmType.getName())){  //款项不一样
-							FDCMsgBox.showInfo(this, "按揭款项不一样的单据不能进行银行放款操作！");
+							FDCMsgBox.showWarning(this, "按揭款项不一样的单据不能进行银行放款操作！");
 							abort();
 						}
 					}
 				}
 			}
-			
 			String id = curRow.getCell("id").getValue().toString();
+			
+			RoomLoanAFMEntrysCollection col=RoomLoanAFMEntrysFactory.getRemoteInstance().getRoomLoanAFMEntrysCollection("select * from where isAOrB=1 and actualFinishDate is null and parent.id='"+id+"'");
+			if(col.size()>0){
+				FDCMsgBox.showWarning(this, "按揭办理进程所有实际完成日期必须填写完整才能进行银行放款操作！");
+				abort();
+			}
+			
+			
 			SelectorItemCollection sels = new SelectorItemCollection();
 	    	sels.add("mmType");
 	    	sels.add("sign.id");

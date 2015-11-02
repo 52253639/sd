@@ -500,9 +500,9 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 	protected void initTenancyBillF7Filter() {
 		EntityViewInfo evi = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
-//		String cuId = SysContext.getSysContext().getCurrentCtrlUnit().getId()
-//				.toString();
-//		filter.getFilterItems().add(new FilterItemInfo("CU.id", cuId));
+		String cuId = SysContext.getSysContext().getCurrentCtrlUnit().getId()
+				.toString();
+		filter.getFilterItems().add(new FilterItemInfo("orgUnit.id", cuId));
 		Set set = new HashSet();
 		set.add(TenancyBillStateEnum.SAVED_VALUE);
 		set.add(TenancyBillStateEnum.SUBMITTED_VALUE);

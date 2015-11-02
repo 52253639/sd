@@ -235,7 +235,7 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
 		
 		sb=new StringBuffer();
     	sb.append(" select md.fid mdId,con.fid conId,pay.fappDate appDate,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount,");
-    	sb.append(" (case when datediff(day,pay.fappDate,isnull(pay.factRevDate,convert(DATETIME,'"+toODDateStr+"')))<0 then 0 else datediff(day,pay.fappDate,isnull(pay.factRevDate,convert(DATETIME,'"+toODDateStr+"'))) end) overdueDays from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
+    	sb.append(" (case when pay.fappAmount=isnull(pay.factRevAmount,0) or datediff(day,pay.fappDate,convert(DATETIME,'"+toODDateStr+"'))<0 then 0 else datediff(day,pay.fappDate,convert(DATETIME,'"+toODDateStr+"')) end) overdueDays from T_TEN_TenancyRoomPayListEntry pay left join T_TEN_TenancyRoomEntry roomEntry on pay.ftenRoomId=roomEntry.fid left join T_TEN_TenancyBill con on con.fid=roomEntry.ftenancyId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
@@ -266,7 +266,7 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
 			sb.append(" and pay.fappDate<{ts '"+FDCConstants.FORMAT_TIME.format(FDCDateHelper.getSQLEnd(toDate))+ "'}");
 		}
     	sb.append(" union all select md.fid mdId,con.fid conId,pay.fappDate appDate,year(pay.fappDate) appYear,month(pay.fappDate) appMonth,isnull(pay.fappAmount,0) appAmount,isnull(pay.finvoiceAmount,0) invoiceAmount,isnull(pay.factRevAmount,0) actRevAmount,");
-    	sb.append(" (case when datediff(day,pay.fappDate,isnull(pay.factRevDate,convert(DATETIME,'"+toODDateStr+"')))<0 then 0 else datediff(day,pay.fappDate,isnull(pay.factRevDate,convert(DATETIME,'"+toODDateStr+"'))) end) overdueDays from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
+    	sb.append(" (case when pay.fappAmount=isnull(pay.factRevAmount,0) or datediff(day,pay.fappDate,convert(DATETIME,'"+toODDateStr+"'))<0 then 0 else datediff(day,pay.fappDate,convert(DATETIME,'"+toODDateStr+"')) end) overdueDays from T_TEN_TenBillOtherPay pay left join T_TEN_TenancyBill con on con.fid=pay.fheadId left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId");
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_sellProject sp on sp.fid=con.fsellProjectid where 1=1");
     	if(isAll){
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");

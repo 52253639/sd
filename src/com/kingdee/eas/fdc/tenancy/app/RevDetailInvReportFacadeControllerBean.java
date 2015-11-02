@@ -160,6 +160,7 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
 		Date toDate=FDCDateHelper.getLastDayOfMonth(cal.getTime());
 		
 	    Boolean isAll=params.getBoolean("isAll");
+	    Boolean isNotHasZero=params.getBoolean("isNotHasZero");
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select * from (select distinct t.mdNumber,t.mdId,t.conId,t.quitRoomDate,t.sellProject,t.build,t.room,t.buildArea,t.tenancyArea,");
     	sb.append(" t.conNumber,t.conName,t.customer,t.startDate,t.endDate,t.freeDays,t.dealTotal,");
@@ -175,6 +176,9 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
     	}else{
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
+    	}
+    	if(isNotHasZero){
+    		sb.append(" and isnull(pay.fappAmount,0)!=0");
     	}
     	if(sellProject!=null&&!"".equals(sellProject)){
     		sb.append(" and sp.fid in("+sellProject+")");
@@ -210,6 +214,9 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
     	}else{
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
+    	}
+    	if(isNotHasZero){
+    		sb.append(" and isnull(pay.fappAmount,0)!=0");
     	}
     	if(sellProject!=null&&!"".equals(sellProject)){
     		sb.append(" and sp.fid in("+sellProject+")");
@@ -250,6 +257,9 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     	}else{
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
     	}
+    	if(isNotHasZero){
+    		sb.append(" and isnull(pay.fappAmount,0)!=0");
+    	}
     	if(sellProject!=null&&!"".equals(sellProject)){
     		sb.append(" and sp.fid in("+sellProject+")");
     	}else{
@@ -282,6 +292,9 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
     	}else{
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
+    	}
+    	if(isNotHasZero){
+    		sb.append(" and isnull(pay.fappAmount,0)!=0");
     	}
     	if(sellProject!=null&&!"".equals(sellProject)){
     		sb.append(" and sp.fid in("+sellProject+")");
@@ -319,6 +332,9 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     	}else{
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
     	}
+    	if(isNotHasZero){
+    		sb.append(" and isnull(pay.fappAmount,0)!=0");
+    	}
     	if(sellProject!=null&&!"".equals(sellProject)){
     		sb.append(" and sp.fid in("+sellProject+")");
     	}else{
@@ -349,6 +365,9 @@ public class RevDetailInvReportFacadeControllerBean extends AbstractRevDetailInv
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
     	}else{
     		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying')");
+    	}
+    	if(isNotHasZero){
+    		sb.append(" and isnull(pay.fappAmount,0)!=0");
     	}
     	if(sellProject!=null&&!"".equals(sellProject)){
     		sb.append(" and sp.fid in("+sellProject+")");

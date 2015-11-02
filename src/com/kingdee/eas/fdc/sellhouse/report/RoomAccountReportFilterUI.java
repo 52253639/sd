@@ -42,6 +42,8 @@ public class RoomAccountReportFilterUI extends AbstractRoomAccountReportFilterUI
 		super.onLoad();
 		this.pkFromDate.setValue(null);
 		this.pkToDate.setValue(null);
+		this.contFromDate.setVisible(false);
+		this.contToDate.setVisible(false);
 	}
 
 	public RptParams getCustomCondition() {

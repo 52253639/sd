@@ -239,9 +239,9 @@ public class NewSHERevBillEditUI extends AbstractNewSHERevBillEditUI
     			
     			if(revEntryInfo.getRemainAmount().compareTo(FDCHelper.ZERO)>0&&revEntryInfo.getMoneyDefine().isIsAmount()){
     				addRow.getCell("canAmount").setValue(revEntryInfo.getRemainAmount());
-					if(revEntryInfo.getMoneyDefine().getName().equals("定金")){
+//					if(revEntryInfo.getMoneyDefine().getName().equals("定金")){
     					addRow.getCell("amount").setValue(revEntryInfo.getRemainAmount());
-    				}
+//    				}
         			addRow.getCell("isSelect").setValue(new Boolean(true));
         			addRow.getCell("isSelect").getStyleAttributes().setLocked(false);
         			addRow.getStyleAttributes().setBackground(Color.YELLOW);
@@ -1097,9 +1097,9 @@ public class NewSHERevBillEditUI extends AbstractNewSHERevBillEditUI
 		objectValue.setCU(SysContext.getSysContext().getCurrentCtrlUnit());
 		if(PM==null&&objectValue.getRoom()!=null){
 			try {
-				ChangeManageCollection col=ChangeManageFactory.getRemoteInstance().getChangeManageCollection("select bizType,dealState from where room.id='"+objectValue.getRoom().getId()+"' or srcRoom.id='"+objectValue.getRoom().getId()+"'");
+				ChangeManageCollection col=ChangeManageFactory.getRemoteInstance().getChangeManageCollection("select * from where room.id='"+objectValue.getRoom().getId()+"' or srcRoom.id='"+objectValue.getRoom().getId()+"'");
 				for(int i=0;i<col.size();i++){
-					if(col.get(i).getDealState().equals(DealStateEnum.NOTDEAL)&&col.get(i).getBizType().equals(ChangeBizTypeEnum.CHANGEROOM)){
+					if(DealStateEnum.NOTDEAL.equals(col.get(i).getDealState())&&col.get(i).getBizType().equals(ChangeBizTypeEnum.CHANGEROOM)){
 						FDCMsgBox.showWarning("待处理变更业务未进行财务处理！");
 						this.abort();
 					} 

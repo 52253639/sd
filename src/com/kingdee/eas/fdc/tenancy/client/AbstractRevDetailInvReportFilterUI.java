@@ -59,6 +59,7 @@ public abstract class AbstractRevDetailInvReportFilterUI extends com.kingdee.eas
     protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel3;
     protected com.kingdee.bos.ctrl.swing.KDSpinner spEMonth;
     protected com.kingdee.bos.ctrl.swing.KDLabel kDLabel4;
+    protected com.kingdee.bos.ctrl.swing.KDCheckBox cbIsNotHasZero;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtTanancyBill;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtRoom;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtCustomer;
@@ -96,6 +97,7 @@ public abstract class AbstractRevDetailInvReportFilterUI extends com.kingdee.eas
         this.kDLabel3 = new com.kingdee.bos.ctrl.swing.KDLabel();
         this.spEMonth = new com.kingdee.bos.ctrl.swing.KDSpinner();
         this.kDLabel4 = new com.kingdee.bos.ctrl.swing.KDLabel();
+        this.cbIsNotHasZero = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.prmtTanancyBill = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtRoom = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtCustomer = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
@@ -115,6 +117,7 @@ public abstract class AbstractRevDetailInvReportFilterUI extends com.kingdee.eas
         this.kDLabel3.setName("kDLabel3");
         this.spEMonth.setName("spEMonth");
         this.kDLabel4.setName("kDLabel4");
+        this.cbIsNotHasZero.setName("cbIsNotHasZero");
         this.prmtTanancyBill.setName("prmtTanancyBill");
         this.prmtRoom.setName("prmtRoom");
         this.prmtCustomer.setName("prmtCustomer");
@@ -170,6 +173,8 @@ public abstract class AbstractRevDetailInvReportFilterUI extends com.kingdee.eas
         // spEMonth
         // kDLabel4		
         this.kDLabel4.setText(resHelper.getString("kDLabel4.text"));
+        // cbIsNotHasZero		
+        this.cbIsNotHasZero.setText(resHelper.getString("cbIsNotHasZero.text"));
         // prmtTanancyBill		
         this.prmtTanancyBill.setCommitFormat("$name$");		
         this.prmtTanancyBill.setEditFormat("$name$");		
@@ -237,6 +242,8 @@ public abstract class AbstractRevDetailInvReportFilterUI extends com.kingdee.eas
         this.add(spEMonth, null);
         kDLabel4.setBounds(new Rectangle(566, 101, 15, 19));
         this.add(kDLabel4, null);
+        cbIsNotHasZero.setBounds(new Rectangle(308, 124, 140, 19));
+        this.add(cbIsNotHasZero, null);
         //contTanancyBill
         contTanancyBill.setBoundEditor(prmtTanancyBill);
         //contRoom

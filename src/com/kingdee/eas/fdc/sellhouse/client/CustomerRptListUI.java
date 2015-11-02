@@ -810,7 +810,7 @@ public class CustomerRptListUI extends AbstractCustomerRptListUI {
 		IUIWindow curDialog = uiFactory.create(CommerceChanceTrackEditUI.class.getName(), uiContext, null,
 				OprtState.ADDNEW);
 		curDialog.show();
-		
+		this.refreshList();
 	}
 
 	/**

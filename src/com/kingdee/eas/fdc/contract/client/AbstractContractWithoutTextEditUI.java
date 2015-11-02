@@ -1405,7 +1405,7 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
             }
         });
 
-                this.kdtTraEntry.putBindContents("editData",new String[] {"startDate","endDate","days","startPlace","endPlace","airFee","carFee","cityFee","otherFee","persons","liveDays","","allowance","other","total"});
+                this.kdtTraEntry.putBindContents("editData",new String[] {"startDate","endDate","days","startPlace","endPlace","airFee","carFee","cityFee","otherFee","persons","liveDays","liveFee","allowance","other","total"});
 
 
         this.kdtTraEntry.checkParsed();
@@ -1489,6 +1489,17 @@ public abstract class AbstractContractWithoutTextEditUI extends com.kingdee.eas.
         kdtTraEntry_liveDays_TextField.setDataType(0);
         KDTDefaultCellEditor kdtTraEntry_liveDays_CellEditor = new KDTDefaultCellEditor(kdtTraEntry_liveDays_TextField);
         this.kdtTraEntry.getColumn("liveDays").setEditor(kdtTraEntry_liveDays_CellEditor);
+        KDFormattedTextField kdtTraEntry_liveFee_TextField = new KDFormattedTextField();
+        kdtTraEntry_liveFee_TextField.setName("kdtTraEntry_liveFee_TextField");
+        kdtTraEntry_liveFee_TextField.setVisible(true);
+        kdtTraEntry_liveFee_TextField.setEditable(true);
+        kdtTraEntry_liveFee_TextField.setHorizontalAlignment(2);
+        kdtTraEntry_liveFee_TextField.setDataType(1);
+        	kdtTraEntry_liveFee_TextField.setMinimumValue(new java.math.BigDecimal("-999.9999999999"));
+        	kdtTraEntry_liveFee_TextField.setMaximumValue(new java.math.BigDecimal("999.9999999999"));
+        kdtTraEntry_liveFee_TextField.setPrecision(10);
+        KDTDefaultCellEditor kdtTraEntry_liveFee_CellEditor = new KDTDefaultCellEditor(kdtTraEntry_liveFee_TextField);
+        this.kdtTraEntry.getColumn("liveFee").setEditor(kdtTraEntry_liveFee_CellEditor);
         KDFormattedTextField kdtTraEntry_allowance_TextField = new KDFormattedTextField();
         kdtTraEntry_allowance_TextField.setName("kdtTraEntry_allowance_TextField");
         kdtTraEntry_allowance_TextField.setVisible(true);
@@ -2054,6 +2065,7 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
 		dataBinder.registerBinding("traEntry.allowance", java.math.BigDecimal.class, this.kdtTraEntry, "allowance.text");
 		dataBinder.registerBinding("traEntry.other", java.math.BigDecimal.class, this.kdtTraEntry, "other.text");
 		dataBinder.registerBinding("traEntry.total", java.math.BigDecimal.class, this.kdtTraEntry, "total.text");
+		dataBinder.registerBinding("traEntry.liveFee", java.math.BigDecimal.class, this.kdtTraEntry, "liveFee.text");
 		dataBinder.registerBinding("feeType", com.kingdee.eas.fdc.contract.FeeTypeEnum.class, this.cbFeeType, "selectedItem");		
 	}
 	//Regiester UI State
@@ -2244,6 +2256,7 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
 		getValidateHelper().registerBindProperty("traEntry.allowance", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("traEntry.other", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("traEntry.total", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("traEntry.liveFee", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("feeType", ValidateHelper.ON_SAVE);    		
 	}
 
@@ -2718,6 +2731,7 @@ contTraEntry.getContentPane().setLayout(new BorderLayout(0, 0));        contTraE
     	sic.add(new SelectorItemInfo("traEntry.allowance"));
     	sic.add(new SelectorItemInfo("traEntry.other"));
     	sic.add(new SelectorItemInfo("traEntry.total"));
+    	sic.add(new SelectorItemInfo("traEntry.liveFee"));
         sic.add(new SelectorItemInfo("feeType"));
         return sic;
     }        

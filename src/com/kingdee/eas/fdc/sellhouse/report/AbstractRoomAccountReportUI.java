@@ -81,6 +81,16 @@ public abstract class AbstractRoomAccountReportUI extends com.kingdee.eas.framew
         this.kDSplitPane1.setDividerLocation(200);
         // treeView
         // tblMain
+        this.tblMain.addKDTMouseListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener() {
+            public void tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) {
+                try {
+                    tblMain_tableClicked(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
 
         
 
@@ -146,9 +156,13 @@ public abstract class AbstractRoomAccountReportUI extends com.kingdee.eas.framew
         //menuFile
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemPrintPreview);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudScreen);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuItemExitCurrent);
+        menuFile.add(kdSeparatorFWFile1);
         //menuView
         menuView.add(menuItemQuery);
         menuView.add(menuItemRefresh);
@@ -157,6 +171,7 @@ public abstract class AbstractRoomAccountReportUI extends com.kingdee.eas.framew
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //MenuService
         MenuService.add(MenuItemKnowStore);
         MenuService.add(MenuItemAnwser);
@@ -180,8 +195,11 @@ public abstract class AbstractRoomAccountReportUI extends com.kingdee.eas.framew
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnPageSetup);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnRefresh);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnQuery);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(separator1);
         this.toolBar.add(btnPrint);
         this.toolBar.add(btnPrintPreview);
@@ -261,6 +279,13 @@ public abstract class AbstractRoomAccountReportUI extends com.kingdee.eas.framew
     public void setOprtState(String oprtType)
     {
         super.setOprtState(oprtType);
+    }
+
+    /**
+     * output tblMain_tableClicked method
+     */
+    protected void tblMain_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
+    {
     }
 
     /**

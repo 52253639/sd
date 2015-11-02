@@ -146,7 +146,7 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenancyRoomPayListEntry pay on pay.ftenRoomId=roomEntry.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
     	sb.append(" left join (select sum(fappAmount) amount,bill.FTenancyBillId conId from T_TEN_OtherBill bill left join  T_TEN_TenBillOtherPay entry on bill.fid=entry.FOtherBillId group by bill.FTenancyBillId) other on other.conId=con.fid");
-    	sb.append(" where md.fid is not null");
+    	sb.append(" where con.fTenBillRoomState!='SELL' and md.fid is not null");
 //    	if(isAll){
 //    		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
 //    	}else{
@@ -163,7 +163,7 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
     	sb.append(" left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_TenBillOtherPay pay on pay.fheadId=con.fid left join t_she_moneyDefine md on md.fid=pay.fmoneyDefineId left join T_TEN_RentFreeEntry rent on rent.ftenancyId=con.fid");
     	sb.append(" left join (select sum(fappAmount) amount,bill.FTenancyBillId conId from T_TEN_OtherBill bill left join  T_TEN_TenBillOtherPay entry on bill.fid=entry.FOtherBillId group by bill.FTenancyBillId) other on other.conId=con.fid");
-    	sb.append(" where md.fid is not null");
+    	sb.append(" where con.fTenBillRoomState!='SELL' and md.fid is not null");
 //    	if(isAll){
 //    		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
 //    	}else{
@@ -235,7 +235,7 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 		sb=new StringBuffer();
     	sb.append(" select sum(roomEntry.fbuildingArea) tenArea");
     	sb.append(" from T_TEN_TenancyBill con left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId");
-    	sb.append(" where 1=1");
+    	sb.append(" where con.fTenBillRoomState!='SELL'");
 //    	if(isAll){
 	//		sb.append(" and con.ftenancyState in('Audited','Executing','ContinueTenancying','Expiration')");
 	//	}else{

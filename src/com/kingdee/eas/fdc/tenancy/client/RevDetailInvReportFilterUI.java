@@ -129,6 +129,7 @@ public class RevDetailInvReportFilterUI extends AbstractRevDetailInvReportFilter
          pp.setObject("eyear", this.spEYear.getIntegerVlaue());
          pp.setObject("emonth", this.spEMonth.getIntegerVlaue());
 		 pp.setObject("isAll", this.cbIsAll.isSelected());
+		 pp.setObject("isNotHasZero", this.cbIsNotHasZero.isSelected());
 		 return pp;
 	}
 	public void onInit(RptParams params) throws Exception {
@@ -138,6 +139,7 @@ public class RevDetailInvReportFilterUI extends AbstractRevDetailInvReportFilter
 		this.prmtRoom.setValue(params.getObject("room"));
 		this.prmtTanancyBill.setValue(params.getObject("tenancyBill"));
 		this.cbIsAll.setSelected(params.getBoolean("isAll"));
+		this.cbIsNotHasZero.setSelected(params.getBoolean("isNotHasZero"));
 		this.prmtCustomer.setValue(params.getObject("customer"));
 		this.prmtMoneyDefine.setValue(params.getObject("moneyDefine"));
 		this.spSYear.setValue(params.getObject("syear"));

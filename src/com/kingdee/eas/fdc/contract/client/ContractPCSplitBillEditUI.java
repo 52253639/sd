@@ -180,7 +180,7 @@ public class ContractPCSplitBillEditUI extends AbstractContractPCSplitBillEditUI
     	    		}
     	    		info.setAmount(contractBillInfo.getAmount());
     			}else{
-    				this.getSupplyAmount(contractBillId);
+//    				this.getSupplyAmount(contractBillId);
             		info.setAmount(FDCHelper.subtract(contractBillInfo.getAmount(), totalSupplyAmount));
             	}
 			} catch (BOSException e) {
@@ -332,13 +332,13 @@ public class ContractPCSplitBillEditUI extends AbstractContractPCSplitBillEditUI
 				this.txtAmount.setValue(this.editData.getContractBill().getAmount());
 			}else{
 				if(this.editData.getId()!=null){
-					try {
-						this.getSupplyAmount(this.editData.getContractBill().getId().toString());
-					} catch (BOSException e) {
-						e.printStackTrace();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
+//					try {
+//						this.getSupplyAmount(this.editData.getContractBill().getId().toString());
+//					} catch (BOSException e) {
+//						e.printStackTrace();
+//					} catch (SQLException e) {
+//						e.printStackTrace();
+//					}
 					this.txtAmount.setValue(FDCHelper.subtract(this.editData.getContractBill().getAmount(), totalSupplyAmount));
 				}
 			}

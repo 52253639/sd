@@ -940,6 +940,10 @@ public class VirtualRoomFullInfoUI extends AbstractVirtualRoomFullInfoUI
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		if(transactionInfo==null){
+			FDCMsgBox.showInfo(this,"改房间为附属房产！");
+			SysUtil.abort();
+		}
 		//从这里得到预约排号
 		EntityViewInfo view = new EntityViewInfo();
 		FilterInfo filter = new FilterInfo();
