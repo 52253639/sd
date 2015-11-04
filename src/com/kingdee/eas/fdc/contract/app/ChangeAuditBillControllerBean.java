@@ -126,7 +126,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
     protected void _submit(Context ctx, IObjectPK pk, IObjectValue model)
 	throws BOSException, EASBizException {
     	ChangeAuditBillInfo info = (ChangeAuditBillInfo)model;
-    	if(info.getChangeState()==null)
+//    	if(info.getChangeState()==null)
     		info.setChangeState(ChangeBillStateEnum.Submit);
     	if(info.getAuditType()!=null)
     		info.setAuditTypeName(info.getAuditType().getName());
@@ -291,7 +291,7 @@ public class ChangeAuditBillControllerBean extends AbstractChangeAuditBillContro
     		}
     	}
 		
-    	if(info.getChangeState()==null)
+//    	if(info.getChangeState()==null)
     		info.setChangeState(ChangeBillStateEnum.Submit);
     	System.err.println("");
     	if(info.getAuditType()!=null)
