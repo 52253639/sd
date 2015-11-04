@@ -107,28 +107,12 @@ public class TenancyAllReportFacadeControllerBean extends AbstractTenancyAllRepo
 	    params.setObject("sellHeader", header);
 	    
 	    header = new RptTableHeader();
-	    initColoum(header,col,"sellProject",100,false);
-	    initColoum(header,col,"build",50,false);
-	    initColoum(header,col,"room",270,false);
-	    initColoum(header,col,"buildArea",75,false);
-	    initColoum(header,col,"reason",100,false);
-	    header.setLabels(new Object[][]{ 
-	    		{
-	    			"房间信息","房间信息","房间信息","房间信息","房间信息"
-	    		}
-	    		,
-	    		{
-	    			"项目分期","楼栋","房间","建筑面积","原因或现有用途"
-		    	}
-	    },true);
-	    params.setObject("unToRentHeader", header);
-	    
-	    header = new RptTableHeader();
 	    initColoum(header,col,"type",100,false);
 	    initColoum(header,col,"value",250,false);
+	    initColoum(header,col,"remark",250,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
-	    			null,null
+	    			null,null,"取数规则"
 	    		}
 	    },true);
 	    params.setObject("mainHeader", header);

@@ -54,7 +54,6 @@ public abstract class AbstractTenancyAllReportUI extends com.kingdee.eas.framewo
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblRent;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblUnRent;
     protected com.kingdee.bos.ctrl.kdf.table.KDTable tblSell;
-    protected com.kingdee.bos.ctrl.kdf.table.KDTable tblUnToRent;
     /**
      * output class constructor
      */
@@ -81,7 +80,6 @@ public abstract class AbstractTenancyAllReportUI extends com.kingdee.eas.framewo
         this.tblRent = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.tblUnRent = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.tblSell = new com.kingdee.bos.ctrl.kdf.table.KDTable();
-        this.tblUnToRent = new com.kingdee.bos.ctrl.kdf.table.KDTable();
         this.kDSplitPane1.setName("kDSplitPane1");
         this.treeView.setName("treeView");
         this.kDTabbedPane1.setName("kDTabbedPane1");
@@ -90,7 +88,6 @@ public abstract class AbstractTenancyAllReportUI extends com.kingdee.eas.framewo
         this.tblRent.setName("tblRent");
         this.tblUnRent.setName("tblUnRent");
         this.tblSell.setName("tblSell");
-        this.tblUnToRent.setName("tblUnToRent");
         // CoreUI
         // kDSplitPane1		
         this.kDSplitPane1.setDividerLocation(200);
@@ -163,20 +160,6 @@ public abstract class AbstractTenancyAllReportUI extends com.kingdee.eas.framewo
 
         
 
-        // tblUnToRent
-        this.tblUnToRent.addKDTMouseListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener() {
-            public void tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) {
-                try {
-                    tblUnToRent_tableClicked(e);
-                } catch (Exception exc) {
-                    handUIException(exc);
-                } finally {
-                }
-            }
-        });
-
-        
-
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -216,7 +199,6 @@ public abstract class AbstractTenancyAllReportUI extends com.kingdee.eas.framewo
         kDTabbedPane1.add(tblRent, resHelper.getString("tblRent.constraints"));
         kDTabbedPane1.add(tblUnRent, resHelper.getString("tblUnRent.constraints"));
         kDTabbedPane1.add(tblSell, resHelper.getString("tblSell.constraints"));
-        kDTabbedPane1.add(tblUnToRent, resHelper.getString("tblUnToRent.constraints"));
 
     }
 
@@ -391,13 +373,6 @@ public abstract class AbstractTenancyAllReportUI extends com.kingdee.eas.framewo
      * output tblSell_tableClicked method
      */
     protected void tblSell_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
-    {
-    }
-
-    /**
-     * output tblUnToRent_tableClicked method
-     */
-    protected void tblUnToRent_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
     {
     }
 

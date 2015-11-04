@@ -93,14 +93,10 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
         tblSell.setEnabled(false);
         tblSell.getDataRequestManager().setDataRequestMode(KDTDataRequestManager.REAL_MODE);
         
-        tblUnToRent.checkParsed();
-        tblUnToRent.setEnabled(false);
-        tblUnToRent.getDataRequestManager().setDataRequestMode(KDTDataRequestManager.REAL_MODE);
         enableExportExcel(tblMain);
         enableExportExcel(tblRent);
         enableExportExcel(tblUnRent);
         enableExportExcel(tblSell);
-        enableExportExcel(tblUnToRent);
     }
     private boolean isQuery=false;
     private boolean isOnLoad=false;
@@ -130,9 +126,6 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
 		
 		tblSell.removeColumns();
 		tblSell.removeRows();
-		
-		tblUnToRent.removeColumns();
-		tblUnToRent.removeRows();
 		
 		tblMain.removeColumns();
 		tblMain.removeRows();
@@ -181,9 +174,6 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
                      
                      RptTableHeader sellHeader = (RptTableHeader)rpt.getObject("sellHeader");
                      KDTableUtil.setHeader(sellHeader, tblSell);
-                     
-                     RptTableHeader unToRentHeader = (RptTableHeader)rpt.getObject("unToRentHeader");
-                     KDTableUtil.setHeader(unToRentHeader, tblUnToRent);
                      
                      RptTableHeader mainHeader = (RptTableHeader)rpt.getObject("mainHeader");
                      KDTableUtil.setHeader(mainHeader, tblMain);
@@ -247,49 +237,57 @@ public class TenancyAllReportUI extends AbstractTenancyAllReportUI
         	         }
         	         tblMain.getColumn("type").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
         	         tblMain.getColumn("value").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
+        	         tblMain.getColumn("remark").getStyleAttributes().setHorizontalAlign(HorizontalAlignment.CENTER);
     	        	 IRow row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("建筑面积：");
+    	        	 row.getCell("remark").setValue("楼栋维护的建筑面积");
     	        	 row.getCell("value").setValue(buildArea);
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("不可租面积：");
-    	        	 row.getCell("value").setValue(FDCHelper.subtract(buildArea, tenArea));
+    	        	 row.getCell("remark").setValue("建筑面积-可租面积-已售面积");
+    	        	 row.getCell("value").setValue(FDCHelper.subtract(buildArea, FDCHelper.add(tenArea, sellArea)));
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
 
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("可租面积：");
+    	        	 row.getCell("remark").setValue("楼栋维护的可租面积");
     	        	 row.getCell("value").setValue(tenArea);
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	 
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("已租面积：");
+    	        	 row.getCell("remark").setValue("合同上的可租面积（已租状态）");
     	        	 row.getCell("value").setValue(rentArea);
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	 
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("已售面积：");
+    	        	 row.getCell("remark").setValue("合同上的可租面积（已售状态）");
     	        	 row.getCell("value").setValue(sellArea);
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	 
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("空置面积：");
+    	        	 row.getCell("remark").setValue("可租面积-已租面积");
     	        	 row.getCell("value").setValue(FDCHelper.subtract(tenArea, rentArea));
     	        	 row.getCell("value").getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
     	        	 
-    	        	 row=tblMain.addRow();
-    	        	 row.setHeight(50);
-    	        	 row.getCell("type").setValue("预留面积：");
+//    	        	 row=tblMain.addRow();
+//    	        	 row.setHeight(50);
+//    	        	 row.getCell("type").setValue("预留面积：");
     	        	 
     	        	 row=tblMain.addRow();
     	        	 row.setHeight(50);
     	        	 row.getCell("type").setValue("出租率：");
+    	        	 row.getCell("remark").setValue("已租面积/可租面积*100%");
     	        	 if(tenArea!=null&&tenArea.compareTo(FDCHelper.ZERO)!=0){
     	        		 row.getCell("value").setValue(FDCHelper.divide(FDCHelper.multiply(rentArea,new BigDecimal(100)),tenArea,2, BigDecimal.ROUND_HALF_UP)+"%");
     	        	 }else{
