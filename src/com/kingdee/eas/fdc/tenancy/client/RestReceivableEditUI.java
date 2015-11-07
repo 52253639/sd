@@ -503,14 +503,7 @@ public class RestReceivableEditUI extends AbstractRestReceivableEditUI {
 		String cuId = SysContext.getSysContext().getCurrentCtrlUnit().getId()
 				.toString();
 		filter.getFilterItems().add(new FilterItemInfo("orgUnit.id", cuId));
-		Set set = new HashSet();
-		set.add(TenancyBillStateEnum.SAVED_VALUE);
-		set.add(TenancyBillStateEnum.SUBMITTED_VALUE);
-		set.add(TenancyBillStateEnum.AUDITING_VALUE);
-		filter.getFilterItems()
-				.add(
-						new FilterItemInfo("tenancyState", set,
-								CompareType.NOTINCLUDE));
+		filter.getFilterItems().add(new FilterItemInfo("tenancyState", TenancyBillStateEnum.EXECUTING_VALUE));
 		evi.setFilter(filter);
 		this.prmtTenancyBill.setEntityViewInfo(evi);
 	}

@@ -15,9 +15,11 @@ public class TenBillRoomStateEnum extends StringEnum
 {
     public static final String SELL_VALUE = "SELL";//alias=已售
     public static final String TEN_VALUE = "TEN";//alias=出租用
+    public static final String OTHER_VALUE = "OTHER";//alias=附属
 
     public static final TenBillRoomStateEnum SELL = new TenBillRoomStateEnum("SELL", SELL_VALUE);
     public static final TenBillRoomStateEnum TEN = new TenBillRoomStateEnum("TEN", TEN_VALUE);
+    public static final TenBillRoomStateEnum OTHER = new TenBillRoomStateEnum("OTHER", OTHER_VALUE);
 
     /**
      * construct function
