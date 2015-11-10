@@ -1130,6 +1130,13 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 				SysUtil.abort();
 			}
 		}
+		FilterInfo filter = new FilterInfo();
+		
+		filter.getFilterItems().add(new FilterItemInfo("boID" , this.editData.getId().toString()));
+		if(!BoAttchAssoFactory.getRemoteInstance().exists(filter)){
+			FDCMsgBox.showWarning(this,"请先上传附件！");
+			SysUtil.abort();
+		}
 	}
 	public void actionAttachment_actionPerformed(ActionEvent e)throws Exception{
 		 AttachmentClientManager acm = AttachmentManagerFactory.getClientManager();
