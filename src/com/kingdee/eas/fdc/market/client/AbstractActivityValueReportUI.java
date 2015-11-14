@@ -96,6 +96,16 @@ public abstract class AbstractActivityValueReportUI extends com.kingdee.eas.fram
         // kDSplitPane1		
         this.kDSplitPane1.setDividerLocation(250);
         // tblMain
+        this.tblMain.addKDTMouseListener(new com.kingdee.bos.ctrl.kdf.table.event.KDTMouseListener() {
+            public void tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) {
+                try {
+                    tblMain_tableClicked(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
 
         
 
@@ -168,9 +178,13 @@ public abstract class AbstractActivityValueReportUI extends com.kingdee.eas.fram
         //menuFile
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemPrintPreview);
         menuFile.add(kDSeparator1);
+        menuFile.add(menuItemCloudScreen);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(menuItemExitCurrent);
+        menuFile.add(kdSeparatorFWFile1);
         //menuView
         menuView.add(menuItemQuery);
         menuView.add(menuItemRefresh);
@@ -179,6 +193,7 @@ public abstract class AbstractActivityValueReportUI extends com.kingdee.eas.fram
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //MenuService
         MenuService.add(MenuItemKnowStore);
         MenuService.add(MenuItemAnwser);
@@ -202,8 +217,11 @@ public abstract class AbstractActivityValueReportUI extends com.kingdee.eas.fram
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnPageSetup);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnRefresh);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnQuery);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnQuickPic);
         this.toolBar.add(btnHistory);
         this.toolBar.add(separator1);
@@ -285,6 +303,13 @@ public abstract class AbstractActivityValueReportUI extends com.kingdee.eas.fram
     public void setOprtState(String oprtType)
     {
         super.setOprtState(oprtType);
+    }
+
+    /**
+     * output tblMain_tableClicked method
+     */
+    protected void tblMain_tableClicked(com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent e) throws Exception
+    {
     }
 
     /**

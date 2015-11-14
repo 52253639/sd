@@ -207,6 +207,13 @@ public class RoomSourceReportFacadeControllerBean extends AbstractRoomSourceRepo
 			int floorTo = para.getInt("floorTo");
 			sql.append(" and r.ffloor <="+floorTo);
 		}
+	    if(para.getObject("ydj")!=null){
+	    	if(para.getBoolean("ydj")){
+	    		sql.append(" and r.FBuildPrice is not null and r.fsellstate<>'Sign'");
+	    	}else{
+	    		sql.append(" and r.FBuildPrice is null");
+	    	}
+	    }
 		sql.append(" order by b.fnumber,r.funit,r.ffloor,r.fnumber"); 
     	
     	return sql.toString();

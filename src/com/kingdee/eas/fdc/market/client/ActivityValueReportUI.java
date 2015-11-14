@@ -5,6 +5,7 @@ package com.kingdee.eas.fdc.market.client;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,12 +18,15 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.ctrl.kdf.table.ICell;
 import com.kingdee.bos.ctrl.kdf.table.IRow;
 import com.kingdee.bos.ctrl.kdf.table.KDTMergeManager;
+import com.kingdee.bos.ctrl.kdf.table.KDTStyleConstants;
 import com.kingdee.bos.ctrl.kdf.table.KDTable;
 import com.kingdee.bos.ctrl.kdf.table.event.KDTDataRequestEvent;
+import com.kingdee.bos.ctrl.kdf.table.event.KDTMouseEvent;
 import com.kingdee.bos.ctrl.kdf.table.foot.KDTFootManager;
 import com.kingdee.bos.ctrl.kdf.util.style.Styles.HorizontalAlignment;
 import com.kingdee.bos.ctrl.swing.tree.DefaultKingdeeTreeNode;
 import com.kingdee.bos.ui.face.CoreUIObject;
+import com.kingdee.bos.ui.face.IUIWindow;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.common.EASBizException;
@@ -33,6 +37,7 @@ import com.kingdee.eas.fdc.aimcost.PlanIndexTypeEnum;
 import com.kingdee.eas.fdc.basedata.FDCHelper;
 import com.kingdee.eas.fdc.basedata.FDCSQLBuilder;
 import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
+import com.kingdee.eas.fdc.basedata.ProductTypeInfo;
 import com.kingdee.eas.fdc.market.client.TableUtils;
 import com.kingdee.eas.fdc.market.ActivityValueReportFacadeFactory;
 import com.kingdee.eas.fdc.market.ActivityValueReportFactory;
@@ -41,6 +46,7 @@ import com.kingdee.eas.fdc.sellhouse.SHEManageHelper;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.client.CommerceHelper;
 import com.kingdee.eas.fdc.sellhouse.client.FDCTreeHelper;
+import com.kingdee.eas.fdc.sellhouse.report.RoomSourceReportUI;
 import com.kingdee.eas.framework.report.ICommRptBase;
 import com.kingdee.eas.framework.report.client.CommRptBaseConditionUI;
 import com.kingdee.eas.framework.report.util.KDTableUtil;
@@ -381,8 +387,8 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
 		tblMain.removeColumns();
 		tblMain.removeRows();
 		getRowSum(tblMain);
-		setTotalRow(tblMain);
-		reSetExpressions(tblMain);
+//		setTotalRow(tblMain);
+//		reSetExpressions(tblMain);
 		
 	}
 
@@ -396,6 +402,11 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
 	        tblMain.setRowCount(rpt.getInt("count"));
 	        RptRowSet rs = (RptRowSet)rpt.getObject("rowset");
 	        KDTableUtil.insertRows(rs, 0, tblMain);
+	        
+			tblMain.getColumn("yqzydjcount").getStyleAttributes().setFontColor(Color.BLUE);
+			tblMain.getColumn("wqzydjcount").getStyleAttributes().setFontColor(Color.BLUE);
+			tblMain.getColumn("yqzwdjcount").getStyleAttributes().setFontColor(Color.BLUE);
+			
         } catch (EASBizException e) {
 			e.printStackTrace();
 		} catch (BOSException e) {
@@ -416,9 +427,10 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
     	super.onLoad();
     	btnQuickPic.setIcon(EASResource.getIcon("imgTbtn_startupserver"));
     	btnHistory.setIcon(EASResource.getIcon("imgTbtn_demandhistorydata"));
+    	btnQuickPic.setVisible(false);
+    	btnHistory.setVisible(false);
     	this.treeProject.setModel(FDCTreeHelper.getSellProjectTreeForSHE(this.actionOnLoad,MoneySysTypeEnum.SalehouseSys));
     	this.actionQuery.setVisible(false);
-
     }
     /**
      * ÏîÄ¿Ê÷
@@ -609,5 +621,40 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
     {
         super.actionChart_actionPerformed(e);
     }
-
+	protected void tblMain_tableClicked(KDTMouseEvent e) throws Exception {
+		if (e.getType() == KDTStyleConstants.BODY_ROW && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
+			IRow row=this.tblMain.getRow(e.getRowIndex());
+			Object amount=row.getCell(e.getColIndex()).getValue();
+			if(amount==null||!(amount instanceof BigDecimal)){
+				return;
+			}
+			 UIContext uiContext = new UIContext(this);
+			 uiContext.put("Owner", this);
+			 RptParams param = new RptParams();
+			 
+			 if(row.getCell("projectlongnumber").getValue()!=null){
+				 Object[] pr=new Object[1];
+				 ProductTypeInfo pt=new ProductTypeInfo();
+				 pt.setId(BOSUuid.read(row.getCell("projectlongnumber").getValue().toString()));
+				 pr[0]=pt;
+				 param.setObject("productType", pr);
+			 }
+			 param.setObject("sellProject", "'"+params.getString("projectId")+"'");
+			 
+			 if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yqzydjcount")){
+				 param.setObject("sellState", "('Sign')");
+				}else  if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("wqzydjcount")){
+					param.setObject("ydj", Boolean.FALSE);
+				}else  if(this.tblMain.getColumn(e.getColIndex()).getKey().equals("yqzwdjcount")){
+					param.setObject("ydj", Boolean.TRUE);
+				}else{
+					return;
+				}
+			 
+			 uiContext.put("RPTFilter", param);
+			 uiWindow = UIFactory.createUIFactory(UIFactoryName.NEWTAB).create(RoomSourceReportUI.class.getName(), uiContext, null, OprtState.VIEW);
+			 uiWindow.show();
+		}
+	}
+	IUIWindow uiWindow;
 }
