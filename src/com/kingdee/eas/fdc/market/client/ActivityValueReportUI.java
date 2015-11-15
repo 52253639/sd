@@ -329,21 +329,24 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
         	if(columnName.contains(String.valueOf(c))){
         		
 	            ICell cell = footRow.getCell(c);
-	            cell.getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
-	            cell.getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
+	            if(tblMain.getColumnKey(c).indexOf("count")<0){
+	            	 cell.getStyleAttributes().setNumberFormat("#,##0.00;-#,##0.00");
+	 	            cell.getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("right"));
+	            }else{
+	            	cell.getStyleAttributes().setHorizontalAlign(HorizontalAlignment.getAlignment("left"));
+	            }
 	            cell.getStyleAttributes().setFontColor(java.awt.Color.BLACK);
 	            if((c-5)%4!=0){
 	            	cell.setValue(TableUtils.getColumnValueSum(tblMain,c));
         	    }else{
         	    	cell.setValue(FDCHelper.divide(TableUtils.getColumnValueSum(tblMain,c+1),TableUtils.getColumnValueSum(tblMain,c-2) ));
         	    }
-        	    	
         	}
         }
         footRow.getStyleAttributes().setBackground(new java.awt.Color(246, 246, 191));
-        footRow.getCell(10).getStyleAttributes().setFontColor(Color.RED);
-        footRow.getCell(14).getStyleAttributes().setFontColor(Color.RED);
-        footRow.getCell(18).getStyleAttributes().setFontColor(Color.RED);
+//        footRow.getCell(10).getStyleAttributes().setFontColor(Color.RED);
+//        footRow.getCell(14).getStyleAttributes().setFontColor(Color.RED);
+//        footRow.getCell(18).getStyleAttributes().setFontColor(Color.RED);
 	}
 	/**
 	 * 行总计
@@ -357,14 +360,14 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
 		IRow footRow = null;
         KDTFootManager footRowManager = table.getFootManager();
         footRow = footRowManager.getFootRow(0);
-        TableUtils.changeTableNumberFormat(table, new String[]{"tararea","tarcount","tarunitprice","taramount",
-        		"yeararea","yearcount","yearunitprice","yearamount",
-				"zjarea","zjcount","zjunitprice","zjamount",
-				"wqzarea","wqzcount","wqzunitprice","wqzamount",
-				"yqzwdjarea","yqzwdjcount","yqzwdjunitprice","yqzwdjamount",
-				"wqzydjarea","wqzydjcount","wqzydjunitprice","wqzydjamount",
-				"yqzydjarea","yqzydjcount","yqzydjunitprice","yqzydjamount",
-				"ysarea","yscount","ysunitprice","ysamount"});
+        TableUtils.changeTableNumberFormat(table, new String[]{"tararea","tarunitprice","taramount",
+        		"yeararea","yearunitprice","yearamount",
+				"zjarea","zjunitprice","zjamount",
+				"wqzarea","wqzunitprice","wqzamount",
+				"yqzwdjarea","yqzwdjunitprice","yqzwdjamount",
+				"wqzydjarea","wqzydjunitprice","wqzydjamount",
+				"yqzydjarea","yqzydjunitprice","yqzydjamount",
+				"ysarea","ysunitprice","ysamount"});
         footRow.getCell(5).setValue("总计");
 	}
     protected RptParams getParamsForInit() {
@@ -428,7 +431,7 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
     	btnQuickPic.setIcon(EASResource.getIcon("imgTbtn_startupserver"));
     	btnHistory.setIcon(EASResource.getIcon("imgTbtn_demandhistorydata"));
     	btnQuickPic.setVisible(false);
-    	btnHistory.setVisible(false);
+    	btnHistory.setText("按底价计算");
     	this.treeProject.setModel(FDCTreeHelper.getSellProjectTreeForSHE(this.actionOnLoad,MoneySysTypeEnum.SalehouseSys));
     	this.actionQuery.setVisible(false);
     }
@@ -451,16 +454,24 @@ public class ActivityValueReportUI extends AbstractActivityValueReportUI
      * 历史版本
      * */
     public void actionHistory_actionPerformed(ActionEvent e) throws Exception {
-		super.actionHistory_actionPerformed(e);
-		DefaultKingdeeTreeNode treeNode = (DefaultKingdeeTreeNode)treeProject.getLastSelectedPathComponent();
-		if(treeNode !=null && treeNode.getUserObject() instanceof SellProjectInfo){
-			SellProjectInfo project = (SellProjectInfo)treeNode.getUserObject();
-			UIContext uiContext = new UIContext(this);
-			uiContext.put("projectId", project.getId().toString());
-			String editUIName = ActivityValueHistoryListUI.class.getName();
-			UIFactory.createUIFactory(UIFactoryName.MODEL).create(editUIName, uiContext, null, OprtState.VIEW).show();
-
-		}
+//		super.actionHistory_actionPerformed(e);
+//		DefaultKingdeeTreeNode treeNode = (DefaultKingdeeTreeNode)treeProject.getLastSelectedPathComponent();
+//		if(treeNode !=null && treeNode.getUserObject() instanceof SellProjectInfo){
+//			SellProjectInfo project = (SellProjectInfo)treeNode.getUserObject();
+//			UIContext uiContext = new UIContext(this);
+//			uiContext.put("projectId", project.getId().toString());
+//			String editUIName = ActivityValueHistoryListUI.class.getName();
+//			UIFactory.createUIFactory(UIFactoryName.MODEL).create(editUIName, uiContext, null, OprtState.VIEW).show();
+//
+//		}
+    	if(this.btnHistory.getText().equals("按底价计算")){
+    		this.params.setObject("isStand", Boolean.FALSE);
+    		this.btnHistory.setText("按表价计算");
+    	}else{
+    		this.params.setObject("isStand", Boolean.TRUE);
+    		this.btnHistory.setText("按底价计算");
+    	}
+    	this.query();
 	}
     
     /**

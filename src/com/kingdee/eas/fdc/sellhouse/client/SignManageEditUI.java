@@ -1518,10 +1518,10 @@ public class SignManageEditUI extends AbstractSignManageEditUI
 	}
 	public void actionEdit_actionPerformed(ActionEvent e) throws Exception {
 		checkBeforeEditOrRemove("cantEdit");
-		if(checkIsHasBankPayment()){
-			FDCMsgBox.showWarning(this,"签约单已经产生银行放款单业务，不能进行修改操作！");
-			SysUtil.abort();
-		}
+//		if(checkIsHasBankPayment()){
+//			FDCMsgBox.showWarning(this,"签约单已经产生银行放款单业务，不能进行修改操作！");
+//			SysUtil.abort();
+//		}
 		super.actionEdit_actionPerformed(e);
 	}
 	protected void updatePayListByPayType() {

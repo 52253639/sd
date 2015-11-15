@@ -267,8 +267,8 @@ public class SignManageListUI extends AbstractSignManageListUI
 	}
 	protected void editCheck(String id) throws EASBizException, BOSException {
 //		if(checkIsHasBankPayment(id)){
-			FDCMsgBox.showWarning(this,"签约单已经产生银行放款单业务，不能进行修改操作！");
-			SysUtil.abort();
+//			FDCMsgBox.showWarning(this,"签约单已经产生银行放款单业务，不能进行修改操作！");
+//			SysUtil.abort();
 //		}
 	}
 	private boolean checkIsHasBankPayment(String id) throws EASBizException, BOSException{

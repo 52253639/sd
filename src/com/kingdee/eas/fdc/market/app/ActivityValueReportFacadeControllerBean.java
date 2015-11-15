@@ -163,10 +163,10 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	    		 	"产品构成",
 	    		 	"产品类型",
 	    		 	"面积段",
-	    		 	"最新版测算总货值",
-	    		 	"最新版测算总货值",
-	    		 	"最新版测算总货值",
-	    		 	"最新版测算总货值",
+	    		 	"目标货值测算",
+	    		 	"目标货值测算",
+	    		 	"目标货值测算",
+	    		 	"目标货值测算",
 	    		 	"年度版测算货值",
 	    		 	"年度版测算货值",
 	    		 	"年度版测算货值",
@@ -191,10 +191,10 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	    		 	"动态货值计算明细",
 	    		 	"动态货值计算明细",
 	    		 	"动态货值计算明细",
-	    		 	"剩余货值",
-	    		 	"剩余货值",
-	    		 	"剩余货值",
-	    		 	"剩余货值"
+	    		 	"剩余货值（动态总货值-已售金额）",
+	    		 	"剩余货值（动态总货值-已售金额）",
+	    		 	"剩余货值（动态总货值-已售金额）",
+	    		 	"剩余货值（动态总货值-已售金额）"
 	    		}
 	    		,{
 	    			"序列号",
@@ -204,38 +204,38 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	    		 	"产品构成",
 	    		 	"产品类型",
 	    		 	"面积段",
-	    		 	"目标货值测算表",
-	    		 	"目标货值测算表",
-	    		 	"目标货值测算表",
-	    		 	"目标货值测算表",
+	    		 	"目标货值测算",
+	    		 	"目标货值测算",
+	    		 	"目标货值测算",
+	    		 	"目标货值测算",
 	    		 	"年度版测算货值",
 	    		 	"年度版测算货值",
 	    		 	"年度版测算货值",
 	    		 	"年度版测算货值",
-	    		 	"表价口径",
-	    		 	"表价口径",
-	    		 	"表价口径",
-	    		 	"表价口径",
-	    		 	"预估面积+预估金额",
-	    		 	"预估面积+预估金额",
-	    		 	"预估面积+预估金额",
-	    		 	"预估面积+预估金额",
-	    		 	"预售面积+预估金额",
-	    		 	"预售面积+预估金额",
-	    		 	"预售面积+预估金额",
-	    		 	"预售面积+预估金额",
-	    		 	"预售面积+房间表价",
-	    		 	"预售面积+房间表价",
-	    		 	"预售面积+房间表价",
-	    		 	"预售面积+房间表价",
-	    		 	"预售面积+成交价格",
-	    		 	"预售面积+成交价格",
-	    		 	"预售面积+成交价格",
-	    		 	"预售面积+成交价格",
-	    		 	"动态总货值-已售",
-	    		 	"动态总货值-已售",
-	    		 	"动态总货值-已售",
-	    		 	"动态总货值-已售"
+	    		 	"动态总货值",
+	    		 	"动态总货值",
+	    		 	"动态总货值",
+	    		 	"动态总货值",
+	    		 	"预估阶段（测算面积+测算金额）",
+	    		 	"预估阶段（测算面积+测算金额）",
+	    		 	"预估阶段（测算面积+测算金额）",
+	    		 	"预估阶段（测算面积+测算金额）",
+	    		 	"预证阶段（预售面积+测算金额）",
+	    		 	"预证阶段（预售面积+测算金额）",
+	    		 	"预证阶段（预售面积+测算金额）",
+	    		 	"预证阶段（预售面积+测算金额）",
+	    		 	"定价阶段（预售面积+房间定价）",
+	    		 	"定价阶段（预售面积+房间定价）",
+	    		 	"定价阶段（预售面积+房间定价）",
+	    		 	"定价阶段（预售面积+房间定价）",
+	    		 	"销售阶段（预售面积+成交价格）",
+	    		 	"销售阶段（预售面积+成交价格）",
+	    		 	"销售阶段（预售面积+成交价格）",
+	    		 	"销售阶段（预售面积+成交价格）",
+	    		 	"剩余货值（动态总货值-已售金额）",
+	    		 	"剩余货值（动态总货值-已售金额）",
+	    		 	"剩余货值（动态总货值-已售金额）",
+	    		 	"剩余货值（动态总货值-已售金额）"
 	    		}
 	    		,{
 	    			"序列号",
@@ -245,38 +245,38 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	    		 	"产品构成",
 	    		 	"产品类型",
 	    		 	"面积段",
-	    		 	"销售面积",//f 6
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",//I 9
-	    		 	"销售面积",// 10
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",//
-	    		 	"销售面积",
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",
-	    		 	"销售面积",
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",
-	    		 	"销售面积",
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",
-	    		 	"销售面积",
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",
-	    		 	"销售面积",//z
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)",
-	    		 	"销售面积",
-	    		 	"销售套数",
-	    		 	"销售均价",
-	    		 	"销售金额(元)"
+	    		 	"面积",//f 6
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",//I 9
+	    		 	"面积",// 10
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",//
+	    		 	"面积",
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",
+	    		 	"面积",
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",
+	    		 	"面积",
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",
+	    		 	"面积",
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",
+	    		 	"面积",//z
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)",
+	    		 	"面积",
+	    		 	"套数",
+	    		 	"均价",
+	    		 	"金额(元)"
 	    		}
 	    },true);
 	    RptParams result = new RptParams();
@@ -318,7 +318,7 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		//未取预证未定价
 		sb.append(" isnull(tar.area,0)-(isnull(yqzwdj.area,0)+isnull(wqzydj.area,0)+isnull(yqzydj.area,0)+isnull(ys.area,0)) as wqzarea,");
 		sb.append(" isnull(tar.count,0)-(isnull(yqzwdj.count,0)+isnull(wqzydj.count,0)+isnull(yqzydj.count,0)+isnull(ys.count,0)) as wqzcount,");
-		sb.append(" tar.unitprice as wqzunitprice,");
+		sb.append(" case when (isnull(tar.area,0)-(isnull(yqzwdj.area,0)+isnull(wqzydj.area,0)+isnull(yqzydj.area,0)+isnull(ys.area,0))) is null or (isnull(tar.area,0)-(isnull(yqzwdj.area,0)+isnull(wqzydj.area,0)+isnull(yqzydj.area,0)+isnull(ys.area,0)))=0 then 0 else tar.unitprice end as wqzunitprice,");
 		sb.append(" (isnull(tar.area,0)-(isnull(yqzwdj.area,0)+isnull(wqzydj.area,0)+isnull(yqzydj.area,0)+isnull(ys.area,0)))*tar.unitprice as wqzcount,");
 		//未取预证已定价
 		sb.append(" yqzwdj.area as wqzydjarea,yqzwdj.count as wqzydjcount,case when yqzwdj.area is null or yqzwdj.area=0 then null else tar.unitprice end as wqzydjunitprice ,yqzwdj.area*tar.unitprice as wqzydjamount,");
@@ -456,7 +456,7 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_Building build ");
 		sb.append(" on build.fid=room.FBuildingID ");
 		sb.append(" left join T_FDC_ProductType type ");
-		sb.append(" on type.fid=build.fproducttypeid");
+		sb.append(" on type.fid=room.FProductTypeID");
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid");
 		sb.append(" where room.FBuildPrice is null");
@@ -478,16 +478,21 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	 * 3)	未取预证已定价
 	 * */
 	protected String getWQZYDJSql(RptParams params,String area){
+		Boolean isStand=params.getBoolean("isStand");
 		StringBuffer sb = new StringBuffer();
 		sb.append(" select project.fid as projectid,type.fname_l2 typename,sum("+areaSql+") as area,");
-		sb.append(" count(*) as count," +
-				 " avg(room.FBuildPrice) as unitprice," +
-				 " sum(room.fstandardTotalAmount) as amount");
+		sb.append(" count(*) as count, avg(room.FBuildPrice) as unitprice,");
+		 if(isStand!=null&&!isStand){
+			 sb.append(" sum(room.FBaseStandardPrice) as amount");
+		 }else{
+			 sb.append(" sum(room.fstandardTotalAmount) as amount");
+		 }
+				 
 		sb.append(" from T_SHE_Room room");
 		sb.append(" left join T_SHE_Building build ");
 		sb.append(" on build.fid=room.FBuildingID ");
 		sb.append(" left join T_FDC_ProductType type");
-		sb.append(" on build.fid=room.FBuildingID ");
+		sb.append(" on type.fid=room.FProductTypeID ");
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid ");
 		sb.append(" where room.FBuildPrice is not null and room.fsellstate<>'Sign'");
@@ -518,7 +523,7 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_Building build ");
 		sb.append(" on build.fid=room.FBuildingID ");
 		sb.append(" left join T_FDC_ProductType type");
-		sb.append(" on type.fid=build.fproducttypeid");
+		sb.append(" on type.fid=room.FProductTypeID");
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid ");
 		sb.append(" where room.FBuildPrice is not null and room.fsellstate<>'Sign'");
@@ -550,7 +555,7 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_Building build ");
 		sb.append(" on build.fid=room.FBuildingID ");
 		sb.append(" left join T_FDC_ProductType type ");
-		sb.append(" on type.fid=build.fproducttypeid ");
+		sb.append(" on type.fid=room.FProductTypeID ");
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid");
 		sb.append(" left join T_SHE_SignManage signman ");

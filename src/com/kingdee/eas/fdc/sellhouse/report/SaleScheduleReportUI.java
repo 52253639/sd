@@ -46,6 +46,7 @@ import com.kingdee.eas.basedata.org.NewOrgUtils;
 import com.kingdee.eas.basedata.org.OrgStructureInfo;
 import com.kingdee.eas.basedata.org.OrgViewType;
 import com.kingdee.eas.common.client.OprtState;
+import com.kingdee.eas.common.client.SysContext;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
 import com.kingdee.eas.fdc.basecrm.client.CRMClientHelper;
@@ -70,6 +71,7 @@ import com.kingdee.eas.framework.report.util.RptParams;
 import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 import com.kingdee.jdbc.rowset.IRowSet;
 
@@ -317,7 +319,7 @@ public class SaleScheduleReportUI extends AbstractSaleScheduleReportUI
     	isQuery=false;
 	}
 	protected void buildOrgTree() throws Exception{
-		TreeModel orgTreeModel = NewOrgUtils.getTreeModel(OrgViewType.SALE,"", null, null, FDCHelper.getActionPK(this.actionOnLoad));
+		TreeModel orgTreeModel = NewOrgUtils.getTreeModel(OrgViewType.SALE,"", SysContext.getSysContext().getCurrentSaleUnit().getId().toString(), null, FDCHelper.getActionPK(this.actionOnLoad));
 		this.treeMain.setModel(orgTreeModel);
 //		this.treeMain.setModel(TimeAccountReportFilterUI.getSellProjectForSHESellProject(actionOnLoad, MoneySysTypeEnum.SalehouseSys,true));
 		this.treeMain.setSelectionRow(0);
