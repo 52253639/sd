@@ -442,13 +442,9 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	/**
 	 * 2)	已取预证未定价
 	 * */
-	String areaSql = " case when FIsActualAreaAudited='1' then room.factualBuildingArea " +
-					 " else case when fispre='1' then room.fBuildingArea " +
-					 " else case when FIsPlan='1' then room.fplanBuildingArea" +
-					 " else room.fplanBuildingArea end end end ";
 	protected String getYQZWDJSql(RptParams params,String area){
 		StringBuffer sb = new StringBuffer();
-		sb.append("select project.fid as projectid,type.fname_l2 typename,sum("+areaSql+") as area,");
+		sb.append("select project.fid as projectid,type.fname_l2 typename,sum(room.FBuildingArea) as area,");
 		sb.append(" count(*) as count," +
 				 " avg(room.FBuildPrice) as unitprice," +
 				 " sum(room.fstandardTotalAmount) as amount");
@@ -460,17 +456,6 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid");
 		sb.append(" where room.FBuildPrice is null");
-		if(area!=null){
-			if(area.equals("≤100㎡")){
-				sb.append(" and ("+areaSql+") <=100"); 
-			}else if(area.equals("100㎡<@≤120㎡")){
-				sb.append(" and ("+areaSql+") >100 and ("+areaSql+") <=120"); 
-			}else if(area.equals("120㎡<@≤140㎡")){
-				sb.append(" and ("+areaSql+") >120 and ("+areaSql+") <=140"); 
-			}else if(area.equals("140㎡<")){
-				sb.append(" and ("+areaSql+") >140 "); 
-			}
-		}
 		sb.append(" group by project.fid,type.fname_l2");
 		return sb.toString();	
 	}
@@ -480,7 +465,7 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	protected String getWQZYDJSql(RptParams params,String area){
 		Boolean isStand=params.getBoolean("isStand");
 		StringBuffer sb = new StringBuffer();
-		sb.append(" select project.fid as projectid,type.fname_l2 typename,sum("+areaSql+") as area,");
+		sb.append(" select project.fid as projectid,type.fname_l2 typename,sum(room.FBuildingArea) as area,");
 		sb.append(" count(*) as count, avg(room.FBuildPrice) as unitprice,");
 		 if(isStand!=null&&!isStand){
 			 sb.append(" sum(room.FBaseStandardPrice) as amount");
@@ -496,17 +481,6 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid ");
 		sb.append(" where room.FBuildPrice is not null and room.fsellstate<>'Sign'");
-		if(area!=null){
-			if(area.equals("≤100㎡")){
-				sb.append(" and ("+areaSql+") <=100"); 
-			}else if(area.equals("100㎡<@≤120㎡")){
-				sb.append(" and ("+areaSql+") >100 and ("+areaSql+") <=120"); 
-			}else if(area.equals("120㎡<@≤140㎡")){
-				sb.append(" and ("+areaSql+") >120 and ("+areaSql+") <=140"); 
-			}else if(area.equals("140㎡<")){
-				sb.append(" and ("+areaSql+") >140 "); 
-			}
-		}
 		sb.append(" group by project.fid,type.fname_l2");
 		return sb.toString();
 	}
@@ -527,17 +501,6 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_SellProject project");
 		sb.append(" on build.FSellProjectID=project.fid ");
 		sb.append(" where room.FBuildPrice is not null and room.fsellstate<>'Sign'");
-		if(area!=null){
-			if(area.equals("≤100㎡")){
-				sb.append(" and ("+areaSql+") <=100"); 
-			}else if(area.equals("100㎡<@≤120㎡")){
-				sb.append(" and ("+areaSql+") >100 and ("+areaSql+") <=120"); 
-			}else if(area.equals("120㎡<@≤140㎡")){
-				sb.append(" and ("+areaSql+") >120 and ("+areaSql+") <=140"); 
-			}else if(area.equals("140㎡<")){
-				sb.append(" and ("+areaSql+") >140 "); 
-			}
-		}
 		sb.append(" group by project.fid,type.fname_l2");
 		return sb.toString();
 	}
@@ -546,9 +509,8 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 	 * */
 	protected String getYSSql(RptParams params,String area){
 		StringBuffer sb = new StringBuffer();
-		String signAreaSql="case signman.fsellType when 'PlanningSell' then signman.fstrdPlanBuildingArea when 'PreSell' then signman.fbulidingArea else signman.fstrdActualBuildingArea end ";
 		sb.append(" select project.fid as projectid,type.fname_l2 as typename, ");
-		sb.append(" sum("+signAreaSql+") as area,count(*) count,");
+		sb.append(" sum(room.FBuildingArea) as area,count(*) count,");
 		sb.append(" avg(room.FBuildPrice) as unitprice,");
 		sb.append(" sum(signman.fdealtotalAmount) as amount");
 		sb.append(" from T_SHE_Room room");
@@ -561,17 +523,6 @@ public class ActivityValueReportFacadeControllerBean extends AbstractActivityVal
 		sb.append(" left join T_SHE_SignManage signman ");
 		sb.append(" on signman.froomid=room.fid ");
 		sb.append(" where room.fsellstate='Sign' and signman.fbizState in('SignApple','SignAudit')");
-		if(area!=null){
-			if(area.equals("≤100㎡")){
-				sb.append(" and ("+signAreaSql+") <=100"); 
-			}else if(area.equals("100㎡<@≤120㎡")){
-				sb.append(" and ("+signAreaSql+") >100 and ("+signAreaSql+") <=120"); 
-			}else if(area.equals("120㎡<@≤140㎡")){
-				sb.append(" and ("+signAreaSql+") >120 and ("+signAreaSql+") <=140"); 
-			}else if(area.equals("140㎡<")){
-				sb.append(" and ("+signAreaSql+") >140 "); 
-			}
-		}
 		sb.append(" group by project.fid,type.fname_l2");
 		return sb.toString();
 	}
