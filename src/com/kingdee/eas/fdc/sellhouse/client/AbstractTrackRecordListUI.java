@@ -47,9 +47,9 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
 {
     private static final Logger logger = CoreUIObject.getLogger(AbstractTrackRecordListUI.class);
     protected com.kingdee.bos.ctrl.swing.KDSplitPane kDSplitPane1;
-    protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemExcelBatchImport;
     protected com.kingdee.bos.ctrl.swing.KDTreeView kDTreeView;
     protected com.kingdee.bos.ctrl.swing.KDTree treeSellProject;
+    protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemExcelBatchImport;
     protected ActionExcelBatchImport actionExcelBatchImport = null;
     /**
      * output class constructor
@@ -76,28 +76,23 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
         getActionManager().registerAction("actionExcelBatchImport", actionExcelBatchImport);
          this.actionExcelBatchImport.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.kDSplitPane1 = new com.kingdee.bos.ctrl.swing.KDSplitPane();
-        this.menuItemExcelBatchImport = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.kDTreeView = new com.kingdee.bos.ctrl.swing.KDTreeView();
         this.treeSellProject = new com.kingdee.bos.ctrl.swing.KDTree();
+        this.menuItemExcelBatchImport = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.kDSplitPane1.setName("kDSplitPane1");
-        this.menuItemExcelBatchImport.setName("menuItemExcelBatchImport");
         this.kDTreeView.setName("kDTreeView");
         this.treeSellProject.setName("treeSellProject");
+        this.menuItemExcelBatchImport.setName("menuItemExcelBatchImport");
         // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol9\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol14\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol15\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"eventDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"receptionType.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"2\" /><t:Column t:key=\"head.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"3\" /><t:Column t:key=\"sellProject.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"4\" /><t:Column t:key=\"commerceChance.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"5\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"6\" /><t:Column t:key=\"eventType.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"7\" /><t:Column t:key=\"trackResult\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"8\" /><t:Column t:key=\"relationBill\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"9\" t:styleID=\"sCol9\" /><t:Column t:key=\"phone\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"tel\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"creator\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"CU.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" t:styleID=\"sCol14\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /><t:Column t:key=\"head.saleTrackPhase\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"16\" /><t:Column t:key=\"head.tenancyTrackPhase\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"17\" /><t:Column t:key=\"commerceLevel.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"18\" /><t:Column t:key=\"saleMan.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"19\" /><t:Column t:key=\"beizhu\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"20\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{eventDate}</t:Cell><t:Cell>$Resource{receptionType.name}</t:Cell><t:Cell>$Resource{head.name}</t:Cell><t:Cell>$Resource{sellProject.name}</t:Cell><t:Cell>$Resource{commerceChance.name}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{eventType.name}</t:Cell><t:Cell>$Resource{trackResult}</t:Cell><t:Cell>$Resource{relationBill}</t:Cell><t:Cell>$Resource{phone}</t:Cell><t:Cell>$Resource{tel}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{creator}</t:Cell><t:Cell>$Resource{CU.id}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{head.saleTrackPhase}</t:Cell><t:Cell>$Resource{head.tenancyTrackPhase}</t:Cell><t:Cell>$Resource{commerceLevel.name}</t:Cell><t:Cell>$Resource{saleMan.name}</t:Cell><t:Cell>$Resource{beizhu}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot> ";
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol12\"><c:Protection hidden=\"true\" /></c:Style><c:Style id=\"sCol13\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"sellProject.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"number\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"head.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"head.phone\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"level.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"classify.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"eventDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"receptionType.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"saleMan.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"description\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"createTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"creator.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol12\" /><t:Column t:key=\"CU.id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol13\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{sellProject.name}</t:Cell><t:Cell>$Resource{number}</t:Cell><t:Cell>$Resource{head.name}</t:Cell><t:Cell>$Resource{head.phone}</t:Cell><t:Cell>$Resource{level.name}</t:Cell><t:Cell>$Resource{classify.name}</t:Cell><t:Cell>$Resource{eventDate}</t:Cell><t:Cell>$Resource{receptionType.name}</t:Cell><t:Cell>$Resource{saleMan.name}</t:Cell><t:Cell>$Resource{description}</t:Cell><t:Cell>$Resource{createTime}</t:Cell><t:Cell>$Resource{creator.name}</t:Cell><t:Cell>$Resource{id}</t:Cell><t:Cell>$Resource{CU.id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
-                this.tblMain.putBindContents("mainQuery",new String[] {"number","eventDate","receptionType.name","head.name","sellProject.name","commerceChance.name","trackDes","eventType.name","trackResult","relationContract","head.phone","head.tel","createTime","creator.name","","id","head.saleTrackPhase","head.tenancyTrackPhase","commerceLevel.name","saleMan.name","description"});
+                this.tblMain.putBindContents("mainQuery",new String[] {"sellProject.name","number","head.name","head.phone","level.name","classify.name","eventDate","receptionType.name","saleMan.name","description","createTime","creator.name","id","CU.id"});
 
 
         // kDSplitPane1		
         this.kDSplitPane1.setDividerLocation(200);		
         this.kDSplitPane1.setOneTouchExpandable(true);
-        // menuItemExcelBatchImport
-        this.menuItemExcelBatchImport.setAction((IItemAction)ActionProxyFactory.getProxy(actionExcelBatchImport, new Class[] { IItemAction.class }, getServiceContext()));		
-        this.menuItemExcelBatchImport.setText(resHelper.getString("menuItemExcelBatchImport.text"));		
-        this.menuItemExcelBatchImport.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_importexcel"));		
-        this.menuItemExcelBatchImport.setToolTipText(resHelper.getString("menuItemExcelBatchImport.toolTipText"));
         // kDTreeView		
         this.kDTreeView.setShowControlPanel(false);
         // treeSellProject
@@ -111,6 +106,11 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
                 }
             }
         });
+        // menuItemExcelBatchImport
+        this.menuItemExcelBatchImport.setAction((IItemAction)ActionProxyFactory.getProxy(actionExcelBatchImport, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.menuItemExcelBatchImport.setText(resHelper.getString("menuItemExcelBatchImport.text"));		
+        this.menuItemExcelBatchImport.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_importexcel"));		
+        this.menuItemExcelBatchImport.setToolTipText(resHelper.getString("menuItemExcelBatchImport.toolTipText"));
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -166,10 +166,14 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
         //menuFile
         menuFile.add(menuItemAddNew);
         menuFile.add(menuItemImportData);
+        menuFile.add(menuItemCloudFeed);
         menuFile.add(menuItemExportData);
+        menuFile.add(menuItemCloudScreen);
         menuFile.add(separatorFile1);
+        menuFile.add(menuItemCloudShare);
         menuFile.add(MenuItemAttachment);
         menuFile.add(kDSeparator1);
+        menuFile.add(kdSeparatorFWFile1);
         menuFile.add(menuItemPageSetup);
         menuFile.add(menuItemPrint);
         menuFile.add(menuItemPrintPreview);
@@ -197,8 +201,8 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
         menuView.add(menuItemSwitchView);
         menuView.add(separatorView1);
         menuView.add(menuItemTraceUp);
-        menuView.add(menuItemQueryScheme);
         menuView.add(menuItemTraceDown);
+        menuView.add(menuItemQueryScheme);
         menuView.add(kDSeparator6);
         //menuBiz
         menuBiz.add(menuItemCancelCancel);
@@ -208,6 +212,7 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
         //menuTool
         menuTool.add(menuItemSendMessage);
         menuTool.add(menuItemCalculator);
+        menuTool.add(menuItemToolBarCustom);
         //menuWorkFlow
         menuWorkFlow.add(menuItemViewDoProccess);
         menuWorkFlow.add(menuItemMultiapprove);
@@ -244,8 +249,11 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
     public void initUIToolBarLayout()
     {
         this.toolBar.add(btnAddNew);
+        this.toolBar.add(btnCloud);
         this.toolBar.add(btnView);
+        this.toolBar.add(btnXunTong);
         this.toolBar.add(btnEdit);
+        this.toolBar.add(kDSeparatorCloud);
         this.toolBar.add(btnRemove);
         this.toolBar.add(btnRefresh);
         this.toolBar.add(btnQuery);
@@ -267,6 +275,7 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
         this.toolBar.add(btnSignature);
         this.toolBar.add(btnViewSignature);
         this.toolBar.add(separatorFW4);
+        this.toolBar.add(btnNumberSign);
         this.toolBar.add(btnVoucher);
         this.toolBar.add(btnDelVoucher);
         this.toolBar.add(btnMultiapprove);
@@ -364,26 +373,24 @@ public abstract class AbstractTrackRecordListUI extends com.kingdee.eas.fdc.base
     public SelectorItemCollection getSelectors()
     {
         SelectorItemCollection sic = new SelectorItemCollection();
-        sic.add(new SelectorItemInfo("number"));
-        sic.add(new SelectorItemInfo("eventDate"));
-        sic.add(new SelectorItemInfo("head.name"));
-        sic.add(new SelectorItemInfo("trackResult"));
-        sic.add(new SelectorItemInfo("eventType.name"));
-        sic.add(new SelectorItemInfo("receptionType.name"));
-        sic.add(new SelectorItemInfo("commerceChance.name"));
-        sic.add(new SelectorItemInfo("createTime"));
-        sic.add(new SelectorItemInfo("id"));
+		String selectorAll = System.getProperty("selector.all");
+		if(StringUtils.isEmpty(selectorAll)){
+			selectorAll = "true";
+		}
         sic.add(new SelectorItemInfo("sellProject.name"));
-        sic.add(new SelectorItemInfo("relationContract"));
-        sic.add(new SelectorItemInfo("creator.name"));
-        sic.add(new SelectorItemInfo("head.saleTrackPhase"));
-        sic.add(new SelectorItemInfo("head.tenancyTrackPhase"));
-        sic.add(new SelectorItemInfo("commerceLevel.name"));
-        sic.add(new SelectorItemInfo("saleMan.name"));
-        sic.add(new SelectorItemInfo("trackDes"));
-        sic.add(new SelectorItemInfo("description"));
+        sic.add(new SelectorItemInfo("number"));
+        sic.add(new SelectorItemInfo("head.name"));
         sic.add(new SelectorItemInfo("head.phone"));
-        sic.add(new SelectorItemInfo("head.tel"));
+        sic.add(new SelectorItemInfo("level.name"));
+        sic.add(new SelectorItemInfo("classify.name"));
+        sic.add(new SelectorItemInfo("eventDate"));
+        sic.add(new SelectorItemInfo("receptionType.name"));
+        sic.add(new SelectorItemInfo("saleMan.name"));
+        sic.add(new SelectorItemInfo("description"));
+        sic.add(new SelectorItemInfo("createTime"));
+        sic.add(new SelectorItemInfo("creator.name"));
+        sic.add(new SelectorItemInfo("id"));
+        sic.add(new SelectorItemInfo("CU.id"));
         return sic;
     }        
     	

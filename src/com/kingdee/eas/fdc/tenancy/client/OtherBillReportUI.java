@@ -102,7 +102,7 @@ public class OtherBillReportUI extends AbstractOtherBillReportUI
 		CRMClientHelper.changeTableNumberFormat(tblMain, new String[]{"amount"});
 		CRMClientHelper.getFootRow(tblMain, new String[]{"amount"});
 		tblMain.getColumn("conName").getStyleAttributes().setFontColor(Color.BLUE);
-		mergerTable(tblMain,new String[]{"conId"},new String[]{"sellProject","build","room","contractNo","conNumber","conName","customer","startDate","endDate","leaseTime","dept","des"});
+		mergerTable(tblMain,new String[]{"conId"},new String[]{"sellProject","build","room","contractNo","conNumber","conName","customer","startDate","endDate","leaseTime","dept","des","remark"});
 	}
 	private void mergerTable(KDTable table,String coloum[],String mergeColoum[]){
 		int merger=0;

@@ -32,7 +32,9 @@ import com.kingdee.eas.basedata.org.SaleOrgUnitInfo;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
 import com.kingdee.eas.common.client.UIFactoryName;
+import com.kingdee.eas.fdc.basecrm.client.CRMTreeHelper;
 import com.kingdee.eas.fdc.basedata.FDCDataBaseInfo;
+import com.kingdee.eas.fdc.basedata.MoneySysTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.BuildingInfo;
 import com.kingdee.eas.fdc.sellhouse.SellProjectInfo;
 import com.kingdee.eas.fdc.sellhouse.TrackRecordFactory;
@@ -81,8 +83,15 @@ public class TrackRecordListUI extends AbstractTrackRecordListUI
 		this.actionTraceDown.setVisible(false);
 		this.actionTraceUp.setVisible(false);
 		
-		this.treeSellProject.setModel(FDCTreeHelper.getSellProjectTree(actionOnLoad, null));   //SHEHelper.getSellProjectTree(this.actionOnLoad)
-		this.treeSellProject.expandAllNodes(true,(TreeNode) this.treeSellProject.getModel().getRoot());
+		this.treeSellProject.setModel(CRMTreeHelper.getSellProjectTree(actionOnLoad,false));
+		this.treeSellProject.expandAllNodes(true, (TreeNode) this.treeSellProject.getModel().getRoot());
+		if(this.treeSellProject.getRowCount()>0){
+			treeSellProject.setSelectionRow(1); 
+		}else{
+			treeSellProject.setSelectionRow(0); 
+		}
+//		this.treeSellProject.setModel(FDCTreeHelper.getSellProjectTree(actionOnLoad, null));   //SHEHelper.getSellProjectTree(this.actionOnLoad)
+//		this.treeSellProject.expandAllNodes(true,(TreeNode) this.treeSellProject.getModel().getRoot());
 	}
     
 

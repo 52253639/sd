@@ -66,15 +66,16 @@ public class OtherBillReportFacadeControllerBean extends AbstractOtherBillReport
 	    initColoum(header,col,"leaseTime",120,false);
 	    initColoum(header,col,"dept",100,false);
 	    initColoum(header,col,"des",100,false);
+	    initColoum(header,col,"remark",100,false);
 	    initColoum(header,col,"moneyDefine",100,false);
 	    initColoum(header,col,"amount",100,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
-	    			"conId","项目分期","楼栋","房间","合同编码","手工合同号","合同名称","客户名称","合同起始日","合同终止日","收取周期（按月）","部门","保证金信息","款项类别","金额"
+	    			"conId","项目分期","楼栋","房间","合同编码","手工合同号","合同名称","客户名称","合同起始日","合同终止日","收取周期（按月）","部门","保证金信息","备注","款项类别","金额"
 		    	}
 	    		,
 	    		{
-	    			"conId","项目分期","楼栋","房间","合同编码","手工合同号","合同名称","客户名称","合同起始日","合同终止日","收取周期（按月）","部门","保证金信息","款项类别","金额"
+	    			"conId","项目分期","楼栋","房间","合同编码","手工合同号","合同名称","客户名称","合同起始日","合同终止日","收取周期（按月）","部门","保证金信息","备注","款项类别","金额"
 		    	}
 	    },true);
 	    params.setObject("header", header);
@@ -86,7 +87,7 @@ public class OtherBillReportFacadeControllerBean extends AbstractOtherBillReport
     	StringBuffer sb=new StringBuffer();
     	sb.append(" select other.fid conId,sp.fname_l2 sellProject,build.fname_l2 build,con.ftenRoomsDes room,");
     	sb.append(" other.fnumber conNumber,other.fcontractNo contractNo,other.fname conName,con.ftencustomerDes customer,other.fstartDate startDate,other.fendDate endDate,");
-    	sb.append(" other.fleaseTime leaseTime,org.fname_l2 dept,other.fdes des,md.fname_l2 moneyDefine,entry.FAppAmount amount from T_TEN_OtherBill other left join T_TEN_TenancyBill con on con.fid=other.FTenancyBillId left join T_ORG_Admin org on org.fid=other.FDept"); 
+    	sb.append(" other.fleaseTime leaseTime,org.fname_l2 dept,other.fdes des,other.fdescription remark,md.fname_l2 moneyDefine,entry.FAppAmount amount from T_TEN_OtherBill other left join T_TEN_TenancyBill con on con.fid=other.FTenancyBillId left join T_ORG_Admin org on org.fid=other.FDept"); 
     	sb.append(" left join T_TEN_TenancyRoomEntry roomEntry on con.fid=roomEntry.ftenancyId left join t_she_room room on room.fid=roomEntry.froomId left join t_she_building build on build.fid=room.fbuildingId left join t_she_sellProject sp on sp.fid=con.fsellProjectid");
     	sb.append(" left join T_TEN_OtherBillEntry entry on entry.fheadId=other.fid left join t_she_moneyDefine md on md.fid=entry.fmoneyDefineId");
     	sb.append(" where other.fstate='4AUDITTED'");
