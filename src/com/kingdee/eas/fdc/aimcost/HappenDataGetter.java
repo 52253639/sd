@@ -549,9 +549,11 @@ public class HappenDataGetter extends CostDataGetter implements Serializable{
 	public Map getPaySplitData(String objectId,boolean isIncludeProduct) throws BOSException,
 			SQLException {
 		Map paySplitMap = new HashMap();
-		String select = "select FCostAccountId,sum(entry.FAmount) amount ";
+		String select = "select FCostAccountId,sum((pay.famount/payrequest.famount)*payrequest.fcompletePrjamt*(entry.fpaidamount/pay.famount)) amount ";
 		String from = "from T_AIM_CostSplitEntry entry "
-				+ "inner join T_AIM_CostSplit head on entry.FParentId=head.FId ";
+				+ "inner join T_AIM_CostSplit head on entry.FParentId=head.FId "
+				+ "left join t_cas_paymentbill pay on head.fcostbillId=pay.FId "
+				+ "left join t_con_payrequestbill payrequest on pay.fFdcPayReqID=payrequest.FId ";
 //				+ "inner join T_FDC_CostAccount acct on entry.FCostAccountId=acct.FID ";
 		String where = "where FCostBillType='PAYMENTSPLIT' and head.fcontrolUnitId=? and head.FIsInvalid=0 And entry.fobjectid=? ";
 		String group = "group by FCostAccountId ";
