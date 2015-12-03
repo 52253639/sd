@@ -1124,7 +1124,7 @@ public class OtherBillEditUI extends AbstractOtherBillEditUI implements TenancyB
 				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("moneyDefine"));
 				SysUtil.abort();
 			}
-			if(row.getCell("amount").getValue()==null||((BigDecimal)row.getCell("amount").getValue()).compareTo(FDCHelper.ZERO)==0){
+			if(row.getCell("amount").getValue()==null){
 				FDCMsgBox.showWarning(this,"收取金额不能为空！");
 				this.kdtEntry.getEditManager().editCellAt(row.getRowIndex(), this.kdtEntry.getColumnIndex("amount"));
 				SysUtil.abort();

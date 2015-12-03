@@ -84,6 +84,7 @@ import com.kingdee.eas.framework.report.util.RptParams;
 import com.kingdee.eas.framework.report.util.RptRowSet;
 import com.kingdee.eas.framework.report.util.RptTableHeader;
 import com.kingdee.eas.ma.budget.client.LongTimeDialog;
+import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
 
 /**
@@ -492,6 +493,11 @@ public class RevDetailVoucherReportUI extends AbstractRevDetailVoucherReportUI
 			String conId=row.getCell("conId").getValue().toString();
 			String mdName=row.getCell("moneyDefine").getValue().toString()+";";
 			
+			Boolean isGen=(Boolean) row.getCell(year+"Y"+month+"M"+"isGen").getValue();
+			if(isGen){
+				FDCMsgBox.showWarning(this,year+"年"+month+"月－"+row.getCell("conName").getValue().toString()+"："+mdName +"已生成应收费用汇总！");
+				SysUtil.abort();
+			}
 			FeesWarrantInfo info=null;
 			if(conMap.get(conId)!=null){
 				info=(FeesWarrantInfo) conMap.get(conId);

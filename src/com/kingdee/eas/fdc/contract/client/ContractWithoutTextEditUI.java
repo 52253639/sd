@@ -391,18 +391,18 @@ public class ContractWithoutTextEditUI extends
 		objectValue.setIsBgControl(true);
 		objectValue.setIsNeedPaid(true);
 		objectValue.getBgEntry().add(new ContractWithoutTextBgEntryInfo());
-		try {
-			BizCollBillBaseInfo baseInfo = CommonUtilFacadeFactory.getRemoteInstance().forLoanBillCreateNewData();
-			objectValue.setApplierOrgUnit(baseInfo.getOrgUnit());
-			objectValue.setApplier(baseInfo.getApplier());
-			objectValue.setApplierCompany(baseInfo.getApplierCompany());
-			objectValue.setCostedDept(SysContext.getSysContext().getCurrentCostUnit());
-			objectValue.setCostedCompany(SysContext.getSysContext().getCurrentFIUnit());
-		} catch (EASBizException e) {
-			e.printStackTrace();
-		} catch (BOSException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			BizCollBillBaseInfo baseInfo = CommonUtilFacadeFactory.getRemoteInstance().forLoanBillCreateNewData();
+//			objectValue.setApplierOrgUnit(baseInfo.getOrgUnit());
+//			objectValue.setApplier(baseInfo.getApplier());
+//			objectValue.setApplierCompany(baseInfo.getApplierCompany());
+//			objectValue.setCostedDept(SysContext.getSysContext().getCurrentCostUnit());
+//			objectValue.setCostedCompany(SysContext.getSysContext().getCurrentFIUnit());
+//		} catch (EASBizException e) {
+//			e.printStackTrace();
+//		} catch (BOSException e) {
+//			e.printStackTrace();
+//		}
 		objectValue.setApplier(SysContext.getSysContext().getCurrentUserInfo().getPerson());
 		
 		return objectValue;

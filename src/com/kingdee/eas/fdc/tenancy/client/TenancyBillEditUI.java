@@ -1523,6 +1523,12 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		btnDeleteRowinfo = (KDWorkButton) panelRoom.add(this.actionRemoveRoom);
 		btnDeleteRowinfo.setText("É¾³ý");
 		btnDeleteRowinfo.setSize(new Dimension(140, 19));
+		
+		
+		this.tblRoom.getColumn("standardRent").getStyleAttributes().setHided(true);
+		this.tblRoom.getColumn("standardRentType").getStyleAttributes().setHided(true);
+		this.tblRoom.getColumn("standardRentPrice").getStyleAttributes().setHided(true);
+		this.tblRoom.getColumn("dayPrice").getStyleAttributes().setHided(true);
 	}
 
 
