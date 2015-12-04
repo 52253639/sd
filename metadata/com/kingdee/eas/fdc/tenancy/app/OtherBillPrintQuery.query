@@ -74,6 +74,19 @@
                 <key name="name" value="User" />
             </entityRef>
         </subEntity>
+        <subEntity>
+            <name>moneyDefine</name>
+            <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].subObjects.subEntity[moneyDefine].alias</alias>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+            <entityRef>
+                <key name="package" value="com.kingdee.eas.fdc.sellhouse.app" />
+                <key name="name" value="MoneyDefine" />
+            </entityRef>
+        </subEntity>
     </subObjects>
     <units>
         <propertyUnit>
@@ -192,68 +205,6 @@
                     </subEntity>
                     <refProperty>
                         <key name="name" value="id" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="OtherBillPrintQuery" />
-            </query>
-        </propertyUnit>
-        <propertyUnit>
-            <name>389b449a-4066-4482-8b93-526073c2e801</name>
-            <userDefined>true</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[389b449a-4066-4482-8b93-526073c2e801].displayName</displayName>
-            <groupType />
-            <isSelector>false</isSelector>
-            <isFilter>false</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType />
-            <propertyRefs>
-                <propertyRef>
-                    <key>4b938b98-c449-48bd-a16b-757786cb3782</key>
-                    <parentUnit>
-                        <key name="name" value="389b449a-4066-4482-8b93-526073c2e801" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="OtherBill" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="id" />
-                    </refProperty>
-                </propertyRef>
-            </propertyRefs>
-            <query>
-                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
-                <key name="name" value="OtherBillPrintQuery" />
-            </query>
-        </propertyUnit>
-        <propertyUnit>
-            <name>700e13e1-6b10-44b5-8da5-2ad988fe8324</name>
-            <userDefined>true</userDefined>
-            <formulaString />
-            <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[700e13e1-6b10-44b5-8da5-2ad988fe8324].displayName</displayName>
-            <groupType />
-            <isSelector>false</isSelector>
-            <isFilter>false</isFilter>
-            <isSorter>false</isSorter>
-            <isParameter>false</isParameter>
-            <returnType />
-            <propertyRefs>
-                <propertyRef>
-                    <key>4209ec88-d0a1-499a-8922-7f6b88735a01</key>
-                    <parentUnit>
-                        <key name="name" value="700e13e1-6b10-44b5-8da5-2ad988fe8324" />
-                    </parentUnit>
-                    <subEntity>
-                        <key name="name" value="entry" />
-                    </subEntity>
-                    <refProperty>
-                        <key name="name" value="head" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -666,6 +617,68 @@
             </query>
         </queryField>
         <queryField>
+            <name>des</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[des].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1ca8c382-28a2-48e9-86e4-0958e86b1709</key>
+                    <parentUnit>
+                        <key name="name" value="des" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OtherBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="des" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
+            <name>description</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[description].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>1a687162-021c-4468-a0c2-2f2e2c55fa5d</key>
+                    <parentUnit>
+                        <key name="name" value="description" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OtherBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="description" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </queryField>
+        <queryField>
             <name>tenancyBill.number</name>
             <userDefined>true</userDefined>
             <formulaString />
@@ -944,29 +957,29 @@
                 <key name="name" value="OtherBillPrintQuery" />
             </query>
         </queryField>
-        <queryField>
-            <name>description</name>
+        <propertyUnit>
+            <name>5d1b9621-645c-46e2-98e3-708f82812917</name>
             <userDefined>true</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[description].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[5d1b9621-645c-46e2-98e3-708f82812917].displayName</displayName>
             <groupType />
-            <isSelector>true</isSelector>
-            <isFilter>true</isFilter>
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
             <isSorter>false</isSorter>
             <isParameter>false</isParameter>
             <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>1a687162-021c-4468-a0c2-2f2e2c55fa5d</key>
+                    <key>aab3799f-58a1-44b1-a157-238fa6a77d9a</key>
                     <parentUnit>
-                        <key name="name" value="description" />
+                        <key name="name" value="5d1b9621-645c-46e2-98e3-708f82812917" />
                     </parentUnit>
                     <subEntity>
-                        <key name="name" value="OtherBill" />
+                        <key name="name" value="entry" />
                     </subEntity>
                     <refProperty>
-                        <key name="name" value="description" />
+                        <key name="name" value="moneyDefine" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -974,13 +987,168 @@
                 <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
                 <key name="name" value="OtherBillPrintQuery" />
             </query>
-        </queryField>
-        <queryField>
-            <name>des</name>
+        </propertyUnit>
+        <propertyUnit>
+            <name>69ae9f28-0380-4a58-91b3-ce6c495f8664</name>
             <userDefined>true</userDefined>
             <formulaString />
             <constString />
-            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[des].displayName</displayName>
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[69ae9f28-0380-4a58-91b3-ce6c495f8664].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>bd60c20f-9e03-4b84-935c-8f18f9f7492b</key>
+                    <parentUnit>
+                        <key name="name" value="69ae9f28-0380-4a58-91b3-ce6c495f8664" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>7bfc130b-b63e-4a41-8039-cac9cb5f14ba</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[7bfc130b-b63e-4a41-8039-cac9cb5f14ba].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>833e5423-18bb-47d5-bf33-16fa8982d51b</key>
+                    <parentUnit>
+                        <key name="name" value="7bfc130b-b63e-4a41-8039-cac9cb5f14ba" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="moneyDefine" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>5828c651-9826-4c4b-bfd8-d49723647fd5</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[5828c651-9826-4c4b-bfd8-d49723647fd5].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>346f4ac0-887a-4084-a27f-f26b882afeb9</key>
+                    <parentUnit>
+                        <key name="name" value="5828c651-9826-4c4b-bfd8-d49723647fd5" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="moneyDefine" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>2102be15-0668-47b4-8153-0b069a83fe2a</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[2102be15-0668-47b4-8153-0b069a83fe2a].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4b938b98-c449-48bd-a16b-757786cb3782</key>
+                    <parentUnit>
+                        <key name="name" value="2102be15-0668-47b4-8153-0b069a83fe2a" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="OtherBill" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="id" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </propertyUnit>
+        <propertyUnit>
+            <name>75b3a1c1-12ea-46ff-a79d-b658f97d7d96</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[75b3a1c1-12ea-46ff-a79d-b658f97d7d96].displayName</displayName>
+            <groupType />
+            <isSelector>false</isSelector>
+            <isFilter>false</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>String</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>4209ec88-d0a1-499a-8922-7f6b88735a01</key>
+                    <parentUnit>
+                        <key name="name" value="75b3a1c1-12ea-46ff-a79d-b658f97d7d96" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="entry" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="head" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </propertyUnit>
+        <queryField>
+            <name>moneyDefine.name</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[moneyDefine.name].displayName</displayName>
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
@@ -989,15 +1157,15 @@
             <returnType>String</returnType>
             <propertyRefs>
                 <propertyRef>
-                    <key>1ca8c382-28a2-48e9-86e4-0958e86b1709</key>
+                    <key>7409b99d-0158-4f40-b459-42aa78bfc828</key>
                     <parentUnit>
-                        <key name="name" value="des" />
+                        <key name="name" value="moneyDefine.name" />
                     </parentUnit>
                     <subEntity>
-                        <key name="name" value="OtherBill" />
+                        <key name="name" value="moneyDefine" />
                     </subEntity>
                     <refProperty>
-                        <key name="name" value="des" />
+                        <key name="name" value="name" />
                     </refProperty>
                 </propertyRef>
             </propertyRefs>
@@ -1092,10 +1260,10 @@
                     <name>cceaa694-9492-42d4-9e95-db9dbf1a8aa7</name>
                     <compareType>=</compareType>
                     <leftField>
-                        <key name="name" value="389b449a-4066-4482-8b93-526073c2e801" />
+                        <key name="name" value="2102be15-0668-47b4-8153-0b069a83fe2a" />
                     </leftField>
                     <rightField>
-                        <key name="name" value="700e13e1-6b10-44b5-8da5-2ad988fe8324" />
+                        <key name="name" value="75b3a1c1-12ea-46ff-a79d-b658f97d7d96" />
                     </rightField>
                     <join>
                         <key name="name" value="29986dc9-caef-4246-ba92-bf49d84c006d" />
@@ -1129,6 +1297,36 @@
                     </rightField>
                     <join>
                         <key name="name" value="80abf579-e893-4514-840f-d9903405ebf8" />
+                    </join>
+                </joinItem>
+            </joinItems>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="OtherBillPrintQuery" />
+            </query>
+        </join>
+        <join>
+            <name>fbdaaee4-c367-43eb-a472-d5d370c255ba</name>
+            <formulaString>#0</formulaString>
+            <type>LEFT OUTER JOIN</type>
+            <leftObject>
+                <key name="name" value="entry" />
+            </leftObject>
+            <rightObject>
+                <key name="name" value="moneyDefine" />
+            </rightObject>
+            <joinItems>
+                <joinItem>
+                    <name>f467fb57-97d0-46bd-a6b5-b8888e282cde</name>
+                    <compareType>=</compareType>
+                    <leftField>
+                        <key name="name" value="7bfc130b-b63e-4a41-8039-cac9cb5f14ba" />
+                    </leftField>
+                    <rightField>
+                        <key name="name" value="5828c651-9826-4c4b-bfd8-d49723647fd5" />
+                    </rightField>
+                    <join>
+                        <key name="name" value="fbdaaee4-c367-43eb-a472-d5d370c255ba" />
                     </join>
                 </joinItem>
             </joinItems>
@@ -1175,7 +1373,19 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].subObjects.subEntity[moneyDefine].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].subObjects.subEntity[tenancyBill].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[2102be15-0668-47b4-8153-0b069a83fe2a].displayName">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -1187,13 +1397,31 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[389b449a-4066-4482-8b93-526073c2e801].displayName">
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[5828c651-9826-4c4b-bfd8-d49723647fd5].displayName">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
-        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[700e13e1-6b10-44b5-8da5-2ad988fe8324].displayName">
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[5d1b9621-645c-46e2-98e3-708f82812917].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[69ae9f28-0380-4a58-91b3-ce6c495f8664].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[75b3a1c1-12ea-46ff-a79d-b658f97d7d96].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.propertyUnit[7bfc130b-b63e-4a41-8039-cac9cb5f14ba].displayName">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="null" />
             <lang locale="zh_HK" value="null" />
@@ -1318,6 +1546,12 @@
             <lang locale="zh_CN" value="收取周期" />
             <lang locale="zh_HK" value="收取週期" />
             <lang locale="zh_TW" value="收取週期" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[moneyDefine.name].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="款项" />
+            <lang locale="zh_HK" value="款項" />
+            <lang locale="zh_TW" value="款項" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.OtherBillPrintQuery].units.queryField[name].displayName">
             <lang locale="en_US" value="null" />

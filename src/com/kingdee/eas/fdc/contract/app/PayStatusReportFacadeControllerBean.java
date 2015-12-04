@@ -123,7 +123,7 @@ public class PayStatusReportFacadeControllerBean extends AbstractPayStatusReport
     	}
     	
     	sb.append(" select t.buId,t.bgItemId,t.curProjectId,t.costedCompanyId,t.costedDeptId,t.orgUnit,t.actPayCompany,t.costedCompany,t.costedDept,t.bgItem,t.state,t.amount from(");
-    	sb.append(" select bu.fid buId,bgItem.fid bgItemId,bu.flongNumber buLongNumber,company.flongNumber comLongNumber,costCenter.flongNumber costLongNumber,bgItem.flongNumber bgLongNumber,curProject.fid curProjectId,company.fid costedCompanyId,costCenter.fid costedDeptId,bu.fdisplayName_l2 orgUnit,bu.fname_l2 actPayCompany,company.fname_l2 costedCompany,costCenter.fname_l2 costedDept,bgItem.fdisPlayName_l2 bgItem,payReq.fstate state,sum(isnull(bgEntry.frequestAmount,0))amount from t_con_payRequestBill payReq left join t_fdc_curProject curProject on curProject.fid=payReq.fcurProjectId");
+    	sb.append(" select bu.fid buId,bgItem.fid bgItemId,bu.flongNumber buLongNumber,company.flongNumber comLongNumber,costCenter.flongNumber costLongNumber,bgItem.flongNumber bgLongNumber,curProject.fid curProjectId,company.fid costedCompanyId,costCenter.fid costedDeptId,bu.fdisplayName_l2 orgUnit,bu.fname_l2 actPayCompany,company.fname_l2 costedCompany,costCenter.fname_l2 costedDept,bgItem.fname_l2 bgItem,payReq.fstate state,sum(isnull(bgEntry.frequestAmount,0))amount from t_con_payRequestBill payReq left join t_fdc_curProject curProject on curProject.fid=payReq.fcurProjectId");
     	sb.append(" left join t_org_baseUnit bu on bu.fid=curProject.ffullOrgUnit left join t_org_company company on company.fid=payReq.fcostedCompanyId left join t_org_costCenter costCenter on costCenter.fid=payReq.fcostedDeptId");
     	sb.append(" left join t_con_payRequestBillBgEntry bgEntry on bgEntry.fheadId=payReq.fid left join t_bg_bgItem bgItem on bgItem.fid=bgEntry.fbgItemId");
     	sb.append(" where bgItem.fid is not null and payReq.fstate!='4AUDITTED' and curProject.fid is not null");
@@ -144,9 +144,9 @@ public class PayStatusReportFacadeControllerBean extends AbstractPayStatusReport
     	if(stateStr!=null&&!"".equals(stateStr)){
     		sb.append(" and payReq.fstate in("+stateStr+")");
     	}
-    	sb.append(" group by bu.fid,bgItem.fid,bu.flongNumber,company.flongNumber,costCenter.flongNumber,bgItem.flongNumber,curProject.fid,company.fid,costCenter.fid,bu.fdisplayName_l2,bu.fname_l2,company.fname_l2,costCenter.fname_l2,bgItem.fdisPlayName_l2,payReq.fstate");
+    	sb.append(" group by bu.fid,bgItem.fid,bu.flongNumber,company.flongNumber,costCenter.flongNumber,bgItem.flongNumber,curProject.fid,company.fid,costCenter.fid,bu.fdisplayName_l2,bu.fname_l2,company.fname_l2,costCenter.fname_l2,bgItem.fname_l2,payReq.fstate");
     	
-    	sb.append(" union all select bu.fid buId,bgItem.fid bgItemId,bu.flongNumber buLongNumber,company.flongNumber comLongNumber,costCenter.flongNumber costLongNumber,bgItem.flongNumber bgLongNumber,curProject.fid curProjectId,company.fid costedCompanyId,costCenter.fid costedDeptId,bu.fdisplayName_l2 orgUnit,bu.fname_l2 actPayCompany,company.fname_l2 costedCompany,costCenter.fname_l2 costedDept,bgItem.fdisPlayName_l2 bgItem,payReq.fstate state,sum(isnull(bgEntry.frequestAmount,0))amount from t_con_payRequestBill payReq left join t_fdc_curProject curProject on curProject.fid=payReq.fcurProjectId");
+    	sb.append(" union all select bu.fid buId,bgItem.fid bgItemId,bu.flongNumber buLongNumber,company.flongNumber comLongNumber,costCenter.flongNumber costLongNumber,bgItem.flongNumber bgLongNumber,curProject.fid curProjectId,company.fid costedCompanyId,costCenter.fid costedDeptId,bu.fdisplayName_l2 orgUnit,bu.fname_l2 actPayCompany,company.fname_l2 costedCompany,costCenter.fname_l2 costedDept,bgItem.fname_l2 bgItem,payReq.fstate state,sum(isnull(bgEntry.frequestAmount,0))amount from t_con_payRequestBill payReq left join t_fdc_curProject curProject on curProject.fid=payReq.fcurProjectId");
     	sb.append(" left join t_org_baseUnit bu on bu.fid=curProject.ffullOrgUnit left join t_org_company company on company.fid=payReq.fcostedCompanyId left join t_org_costCenter costCenter on costCenter.fid=payReq.fcostedDeptId");
     	sb.append(" left join t_con_payRequestBillBgEntry bgEntry on bgEntry.fheadId=payReq.fid left join t_bg_bgItem bgItem on bgItem.fid=bgEntry.fbgItemId");
     	sb.append(" where bgItem.fid is not null and payReq.fpaydate is null and payReq.fstate='4AUDITTED' and curProject.fid is not null");
@@ -167,10 +167,10 @@ public class PayStatusReportFacadeControllerBean extends AbstractPayStatusReport
 		if(stateStr!=null&&!"".equals(stateStr)){
     		sb.append(" and payReq.fstate in("+stateStr+")");
     	}
-    	sb.append(" group by bu.fid,bgItem.fid,bu.flongNumber,company.flongNumber,costCenter.flongNumber,bgItem.flongNumber,curProject.fid,company.fid,costCenter.fid,bu.fdisplayName_l2,bu.fname_l2,company.fname_l2,costCenter.fname_l2,bgItem.fdisPlayName_l2,payReq.fstate");
+    	sb.append(" group by bu.fid,bgItem.fid,bu.flongNumber,company.flongNumber,costCenter.flongNumber,bgItem.flongNumber,curProject.fid,company.fid,costCenter.fid,bu.fdisplayName_l2,bu.fname_l2,company.fname_l2,costCenter.fname_l2,bgItem.fname_l2,payReq.fstate");
     	
     	if(params.getBoolean("isPayed")){
-    		sb.append(" union all select bu.fid buId,bgItem.fid bgItemId,bu.flongNumber buLongNumber,company.flongNumber comLongNumber,costCenter.flongNumber costLongNumber,bgItem.flongNumber bgLongNumber,curProject.fid curProjectId,company.fid costedCompanyId,costCenter.fid costedDeptId,bu.fdisplayName_l2 orgUnit,bu.fname_l2 actPayCompany,company.fname_l2 costedCompany,costCenter.fname_l2 costedDept,bgItem.fdisPlayName_l2 bgItem,'5PAY' state,sum(isnull(bgEntry.factPayAmount,0))amount from t_con_payRequestBill payReq left join t_fdc_curProject curProject on curProject.fid=payReq.fcurProjectId");
+    		sb.append(" union all select bu.fid buId,bgItem.fid bgItemId,bu.flongNumber buLongNumber,company.flongNumber comLongNumber,costCenter.flongNumber costLongNumber,bgItem.flongNumber bgLongNumber,curProject.fid curProjectId,company.fid costedCompanyId,costCenter.fid costedDeptId,bu.fdisplayName_l2 orgUnit,bu.fname_l2 actPayCompany,company.fname_l2 costedCompany,costCenter.fname_l2 costedDept,bgItem.fname_l2 bgItem,'5PAY' state,sum(isnull(bgEntry.factPayAmount,0))amount from t_con_payRequestBill payReq left join t_fdc_curProject curProject on curProject.fid=payReq.fcurProjectId");
         	sb.append(" left join t_org_baseUnit bu on bu.fid=curProject.ffullOrgUnit left join t_org_company company on company.fid=payReq.fcostedCompanyId left join t_org_costCenter costCenter on costCenter.fid=payReq.fcostedDeptId");
         	sb.append(" left join t_con_payRequestBillBgEntry bgEntry on bgEntry.fheadId=payReq.fid left join t_bg_bgItem bgItem on bgItem.fid=bgEntry.fbgItemId");
         	sb.append(" where bgItem.fid is not null and payReq.fpaydate is not null and payReq.fstate='4AUDITTED'and curProject.fid is not null");
@@ -188,7 +188,7 @@ public class PayStatusReportFacadeControllerBean extends AbstractPayStatusReport
     		if(bgItemId!=null&&!"".equals(bgItemId)){
         		sb.append(" and bgItem.fid in("+bgItemId+")");
         	}
-        	sb.append(" group by bu.fid,bgItem.fid,bu.flongNumber,company.flongNumber,costCenter.flongNumber,bgItem.flongNumber,curProject.fid,company.fid,costCenter.fid,bu.fdisplayName_l2,bu.fname_l2,company.fname_l2,costCenter.fname_l2,bgItem.fdisPlayName_l2,payReq.fstate");
+        	sb.append(" group by bu.fid,bgItem.fid,bu.flongNumber,company.flongNumber,costCenter.flongNumber,bgItem.flongNumber,curProject.fid,company.fid,costCenter.fid,bu.fdisplayName_l2,bu.fname_l2,company.fname_l2,costCenter.fname_l2,bgItem.fname_l2,payReq.fstate");
     	}
     	sb.append(" )t order by t.buLongNumber,t.comLongNumber,t.costLongNumber,t.bgLongNumber,t.state desc");
     	return sb.toString();

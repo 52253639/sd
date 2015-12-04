@@ -274,6 +274,7 @@ public class RentRemissionEditUI extends AbstractRentRemissionEditUI {
 
 	public RentRemissionEditUI() throws Exception {
 		super();
+		this.actionSubmit.setBindWorkFlow(true);
 	}
 
 	/**

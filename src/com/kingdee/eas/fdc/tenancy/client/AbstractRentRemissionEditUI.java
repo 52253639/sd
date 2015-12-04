@@ -92,6 +92,21 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     {
         this.resHelper = new ResourceBundleHelper(AbstractRentRemissionEditUI.class.getName());
         this.setUITitle(resHelper.getString("this.title"));
+        //actionAudit
+        String _tempStr = null;
+        actionAudit.setEnabled(false);
+        actionAudit.setDaemonRun(false);
+
+        _tempStr = resHelper.getString("actionAudit.SHORT_DESCRIPTION");
+        actionAudit.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+        _tempStr = resHelper.getString("actionAudit.LONG_DESCRIPTION");
+        actionAudit.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+        _tempStr = resHelper.getString("actionAudit.NAME");
+        actionAudit.putValue(ItemAction.NAME, _tempStr);
+        this.actionAudit.setBindWorkFlow(true);
+        this.actionAudit.setExtendProperty("canForewarn", "true");
+         this.actionAudit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+         this.actionAudit.addService(new com.kingdee.eas.framework.client.service.ForewarnService());
         //actionAdd
         this.actionAdd = new ActionAdd(this);
         getActionManager().registerAction("actionAdd", actionAdd);
@@ -648,6 +663,15 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     	
 
     /**
+     * output actionAudit_actionPerformed method
+     */
+    public void actionAudit_actionPerformed(ActionEvent e) throws Exception
+    {
+        super.actionAudit_actionPerformed(e);
+    }
+    	
+
+    /**
      * output actionAdd_actionPerformed method
      */
     public void actionAdd_actionPerformed(ActionEvent e) throws Exception
@@ -660,6 +684,17 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
      */
     public void actionDel_actionPerformed(ActionEvent e) throws Exception
     {
+    }
+	public RequestContext prepareactionAudit(IItemAction itemAction) throws Exception {
+			RequestContext request = super.prepareactionAudit(itemAction);		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareactionAudit() {
+    	return false;
     }
 	public RequestContext prepareActionAdd(IItemAction itemAction) throws Exception {
 			RequestContext request = new RequestContext();		
@@ -752,6 +787,13 @@ public abstract class AbstractRentRemissionEditUI extends com.kingdee.eas.fdc.te
     public IMetaDataPK getMetaDataPK()
     {
         return new MetaDataPK("com.kingdee.eas.fdc.tenancy.client", "RentRemissionEditUI");
+    }
+    /**
+     * output isBindWorkFlow method
+     */
+    public boolean isBindWorkFlow()
+    {
+        return true;
     }
 
 
