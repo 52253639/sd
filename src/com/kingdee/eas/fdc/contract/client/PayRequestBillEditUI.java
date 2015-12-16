@@ -6790,7 +6790,7 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 	 * @throws Exception
 	 */
 	private void checkCompletePrjAmt() throws Exception {
-		if ((isSeparate && contractBill != null && contractBill.isIsCoseSplit())) {
+		if (isSeparate && contractBill != null) {
 			return;
 		}
 		String paymentType = editData.getPaymentType().getPayType().getId().toString();
@@ -6853,7 +6853,7 @@ public class PayRequestBillEditUI extends AbstractPayRequestBillEditUI implement
 	}
 
 	private void verifyCompletePrjAmt(BigDecimal completePrjAmt, BigDecimal payAmt) {
-		if (contractBill != null && contractBill.isIsCoseSplit() && completePrjAmt.compareTo(payAmt) < 0) {
+		if (contractBill != null && completePrjAmt.compareTo(payAmt) < 0) {
 			FDCMsgBox.showWarning(this, "累计已完工（已审批的付款申请单完工工程量之和+本期完工工程量）小于累计付款（所有的付款申请单合同内工程款之和+本期合同内工程款），不能执行本操作！");
 			SysUtil.abort();
 		}

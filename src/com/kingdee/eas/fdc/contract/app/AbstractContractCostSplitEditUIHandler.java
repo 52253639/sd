@@ -19,4 +19,9 @@ public abstract class AbstractContractCostSplitEditUIHandler extends com.kingdee
 	}
 	protected void _handleActionProgrAcctSelect(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionViewContract(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionViewContract(request,response,context);
+	}
+	protected void _handleActionViewContract(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

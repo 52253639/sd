@@ -1074,7 +1074,7 @@ public class AccountsContractUI extends AbstractAccountsContractUI {
 		}
 		evi = new EntityViewInfo();
 		filter = new FilterInfo();
-		filter.getFilterItems().add(new FilterItemInfo("costAccount.id", hasCostAccount, CompareType.NOTINCLUDE));
+//		filter.getFilterItems().add(new FilterItemInfo("costAccount.id", hasCostAccount, CompareType.NOTINCLUDE));
 		filter.getFilterItems().add(new FilterItemInfo("contract.programming.project.id", selectObjId));
 		filter.getFilterItems().add(new FilterItemInfo("contract.programming.isLatest", Boolean.TRUE));
 		filter.getFilterItems().add(new FilterItemInfo("contract.isCiting", Boolean.FALSE));

@@ -782,6 +782,8 @@ ContractBillInfo contractBillInfo = ContractBillFactory.getRemoteInstance().getC
 		 if(this.getUIContext().get("amount")!=null){
 			 this.txtAmount.setValue(this.getUIContext().get("amount"));
 		 }
+		 actionViewContract.putValue(Action.SMALL_ICON, EASResource
+					.getIcon("imgTbtn_sequencecheck"));
 	}
 	
 	/**
@@ -1004,6 +1006,21 @@ ContractBillInfo contractBillInfo = ContractBillFactory.getRemoteInstance().getC
 			}
 		} else {
 			super.actionAcctSelect_actionPerformed(arg0);
+		}
+	}
+    public void actionViewContract_actionPerformed(ActionEvent e)throws Exception {
+		if (editData.getContractBill() == null) {
+			MsgBox.showWarning(this, ContractClientUtils
+					.getRes("selectProjLeafPls"));
+			SysUtil.abort();
+		}
+		UIContext uiContext = new UIContext(this);
+		if (editData.getContractBill() != null) {
+			uiContext.put(UIContext.ID, editData.getContractBill().getId().toString());
+			IUIWindow testUI = UIFactory.createUIFactory(UIFactoryName.NEWTAB)
+					.create(ContractBillEditUI.class.getName(), uiContext,
+							null, OprtState.VIEW);
+			testUI.show();
 		}
 	}
 }

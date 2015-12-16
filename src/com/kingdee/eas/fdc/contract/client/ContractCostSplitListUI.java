@@ -31,6 +31,7 @@ import com.kingdee.bos.ui.face.ItemAction;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSObjectType;
 import com.kingdee.bos.util.BOSUuid;
+import com.kingdee.eas.base.param.ParamInfo;
 import com.kingdee.eas.basedata.org.OrgStructureInfo;
 import com.kingdee.eas.common.client.OprtState;
 import com.kingdee.eas.common.client.UIContext;
@@ -659,6 +660,8 @@ public class ContractCostSplitListUI extends AbstractContractCostSplitListUI {
 //		}else{
 //			initParam = ConNoCostSplitFactory.getRemoteInstance().fetchInitParam();
 //		}
+		actionViewContract.putValue(Action.SMALL_ICON, EASResource
+				.getIcon("imgTbtn_sequencecheck"));
 	}
 
 	protected void freezeTableColumn() {
@@ -989,4 +992,30 @@ public class ContractCostSplitListUI extends AbstractContractCostSplitListUI {
 			 handUIExceptionAndAbort(e);
 			 }
 	}
+	public void actionViewContract_actionPerformed(ActionEvent e)
+	throws Exception {
+BOSUuid.create(new ParamInfo().getBOSType());
+checkSelected();
+int selectRows[] = KDTableUtil.getSelectedRows(getMainTable());
+if (selectRows.length > 1) {
+	MsgBox.showWarning(this, FDCSplitClientHelper
+			.getRes("multiRowSelected"));
+	SysUtil.abort();
+} else if (selectRows.length == 1) {
+	Object obj = getMainTable()
+	.getCell(selectRows[0], "id").getValue();
+if (obj != null) {
+String contractId = obj.toString();
+UIContext uiContext = new UIContext(this);
+uiContext.put(UIContext.ID, contractId);
+IUIWindow testUI = UIFactory
+		.createUIFactory(UIFactoryName.NEWTAB)
+		.create(
+				com.kingdee.eas.fdc.contract.client.ContractBillEditUI.class
+						.getName(), uiContext, null,
+				OprtState.VIEW);
+testUI.show();
+}
+}
+}
 }

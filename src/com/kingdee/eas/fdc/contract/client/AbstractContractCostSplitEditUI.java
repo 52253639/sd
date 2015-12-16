@@ -48,9 +48,11 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
     private static final Logger logger = CoreUIObject.getLogger(AbstractContractCostSplitEditUI.class);
     protected com.kingdee.bos.ctrl.swing.KDCheckBox kDCheckBoxIsConfirm;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnProgrAcctSelect;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnViewContract;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemProgrAcctSelect;
     protected com.kingdee.eas.fdc.contract.ContractCostSplitInfo editData = null;
     protected ActionProgrAcctSelect actionProgrAcctSelect = null;
+    protected ActionViewContract actionViewContract = null;
     /**
      * output class constructor
      */
@@ -107,11 +109,17 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
         this.actionProgrAcctSelect = new ActionProgrAcctSelect(this);
         getActionManager().registerAction("actionProgrAcctSelect", actionProgrAcctSelect);
          this.actionProgrAcctSelect.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionViewContract
+        this.actionViewContract = new ActionViewContract(this);
+        getActionManager().registerAction("actionViewContract", actionViewContract);
+         this.actionViewContract.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.kDCheckBoxIsConfirm = new com.kingdee.bos.ctrl.swing.KDCheckBox();
         this.btnProgrAcctSelect = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnViewContract = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemProgrAcctSelect = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.kDCheckBoxIsConfirm.setName("kDCheckBoxIsConfirm");
         this.btnProgrAcctSelect.setName("btnProgrAcctSelect");
+        this.btnViewContract.setName("btnViewContract");
         this.menuItemProgrAcctSelect.setName("menuItemProgrAcctSelect");
         // CoreUI		
         this.setMinimumSize(new Dimension(1013,600));		
@@ -136,6 +144,9 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
         this.btnProgrAcctSelect.setAction((IItemAction)ActionProxyFactory.getProxy(actionProgrAcctSelect, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnProgrAcctSelect.setText(resHelper.getString("btnProgrAcctSelect.text"));		
         this.btnProgrAcctSelect.setToolTipText(resHelper.getString("btnProgrAcctSelect.toolTipText"));
+        // btnViewContract
+        this.btnViewContract.setAction((IItemAction)ActionProxyFactory.getProxy(actionViewContract, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnViewContract.setText(resHelper.getString("btnViewContract.text"));
         // menuItemProgrAcctSelect
         this.menuItemProgrAcctSelect.setAction((IItemAction)ActionProxyFactory.getProxy(actionProgrAcctSelect, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemProgrAcctSelect.setText(resHelper.getString("menuItemProgrAcctSelect.text"));		
@@ -415,6 +426,7 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
         this.toolBar.add(btnUnAudit);
         this.toolBar.add(btnCalculator);
         this.toolBar.add(btnViewCostInfo);
+        this.toolBar.add(btnViewContract);
 
 
     }
@@ -647,6 +659,14 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
     public void actionProgrAcctSelect_actionPerformed(ActionEvent e) throws Exception
     {
     }
+    	
+
+    /**
+     * output actionViewContract_actionPerformed method
+     */
+    public void actionViewContract_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
 	public RequestContext prepareActionSave(IItemAction itemAction) throws Exception {
 			RequestContext request = super.prepareActionSave(itemAction);		
 		if (request != null) {
@@ -680,6 +700,17 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
 	public boolean isPrepareActionProgrAcctSelect() {
     	return false;
     }
+	public RequestContext prepareActionViewContract(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionViewContract() {
+    	return false;
+    }
 
     /**
      * output ActionProgrAcctSelect class
@@ -708,6 +739,36 @@ public abstract class AbstractContractCostSplitEditUI extends com.kingdee.eas.fd
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractContractCostSplitEditUI.this, "ActionProgrAcctSelect", "actionProgrAcctSelect_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionViewContract class
+     */     
+    protected class ActionViewContract extends ItemAction {     
+    
+        public ActionViewContract()
+        {
+            this(null);
+        }
+
+        public ActionViewContract(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionViewContract.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionViewContract.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionViewContract.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractContractCostSplitEditUI.this, "ActionViewContract", "actionViewContract_actionPerformed", e);
         }
     }
 

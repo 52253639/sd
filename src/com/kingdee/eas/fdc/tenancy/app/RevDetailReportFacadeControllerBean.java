@@ -62,16 +62,17 @@ public class RevDetailReportFacadeControllerBean extends AbstractRevDetailReport
 	    initColoum(header,col,"appAmount",80,false);
 	    initColoum(header,col,"invoiceAmount",80,false);
 	    initColoum(header,col,"actRevAmount",80,false);
+	    initColoum(header,col,"unRevAmount",80,false);
 	    initColoum(header,col,"overdueDays",80,false);
 	    initColoum(header,col,"accountRate",75,false);
 	    initColoum(header,col,"remainingDays",80,false);
 	    header.setLabels(new Object[][]{ 
 	    		{
-	    			"mdNumber","mdId","conId","quitRoomDate","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","款项类别","累计金额","累计金额","累计金额","累计金额","累计金额","合同剩余天数"
+	    			"mdNumber","mdId","conId","quitRoomDate","房间信息","房间信息","房间信息","房间信息","房间信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","合同信息","款项类别","累计金额","累计金额","累计金额","累计金额","累计金额","累计金额","合同剩余天数"
 	    		}
 	    		,
 	    		{
-	    			"mdNumber","mdId","conId","quitRoomDate","项目分期","楼栋","房间","建筑面积","租赁面积","合同编码","合同名称","客户名称","合同起始日","合同终止日","免租期（按日）","合同总额（租金+周期性费用）","租金单价","租金单价（每月元/平米）","款项类别","应收金额","票据金额","实收金额","过期天数","账款回收率","合同剩余天数"
+	    			"mdNumber","mdId","conId","quitRoomDate","项目分期","楼栋","房间","建筑面积","租赁面积","合同编码","合同名称","客户名称","合同起始日","合同终止日","免租期（按日）","合同总额（租金+周期性费用）","租金单价","租金单价（每月元/平米）","款项类别","应收金额","票据金额","实收金额","未收金额","过期天数","账款回收率","合同剩余天数"
 		    	}
 	    },true);
 	    params.setObject("header", header);

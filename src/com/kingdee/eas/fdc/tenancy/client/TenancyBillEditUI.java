@@ -82,6 +82,7 @@ import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
 import com.kingdee.bos.metadata.entity.SelectorItemInfo;
+import com.kingdee.bos.metadata.entity.SorterItemInfo;
 import com.kingdee.bos.metadata.query.util.CompareType;
 import com.kingdee.bos.ui.face.CoreUIObject;
 import com.kingdee.bos.ui.face.IUIWindow;
@@ -89,11 +90,17 @@ import com.kingdee.bos.ui.face.ItemAction;
 import com.kingdee.bos.ui.face.UIException;
 import com.kingdee.bos.ui.face.UIFactory;
 import com.kingdee.bos.util.BOSUuid;
+import com.kingdee.eas.base.attachment.AttachmentFactory;
+import com.kingdee.eas.base.attachment.AttachmentFtpFacadeFactory;
+import com.kingdee.eas.base.attachment.AttachmentInfo;
 import com.kingdee.eas.base.attachment.BizobjectFacadeFactory;
 import com.kingdee.eas.base.attachment.BoAttchAssoCollection;
 import com.kingdee.eas.base.attachment.BoAttchAssoFactory;
+import com.kingdee.eas.base.attachment.BoAttchAssoInfo;
+import com.kingdee.eas.base.attachment.IAttachment;
 import com.kingdee.eas.base.attachment.common.AttachmentClientManager;
 import com.kingdee.eas.base.attachment.common.AttachmentManagerFactory;
+import com.kingdee.eas.base.attachment.util.FileGetter;
 import com.kingdee.eas.base.param.ParamControlFactory;
 import com.kingdee.eas.base.permission.PermissionFactory;
 import com.kingdee.eas.base.permission.UserInfo;
@@ -400,6 +407,15 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 		loadTotalPayList();
 		attachListeners();
 		isLoad=false;
+		
+		//加载附件
+		try {
+			fillAttachmnetTable();
+		} catch (EASBizException e) {
+			handleException(e);
+		} catch (BOSException e) {
+			handleException(e);
+		}
 	}
 	private void initTotalPayList(){
 		this.tblTotal.checkParsed();
@@ -934,7 +950,91 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
  		}else{
  			this.actionAdjust.setEnabled(false);
  		}
+		
+		this.tblAttachement.checkParsed();
+		KDWorkButton btnAttachment = new KDWorkButton();
+		
+		this.actionAttachment.putValue("SmallIcon", EASResource.getIcon("imgTbtn_affixmanage"));
+		btnAttachment = (KDWorkButton) this.contAttachment.add(this.actionAttachment);
+		btnAttachment.setText("附件管理");
+		btnAttachment.setSize(new Dimension(140, 19));
 	}
+	public void fillAttachmnetTable() throws EASBizException, BOSException {
+		this.tblAttachement.removeRows();
+		String boId = null;
+		if (this.editData.getId() == null) {
+			return;
+		} else {
+			boId = this.editData.getId().toString();
+		}
+
+		if (boId != null) {
+			SelectorItemCollection sic = new SelectorItemCollection();
+			sic.add(new SelectorItemInfo("id"));
+			sic.add(new SelectorItemInfo("attachment.id"));
+			sic.add(new SelectorItemInfo("attachment.name"));
+			sic.add(new SelectorItemInfo("attachment.createTime"));
+			sic.add(new SelectorItemInfo("attachment.attachID"));
+			sic.add(new SelectorItemInfo("attachment.beizhu"));
+			sic.add(new SelectorItemInfo("assoType"));
+			sic.add(new SelectorItemInfo("boID"));
+
+			FilterInfo filter = new FilterInfo();
+			filter.getFilterItems().add(new FilterItemInfo("boID", boId));
+			filter.getFilterItems().add(new FilterItemInfo("attachment.beizhu", "1",CompareType.NOTEQUALS));
+			filter.getFilterItems().add(new FilterItemInfo("attachment.beizhu", null,CompareType.EQUALS));
+//			//添加补充协议
+//			filter.getFilterItems().add(new FilterItemInfo("boID", this.editData.getAgreementID()));
+//			
+//			filter.getFilterItems().add(new FilterItemInfo("assoType","标准合同",CompareType.NOTEQUALS));
+			filter.setMaskString("#0 and (#1 or #2)");
+			EntityViewInfo evi = new EntityViewInfo();
+			evi.getSorter().add(new SorterItemInfo("boID"));
+			evi.getSorter().add(new SorterItemInfo("attachment.name"));
+			evi.setFilter(filter);
+			evi.setSelector(sic);
+			BoAttchAssoCollection cols = null;
+			try {
+				cols = BoAttchAssoFactory.getRemoteInstance().getBoAttchAssoCollection(evi);
+			} catch (BOSException e) {
+				e.printStackTrace();
+			}
+			boolean flag = false;
+			if (cols != null && cols.size() > 0) {
+				for (Iterator it = cols.iterator(); it.hasNext();) {
+					BoAttchAssoInfo boaInfo = (BoAttchAssoInfo)it.next();
+					AttachmentInfo attachment = boaInfo.getAttachment();
+					IRow row = tblAttachement.addRow();
+					row.getCell("id").setValue(attachment.getId().toString());
+					row.getCell("seq").setValue(attachment.getAttachID());
+					row.getCell("name").setValue(attachment.getName());
+					row.getCell("date").setValue(attachment.getCreateTime());
+					row.getCell("type").setValue(boaInfo.getAssoType());
+				}
+			}
+		}
+	}
+	
+	protected void tblAttachement_tableClicked(KDTMouseEvent e)
+			throws Exception {
+		if(e.getType() == 1 && e.getButton() == 1 && e.getClickCount() == 2)
+        {
+			IRow row  =  tblAttachement.getRow(e.getRowIndex());
+			getFileGetter();
+			Object selectObj= row.getCell("id").getValue();
+			if(selectObj!=null){
+				String attachId=selectObj.toString();
+				fileGetter.viewAttachment(attachId);
+			}
+			
+        }
+	}
+	private  FileGetter fileGetter;
+	private  FileGetter getFileGetter() throws Exception {
+        if (fileGetter == null)
+            fileGetter = new FileGetter((IAttachment) AttachmentFactory.getRemoteInstance(), AttachmentFtpFacadeFactory.getRemoteInstance());
+        return fileGetter;
+    }
 	private void initF7Bussinss() {
 		this.f7BussinessDepartMent.setQueryInfo("com.kingdee.eas.basedata.org.app.OUQuery");
 		EntityViewInfo view = new EntityViewInfo();
@@ -7638,6 +7738,7 @@ public class TenancyBillEditUI extends AbstractTenancyBillEditUI implements Tena
 			 isEdit = true;
          }
 		 acm.showAttachmentListUIByBoID(boID, this, isEdit);
+		fillAttachmnetTable();
      }
 	 public boolean destroyWindow() {
 		 boolean b = super.destroyWindow();
