@@ -3139,25 +3139,25 @@ public class AimMeasureCostEditUI extends AbstractAimMeasureCostEditUI {
 				continue;
 			
 			Object obj = row.getUserObject();
-			if (obj instanceof CostAccountInfo) {
-				CostAccountInfo acct = (CostAccountInfo) obj;
-				if (acct.isIsLeaf() && acct.getType() == CostAccountTypeEnum.SIX) {
-					BigDecimal total=(BigDecimal) row.getCell("total").getValue();
-					BigDecimal checkTotal=FDCHelper.ZERO;
-					if (splitType.equals("man")) {
-						for (int k = 0; k < planIndexTable.getPlanIndexInfo().getEntrys().size(); k++) {
-							if (!planIndexTable.getPlanIndexInfo().getEntrys().get(k).isIsSplit()) {
-								continue;
-							}
-							checkTotal=FDCHelper.add(checkTotal, row.getCell("split" + k).getValue());
-						}
-						if(FDCHelper.subtract(total, checkTotal).compareTo(FDCHelper.ZERO)!=0){
-							FDCMsgBox.showWarning(this,"测算汇总表科目："+acctNumber+acctName+"指定分摊总额与总成本合计不一致！");
-							SysUtil.abort();
-						}
-					}
-				}
-			}
+//			if (obj instanceof CostAccountInfo) {
+//				CostAccountInfo acct = (CostAccountInfo) obj;
+//				if (acct.isIsLeaf() && acct.getType() == CostAccountTypeEnum.SIX) {
+//					BigDecimal total=(BigDecimal) row.getCell("total").getValue();
+//					BigDecimal checkTotal=FDCHelper.ZERO;
+//					if (splitType.equals("man")) {
+//						for (int k = 0; k < planIndexTable.getPlanIndexInfo().getEntrys().size(); k++) {
+//							if (!planIndexTable.getPlanIndexInfo().getEntrys().get(k).isIsSplit()) {
+//								continue;
+//							}
+//							checkTotal=FDCHelper.add(checkTotal, row.getCell("split" + k).getValue());
+//						}
+//						if(FDCHelper.subtract(total, checkTotal).compareTo(FDCHelper.ZERO)!=0){
+//							FDCMsgBox.showWarning(this,"测算汇总表科目："+acctNumber+acctName+"指定分摊总额与总成本合计不一致！");
+//							SysUtil.abort();
+//						}
+//					}
+//				}
+//			}
 		}
 		
 		super.actionSubmit_actionPerformed(e);
