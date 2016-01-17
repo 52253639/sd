@@ -45,7 +45,7 @@ public class BrokerListUI extends AbstractBrokerListUI
     }
 	public void onShow() throws Exception {
 		super.onShow();
-//		this.actionView.setVisible(false);
+		this.actionView.setVisible(false);
 		this.actionRemove.setVisible(false);
 		this.actionEdit.setVisible(false);
 		this.actionAddNew.setVisible(false);
@@ -53,7 +53,7 @@ public class BrokerListUI extends AbstractBrokerListUI
 		this.btnCancelCancel.setVisible(false);
 	}
 	public void actionView_actionPerformed(ActionEvent e) throws Exception {
-		WeiChatFacadeFactory.getRemoteInstance().sysTrackRecord(null);
+//		WeiChatFacadeFactory.getRemoteInstance().sysTrackRecord(null);
 	}
 	
 
