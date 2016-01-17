@@ -14,6 +14,7 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import javax.ejb.*;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,8 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.bos.dao.query.ISQLExecutor;
+import com.kingdee.bos.dao.query.SQLExecutorFactory;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerInfo;
 import com.kingdee.eas.fdc.basedata.app.FDCBillControllerBean;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
@@ -48,6 +51,7 @@ import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillCollection;
 import com.kingdee.eas.framework.ObjectBaseCollection;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerCollection;
+import com.kingdee.jdbc.rowset.IRowSet;
 import com.kingdee.util.NumericExceptionSubItem;
 
 public class IntentionCustomerControllerBean extends AbstractIntentionCustomerControllerBean
@@ -60,23 +64,43 @@ public class IntentionCustomerControllerBean extends AbstractIntentionCustomerCo
 	}
 	protected void _audit(Context ctx, BOSUuid billId) throws BOSException,EASBizException {
 		IntentionCustomerInfo info=this.getIntentionCustomerInfo(ctx, new ObjectUuidPK(billId));
-		String msg=auditCustomer(info.getNumber());
+		String msg="";
+		try {
+			msg = auditCustomer(ctx,info.getNumber());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			msg=e.getMessage();
+		}
         if(msg!=null){
-        	throw new EASBizException(new NumericExceptionSubItem("100","msg"));
+        	throw new EASBizException(new NumericExceptionSubItem("100",msg));
         }else{
         	super.audit(ctx, billId);
         }
 	}
-    private String auditCustomer(String number){
+    private String auditCustomer(Context ctx,String number) throws BOSException, SQLException{
+    	StringBuffer sql = new StringBuffer();
+	    sql.append("select furl,fparam from T_WC_URL where fnumber=''");
+	    ISQLExecutor isql = SQLExecutorFactory.getLocalInstance(ctx,sql.toString());
+	    IRowSet rs = isql.executeSQL();
+	    String url=null;
+	    String param=null;
+	    if(rs.size()==0){
+	    	return "微信接口URL未配置";
+	    }else{
+	    	while (rs.next()){
+	    		url=rs.getString("url");
+	    		param=rs.getString("param");
+	    	}
+		}
     	JSONObject jsonObject = new JSONObject();
 		jsonObject.put("number", number);
          
         HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
         CloseableHttpClient closeableHttpClient = httpClientBuilder.build();
 
-        HttpPost httpPost = new HttpPost("url");
+        HttpPost httpPost = new HttpPost(url);
         List formparams = new ArrayList();
-        formparams.add(new BasicNameValuePair("phCenterDo", jsonObject.toString()));
+        formparams.add(new BasicNameValuePair(param, jsonObject.toString()));
 
 		try {
 			UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
@@ -94,11 +118,11 @@ public class IntentionCustomerControllerBean extends AbstractIntentionCustomerCo
 	        		return jsonRSObject.getString("msg");
 	        	}
 	    	} else {
-	    		return "接口异常";
+	    		return "微信接口异常";
 	    	}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "接口异常";
+			return "微信接口异常:"+e.getMessage();
 		} 
     }
     

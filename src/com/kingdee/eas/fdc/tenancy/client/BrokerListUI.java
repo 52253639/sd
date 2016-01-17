@@ -11,6 +11,8 @@ import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.eas.fdc.basedata.FDCDataBaseInfo;
 import com.kingdee.eas.fdc.tenancy.BrokerFactory;
 import com.kingdee.eas.fdc.tenancy.BrokerInfo;
+import com.kingdee.eas.fdc.tenancy.WeiChatFacade;
+import com.kingdee.eas.fdc.tenancy.WeiChatFacadeFactory;
 import com.kingdee.eas.framework.*;
 
 /**
@@ -43,7 +45,7 @@ public class BrokerListUI extends AbstractBrokerListUI
     }
 	public void onShow() throws Exception {
 		super.onShow();
-		this.actionView.setVisible(false);
+//		this.actionView.setVisible(false);
 		this.actionRemove.setVisible(false);
 		this.actionEdit.setVisible(false);
 		this.actionAddNew.setVisible(false);
@@ -51,7 +53,7 @@ public class BrokerListUI extends AbstractBrokerListUI
 		this.btnCancelCancel.setVisible(false);
 	}
 	public void actionView_actionPerformed(ActionEvent e) throws Exception {
-		
+		WeiChatFacadeFactory.getRemoteInstance().sysTrackRecord(null);
 	}
 	
 
