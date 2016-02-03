@@ -27,6 +27,7 @@ import com.kingdee.eas.fdc.sellhouse.PurchaseFactory;
 import com.kingdee.eas.fdc.sellhouse.PurchaseInfo;
 import com.kingdee.eas.framework.ICoreBase;
 import com.kingdee.eas.framework.client.ListUI;
+import com.kingdee.eas.util.app.DbUtil;
 
 /**
  * output class name

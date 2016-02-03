@@ -53,7 +53,7 @@ public class IntentionCustomerEditUI extends AbstractIntentionCustomerEditUI
 	}
 	public void actionRemove_actionPerformed(ActionEvent e) throws Exception {
 		super.actionRemove_actionPerformed(e);
-		handleCodingRule();
+//		handleCodingRule();
 	}
 	public void actionSubmit_actionPerformed(ActionEvent e) throws Exception {
 		super.actionSubmit_actionPerformed(e);

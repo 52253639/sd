@@ -48,10 +48,12 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
     private static final Logger logger = CoreUIObject.getLogger(AbstractIntentionCustomerListUI.class);
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnAudit;
     protected com.kingdee.bos.ctrl.swing.KDWorkButton btnUnAudit;
+    protected com.kingdee.bos.ctrl.swing.KDWorkButton btnPay;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemAudit;
     protected com.kingdee.bos.ctrl.swing.KDMenuItem menuItemUnAudit;
     protected ActionAudit actionAudit = null;
     protected ActionUnAudit actionUnAudit = null;
+    protected ActionPay actionPay = null;
     /**
      * output class constructor
      */
@@ -80,19 +82,25 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
         this.actionUnAudit = new ActionUnAudit(this);
         getActionManager().registerAction("actionUnAudit", actionUnAudit);
          this.actionUnAudit.addService(new com.kingdee.eas.framework.client.service.PermissionService());
+        //actionPay
+        this.actionPay = new ActionPay(this);
+        getActionManager().registerAction("actionPay", actionPay);
+         this.actionPay.addService(new com.kingdee.eas.framework.client.service.PermissionService());
         this.btnAudit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.btnUnAudit = new com.kingdee.bos.ctrl.swing.KDWorkButton();
+        this.btnPay = new com.kingdee.bos.ctrl.swing.KDWorkButton();
         this.menuItemAudit = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.menuItemUnAudit = new com.kingdee.bos.ctrl.swing.KDMenuItem();
         this.btnAudit.setName("btnAudit");
         this.btnUnAudit.setName("btnUnAudit");
+        this.btnPay.setName("btnPay");
         this.menuItemAudit.setName("menuItemAudit");
         this.menuItemUnAudit.setName("menuItemUnAudit");
         // CoreUI
-		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol14\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"phone\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"sex\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"city\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"project.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"payedAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"infoAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"payedInfoAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"broker.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"bizDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"auditor.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"auditTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" t:styleID=\"sCol14\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{state}</t:Cell><t:Cell>$Resource{phone}</t:Cell><t:Cell>$Resource{sex}</t:Cell><t:Cell>$Resource{city}</t:Cell><t:Cell>$Resource{project.name}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{payedAmount}</t:Cell><t:Cell>$Resource{infoAmount}</t:Cell><t:Cell>$Resource{payedInfoAmount}</t:Cell><t:Cell>$Resource{broker.name}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{auditor.name}</t:Cell><t:Cell>$Resource{auditTime}</t:Cell><t:Cell>$Resource{id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
+		String tblMainStrXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><DocRoot xmlns:c=\"http://www.kingdee.com/Common\" xmlns:f=\"http://www.kingdee.com/Form\" xmlns:t=\"http://www.kingdee.com/Table\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.kingdee.com/KDF KDFSchema.xsd\" version=\"0.0\"><Styles><c:Style id=\"sCol15\"><c:Protection hidden=\"true\" /></c:Style></Styles><Table id=\"KDTable\"><t:Sheet name=\"sheet1\"><t:Table t:selectMode=\"15\" t:mergeMode=\"0\" t:dataRequestMode=\"0\" t:pageRowCount=\"100\"><t:ColumnGroup><t:Column t:key=\"name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"state\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"phone\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"sex\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"city\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"project.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"amount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"payedAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"infoAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"payedInfoAmount\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"-1\" /><t:Column t:key=\"isPayed\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"10\" /><t:Column t:key=\"broker.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"11\" /><t:Column t:key=\"bizDate\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"12\" /><t:Column t:key=\"auditor.name\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"13\" /><t:Column t:key=\"auditTime\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"14\" /><t:Column t:key=\"id\" t:width=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\" t:moveable=\"true\" t:group=\"false\" t:required=\"false\" t:index=\"15\" t:styleID=\"sCol15\" /></t:ColumnGroup><t:Head><t:Row t:name=\"header\" t:height=\"-1\" t:mergeable=\"true\" t:resizeable=\"true\"><t:Cell>$Resource{name}</t:Cell><t:Cell>$Resource{state}</t:Cell><t:Cell>$Resource{phone}</t:Cell><t:Cell>$Resource{sex}</t:Cell><t:Cell>$Resource{city}</t:Cell><t:Cell>$Resource{project.name}</t:Cell><t:Cell>$Resource{amount}</t:Cell><t:Cell>$Resource{payedAmount}</t:Cell><t:Cell>$Resource{infoAmount}</t:Cell><t:Cell>$Resource{payedInfoAmount}</t:Cell><t:Cell>$Resource{isPayed}</t:Cell><t:Cell>$Resource{broker.name}</t:Cell><t:Cell>$Resource{bizDate}</t:Cell><t:Cell>$Resource{auditor.name}</t:Cell><t:Cell>$Resource{auditTime}</t:Cell><t:Cell>$Resource{id}</t:Cell></t:Row></t:Head></t:Table><t:SheetOptions><t:MergeBlocks><t:Head /></t:MergeBlocks></t:SheetOptions></t:Sheet></Table></DocRoot>";
 		
         this.tblMain.setFormatXml(resHelper.translateString("tblMain",tblMainStrXML));
-                this.tblMain.putBindContents("mainQuery",new String[] {"name","state","phone","sex","city","project.name","amount","payedAmount","infoAmount","payedInfoAmount","broker.name","bizDate","auditor.name","auditTime","id"});
+                this.tblMain.putBindContents("mainQuery",new String[] {"name","state","phone","sex","city","project.name","amount","payedAmount","infoAmount","payedInfoAmount","isPayed","broker.name","bizDate","auditor.name","auditTime","id"});
 
 
         // btnAudit
@@ -103,6 +111,9 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
         this.btnUnAudit.setAction((IItemAction)ActionProxyFactory.getProxy(actionUnAudit, new Class[] { IItemAction.class }, getServiceContext()));		
         this.btnUnAudit.setText(resHelper.getString("btnUnAudit.text"));		
         this.btnUnAudit.setIcon(com.kingdee.eas.util.client.EASResource.getIcon("imgTbtn_unaudit"));
+        // btnPay
+        this.btnPay.setAction((IItemAction)ActionProxyFactory.getProxy(actionPay, new Class[] { IItemAction.class }, getServiceContext()));		
+        this.btnPay.setText(resHelper.getString("btnPay.text"));
         // menuItemAudit
         this.menuItemAudit.setAction((IItemAction)ActionProxyFactory.getProxy(actionAudit, new Class[] { IItemAction.class }, getServiceContext()));		
         this.menuItemAudit.setText(resHelper.getString("menuItemAudit.text"));
@@ -280,6 +291,7 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
         this.toolBar.add(btnWFViewdoProccess);
         this.toolBar.add(btnAudit);
         this.toolBar.add(btnUnAudit);
+        this.toolBar.add(btnPay);
 
 
     }
@@ -381,6 +393,7 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
         sic.add(new SelectorItemInfo("auditor.name"));
         sic.add(new SelectorItemInfo("auditTime"));
         sic.add(new SelectorItemInfo("id"));
+        sic.add(new SelectorItemInfo("isPayed"));
         return sic;
     }        
     	
@@ -397,6 +410,14 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
      * output actionUnAudit_actionPerformed method
      */
     public void actionUnAudit_actionPerformed(ActionEvent e) throws Exception
+    {
+    }
+    	
+
+    /**
+     * output actionPay_actionPerformed method
+     */
+    public void actionPay_actionPerformed(ActionEvent e) throws Exception
     {
     }
 	public RequestContext prepareActionAudit(IItemAction itemAction) throws Exception {
@@ -419,6 +440,17 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
     }
 	
 	public boolean isPrepareActionUnAudit() {
+    	return false;
+    }
+	public RequestContext prepareActionPay(IItemAction itemAction) throws Exception {
+			RequestContext request = new RequestContext();		
+		if (request != null) {
+    		request.setClassName(getUIHandlerClassName());
+		}
+		return request;
+    }
+	
+	public boolean isPrepareActionPay() {
     	return false;
     }
 
@@ -479,6 +511,36 @@ public abstract class AbstractIntentionCustomerListUI extends com.kingdee.eas.fd
         {
         	getUIContext().put("ORG.PK", getOrgPK(this));
             innerActionPerformed("eas", AbstractIntentionCustomerListUI.this, "ActionUnAudit", "actionUnAudit_actionPerformed", e);
+        }
+    }
+
+    /**
+     * output ActionPay class
+     */     
+    protected class ActionPay extends ItemAction {     
+    
+        public ActionPay()
+        {
+            this(null);
+        }
+
+        public ActionPay(IUIObject uiObject)
+        {     
+		super(uiObject);     
+        
+            String _tempStr = null;
+            _tempStr = resHelper.getString("ActionPay.SHORT_DESCRIPTION");
+            this.putValue(ItemAction.SHORT_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionPay.LONG_DESCRIPTION");
+            this.putValue(ItemAction.LONG_DESCRIPTION, _tempStr);
+            _tempStr = resHelper.getString("ActionPay.NAME");
+            this.putValue(ItemAction.NAME, _tempStr);
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+        	getUIContext().put("ORG.PK", getOrgPK(this));
+            innerActionPerformed("eas", AbstractIntentionCustomerListUI.this, "ActionPay", "actionPay_actionPerformed", e);
         }
     }
 

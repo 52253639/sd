@@ -20,6 +20,6 @@ public interface WeiChatFacadeController extends BizController
 {
     public String synBroker(Context ctx, String str) throws BOSException, EASBizException, RemoteException;
     public String synCustomer(Context ctx, String str) throws BOSException, EASBizException, RemoteException;
-    public String sysFDCCsutomer(Context ctx, String str) throws BOSException, EASBizException, RemoteException;
-    public String sysTrackRecord(Context ctx, String str) throws BOSException, EASBizException, RemoteException;
+    public void synFDCCustomer(Context ctx) throws BOSException, EASBizException, RemoteException;
+    public void sysTrackRecord(Context ctx) throws BOSException, EASBizException, RemoteException;
 }

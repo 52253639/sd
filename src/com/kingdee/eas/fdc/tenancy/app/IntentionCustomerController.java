@@ -7,8 +7,8 @@ import com.kingdee.bos.util.*;
 import com.kingdee.bos.Context;
 
 import java.lang.String;
-import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
+import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerInfo;
 import com.kingdee.eas.fdc.basedata.app.FDCBillController;
@@ -19,6 +19,7 @@ import com.kingdee.bos.BOSException;
 import com.kingdee.bos.Context;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.bos.framework.*;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerCollection;
 
 import java.rmi.RemoteException;
@@ -32,4 +33,5 @@ public interface IntentionCustomerController extends FDCBillController
     public IntentionCustomerCollection getIntentionCustomerCollection(Context ctx) throws BOSException, RemoteException;
     public IntentionCustomerCollection getIntentionCustomerCollection(Context ctx, EntityViewInfo view) throws BOSException, RemoteException;
     public IntentionCustomerCollection getIntentionCustomerCollection(Context ctx, String oql) throws BOSException, RemoteException;
+    public void pay(Context ctx, BOSUuid id) throws BOSException, EASBizException, RemoteException;
 }

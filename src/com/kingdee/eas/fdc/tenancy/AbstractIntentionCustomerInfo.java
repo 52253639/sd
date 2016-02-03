@@ -107,6 +107,17 @@ public class AbstractIntentionCustomerInfo extends com.kingdee.eas.fdc.basedata.
     {
         put("broker", item);
     }
+    /**
+     * Object:意向客户's 已支付property 
+     */
+    public boolean isIsPayed()
+    {
+        return getBoolean("isPayed");
+    }
+    public void setIsPayed(boolean item)
+    {
+        setBoolean("isPayed", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("75527961");

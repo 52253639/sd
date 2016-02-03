@@ -1,0 +1,10 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+    <service name="WSWeiChatFacade" provider="java:RPC">
+        <parameter name="className" value="com.kingdee.eas.fdc.tenancy.app.webservice.WSWeiChatFacadeSrvProxy"/>
+        <parameter name="allowedMethods" value="*"/>
+        <beanMapping qname="myNS:WSBean" xmlns:myNS="urn:client.weichatfacade" languageSpecificType="java:com.kingdee.bos.webservice.WSBean"/>
+        <beanMapping qname="myNS:WSInvokeException" xmlns:myNS="urn:client.weichatfacade" languageSpecificType="java:com.kingdee.bos.webservice.WSInvokeException"/>
+        
+    </service>
+</deployment>

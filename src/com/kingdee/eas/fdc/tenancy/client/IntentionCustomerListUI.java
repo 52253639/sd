@@ -23,6 +23,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillStateEnum;
 import com.kingdee.eas.fdc.basedata.client.FDCClientHelper;
 import com.kingdee.eas.fdc.basedata.client.FDCClientUtils;
 import com.kingdee.eas.fdc.basedata.client.FDCMsgBox;
+import com.kingdee.eas.fdc.tenancy.CommissionApplyFactory;
 import com.kingdee.eas.fdc.tenancy.IIntentionCustomer;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerFactory;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerInfo;
@@ -80,6 +81,8 @@ public class IntentionCustomerListUI extends AbstractIntentionCustomerListUI
        
         this.btnUnAudit.setIcon(EASResource.getIcon("imgTbtn_unaudit"));
         this.menuItemUnAudit.setIcon(EASResource.getIcon("imgTbtn_unaudit"));
+        
+        this.btnPay.setIcon(EASResource.getIcon("imgTbtn_payment"));
 	}
 
 	protected void refresh(ActionEvent e) throws Exception
@@ -181,5 +184,14 @@ public class IntentionCustomerListUI extends AbstractIntentionCustomerListUI
 	}
 	protected void fetchInitData() throws Exception {
     }
-
+	public void actionPay_actionPerformed(ActionEvent e) throws Exception {
+		checkSelected();
+		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
+		IRow row = this.tblMain.getRow(rowIndex);
+    	String id = (String) row.getCell(this.getKeyFieldName()).getValue();
+    	
+    	IntentionCustomerFactory.getRemoteInstance().pay(BOSUuid.read(id));
+    	FDCClientUtils.showOprtOK(this);
+		this.refresh(null);
+	}
 }

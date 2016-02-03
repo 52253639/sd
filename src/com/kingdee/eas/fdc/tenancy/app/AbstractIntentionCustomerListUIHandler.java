@@ -24,4 +24,9 @@ public abstract class AbstractIntentionCustomerListUIHandler extends com.kingdee
 	}
 	protected void _handleActionUnAudit(RequestContext request,ResponseContext response, Context context) throws Exception {
 	}
+	public void handleActionPay(RequestContext request,ResponseContext response, Context context) throws Exception {
+		_handleActionPay(request,response,context);
+	}
+	protected void _handleActionPay(RequestContext request,ResponseContext response, Context context) throws Exception {
+	}
 }

@@ -22,8 +22,11 @@ import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.eas.basedata.org.FullOrgUnitInfo;
 import com.kingdee.eas.common.EASBizException;
 import com.kingdee.bos.dao.IObjectPK;
+import com.kingdee.bos.dao.query.ISQLExecutor;
+import com.kingdee.bos.dao.query.SQLExecutorFactory;
 import com.kingdee.eas.fdc.basedata.app.FDCBillControllerBean;
 import com.kingdee.bos.metadata.entity.SelectorItemCollection;
+import com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo;
 import com.kingdee.eas.fdc.sellhouse.TrackRecordCollection;
 import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.framework.CoreBillBaseCollection;
@@ -34,6 +37,7 @@ import com.kingdee.eas.fdc.basedata.FDCBillInfo;
 import com.kingdee.eas.framework.ObjectBaseCollection;
 import com.kingdee.eas.fdc.sellhouse.TrackRecordInfo;
 import com.kingdee.eas.util.app.ContextUtil;
+import com.kingdee.eas.util.app.DbUtil;
 
 public class TrackRecordControllerBean extends AbstractTrackRecordControllerBean
 {
@@ -54,6 +58,22 @@ public class TrackRecordControllerBean extends AbstractTrackRecordControllerBean
 			fDCBillInfo.setOrgUnit(orgUnit);
 		}
 	}
-	
-    
+	protected IObjectPK _submit(Context ctx, IObjectValue model) throws BOSException, EASBizException {
+		IObjectPK pk = super._submit(ctx, model);
+		
+		StringBuffer upsql = new StringBuffer();
+		upsql.append("update T_SHE_TrackRecord set fisSyn=0 where fid='"+pk.toString()+"'");
+		DbUtil.execute(ctx, upsql.toString());
+		
+		return pk;
+	}
+	protected void _updatePartial(Context ctx, IObjectValue model,SelectorItemCollection selector) throws BOSException,
+			EASBizException {
+		super._updatePartial(ctx, model, selector);
+		
+		TrackRecordInfo tr = (TrackRecordInfo) model;
+		StringBuffer upsql = new StringBuffer();
+		upsql.append("update T_SHE_TrackRecord set fisSyn=0 where fid='"+tr.getId().toString()+"'");
+		DbUtil.execute(ctx,upsql.toString());
+	}
 }

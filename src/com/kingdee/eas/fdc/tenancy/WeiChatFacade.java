@@ -64,27 +64,23 @@ public class WeiChatFacade extends AbstractBizCtrl implements IWeiChatFacade
     }
     /**
      *同步客户台账-User defined method
-     *@param str str
-     *@return
      */
-    public String sysFDCCsutomer(String str) throws BOSException, EASBizException
+    public void synFDCCustomer() throws BOSException, EASBizException
     {
         try {
-            return getController().sysFDCCsutomer(getContext(), str);
+            getController().synFDCCustomer(getContext());
         }
         catch(RemoteException err) {
             throw new EJBRemoteException(err);
         }
     }
     /**
-     *同步客户跟进-User defined method
-     *@param str str
-     *@return
+     *同步跟进-User defined method
      */
-    public String sysTrackRecord(String str) throws BOSException, EASBizException
+    public void sysTrackRecord() throws BOSException, EASBizException
     {
         try {
-            return getController().sysTrackRecord(getContext(), str);
+            getController().sysTrackRecord(getContext());
         }
         catch(RemoteException err) {
             throw new EJBRemoteException(err);

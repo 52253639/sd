@@ -20,6 +20,8 @@ import com.kingdee.bos.webservice.BOSTypeConvertor;
 import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.bos.webservice.WSConfig;
 import com.kingdee.bos.webservice.MetaDataHelper;
+import com.kingdee.bos.webservice.login.EASLoginProxy;
+import com.kingdee.bos.webservice.login.WSContext;
 import com.kingdee.bos.BOSObjectFactory;
 
 public class WSWeiChatFacadeSrvProxy { 
@@ -45,6 +47,8 @@ public class WSWeiChatFacadeSrvProxy {
     }
 
     private com.kingdee.eas.fdc.tenancy.IWeiChatFacade getController() {
+    	EASLoginProxy proxy = new EASLoginProxy();
+        WSContext ctx = proxy.login("webservice", "webservice!@#$", "eas", "SND", "L2", 2);
         try {
         if (WSConfig.getRomoteLocate()!=null&&WSConfig.getRomoteLocate().equals("false")){
             Message message =MessageContext.getCurrentContext().getRequestMessage();

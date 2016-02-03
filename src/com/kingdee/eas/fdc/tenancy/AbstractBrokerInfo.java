@@ -107,6 +107,17 @@ public class AbstractBrokerInfo extends com.kingdee.eas.fdc.basedata.FDCDataBase
     {
         setString("accountName", item);
     }
+    /**
+     * Object:经纪人's 身份证照片property 
+     */
+    public String getIdCardPictureURL()
+    {
+        return getString("idCardPictureURL");
+    }
+    public void setIdCardPictureURL(String item)
+    {
+        setString("idCardPictureURL", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("E65886C2");

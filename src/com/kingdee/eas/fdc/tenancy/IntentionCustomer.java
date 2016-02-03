@@ -20,6 +20,7 @@ import com.kingdee.bos.Context;
 import com.kingdee.eas.fdc.tenancy.app.*;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.bos.framework.*;
+import com.kingdee.bos.util.BOSUuid;
 
 public class IntentionCustomer extends FDCBill implements IIntentionCustomer
 {
@@ -120,6 +121,19 @@ public class IntentionCustomer extends FDCBill implements IIntentionCustomer
     {
         try {
             return getController().getIntentionCustomerCollection(getContext(), oql);
+        }
+        catch(RemoteException err) {
+            throw new EJBRemoteException(err);
+        }
+    }
+    /**
+     *Ö§¸¶-User defined method
+     *@param id id
+     */
+    public void pay(BOSUuid id) throws BOSException, EASBizException
+    {
+        try {
+            getController().pay(getContext(), id);
         }
         catch(RemoteException err) {
             throw new EJBRemoteException(err);

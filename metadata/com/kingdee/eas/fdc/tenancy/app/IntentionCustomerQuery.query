@@ -560,6 +560,37 @@
             </query>
         </queryField>
         <queryField>
+            <name>isPayed</name>
+            <userDefined>true</userDefined>
+            <formulaString />
+            <constString />
+            <displayName>joinQuery[com.kingdee.eas.fdc.tenancy.app.IntentionCustomerQuery].units.queryField[isPayed].displayName</displayName>
+            <groupType />
+            <isSelector>true</isSelector>
+            <isFilter>true</isFilter>
+            <isSorter>false</isSorter>
+            <isParameter>false</isParameter>
+            <returnType>Boolean</returnType>
+            <propertyRefs>
+                <propertyRef>
+                    <key>fdb7e7b8-a612-48bc-a3ab-fbb94fa44d25</key>
+                    <parentUnit>
+                        <key name="name" value="isPayed" />
+                    </parentUnit>
+                    <subEntity>
+                        <key name="name" value="IntentionCustomer" />
+                    </subEntity>
+                    <refProperty>
+                        <key name="name" value="isPayed" />
+                    </refProperty>
+                </propertyRef>
+            </propertyRefs>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="IntentionCustomerQuery" />
+            </query>
+        </queryField>
+        <queryField>
             <name>broker.name</name>
             <userDefined>true</userDefined>
             <formulaString />
@@ -599,7 +630,7 @@
             <groupType />
             <isSelector>true</isSelector>
             <isFilter>true</isFilter>
-            <isSorter>false</isSorter>
+            <isSorter>true</isSorter>
             <isParameter>false</isParameter>
             <returnType>Date</returnType>
             <propertyRefs>
@@ -723,6 +754,18 @@
             <key name="name" value="IntentionCustomerQuery" />
         </query>
     </defaultFilter>
+    <defaultSorters>
+        <querySorterItem>
+            <propertyName>bizDate</propertyName>
+            <sortType>ASC</sortType>
+            <userDefined>true</userDefined>
+            <query>
+                <key name="package" value="com.kingdee.eas.fdc.tenancy.app" />
+                <key name="name" value="IntentionCustomerQuery" />
+            </query>
+            <configured>false</configured>
+        </querySorterItem>
+    </defaultSorters>
     <queryPK>
         <name>QueryPK</name>
         <alias>joinQuery[com.kingdee.eas.fdc.tenancy.app.IntentionCustomerQuery].queryPK[QueryPK].alias</alias>
@@ -1030,6 +1073,22 @@
             <lang locale="zh_TW" value="true" />
         </rs>
         <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.IntentionCustomerQuery].units.queryField[infoAmount].extendedProperty.isCommonQuerySorter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.IntentionCustomerQuery].units.queryField[isPayed].displayName">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="已支付信息费" />
+            <lang locale="zh_HK" value="已支付信息費" />
+            <lang locale="zh_TW" value="已支付信息費" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.IntentionCustomerQuery].units.queryField[isPayed].extendedProperty.isCommonQueryFilter">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
+        <rs key="joinQuery[com.kingdee.eas.fdc.tenancy.app.IntentionCustomerQuery].units.queryField[isPayed].extendedProperty.isCommonQuerySorter">
             <lang locale="en_US" value="true" />
             <lang locale="zh_CN" value="true" />
             <lang locale="zh_TW" value="true" />

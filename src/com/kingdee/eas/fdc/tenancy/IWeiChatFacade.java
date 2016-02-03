@@ -17,6 +17,6 @@ public interface IWeiChatFacade extends IBizCtrl
 {
     public String synBroker(String str) throws BOSException, EASBizException;
     public String synCustomer(String str) throws BOSException, EASBizException;
-    public String sysFDCCsutomer(String str) throws BOSException, EASBizException;
-    public String sysTrackRecord(String str) throws BOSException, EASBizException;
+    public void synFDCCustomer() throws BOSException, EASBizException;
+    public void sysTrackRecord() throws BOSException, EASBizException;
 }

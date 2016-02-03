@@ -18,6 +18,8 @@ import com.kingdee.bos.Context;
 import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.IObjectValue;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
+import com.kingdee.bos.dao.query.ISQLExecutor;
+import com.kingdee.bos.dao.query.SQLExecutorFactory;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
@@ -54,6 +56,7 @@ import com.kingdee.eas.fdc.tenancy.TenancyBillInfo;
 import com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryCollection;
 import com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryFactory;
 import com.kingdee.eas.fdc.tenancy.TenancyCustomerEntryInfo;
+import com.kingdee.eas.fdc.tenancy.WeiChatFacadeFactory;
 import com.kingdee.eas.framework.DataBaseInfo;
 import com.kingdee.eas.util.app.ContextUtil;
 import com.kingdee.eas.util.app.DbUtil;
@@ -129,10 +132,23 @@ public class FDCCustomerControllerBean extends
 			LinkmanEntryFactory.getLocalInstance(ctx).submit(recLinkman);
 		}
 		//--
+		StringBuffer upsql = new StringBuffer();
+		upsql.append("update T_SHE_FDCCustomer set fisSyn=0 where fid='"+pk.toString()+"'");
+		DbUtil.execute(ctx, upsql.toString());
 		
 		return pk;
 	}
-	
+	protected void _updatePartial(Context ctx, IObjectValue model,
+			SelectorItemCollection selector) throws BOSException,
+			EASBizException {
+		super._updatePartial(ctx, model, selector);
+		
+		FDCCustomerInfo cus = (FDCCustomerInfo) model;
+		StringBuffer upsql = new StringBuffer();
+		upsql.append("update T_SHE_FDCCustomer set fisSyn=0 where fid='"+cus.getId().toString()+"'");
+		DbUtil.execute(ctx,upsql.toString());
+	}
+
 	protected IObjectPK _save(Context ctx, IObjectValue model) throws BOSException, EASBizException {
 		return super._save(ctx, model);
 	}

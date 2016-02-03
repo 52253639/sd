@@ -84,17 +84,15 @@ public abstract class AbstractWeiChatFacadeControllerBean extends AbstractBizCon
         return null;
     }
 
-    public String sysFDCCsutomer(Context ctx, String str) throws BOSException, EASBizException
+    public void synFDCCustomer(Context ctx) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("a965d8d8-5204-4fcf-a462-1e24573ffac6"), new Object[]{ctx, str});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("3b923f5c-df5f-471f-8a8c-4043354e8986"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
-            if(!svcCtx.invokeBreak()) {
-            String retValue = (String)_sysFDCCsutomer(ctx, str);
-            svcCtx.setMethodReturnValue(retValue);
+              if(!svcCtx.invokeBreak()) {
+            _synFDCCustomer(ctx);
             }
             invokeServiceAfter(svcCtx);
-            return (String)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -103,22 +101,20 @@ public abstract class AbstractWeiChatFacadeControllerBean extends AbstractBizCon
             super.cleanUpServiceState();
         }
     }
-    protected String _sysFDCCsutomer(Context ctx, String str) throws BOSException, EASBizException
+    protected void _synFDCCustomer(Context ctx) throws BOSException, EASBizException
     {    	
-        return null;
+        return;
     }
 
-    public String sysTrackRecord(Context ctx, String str) throws BOSException, EASBizException
+    public void sysTrackRecord(Context ctx) throws BOSException, EASBizException
     {
         try {
-            ServiceContext svcCtx = createServiceContext(new MetaDataPK("0f4dd849-d557-4744-b098-d0ab13ed93cf"), new Object[]{ctx, str});
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("ad29cbb1-034e-4f8d-b31b-80cbe8bac63e"), new Object[]{ctx});
             invokeServiceBefore(svcCtx);
-            if(!svcCtx.invokeBreak()) {
-            String retValue = (String)_sysTrackRecord(ctx, str);
-            svcCtx.setMethodReturnValue(retValue);
+              if(!svcCtx.invokeBreak()) {
+            _sysTrackRecord(ctx);
             }
             invokeServiceAfter(svcCtx);
-            return (String)svcCtx.getMethodReturnValue();
         } catch (BOSException ex) {
             throw ex;
         } catch (EASBizException ex0) {
@@ -127,9 +123,9 @@ public abstract class AbstractWeiChatFacadeControllerBean extends AbstractBizCon
             super.cleanUpServiceState();
         }
     }
-    protected String _sysTrackRecord(Context ctx, String str) throws BOSException, EASBizException
+    protected void _sysTrackRecord(Context ctx) throws BOSException, EASBizException
     {    	
-        return null;
+        return;
     }
 
 }

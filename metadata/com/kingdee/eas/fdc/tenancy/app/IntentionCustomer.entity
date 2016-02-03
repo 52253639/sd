@@ -166,6 +166,38 @@
             </parameters>
             <configured>false</configured>
         </method>
+        <method>
+            <name>pay</name>
+            <isListenerMethod>false</isListenerMethod>
+            <alias>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].description</description>
+            <innerID>11a7e28f-b272-455b-8d89-a145ba43bb9d</innerID>
+            <accessLevel>public</accessLevel>
+            <subClassingMode>normal</subClassingMode>
+            <returnValueType />
+            <metadataRef />
+            <transactionAttribute>Required</transactionAttribute>
+            <userDefined>true</userDefined>
+            <userDefinedLogic />
+            <parameters>
+                <parameter>
+                    <name>id</name>
+                    <alias>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].parameters.parameter[id].alias</alias>
+                    <description>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].parameters.parameter[id].description</description>
+                    <direction>in</direction>
+                    <dataType>BOSUuid</dataType>
+                    <metadataRef />
+                    <userDefined>true</userDefined>
+                </parameter>
+            </parameters>
+            <exceptions>
+                <bizException>
+                    <key name="package" value="com.kingdee.eas.common" />
+                    <key name="name" value="EASBizException" />
+                </bizException>
+            </exceptions>
+            <configured>false</configured>
+        </method>
     </methods>
     <isAbstract>false</isAbstract>
     <bizUnitPK />
@@ -326,6 +358,26 @@
                 <key name="name" value="R_IntentionCustomer_Broker_broker" />
             </relationship>
         </linkProperty>
+        <ownProperty>
+            <name>isPayed</name>
+            <alias>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[isPayed].alias</alias>
+            <description>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[isPayed].description</description>
+            <userDefined>true</userDefined>
+            <configured>false</configured>
+            <dataType>Boolean</dataType>
+            <metadataRef />
+            <isMultilingual>false</isMultilingual>
+            <isNullable>false</isNullable>
+            <formula />
+            <length>0</length>
+            <precision>0</precision>
+            <decimalDigits>0</decimalDigits>
+            <defaultValue>entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[isPayed].defaultValue</defaultValue>
+            <displayFormat />
+            <mappingField>
+                <key name="name" value="FIsPayed" />
+            </mappingField>
+        </ownProperty>
     </properties>
     <logicalKey>
         <name>id</name>
@@ -874,6 +926,11 @@
             <lang locale="zh_CN" value="com.kingdee.eas.fdc.tenancy.client.IntentionCustomerEditUI" />
             <lang locale="zh_TW" value="com.kingdee.eas.fdc.tenancy.client.IntentionCustomerEditUI" />
         </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].extendedProperty.genBusinessImplCode">
+            <lang locale="en_US" value="true" />
+            <lang locale="zh_CN" value="true" />
+            <lang locale="zh_TW" value="true" />
+        </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].extendedProperty.isParamObject">
             <lang locale="en_US" value="false" />
             <lang locale="zh_CN" value="false" />
@@ -985,6 +1042,29 @@
             <lang locale="zh_HK" value="null" />
             <lang locale="zh_TW" value="null" />
         </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="支付" />
+            <lang locale="zh_HK" value="支付" />
+            <lang locale="zh_TW" value="支付" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="支付" />
+            <lang locale="zh_HK" value="支付" />
+            <lang locale="zh_TW" value="支付" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].parameters.parameter[id].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="id" />
+            <lang locale="zh_HK" value="id" />
+            <lang locale="zh_TW" value="id" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].methods.method[pay].parameters.parameter[id].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.linkProperty[broker].alias">
             <lang locale="en_US" value="null" />
             <lang locale="zh_CN" value="经纪人" />
@@ -1044,6 +1124,24 @@
             <lang locale="zh_CN" value="信息费" />
             <lang locale="zh_HK" value="信息費" />
             <lang locale="zh_TW" value="信息費" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[isPayed].alias">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="已支付" />
+            <lang locale="zh_HK" value="已支付" />
+            <lang locale="zh_TW" value="已支付" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[isPayed].defaultValue">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="null" />
+            <lang locale="zh_HK" value="null" />
+            <lang locale="zh_TW" value="null" />
+        </rs>
+        <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[isPayed].description">
+            <lang locale="en_US" value="null" />
+            <lang locale="zh_CN" value="已支付" />
+            <lang locale="zh_HK" value="已支付" />
+            <lang locale="zh_TW" value="已支付" />
         </rs>
         <rs key="entityObject[com.kingdee.eas.fdc.tenancy.app.IntentionCustomer].properties.ownProperty[payedAmount].alias">
             <lang locale="en_US" value="null" />

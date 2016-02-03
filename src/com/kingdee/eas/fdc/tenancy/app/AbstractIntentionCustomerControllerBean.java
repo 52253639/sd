@@ -31,6 +31,7 @@ import com.kingdee.eas.framework.CoreBaseCollection;
 import com.kingdee.eas.framework.CoreBillBaseCollection;
 import com.kingdee.eas.framework.CoreBaseInfo;
 import com.kingdee.eas.fdc.basedata.FDCBillCollection;
+import com.kingdee.bos.util.BOSUuid;
 import com.kingdee.eas.framework.ObjectBaseCollection;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerCollection;
 
@@ -189,6 +190,30 @@ public abstract class AbstractIntentionCustomerControllerBean extends FDCBillCon
     protected IObjectCollection _getCollection(Context ctx, IServiceContext svcCtx, String oql) throws BOSException
     {
         return super._getCollection(ctx, svcCtx, oql);
+    }
+
+    public void pay(Context ctx, BOSUuid id) throws BOSException, EASBizException
+    {
+        try {
+            ServiceContext svcCtx = createServiceContext(new MetaDataPK("11a7e28f-b272-455b-8d89-a145ba43bb9d"), new Object[]{ctx, id});
+            invokeServiceBefore(svcCtx);
+              if(!svcCtx.invokeBreak()) {
+            _pay(ctx, id);
+            }
+            invokeServiceAfter(svcCtx);
+        } catch (BOSException ex) {
+            this.setRollbackOnly();
+            throw ex;
+        } catch (EASBizException ex0) {
+            this.setRollbackOnly();
+            throw ex0;
+        } finally {
+            super.cleanUpServiceState();
+        }
+    }
+    protected void _pay(Context ctx, BOSUuid id) throws BOSException, EASBizException
+    {    	
+        return;
     }
 
     public FDCBillCollection getFDCBillCollection (Context ctx) throws BOSException

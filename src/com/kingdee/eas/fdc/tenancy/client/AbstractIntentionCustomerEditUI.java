@@ -164,7 +164,7 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.prmtBroker.setName("prmtBroker");
         // CoreUI		
         this.setBorder(null);		
-        this.setPreferredSize(new Dimension(700,329));		
+        this.setPreferredSize(new Dimension(700,250));		
         this.btnCopy.setVisible(false);		
         this.btnCopy.setEnabled(false);		
         this.menuItemCopy.setVisible(false);		
@@ -327,33 +327,33 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 700, 329));
+        this.setBounds(new Rectangle(10, 10, 700, 250));
         this.setLayout(null);
-        contAuditor.setBounds(new Rectangle(31, 274, 270, 19));
+        contAuditor.setBounds(new Rectangle(35, 186, 270, 19));
         this.add(contAuditor, null);
-        contBizDate.setBounds(new Rectangle(30, 228, 270, 19));
+        contBizDate.setBounds(new Rectangle(35, 158, 270, 19));
         this.add(contBizDate, null);
-        contAuditTime.setBounds(new Rectangle(391, 274, 270, 19));
+        contAuditTime.setBounds(new Rectangle(387, 186, 270, 19));
         this.add(contAuditTime, null);
-        contName.setBounds(new Rectangle(30, 23, 270, 19));
+        contName.setBounds(new Rectangle(35, 23, 270, 19));
         this.add(contName, null);
-        contPhone.setBounds(new Rectangle(30, 64, 270, 19));
+        contPhone.setBounds(new Rectangle(35, 50, 270, 19));
         this.add(contPhone, null);
-        contAmount.setBounds(new Rectangle(30, 105, 270, 19));
+        contAmount.setBounds(new Rectangle(35, 77, 270, 19));
         this.add(contAmount, null);
-        contSex.setBounds(new Rectangle(391, 64, 270, 19));
+        contSex.setBounds(new Rectangle(387, 50, 270, 19));
         this.add(contSex, null);
-        contCity.setBounds(new Rectangle(30, 187, 270, 19));
+        contCity.setBounds(new Rectangle(35, 131, 270, 19));
         this.add(contCity, null);
-        contPayedAmount.setBounds(new Rectangle(391, 105, 270, 19));
+        contPayedAmount.setBounds(new Rectangle(387, 77, 270, 19));
         this.add(contPayedAmount, null);
-        contInfoAmount.setBounds(new Rectangle(30, 146, 270, 19));
+        contInfoAmount.setBounds(new Rectangle(35, 104, 270, 19));
         this.add(contInfoAmount, null);
-        contPayedInfoAmount.setBounds(new Rectangle(391, 146, 270, 19));
+        contPayedInfoAmount.setBounds(new Rectangle(387, 104, 270, 19));
         this.add(contPayedInfoAmount, null);
-        contProject.setBounds(new Rectangle(391, 23, 270, 19));
+        contProject.setBounds(new Rectangle(387, 23, 270, 19));
         this.add(contProject, null);
-        contBroker.setBounds(new Rectangle(391, 187, 270, 19));
+        contBroker.setBounds(new Rectangle(387, 131, 270, 19));
         this.add(contBroker, null);
         //contAuditor
         contAuditor.setBoundEditor(prmtAuditor);
