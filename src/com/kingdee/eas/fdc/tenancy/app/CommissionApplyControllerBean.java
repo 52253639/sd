@@ -5,6 +5,7 @@ import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -156,7 +157,7 @@ public class CommissionApplyControllerBean extends AbstractCommissionApplyContro
 	    String url=null;
 	    String param=null;
 	    if(rs.size()==0){
-	    	return "意向客户微信接口URL未配置";
+	    	return "佣金支付微信接口URL未配置";
 	    }else{
 	    	while (rs.next()){
 	    		url=rs.getString("furl");
@@ -191,28 +192,37 @@ public class CommissionApplyControllerBean extends AbstractCommissionApplyContro
         }else{
         	formparams.add(new BasicNameValuePair("payedAmount", "0"));
         }
-		try {
-			UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
-			httpPost.setEntity(entity);
-	         
-	        HttpResponse httpResponse = closeableHttpClient.execute(httpPost);
-	        HttpEntity httpEntity = httpResponse.getEntity();
-	        if (httpEntity != null) {
-	        	String resData = EntityUtils.toString(httpEntity, "UTF-8");
-	        	closeableHttpClient.close();
-	        	JSONObject jsonRSObject = JSONObject.fromObject(resData);
-	        	if (jsonRSObject.getString("state").equals("1")) {
-	        		return null;
-	        	} else {
-	        		return jsonRSObject.getString("msg");
-	        	}
-	    	} else {
-	    		return "意向客户微信接口异常";
-	    	}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "意向客户微信接口异常:"+e.getMessage();
-		} 
+        int i=0;
+		while(true){
+			try {
+				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
+				httpPost.setEntity(entity);
+		         
+				CloseableHttpResponse httpResponse = closeableHttpClient.execute(httpPost);
+		        HttpEntity httpEntity = httpResponse.getEntity();
+		        if (httpEntity != null) {
+		        	String resData = EntityUtils.toString(httpEntity, "UTF-8");
+		        	closeableHttpClient.close();
+		        	httpResponse.close();
+		        	
+		        	JSONObject jsonRSObject = JSONObject.fromObject(resData);
+		        	if (jsonRSObject.getString("state").equals("1")) {
+		        		return null;
+		        	} else {
+		        		return jsonRSObject.getString("msg");
+		        	}
+		    	} else {
+		    		return "佣金支付微信接口异常";
+		    	}
+			} catch (Exception e) {
+				if(i>3){
+					e.printStackTrace();
+					return "佣金支付微信接口异常:"+e.getMessage();
+				}else{
+					i=i+1;
+				}
+			}
+		}
     }
     
 }

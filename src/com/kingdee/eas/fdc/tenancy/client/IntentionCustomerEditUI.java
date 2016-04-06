@@ -152,12 +152,13 @@ public class IntentionCustomerEditUI extends AbstractIntentionCustomerEditUI
 		return info;
 	}
 	protected void verifyInputForSave() throws Exception{
-		if(getNumberCtrl().isEnabled()) {
-			FDCClientVerifyHelper.verifyEmpty(this, getNumberCtrl());
-		}
+//		if(getNumberCtrl().isEnabled()) {
+//			FDCClientVerifyHelper.verifyEmpty(this, getNumberCtrl());
+//		}
 	}
 	protected void verifyInputForSubmint() throws Exception {
 		verifyInputForSave();
 		FDCClientVerifyHelper.verifyEmpty(this, this.txtName);
+		FDCClientVerifyHelper.verifyEmpty(this, this.prmtSaleMan);
 	}
 }

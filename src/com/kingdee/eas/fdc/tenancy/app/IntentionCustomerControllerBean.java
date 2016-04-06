@@ -6,8 +6,10 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -41,6 +43,8 @@ import java.math.BigDecimal;
 import com.kingdee.bos.metadata.entity.EntityViewInfo;
 import com.kingdee.bos.metadata.entity.FilterInfo;
 import com.kingdee.bos.metadata.entity.FilterItemInfo;
+import com.kingdee.eas.base.codingrule.CodingRuleManagerFactory;
+import com.kingdee.eas.base.codingrule.ICodingRuleManager;
 import com.kingdee.eas.basedata.assistant.CityCollection;
 import com.kingdee.eas.basedata.assistant.CityFactory;
 import com.kingdee.eas.basedata.assistant.ICity;
@@ -49,11 +53,13 @@ import com.kingdee.bos.dao.IObjectPK;
 import com.kingdee.bos.dao.ormapping.ObjectUuidPK;
 import com.kingdee.bos.dao.query.ISQLExecutor;
 import com.kingdee.bos.dao.query.SQLExecutorFactory;
+import com.kingdee.eas.fdc.sellhouse.CustomerTypeEnum;
 import com.kingdee.eas.fdc.sellhouse.FDCCustomerFactory;
 import com.kingdee.eas.fdc.sellhouse.FDCCustomerInfo;
 import com.kingdee.eas.fdc.sellhouse.IFDCCustomer;
 import com.kingdee.eas.fdc.sellhouse.ISellProject;
 import com.kingdee.eas.fdc.sellhouse.SellProjectFactory;
+import com.kingdee.eas.fdc.sellhouse.TrackPhaseEnum;
 import com.kingdee.eas.fdc.tenancy.CommissionApplyInfo;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerFactory;
 import com.kingdee.eas.fdc.tenancy.IntentionCustomerInfo;
@@ -97,9 +103,21 @@ public class IntentionCustomerControllerBean extends AbstractIntentionCustomerCo
         	IFDCCustomer ifdcCustomer=FDCCustomerFactory.getLocalInstance(ctx);
         	ICity icity=CityFactory.getLocalInstance(ctx);
         	FDCCustomerInfo cus=new FDCCustomerInfo();
+        	
+        	cus.setCU(SellProjectFactory.getLocalInstance(ctx).getSellProjectInfo(new ObjectUuidPK(info.getProject().getId())).getCU());
         	cus.setProject(info.getProject());
         	cus.setName(info.getName());
-        	cus.setSalesman(info.getAuditor());
+        	cus.setSalesman(info.getSaleMan());
+        	cus.setQQ(info.getNumber());
+        	cus.setCustomerType(CustomerTypeEnum.EnterpriceCustomer);
+        	cus.setIsForTen(true);
+        	cus.setIsEnabled(true);
+        	cus.setIsImportantTrack(false);
+        	cus.setTrackPhase(TrackPhaseEnum.PotentialCustomer);
+        	cus.setCreator(info.getSaleMan());
+        	
+        	ICodingRuleManager iCodingRuleManager = CodingRuleManagerFactory.getLocalInstance(ctx);
+        	cus.setNumber(iCodingRuleManager.getNumber(cus, cus.getCU().getId().toString()));
         	
 			if(!StringUtils.isEmpty(info.getCity())){
 				EntityViewInfo view=new EntityViewInfo();
@@ -150,28 +168,38 @@ public class IntentionCustomerControllerBean extends AbstractIntentionCustomerCo
         }
         formparams.add(new BasicNameValuePair("amount", "0"));
         formparams.add(new BasicNameValuePair("payedAmount", "0"));
-		try {
-			UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
-			httpPost.setEntity(entity);
-	         
-	        HttpResponse httpResponse = closeableHttpClient.execute(httpPost);
-	        HttpEntity httpEntity = httpResponse.getEntity();
-	        if (httpEntity != null) {
-	        	String resData = EntityUtils.toString(httpEntity, "UTF-8");
-	        	closeableHttpClient.close();
-	        	JSONObject jsonRSObject = JSONObject.fromObject(resData);
-	        	if (jsonRSObject.getString("state").equals("1")) {
-	        		return null;
-	        	} else {
-	        		return jsonRSObject.getString("msg");
-	        	}
-	    	} else {
-	    		return "意向客户微信接口异常";
-	    	}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "意向客户微信接口异常:"+e.getMessage();
-		} 
+        
+		int i=0;
+		while(true){
+			try {
+				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
+				httpPost.setEntity(entity);
+		         
+				CloseableHttpResponse httpResponse = closeableHttpClient.execute(httpPost);
+		        HttpEntity httpEntity = httpResponse.getEntity();
+		        if (httpEntity != null) {
+		        	String resData = EntityUtils.toString(httpEntity, "UTF-8");
+		        	closeableHttpClient.close();
+		        	httpResponse.close();
+		        	
+		        	JSONObject jsonRSObject = JSONObject.fromObject(resData);
+		        	if (jsonRSObject.getString("state").equals("1")) {
+		        		return null;
+		        	} else {
+		        		return jsonRSObject.getString("msg");
+		        	}
+		    	} else {
+		    		return "意向客户微信接口异常";
+		    	}
+			} catch (Exception e) {
+				if(i>3){
+					e.printStackTrace();
+					return "意向客户微信接口异常:"+e.getMessage();
+				}else{
+					i=i+1;
+				}
+			}
+		}
     }
     protected void _pay(Context ctx, BOSUuid id) throws BOSException,EASBizException {
 		SelectorItemCollection sic = new SelectorItemCollection();

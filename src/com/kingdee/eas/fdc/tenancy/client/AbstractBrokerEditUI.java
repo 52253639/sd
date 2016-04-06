@@ -57,6 +57,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAccountNum;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAccountName;
     protected com.kingdee.bos.ctrl.swing.KDPanel photePanel;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contIdentity;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contAgency;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtName;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtPassword;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtPhone;
@@ -67,6 +69,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
     protected com.kingdee.bos.ctrl.swing.KDTextField txtBank;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtAccountNum;
     protected com.kingdee.bos.ctrl.swing.KDTextField txtAccountName;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtIdentity;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtAgency;
     protected com.kingdee.eas.fdc.tenancy.BrokerInfo editData = null;
     /**
      * output class constructor
@@ -98,6 +102,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         this.contAccountNum = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contAccountName = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.photePanel = new com.kingdee.bos.ctrl.swing.KDPanel();
+        this.contIdentity = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contAgency = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.txtName = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtPassword = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtPhone = new com.kingdee.bos.ctrl.swing.KDTextField();
@@ -108,6 +114,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         this.txtBank = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtAccountNum = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.txtAccountName = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtIdentity = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.txtAgency = new com.kingdee.bos.ctrl.swing.KDTextField();
         this.contName.setName("contName");
         this.contPassword.setName("contPassword");
         this.contPhone.setName("contPhone");
@@ -119,6 +127,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         this.contAccountNum.setName("contAccountNum");
         this.contAccountName.setName("contAccountName");
         this.photePanel.setName("photePanel");
+        this.contIdentity.setName("contIdentity");
+        this.contAgency.setName("contAgency");
         this.txtName.setName("txtName");
         this.txtPassword.setName("txtPassword");
         this.txtPhone.setName("txtPhone");
@@ -129,6 +139,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         this.txtBank.setName("txtBank");
         this.txtAccountNum.setName("txtAccountNum");
         this.txtAccountName.setName("txtAccountName");
+        this.txtIdentity.setName("txtIdentity");
+        this.txtAgency.setName("txtAgency");
         // CoreUI		
         this.setPreferredSize(new Dimension(297,329));
         // contName		
@@ -173,6 +185,14 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         this.contAccountName.setBoundLabelUnderline(true);
         // photePanel		
         this.photePanel.setBorder(BorderFactory.createLineBorder(new Color(0,0,0),1));
+        // contIdentity		
+        this.contIdentity.setBoundLabelText(resHelper.getString("contIdentity.boundLabelText"));		
+        this.contIdentity.setBoundLabelLength(120);		
+        this.contIdentity.setBoundLabelUnderline(true);
+        // contAgency		
+        this.contAgency.setBoundLabelText(resHelper.getString("contAgency.boundLabelText"));		
+        this.contAgency.setBoundLabelLength(120);		
+        this.contAgency.setBoundLabelUnderline(true);
         // txtName		
         this.txtName.setRequired(true);		
         this.txtName.setEnabled(false);
@@ -203,6 +223,12 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         // txtAccountName		
         this.txtAccountName.setRequired(true);		
         this.txtAccountName.setEnabled(false);
+        // txtIdentity		
+        this.txtIdentity.setRequired(true);		
+        this.txtIdentity.setEnabled(false);
+        // txtAgency		
+        this.txtAgency.setRequired(true);		
+        this.txtAgency.setEnabled(false);
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -227,30 +253,34 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
      */
     public void initUIContentLayout()
     {
-        this.setBounds(new Rectangle(10, 10, 297, 329));
+        this.setBounds(new Rectangle(10, 10, 297, 340));
         this.setLayout(null);
         contName.setBounds(new Rectangle(16, 16, 270, 19));
         this.add(contName, null);
-        contPassword.setBounds(new Rectangle(16, 45, 270, 19));
+        contPassword.setBounds(new Rectangle(16, 41, 270, 19));
         this.add(contPassword, null);
-        contPhone.setBounds(new Rectangle(16, 74, 270, 19));
+        contPhone.setBounds(new Rectangle(16, 66, 270, 19));
         this.add(contPhone, null);
-        contCreateTime.setBounds(new Rectangle(16, 282, 270, 19));
+        contCreateTime.setBounds(new Rectangle(16, 297, 270, 19));
         this.add(contCreateTime, null);
-        contSex.setBounds(new Rectangle(16, 103, 270, 19));
+        contSex.setBounds(new Rectangle(16, 91, 270, 19));
         this.add(contSex, null);
-        contIdNum.setBounds(new Rectangle(16, 132, 270, 19));
+        contIdNum.setBounds(new Rectangle(16, 116, 270, 19));
         this.add(contIdNum, null);
-        contWeChatNum.setBounds(new Rectangle(16, 161, 270, 19));
+        contWeChatNum.setBounds(new Rectangle(16, 166, 270, 19));
         this.add(contWeChatNum, null);
-        contBank.setBounds(new Rectangle(16, 190, 270, 19));
+        contBank.setBounds(new Rectangle(16, 191, 270, 19));
         this.add(contBank, null);
-        contAccountNum.setBounds(new Rectangle(16, 219, 270, 19));
+        contAccountNum.setBounds(new Rectangle(16, 216, 270, 19));
         this.add(contAccountNum, null);
-        contAccountName.setBounds(new Rectangle(16, 248, 270, 19));
+        contAccountName.setBounds(new Rectangle(16, 241, 270, 19));
         this.add(contAccountName, null);
         photePanel.setBounds(new Rectangle(298, 16, 468, 287));
         this.add(photePanel, null);
+        contIdentity.setBounds(new Rectangle(16, 141, 270, 19));
+        this.add(contIdentity, null);
+        contAgency.setBounds(new Rectangle(16, 266, 270, 19));
+        this.add(contAgency, null);
         //contName
         contName.setBoundEditor(txtName);
         //contPassword
@@ -271,7 +301,11 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         contAccountNum.setBoundEditor(txtAccountNum);
         //contAccountName
         contAccountName.setBoundEditor(txtAccountName);
-        photePanel.setLayout(null);
+        photePanel.setLayout(null);        //contIdentity
+        contIdentity.setBoundEditor(txtIdentity);
+        //contAgency
+        contAgency.setBoundEditor(txtAgency);
+
     }
 
 
@@ -390,7 +424,9 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
 		dataBinder.registerBinding("weChatNum", String.class, this.txtWeChatNum, "text");
 		dataBinder.registerBinding("bank", String.class, this.txtBank, "text");
 		dataBinder.registerBinding("accountNum", String.class, this.txtAccountNum, "text");
-		dataBinder.registerBinding("accountName", String.class, this.txtAccountName, "text");		
+		dataBinder.registerBinding("accountName", String.class, this.txtAccountName, "text");
+		dataBinder.registerBinding("identity", String.class, this.txtIdentity, "text");
+		dataBinder.registerBinding("agency", String.class, this.txtAgency, "text");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -459,7 +495,9 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
 		getValidateHelper().registerBindProperty("weChatNum", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("bank", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("accountNum", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("accountName", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("accountName", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("identity", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("agency", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -496,6 +534,8 @@ public abstract class AbstractBrokerEditUI extends com.kingdee.eas.fdc.basedata.
         sic.add(new SelectorItemInfo("bank"));
         sic.add(new SelectorItemInfo("accountNum"));
         sic.add(new SelectorItemInfo("accountName"));
+        sic.add(new SelectorItemInfo("identity"));
+        sic.add(new SelectorItemInfo("agency"));
         return sic;
     }        
 

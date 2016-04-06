@@ -118,6 +118,28 @@ public class AbstractIntentionCustomerInfo extends com.kingdee.eas.fdc.basedata.
     {
         setBoolean("isPayed", item);
     }
+    /**
+     * Object:意向客户's 联系人property 
+     */
+    public String getContactName()
+    {
+        return getString("contactName");
+    }
+    public void setContactName(String item)
+    {
+        setString("contactName", item);
+    }
+    /**
+     * Object: 意向客户 's 置业顾问 property 
+     */
+    public com.kingdee.eas.base.permission.UserInfo getSaleMan()
+    {
+        return (com.kingdee.eas.base.permission.UserInfo)get("saleMan");
+    }
+    public void setSaleMan(com.kingdee.eas.base.permission.UserInfo item)
+    {
+        put("saleMan", item);
+    }
     public BOSObjectType getBOSType()
     {
         return new BOSObjectType("75527961");

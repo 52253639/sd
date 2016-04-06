@@ -59,6 +59,8 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contPayedInfoAmount;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contProject;
     protected com.kingdee.bos.ctrl.swing.KDLabelContainer contBroker;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contContactName;
+    protected com.kingdee.bos.ctrl.swing.KDLabelContainer contSaleMan;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtAuditor;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkBizDate;
     protected com.kingdee.bos.ctrl.swing.KDDatePicker pkAuditTime;
@@ -72,6 +74,8 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
     protected com.kingdee.bos.ctrl.swing.KDFormattedTextField txtPayedInfoAmount;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtProject;
     protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtBroker;
+    protected com.kingdee.bos.ctrl.swing.KDTextField txtContactName;
+    protected com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox prmtSaleMan;
     protected com.kingdee.eas.fdc.tenancy.IntentionCustomerInfo editData = null;
     /**
      * output class constructor
@@ -123,6 +127,8 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.contPayedInfoAmount = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contProject = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.contBroker = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contContactName = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
+        this.contSaleMan = new com.kingdee.bos.ctrl.swing.KDLabelContainer();
         this.prmtAuditor = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.pkBizDate = new com.kingdee.bos.ctrl.swing.KDDatePicker();
         this.pkAuditTime = new com.kingdee.bos.ctrl.swing.KDDatePicker();
@@ -136,6 +142,8 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.txtPayedInfoAmount = new com.kingdee.bos.ctrl.swing.KDFormattedTextField();
         this.prmtProject = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.prmtBroker = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
+        this.txtContactName = new com.kingdee.bos.ctrl.swing.KDTextField();
+        this.prmtSaleMan = new com.kingdee.bos.ctrl.extendcontrols.KDBizPromptBox();
         this.contAuditor.setName("contAuditor");
         this.contBizDate.setName("contBizDate");
         this.contAuditTime.setName("contAuditTime");
@@ -149,6 +157,8 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.contPayedInfoAmount.setName("contPayedInfoAmount");
         this.contProject.setName("contProject");
         this.contBroker.setName("contBroker");
+        this.contContactName.setName("contContactName");
+        this.contSaleMan.setName("contSaleMan");
         this.prmtAuditor.setName("prmtAuditor");
         this.pkBizDate.setName("pkBizDate");
         this.pkAuditTime.setName("pkAuditTime");
@@ -162,6 +172,8 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.txtPayedInfoAmount.setName("txtPayedInfoAmount");
         this.prmtProject.setName("prmtProject");
         this.prmtBroker.setName("prmtBroker");
+        this.txtContactName.setName("txtContactName");
+        this.prmtSaleMan.setName("prmtSaleMan");
         // CoreUI		
         this.setBorder(null);		
         this.setPreferredSize(new Dimension(700,250));		
@@ -251,6 +263,14 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.contBroker.setBoundLabelText(resHelper.getString("contBroker.boundLabelText"));		
         this.contBroker.setBoundLabelLength(120);		
         this.contBroker.setBoundLabelUnderline(true);
+        // contContactName		
+        this.contContactName.setBoundLabelText(resHelper.getString("contContactName.boundLabelText"));		
+        this.contContactName.setBoundLabelLength(120);		
+        this.contContactName.setBoundLabelUnderline(true);
+        // contSaleMan		
+        this.contSaleMan.setBoundLabelText(resHelper.getString("contSaleMan.boundLabelText"));		
+        this.contSaleMan.setBoundLabelUnderline(true);		
+        this.contSaleMan.setBoundLabelLength(120);
         // prmtAuditor		
         this.prmtAuditor.setEnabled(false);		
         this.prmtAuditor.setVisible(true);		
@@ -303,6 +323,24 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.prmtBroker.setCommitFormat("$number$");		
         this.prmtBroker.setRequired(true);		
         this.prmtBroker.setEnabled(false);
+        // txtContactName		
+        this.txtContactName.setEnabled(false);
+        // prmtSaleMan		
+        this.prmtSaleMan.setQueryInfo("com.kingdee.eas.base.permission.app.F7UserQuery");		
+        this.prmtSaleMan.setDisplayFormat("$name$");		
+        this.prmtSaleMan.setEditFormat("$number$");		
+        this.prmtSaleMan.setCommitFormat("$number$");		
+        this.prmtSaleMan.setRequired(true);
+        this.prmtSaleMan.addDataChangeListener(new com.kingdee.bos.ctrl.swing.event.DataChangeListener() {
+            public void dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) {
+                try {
+                    f7salesman_dataChanged(e);
+                } catch (Exception exc) {
+                    handUIException(exc);
+                } finally {
+                }
+            }
+        });
 		//Register control's property binding
 		registerBindings();
 		registerUIState();
@@ -329,11 +367,11 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
     {
         this.setBounds(new Rectangle(10, 10, 700, 250));
         this.setLayout(null);
-        contAuditor.setBounds(new Rectangle(35, 186, 270, 19));
+        contAuditor.setBounds(new Rectangle(35, 212, 270, 19));
         this.add(contAuditor, null);
         contBizDate.setBounds(new Rectangle(35, 158, 270, 19));
         this.add(contBizDate, null);
-        contAuditTime.setBounds(new Rectangle(387, 186, 270, 19));
+        contAuditTime.setBounds(new Rectangle(387, 212, 270, 19));
         this.add(contAuditTime, null);
         contName.setBounds(new Rectangle(35, 23, 270, 19));
         this.add(contName, null);
@@ -355,6 +393,10 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         this.add(contProject, null);
         contBroker.setBounds(new Rectangle(387, 131, 270, 19));
         this.add(contBroker, null);
+        contContactName.setBounds(new Rectangle(387, 158, 270, 19));
+        this.add(contContactName, null);
+        contSaleMan.setBounds(new Rectangle(35, 184, 270, 19));
+        this.add(contSaleMan, null);
         //contAuditor
         contAuditor.setBoundEditor(prmtAuditor);
         //contBizDate
@@ -381,6 +423,10 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         contProject.setBoundEditor(prmtProject);
         //contBroker
         contBroker.setBoundEditor(prmtBroker);
+        //contContactName
+        contContactName.setBoundEditor(txtContactName);
+        //contSaleMan
+        contSaleMan.setBoundEditor(prmtSaleMan);
 
     }
 
@@ -570,7 +616,9 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
 		dataBinder.registerBinding("infoAmount", java.math.BigDecimal.class, this.txtInfoAmount, "value");
 		dataBinder.registerBinding("payedInfoAmount", java.math.BigDecimal.class, this.txtPayedInfoAmount, "value");
 		dataBinder.registerBinding("project", com.kingdee.eas.fdc.sellhouse.SellProjectInfo.class, this.prmtProject, "data");
-		dataBinder.registerBinding("broker", com.kingdee.eas.fdc.tenancy.BrokerInfo.class, this.prmtBroker, "data");		
+		dataBinder.registerBinding("broker", com.kingdee.eas.fdc.tenancy.BrokerInfo.class, this.prmtBroker, "data");
+		dataBinder.registerBinding("contactName", String.class, this.txtContactName, "text");
+		dataBinder.registerBinding("saleMan", com.kingdee.eas.base.permission.UserInfo.class, this.prmtSaleMan, "data");		
 	}
 	//Regiester UI State
 	private void registerUIState(){		
@@ -642,7 +690,9 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
 		getValidateHelper().registerBindProperty("infoAmount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("payedInfoAmount", ValidateHelper.ON_SAVE);    
 		getValidateHelper().registerBindProperty("project", ValidateHelper.ON_SAVE);    
-		getValidateHelper().registerBindProperty("broker", ValidateHelper.ON_SAVE);    		
+		getValidateHelper().registerBindProperty("broker", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("contactName", ValidateHelper.ON_SAVE);    
+		getValidateHelper().registerBindProperty("saleMan", ValidateHelper.ON_SAVE);    		
 	}
 
 
@@ -658,6 +708,13 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         } else if (STATUS_VIEW.equals(this.oprtState)) {
         } else if (STATUS_FINDVIEW.equals(this.oprtState)) {
         }
+    }
+
+    /**
+     * output f7salesman_dataChanged method
+     */
+    protected void f7salesman_dataChanged(com.kingdee.bos.ctrl.swing.event.DataChangeEvent e) throws Exception
+    {
     }
 
     /**
@@ -706,6 +763,16 @@ public abstract class AbstractIntentionCustomerEditUI extends com.kingdee.eas.fd
         	sic.add(new SelectorItemInfo("broker.id"));
         	sic.add(new SelectorItemInfo("broker.number"));
         	sic.add(new SelectorItemInfo("broker.name"));
+		}
+        sic.add(new SelectorItemInfo("contactName"));
+		if(selectorAll.equalsIgnoreCase("true"))
+		{
+			sic.add(new SelectorItemInfo("saleMan.*"));
+		}
+		else{
+        	sic.add(new SelectorItemInfo("saleMan.id"));
+        	sic.add(new SelectorItemInfo("saleMan.number"));
+        	sic.add(new SelectorItemInfo("saleMan.name"));
 		}
         return sic;
     }        

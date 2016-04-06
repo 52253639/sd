@@ -98,6 +98,9 @@ public class WeiChatFacadeControllerBean extends AbstractWeiChatFacadeController
 		String accountName=obj.getString("accountName");
 		String accountNum=obj.getString("accountNum");
 		String idCardPictureURL=obj.getString("idCardPictureURL");
+		String identity=obj.getString("identity");
+		String agency=obj.getString("agency");
+		String referrer=obj.getString("referrer");
 		
 		JSONObject rs = new JSONObject();
 		
@@ -130,6 +133,9 @@ public class WeiChatFacadeControllerBean extends AbstractWeiChatFacadeController
 		info.setAccountName(accountName);
 		info.setAccountNum(accountNum);
 		info.setIdCardPictureURL(idCardPictureURL);
+		info.setIdentity(identity);
+		info.setAgency(agency);
+		info.setReferrer(referrer);
 		
 		ibroker.submit(info);
 		
@@ -149,6 +155,7 @@ public class WeiChatFacadeControllerBean extends AbstractWeiChatFacadeController
 		String project=obj.getString("project");
 		String brokerNumber=obj.getString("brokerNumber");
 		String bizDate=obj.getString("bizDate");
+		String contactName=obj.getString("contactName");
 		
 //		String number="12312";
 //		String name="123123";
@@ -226,7 +233,9 @@ public class WeiChatFacadeControllerBean extends AbstractWeiChatFacadeController
 			}
 			info.setCU(info.getProject().getCU());
 			info.setOrgUnit(info.getProject().getOrgUnit());
-			iintentionCustomer.submit(info);
+			info.setContactName(contactName);
+			
+			iintentionCustomer.save(info);
 			
 			rs.put("state", "1");
 			rs.put("msg", "同步成功！");
@@ -250,7 +259,7 @@ public class WeiChatFacadeControllerBean extends AbstractWeiChatFacadeController
 				}
 			}
 		    sql = new StringBuffer();
-		    sql.append("select a.fid id,a.fnumber number,a.fname_l2 name,b.fname_l2 city,a.fphone phone,d.fnumber saleMan,c.fnumber project from T_SHE_FDCCustomer a left join T_BD_City b on b.fid=a.FCityID left join T_SHE_SellProject c on c.fid=a.FProjectID left join T_PM_User d on d.fid=a.FSalesmanID where fisSyn=0");
+		    sql.append("select a.fid id,a.fnumber number,a.fname_l2 name,b.fname_l2 city,a.fphone phone,d.fnumber saleMan,c.fnumber project,e.fname_l2 levelName,a.fqq srcNumber from T_SHE_FDCCustomer a left join T_BD_City b on b.fid=a.FCityID left join T_SHE_SellProject c on c.fid=a.FProjectID left join T_PM_User d on d.fid=a.FSalesmanID left join T_SHE_CommerceChanceAssistant e on e.fid=a.FLevelId where a.fnumber is not null and a.fprojectid is not null and a.FSalesmanID is not null and fisSyn=0");
 		    isql = SQLExecutorFactory.getLocalInstance(ctx,sql.toString());
 		    rs = isql.executeSQL();
 	    	while (rs.next()){
@@ -266,6 +275,8 @@ public class WeiChatFacadeControllerBean extends AbstractWeiChatFacadeController
 	            formparams.add(new BasicNameValuePair("phone", rs.getString("phone")==null?"":rs.getString("phone")));
 	            formparams.add(new BasicNameValuePair("saleMan", rs.getString("saleMan")));
 	            formparams.add(new BasicNameValuePair("project", rs.getString("project")));
+	            formparams.add(new BasicNameValuePair("level", rs.getString("levelName")==null?"":rs.getString("levelName")));
+	            formparams.add(new BasicNameValuePair("srcNumber", rs.getString("srcNumber")==null?"":rs.getString("srcNumber")));
 	    		try {
 	    			UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
 	    			httpPost.setEntity(entity);

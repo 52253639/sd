@@ -56,6 +56,7 @@ import com.kingdee.eas.fdc.tenancy.WeiChatFacadeFactory;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
+import com.kingdee.eas.util.client.MsgBox;
 
 /**
  * output class name
@@ -185,6 +186,7 @@ public class CommissionApplyListUI extends AbstractCommissionApplyListUI
 		sels.add("project.*");
 		sels.add("creator.*");
 		sels.add("auditor.*");
+		sels.add("saleMan.*");
 		vi.setSelector(sels);
 		try {
 			IntentionCustomerCollection tencol = IntentionCustomerFactory.getRemoteInstance().getIntentionCustomerCollection(vi);
@@ -207,6 +209,9 @@ public class CommissionApplyListUI extends AbstractCommissionApplyListUI
 				if(info.getAuditor()!=null)row.getCell("auditor.name").setValue(info.getAuditor().getName());
 				row.getCell("auditTime").setValue(info.getAuditTime());
 				row.getCell("isPayed").setValue(info.isIsPayed());
+				row.getCell("contactName").setValue(info.getContactName());
+				if(info.getSaleMan()!=null)row.getCell("saleMan.name").setValue(info.getSaleMan().getName());
+				
 			}
 		} catch (BOSException ee) {
 			ee.printStackTrace();
@@ -328,11 +333,16 @@ public class CommissionApplyListUI extends AbstractCommissionApplyListUI
 		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
 		IRow row = this.tblMain.getRow(rowIndex);
     	String id = (String) row.getCell(this.getKeyFieldName()).getValue();
-    	
-    	CommissionApplyFactory.getRemoteInstance().pay(BOSUuid.read(id));
-    	FDCClientUtils.showOprtOK(this);
-    	getcus();
-		this.refresh(null);
+    	SelectorItemCollection sel=new SelectorItemCollection();
+    	sel.add("intentionCustomer.*");
+    	sel.add("*");
+    	CommissionApplyInfo info=CommissionApplyFactory.getRemoteInstance().getCommissionApplyInfo(new ObjectUuidPK(id),sel);
+    	if (MsgBox.showConfirm2New(this, "是否支付"+info.getIntentionCustomer().getName()+"佣金"+info.getAmount()+"元?") == MsgBox.YES) {
+    		CommissionApplyFactory.getRemoteInstance().pay(BOSUuid.read(id));
+        	FDCClientUtils.showOprtOK(this);
+        	getcus();
+    		this.refresh(null);
+    	}
 	}
 	
 }

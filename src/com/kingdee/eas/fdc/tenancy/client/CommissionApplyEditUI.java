@@ -119,6 +119,12 @@ public class CommissionApplyEditUI extends AbstractCommissionApplyEditUI
 		this.menuBiz.setVisible(false);
 		this.actionAttachment.setVisible(false);
 		this.actionAddNew.setVisible(false);
+		
+		EntityViewInfo view=new EntityViewInfo();
+		FilterInfo filter=new FilterInfo();
+		filter.getFilterItems().add(new FilterItemInfo("parent.id",this.editData.getIntentionCustomer().getProject().getId().toString()));
+		view.setFilter(filter);
+		this.prmtProject.setEntityViewInfo(view);
 	}
 	public void setOprtState(String oprtType) {
 		super.setOprtState(oprtType);

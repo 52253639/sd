@@ -32,6 +32,7 @@ import com.kingdee.eas.fdc.tenancy.client.IntentionCustomerListUI;
 import com.kingdee.eas.framework.*;
 import com.kingdee.eas.util.SysUtil;
 import com.kingdee.eas.util.client.EASResource;
+import com.kingdee.eas.util.client.MsgBox;
 
 /**
  * output class name
@@ -189,9 +190,11 @@ public class IntentionCustomerListUI extends AbstractIntentionCustomerListUI
 		int rowIndex = this.tblMain.getSelectManager().getActiveRowIndex();
 		IRow row = this.tblMain.getRow(rowIndex);
     	String id = (String) row.getCell(this.getKeyFieldName()).getValue();
-    	
-    	IntentionCustomerFactory.getRemoteInstance().pay(BOSUuid.read(id));
-    	FDCClientUtils.showOprtOK(this);
-		this.refresh(null);
+    	IntentionCustomerInfo info=IntentionCustomerFactory.getRemoteInstance().getIntentionCustomerInfo(new ObjectUuidPK(id));
+    	if (MsgBox.showConfirm2New(this, "是否支付"+info.getName()+"信息费"+info.getInfoAmount()+"元?") == MsgBox.YES) {
+    		IntentionCustomerFactory.getRemoteInstance().pay(BOSUuid.read(id));
+        	FDCClientUtils.showOprtOK(this);
+    		this.refresh(null);
+    	}
 	}
 }
